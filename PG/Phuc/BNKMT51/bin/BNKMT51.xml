@@ -1,0 +1,85 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+BNKMT51
+</name>
+</assembly>
+<members>
+<member name="M:BNKMT51.BasOraJet.GetRowsCommon(System.String,System.String)">
+ <summary>
+ テーブルとfrom以下を指定し、指定テーブルの全項目を取得(0行目)
+ </summary>
+ <param name="pTableName">テーブル名</param>
+ <param name="pWhere">from以下を指定(例)where 〇〇cd = 'a'～</param>
+</member>
+<member name="M:BNKMT51.BasOraJet.GetNextRowsCommon(System.String,System.Int32)">
+ <summary>
+ GetRowsCommonで取得したデータを構造体にセットする
+ </summary>
+ <param name="pTablename">テーブル名</param>
+ <param name="dataCount">列数</param>
+ <returns>構造体</returns>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_HINSMA(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_HINSMA@,System.Int32)">
+ <summary>
+ 商品サマリ 
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TANSMA(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TANSMA@,System.Int32)">
+ <summary>
+ 担当者様サマリ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TOKMTB(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TOKMTB@,System.Int32)">
+ <summary>
+ 販売単価履歴マスタ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TOKSMA(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TOKSMA@,System.Int32)">
+ <summary>
+ 売掛サマリ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TOKSMB(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TOKSMB@,System.Int32)">
+ <summary>
+ 得意先別商品サマリ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TOKSMC(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TOKSMC@,System.Int32)">
+ <summary>
+ 売上サマリ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TOKSME(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TOKSME@,System.Int32)">
+ <summary>
+ 売掛サマリ請求
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TOKSSA(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TOKSSA@,System.Int32)">
+ <summary>
+ 請求サマリ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_TOKSSB(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_TOKSSB@,System.Int32)">
+ <summary>
+ 前受請求サマリ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_ZAISMA(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_ZAISMA@,System.Int32)">
+ <summary>
+ 在庫月次サマリ
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_SEIPR53(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_SEIPR53@,System.Int32)">
+ <summary>
+ 請求明細書ワーク
+ </summary>
+</member>
+<member name="M:BNKMT51.TABLEDATA.Set_DB_BNKMTA(System.Data.DataTable@,BNKMT51.TABLEDATA.TYPE_DB_BNKMTA@,System.Int32)">
+ <summary>
+ 銀行マスタ2
+ </summary>
+</member>
+</members>
+</doc>
