@@ -1,0 +1,29 @@
+	Option Explicit
+'==========================================================================
+'   BNKPR51.DBM  銀行一覧マスタリストワーク       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_BNKPR51
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    BNKCD          As String * 7     '銀行コード            !@@@@@@@            
+    BNKNM          As String * 50    '銀行名称                                  
+    STNNM          As String * 50    '支店名称                                  
+    BNKNK          As String * 30    '銀行名称カナ                              
+    STNNK          As String * 30    '支店名称カナ                              
+    BNKKMKCD       As String * 3     '銀行・総勘定科目ｺｰﾄﾞ  000                 
+    BNKUTICD       As String * 3     '銀行・科目内訳ｺｰﾄﾞ    000                 
+    STTBNKCD       As String * 7     '開始・銀行コード      000                 
+    STTBNKNM       As String * 50    '開始・銀行名                              
+    ENDBNKCD       As String * 7     '終了・銀行コード      000                 
+    ENDBNKNM       As String * 50    '終了・銀行名                              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_BNKPR51 As TYPE_DB_BNKPR51
+Global DBN_BNKPR51 As Integer
+' Index1( RPTCLTID + BNKCD )
+
+Sub BNKPR51_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_BNKPR51, G_LB)
+    Call ResetBuf(DBN_BNKPR51)
+End Sub
