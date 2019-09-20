@@ -1,0 +1,31 @@
+Attribute VB_Name = "BMNZP_F51"
+Option Explicit
+'
+'スロット名      :郵便番号・画面項目スロット
+'ユニット名      :BMNZP.F51
+'記述者          :Standard Library
+'作成日付        :2006/08/30
+'使用プログラム  :BMNMT51
+'
+
+Function BMNZP_CheckC(ByVal BMNZP, ByVal De_Index)
+    Dim Rtn     As Integer
+'
+    BMNZP_CheckC = 0
+    
+    If LenWid(Trim$(BMNZP)) = 0 Then
+    Else
+        If Len(Trim$(BMNZP)) <> Len508 Then
+            Rtn = DSP_MsgBox(SSS_CONFRM, "BMNMT51", 1)  '郵便番号桁数エラー
+            BMNZP_CheckC = -1
+            Exit Function
+        End If
+        If Mid(BMNZP, Len509, 1) <> "-" Then
+            Rtn = DSP_MsgBox(SSS_CONFRM, "BMNMT51", 2)  '郵便番号ハイフン位置エラー
+            BMNZP_CheckC = -1
+            Exit Function
+        End If
+    End If
+    
+End Function
+
