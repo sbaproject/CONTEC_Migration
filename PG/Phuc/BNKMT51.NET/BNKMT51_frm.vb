@@ -2519,21 +2519,234 @@ EventExitSub:
 		End Select
 	End Sub
 
-    '2019/09/19 ADD START
+    '2019/09/20 ADD START
+    Private Sub FR_SSSMAIN_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F2
+                    '検索
+                    Me.btnF2.PerformClick()
+
+                Case Keys.F3
+                    '前頁
+                    Me.btnF3.PerformClick()
+
+                Case Keys.F4
+                    '次頁
+                    Me.btnF4.PerformClick()
+
+                Case Keys.F5
+                    '参照
+                    Me.btnF5.PerformClick()
+
+                Case Keys.F6
+                    'モード / 変更
+                    Me.btnF6.PerformClick()
+
+                Case Keys.F7
+                    '行追加
+                    Me.btnF7.PerformClick()
+
+                Case Keys.F8
+                    '行削除
+                    Me.btnF8.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
+
+    '更新
     Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
-
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Executing Then Exit Sub
+        PP_SSSMAIN.Executing = True
+        PP_SSSMAIN.ExplicitExec = True
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            'UPGRADE_WARNING: オブジェクト Execute_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Execute_GetEvent() Then
+                wk_Cursor = AE_Execute_SSSMAIN()
+            End If
+        End If
+        PP_SSSMAIN.ExplicitExec = False
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+        PP_SSSMAIN.Executing = False
     End Sub
-    '2019/09/19 ADD E N D
 
-    '2019/09/19 ADD START
+    '検索
     Private Sub btnF2_Click(sender As Object, e As EventArgs) Handles btnF2.Click
-
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.NeglectLostFocusCheck = True
+        PP_SSSMAIN.CloseCode = 1
+        Call AE_EndCm_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
     End Sub
-    '2019/09/19 ADD EN D
 
-    '2019/09/19 ADD START
+    '前頁
     Private Sub btnF3_Click(sender As Object, e As EventArgs) Handles btnF3.Click
-
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            If PREV_GETEVENT() Then
+                If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+                    wk_Int = AE_Prev_SSSMAIN(True)
+                Else
+                    Beep()
+                End If
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorInit_SSSMAIN()
     End Sub
-    '2019/09/19 ADD E N D
+
+    '次頁
+    Private Sub btnF4_Click(sender As Object, e As EventArgs) Handles btnF4.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            If NEXTCm_GETEVENT() Then
+                If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+                    wk_Int = AE_NextCm_SSSMAIN(True)
+                Else
+                    Beep()
+                End If
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorInit_SSSMAIN()
+    End Sub
+
+    '参照
+    Private Sub btnF5_Click(sender As Object, e As EventArgs) Handles btnF5.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then
+            Exit Sub
+        End If
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+    End Sub
+
+    'モード / 変更
+    Private Sub btnF6_Click(sender As Object, e As EventArgs) Handles btnF6.Click
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Mode = Cn_Mode2 Then
+            Beep()
+            wk_Cursor = Cn_CuCurrent
+        Else
+            wk_Cursor = AE_SelectCm_SSSMAIN(PP_SSSMAIN.Mode, False)
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    End Sub
+
+    '行追加
+    Private Sub btnF7_Click(sender As Object, e As EventArgs) Handles btnF7.Click
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Mode = Cn_Mode3 Then
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+            Exit Sub
+        End If
+        If INSERTDE_GETEVENT() Then
+            If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 92 Then
+                If (PP_SSSMAIN.Tx - 2) \ 6 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
+                    wk_Cursor = AE_InsertDe_SSSMAIN()
+                End If
+            Else
+                Beep()
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    End Sub
+
+    '行削除
+    Private Sub btnF8_Click(sender As Object, e As EventArgs) Handles btnF8.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Mode = Cn_Mode3 Then
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+            Exit Sub
+        End If
+        If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 92 Then
+            If (PP_SSSMAIN.Tx - 2) \ 6 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
+                Call AE_DeleteDe_SSSMAIN()
+            End If
+        Else
+            Beep()
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    'クリア
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        'PP_SSSMAIN.ButtonClick = True
+        'If Not PP_SSSMAIN.Operable Then Exit Sub
+        Dim wk_Cursor As Short
+        If Not PP_SSSMAIN.Operable Then
+            Exit Sub
+        End If
+        wk_Cursor = AE_AppendC_SSSMAIN(PP_SSSMAIN.Mode)
+        If wk_Cursor = Cn_CuInit Then
+            Call AE_CursorInit_SSSMAIN()
+        End If
+    End Sub
+
+    '終了
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.CloseCode = 1
+        Call AE_EndCm_SSSMAIN()
+    End Sub
+    '2019/09/20 ADD E N D
 End Class

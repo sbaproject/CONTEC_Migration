@@ -1,0 +1,50 @@
+Attribute VB_Name = "ENDBNKCD_F52"
+Option Explicit
+'
+'スロット名      :倉庫コード・画面項目スロット
+'ユニット名      :SOUCD.F55
+'記述者          :Standard Library
+'作成日付        :2006/08/11
+'使用プログラム  :nykpr52
+'
+'
+
+Function ENDBNKCD_Check(ByVal ENDBNKCD, ByVal STTBNKCD)
+Dim rtn As Integer
+    '
+    ENDBNKCD_Check = 0
+    If ENDBNKCD < STTBNKCD Then
+        rtn = DSP_MsgBox(SSS_ERROR, "ENDCHECK", 0)
+        ENDBNKCD_Check = -1
+        Exit Function
+    End If
+    
+    Call BNKMTA_RClear
+    If LenWid(ENDBNKCD) = 0 Or Trim$(ENDBNKCD) = "" Then
+    Else
+        Call DB_GetEq(DBN_BNKMTA, 1, ENDBNKCD, BtrNormal)
+''''''''If DBSTAT = 0 Then
+''''''''    If DB_BNKMTA.DATKB = "9" Then
+''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+''''''''        ENDBNKCD_Check = 1
+''''''''    End If
+''''''''Else
+''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+''''''''    ENDBNKCD_Check = -1
+''''''''End If
+    End If
+    'Call SCR_FromBNKMTA(De_Index)
+End Function
+
+Function ENDBNKCD_Slist(PP As clsPP, ByVal ENDBNKCD)
+    '
+    DB_PARA(DBN_BNKMTA).KeyNo = 1
+    DB_PARA(DBN_BNKMTA).KeyBuf = ENDBNKCD
+    WLSBNK.Show 1
+    Unload WLSBNK
+    ENDBNKCD_Slist = PP.SlistCom
+End Function
+Function ENDBNKCD_InitVal(ByVal ENDBNKCD)
+''''ENDBNKCD_InitVal = " "
+    ENDBNKCD_InitVal = "ZZZZZZZ"
+End Function

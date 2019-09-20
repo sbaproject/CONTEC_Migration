@@ -1,0 +1,30 @@
+Attribute VB_Name = "ENDBNKNM_F51"
+Option Explicit
+'
+' スロット名        : 倉庫名称・画面項目スロット
+' ユニット名        : SOUNM.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/17
+' 使用プログラム名  : NYKPR52
+'
+
+Function ENDBNKNM_Derived(ByVal ENDBNKNM, ByVal ENDBNKCD, ByVal De_Index)
+    
+    If Trim(ENDBNKCD) = "" Then
+       DB_BNKMTA.BNKNM = " "
+    Else
+        Call DB_GetEq(DBN_BNKMTA, 1, ENDBNKCD, BtrNormal)
+    End If
+    ENDBNKNM_Derived = Trim(AnsiTrimStringByByteCount(DB_BNKMTA.BNKNM, 30)) & " " & Trim(AnsiTrimStringByByteCount(DB_BNKMTA.STNNM, 20))
+    
+End Function
+Function ENDBNKNM_InitVal(ByVal ENDBNKNM, ByVal ENDBNKCD, ByVal De_Index)
+    'If Trim(DB_BNKMTA.BNKCD) = "" Then
+    If Trim(ENDBNKCD) = "" Then
+''''''''ENDBNKNM_InitVal = FillVal(" ", LenWid(DB_BNKMTA.BNKNM))
+        ENDBNKNM_InitVal = Space(50)
+    Else
+        ENDBNKNM_InitVal = Trim(AnsiTrimStringByByteCount(DB_BNKMTA.BNKNM, 30)) & " " & Trim(AnsiTrimStringByByteCount(DB_BNKMTA.STNNM, 20))
+    End If
+End Function
+
