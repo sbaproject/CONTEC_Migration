@@ -1,0 +1,37 @@
+	Option Explicit
+'==========================================================================
+'   BNKMTA.DBM   銀行マスタ                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_BNKMTA
+    DATKB          As String * 1     '伝票削除区分          0                   
+    BNKCD          As String * 7     '銀行コード            !@@@@@@@            
+    BNKNM          As String * 50    '銀行名称                                  
+    STNNM          As String * 50    '支店名称                                  
+    BNKNK          As String * 30    '銀行名称カナ                              
+    STNNK          As String * 30    '支店名称カナ                              
+    BNKKMKCD       As String * 3     '銀行・総勘定科目ｺｰﾄﾞ  000                 
+    BNKUTICD       As String * 3     '銀行・科目内訳ｺｰﾄﾞ    000                 
+    RELFL          As String * 1     '連携フラグ            0                   
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+End Type
+Global DB_BNKMTA As TYPE_DB_BNKMTA
+Global DBN_BNKMTA As Integer
+' Index1( BNKCD )
+
+Sub BNKMTA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_BNKMTA, G_LB)
+    Call ResetBuf(DBN_BNKMTA)
+End Sub
