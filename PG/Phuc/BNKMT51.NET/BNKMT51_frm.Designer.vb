@@ -329,7 +329,7 @@
         Me.HD_OPENM.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.HD_OPENM.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_OPENM.ImeMode = System.Windows.Forms.ImeMode.Hiragana
-        Me.HD_OPENM.Location = New System.Drawing.Point(822, 40)
+        Me.HD_OPENM.Location = New System.Drawing.Point(823, 40)
         Me.HD_OPENM.MaxLength = 24
         Me.HD_OPENM.Name = "HD_OPENM"
         Me.HD_OPENM.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -799,6 +799,7 @@
         Me.CM_SelectCm.Size = New System.Drawing.Size(24, 22)
         Me.CM_SelectCm.TabIndex = 4
         Me.CM_SelectCm.TabStop = False
+        Me.CM_SelectCm.Visible = False
         '
         'CM_EndCm
         '
@@ -820,6 +821,7 @@
         Me.CM_NEXTCm.Size = New System.Drawing.Size(24, 22)
         Me.CM_NEXTCm.TabIndex = 6
         Me.CM_NEXTCm.TabStop = False
+        Me.CM_NEXTCm.Visible = False
         '
         'CM_SLIST
         '
@@ -830,6 +832,7 @@
         Me.CM_SLIST.Size = New System.Drawing.Size(24, 22)
         Me.CM_SLIST.TabIndex = 7
         Me.CM_SLIST.TabStop = False
+        Me.CM_SLIST.Visible = False
         '
         'CM_Hardcopy
         '
@@ -863,6 +866,7 @@
         Me.CM_PREV.Size = New System.Drawing.Size(24, 22)
         Me.CM_PREV.TabIndex = 10
         Me.CM_PREV.TabStop = False
+        Me.CM_PREV.Visible = False
         '
         'CM_INSERTDE
         '
@@ -873,6 +877,7 @@
         Me.CM_INSERTDE.Size = New System.Drawing.Size(24, 22)
         Me.CM_INSERTDE.TabIndex = 11
         Me.CM_INSERTDE.TabStop = False
+        Me.CM_INSERTDE.Visible = False
         '
         'CM_DELETEDE
         '
@@ -883,6 +888,7 @@
         Me.CM_DELETEDE.Size = New System.Drawing.Size(24, 22)
         Me.CM_DELETEDE.TabIndex = 12
         Me.CM_DELETEDE.TabStop = False
+        Me.CM_DELETEDE.Visible = False
         '
         'Image1
         '
@@ -903,6 +909,7 @@
         Me.SYSDT.Size = New System.Drawing.Size(78, 22)
         Me.SYSDT.TabIndex = 3
         Me.SYSDT.Text = "YYYY/MM/DD"
+        Me.SYSDT.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         '_FM_Panel3D4_2
         '
@@ -984,7 +991,7 @@
         '
         '_FM_Panel3D4_4
         '
-        Me._FM_Panel3D4_4.Location = New System.Drawing.Point(690, 41)
+        Me._FM_Panel3D4_4.Location = New System.Drawing.Point(685, 41)
         Me._FM_Panel3D4_4.Name = "_FM_Panel3D4_4"
         Me._FM_Panel3D4_4.Size = New System.Drawing.Size(79, 22)
         Me._FM_Panel3D4_4.TabIndex = 23
@@ -1421,6 +1428,7 @@
         Me.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ForeColor = System.Drawing.SystemColors.WindowText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.KeyPreview = True
         Me.Location = New System.Drawing.Point(57, 170)
         Me.MaximizeBox = False
         Me.Name = "FR_SSSMAIN"

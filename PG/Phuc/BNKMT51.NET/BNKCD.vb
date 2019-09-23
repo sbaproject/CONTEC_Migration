@@ -37,11 +37,12 @@ Module BNKCD_F51
 	End Function
 	
 	Function BNKCD_Slist(ByRef PP As clsPP, ByVal BNKCD As Object) As Object
-		'
-		DB_PARA(DBN_BNKMTA).KeyNo = 1
-		''''DB_PARA(DBN_BNKMTA).KeyBuf = BNKCD
-		DB_PARA(DBN_BNKMTA).KeyBuf = ""
-		WLSBNK.ShowDialog()
+        '2019/09/23 仮
+        'DB_PARA(DBN_BNKMTA).KeyNo = 1
+        ''DB_PARA(DBN_BNKMTA).KeyBuf = BNKCD
+        'DB_PARA(DBN_BNKMTA).KeyBuf = ""
+        '2019/09/23 仮
+        WLSBNK.ShowDialog()
 		WLSBNK.Close()
 		'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト BNKCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
