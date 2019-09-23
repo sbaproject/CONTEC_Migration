@@ -1,0 +1,24 @@
+Attribute VB_Name = "SYSTBC_DBM"
+        Option Explicit
+'==========================================================================
+'   SYSTBC.DBM   ’∞ªﬁ∞ì`ï[NO√∞ÃﬁŸ                 UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SYSTBC
+    DKBSB          As String * 3     'ì`ï[éÊà¯ãÊï™éÌï       000
+    ADDDENCD       As String * 13    'ì`ï[ïtëÆÉRÅ[Éh        !@@@@@@@@@@@@@
+    DENNM          As String * 20    'ì`ï[ñºèÃ
+    DENNO          As String * 8     'ì`ï[NO.               00000000
+    OPEID          As String * 8     'ç≈èIçÏã∆é“ÉRÅ[Éh      !@@@@@@@@
+    CLTID          As String * 5     'ÉNÉâÉCÉAÉìÉgÇhÇc      !@@@@@
+    WRTTM          As String * 6     '¿≤—Ω¿›Ãﬂ(éûä‘)        9(06)
+    WRTDT          As String * 8     '¿≤—Ω¿›Ãﬂ(ì˙ït)        YYYY/MM/DD
+End Type
+Global DB_SYSTBC As TYPE_DB_SYSTBC
+Global DBN_SYSTBC As Integer
+' Index1( DKBSB + ADDDENCD )
+
+Sub SYSTBC_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_SYSTBC, G_LB)
+    Call ResetBuf(DBN_SYSTBC)
+End Sub
