@@ -1,0 +1,39 @@
+Attribute VB_Name = "SBAFRUKN_F53"
+Option Explicit
+'
+' スロット名        : 伝票合計外貨売上金額項目・画面項目スロット
+' ユニット名        : SBAFRUKN.F01
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : URIET01
+
+'売上合計金額を計算して表示する。
+Function SBAFRUKN_Derived(ByVal FURIKN, PP As clsPP, CP_SBAFRUKN As clsCP)
+Dim NullSw As Integer, I As Integer
+Dim Sum As Currency
+Dim VALU As Currency
+    '
+    On Error GoTo OverFlow
+    NullSw = True
+    Sum = 0
+    I = 0
+    Do While I < PP.LastDe
+        VALU = 0
+        If IsNumeric(RD_SSSMAIN_FURIKN(I)) Then
+            VALU = RD_SSSMAIN_FURIKN(I)
+            Sum = Sum + VALU
+            NullSw = False
+        End If
+        I = I + 1
+    Loop
+    If NullSw = False Then             'Null以外の受注金額がある場合。
+        SBAFRUKN_Derived = Sum
+    Else                               '受注金額は全てNullの場合。
+        SBAFRUKN_Derived = Null
+    End If
+    Exit Function
+OverFlow:
+    CP_SBAFRUKN.StatusC = Cn_StatusError
+    SBAFRUKN_Derived = "??????????????????"
+End Function
+

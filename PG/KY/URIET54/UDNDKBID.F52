@@ -1,0 +1,35 @@
+Attribute VB_Name = "UDNDKBID_F52"
+Option Explicit
+'
+' スロット名        : 取引区分・画面項目スロット
+' ユニット名        : UDNDKBID.F52
+' 記述者            : Standard Library
+' 作成日付          : 2006/09/11
+' 使用プログラム名  : URIET54/URIET55
+'
+
+Function UDNDKBID_Derived(PP As clsPP, ByVal UDNDKBID, ByVal HINCD, ByVal DE_INDEX)
+    UDNDKBID_Derived = UDNDKBID
+'    If Trim$(UDNDKBID) <> "" Then Exit Function
+    If Trim$(HINCD) = "" Then Exit Function
+    
+''''UDNDKBID = "02"
+''''UDNDKBID_Derived = UDNDKBID
+    If RD_SSSMAIN_MEIKBA(-1) = "1" Then
+        UDNDKBID = "02"
+        UDNDKBID_Derived = UDNDKBID
+    Else
+        UDNDKBID = "06"
+        UDNDKBID_Derived = UDNDKBID
+    End If
+    '
+    Call DB_GetEq(DBN_SYSTBD, 1, WG_DKBSB & UDNDKBID, BtrNormal)
+    If DBSTAT = 0 Then
+        Call SCR_FromSYSTBD(DE_INDEX)
+'''''        Call DP_SSSMAIN_HINCD(DE_INDEX, HINCD)
+'''''        Call DB_GetEq(DBN_HINMTA, "1", HINCD, BtrNormal)
+'''''        Call SCR_FromHINMTA(DE_INDEX)
+    Else
+        UDNDKBID_Derived = Null
+    End If
+End Function

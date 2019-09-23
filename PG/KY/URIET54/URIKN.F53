@@ -1,0 +1,38 @@
+Attribute VB_Name = "URIKN_F53"
+Option Explicit
+'
+' スロット名        : 売上金額・画面項目スロット
+' ユニット名        : URIKN.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/09/12
+' 使用プログラム名  : URIET54
+'
+
+'売上単価＊売上数量
+Function URIKN_Derived(ByVal URIKN, ByVal URITK, ByVal URISU, ByVal HINID, CP_URIKN As clsCP)
+    '
+'''' UPD 2011/03/07  FKS) T.Yamamoto    Start    連絡票№CF11011701
+'    '【通販】及び【システムで諸口商品】時、算出処理回避
+'    If (Trim(WG_JDNINKB) = "2") Or (Trim(WG_SYSTEM) = "M" And Trim(HINID) = "06") Then
+'システムで諸口商品の場合も売上金額を算出する（返品登録画面では諸口商品は入り口でエラーとなる）
+    If Trim(WG_JDNINKB) = "2" Then
+'''' UPD 2011/03/07  FKS) T.Yamamoto    End
+        URIKN_Derived = URIKN
+        Exit Function
+    End If
+    
+    URIKN_Derived = URIKN
+    If Trim$(URITK) = "" Or Not IsNumeric(URITK) Then Exit Function
+    If Trim$(URISU) = "" Or Not IsNumeric(URISU) Then Exit Function
+    On Error GoTo OverFlow
+    '' 2003/08/28 変更した単価 が 0 の場合前回の金額が残る
+    If URITK <> 0 Or URISU <> 0 Then
+    ''If URITK <> 0 And URISU <> 0 Then
+'        URIKN_Derived = URITK * URISU                  '1996/08/26 Delete
+        URIKN_Derived = DCMFRC(URITK * URISU, 0, 0)     '1996/08/26 Insert
+    End If
+    Exit Function
+OverFlow:
+    CP_URIKN.StatusC = Cn_StatusError
+    URIKN_Derived = "??????????????????"
+End Function

@@ -1,0 +1,24 @@
+Option Explicit
+'
+' スロット名        : 売上金額(税抜)・画面項目スロット
+' ユニット名        : ZNKURIKN.F01
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : URIET01
+'
+
+'受注単価＊受注数量
+Function ZNKURIKN_Derived (ByVal URIKN, ByVal HINZEIKB, ByVal TOKZEIKB)
+    ZNKURIKN_Derived = 0
+    If Trim$(HINZEIKB) = "" Or Not IsNumeric(HINZEIKB) Then Exit Function
+    If Trim$(TOKZEIKB) = "" Or Not IsNumeric(TOKZEIKB) Then Exit Function
+    If URIKN = 0 Then Exit Function
+
+    If SSSVal(TOKZEIKB) = 9 Then Exit Function
+    If SSSVal(HINZEIKB) = 1 Then
+        ZNKURIKN_Derived = URIKN
+    ElseIf SSSVal(HINZEIKB) = 0 And SSSVal(TOKZEIKB) = 1 Then
+        ZNKURIKN_Derived = URIKN
+    End If
+End Function
+

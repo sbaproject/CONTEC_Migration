@@ -1,0 +1,73 @@
+Attribute VB_Name = "HENRSNCD_F51"
+Option Explicit
+'
+' スロット名        : 返品理由・画面項目スロット
+' ユニット名        : HENRSNCD.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/09/09
+' 使用プログラム名  : URIET54/URIET55
+'
+
+ Function HENRSNCD_CheckC(ByVal HENRSNCD, ByVal DE_INDEX)
+ Dim Rtn As Integer, keyVal As String
+ Dim wkHENRSNCD As String
+      '
+     HENRSNCD_CheckC = 0
+     If Trim$(HENRSNCD) = "" Then
+        Call MEIMTA_RClear
+        Call HENRSNCD_Move(DE_INDEX)
+        HENRSNCD_CheckC = -1
+     Else
+        wkHENRSNCD = HENRSNCD & Space(Len(DB_MEIMTA.MEICDA) - Len(HENRSNCD))
+        Call DB_GetEq(DBN_MEIMTA, 2, "009" & wkHENRSNCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_MEIMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)          ' 削除レコードです。
+                HENRSNCD_CheckC = -1
+            Else
+                Call HENRSNCD_Move(DE_INDEX)
+            End If
+        Else
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)  ' 該当レコードはありません。
+            HENRSNCD_CheckC = -1
+        End If
+''''''''2007/04/23 DEL-START
+''''''''If HENRSNCD_CheckC = 0 And DB_MEIMTA.MEIKBB = "1" Then
+''''''''    If (WG_JKESIKN = 0) And (WG_FKESIKN = 0) Then
+''''''''    Else
+''''''''        Rtn = DSP_MsgBox(SSS_CONFRM, "URIET54", 2)  '入金済みの為エラー
+''''''''        HENRSNCD_CheckC = -1
+''''''''    End If
+''''''''End If
+''''''''2007/04/23 DEL-END
+    
+    End If
+    
+End Function
+
+Sub HENRSNCD_Move(ByVal De As Integer)
+    '
+    Call DP_SSSMAIN_HENRSNCD(De, DB_MEIMTA.MEICDA)
+    Call DP_SSSMAIN_HENRSNNM(De, DB_MEIMTA.MEINMA)
+''''Call DP_SSSMAIN_SOUCD(De, Left(DB_MEIMTA.MEINMB, Len(DB_SOUMTA.SOUCD)))
+    Call DP_SSSMAIN_MEIKBA(De, DB_MEIMTA.MEIKBA)
+    Call DP_SSSMAIN_MEIKBB(De, DB_MEIMTA.MEIKBB)
+    Call DP_SSSMAIN_MEIKBC(De, DB_MEIMTA.MEIKBC)
+
+End Sub '
+
+Function HENRSNCD_Slist(PP As clsPP)
+    WLS_MEI1.Caption = "返品理由一覧"
+    WLS_MEI1!LST.Clear
+    Call DB_GetGrEq(DBN_MEIMTA, 3, "009", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "009"
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & DB_MEIMTA.MEINMA
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = 2
+    WLS_MEI1.Show 1
+    HENRSNCD_Slist = PP.SlistCom
+
+End Function
+
+

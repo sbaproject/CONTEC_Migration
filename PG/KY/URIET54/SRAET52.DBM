@@ -1,0 +1,23 @@
+	Option Explicit
+'==========================================================================
+'   SRAET52.DBM  シリアル№登録ワーク             UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SRAET52
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    RSTDT          As String * 8     '実績日                YYYY/MM/DD          
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    SBNNO          As String * 20    '製番                                      
+    SRANO          As String * 13    'シリアル№                                
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_SRAET52 As TYPE_DB_SRAET52
+Global DBN_SRAET52 As Integer
+' Index1( RPTCLTID + RSTDT + HINCD + SBNNO + SRANO )
+' Index2( SRANO )
+
+Sub SRAET52_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_SRAET52, G_LB)
+    Call ResetBuf(DBN_SRAET52)
+End Sub

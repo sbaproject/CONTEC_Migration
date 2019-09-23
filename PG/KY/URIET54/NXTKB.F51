@@ -1,0 +1,13 @@
+Attribute VB_Name = "NXTKB_F51"
+Option Explicit
+'
+' スロット名        : 帳端区分・画面項目スロット
+' ユニット名        : NXTKB.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/05
+' 使用プログラム名  : SREET51
+
+Function NXTKB_InitVal()
+    NXTKB_InitVal = "0"
+End Function
+

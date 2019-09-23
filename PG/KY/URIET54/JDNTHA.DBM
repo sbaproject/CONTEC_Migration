@@ -1,0 +1,127 @@
+Attribute VB_Name = "JDNTHA_DBM"
+        Option Explicit
+'==========================================================================
+'   JDNTHA.DBM   受注見出トラン                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_JDNTHA
+    DATNO          As String * 10    '伝票管理NO.           0000000000
+    DATKB          As String * 1     '伝票削除区分          0
+    AKAKROKB       As String * 1     '赤黒区分
+    DENKB          As String * 1     '伝票区分              0
+    JDNNO          As String * 10    '受注番号              0000000000
+    JHDNO          As String * 10    '発注番号              0000000000
+    JDNDT          As String * 8     '受注伝票日付          YYYY/MM/DD
+    DENDT          As String * 8     '伝票日付              YYYY/MM/DD
+    REGDT          As String * 8     '初回伝票日付          YYYY/MM/DD
+    DEFNOKDT       As String * 8     '納期                  YYYY/MM/DD
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@
+    TOKRN          As String * 40    '得意先略称
+    NHSCD          As String * 10    '納入先コード          !@@@@@@@@@@
+    NHSNMA         As String * 60    '納入先名称１
+    NHSNMB         As String * 60    '納入先名称２
+    TANCD          As String * 6     '担当者コード          000000
+    TANNM          As String * 40    '担当者名
+    BUMCD          As String * 6     '部門コード            000000
+    BUMNM          As String * 40    '部門名
+    TOKSEICD       As String * 10    '請求先コード          !@@@@@@@@@@
+    SOUCD          As String * 3     '倉庫コード            000
+    SOUNM          As String * 20    '倉庫名
+    ZKTKB          As String * 1     '取引区分              0
+    ZKTNM          As String * 4     '取引区分名
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD
+    JDNENDKB       As String * 1     '受注完了区分          0
+    SBAUODKN       As Currency       '受注金額(伝票計)      ###,###,##0.0000;;#
+    SBAUZEKN       As Currency       '売上金額(消費税額)    #,###,###,###
+    SBAUZKKN       As Currency       '売上金額(伝票計)      ###,###,##0.0000;;#
+    DENCM          As String * 40    '備考
+    TOKSMEKB       As String * 1     '締区分                0
+    TOKSMEDD       As String * 2     '締初期日付(売上)      DD
+    TOKSMECC       As String * 2     '締サイクル(売上)      99
+    TOKSDWKB       As String * 1     '締め曜日              0
+    TOKKESCC       As String * 2     '回収サイクル          00
+    TOKKESDD       As String * 2     '回収日付              DD
+    TOKKDWKB       As String * 1     '回収曜日              0
+    LSTID          As String * 7     '伝票種別              !@@@@@@@
+    TKNRPSKB       As String * 1     '金額端数処理桁数      0
+    TKNZRNKB       As String * 1     '金額端数処理区分      0
+    TOKZEIKB       As String * 1     '消費税区分            0
+    TOKZCLKB       As String * 1     '消費税算出区分        0
+    TOKRPSKB       As String * 1     '消費税端数処理桁数    0
+    TOKZRNKB       As String * 1     '消費税端数処理区分    0
+    TOKNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ区分（得）   0
+    NHSNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ区分（納）   0
+    TOKMSTKB       As String * 1     'マスタ区分(得意先)    0
+    NHSMSTKB       As String * 1     'マスタ区分(納入先)    0
+    TANMSTKB       As String * 1     'マスタ区分(担当者)    0
+    MITNO          As String * 10    '見積番号              0000000000
+    MITNOV         As String * 2     '版数                  00
+    AKNID          As String * 8     '案件ＩＤ              !@@@@@@@@
+    CLMDL          As String * 15    '分類型式
+    URIKJN         As String * 2     '売上基準
+    BINCD          As String * 2     '便名コード            00
+    KENNMA         As String * 40    '件名１
+    KENNMB         As String * 40    '件名２
+    BKTHKKB        As String * 1     '分割不可区分          0
+    MAEUKKB        As String * 1     '前受区分              0
+    SEIKB          As String * 1     '請求区分
+    JDNTRKB        As String * 2     '受注取引区分          00
+    NHSADA         As String * 60    '納入先住所１
+    NHSADB         As String * 60    '納入先住所２
+    NHSADC         As String * 60    '納入先住所３
+    JDNINKB        As String * 1     '受注取込種別          0
+    DFKJDNNO       As String * 12    'ダイフク受注番号      000000000000
+    TOKJDNNO       As String * 23    '客先注文番号
+    HDKEIKN        As Currency       'ハード契約金額        ###,###,##0.0000;;#
+    HDSIKKN        As Currency       'ハード仕切金額        ##,###,###,###
+    SFKEIKN        As Currency       'ソフト契約金額        ###,###,##0.0000;;#
+    SFSIKKN        As Currency       'ソフト仕切金額        ##,###,###,###
+    CMPKTCD        As String * 2     'コンピュータ型式ｺｰﾄﾞ  00
+    CMPKTNM        As String * 20    'コンピュータ型式名
+    PRDTBMCD       As String * 6     '生産担当部門コード    000000
+    TUKKB          As String * 3     '通貨区分              !@@@
+    SBAFRCKN       As Currency       '外貨受注金額(伝票計)  ###,###,##0.0000;;#
+    JODRSNKB       As String * 3     '受注理由区分          000
+    JODCNKB        As String * 3     '受注ｷｬﾝｾﾙ理由区分     000
+    FRNKB          As String * 1     '海外取引区分          0
+    SIMUKE         As String * 5     '仕向地                00000
+    JDNPRKB        As String * 1     '発行区分              0
+    DENCMIN        As String * 40    '社内備考
+    SETUPKB        As String * 1     'セットアップシート取  0
+    MOTDATNO       As String * 10    '元伝票管理番号        0000000000
+    JDNENDNM       As String * 6     '受注完了区分名
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    PGID           As String * 7     'プログラムID          !@@@@@@@@
+    DLFLG          As String * 1     '削除フラグ            0
+End Type
+Global DB_JDNTHA As TYPE_DB_JDNTHA
+Global DBN_JDNTHA As Integer
+' Index1( DATNO )
+' Index2( DATKB + DENKB + JDNNO )
+' Index3( SMADT )
+' Index4( DATKB + JDNDT + JDNNO + TOKCD )
+' Index5( DATKB + TOKCD + JDNNO )
+' Index6( DATKB + JDNENDKB + TOKCD + DEFNOKDT + JDNNO )
+' Index7( DATKB + AKAKROKB + JDNNO )
+' Index8( DATKB + JDNTRKB + JDNNO + TANCD )
+' Index9( DATKB + JDNTRKB + DEFNOKDT + JDNNO )
+' Index10( JDNNO )
+' Index11( JDNENDKB + JDNNO )
+' Index12( DATKB + JDNTRKB + FRNKB + DEFNOKDT )
+' Index13( JDNNO + WRTFSTDT + WRTFSTTM )
+
+Sub JDNTHA_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_JDNTHA, G_LB)
+    Call ResetBuf(DBN_JDNTHA)
+End Sub

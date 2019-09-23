@@ -1,0 +1,32 @@
+	Option Explicit
+'==========================================================================
+'   TOKSSC.DBM   請求サマリ外貨                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKSSC
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    TUKKB          As String * 3     '通貨区分              !@@@                
+    SSADT          As String * 8     '締日付                YYYY/MM/DD          
+    KESDT          As String * 8     '決済日付              YYYY/MM/DD          
+    SSCURIKN(09)   As Currency       '売上集計金額          ###,###,###,###     
+    SSCUZEKN       As Currency       '売上消費税金額        ###,###,###,###     
+    FAKZIKN (02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    FAKZOKN (02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    FBKZIKN (02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    FBKZOKN (02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SSCNYUKN(09)   As Currency       '入金集計金額          ###,###,###,###     
+    FKSNYKKN       As Currency       '消込入金額            ###,###,###,###     
+    FKSZANKN       As Currency       '消込入金額残          ###,###,###,###     
+    SSCDENSU       As Currency       '伝票枚数              ###,###             
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_TOKSSC As TYPE_DB_TOKSSC
+Global DBN_TOKSSC As Integer
+' Index1( TOKCD + TUKKB + SSADT )
+
+Sub TOKSSC_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKSSC, G_LB)
+    Call ResetBuf(DBN_TOKSSC)
+End Sub

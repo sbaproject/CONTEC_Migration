@@ -1,0 +1,35 @@
+Attribute VB_Name = "FURIKN_F52"
+Option Explicit
+'
+' スロット名        : 売上金額・画面項目スロット
+' ユニット名        : FURIKN.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/09/30
+' 使用プログラム名  : URIET61/URIET62
+'
+
+'売上単価＊売上数量
+Function FURIKN_Derived(ByVal FURIKN, ByVal FURITK, ByVal URISU, ByVal HINID, CP_FURIKN As clsCP)
+    '
+    '【通販】及び【システムで諸口商品】時、算出処理回避
+    If (Trim(WG_JDNINKB) = "2") Or (Trim(WG_SYSTEM) = "M" And Trim(HINID) = "06") Then
+        FURIKN_Derived = FURIKN
+        Exit Function
+    End If
+    
+    FURIKN_Derived = FURIKN
+    If Trim$(FURITK) = "" Or Not IsNumeric(FURITK) Then Exit Function
+    If Trim$(URISU) = "" Or Not IsNumeric(URISU) Then Exit Function
+    On Error GoTo OverFlow
+    '' 2003/08/28 変更した単価 が 0 の場合前回の金額が残る
+    If FURITK <> 0 Or URISU <> 0 Then
+  ''If FURITK <> 0 And URISU <> 0 Then
+'       FURIKN_Derived = FURITK * URISU                     '1996/08/26 Delete
+''''''''FURIKN_Derived = DCMFRC(FURITK * URISU, 0, 0)       '1996/08/26 Insert
+        FURIKN_Derived = DCMFRC(FURITK * URISU, 5, -4)      '2007.02.08
+    End If
+    Exit Function
+OverFlow:
+    CP_FURIKN.StatusC = Cn_StatusError
+    FURIKN_Derived = "??????????????????"
+End Function

@@ -1,0 +1,18 @@
+Attribute VB_Name = "SRJTRA_DBM"
+        Option Explicit
+'==========================================================================
+'   SRJTRA.DBM   シリアル情報テーブル             UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SRJTRA
+    NYMSNO         As String * 20    '入庫明細番号
+    SRANO          As String * 13    'シリアル№
+End Type
+Global DB_SRJTRA As TYPE_DB_SRJTRA
+Global DBN_SRJTRA As Integer
+' Index1( NYMSNO + SRANO )
+
+Sub SRJTRA_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_SRJTRA, G_LB)
+    Call ResetBuf(DBN_SRJTRA)
+End Sub

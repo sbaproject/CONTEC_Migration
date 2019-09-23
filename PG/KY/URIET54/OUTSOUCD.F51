@@ -1,0 +1,40 @@
+Attribute VB_Name = "OUTSOUCD_F51"
+Option Explicit
+'
+'スロット名      :倉庫コード・画面項目スロット
+'ユニット名      :OUTSOUCD.F51
+'記述者          :Standard Library
+'作成日付        :2006/09/11
+'使用プログラム  :URIET54/URIET55
+'
+'
+Function OUTSOUCD_CheckC(ByVal OUTSOUCD, ByVal DE_INDEX)
+Dim rtn As Integer
+    '
+    OUTSOUCD_CheckC = 0
+    Call SOUMTA_RClear
+    If LenWid(OUTSOUCD) = 0 Or Trim$(OUTSOUCD) = "" Then
+    Else
+        Call DB_GetEq(DBN_SOUMTA, 1, OUTSOUCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_SOUMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                OUTSOUCD_CheckC = 1
+            End If
+        Else
+            rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            OUTSOUCD_CheckC = -1
+        End If
+    End If
+    Call SCR_FromSOUMTA(DE_INDEX)
+End Function
+
+Function OUTSOUCD_Slist(PP As clsPP, ByVal OUTSOUCD)
+    '
+    DB_PARA(DBN_SOUMTA).KeyNo = 1
+    DB_PARA(DBN_SOUMTA).KeyBuf = OUTSOUCD
+    WLSSOU.Show 1
+    Unload WLSSOU
+    OUTSOUCD_Slist = PP.SlistCom
+End Function
+
