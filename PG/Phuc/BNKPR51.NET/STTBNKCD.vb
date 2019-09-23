@@ -15,10 +15,12 @@ Module STTBNKCD_F52
 		'
 		'UPGRADE_WARNING: オブジェクト STTBNKCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		STTBNKCD_Check = 0
-		Call BNKMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト STTBNKCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト LenWid(STTBNKCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If LenWid(STTBNKCD) = 0 Or Trim(STTBNKCD) = "" Then
+        '2019/09/20 DEL START
+        'Call BNKMTA_RClear()
+        '2019/09/20 DEL START
+        'UPGRADE_WARNING: オブジェクト STTBNKCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト LenWid(STTBNKCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If LenWid(STTBNKCD) = 0 Or Trim(STTBNKCD) = "" Then
 		Else
 			Call DB_GetEq(DBN_BNKMTA, 1, STTBNKCD, BtrNormal)
 			''''''''If DBSTAT = 0 Then
