@@ -492,8 +492,7 @@ Next_Proc:
         ' "しばらくお待ちください" ウィンドウ表示
         'UPGRADE_ISSUE: Load ステートメント はサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="B530EFF2-3132-48F8-B8BC-D88AF543D321"' をクリックしてください。
         '2019/09/23 CHG START
-        'Load(ICN_ICON)
-        ICN_ICON.Show()
+        'Load(ICN_ICON)       
         '2019/09/23 CHG E N D
         'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         SSSMAIN_BeginPrg = True

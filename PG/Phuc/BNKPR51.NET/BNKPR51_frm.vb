@@ -3,11 +3,14 @@ Option Explicit On
 Imports VB = Microsoft.VisualBasic
 Friend Class FR_SSSMAIN
 	Inherits System.Windows.Forms.Form
-	'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
-	'*** End Of Generated Declaration Section ****
-	
-	
-	Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
+    'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
+    '*** End Of Generated Declaration Section ****
+
+    '2019/09/23 ADD START
+    Private FORM_LOAD_FLG As Boolean = False
+    '2019/09/23 ADD E N D
+
+    Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
@@ -271,167 +274,183 @@ Friend Class FR_SSSMAIN
 			PP_SSSMAIN.Activated = 1
 		End If
 	End Sub
-	
-	Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load 'Generated.
-		Dim wk_De As Short
-		Dim wk_ww As Short
-		Dim wk_Tx As Short
-		Dim wk_TxBase As Short
-		Dim wk_HeadN As Short
-		Dim wk_BodyN As Short
-		Dim wk_EBodyN As Short
-		Dim wk_TailN As Short
-		Dim wk_Top As Single
-		Dim wk_Height As Single
-		Dim wk_Px As Short
-		Dim wk_PxBase As Short
-		Dim wk_SmrBuf As String
-		Dim PY_TTop As Single
-		AE_Title = "銀行一覧マスタリスト                    "
-		'初画面表示の性能チューニング用 ----------
-		'Dim StartTime
-		'   AE_MsgBox "Start Point", vbInformation, AE_Title$
-		'   StartTime = Timer
-		'-----------------------------------------
-		With PP_SSSMAIN
-			.FormWidth = 8625
-			.FormHeight = 5535
-			.MaxDe = -1
-			.MaxDsp = -1
-			.HeadN = 6
-			.BodyN = 0
-			.BodyV = 0
-			.MaxEDe = -1
-			.MaxEDsp = -1
-			.EBodyN = 0
-			.EBodyV = 0
-			.TailN = 0
-			.BodyPx = 6
-			.EBodyPx = 6
-			.TailPx = 6
-			.PrpC = 6
-			.Operable = False
-			.BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
-			.SuppressVSScroll = 0
-			.UniScrl = False
-			.SetCursorRR = True
-			.SetCursorLF = False
-			.VisibleForItem = False
-			.AllowNullDes = False
-			.No2Scroll = False
-			.SpecSubID = "sss"
-			.UnDoDeOp = 0
-			.ActiveBlockNo = -1
-			.MaxBlockNo = 1
-			If .MainForm = "" Then
-				.ScX = AE_ScX
-				AE_ScX = AE_ScX + 1
-				ReDim Preserve AE_Timer(.ScX)
-				ReDim Preserve AE_CursorRest(.ScX)
-				ReDim Preserve AE_ModeBar(.ScX)
-				ReDim Preserve AE_StatusBar(.ScX)
-				ReDim Preserve AE_StatusCodeBar(.ScX)
-				.CtB = AE_CtB
-				AE_CtB = AE_CtB + 6
-				ReDim Preserve AE_Controls(.CtB + 5)
-				.MainFormFile = "BNKPR51.FRM"
-				.MainFormObj = "FR_SSSMAIN"
-				.SelValid = False
-				.ArrowLimit = False
-				.NullZero = True
-				.ErrorByBackColor = False
-				AE_SSSWin = True
-				.AL = False
-			End If
-			If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClCheckError), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClRelCheck), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClChecked)) <> "V6.60" Then
+
+    Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load 'Generated.
+
+        '2019/09/23 ADD START
+        FORM_LOAD_FLG = True
+        '2019/09/23 ADD E N D
+
+        Dim wk_De As Short
+        Dim wk_ww As Short
+        Dim wk_Tx As Short
+        Dim wk_TxBase As Short
+        Dim wk_HeadN As Short
+        Dim wk_BodyN As Short
+        Dim wk_EBodyN As Short
+        Dim wk_TailN As Short
+        Dim wk_Top As Single
+        Dim wk_Height As Single
+        Dim wk_Px As Short
+        Dim wk_PxBase As Short
+        Dim wk_SmrBuf As String
+        Dim PY_TTop As Single
+        AE_Title = "銀行一覧マスタリスト                    "
+        '初画面表示の性能チューニング用 ----------
+        'Dim StartTime
+        '   AE_MsgBox "Start Point", vbInformation, AE_Title$
+        '   StartTime = Timer
+        '-----------------------------------------
+        With PP_SSSMAIN
+            .FormWidth = 8625
+            .FormHeight = 5535
+            .MaxDe = -1
+            .MaxDsp = -1
+            .HeadN = 6
+            .BodyN = 0
+            .BodyV = 0
+            .MaxEDe = -1
+            .MaxEDsp = -1
+            .EBodyN = 0
+            .EBodyV = 0
+            .TailN = 0
+            .BodyPx = 6
+            .EBodyPx = 6
+            .TailPx = 6
+            .PrpC = 6
+            .Operable = False
+            .BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
+            .SuppressVSScroll = 0
+            .UniScrl = False
+            .SetCursorRR = True
+            .SetCursorLF = False
+            .VisibleForItem = False
+            .AllowNullDes = False
+            .No2Scroll = False
+            .SpecSubID = "sss"
+            .UnDoDeOp = 0
+            .ActiveBlockNo = -1
+            .MaxBlockNo = 1
+            If .MainForm = "" Then
+                .ScX = AE_ScX
+                AE_ScX = AE_ScX + 1
+                ReDim Preserve AE_Timer(.ScX)
+                ReDim Preserve AE_CursorRest(.ScX)
+                ReDim Preserve AE_ModeBar(.ScX)
+                ReDim Preserve AE_StatusBar(.ScX)
+                ReDim Preserve AE_StatusCodeBar(.ScX)
+                .CtB = AE_CtB
+                AE_CtB = AE_CtB + 6
+                ReDim Preserve AE_Controls(.CtB + 5)
+                .MainFormFile = "BNKPR51.FRM"
+                .MainFormObj = "FR_SSSMAIN"
+                .SelValid = False
+                .ArrowLimit = False
+                .NullZero = True
+                .ErrorByBackColor = False
+                AE_SSSWin = True
+                .AL = False
+            End If
+            If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClCheckError), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClRelCheck), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClChecked)) <> "V6.60" Then
 #If ActiveXcompile = 0 Then
-				AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
+                AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
 #Else
 				'UPGRADE_NOTE: 式 Else が True に評価されなかったか、またはまったく評価されなかったため、#If #EndIf ブロックはアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="27EE2C3C-05AF-4C04-B2AF-657B4FB6B5FC"' をクリックしてください。
 				AE_MsgBox "再生成が必要です。", vbCritical, "ｅｅｅ"
 #End If
-			End If
-			If .MainForm = "" Then
-				.MainForm = "SSSMAIN"
-				Call AE_PSIR_SSSMAIN()
-				wk_ww = 0
-				wk_De = 1
-				wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
-				Do While wk_ww < AE_PSIC
-					wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
-					wk_ww = wk_ww + 1
-					Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
-						Case "HD_", "HV_"
-							Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
-							wk_HeadN = wk_HeadN + 1
-					End Select
-				Loop 
-			End If
-			HD_OPEID.Text = ""
-			HD_OPENM.Text = ""
-			HD_STTBNKCD.Text = ""
-			HD_STTBNKNM.Text = ""
-			HD_ENDBNKCD.Text = ""
-			HD_ENDBNKNM.Text = ""
-			HD_OPEID.TabIndex = 0
-			AE_Controls(.CtB + 0) = HD_OPEID
-			HD_OPENM.TabIndex = 1
-			AE_Controls(.CtB + 1) = HD_OPENM
-			HD_STTBNKCD.TabIndex = 2
-			AE_Controls(.CtB + 2) = HD_STTBNKCD
-			HD_STTBNKNM.TabIndex = 3
-			AE_Controls(.CtB + 3) = HD_STTBNKNM
-			HD_ENDBNKCD.TabIndex = 4
-			AE_Controls(.CtB + 4) = HD_ENDBNKCD
-			HD_ENDBNKNM.TabIndex = 5
-			AE_Controls(.CtB + 5) = HD_ENDBNKNM
-			TX_CursorRest.TabIndex = 6
-			AE_Timer(.ScX) = TM_StartUp
-			AE_CursorRest(.ScX) = TX_CursorRest
-			AE_ModeBar(.ScX) = TX_Mode
-			AE_StatusBar(.ScX) = TX_Message
-			AE_StatusCodeBar(.ScX) = TX_Message
-			.Mode = Cn_Mode1 : TX_Mode.Text = "追加"
-			Call AE_ClearInitValStatus_SSSMAIN()
-			.PY_BTop = VB6.PixelsToTwipsY(Me.Height)
-			.PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
-			PY_TTop = VB6.PixelsToTwipsY(Me.Height)
-			.MaxDspC = 0
-			.NrBodyTx = 6
-			.ScrlMaxL = 1
-			.MaxEDspC = 0
-			.NrEBodyTx = 6
-			.EScrlMaxL = 1
-			Call AE_TabStop_SSSMAIN(0, 5, True)
-			TX_CursorRest.TabStop = False
-			TX_Mode.TabStop = False
-			TX_Message.TabStop = False
-			TX_Message.Text = ""
-			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
-			Call AE_WindowProcSet_SSSMAIN()
-			ReleaseTabCapture(0)
-			SetTabCapture(Me.Handle.ToInt32)
-			'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Var = SSSMAIN_BeginPrg()
-			.FormWidth = VB6.PixelsToTwipsX(Me.Width)
-			.FormHeight = VB6.PixelsToTwipsY(Me.Height)
-			'初画面表示の性能チューニング用 ----------
-			'   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
-			'-----------------------------------------
-			.TimerStartUp = True
-		End With
-		TM_StartUp.Enabled = True
-	End Sub
-	
-	Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+            End If
+            If .MainForm = "" Then
+                .MainForm = "SSSMAIN"
+                Call AE_PSIR_SSSMAIN()
+                wk_ww = 0
+                wk_De = 1
+                wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
+                Do While wk_ww < AE_PSIC
+                    wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
+                    wk_ww = wk_ww + 1
+                    Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
+                        Case "HD_", "HV_"
+                            Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
+                            wk_HeadN = wk_HeadN + 1
+                    End Select
+                Loop
+            End If
+            HD_OPEID.Text = ""
+            HD_OPENM.Text = ""
+            HD_STTBNKCD.Text = ""
+            HD_STTBNKNM.Text = ""
+            HD_ENDBNKCD.Text = ""
+            HD_ENDBNKNM.Text = ""
+            HD_OPEID.TabIndex = 0
+            AE_Controls(.CtB + 0) = HD_OPEID
+            HD_OPENM.TabIndex = 1
+            AE_Controls(.CtB + 1) = HD_OPENM
+            HD_STTBNKCD.TabIndex = 2
+            AE_Controls(.CtB + 2) = HD_STTBNKCD
+            HD_STTBNKNM.TabIndex = 3
+            AE_Controls(.CtB + 3) = HD_STTBNKNM
+            HD_ENDBNKCD.TabIndex = 4
+            AE_Controls(.CtB + 4) = HD_ENDBNKCD
+            HD_ENDBNKNM.TabIndex = 5
+            AE_Controls(.CtB + 5) = HD_ENDBNKNM
+            TX_CursorRest.TabIndex = 6
+            AE_Timer(.ScX) = TM_StartUp
+            AE_CursorRest(.ScX) = TX_CursorRest
+            AE_ModeBar(.ScX) = TX_Mode
+            AE_StatusBar(.ScX) = TX_Message
+            AE_StatusCodeBar(.ScX) = TX_Message
+            .Mode = Cn_Mode1 : TX_Mode.Text = "追加"
+            Call AE_ClearInitValStatus_SSSMAIN()
+            .PY_BTop = VB6.PixelsToTwipsY(Me.Height)
+            .PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
+            PY_TTop = VB6.PixelsToTwipsY(Me.Height)
+            .MaxDspC = 0
+            .NrBodyTx = 6
+            .ScrlMaxL = 1
+            .MaxEDspC = 0
+            .NrEBodyTx = 6
+            .EScrlMaxL = 1
+            Call AE_TabStop_SSSMAIN(0, 5, True)
+            TX_CursorRest.TabStop = False
+            TX_Mode.TabStop = False
+            TX_Message.TabStop = False
+            TX_Message.Text = ""
+
+            '2019/09/23　仮　API
+            'wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/09/23　仮　API
+            Call AE_WindowProcSet_SSSMAIN()
+            '2019/09/23　仮　API
+            'ReleaseTabCapture(0)
+            'SetTabCapture(Me.Handle.ToInt32)
+            '2019/09/23　仮　API
+            'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Var = SSSMAIN_BeginPrg()
+            .FormWidth = VB6.PixelsToTwipsX(Me.Width)
+            .FormHeight = VB6.PixelsToTwipsY(Me.Height)
+            '初画面表示の性能チューニング用 ----------
+            '   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
+            '-----------------------------------------
+            .TimerStartUp = True
+
+            '2019/09/23 ADD START
+            Call SetBar(Me)
+            '2019/09/23 ADD E N D
+        End With
+        TM_StartUp.Enabled = True
+    End Sub
+
+    Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 		Dim Cancel As Boolean = eventArgs.Cancel
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason 'Generated.
 		PP_SSSMAIN.UnloadMode = UnloadMode
 		Select Case UnloadMode
 			Case 0, 3
-				PP_SSSMAIN.CloseCode = 2
-				Cancel = True
+                '2019/09/23 DEL START
+                'PP_SSSMAIN.CloseCode = 2
+                '2019/09/23 DEL END
+                Cancel = True
 				Call AE_EndCm_SSSMAIN()
 			Case 2
 				PP_SSSMAIN.Caption = Me.Text
@@ -521,14 +540,17 @@ Friend Class FR_SSSMAIN
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_ENDBNKCD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_ENDBNKCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/23 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_ENDBNKCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_ENDBNKCD, FORM_LOAD_FLG) Then
+                '2019/09/23 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_ENDBNKCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_ENDBNKCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDBNKCD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -654,14 +676,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDBNKNM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_ENDBNKNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/23 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDBNKNM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDBNKNM, FORM_LOAD_FLG) Then
+                '2019/09/23 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_ENDBNKNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_ENDBNKNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDBNKNM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -755,14 +780,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/23 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID, FORM_LOAD_FLG) Then
+                '2019/09/23 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_OPEID_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -857,13 +885,16 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/23 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM, FORM_LOAD_FLG) Then
+                '2019/09/23 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
 	End Sub
 	
 	Private Sub HD_OPENM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.Enter 'Generated.
@@ -958,14 +989,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_STTBNKCD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_STTBNKCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/23 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_STTBNKCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_STTBNKCD, FORM_LOAD_FLG) Then
+                '2019/09/23 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_STTBNKCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_STTBNKCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTBNKCD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1091,14 +1125,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTBNKNM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_STTBNKNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/23 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTBNKNM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTBNKNM, FORM_LOAD_FLG) Then
+                '2019/09/23 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_STTBNKNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_STTBNKNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTBNKNM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
