@@ -46,17 +46,30 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.DAO">
+      <HintPath>..\..\..\..\PG\共通dll\Interop.DAO.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.Compatibility">
       <Name>Microsoft.VisualBasic.Compatibility</Name>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.Compatibility.Data">
       <Name>Microsoft.VisualBasic.Compatibility.Data</Name>
     </Reference>
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\..\..\..\PG\共通dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PronesDbAccess">
+      <HintPath>..\..\..\..\PG\共通dll\PronesDbAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>..\..\..\..\PG\共通dll\System.Data.DataSetExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
@@ -107,6 +120,27 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\共通vb\ClsComn.vb">
+      <Link>ClsComn.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ClsMessage.vb">
+      <Link>ClsMessage.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ClsOraDB.vb">
+      <Link>ClsOraDB.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\HKKComBas.vb">
+      <Link>HKKComBas.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ListViewItemComparer.vb">
+      <Link>ListViewItemComparer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
+    </Compile>
     <Compile Include="AssemblyInfo.vb" />
     <Compile Include="GRKBP01M.vb">
       <SubType>Code</SubType>
