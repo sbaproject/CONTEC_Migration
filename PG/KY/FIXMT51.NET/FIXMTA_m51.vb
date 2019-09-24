@@ -220,8 +220,8 @@ Module FIXMTA_M51
 					DB_FIXMTA.UCLTID = SSS_CLTID.Value
 					DB_FIXMTA.UWRTTM = wkWRTTM
 					DB_FIXMTA.UWRTDT = wkWRTDT
-					DB_FIXMTA.PGID = "FIXMT51"
-					Call DB_Update(DBN_FIXMTA, 1)
+                    'DB_FIXMTA.PGID = "FIXMT51"
+                    Call DB_Update(DBN_FIXMTA, 1)
 				Else
 					Call Mfil_FromSCR(I)
 					DB_FIXMTA.DATKB = "1"
@@ -231,8 +231,8 @@ Module FIXMTA_M51
 					DB_FIXMTA.UCLTID = SSS_CLTID.Value
 					DB_FIXMTA.UWRTTM = wkWRTTM
 					DB_FIXMTA.UWRTDT = wkWRTDT
-					DB_FIXMTA.PGID = "FIXMT51"
-					Call DB_Update(DBN_FIXMTA, 1)
+                    'DB_FIXMTA.PGID = "FIXMT51"
+                    Call DB_Update(DBN_FIXMTA, 1)
 				End If
 			Else
 				Call FIXMTA_RClear()
@@ -248,8 +248,8 @@ Module FIXMTA_M51
 				DB_FIXMTA.UCLTID = SSS_CLTID.Value
 				DB_FIXMTA.UWRTTM = wkWRTTM
 				DB_FIXMTA.UWRTDT = wkWRTDT
-				DB_FIXMTA.PGID = "FIXMT51"
-				Call DB_Insert(DBN_FIXMTA, 1)
+                'DB_FIXMTA.PGID = "FIXMT51"
+                Call DB_Insert(DBN_FIXMTA, 1)
 			End If
 			I = I + 1
 		Loop 
