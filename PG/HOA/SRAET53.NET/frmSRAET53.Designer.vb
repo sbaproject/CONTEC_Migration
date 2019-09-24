@@ -576,7 +576,7 @@
         Me.btnF10.Name = "btnF10"
         Me.btnF10.Size = New System.Drawing.Size(75, 35)
         Me.btnF10.TabIndex = 266
-        Me.btnF10.Text = "(F10)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "òAë±ìoò^"
+        Me.btnF10.Text = "(F10)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnF10.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnF10.UseVisualStyleBackColor = True
         '
@@ -634,7 +634,7 @@
         Me.btnF5.Name = "btnF5"
         Me.btnF5.Size = New System.Drawing.Size(75, 35)
         Me.btnF5.TabIndex = 261
-        Me.btnF5.Text = "(F5)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "éQè∆"
+        Me.btnF5.Text = "(F5)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnF5.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnF5.UseVisualStyleBackColor = True
         '
