@@ -1,0 +1,79 @@
+Attribute VB_Name = "SOUBSCD_F51"
+Option Explicit
+'
+'スロット名      :場所コード・画面項目スロット
+'ユニット名      :SOUBSCD.F51
+'記述者          :Standard Library
+'作成日付        :2006/05/29
+'使用プログラム  :SOUMT51
+'                :
+'                :
+
+Function SOUBSCD_Check(ByVal SOUBSCD, ByVal De_Index, ByVal Ex_SOUBSCD)
+Dim Rtn As Integer
+Dim wkSOUBSCD As String
+    '
+    SOUBSCD_Check = 0
+    Call MEIMTA_RClear
+    If Trim$(SOUBSCD) = "" Then
+       Call MEIMTA_RClear
+       SOUBSCD_Check = -1
+    Else
+        wkSOUBSCD = SOUBSCD & Space(Len(DB_MEIMTA.MEICDA) - Len(SOUBSCD))
+        Call DB_GetEq(DBN_MEIMTA, 2, "015" & wkSOUBSCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_MEIMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                SOUBSCD_Check = -1
+            End If
+        Else
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            SOUBSCD_Check = -1
+        End If
+          
+    End If
+    Call SOUBSCD_Move(De_Index)
+   
+End Function
+
+Function SOUBSCD_Slist(PP As clsPP, ByVal SOUBSCD)
+    '
+    WLS_MEI1.Caption = "場所名称一覧"
+    WLS_MEI1!LST.Clear
+   ' Call DB_GetFirst(DBN_MEIMTA, 1, BtrNormal)
+    Call DB_GetGrEq(DBN_MEIMTA, 3, "015", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "015"
+        If DB_MEIMTA.DATKB <> "9" Then
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & LeftWid(DB_MEIMTA.MEINMA, 40)
+        End If
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = LenWid(DB_MEIMTA.MEICDA)
+    WLS_MEI1.Show 1
+    Unload WLS_MEI1
+    SOUBSCD_Slist = PP.SlistCom
+End Function
+
+Sub SOUBSCD_Move(ByVal De As Integer)
+    If Trim$(DB_MEIMTA.MEICDA) <> "" Then
+        Call DP_SSSMAIN_SOUBSCD(De, Trim$(DB_MEIMTA.MEICDA))
+        Call DP_SSSMAIN_SOUBSNM(De, Trim$(DB_MEIMTA.MEINMA))
+    Else
+       Call DP_SSSMAIN_SOUBSCD(De, "")
+       DB_MEIMTA.MEIKMKNM = ""
+       Call DP_SSSMAIN_SOUBSNM(De, "")
+    End If
+
+End Sub
+'''''
+'''''Function SOUBSCD_DerivedC(ByVal SOUBSCD, ByVal SOUCD, ByVal De_Index)
+'''''Dim wkSOUBSCD As String
+'''''
+'''''    SOUBSCD_DerivedC = SOUBSCD
+'''''    wkSOUBSCD = SOUBSCD & Space(Len(DB_MEIMTA.MEICDA) - Len(SOUBSCD))
+'''''    Call DB_GetEq(DBN_MEIMTA, 2, "015" & wkSOUBSCD, BtrNormal)
+'''''    If DBSTAT = 0 Then
+'''''        Call SOUBSCD_Move(De_Index)
+'''''    End If
+'''''End Function
+
