@@ -1,13 +1,16 @@
 Option Strict Off
 Option Explicit On
 Imports VB = Microsoft.VisualBasic
+Imports PronesDbAccess
 Friend Class FR_SSSMAIN
 	Inherits System.Windows.Forms.Form
-	'UPGRADE_WARNING: 配列を New で宣言することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC9D3AE5-6B95-4B43-91C7-28276302A5E8"' をクリックしてください。
-	'UPGRADE_ISSUE: Toolbox オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
-	Dim objim1(1) As New Toolbox
-	'UPGRADE_WARNING: 構造体 pm_All の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
-	Dim pm_All As Cls_All
+    'UPGRADE_WARNING: 配列を New で宣言することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC9D3AE5-6B95-4B43-91C7-28276302A5E8"' をクリックしてください。
+    'UPGRADE_ISSUE: Toolbox オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
+    '2019/09/24 DEL START
+    'Dim objim1(1) As New Toolbox
+    '2019/09/24 DEL END
+    'UPGRADE_WARNING: 構造体 pm_All の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
+    Dim pm_All As Cls_All
 	Dim bolStop_flg As Boolean
 	Const mc_lngRunMode_Web As Integer = 2
 	
@@ -20,13 +23,15 @@ Friend Class FR_SSSMAIN
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		'UPGRADE_ISSUE: P_Mes オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
-		Dim objp_msg As New P_Mes
-		'UPGRADE_WARNING: オブジェクト objp_msg.Dsp_Message_Prompt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CF_Set_Prompt(objp_msg.Dsp_Message_Prompt(gc_strMsgHINFP62_I_007), System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black), pm_All)
-		'UPGRADE_NOTE: オブジェクト objp_msg をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
-		objp_msg = Nothing
-	End Sub
+        'UPGRADE_ISSUE: P_Mes オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
+        '2019/09/24 DEL START
+        'Dim objp_msg As New P_Mes
+        ''UPGRADE_WARNING: オブジェクト objp_msg.Dsp_Message_Prompt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'CF_Set_Prompt(objp_msg.Dsp_Message_Prompt(gc_strMsgHINFP62_I_007), System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black), pm_All)
+        ''UPGRADE_NOTE: オブジェクト objp_msg をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
+        'objp_msg = Nothing
+        '2019/09/24 DEL END
+    End Sub
 	
 	Private Sub CM_Execute_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Execute.Click
 		MN_EXECUTE_Click(MN_EXECUTE, New System.EventArgs())
@@ -37,27 +42,31 @@ Friend Class FR_SSSMAIN
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		'UPGRADE_ISSUE: P_Mes オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
-		Dim objp_msg As New P_Mes
-		'UPGRADE_WARNING: オブジェクト objp_msg.Dsp_Message_Prompt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CF_Set_Prompt(objp_msg.Dsp_Message_Prompt(gc_strMsgHINFP62_I_006), System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black), pm_All)
-		'UPGRADE_NOTE: オブジェクト objp_msg をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
-		objp_msg = Nothing
-	End Sub
+        'UPGRADE_ISSUE: P_Mes オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
+        '2019/09/24 DEL START
+        'Dim objp_msg As New P_Mes
+        ''UPGRADE_WARNING: オブジェクト objp_msg.Dsp_Message_Prompt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'CF_Set_Prompt(objp_msg.Dsp_Message_Prompt(gc_strMsgHINFP62_I_006), System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black), pm_All)
+        ''UPGRADE_NOTE: オブジェクト objp_msg をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
+        'objp_msg = Nothing
+        '2019/09/24 DEL END
+    End Sub
 	
 	Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 		Dim Cancel As Boolean = eventArgs.Cancel
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason
 		Dim I As Short
-		If AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_002, pm_All) = MsgBoxResult.No Then
-			Cancel = 1
-		Else
-			CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
-			For I = 0 To UBound(objim1)
-				'UPGRADE_NOTE: オブジェクト objim1() をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
-				objim1(I) = Nothing
-			Next 
-		End If
+        If AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_002, pm_All) = MsgBoxResult.No Then
+            Cancel = 1
+        Else
+            '2019/09/24 DEL START
+            'CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
+            'For I = 0 To UBound(objim1)
+            '    'UPGRADE_NOTE: オブジェクト objim1() をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
+            '    objim1(I) = Nothing
+            'Next
+            '2019/09/24 DEL END
+        End If
 		eventArgs.Cancel = Cancel
 	End Sub
 	
@@ -85,16 +94,20 @@ Friend Class FR_SSSMAIN
 	Private Sub CS_TFPATH_B_Click()
 		On Error GoTo err_CS_TFPATH_B_Click
 		With CMDialogL
-			'UPGRADE_WARNING: オブジェクト CMDialogL.CancelError の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.CancelError = True
-			'UPGRADE_WARNING: オブジェクト CMDialogL.DefaultExt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.DefaultExt = gv_strOUT_TYPE
+            'UPGRADE_WARNING: オブジェクト CMDialogL.CancelError の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24 仮
+            '.CancelError = True
+            '2019/09/24 仮
+            'UPGRADE_WARNING: オブジェクト CMDialogL.DefaultExt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .DefaultExt = gv_strOUT_TYPE
 			'UPGRADE_WARNING: オブジェクト CMDialogL.Filter の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			.Filter = "*" & gv_strOUT_TYPE & "|*" & gv_strOUT_TYPE & "|*.*|*.*"
-			'UPGRADE_WARNING: オブジェクト CMDialogL.ShowOpen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ShowOpen()
-			'UPGRADE_WARNING: オブジェクト CMDialogL.FileName の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			HD_TFPATH_B.Text = .FileName
+            'UPGRADE_WARNING: オブジェクト CMDialogL.ShowOpen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24 仮
+            '.ShowOpen()
+            '2019/09/24 仮
+            'UPGRADE_WARNING: オブジェクト CMDialogL.FileName の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            HD_TFPATH_B.Text = .FileName
 		End With
 		Exit Sub
 err_CS_TFPATH_B_Click: 
@@ -108,10 +121,12 @@ err_CS_TFPATH_B_Click:
 		Dim bolRet As Boolean
 		Dim strMsgCd As String
 		Dim bolTrans As Boolean
-		'UPGRADE_ISSUE: Gage オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
-		Dim objgage As New Gage
-		'DB接続
-		Call CF_Ora_USR1_Open() 'USR1
+        'UPGRADE_ISSUE: Gage オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
+        '2019/09/24 DEL START
+        'Dim objgage As New Gage
+        '2019/09/24 DEL END
+        'DB接続
+        Call CF_Ora_USR1_Open() 'USR1
 		
 		'共通初期化処理
 		Call CF_Init()
@@ -123,38 +138,47 @@ err_CS_TFPATH_B_Click:
 		TX_Message.Tag = 1
 		ReDim pm_All.Dsp_Sub_Inf(1)
 		pm_All.Dsp_Sub_Inf(1).Ctl = TX_Message
-		'
-		CF_Clr_Prompt(pm_All)
-		'UPGRADE_WARNING: オブジェクト objgage.setGage の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		objgage.setGage(Gage, Cmd_cancel)
-		'UPGRADE_WARNING: オブジェクト objgage.ShowGauge の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		objgage.ShowGauge(False)
-		'UPGRADE_NOTE: オブジェクト objgage をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
-		objgage = Nothing
-		HD_TFPATH_B.Text = vbNullString
-		
-		'    '画面情報設定
-		'    For Each objctrl In Me.Controls
-		'        ReDim Preserve objctrl1(I)
-		'        objctrl1(I).bind objctrl
-		'        I = I + 1
-		'    Next
-		'UPGRADE_WARNING: オブジェクト objim1().bind の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		objim1(0).bind(CM_EndCm, IM_EndCm(0), IM_EndCm(1))
-		'UPGRADE_WARNING: オブジェクト objim1().bind の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		objim1(1).bind(CM_Execute, IM_Execute(0), IM_Execute(1))
-		gv_strTAB_CHAR = vbTab
+        '
+        CF_Clr_Prompt(pm_All)
+        '2019/09/24 DEL START
+        ''UPGRADE_WARNING: オブジェクト objgage.setGage の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'objgage.setGage(Gage, Cmd_cancel)
+        ''UPGRADE_WARNING: オブジェクト objgage.ShowGauge の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'objgage.ShowGauge(False)
+        ''UPGRADE_NOTE: オブジェクト objgage をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
+        'objgage = Nothing
+        '2019/09/24 DEL END
+        HD_TFPATH_B.Text = vbNullString
+
+        '    '画面情報設定
+        '    For Each objctrl In Me.Controls
+        '        ReDim Preserve objctrl1(I)
+        '        objctrl1(I).bind objctrl
+        '        I = I + 1
+        '    Next
+        'UPGRADE_WARNING: オブジェクト objim1().bind の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/24 DEL START
+        'objim1(0).bind(CM_EndCm, IM_EndCm(0), IM_EndCm(1))
+        ''UPGRADE_WARNING: オブジェクト objim1().bind の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'objim1(1).bind(CM_Execute, IM_Execute(0), IM_Execute(1))
+        '2019/09/24 DEL END
+        gv_strTAB_CHAR = vbTab
 		gv_strOUT_TYPE = ".TXT"
-		'画面内容初期化
-		'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.ScaleTop はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-		Me.ScaleTop = (VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - VB6.PixelsToTwipsY(Me.ClientRectangle.Height)) / 2
-		'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.ScaleLeft はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-		Me.ScaleLeft = (VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) - VB6.PixelsToTwipsX(Me.ClientRectangle.Width)) / 2
-		Me.Top = VB6.TwipsToPixelsY((VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - VB6.PixelsToTwipsY(Me.Height)) / 2)
+        '画面内容初期化
+        'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.ScaleTop はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+        '2019/09/24 DEL START
+        'Me.ScaleTop = (VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - VB6.PixelsToTwipsY(Me.ClientRectangle.Height)) / 2
+        ''UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.ScaleLeft はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+        'Me.ScaleLeft = (VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) - VB6.PixelsToTwipsX(Me.ClientRectangle.Width)) / 2
+        '2019/09/24 DEL END
+        Me.Top = VB6.TwipsToPixelsY((VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - VB6.PixelsToTwipsY(Me.Height)) / 2)
 		Me.Left = VB6.TwipsToPixelsX((VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) - VB6.PixelsToTwipsX(Me.Width)) / 2)
-		'UPGRADE_WARNING: オブジェクト SYSDT.Caption の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		SYSDT.Caption = VB6.Format(GV_UNYDate, "@@@@/@@/@@")
-		HD_IN_TANCD.Text = Inp_Inf.InpTanCd
+        'UPGRADE_WARNING: オブジェクト SYSDT.Caption の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/24 CHG START
+        'SYSDT.Caption = VB6.Format(GV_UNYDate, "@@@@/@@/@@")
+        SYSDT.Text = VB6.Format(GV_UNYDate, "@@@@/@@/@@")
+        '2019/09/24 CHG END
+        HD_IN_TANCD.Text = Inp_Inf.InpTanCd
 		HD_IN_TANNM.Text = Inp_Inf.InpTanNm
 		Exit Sub
 Error_Handler: 
@@ -196,9 +220,11 @@ Error_Handler:
 		'UPGRADE_ISSUE: OraParameter オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
 		Dim param(13) As OraParameter 'PL/SQLのバインド変数
 		Dim bolRet As Boolean
-		Dim intret As Short
-		Dim intCursor As Short
-		Dim Err_Cd As Integer
+        Dim intret As Short
+        '2019/09/24 DEL START
+        'Dim intCursor As Short
+        '2019/09/24 DEL END
+        Dim Err_Cd As Integer
 		Dim strlogfile As String 'ログファイル名
 		Dim strSVfolder As String
 		Dim strERR_CODE As String
@@ -215,14 +241,16 @@ Error_Handler:
 			AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_008, pm_All)
 			Exit Sub
 		End If
-		'更新権限がない場合は処理を行わない
-		'    If Inp_Inf.InpJDNUPDKB <> gc_strJDNUPDKB_OK Then
-		'        Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgUODFP51_E_NOUPDKNG, pm_All)
-		'        Exit Sub: Inp_Inf.InpFILEAUTH
-		'    End If
-		'カーソル退避
-		intCursor = Me.Cursor
-		Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
+        '更新権限がない場合は処理を行わない
+        '    If Inp_Inf.InpJDNUPDKB <> gc_strJDNUPDKB_OK Then
+        '        Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgUODFP51_E_NOUPDKNG, pm_All)
+        '        Exit Sub: Inp_Inf.InpFILEAUTH
+        '    End If
+        'カーソル退避
+        '2019/09/24 DEL START
+        'intCursor = Me.Cursor
+        '2019/09/24 DEL START
+        Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
 		
 		objFile = objfso.GetFile(HD_TFPATH_B.Text)
 		Select Case F_Ctl_CopyFiles(objFile.NAME, strfile)
@@ -417,22 +445,27 @@ Ctl_MN_Execute_Click_END:
 		'取込ファイルの削除
 		Call F_Ctl_DeleteFiles(strfile)
 		
-Ctl_MN_Execute_Click_END2: 
-		
-		'カーソル戻す
-		'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.MousePointer はカスタム マウスポインタをサポートしません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="45116EAB-7060-405E-8ABE-9DBB40DC2E86"' をクリックしてください。
-		Me.Cursor = intCursor
-		
-		Exit Sub
+Ctl_MN_Execute_Click_END2:
+
+        'カーソル戻す
+        'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.MousePointer はカスタム マウスポインタをサポートしません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="45116EAB-7060-405E-8ABE-9DBB40DC2E86"' をクリックしてください。
+        '2019/09/24 CHG START
+        'Me.Cursor = intCursor
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+        '2019/09/24 CHG END
+        Exit Sub
 err_MN_EXECUTE_Click: 
 		'PL/SQLエラー
 		AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_E_064, pm_All) 'DBエラーがありました。
 		'取込ファイルの削除
 		Call F_Ctl_DeleteFiles(strfile)
-		'カーソル戻す
-		'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.MousePointer はカスタム マウスポインタをサポートしません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="45116EAB-7060-405E-8ABE-9DBB40DC2E86"' をクリックしてください。
-		Me.Cursor = intCursor
-	End Sub
+        'カーソル戻す
+        'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.MousePointer はカスタム マウスポインタをサポートしません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="45116EAB-7060-405E-8ABE-9DBB40DC2E86"' をクリックしてください。
+        '2019/09/24 CHG START
+        'Me.Cursor = intCursor
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+        '2019/09/24 CHG END
+    End Sub
 	
 	Private Sub TX_Message_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles TX_Message.Enter
 		System.Windows.Forms.SendKeys.Send("{Tab}")
