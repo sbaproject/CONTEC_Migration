@@ -1,17 +1,17 @@
 Option Strict Off
 Option Explicit On
 Module Functions
-	' @(h) Common Module
-	
-	' @(s)
-	'
-	
-	' ウィンドウにメッセージを送る関数の宣言
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Declare Function SendMessage Lib "user32.dll"  Alias "SendMessageA"(ByVal hWnd As Integer, ByVal Msg As Integer, ByVal wParam As Integer, ByRef lParam As Any) As Integer
-	
-	'API関数の宣言
-	Private Const WM_KEYDOWN As Short = &H100s
+    ' @(h) Common Module
+
+    ' @(s)
+    '
+
+    ' ウィンドウにメッセージを送る関数の宣言
+    'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Declare Function SendMessage Lib "user32.dll" Alias "SendMessageA" (ByVal hWnd As Integer, ByVal Msg As Integer, ByVal wParam As Integer, ByRef lParam As Integer) As Integer
+
+    'API関数の宣言
+    Private Const WM_KEYDOWN As Short = &H100s
 	Private Declare Function PostMessage Lib "user32"  Alias "PostMessageA"(ByVal hWnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
 	
 	'コンピュータ名の長さを示す定数の宣言
@@ -37,22 +37,22 @@ Module Functions
 	'どの操作を行うかを示す定数の宣言
 	Public Const FO_COPY As Integer = &H2
 	Public Const FOF_SIMPLEPROGRESS As Integer = &H100
-	Public Const FOF_NOCONFIRMATION As Short = &H10s
-	
-	' ある位置から別の位置にメモリブロックを移動する関数の宣言
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Declare Sub MoveMemory Lib "kernel32.dll"  Alias "RtlMoveMemory"(ByRef Destination As Any, ByRef Source As Any, ByVal Length As Integer)
-	
-	' SHFILEOPSTRUCTのlpszProgressTitleまでのサイズ
-	Public Const FILEOP_SIZE_ABORTED_TO_PROGRESSTITLE As Short = 12
-	
-	' ファイルを操作する関数の宣言
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Declare Function SHFileOperation Lib "shell32.dll"  Alias "SHFileOperationA"(ByRef lpFileOp As Any) As Integer
-	
-	'API関数のShowCursor=マウスポインタを消去
-	Public Declare Function ShowCursor Lib "user32" (ByVal bShow As Integer) As Integer
+	Public Const FOF_NOCONFIRMATION As Short = &H10S
+
+    ' ある位置から別の位置にメモリブロックを移動する関数の宣言
+    'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Declare Sub MoveMemory Lib "kernel32.dll" Alias "RtlMoveMemory" (ByRef Destination As Integer, ByRef Source As Integer, ByVal Length As Integer)
+
+    ' SHFILEOPSTRUCTのlpszProgressTitleまでのサイズ
+    Public Const FILEOP_SIZE_ABORTED_TO_PROGRESSTITLE As Short = 12
+
+    ' ファイルを操作する関数の宣言
+    'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Declare Function SHFileOperation Lib "shell32.dll" Alias "SHFileOperationA" (ByRef lpFileOp As Integer) As Integer
+
+    'API関数のShowCursor=マウスポインタを消去
+    Public Declare Function ShowCursor Lib "user32" (ByVal bShow As Integer) As Integer
 	'***
 	
 	' AnsiInstrB の 2つの文字列引数に Ansi 文字列と、Ansi ﾊﾞｲﾄ位置を渡します。
@@ -63,12 +63,16 @@ Module Functions
 			'UPGRADE_WARNING: オブジェクト arg2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト pos の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			pos = AnsiLenB(AnsiLeftB(arg2, arg1))
-			'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			AnsiInstrB = AnsiInstrB(arg1, AnsiStrConv(arg2, vbFromUnicode), AnsiStrConv(arg3, vbFromUnicode))
-		Else
-			'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			AnsiInstrB = AnsiInstrB(AnsiStrConv(arg1, vbFromUnicode), AnsiStrConv(arg2, vbFromUnicode))
-		End If
+            'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            '2019/09/24　仮
+            'AnsiInstrB = AnsiInstrB(arg1, AnsiStrConv(arg2, vbFromUnicode), AnsiStrConv(arg3, vbFromUnicode))
+            '2019/09/24　仮
+        Else
+            'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            '2019/09/24　仮
+            'AnsiInstrB = AnsiInstrB(AnsiStrConv(arg1, vbFromUnicode), AnsiStrConv(arg2, vbFromUnicode))
+            '2019/09/24　仮
+        End If
 	End Function
 	' AnsiLeftBで処理する前に、ANSI 文字列へ変換し、処理結果を Unicode に戻します。
 	
@@ -78,44 +82,54 @@ Module Functions
 	Function AnsiMidB(ByVal StrArg As String, ByVal arg1 As Integer, Optional ByRef arg2 As Object = Nothing) As String
 		'UPGRADE_NOTE: IsMissing() は IsNothing() に変更されました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="8AE1CB93-37AB-439A-A4FF-BE3B6760BB23"' をクリックしてください。
 		If IsNothing(arg2) Then
-			'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: MidB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AnsiMidB = AnsiStrConv(MidB(AnsiStrConv(StrArg, vbFromUnicode), arg1), vbUnicode)
-		Else
-			'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: MidB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AnsiMidB = AnsiStrConv(MidB(AnsiStrConv(StrArg, vbFromUnicode), arg1, arg2), vbUnicode)
-		End If
+            'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: MidB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24　仮
+            'AnsiMidB = AnsiStrConv(MidB(AnsiStrConv(StrArg, vbFromUnicode), arg1), vbUnicode)
+            '2019/09/24　仮
+        Else
+            'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: MidB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24　仮
+            'AnsiMidB = AnsiStrConv(MidB(AnsiStrConv(StrArg, vbFromUnicode), arg1, arg2), vbUnicode)
+            '2019/09/24　仮
+        End If
 	End Function
 	' 16 ﾋﾞｯﾄ環境では、Unicode <-> Ansi 変換は不必要なので、32 ﾋﾞｯﾄの時だけ
 	
 	Function AnsiLeftB(ByVal StrArg As String, ByVal arg1 As Integer) As String
-		'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		'UPGRADE_ISSUE: LeftB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		AnsiLeftB = AnsiStrConv(LeftB(AnsiStrConv(StrArg, vbFromUnicode), arg1), vbUnicode)
-	End Function
+        'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+        'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+        'UPGRADE_ISSUE: LeftB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/24　仮
+        'AnsiLeftB = AnsiStrConv(LeftB(AnsiStrConv(StrArg, vbFromUnicode), arg1), vbUnicode)
+        '2019/09/24　仮
+    End Function
 	
 	' AnsiLenB で処理する前に、ANSI 文字列へ変換し、処理結果を Unicode に戻します。
 	Function AnsiLenB(ByVal StrArg As String) As Integer
-		'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		'UPGRADE_ISSUE: LenB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
-		AnsiLenB = LenB(AnsiStrConv(StrArg, vbFromUnicode))
-	End Function
+        'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+        'UPGRADE_ISSUE: LenB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
+        '2019/09/24　仮
+        'AnsiLenB = LenB(AnsiStrConv(StrArg, vbFromUnicode))
+        '2019/09/24　仮
+    End Function
 	
 	' AnsiRightBで処理する前に、ANSI 文字列へ変換し、処理結果を Unicode に戻します。
 	Function AnsiRightB(ByVal StrArg As String, ByVal arg1 As Integer) As String
-		'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		'UPGRADE_ISSUE: RightB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		AnsiRightB = AnsiStrConv(RightB(AnsiStrConv(StrArg, vbFromUnicode), arg1), vbUnicode)
-	End Function
+        'UPGRADE_ISSUE: 定数 vbUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+        'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+        'UPGRADE_ISSUE: RightB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト AnsiStrConv() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/24　仮
+        'AnsiRightB = AnsiStrConv(RightB(AnsiStrConv(StrArg, vbFromUnicode), arg1), vbUnicode)
+        '2019/09/24　仮
+    End Function
 	
 	' StrConv を呼び出します。
 	Function AnsiStrConv(ByRef StrArg As Object, ByRef flag As Object) As Object
@@ -477,9 +491,12 @@ AnsiTrimStringByByteCount_End:
 	
 	Public Sub GP_CtrlHanten(ByRef Txt As System.Windows.Forms.TextBox)
 		Txt.SelectionStart = 0
-		'UPGRADE_ISSUE: LenB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
-		Txt.SelectionLength = LenB(Txt)
-	End Sub
+        'UPGRADE_ISSUE: LenB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
+        '2019/09/24 Change 
+        'Txt.SelectionLength = LenB(Txt)
+        Txt.SelectionLength = LenB(Txt.Text)
+        '2019/09/24 Change 
+    End Sub
 	
 	Public Function GP_StrLengthTrim(ByVal strValue As String, ByVal lngLen As Integer) As Collection
 		Dim lngMOJI As Integer
@@ -497,10 +514,12 @@ AnsiTrimStringByByteCount_End:
 		
 		Do Until lngKETA >= lngLen
 			lngMOJI = lngMOJI + 1
-			'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: LenB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
-			lngKETA = lngKETA + LenB(StrConv(Mid(strValue_WK, lngMOJI, 1), vbFromUnicode))
-		Loop 
+            'UPGRADE_ISSUE: 定数 vbFromUnicode はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: LenB 関数はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="367764E5-F3F8-4E43-AC3E-7FE0B5E074E2"' をクリックしてください。
+            '2019/09/24　仮
+            'lngKETA = lngKETA + LenB(StrConv(Mid(strValue_WK, lngMOJI, 1), vbFromUnicode))
+            '2019/09/24　仮
+        Loop 
 		
 		If lngKETA > lngLen Then
 			colWK.Add(Left(strValue_WK, lngMOJI - 1))

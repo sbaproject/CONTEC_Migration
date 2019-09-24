@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <MyType>WindowsForms</MyType>
@@ -20,6 +20,10 @@
     <RootNamespace>SRAET53</RootNamespace>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>.\bin\</OutputPath>
@@ -29,7 +33,7 @@
     <DefineTrace>True</DefineTrace>
     <DefineConstants>Win32=True</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -40,18 +44,50 @@
     <DefineTrace>True</DefineTrace>
     <DefineConstants>Win32=True</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GrapeCity.Framework.InputMan.v24">
+      <HintPath>..\..\..\..\HOA\共通dll\GrapeCity.Framework.InputMan.v24.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.Framework.MultiRow.v24">
+      <HintPath>..\..\..\..\HOA\共通dll\GrapeCity.Framework.MultiRow.v24.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.Framework.PlusPak.v24">
+      <HintPath>..\..\..\..\HOA\共通dll\GrapeCity.Framework.PlusPak.v24.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.Win.Editors.v100">
+      <HintPath>..\..\..\..\HOA\共通dll\GrapeCity.Win.Editors.v100.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.Win.MultiRow.v100">
+      <HintPath>..\..\..\..\HOA\共通dll\GrapeCity.Win.MultiRow.v100.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.Win.PlusPak.Calendar.v100">
+      <HintPath>..\..\..\..\HOA\共通dll\GrapeCity.Win.PlusPak.Calendar.v100.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.DAO">
+      <HintPath>..\..\..\..\HOA\共通dll\Interop.DAO.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.Compatibility">
       <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\HOA\共通dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PronesDbAccess">
+      <HintPath>..\..\..\..\HOA\共通dll\PronesDbAccess.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>..\..\..\..\HOA\共通dll\System.Data.DataSetExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
@@ -74,25 +110,48 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACE_CMN.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\ACE_CMN.vb">
+      <Link>ACE_CMN.vb</Link>
     </Compile>
-    <Compile Include="AE_CMN.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\AE_CMN.vb">
+      <Link>AE_CMN.vb</Link>
     </Compile>
-    <Compile Include="AE_CONST.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\AE_CONST.vb">
+      <Link>AE_CONST.vb</Link>
     </Compile>
-    <Compile Include="AE_PROC.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\AE_PROC.vb">
+      <Link>AE_PROC.vb</Link>
     </Compile>
-    <Compile Include="AE_RSMR.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\AE_RSMR.vb">
+      <Link>AE_RSMR.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AUTHORI.vb">
+      <Link>AUTHORI.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\COMMON.vb">
+      <Link>COMMON.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\COMMON_SEARCH.vb">
+      <Link>COMMON_SEARCH.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.designer.vb">
+      <Link>ICONSSS.designer.vb</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.vb">
+      <Link>ICONSSS.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORA_CMN.vb">
+      <Link>ORA_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
     </Compile>
     <Compile Include="AssemblyInfo.vb" />
-    <Compile Include="Common.vb">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="frmSRAET53.Designer.vb">
       <SubType>Code</SubType>
       <DependentUpon>frmSRAET53.vb</DependentUpon>
@@ -104,12 +163,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GET_DATA.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ORAJET.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ORA_CMN.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SpreadBas.vb">
@@ -133,6 +186,10 @@
     <Compile Include="SSSWIN.vb">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="..\..\共通vb\ICONSSS.resX">
+      <Link>ICONSSS.resX</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSRAET53.resX">
       <DependentUpon>frmSRAET53.vb</DependentUpon>
     </EmbeddedResource>
