@@ -1,0 +1,130 @@
+	Option Explicit
+'==========================================================================
+'   HINPR51.DBM  商品一覧マスタリストワーク       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_HINPR51
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    HINMSTKB       As String * 1     'マスタ区分(商品)      0                   
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    HINNMA         As String * 50    '型式                                      
+    HINNMB         As String * 50    '商品名１                                  
+    HINNMC         As String * 30    '商品名２                                  
+    HINNK          As String * 10    '商品名カナ                                
+    HINNMD         As String * 40    'シリーズ商品名(半角)                      
+    HINNME         As String * 80    'シリーズ商品名(全角)                      
+    UNTCD          As String * 2     '単位コード            00                  
+    UNTNM          As String * 4     '単位名                                    
+    HINKB          As String * 1     '商品区分              0                   
+    HINID          As String * 2     '商品種別                                  
+    HINIDNMA       As String * 40    '商品種別名称                              
+    HINCLAKB       As String * 1     '分類区分１(商品)      0                   
+    HINCLBKB       As String * 1     '分類区分２(商品)      0                   
+    HINCLCKB       As String * 1     '分類区分３(商品)      0                   
+    HINCLAID       As String * 6     '分類コード１(商品)    !@@@@@@             
+    HINCLBID       As String * 6     '分類コード２(商品)    !@@@@@@             
+    HINCLCID       As String * 6     '分類コード３(商品)    !@@@@@@             
+    HINCLANM       As String * 20    '分類名称１(商品)                          
+    HINCLBNM       As String * 20    '分類名称２(商品)                          
+    HINCLCNM       As String * 20    '分類名称３(商品)                          
+    DSPKB          As String * 1     '検索表示区分          0                   
+    ZAIKB          As String * 1     '在庫管理区分          0                   
+    HINZEIKB       As String * 1     '商品消費税区分        0                   
+    ZEIRNKKB       As String * 1     '消費税ランク          0                   
+    ZEIRT          As Currency       '消費税率              ##0.00;;#           
+    HINJUNKB       As String * 1     '順位表出力区分        0                   
+    MAKCD          As String * 6     'メーカーコード        000000              
+    HINCMA         As String * 20    '商品備考Ａ                                
+    HINCMB         As String * 20    '商品備考Ｂ                                
+    HINCMC         As String * 20    '商品備考Ｃ                                
+    HINCMD         As String * 20    '商品備考Ｄ                                
+    HINCME         As String * 20    '商品備考Ｅ                                
+    TEIKATK        As Currency       '定価                  ##,###,###,##0      
+    ZNKURITK       As Currency       '税抜販売単価          ###,###,##0.0000;;# 
+    ZKMURITK       As Currency       '税込販売単価          ###,###,##0.0000;;# 
+    ZNKSRETK       As Currency       '税抜仕入単価          ###,###,##0         
+    ZKMSRETK       As Currency       '税込仕入単価          ###,###,##0         
+    GNKTK          As Currency       '原価単価              ###,###,##0.00;;#   
+    PLANTK         As Currency       '計画単価              ###,###,##0.00;;#   
+    OLDGNKTK       As Currency       '旧原価単価                                
+    GNKTKDT        As String * 8     '適用日(原価単価)                          
+    OLDPLNTK       As Currency       '旧計画単価                                
+    PLNTKDT        As String * 8     '適用日(機種分類)                          
+    SODUNTSU       As Currency       '発注単位数            ###,##0.00;;#       
+    TEKZAISU       As Currency       '適正在庫数            ###,##0.00;;#       
+    ANZZAISU       As Currency       '安全在庫数            ###,##0.00;;#       
+    HRTDD          As String * 2     '発注リードタイム      99                  
+    ORTDD          As String * 2     '出荷リードタイム      99                  
+    PRCDD          As String * 2     '調達リードタイム      99                  
+    MNFDD          As String * 2     '製造リードタイム      99                  
+    HINSIRCD       As String * 10    '商品仕入先コード      !@@@@@@@@@@         
+    HINSIRRN       As String * 40    '商品仕入先名称                            
+    TNACM          As String * 10    '棚番号                                    
+    HINNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ区分（商）   0                   
+    JANCD          As String * 13    'ＪＡＮコード                              
+    HINFRNNM       As String * 50    '商品名海外表記                            
+    ZAIRNK         As String * 3     '在庫ランク            000                 
+    GNKCD          As String * 3     '原価管理コード        000                 
+    MINSODSU       As Currency       '最小発注数            #,##0               
+    SODADDSU       As Currency       '発注増加数            #,##0               
+    JODHIKKB       As String * 1     '受注引当区分          0                   
+    ORTSTPKB       As String * 1     '出荷停止              0                   
+    ORTSTPDT       As String * 8     '出荷停止日            YYYY/MM/DD          
+    ORTKJDT        As String * 8     '出荷停止解除日        YYYY/MM/DD          
+    ORTSTYDT       As String * 8     '出荷開始予定日        YYYY/MM/DD          
+    CTLGKB         As String * 1     'カタログ品対象        0                   
+    MLOKB          As String * 1     '通販対象              0                   
+    MLOHINID       As String * 10    '通販製品ID            !@@@@@@@@@@         
+    MLOIDORT       As Currency       '通販移動比率          ##0.00;;#           
+    MLOLMTSU       As Currency       '通販移動限度数        #,##0               
+    PRDENDKB       As String * 1     '生産終了              0                   
+    PRDENDDT       As String * 8     '生産終了日付          YYYY/MM/DD          
+    SLENDKB        As String * 1     '販売完了              0                   
+    SLENDDT        As String * 8     '販売完了日付          YYYY/MM/DD          
+    JODSTPKB       As String * 1     '受注停止              0                   
+    JODSTPDT       As String * 8     '受注停止日付          YYYY/MM/DD          
+    MNTENDKB       As String * 1     '保守終了              0                   
+    MNTENDDT       As String * 8     '保守終了日付          YYYY/MM/DD          
+    ABODT          As String * 8     '廃止日                YYYY/MM/DD          
+    ORTKB          As String * 1     '出荷区分              0                   
+    SERIKB         As String * 1     'シリアル管理区分      0                   
+    MAKNM          As String * 30    'メーカー名                                
+    NXTMDL         As String * 40    '後継機種                                  
+    JODSTDT        As String * 8     '受注開始日            YYYY/MM/DD          
+    ORTSTDT        As String * 8     '出荷開始日            YYYY/MM/DD          
+    KOUZA          As String * 3     '口座                                      
+    MDLCL          As String * 15    '機種分類                                  
+    OLDMDLCL       As String * 15    '旧機種分類                                
+    HINGRP         As String * 4     '商品群                                    
+    HINGRPNM       As String * 40    '商品群名                                  
+    SKHINGRP       As String * 4     '仕切用商品群                              
+    OEMKB          As String * 1     'ＯＥＭ                                    
+    OEMTOKRN       As String * 10    'ＯＥＭ得意先                              
+    OPENKB         As String * 1     'オープン価格区分      0                   
+    STRMATKB       As String * 2     '戦略物資区分                              
+    TITNM1         As String * 44    '題目１                                    
+    TITNM2         As String * 44    '題目２                                    
+    TITNM3         As String * 44    '題目３                                    
+    CATSPCNM       As String * 100   'カタログスペック                          
+    HINURLNM       As String * 100   '商品ＵＲＬ                                
+    CHARANM        As String * 254   '特徴                                      
+    VSNNM          As String * 19    'バージョン                                
+    EDIHINSY       As String * 10    'ＥＤＩ商品種別                            
+    BTOKB          As String * 10    'ＢＴＯ区分                                
+    KONPOP         As Currency       '梱包ポイント                              
+    LOTSEQNO       As String * 2     'ロット連番                                
+    KHNKB          As String * 1     '仮本区分                                  
+    INPKHNKB       As String * 1     '仮本区分                                  
+    STTHINCD       As String * 8     '開始・商品コード      !@@@@@@@@@@@@@      
+    STTHINNM       As String * 50    '型式（開始）                              
+    ENDHINCD       As String * 10    '終了・商品コード      !@@@@@@@@@@@@@      
+    ENDHINNM       As String * 50    '型式                                      
+End Type
+Global DB_HINPR51 As TYPE_DB_HINPR51
+Global DBN_HINPR51 As Integer
+' Index1( RPTCLTID + HINCD )
+
+Sub HINPR51_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_HINPR51, G_LB)
+    Call ResetBuf(DBN_HINPR51)
+End Sub

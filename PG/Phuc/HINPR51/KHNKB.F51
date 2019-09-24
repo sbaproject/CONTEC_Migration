@@ -1,0 +1,29 @@
+Attribute VB_Name = "KHNKB_F51"
+Option Explicit
+'
+' スロット名        : 仮本区分・画面項目スロット
+' ユニット名        : KHNKB.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/22
+' 使用プログラム名  : URIPR52
+'
+
+Function KHNKB_Check(KHNKB)
+'
+    If Trim$(KHNKB) = "" Then
+        KHNKB = "1"
+    End If
+    If KHNKB = "1" Or KHNKB = "9" Then
+    Else
+       KHNKB = "1"
+    End If
+       
+    KHNKB_Check = 0
+    
+End Function
+
+Function KHNKB_InitVal()
+    '
+    KHNKB_InitVal = "1"
+End Function
+
