@@ -166,61 +166,67 @@ Module SSSWIN_BAS
 		Dim lpszDocName As String
 		Dim lpszOutput As String
 	End Structure
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Private Declare Function GetObjectAPI Lib "gdi32"  Alias "GetObjectA"(ByVal hObject As Integer, ByVal nCount As Integer, ByRef lpObject As Any) As Integer
-	Private Declare Function GlobalAlloc Lib "kernel32" (ByVal wFlags As Integer, ByVal dwBytes As Integer) As Integer
-	Private Declare Function GlobalFree Lib "kernel32" (ByVal hMem As Integer) As Integer
-	Private Declare Function GlobalLock Lib "kernel32" (ByVal hMem As Integer) As Integer
-	Private Declare Function GlobalUnlock Lib "kernel32" (ByVal hMem As Integer) As Integer
-	'UPGRADE_WARNING: 構造体 BITMAPINFO に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Private Declare Function GetDIBits Lib "gdi32" (ByVal aHDC As Integer, ByVal hBitmap As Integer, ByVal nStartScan As Integer, ByVal nNumScans As Integer, ByRef lpBits As Any, ByRef lpBI As BITMAPINFO, ByVal wUsage As Integer) As Integer
-	'UPGRADE_WARNING: 構造体 BITMAPINFO に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Private Declare Function StretchDIBits Lib "gdi32" (ByVal hdc As Integer, ByVal X As Integer, ByVal Y As Integer, ByVal dx As Integer, ByVal dy As Integer, ByVal SrcX As Integer, ByVal SrcY As Integer, ByVal wSrcWidth As Integer, ByVal wSrcHeight As Integer, ByRef lpBits As Any, ByRef lpBitsInfo As BITMAPINFO, ByVal wUsage As Integer, ByVal dwRop As Integer) As Integer
-	'UPGRADE_WARNING: 構造体 PRINTER_DEFAULTS に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
-	Private Declare Function sOpenPrinter Lib "winspool.drv"  Alias "OpenPrinterA"(ByVal pPrinterName As String, ByRef phPrinter As Integer, ByRef pDefault As PRINTER_DEFAULTS) As Integer
-	Private Declare Function ClosePrinter Lib "winspool.drv" (ByVal hPrinter As Integer) As Integer
-	Private Declare Function snDocumentProperties Lib "winspool.drv"  Alias "DocumentPropertiesA"(ByVal hwnd As Integer, ByVal hPrinter As Integer, ByVal pDeviceName As String, ByVal pnDevModeOutput As Integer, ByVal pnDevModeInput As Integer, ByVal fmode As Integer) As Integer
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Private Declare Function sDocumentProperties Lib "winspool.drv"  Alias "DocumentPropertiesA"(ByVal hwnd As Integer, ByVal hPrinter As Integer, ByVal pDeviceName As String, ByRef pDevModeOutput As Any, ByRef pDevModeInput As Any, ByVal fmode As Integer) As Integer
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Private Declare Function CreateDC Lib "gdi32"  Alias "CreateDCA"(ByVal lpDriverName As String, ByVal lpDeviceName As String, ByVal lpOutput As String, ByRef lpInitData As Any) As Integer
-	'UPGRADE_WARNING: 構造体 DOCINFO に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
-	Private Declare Function StartDoc Lib "gdi32"  Alias "StartDocA"(ByVal hdc As Integer, ByRef lpdi As DOCINFO) As Integer
-	Private Declare Function EndDocAPI Lib "gdi32"  Alias "EndDoc"(ByVal hdc As Integer) As Integer
-	Private Declare Function StartPage Lib "gdi32" (ByVal hdc As Integer) As Integer
-	Private Declare Function EndPage Lib "gdi32" (ByVal hdc As Integer) As Integer
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Private Declare Sub memcpy Lib "kernel32"  Alias "RtlMoveMemory"(ByRef Dst As Any, ByRef src As Any, ByVal LENGTH As Integer)
-	'#End(2003.10.28)
-	
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Declare Function GetPrivateProfileString Lib "kernel32"  Alias "GetPrivateProfileStringA"(ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-	Declare Function WritePrivateProfileString Lib "kernel32"  Alias "WritePrivateProfileStringA"(ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpString As Any, ByVal lpFileName As String) As Integer
-	Declare Function VBEXEC1 Lib "VBEXEC32" (ByVal hwnd As Integer, ByVal kb As Integer, ByVal prg As String) As Integer
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Private Declare Function GetObjectAPI Lib "gdi32" Alias "GetObjectA" (ByVal hObject As Integer, ByVal nCount As Integer, ByRef lpObject As Integer) As Integer
+    Private Declare Function GlobalAlloc Lib "kernel32" (ByVal wFlags As Integer, ByVal dwBytes As Integer) As Integer
+    Private Declare Function GlobalFree Lib "kernel32" (ByVal hMem As Integer) As Integer
+    Private Declare Function GlobalLock Lib "kernel32" (ByVal hMem As Integer) As Integer
+    Private Declare Function GlobalUnlock Lib "kernel32" (ByVal hMem As Integer) As Integer
+    'UPGRADE_WARNING: 構造体 BITMAPINFO に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Private Declare Function GetDIBits Lib "gdi32" (ByVal aHDC As Integer, ByVal hBitmap As Integer, ByVal nStartScan As Integer, ByVal nNumScans As Integer, ByRef lpBits As Integer, ByRef lpBI As BITMAPINFO, ByVal wUsage As Integer) As Integer
+    'UPGRADE_WARNING: 構造体 BITMAPINFO に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Private Declare Function StretchDIBits Lib "gdi32" (ByVal hdc As Integer, ByVal X As Integer, ByVal Y As Integer, ByVal dx As Integer, ByVal dy As Integer, ByVal SrcX As Integer, ByVal SrcY As Integer, ByVal wSrcWidth As Integer, ByVal wSrcHeight As Integer, ByRef lpBits As Integer, ByRef lpBitsInfo As BITMAPINFO, ByVal wUsage As Integer, ByVal dwRop As Integer) As Integer
+    'UPGRADE_WARNING: 構造体 PRINTER_DEFAULTS に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
+    Private Declare Function sOpenPrinter Lib "winspool.drv" Alias "OpenPrinterA" (ByVal pPrinterName As String, ByRef phPrinter As Integer, ByRef pDefault As PRINTER_DEFAULTS) As Integer
+    Private Declare Function ClosePrinter Lib "winspool.drv" (ByVal hPrinter As Integer) As Integer
+    Private Declare Function snDocumentProperties Lib "winspool.drv" Alias "DocumentPropertiesA" (ByVal hwnd As Integer, ByVal hPrinter As Integer, ByVal pDeviceName As String, ByVal pnDevModeOutput As Integer, ByVal pnDevModeInput As Integer, ByVal fmode As Integer) As Integer
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Private Declare Function sDocumentProperties Lib "winspool.drv" Alias "DocumentPropertiesA" (ByVal hwnd As Integer, ByVal hPrinter As Integer, ByVal pDeviceName As String, ByRef pDevModeOutput As Integer, ByRef pDevModeInput As Integer, ByVal fmode As Integer) As Integer
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Private Declare Function CreateDC Lib "gdi32" Alias "CreateDCA" (ByVal lpDriverName As String, ByVal lpDeviceName As String, ByVal lpOutput As String, ByRef lpInitData As Integer) As Integer
+    'UPGRADE_WARNING: 構造体 DOCINFO に、この Declare ステートメントの引数としてマーシャリング属性を渡す必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"' をクリックしてください。
+    Private Declare Function StartDoc Lib "gdi32" Alias "StartDocA" (ByVal hdc As Integer, ByRef lpdi As DOCINFO) As Integer
+    Private Declare Function EndDocAPI Lib "gdi32" Alias "EndDoc" (ByVal hdc As Integer) As Integer
+    Private Declare Function StartPage Lib "gdi32" (ByVal hdc As Integer) As Integer
+    Private Declare Function EndPage Lib "gdi32" (ByVal hdc As Integer) As Integer
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Private Declare Sub memcpy Lib "kernel32" Alias "RtlMoveMemory" (ByRef Dst As Integer, ByRef src As Integer, ByVal LENGTH As Integer)
+    '#End(2003.10.28)
+
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。    
+    '2019/09/23 CHG START
+    'Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Integer, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
+    Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
+    '2019/09/23 CHG E N D
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    'UPGRADE_ISSUE: パラメータ 'As Integer' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
+    Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Integer, ByVal lpString As Integer, ByVal lpFileName As String) As Integer
+    Declare Function VBEXEC1 Lib "VBEXEC32" (ByVal hwnd As Integer, ByVal kb As Integer, ByVal prg As String) As Integer
 	'=======================================
 	'ＳＳＳＷＩＮ．ＩＮＩ
 	'=======================================
 	'---------------------------------------------------------------
 	Dim SSS_INIDATNM(4) As String 'ＩＮＩのシンボル
 	Public SSS_INIDAT(4) As String 'ＩＮＩの内容
-	'SSS_INIDATNM(0) = "USR_PATH"           '開発環境PATH
-	'SSS_INIDATNM(1) = "DAT_PATH"           'データPATH
-	'SSS_INIDATNM(2) = "PRG_PATH"           'プログラムPATH
-	'SSS_INIDATNM(3) = "WRK_PATH"           'ワークPATH
-	'SSS_INIDATNM(4) = "IMGPATH"            'イメージPATH
-	'---------------------------------------------------------------
-	
-	'UPGRADE_ISSUE: 宣言の型がサポートされていません: 固定長文字列の配列 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="934BD4FF-1FF9-47BD-888F-D411E47E78FA"' をクリックしてください。
-	Public SSS_WRKDT(5) As String*8
-	
-	
-	Public Set_date As New VB6.FixedLengthString(10) 'ｶﾚﾝﾀﾞｰWINDOW用
+    'SSS_INIDATNM(0) = "USR_PATH"           '開発環境PATH
+    'SSS_INIDATNM(1) = "DAT_PATH"           'データPATH
+    'SSS_INIDATNM(2) = "PRG_PATH"           'プログラムPATH
+    'SSS_INIDATNM(3) = "WRK_PATH"           'ワークPATH
+    'SSS_INIDATNM(4) = "IMGPATH"            'イメージPATH
+    '---------------------------------------------------------------
+
+    'UPGRADE_ISSUE: 宣言の型がサポートされていません: 固定長文字列の配列 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="934BD4FF-1FF9-47BD-888F-D411E47E78FA"' をクリックしてください。
+    '2019/09/20 CHG START
+    'Public SSS_WRKDT(5) As String*8
+    Public SSS_WRKDT As String()
+    '2019/09/20 CHG E N D
+
+
+    Public Set_date As New VB6.FixedLengthString(10) 'ｶﾚﾝﾀﾞｰWINDOW用
 	Public SSS_CLTID As New VB6.FixedLengthString(5)
 	Public SSS_OPEID As New VB6.FixedLengthString(8)
 	Public SSS_SMADT As New VB6.FixedLengthString(8)
@@ -370,27 +376,29 @@ Module SSSWIN_BAS
 	Public Const PD_USEDEVMODECOPIES As Integer = &H40000
 	Public Const PD_DISABLEPRINTTOFILE As Integer = &H80000
 	Public Const PD_HIDEPRINTTOFILE As Integer = &H100000
-	'
-	'
-	'==========================================================================
-	'   SYSTBE       運用ログ定義体                                           =
-	'==========================================================================
-	Structure TYPE_DB_SYSTBE
-		'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
-		<VBFixedString(8),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=8)> Public PRGID() As Char 'プログラムID          X(8)
-		'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
-		<VBFixedString(60),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=60)> Public LOGNM() As Char '備考(ｴﾗｰ情報・運用)   X(60)
-		'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
-		<VBFixedString(8),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=8)> Public OPEID() As Char '最終作業者コード      X(8)
-		'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
-		<VBFixedString(5),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=5)> Public CLTID() As Char 'クライアントＩＤ      X(05)
-		'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
-		<VBFixedString(6),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=6)> Public WRTTM() As Char 'ﾀｲﾑｽﾀﾝﾌﾟ（時間）      9(06)
-		'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
-		<VBFixedString(8),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=8)> Public WRTDT() As Char 'ﾀｲﾑｽﾀﾝﾌﾟ（日付）      9(08)
-	End Structure
-	Public DB_SYSTBE As TYPE_DB_SYSTBE
-	Public DBN_SYSTBE As Short
+    '
+    '
+    '==========================================================================
+    '   SYSTBE       運用ログ定義体                                           =
+    '==========================================================================
+    '2019/09/23 DEL START
+    '   Structure TYPE_DB_SYSTBE
+    '	'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
+    '	<VBFixedString(8),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=8)> Public PRGID() As Char 'プログラムID          X(8)
+    '	'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
+    '	<VBFixedString(60),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=60)> Public LOGNM() As Char '備考(ｴﾗｰ情報・運用)   X(60)
+    '	'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
+    '	<VBFixedString(8),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=8)> Public OPEID() As Char '最終作業者コード      X(8)
+    '	'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
+    '	<VBFixedString(5),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=5)> Public CLTID() As Char 'クライアントＩＤ      X(05)
+    '	'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
+    '	<VBFixedString(6),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=6)> Public WRTTM() As Char 'ﾀｲﾑｽﾀﾝﾌﾟ（時間）      9(06)
+    '	'UPGRADE_WARNING: 固定長文字列のサイズはバッファに合わせる必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="3C1E4426-0B80-443E-B943-0627CD55D48B"' をクリックしてください。
+    '	<VBFixedString(8),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=8)> Public WRTDT() As Char 'ﾀｲﾑｽﾀﾝﾌﾟ（日付）      9(08)
+    'End Structure
+    '   Public DB_SYSTBE As TYPE_DB_SYSTBE
+    '2019/09/23 DEL START
+    Public DBN_SYSTBE As Short
 	
 	'==========================================================================
 	'   LINK_IN,OUT   連携レコード定義体                                      =
@@ -949,44 +957,46 @@ ErrDate:
 		End If
 		JSTDT = VB6.Format(yy * 10000 + mm * 100 + dd, "00000000")
 	End Function
-	
-	'モーダルリンク関数
-	'エラーコードに注意（Link_Shell関数は戻り値 0 がエラー）
-	'      * VBEXEC1関数の戻り値
-	'              0 : 正常.
-	'          10001 : 起動失敗.
-	'             -4 : タイマ設定失敗.
-	'             -5 : 終了監視中に呼び出し元から再度呼ばれた.
-	'           -999 : 強制終了.
-	'
-	Function Link_Modal(ByVal EXE_NM As String) As Short
-		Dim Rtc As Object
-		Dim Full_Nm As String
-		On Error Resume Next
-		'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-		Link_Clr = LSet(Link_OUT)
-		Full_Nm = SSS_INIDAT(2) & "EXE\" & EXE_NM & " " & Chr(34) & SSS_CLTID.Value & SSS_OPEID.Value & ":" & Link_Clr.FILLER & Chr(34)
-		Link_Modal = VBEXEC1(FR_SSSMAIN.Handle.ToInt32, 1, Full_Nm)
-		'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-		Link_Clr = LSet(Link_IN)
-	End Function
-	
-	Function Link_Shell(ByVal EXE_NM As String) As Short
-		Dim Rtc As Short
-		Dim Full_Nm As String
-		On Error Resume Next
-		'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-		Link_Clr = LSet(Link_OUT)
-		Full_Nm = SSS_INIDAT(2) & "EXE\" & EXE_NM & " " & Chr(34) & LeftWid(SSS_CLTID.Value, 5) & LeftWid(SSS_OPEID.Value, 8) & ":" & Link_Clr.FILLER & Chr(34)
-		Link_Shell = Shell(Full_Nm, 1)
-		'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-		Link_Clr = LSet(Link_IN)
-		If Link_ON Then 'メニュー起動でない場合には終了する
-			SSS_NoMsg_EXIT()
-		End If
-	End Function
-	
-	Function SSS_EDTITM_EEE(ByRef CP As clsCP, ByVal Item As Object, ByVal De As Object) As Object
+
+    'モーダルリンク関数
+    'エラーコードに注意（Link_Shell関数は戻り値 0 がエラー）
+    '      * VBEXEC1関数の戻り値
+    '              0 : 正常.
+    '          10001 : 起動失敗.
+    '             -4 : タイマ設定失敗.
+    '             -5 : 終了監視中に呼び出し元から再度呼ばれた.
+    '           -999 : 強制終了.
+    '
+    '2019/09/20 DEL START
+    '   Function Link_Modal(ByVal EXE_NM As String) As Short
+    '	Dim Rtc As Object
+    '	Dim Full_Nm As String
+    '	On Error Resume Next
+    '	'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '	Link_Clr = LSet(Link_OUT)
+    '	Full_Nm = SSS_INIDAT(2) & "EXE\" & EXE_NM & " " & Chr(34) & SSS_CLTID.Value & SSS_OPEID.Value & ":" & Link_Clr.FILLER & Chr(34)
+    '	Link_Modal = VBEXEC1(FR_SSSMAIN.Handle.ToInt32, 1, Full_Nm)
+    '	'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '	Link_Clr = LSet(Link_IN)
+    'End Function
+
+    '   Function Link_Shell(ByVal EXE_NM As String) As Short
+    '       Dim Rtc As Short
+    '       Dim Full_Nm As String
+    '       On Error Resume Next
+    '       'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '       Link_Clr = LSet(Link_OUT)
+    '       Full_Nm = SSS_INIDAT(2) & "EXE\" & EXE_NM & " " & Chr(34) & LeftWid(SSS_CLTID.Value, 5) & LeftWid(SSS_OPEID.Value, 8) & ":" & Link_Clr.FILLER & Chr(34)
+    '       Link_Shell = Shell(Full_Nm, 1)
+    '       'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '       Link_Clr = LSet(Link_IN)
+    '       If Link_ON Then 'メニュー起動でない場合には終了する
+    '           SSS_NoMsg_EXIT()
+    '       End If
+    '   End Function
+    '2019/09/20 DEL START
+
+    Function SSS_EDTITM_EEE(ByRef CP As clsCP, ByVal Item As Object, ByVal De As Object) As Object
 		Dim WrkStr As Object
 		On Error GoTo ErrEdit
 		'UPGRADE_WARNING: オブジェクト Item の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1145,18 +1155,22 @@ ErrEdit:
 		SSS_CLTID.Value = MidWid(VB.Command(), 2, 5)
 		SSS_OPEID.Value = MidWid(VB.Command(), 7, 8)
 		Link_Clr.FILLER = ""
-		'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-		Link_OUT = LSet(Link_Clr)
-		Link_ON = False
+        'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+        '2019/09/20 DEL START
+        'Link_OUT = LSet(Link_Clr)
+        '2019/09/20 DEL END
+        Link_ON = False
 		If I > 15 Then ' 1997/04/17
 			Link_ON = True
 			Link_Clr.FILLER = MidWid(VB.Command(), 16, I - 15) ' 1997/04/17
 		End If
-		'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-		Link_IN = LSet(Link_Clr)
-		
-		'2001/04 リードオンリーモード設定
-		If Left(VB.Command(), 1) = "'" Then SSS_ReadOnly = True
+        'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+        '2019/09/20 DEL START
+        'Link_IN = LSet(Link_Clr)
+        '2019/09/20 DEL END
+
+        '2001/04 リードオンリーモード設定
+        If Left(VB.Command(), 1) = "'" Then SSS_ReadOnly = True
 		
 		'---------------------
 		' ﾃﾞｰﾀﾍﾞｰｽ初期処理
@@ -1179,12 +1193,14 @@ ErrEdit:
 		Call SSSWIN_INIT_GETINI()
 		'
 		Call Init_Fil()
-		
-		''2001/12/14 画面圧縮機能
-		''（画面が大きすぎる場合には, サイズを80%フォントを7.5Pに縮小）
-		FormControls(FR_SSSMAIN)
-		'
-		PP_SSSMAIN.FormWidth = VB6.PixelsToTwipsX(FR_SSSMAIN.Width)
+
+        ''2001/12/14 画面圧縮機能
+        ''（画面が大きすぎる場合には, サイズを80%フォントを7.5Pに縮小）
+        '2019/09/20　仮
+        'FormControls(FR_SSSMAIN)
+        '2019/09/20　仮
+        '
+        PP_SSSMAIN.FormWidth = VB6.PixelsToTwipsX(FR_SSSMAIN.Width)
 		PP_SSSMAIN.FormHeight = VB6.PixelsToTwipsY(FR_SSSMAIN.Height)
 		FR_SSSMAIN.Top = VB6.TwipsToPixelsY((VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - VB6.PixelsToTwipsY(FR_SSSMAIN.Height)) / 2)
 		FR_SSSMAIN.Left = VB6.TwipsToPixelsX((VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) - VB6.PixelsToTwipsX(FR_SSSMAIN.Width)) / 2)
@@ -1213,9 +1229,12 @@ ErrEdit:
 		' SSSWIN.INI 読込み
 		'---------------------
 		For I = 0 To SSS_INICnt
-			rtnPara.Value = ""
-			LENGTH = GetPrivateProfileString("SSSWIN", SSS_INIDATNM(I), "", rtnPara.Value, Len(rtnPara.Value), "SSSWIN.INI")
-			If LENGTH = 0 Then
+            rtnPara.Value = ""
+            '2019/09/23 CHG START
+            'LENGTH = GetPrivateProfileString("SSSWIN", SSS_INIDATNM(I), "", rtnPara.Value, Len(rtnPara.Value), "SSSWIN.INI")
+            LENGTH = GetPrivateProfileString("SSSWIN", SSS_INIDATNM(I), "", rtnPara.Value, Len(rtnPara.Value), Application.StartupPath & "\SSSWIN.INI")
+            '2019/09/23 CHG E N D
+            If LENGTH = 0 Then
 				MsgBox("SSSWIN.INI を確認してください。" & Chr(13) & "[" & SSS_INIDATNM(I) & "]")
 				Call Error_Exit("SSSUSR.INI を確認してください。[" & SSS_INIDATNM(I) & "]")
 			Else
@@ -1233,10 +1252,12 @@ ErrEdit:
 		Dim wbuf As String
 		'
 		Call ResetDBSTAT(DBN_SYSTBE)
-		'
-		'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-		DB_SYSTBE = LSet(DB_CLRREC)
-		DB_SYSTBE.PRGID = SSS_PrgId
+        '
+        'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+        '2019/09/20　仮
+        'DB_SYSTBE = LSet(DB_CLRREC)
+        '2019/09/20　仮
+        DB_SYSTBE.PRGID = SSS_PrgId
 		DB_SYSTBE.LOGNM = LogMsg
 		DB_SYSTBE.OPEID = SSS_OPEID.Value
 		DB_SYSTBE.CLTID = SSS_CLTID.Value
@@ -1256,13 +1277,15 @@ ErrEdit:
 			rtn = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
 			End
 		End If
-		Err.Clear()
-		On Error GoTo ErrorLogFile
-		FileOpen(Fno, SSS_INIDAT(1) & "SYSTBE.DTA", OpenMode.Append, OpenAccess.Write, OpenShare.LockWrite)
-		On Error GoTo 0
-		PrintLine(Fno, DB_SYSTBE.PRGID & DB_SYSTBE.LOGNM & DB_SYSTBE.OPEID & DB_SYSTBE.CLTID & DB_SYSTBE.WRTTM & DB_SYSTBE.WRTDT)
-		FileClose(Fno)
-		Exit Sub
+        Err.Clear()
+        '2019/09/23 DEL START
+        'On Error GoTo ErrorLogFile
+        'FileOpen(Fno, SSS_INIDAT(1) & "SYSTBE.DTA", OpenMode.Append, OpenAccess.Write, OpenShare.LockWrite)
+        'On Error GoTo 0
+        'PrintLine(Fno, DB_SYSTBE.PRGID & DB_SYSTBE.LOGNM & DB_SYSTBE.OPEID & DB_SYSTBE.CLTID & DB_SYSTBE.WRTTM & DB_SYSTBE.WRTDT)
+        'FileClose(Fno)
+        '2019/09/23 DEL END
+        Exit Sub
 ErrorLogFile: 
 		errcnt = errcnt + 1
 		If errcnt > SSS_ReTryCnt Then
@@ -1287,29 +1310,54 @@ ErrorLogFile:
 		
 		'
 		Call SSSWIN_LOGWRT("プログラム起動")
-		'
-		For I = 0 To SSS_MAX_DB - 1
-			If Trim(DB_PARA(I).DBID) = "USR1" Or Trim(DB_PARA(I).DBID) >= "USR4" Then
-				Call DB_Open(I, DB_PARA(I).DBID, DB_PARA(I).tblid)
-				If DBSTAT <> 0 Then
-					MsgBox("ファイルＯＰＥＮエラー" & DB_PARA(I).tblid & Str(DBSTAT)) : End
-				End If
-			Else
-				' Linkチェック外す 97/02/12
-				Call JB_Open(I)
-			End If
-		Next I
-		'
-		Call DB_GetFirst(DBN_SYSTBA, 1, BtrNormal)
-		''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-START)
-		Call DB_GetFirst(DBN_UNYMTA, 1, BtrNormal)
-		'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!SYSDT.Caption の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CType(FR_SSSMAIN.Controls("SYSDT"), Object).Caption = CNV_DATE(DB_UNYMTA.UNYDT)
-		''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-E N D)
-		
-		'''' ADD 2009/11/26  FKS) T.Yamamoto    Start    連絡票№702
-		'権限取得
-		If Get_Authority(DB_UNYMTA.UNYDT) = "9" Then
+        '
+        '2019/09/23 CHG START
+        'For I = 0 To SSS_MAX_DB - 1
+        '	If Trim(DB_PARA(I).DBID) = "USR1" Or Trim(DB_PARA(I).DBID) >= "USR4" Then
+        '		Call DB_Open(I, DB_PARA(I).DBID, DB_PARA(I).tblid)
+        '		If DBSTAT <> 0 Then
+        '			MsgBox("ファイルＯＰＥＮエラー" & DB_PARA(I).tblid & Str(DBSTAT)) : End
+        '		End If
+        '	Else
+        '		' Linkチェック外す 97/02/12
+        '		Call JB_Open(I)
+        '	End If
+        '      Next I
+        CON = DB_START()
+        '2019/09/23 CHG E N D
+        '2019/09/23 ADD START
+        For I = 0 To SSS_MAX_DB - 1
+            RsOpened(I) = True
+        Next I
+        '2019/09/23 ADD E N D
+        '
+        '2019/09/23 CHG START
+        'Call DB_GetFirst(DBN_SYSTBA, 1, BtrNormal)
+        If SYSTBA_SEARCH(DB_SYSTBA) <> 0 Then
+            Exit Sub
+        End If
+        '2019/09/23 CHG E N D
+
+        ''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-START)
+        '2019/09/23 CHG START
+        'Call DB_GetFirst(DBN_UNYMTA, 1, BtrNormal)        
+        Call GetRowsCommon("UNYMTA", "")
+        If DB_UNYMTA.UNYKBA Is Nothing Then
+            DBSTAT = 1
+        Else
+            DBSTAT = 0
+        End If
+        '2019/09/23 CHG E N D
+        'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!SYSDT.Caption の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。       
+        '2019/09/23 CHG START
+        'CType(FR_SSSMAIN.Controls("SYSDT"), Object).Caption = CNV_DATE(DB_UNYMTA.UNYDT)
+        CType(FR_SSSMAIN.Controls("SYSDT"), Object).Text = CNV_DATE(DB_UNYMTA.UNYDT)
+        '2019/09/23 CHG E N D
+        ''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-E N D)
+
+        '''' ADD 2009/11/26  FKS) T.Yamamoto    Start    連絡票№702
+        '権限取得
+        If Get_Authority(DB_UNYMTA.UNYDT) = "9" Then
 			'起動権限なしの場合、処理終了
 			rtn = DSP_MsgBox(SSS_ERROR, "RUNAUTH", 0)
 			End
@@ -1561,151 +1609,155 @@ ErrorLogFile:
 		ret = GetPrivateProfileString("DBSPEC", "DBHEAD", "", wkStr.Value, 128, "SSSWIN.INI")
 		If ret > 0 Then Get_DBHEAD = Left(wkStr.Value, ret)
 	End Function
-	
-	''2001/06/11 画面圧縮機能
-	''2001/07/16 一部改訂
-	''2001/11/09 画面情報はｅｅｅを利用
-	' フォームの伸縮
-	'   I   frm         フォーム
-	'   I   gOptFntSz   フォントサイズ
-	Public Sub FormControls(ByVal frm As System.Windows.Forms.Form, Optional ByVal gOptFntSz As Single = 0)
-		On Error Resume Next
-		Dim I, iGrpCnt As Short
-		Dim nHeight, nLeft, nWidth As Integer
-		Dim gFactor, gFntSz As Single
-		Dim sFrmNm As String
-		Dim ctr As System.Windows.Forms.Control
-		'UPGRADE_WARNING: 構造体 tMsg の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
-		'UPGRADE_WARNING: 構造体 tTol の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
-		Dim tTol, tMsg As TYPE_BAR
-		Dim tGrps() As TYPE_CTRLGRP
-		
-		''2001/11/09 画面情報はｅｅｅを利用
-		If PP_SSSMAIN.FormHeight > VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) Or PP_SSSMAIN.FormWidth > VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) Then
-			''If frm.Height > Screen.Height Or frm.Width > Screen.Width Then
-			gFactor = 0.8
-			
-			Select Case gOptFntSz
-				Case 0, 7.5 : gFntSz = 7.5
-				Case Else : gFntSz = 8
-			End Select
-			
-			sFrmNm = frm.Name
-			
-			' バーコントロールの取得
-			getBarControls(frm, tTol, tMsg)
-			
-			' 補正対象コントロールの設定
-			getHoseiControls(frm, iGrpCnt, tGrps)
-			
-			' フォームの伸縮
-			''2001/11/09 画面情報はｅｅｅを利用
-			nHeight = calTwip(PP_SSSMAIN.FormHeight + 780, gFactor)
-			nWidth = calTwip(PP_SSSMAIN.FormWidth + 120, gFactor)
-			frm.Left = VB6.TwipsToPixelsX(VB6.PixelsToTwipsX(frm.Left) + calTwip(PP_SSSMAIN.FormWidth + 120 - nWidth, 0.5))
-			frm.Top = VB6.TwipsToPixelsY(VB6.PixelsToTwipsY(frm.Top) + calTwip(PP_SSSMAIN.FormHeight + 780 - nHeight, 0.5))
-			''nHeight = calTwip(frm.Height, gFactor)
-			''nWidth = calTwip(frm.Width, gFactor)
-			''frm.Left = frm.Left + calTwip(frm.Width - nWidth, 0.5)
-			''frm.Top = frm.Top + calTwip(frm.Height - nHeight, 0.5)
-			frm.Height = VB6.TwipsToPixelsY(nHeight)
-			frm.Width = VB6.TwipsToPixelsX(nWidth)
-			
-			' コントロールの伸縮
-			tTol.iBarCnt = 0
-			tMsg.iBarCnt = 0
-			
-			For	Each ctr In frm.Controls
-				'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-				If (TypeOf ctr Is System.Windows.Forms.ToolStripMenuItem) Or (TypeOf ctr Is System.Windows.Forms.Timer) Then
-					
-					'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-				ElseIf TypeOf ctr Is System.Windows.Forms.Label Then 
-					'UPGRADE_WARNING: オブジェクト ctr.X1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					ctr.X1 = calTwip(ctr.X1, gFactor)
-					'UPGRADE_WARNING: オブジェクト ctr.X2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					ctr.X2 = calTwip(ctr.X2, gFactor)
-					'UPGRADE_WARNING: オブジェクト ctr.Y1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					ctr.Y1 = calTwip(ctr.Y1, gFactor)
-					'UPGRADE_WARNING: オブジェクト ctr.Y2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					ctr.Y2 = calTwip(ctr.Y2, gFactor)
-				Else
-					'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-					If TypeOf ctr Is System.Windows.Forms.PictureBox Then
-						'UPGRADE_WARNING: オブジェクト getContainer(ctr).NAME の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						Select Case getContainer(ctr).NAME
-							Case tTol.ctr.Name
-								ReDim Preserve tTol.ctrBars(tTol.iBarCnt)
-								tTol.ctrBars(tTol.iBarCnt) = ctr
-								tTol.iBarCnt = tTol.iBarCnt + 1
-								
-							Case tMsg.ctr.Name
-								ReDim Preserve tMsg.ctrBars(tMsg.iBarCnt)
-								tMsg.ctrBars(tMsg.iBarCnt) = ctr
-								tMsg.iBarCnt = tMsg.iBarCnt + 1
-								
-						End Select
-					Else
-						nLeft = VB6.PixelsToTwipsX(ctr.Left)
-						
-						ctr.Font = VB6.FontChangeSize(ctr.Font, gFntSz)
-						ctr.Left = VB6.TwipsToPixelsX(calTwip(VB6.PixelsToTwipsX(ctr.Left), gFactor))
-						ctr.Top = VB6.TwipsToPixelsY(calTwip(VB6.PixelsToTwipsY(ctr.Top), gFactor))
-						ctr.Height = VB6.TwipsToPixelsY(calTwip(VB6.PixelsToTwipsY(ctr.Height), gFactor))
-						ctr.Width = VB6.TwipsToPixelsX(calTwip(VB6.PixelsToTwipsX(ctr.Width), gFactor))
-						
-						'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-						If TypeOf ctr Is System.Windows.Forms.TextBox Then
-							'UPGRADE_WARNING: オブジェクト getContainer(ctr).NAME の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							Select Case getContainer(ctr).NAME
-								Case tTol.ctr.Name : ctr.Left = VB6.TwipsToPixelsX(nLeft)
-							End Select
-						End If
-					End If
-				End If
-			Next ctr
-			
-			' ツールバーとメッセージバーの補正
-			hoseiBar(frm, tTol, tMsg, gFactor)
-			
-			' 各ブロックのコントロールを補正
-			For I = 0 To iGrpCnt - 1
-				hoseiControls(tGrps(I).iCtrCnt, tGrps(I).tCtrs)
-			Next 
-		End If
-	End Sub
-	
-	' 補正対象コントロールの取得
-	'   I   frm     フォーム
-	'   O   iGrpCnt コンテナグループ数
-	'   O   tGrps() コンテナグループ別コントロール情報
-	Private Sub getHoseiControls(ByVal frm As System.Windows.Forms.Form, ByRef iGrpCnt As Short, ByRef tGrps() As TYPE_CTRLGRP)
-		Dim J, I, k As Short
-		Dim ctr As System.Windows.Forms.Control
-		
-		' コンテナグループ別のコントロールを取得
-		iGrpCnt = 0
-		
-		For	Each ctr In frm.Controls
-			'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-			If (TypeOf ctr Is System.Windows.Forms.ToolStripMenuItem) Or (TypeOf ctr Is System.Windows.Forms.Timer) Or (TypeOf ctr Is System.Windows.Forms.Label) Then
-				
-			Else
-				getGrpControls(ctr, iGrpCnt, tGrps)
-			End If
-		Next ctr
-		
-		' 隣接するコントロールを確定
-		For I = 0 To iGrpCnt - 1
-			relControl(tGrps(I).iCtrCnt, tGrps(I).tCtrs)
-		Next 
-	End Sub
-	
-	' コンテナグループ別のコントロールを取得
-	'   I   ctr     コントロール
-	'   O   iGrpCnt コンテナグループ数
-	'   O   tGrps() コンテナグループ別コントロール
-	Private Sub getGrpControls(ByVal ctr As System.Windows.Forms.Control, ByRef iGrpCnt As Short, ByRef tGrps() As TYPE_CTRLGRP)
+
+    ''2001/06/11 画面圧縮機能
+    ''2001/07/16 一部改訂
+    ''2001/11/09 画面情報はｅｅｅを利用
+    ' フォームの伸縮
+    '   I   frm         フォーム
+    '   I   gOptFntSz   フォントサイズ
+    '2019/09/20　仮
+    'Public Sub FormControls(ByVal frm As System.Windows.Forms.Form, Optional ByVal gOptFntSz As Single = 0)
+    '    On Error Resume Next
+    '    Dim I, iGrpCnt As Short
+    '    Dim nHeight, nLeft, nWidth As Integer
+    '    Dim gFactor, gFntSz As Single
+    '    Dim sFrmNm As String
+    '    Dim ctr As System.Windows.Forms.Control
+    '    'UPGRADE_WARNING: 構造体 tMsg の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
+    '    'UPGRADE_WARNING: 構造体 tTol の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
+    '    Dim tTol, tMsg As TYPE_BAR
+    '    Dim tGrps() As TYPE_CTRLGRP
+
+    '    ''2001/11/09 画面情報はｅｅｅを利用
+    '    If PP_SSSMAIN.FormHeight > VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) Or PP_SSSMAIN.FormWidth > VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) Then
+    '        ''If frm.Height > Screen.Height Or frm.Width > Screen.Width Then
+    '        gFactor = 0.8
+
+    '        Select Case gOptFntSz
+    '            Case 0, 7.5 : gFntSz = 7.5
+    '            Case Else : gFntSz = 8
+    '        End Select
+
+    '        sFrmNm = frm.Name
+
+    '        ' バーコントロールの取得
+    '        getBarControls(frm, tTol, tMsg)
+
+    '        ' 補正対象コントロールの設定
+    '        getHoseiControls(frm, iGrpCnt, tGrps)
+
+    '        ' フォームの伸縮
+    '        ''2001/11/09 画面情報はｅｅｅを利用
+    '        nHeight = calTwip(PP_SSSMAIN.FormHeight + 780, gFactor)
+    '        nWidth = calTwip(PP_SSSMAIN.FormWidth + 120, gFactor)
+    '        frm.Left = VB6.TwipsToPixelsX(VB6.PixelsToTwipsX(frm.Left) + calTwip(PP_SSSMAIN.FormWidth + 120 - nWidth, 0.5))
+    '        frm.Top = VB6.TwipsToPixelsY(VB6.PixelsToTwipsY(frm.Top) + calTwip(PP_SSSMAIN.FormHeight + 780 - nHeight, 0.5))
+    '        ''nHeight = calTwip(frm.Height, gFactor)
+    '        ''nWidth = calTwip(frm.Width, gFactor)
+    '        ''frm.Left = frm.Left + calTwip(frm.Width - nWidth, 0.5)
+    '        ''frm.Top = frm.Top + calTwip(frm.Height - nHeight, 0.5)
+    '        frm.Height = VB6.TwipsToPixelsY(nHeight)
+    '        frm.Width = VB6.TwipsToPixelsX(nWidth)
+
+    '        ' コントロールの伸縮
+    '        tTol.iBarCnt = 0
+    '        tMsg.iBarCnt = 0
+
+    '        For Each ctr In frm.Controls
+    '            'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+    '            If (TypeOf ctr Is System.Windows.Forms.ToolStripMenuItem) Or (TypeOf ctr Is System.Windows.Forms.Timer) Then
+
+    '                'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+    '            ElseIf TypeOf ctr Is System.Windows.Forms.Label Then
+    '                'UPGRADE_WARNING: オブジェクト ctr.X1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                ctr.X1 = calTwip(ctr.X1, gFactor)
+    '                'UPGRADE_WARNING: オブジェクト ctr.X2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                ctr.X2 = calTwip(ctr.X2, gFactor)
+    '                'UPGRADE_WARNING: オブジェクト ctr.Y1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                ctr.Y1 = calTwip(ctr.Y1, gFactor)
+    '                'UPGRADE_WARNING: オブジェクト ctr.Y2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                ctr.Y2 = calTwip(ctr.Y2, gFactor)
+    '            Else
+    '                'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+    '                If TypeOf ctr Is System.Windows.Forms.PictureBox Then
+    '                    'UPGRADE_WARNING: オブジェクト getContainer(ctr).NAME の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                    Select Case getContainer(ctr).NAME
+    '                        Case tTol.ctr.Name
+    '                            ReDim Preserve tTol.ctrBars(tTol.iBarCnt)
+    '                            tTol.ctrBars(tTol.iBarCnt) = ctr
+    '                            tTol.iBarCnt = tTol.iBarCnt + 1
+
+    '                        Case tMsg.ctr.Name
+    '                            ReDim Preserve tMsg.ctrBars(tMsg.iBarCnt)
+    '                            tMsg.ctrBars(tMsg.iBarCnt) = ctr
+    '                            tMsg.iBarCnt = tMsg.iBarCnt + 1
+
+    '                    End Select
+    '                Else
+    '                    nLeft = VB6.PixelsToTwipsX(ctr.Left)
+
+    '                    ctr.Font = VB6.FontChangeSize(ctr.Font, gFntSz)
+    '                    ctr.Left = VB6.TwipsToPixelsX(calTwip(VB6.PixelsToTwipsX(ctr.Left), gFactor))
+    '                    ctr.Top = VB6.TwipsToPixelsY(calTwip(VB6.PixelsToTwipsY(ctr.Top), gFactor))
+    '                    ctr.Height = VB6.TwipsToPixelsY(calTwip(VB6.PixelsToTwipsY(ctr.Height), gFactor))
+    '                    ctr.Width = VB6.TwipsToPixelsX(calTwip(VB6.PixelsToTwipsX(ctr.Width), gFactor))
+
+    '                    'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+    '                    If TypeOf ctr Is System.Windows.Forms.TextBox Then
+    '                        'UPGRADE_WARNING: オブジェクト getContainer(ctr).NAME の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                        Select Case getContainer(ctr).NAME
+    '                            Case tTol.ctr.Name : ctr.Left = VB6.TwipsToPixelsX(nLeft)
+    '                        End Select
+    '                    End If
+    '                End If
+    '            End If
+    '        Next ctr
+
+    '        ' ツールバーとメッセージバーの補正
+    '        hoseiBar(frm, tTol, tMsg, gFactor)
+
+    '        ' 各ブロックのコントロールを補正
+    '        For I = 0 To iGrpCnt - 1
+    '            hoseiControls(tGrps(I).iCtrCnt, tGrps(I).tCtrs)
+    '        Next
+    '    End If
+    'End Sub
+    '2019/09/20　仮
+
+    ' 補正対象コントロールの取得
+    '   I   frm     フォーム
+    '   O   iGrpCnt コンテナグループ数
+    '   O   tGrps() コンテナグループ別コントロール情報
+    '2019/09/20 DEL START
+    'Private Sub getHoseiControls(ByVal frm As System.Windows.Forms.Form, ByRef iGrpCnt As Short, ByRef tGrps() As TYPE_CTRLGRP)
+    '    Dim J, I, k As Short
+    '    Dim ctr As System.Windows.Forms.Control
+
+    '    ' コンテナグループ別のコントロールを取得
+    '    iGrpCnt = 0
+
+    '    For Each ctr In frm.Controls
+    '        'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+    '        If (TypeOf ctr Is System.Windows.Forms.ToolStripMenuItem) Or (TypeOf ctr Is System.Windows.Forms.Timer) Or (TypeOf ctr Is System.Windows.Forms.Label) Then
+
+    '        Else
+    '            getGrpControls(ctr, iGrpCnt, tGrps)
+    '        End If
+    '    Next ctr
+
+    '    ' 隣接するコントロールを確定
+    '    For I = 0 To iGrpCnt - 1
+    '        relControl(tGrps(I).iCtrCnt, tGrps(I).tCtrs)
+    '    Next
+    'End Sub
+    '2019/09/20 DEL E N D
+
+    ' コンテナグループ別のコントロールを取得
+    '   I   ctr     コントロール
+    '   O   iGrpCnt コンテナグループ数
+    '   O   tGrps() コンテナグループ別コントロール
+    Private Sub getGrpControls(ByVal ctr As System.Windows.Forms.Control, ByRef iGrpCnt As Short, ByRef tGrps() As TYPE_CTRLGRP)
 		Dim bOvrFg As Boolean
 		Dim I As Short
 		'UPGRADE_WARNING: 構造体 tCtr の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
@@ -2023,243 +2075,245 @@ ErrorLogFile:
 			Get_DbSchema = Get_DBHEAD() & "_" & vUser
 		End If
 	End Function
-	
-	'''''''
-	'#Start(2003.10.28)
-	'#Start(2003.4.22)
-	Public Function CreateBitmapPicture(ByVal hBmp As Integer, ByVal hPal As Integer) As System.Drawing.Image
-		
-		Dim r As Integer
-		Dim Pic As PicBmp
-		Dim IPic As System.Drawing.Image
-		'UPGRADE_WARNING: 構造体 IID_IDispatch の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
-		Dim IID_IDispatch As GUID
-		
-		With IID_IDispatch
-			.Data1 = &H20400
-			.Data4(0) = &HC0s
-			.Data4(7) = &H46s
-		End With
-		
-		With Pic
-			.Size = Len(Pic) ' Length of structure
-			'UPGRADE_ISSUE: 定数 vbPicTypeBitmap はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			.Type = vbPicTypeBitmap ' Type of Picture (bitmap)
-			.hBmp = hBmp ' Handle to bitmap
-			.hPal = hPal ' Handle to palette (may be null)
-		End With
-		
-		r = OleCreatePictureIndirect(Pic, IID_IDispatch, 1, IPic)
-		CreateBitmapPicture = IPic
-	End Function
-	''''''''''''
-	Function CaptureWindow(ByVal hWndSrc As Integer, ByVal Client As Boolean, ByVal LeftSrc As Integer, ByVal TopSrc As Integer, ByVal WidthSrc As Integer, ByVal HeightSrc As Integer) As System.Drawing.Image
-		
-		Dim hDCMemory As Integer
-		Dim hBmp As Integer
-		Dim hBmpPrev As Integer
-		Dim r As Integer
-		Dim hDCSrc As Integer
-		Dim hPal As Integer
-		Dim hPalPrev As Integer
-		Dim RasterCapsScrn As Integer
-		Dim HasPaletteScrn As Integer
-		Dim PaletteSizeScrn As Integer
-		'UPGRADE_WARNING: 構造体 LogPal の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
-		Dim LogPal As LOGPALETTE
-		
-		If Client Then
-			hDCSrc = GetDC(hWndSrc)
-		Else
-			hDCSrc = GetWindowDC(hWndSrc)
-		End If
-		
-		hDCMemory = CreateCompatibleDC(hDCSrc)
-		hBmp = CreateCompatibleBitmap(hDCSrc, WidthSrc, HeightSrc)
-		hBmpPrev = SelectObject(hDCMemory, hBmp)
-		
-		RasterCapsScrn = GetDeviceCaps(hDCSrc, RASTERCAPS)
-		HasPaletteScrn = RasterCapsScrn And RC_PALETTE
-		PaletteSizeScrn = GetDeviceCaps(hDCSrc, SIZEPALETTE)
-		If HasPaletteScrn And (PaletteSizeScrn = 256) Then
-			LogPal.palVersion = &H300s
-			LogPal.palNumEntries = 256
-			r = GetSystemPaletteEntries(hDCSrc, 0, 256, LogPal.palPalEntry(0))
-			hPal = CreatePalette(LogPal)
-			hPalPrev = SelectPalette(hDCMemory, hPal, 0)
-			r = RealizePalette(hDCMemory)
-		End If
-		
-		'UPGRADE_ISSUE: 定数 vbSrcCopy はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		r = BitBlt(hDCMemory, 0, 0, WidthSrc, HeightSrc, hDCSrc, LeftSrc, TopSrc, vbSrcCopy)
-		
-		hBmp = SelectObject(hDCMemory, hBmpPrev)
-		
-		If HasPaletteScrn And (PaletteSizeScrn = 256) Then
-			hPal = SelectPalette(hDCMemory, hPalPrev, 0)
-		End If
-		
-		r = DeleteDC(hDCMemory)
-		r = ReleaseDC(hWndSrc, hDCSrc)
-		
-		CaptureWindow = CreateBitmapPicture(hBmp, hPal)
-	End Function
-	
-	''''''
-	Public Function CaptureForm(ByRef frmSrc As System.Windows.Forms.Form) As System.Drawing.Image
-		' Call CaptureWindow to capture the entire form given it's window
-		' handle and then return the resulting Picture object
-		'UPGRADE_ISSUE: 定数 vbPixels はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		'UPGRADE_ISSUE: 定数 vbTwips はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		'UPGRADE_ISSUE: Form メソッド frmSrc.ScaleY はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-		'UPGRADE_ISSUE: Form メソッド frmSrc.ScaleX はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-		CaptureForm = CaptureWindow(frmSrc.Handle.ToInt32, False, 0, 0, frmSrc.ScaleX(VB6.PixelsToTwipsX(frmSrc.Width), vbTwips, vbPixels), frmSrc.ScaleY(VB6.PixelsToTwipsY(frmSrc.Height), vbTwips, vbPixels))
-	End Function
-	'ハードコピー
-	Public Sub Exec_Hardcopy(ByRef pform As System.Windows.Forms.Form)
-		gSelectedDeviceName = ""
-		'UPGRADE_ISSUE: Printers メソッド Printers.count はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-		If Printers.count = 0 Then
-			Call MsgBox("このＰＣにはプリンタがインストールされていないため" & vbCr & "画面ハードコピーができません。" & vbCr & "プリンタをインストールしてから再度実行して下さい。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly, My.Application.Info.Title)
-			gSelectedDeviceName = CStr(False)
-			Exit Sub
-		End If
-		'UPGRADE_ISSUE: Load ステートメント はサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="B530EFF2-3132-48F8-B8BC-D88AF543D321"' をクリックしてください。
-		Load(WLS_HCP)
-		WLS_HCP.ShowDialog()
-		System.Windows.Forms.Application.DoEvents()
-		If gSelectedDeviceName <> "" Then
-			'Form のスクリーンショットを
-			'Picture1 の Picture プロパティに代入します。
-			WLS_HCP.Picture1.Image = CaptureForm(pform)
-			'指定したプリンタにPicture1を印刷します。
-			APIPrint((gSelectedDeviceName))
-		End If
-		WLS_HCP.Close()
-	End Sub
-	'
-	' 指定したディバイス（プリンタ）から、ＤｅｖＭｏｄｅ構造体を取得し、情報の設定を行ない。
-	Sub APIPrint(ByRef Device As String)
-		Dim dm As sDEVMODE
-		Dim hPrinter, di As Integer
-		Dim prhdc As Integer
-		Dim dinfo As DOCINFO
-		Dim pdefs As PRINTER_DEFAULTS
-		Dim bufsize As Integer
-		Dim dmInBuf() As Byte
-		Dim dmOutBuf() As Byte
-		
-		pdefs.PDATATYPE = vbNullString
-		pdefs.PDEVMODE = 0
-		pdefs.DESIREDACCESS = PRINTER_ACCESS_USE
-		
-		di = sOpenPrinter(Device, hPrinter, pdefs)
-		If di = 0 Then Exit Sub
-		bufsize = snDocumentProperties(0, hPrinter, Device, 0, 0, 0)
-		ReDim dmInBuf(bufsize - 1)
-		ReDim dmOutBuf(bufsize - 1)
-		di = sDocumentProperties(0, hPrinter, Device, dmOutBuf(0), dmInBuf(0), DM_OUT_BUFFER)
-		
-		Select Case di
-			Case IDOK
-			Case IDCANCEL
-				GoTo PrintEnd2
-			Case Else
-				MsgBox("プリンタの情報が取得できません。", 0, "ハードコピー")
-				GoTo PrintEnd2
-		End Select
-		
-		'UPGRADE_WARNING: オブジェクト dm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Call memcpy(dm, dmOutBuf(0), Len(dm))
-		dm.dmOrientation = CShort(gSelectedOrientation)
-		dm.dmPaperSize = gSelectedPapeSize
-		dm.dmColor = DMCOLOR_COLOR
-		'UPGRADE_WARNING: オブジェクト dm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Call memcpy(dmOutBuf(0), dm, Len(dm))
-		
-		prhdc = CreateDC("winspool", Device, vbNullString, dmOutBuf(0))
-		If prhdc = 0 Then GoTo PrintEnd2
-		
-		dinfo.cbSize = Len(dinfo)
-		dinfo.lpszDocName = "画面ID：" & SSS_PrgId
-		dinfo.lpszOutput = vbNullString
-		
-		di = StartDoc(prhdc, dinfo)
-		di = StartPage(prhdc)
-		PrintBitmap(prhdc)
-		di = EndPage(prhdc)
-		If di >= 0 Then di = EndDocAPI(prhdc)
-		
-PrintEnd1: 
-		DeleteDC(prhdc)
-		
-PrintEnd2: 
-		ClosePrinter(hPrinter)
-		
-	End Sub
-	'
-	'フォームのスクリーンショットを印刷する
-	Sub PrintBitmap(ByRef hdc As Integer)
-		Dim bi As BITMAPINFO
-		Dim dctemp, dctemp2 As Integer
-		Dim Msg As String
-		Dim bufsize As Integer
-		Dim bm As BITMAP
-		Dim ghnd As Integer
-		Dim gptr As Integer
-		Dim xpix, ypix As Integer
-		Dim doscale As Double
-		Dim uy, ux As Integer
-		Dim di As Integer
-		
-		'UPGRADE_ISSUE: PictureBox プロパティ Picture1.hdc はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-		dctemp = CreateCompatibleDC(WLS_HCP.Picture1.hdc)
-		'UPGRADE_WARNING: オブジェクト bm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		di = GetObjectAPI(CInt(CObj(WLS_HCP.Picture1.Image)), Len(bm), bm)
-		With bi.bmiHeader
-			.biSize = Len(bi.bmiHeader)
-			.biWidth = bm.bmWidth
-			.biHeight = bm.bmHeight
-			.biPlanes = 1
-			.biBitCount = 24
-			.biCompression = BI_RGB
-			bufsize = .biWidth
-			bufsize = bufsize * 3
-			bufsize = ((bufsize + 3) / 4) * 4
-			bufsize = bufsize * .biHeight
-		End With
-		ghnd = GlobalAlloc(GMEM_MOVEABLE, bufsize)
-		gptr = GlobalLock(ghnd)
-		di = GetDIBits(dctemp, CInt(CObj(WLS_HCP.Picture1.Image)), 0, bm.bmHeight, gptr, bi, DIB_RGB_COLORS)
-		
-		xpix = GetDeviceCaps(hdc, HORZRES) - 200 '余白分引く
-		ypix = GetDeviceCaps(hdc, VERTRES) - 200
-		doscale = xpix / bm.bmWidth
-		If ypix / bm.bmHeight < doscale Then
-			doscale = ypix / bm.bmHeight
-		End If
-		If doscale > 6 Then
-			doscale = 6 '上限サイズ　（1024*768 → A4横 で最適?）
-		End If
-		ux = Int(bm.bmWidth * doscale)
-		uy = Int(bm.bmHeight * doscale)
-		'UPGRADE_ISSUE: 定数 vbSrcCopy はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-		di = StretchDIBits(hdc, 100, 100, ux, uy, 0, 0, bm.bmWidth, bm.bmHeight, gptr, bi, DIB_RGB_COLORS, vbSrcCopy)
-		
-		di = GlobalUnlock(ghnd)
-		di = GlobalFree(ghnd)
-		di = DeleteDC(dctemp)
-	End Sub
-	
-	'ハードコピーイベント。Ｅｅｅにより呼出される。
-	Function SSSMAIN_Hardcopy_Getevent() As Boolean
-		Call Exec_Hardcopy(FR_SSSMAIN)
-		SSSMAIN_Hardcopy_Getevent = False
-	End Function
-	'#End(2003.4.22)
-	'#End(2003.10.28)
-	
-	Public Sub SSSWIN_EXCTBZ_OPEN()
+
+    '''''''
+    '#Start(2003.10.28)
+    '#Start(2003.4.22)
+    '2019/09/20 DEL START
+    '    Public Function CreateBitmapPicture(ByVal hBmp As Integer, ByVal hPal As Integer) As System.Drawing.Image
+
+    '		Dim r As Integer
+    '		Dim Pic As PicBmp
+    '		Dim IPic As System.Drawing.Image
+    '		'UPGRADE_WARNING: 構造体 IID_IDispatch の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
+    '		Dim IID_IDispatch As GUID
+
+    '		With IID_IDispatch
+    '			.Data1 = &H20400
+    '			.Data4(0) = &HC0s
+    '			.Data4(7) = &H46s
+    '		End With
+
+    '		With Pic
+    '			.Size = Len(Pic) ' Length of structure
+    '			'UPGRADE_ISSUE: 定数 vbPicTypeBitmap はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+    '			.Type = vbPicTypeBitmap ' Type of Picture (bitmap)
+    '			.hBmp = hBmp ' Handle to bitmap
+    '			.hPal = hPal ' Handle to palette (may be null)
+    '		End With
+
+    '		r = OleCreatePictureIndirect(Pic, IID_IDispatch, 1, IPic)
+    '		CreateBitmapPicture = IPic
+    '	End Function
+    '	''''''''''''
+    '	Function CaptureWindow(ByVal hWndSrc As Integer, ByVal Client As Boolean, ByVal LeftSrc As Integer, ByVal TopSrc As Integer, ByVal WidthSrc As Integer, ByVal HeightSrc As Integer) As System.Drawing.Image
+
+    '		Dim hDCMemory As Integer
+    '		Dim hBmp As Integer
+    '		Dim hBmpPrev As Integer
+    '		Dim r As Integer
+    '		Dim hDCSrc As Integer
+    '		Dim hPal As Integer
+    '		Dim hPalPrev As Integer
+    '		Dim RasterCapsScrn As Integer
+    '		Dim HasPaletteScrn As Integer
+    '		Dim PaletteSizeScrn As Integer
+    '		'UPGRADE_WARNING: 構造体 LogPal の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
+    '		Dim LogPal As LOGPALETTE
+
+    '		If Client Then
+    '			hDCSrc = GetDC(hWndSrc)
+    '		Else
+    '			hDCSrc = GetWindowDC(hWndSrc)
+    '		End If
+
+    '		hDCMemory = CreateCompatibleDC(hDCSrc)
+    '		hBmp = CreateCompatibleBitmap(hDCSrc, WidthSrc, HeightSrc)
+    '		hBmpPrev = SelectObject(hDCMemory, hBmp)
+
+    '		RasterCapsScrn = GetDeviceCaps(hDCSrc, RASTERCAPS)
+    '		HasPaletteScrn = RasterCapsScrn And RC_PALETTE
+    '		PaletteSizeScrn = GetDeviceCaps(hDCSrc, SIZEPALETTE)
+    '		If HasPaletteScrn And (PaletteSizeScrn = 256) Then
+    '			LogPal.palVersion = &H300s
+    '			LogPal.palNumEntries = 256
+    '			r = GetSystemPaletteEntries(hDCSrc, 0, 256, LogPal.palPalEntry(0))
+    '			hPal = CreatePalette(LogPal)
+    '			hPalPrev = SelectPalette(hDCMemory, hPal, 0)
+    '			r = RealizePalette(hDCMemory)
+    '		End If
+
+    '		'UPGRADE_ISSUE: 定数 vbSrcCopy はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+    '		r = BitBlt(hDCMemory, 0, 0, WidthSrc, HeightSrc, hDCSrc, LeftSrc, TopSrc, vbSrcCopy)
+
+    '		hBmp = SelectObject(hDCMemory, hBmpPrev)
+
+    '		If HasPaletteScrn And (PaletteSizeScrn = 256) Then
+    '			hPal = SelectPalette(hDCMemory, hPalPrev, 0)
+    '		End If
+
+    '		r = DeleteDC(hDCMemory)
+    '		r = ReleaseDC(hWndSrc, hDCSrc)
+
+    '		CaptureWindow = CreateBitmapPicture(hBmp, hPal)
+    '	End Function
+
+    '	''''''
+    '	Public Function CaptureForm(ByRef frmSrc As System.Windows.Forms.Form) As System.Drawing.Image
+    '		' Call CaptureWindow to capture the entire form given it's window
+    '		' handle and then return the resulting Picture object
+    '		'UPGRADE_ISSUE: 定数 vbPixels はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+    '		'UPGRADE_ISSUE: 定数 vbTwips はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+    '		'UPGRADE_ISSUE: Form メソッド frmSrc.ScaleY はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+    '		'UPGRADE_ISSUE: Form メソッド frmSrc.ScaleX はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+    '		CaptureForm = CaptureWindow(frmSrc.Handle.ToInt32, False, 0, 0, frmSrc.ScaleX(VB6.PixelsToTwipsX(frmSrc.Width), vbTwips, vbPixels), frmSrc.ScaleY(VB6.PixelsToTwipsY(frmSrc.Height), vbTwips, vbPixels))
+    '	End Function
+    '	'ハードコピー
+    '	Public Sub Exec_Hardcopy(ByRef pform As System.Windows.Forms.Form)
+    '		gSelectedDeviceName = ""
+    '		'UPGRADE_ISSUE: Printers メソッド Printers.count はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+    '		If Printers.count = 0 Then
+    '			Call MsgBox("このＰＣにはプリンタがインストールされていないため" & vbCr & "画面ハードコピーができません。" & vbCr & "プリンタをインストールしてから再度実行して下さい。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly, My.Application.Info.Title)
+    '			gSelectedDeviceName = CStr(False)
+    '			Exit Sub
+    '		End If
+    '		'UPGRADE_ISSUE: Load ステートメント はサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="B530EFF2-3132-48F8-B8BC-D88AF543D321"' をクリックしてください。
+    '		Load(WLS_HCP)
+    '		WLS_HCP.ShowDialog()
+    '		System.Windows.Forms.Application.DoEvents()
+    '		If gSelectedDeviceName <> "" Then
+    '			'Form のスクリーンショットを
+    '			'Picture1 の Picture プロパティに代入します。
+    '			WLS_HCP.Picture1.Image = CaptureForm(pform)
+    '			'指定したプリンタにPicture1を印刷します。
+    '			APIPrint((gSelectedDeviceName))
+    '		End If
+    '		WLS_HCP.Close()
+    '	End Sub
+    '	'
+    '	' 指定したディバイス（プリンタ）から、ＤｅｖＭｏｄｅ構造体を取得し、情報の設定を行ない。
+    '	Sub APIPrint(ByRef Device As String)
+    '		Dim dm As sDEVMODE
+    '		Dim hPrinter, di As Integer
+    '		Dim prhdc As Integer
+    '		Dim dinfo As DOCINFO
+    '		Dim pdefs As PRINTER_DEFAULTS
+    '		Dim bufsize As Integer
+    '		Dim dmInBuf() As Byte
+    '		Dim dmOutBuf() As Byte
+
+    '		pdefs.PDATATYPE = vbNullString
+    '		pdefs.PDEVMODE = 0
+    '		pdefs.DESIREDACCESS = PRINTER_ACCESS_USE
+
+    '		di = sOpenPrinter(Device, hPrinter, pdefs)
+    '		If di = 0 Then Exit Sub
+    '		bufsize = snDocumentProperties(0, hPrinter, Device, 0, 0, 0)
+    '		ReDim dmInBuf(bufsize - 1)
+    '		ReDim dmOutBuf(bufsize - 1)
+    '		di = sDocumentProperties(0, hPrinter, Device, dmOutBuf(0), dmInBuf(0), DM_OUT_BUFFER)
+
+    '		Select Case di
+    '			Case IDOK
+    '			Case IDCANCEL
+    '				GoTo PrintEnd2
+    '			Case Else
+    '				MsgBox("プリンタの情報が取得できません。", 0, "ハードコピー")
+    '				GoTo PrintEnd2
+    '		End Select
+
+    '		'UPGRADE_WARNING: オブジェクト dm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '		Call memcpy(dm, dmOutBuf(0), Len(dm))
+    '		dm.dmOrientation = CShort(gSelectedOrientation)
+    '		dm.dmPaperSize = gSelectedPapeSize
+    '		dm.dmColor = DMCOLOR_COLOR
+    '		'UPGRADE_WARNING: オブジェクト dm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '		Call memcpy(dmOutBuf(0), dm, Len(dm))
+
+    '		prhdc = CreateDC("winspool", Device, vbNullString, dmOutBuf(0))
+    '		If prhdc = 0 Then GoTo PrintEnd2
+
+    '		dinfo.cbSize = Len(dinfo)
+    '		dinfo.lpszDocName = "画面ID：" & SSS_PrgId
+    '		dinfo.lpszOutput = vbNullString
+
+    '		di = StartDoc(prhdc, dinfo)
+    '		di = StartPage(prhdc)
+    '		PrintBitmap(prhdc)
+    '		di = EndPage(prhdc)
+    '		If di >= 0 Then di = EndDocAPI(prhdc)
+
+    'PrintEnd1: 
+    '		DeleteDC(prhdc)
+
+    'PrintEnd2: 
+    '		ClosePrinter(hPrinter)
+
+    '	End Sub
+    '	'
+    '	'フォームのスクリーンショットを印刷する
+    '	Sub PrintBitmap(ByRef hdc As Integer)
+    '		Dim bi As BITMAPINFO
+    '		Dim dctemp, dctemp2 As Integer
+    '		Dim Msg As String
+    '		Dim bufsize As Integer
+    '		Dim bm As BITMAP
+    '		Dim ghnd As Integer
+    '		Dim gptr As Integer
+    '		Dim xpix, ypix As Integer
+    '		Dim doscale As Double
+    '		Dim uy, ux As Integer
+    '		Dim di As Integer
+
+    '		'UPGRADE_ISSUE: PictureBox プロパティ Picture1.hdc はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+    '		dctemp = CreateCompatibleDC(WLS_HCP.Picture1.hdc)
+    '		'UPGRADE_WARNING: オブジェクト bm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '		di = GetObjectAPI(CInt(CObj(WLS_HCP.Picture1.Image)), Len(bm), bm)
+    '		With bi.bmiHeader
+    '			.biSize = Len(bi.bmiHeader)
+    '			.biWidth = bm.bmWidth
+    '			.biHeight = bm.bmHeight
+    '			.biPlanes = 1
+    '			.biBitCount = 24
+    '			.biCompression = BI_RGB
+    '			bufsize = .biWidth
+    '			bufsize = bufsize * 3
+    '			bufsize = ((bufsize + 3) / 4) * 4
+    '			bufsize = bufsize * .biHeight
+    '		End With
+    '		ghnd = GlobalAlloc(GMEM_MOVEABLE, bufsize)
+    '		gptr = GlobalLock(ghnd)
+    '		di = GetDIBits(dctemp, CInt(CObj(WLS_HCP.Picture1.Image)), 0, bm.bmHeight, gptr, bi, DIB_RGB_COLORS)
+
+    '		xpix = GetDeviceCaps(hdc, HORZRES) - 200 '余白分引く
+    '		ypix = GetDeviceCaps(hdc, VERTRES) - 200
+    '		doscale = xpix / bm.bmWidth
+    '		If ypix / bm.bmHeight < doscale Then
+    '			doscale = ypix / bm.bmHeight
+    '		End If
+    '		If doscale > 6 Then
+    '			doscale = 6 '上限サイズ　（1024*768 → A4横 で最適?）
+    '		End If
+    '		ux = Int(bm.bmWidth * doscale)
+    '		uy = Int(bm.bmHeight * doscale)
+    '		'UPGRADE_ISSUE: 定数 vbSrcCopy はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+    '		di = StretchDIBits(hdc, 100, 100, ux, uy, 0, 0, bm.bmWidth, bm.bmHeight, gptr, bi, DIB_RGB_COLORS, vbSrcCopy)
+
+    '		di = GlobalUnlock(ghnd)
+    '		di = GlobalFree(ghnd)
+    '		di = DeleteDC(dctemp)
+    '	End Sub
+
+    '    'ハードコピーイベント。Ｅｅｅにより呼出される。
+    '    Function SSSMAIN_Hardcopy_Getevent() As Boolean
+    '        Call Exec_Hardcopy(FR_SSSMAIN)
+    '        SSSMAIN_Hardcopy_Getevent = False
+    '    End Function
+    '2019/09/20 DEL END
+    '#End(2003.4.22)
+    '#End(2003.10.28)
+
+    Public Sub SSSWIN_EXCTBZ_OPEN()
 		
 		Call DB_BeginTransaction(CStr(BTR_Exclude))
 		DB_EXCTBZ.CLTID = SSS_CLTID.Value
@@ -2269,8 +2323,10 @@ PrintEnd2:
 			DB_EXCTBZ.LCKTM = VB6.Format(Now, "hhnnss")
 			Call DB_Update(DBN_EXCTBZ, 1)
 		Else
-			Call EXCTBZ_RClear()
-			DB_EXCTBZ.CLTID = SSS_CLTID.Value
+            '2019/09/20 CHG START
+            'Call EXCTBZ_RClear()
+            '2019/09/20 CHG END
+            DB_EXCTBZ.CLTID = SSS_CLTID.Value
 			DB_EXCTBZ.GYMCD = SSS_PrgId
 			DB_EXCTBZ.LCKTM = VB6.Format(Now, "hhnnss")
 			Call DB_Insert(DBN_EXCTBZ, 1)

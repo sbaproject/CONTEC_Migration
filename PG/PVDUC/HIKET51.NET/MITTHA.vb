@@ -150,11 +150,13 @@ Module MITTHA_DBM
 	
 	Sub MITTHA_RClear()
 		Dim TmpStat As Object
-		'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		TmpStat = Dll_RClear(DBN_MITTHA, G_LB)
-		Call ResetBuf(DBN_MITTHA)
-	End Sub
+        'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/20 DELL START
+        'TmpStat = Dll_RClear(DBN_MITTHA, G_LB)
+        'Call ResetBuf(DBN_MITTHA)
+        '2019/09/20 DELL END
+    End Sub
 	
 	' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
 	'   名称：  Function DSPMITTHA_SEARCH

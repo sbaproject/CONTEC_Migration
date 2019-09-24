@@ -23,11 +23,13 @@ Module ENDBNKCD_F52
 			ENDBNKCD_Check = -1
 			Exit Function
 		End If
-		
-		Call BNKMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト ENDBNKCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト LenWid(ENDBNKCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If LenWid(ENDBNKCD) = 0 Or Trim(ENDBNKCD) = "" Then
+
+        '2019/09/20 DEL START
+        'Call BNKMTA_RClear()
+        '2019/09/20 DEL START
+        'UPGRADE_WARNING: オブジェクト ENDBNKCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト LenWid(ENDBNKCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If LenWid(ENDBNKCD) = 0 Or Trim(ENDBNKCD) = "" Then
 		Else
 			Call DB_GetEq(DBN_BNKMTA, 1, ENDBNKCD, BtrNormal)
 			''''''''If DBSTAT = 0 Then

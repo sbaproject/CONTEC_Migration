@@ -103,28 +103,56 @@
     Public WithEvents IM_PREV As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
     Public WithEvents IM_SELECTCM As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
     Public WithEvents IM_Slist As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
-    Public WithEvents MN_Execute As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_HARDCOPY As System.Windows.Forms.ToolStripMenuItem
+
+    'Public WithEvents MN_Execute As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_HARDCOPY As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_Execute As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_HARDCOPY As System.Windows.Forms.ContextMenuStrip
+
     Public WithEvents Bar11 As System.Windows.Forms.ToolStripSeparator
-    Public WithEvents MN_EndCm As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Ctrl As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_ClearItm As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_UnDoItem As System.Windows.Forms.ToolStripMenuItem
+
+    'Public WithEvents MN_EndCm As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Ctrl As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_ClearItm As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_UnDoItem As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_EndCm As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Ctrl As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_ClearItm As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_UnDoItem As System.Windows.Forms.ContextMenuStrip
+
     Public WithEvents Bar21 As System.Windows.Forms.ToolStripSeparator
-    Public WithEvents MN_Cut As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Copy As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Paste As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_EditMn As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_SELECTCM As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_PREV As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_NEXTCM As System.Windows.Forms.ToolStripMenuItem
+
+    'Public WithEvents MN_Cut As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Copy As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Paste As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_EditMn As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_SELECTCM As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_PREV As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_NEXTCM As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_Cut As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Copy As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Paste As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_EditMn As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_SELECTCM As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_PREV As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_NEXTCM As System.Windows.Forms.ContextMenuStrip
+
     Public WithEvents Bar31 As System.Windows.Forms.ToolStripSeparator
-    Public WithEvents MN_Slist As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Oprt As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_AllCopy As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_FullPast As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_Esc As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_ShortCut As System.Windows.Forms.ToolStripMenuItem
+
+    'Public WithEvents MN_Slist As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Oprt As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_AllCopy As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_FullPast As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_Esc As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_ShortCut As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_Slist As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Oprt As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_AllCopy As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_FullPast As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_Esc As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_ShortCut As System.Windows.Forms.ContextMenuStrip
+
+
     Public WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
     'メモ: 以下のプロシージャは Windows フォーム デザイナで必要です。
     'Windows フォーム デザイナを使って変更できます。
@@ -220,28 +248,47 @@
         Me.IM_SELECTCM = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(Me.components)
         Me.IM_Slist = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(Me.components)
         Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
-        Me.MN_Ctrl = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Execute = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_HARDCOPY = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_Ctrl = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_Execute = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_HARDCOPY = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_Ctrl = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_Execute = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_HARDCOPY = New System.Windows.Forms.ContextMenuStrip()
         Me.Bar11 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_EndCm = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_EditMn = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_ClearItm = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_UnDoItem = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_EndCm = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_EditMn = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_ClearItm = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_UnDoItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_EndCm = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_EditMn = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_ClearItm = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_UnDoItem = New System.Windows.Forms.ContextMenuStrip()
         Me.Bar21 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_Cut = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Copy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Paste = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Oprt = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_SELECTCM = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_PREV = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_NEXTCM = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_Cut = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_Copy = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_Paste = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_Oprt = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_SELECTCM = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_PREV = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_NEXTCM = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_Cut = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_Copy = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_Paste = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_Oprt = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_SELECTCM = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_PREV = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_NEXTCM = New System.Windows.Forms.ContextMenuStrip()
         Me.Bar31 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_Slist = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_ShortCut = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_AllCopy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_FullPast = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_Esc = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.MN_Slist = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.SM_ShortCut = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.SM_AllCopy = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.SM_FullPast = New System.Windows.Forms.ToolStripMenuItem()
+        'Me.SM_Esc = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_Slist = New System.Windows.Forms.ContextMenuStrip()
+        Me.SM_ShortCut = New System.Windows.Forms.ContextMenuStrip()
+        Me.SM_AllCopy = New System.Windows.Forms.ContextMenuStrip()
+        Me.SM_FullPast = New System.Windows.Forms.ContextMenuStrip()
+        Me.SM_Esc = New System.Windows.Forms.ContextMenuStrip()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -1225,7 +1272,7 @@
         '
         'MainMenu1
         '
-        Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Ctrl, Me.MN_EditMn, Me.MN_Oprt, Me.SM_ShortCut})
+        'Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Ctrl, Me.MN_EditMn, Me.MN_Oprt, Me.SM_ShortCut})
         Me.MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.MainMenu1.Name = "MainMenu1"
         Me.MainMenu1.Size = New System.Drawing.Size(928, 24)
@@ -1233,7 +1280,7 @@
         '
         'MN_Ctrl
         '
-        Me.MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Execute, Me.MN_HARDCOPY, Me.Bar11, Me.MN_EndCm})
+        'Me.MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Execute, Me.MN_HARDCOPY, Me.Bar11, Me.MN_EndCm})
         Me.MN_Ctrl.Name = "MN_Ctrl"
         Me.MN_Ctrl.Size = New System.Drawing.Size(57, 20)
         Me.MN_Ctrl.Text = "処理(&1)"
@@ -1241,7 +1288,7 @@
         'MN_Execute
         '
         Me.MN_Execute.Name = "MN_Execute"
-        Me.MN_Execute.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        'Me.MN_Execute.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
         Me.MN_Execute.Size = New System.Drawing.Size(156, 22)
         Me.MN_Execute.Text = "登録(&R)"
         '
@@ -1266,7 +1313,7 @@
         '
         'MN_EditMn
         '
-        Me.MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
+        'Me.MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
         Me.MN_EditMn.Name = "MN_EditMn"
         Me.MN_EditMn.Size = New System.Drawing.Size(57, 20)
         Me.MN_EditMn.Text = "編集(&2)"
@@ -1291,27 +1338,27 @@
         'MN_Cut
         '
         Me.MN_Cut.Name = "MN_Cut"
-        Me.MN_Cut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
+        'Me.MN_Cut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
         Me.MN_Cut.Size = New System.Drawing.Size(178, 22)
         Me.MN_Cut.Text = "切り取り(&T)"
         '
         'MN_Copy
         '
         Me.MN_Copy.Name = "MN_Copy"
-        Me.MN_Copy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        'Me.MN_Copy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
         Me.MN_Copy.Size = New System.Drawing.Size(178, 22)
         Me.MN_Copy.Text = "コピー(&C)"
         '
         'MN_Paste
         '
         Me.MN_Paste.Name = "MN_Paste"
-        Me.MN_Paste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+        'Me.MN_Paste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
         Me.MN_Paste.Size = New System.Drawing.Size(178, 22)
         Me.MN_Paste.Text = "貼り付け(&P)"
         '
         'MN_Oprt
         '
-        Me.MN_Oprt.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_SELECTCM, Me.MN_PREV, Me.MN_NEXTCM, Me.Bar31, Me.MN_Slist})
+        'Me.MN_Oprt.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_SELECTCM, Me.MN_PREV, Me.MN_NEXTCM, Me.Bar31, Me.MN_Slist})
         Me.MN_Oprt.Name = "MN_Oprt"
         Me.MN_Oprt.Size = New System.Drawing.Size(57, 20)
         Me.MN_Oprt.Text = "操作(&3)"
@@ -1320,7 +1367,7 @@
         'MN_SELECTCM
         '
         Me.MN_SELECTCM.Name = "MN_SELECTCM"
-        Me.MN_SELECTCM.ShortcutKeys = System.Windows.Forms.Keys.F7
+        'Me.MN_SELECTCM.ShortcutKeys = System.Windows.Forms.Keys.F7
         Me.MN_SELECTCM.Size = New System.Drawing.Size(182, 22)
         Me.MN_SELECTCM.Text = "選択"
         '
@@ -1328,7 +1375,7 @@
         '
         Me.MN_PREV.Enabled = False
         Me.MN_PREV.Name = "MN_PREV"
-        Me.MN_PREV.ShortcutKeys = System.Windows.Forms.Keys.F8
+        'Me.MN_PREV.ShortcutKeys = System.Windows.Forms.Keys.F8
         Me.MN_PREV.Size = New System.Drawing.Size(182, 22)
         Me.MN_PREV.Text = "前頁"
         Me.MN_PREV.Visible = False
@@ -1337,7 +1384,7 @@
         '
         Me.MN_NEXTCM.Enabled = False
         Me.MN_NEXTCM.Name = "MN_NEXTCM"
-        Me.MN_NEXTCM.ShortcutKeys = System.Windows.Forms.Keys.F9
+        'Me.MN_NEXTCM.ShortcutKeys = System.Windows.Forms.Keys.F9
         Me.MN_NEXTCM.Size = New System.Drawing.Size(182, 22)
         Me.MN_NEXTCM.Text = "次頁"
         Me.MN_NEXTCM.Visible = False
@@ -1350,13 +1397,13 @@
         'MN_Slist
         '
         Me.MN_Slist.Name = "MN_Slist"
-        Me.MN_Slist.ShortcutKeys = System.Windows.Forms.Keys.F5
+        'Me.MN_Slist.ShortcutKeys = System.Windows.Forms.Keys.F5
         Me.MN_Slist.Size = New System.Drawing.Size(182, 22)
         Me.MN_Slist.Text = "候補の一覧(&L&ﾆ)..."
         '
         'SM_ShortCut
         '
-        Me.SM_ShortCut.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SM_AllCopy, Me.SM_FullPast, Me.SM_Esc})
+        'Me.SM_ShortCut.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SM_AllCopy, Me.SM_FullPast, Me.SM_Esc})
         Me.SM_ShortCut.Name = "SM_ShortCut"
         Me.SM_ShortCut.Size = New System.Drawing.Size(66, 20)
         Me.SM_ShortCut.Text = "ShortCut"

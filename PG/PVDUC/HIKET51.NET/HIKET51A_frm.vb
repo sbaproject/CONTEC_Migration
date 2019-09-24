@@ -2419,12 +2419,12 @@ Friend Class FR_SSSSUB01
 			Case TypeOf pm_Ctl Is System.Windows.Forms.TextBox
 				'選択状態の設定（初期選択）
 				Call CF_Set_Sel_Ini(Main_Inf.Dsp_Sub_Inf(Trg_Index), SEL_INI_MODE_1)
-				'            '項目色設定
-				'            Call CF_Set_Item_Color(Main_Inf.Dsp_Sub_Inf(Trg_Index), ITEM_SELECT_STATUS, Main_Inf)
-				
-			Case TypeOf pm_Ctl Is SSPanel5
-				'パネルの場合
-				Call SSSMAIN0003.CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
+                '            '項目色設定
+                '            Call CF_Set_Item_Color(Main_Inf.Dsp_Sub_Inf(Trg_Index), ITEM_SELECT_STATUS, Main_Inf)
+
+            Case TypeOf pm_Ctl Is Label
+                'パネルの場合
+                Call SSSMAIN0003.CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
 				
 			Case TypeOf pm_Ctl Is System.Windows.Forms.PictureBox
 				'イメージの場合
@@ -2765,12 +2765,15 @@ Friend Class FR_SSSSUB01
 			
 			'画面表示位置設定
 			Call CF_Set_Frm_Location(Me)
-			
-			'入力担当者編集
-			Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
-			
-			'ボディ部編集_サブ照会画面用
-			Call SSSMAIN0003.F_DSP_BD_Inf_SUB(0, Main_Inf)
+
+            '入力担当者編集
+            '2019/09/20 CHG START
+            'Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
+            Call CF_Set_Frm_IN_TANCD_HIKET51(Me, Main_Inf)
+            '2019/09/20 CHG END            
+
+            'ボディ部編集_サブ照会画面用
+            Call SSSMAIN0003.F_DSP_BD_Inf_SUB(0, Main_Inf)
 			
 			'画面明細表示
 			Call CF_Body_Dsp(Main_Inf)
@@ -3192,13 +3195,15 @@ Friend Class FR_SSSSUB01
 		
 		' === 20060907 === INSERT S - ACE)Sejima
 		Main_Inf.Dsp_Base.IsUnload = True
-		' === 20060907 === INSERT E
-		'共通終了処理？
-		'UPGRADE_NOTE: オブジェクト FR_SSSSUB01 をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
-		Me = Nothing
-		
-		' === 20060921 === INSERT S - ACE)Nagasawa サブ画面終了時にメイン画面を表示
-		FR_SSSMAIN.Show()
+        ' === 20060907 === INSERT E
+        '共通終了処理？
+        'UPGRADE_NOTE: オブジェクト FR_SSSSUB01 をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
+        '2019/09/20 DEL START
+        'Me = Nothing
+        '2019/09/20 DEL END
+
+        ' === 20060921 === INSERT S - ACE)Nagasawa サブ画面終了時にメイン画面を表示
+        FR_SSSMAIN.Show()
 		' === 20060921 === INSERT E -
 		
 		eventArgs.Cancel = Cancel
@@ -3235,12 +3240,15 @@ Friend Class FR_SSSSUB01
 		
 		'画面表示位置設定
 		Call CF_Set_Frm_Location(Me)
-		
-		'入力担当者編集
-		Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
-		
-		'ボディ部編集_サブ照会画面用
-		Call SSSMAIN0003.F_DSP_BD_Inf_SUB(0, Main_Inf)
+
+        '入力担当者編集
+        '2019/09/20 CHG START
+        'Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
+        Call CF_Set_Frm_IN_TANCD_HIKET51(Me, Main_Inf)
+        '2019/09/20 CHG END
+
+        'ボディ部編集_サブ照会画面用
+        Call SSSMAIN0003.F_DSP_BD_Inf_SUB(0, Main_Inf)
 		
 		'画面明細表示
 		Call CF_Body_Dsp(Main_Inf)
@@ -4891,11 +4899,45 @@ Friend Class FR_SSSSUB01
 			Call Ctl_Item_KeyDown(TX_CursorRest, KeyCode, Shift)
 		End If
 	End Sub
-	' === 20060930 === INSERT E -
-	Private Sub VS_Scrl_Scroll(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.ScrollEventArgs) Handles VS_Scrl.Scroll
-		Select Case eventArgs.type
-			Case System.Windows.Forms.ScrollEventType.EndScroll
-				VS_Scrl_Change(eventArgs.newValue)
-		End Select
-	End Sub
+    ' === 20060930 === INSERT E -
+    Private Sub VS_Scrl_Scroll(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.ScrollEventArgs) Handles VS_Scrl.Scroll
+        Select Case eventArgs.type
+            Case System.Windows.Forms.ScrollEventType.EndScroll
+                VS_Scrl_Change(eventArgs.newValue)
+        End Select
+    End Sub
+
+    '2019/09/20 ADD START
+    ' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+    '   名称：  Function CF_Set_Frm_IN_TANCD_HIKET51
+    '   概要：  入力担当者編集
+    '   引数：　pm_Form        :フォーム
+    '   戻値：　なし
+    '   備考：
+    ' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+    Public Function CF_Set_Frm_IN_TANCD_HIKET51(ByRef pm_Form As FR_SSSSUB01, ByRef pm_All As Cls_All) As Short
+
+        Dim Trg_Index As Short
+        Dim Dsp_Value As Object
+
+        With pm_Form
+            '入力担当者コード
+            'UPGRADE_ISSUE: Control HD_IN_TANCD は、汎用名前空間 Form 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+            Trg_Index = CShort(.HD_IN_TANCD.Tag)
+            'UPGRADE_WARNING: オブジェクト CF_Cnv_Dsp_Item() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Dsp_Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Dsp_Value = CF_Cnv_Dsp_Item(Inp_Inf.InpTanCd, pm_All.Dsp_Sub_Inf(Trg_Index), False)
+            Call CF_Set_Item_Direct(Dsp_Value, pm_All.Dsp_Sub_Inf(Trg_Index), pm_All, SET_FLG_DB)
+
+            '入力担当者名
+            'UPGRADE_ISSUE: Control HD_IN_TANNM は、汎用名前空間 Form 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+            Trg_Index = CShort(.HD_IN_TANNM.Tag)
+            'UPGRADE_WARNING: オブジェクト CF_Cnv_Dsp_Item() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Dsp_Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Dsp_Value = CF_Cnv_Dsp_Item(Inp_Inf.InpTanNm, pm_All.Dsp_Sub_Inf(Trg_Index), False)
+            Call CF_Set_Item_Direct(Dsp_Value, pm_All.Dsp_Sub_Inf(Trg_Index), pm_All, SET_FLG_DB)
+        End With
+
+    End Function
+    '2019/09/20 ADD END
 End Class

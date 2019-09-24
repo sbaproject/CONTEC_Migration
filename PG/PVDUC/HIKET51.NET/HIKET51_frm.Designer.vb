@@ -183,28 +183,54 @@
     Public WithEvents IM_SELECTCM As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
     Public WithEvents IM_Slist As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
     Public WithEvents Line1 As Microsoft.VisualBasic.Compatibility.VB6.LabelArray
-    Public WithEvents MN_Execute As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_HARDCOPY As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Execute As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_Execute As System.Windows.Forms.ContextMenuStrip
+    'Public WithEvents MN_HARDCOPY As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_HARDCOPY As System.Windows.Forms.ContextMenuStrip
     Public WithEvents bar11 As System.Windows.Forms.ToolStripSeparator
-    Public WithEvents MN_EndCm As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Ctrl As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_ClearItm As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_UnDoItem As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_EndCm As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Ctrl As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_ClearItm As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_UnDoItem As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_EndCm As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Ctrl As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_ClearItm As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_UnDoItem As System.Windows.Forms.ContextMenuStrip
+
     Public WithEvents Bar21 As System.Windows.Forms.ToolStripSeparator
-    Public WithEvents MN_Cut As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Copy As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Paste As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_EditMn As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_SELECTCM As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_PREV As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_NEXTCM As System.Windows.Forms.ToolStripMenuItem
+
+    'Public WithEvents MN_Cut As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Copy As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Paste As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_EditMn As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_SELECTCM As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_PREV As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_NEXTCM As System.Windows.Forms.ToolStripMenuItem
+
+    Public WithEvents MN_Cut As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Copy As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Paste As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_EditMn As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_SELECTCM As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_PREV As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_NEXTCM As System.Windows.Forms.ContextMenuStrip
+
     Public WithEvents Bar31 As System.Windows.Forms.ToolStripSeparator
-    Public WithEvents MN_Slist As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents MN_Oprt As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_AllCopy As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_FullPast As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_Esc As System.Windows.Forms.ToolStripMenuItem
-    Public WithEvents SM_ShortCut As System.Windows.Forms.ToolStripMenuItem
+
+    'Public WithEvents MN_Slist As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Oprt As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_AllCopy As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_FullPast As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_Esc As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_ShortCut As System.Windows.Forms.ToolStripMenuItem
+
+    Public WithEvents MN_Slist As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Oprt As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_AllCopy As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_FullPast As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_Esc As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_ShortCut As System.Windows.Forms.ContextMenuStrip
+
     Public WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
     'メモ: 以下のプロシージャは Windows フォーム デザイナで必要です。
     'Windows フォーム デザイナを使って変更できます。
@@ -380,28 +406,28 @@
         Me.IM_Slist = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(Me.components)
         Me.Line1 = New Microsoft.VisualBasic.Compatibility.VB6.LabelArray(Me.components)
         Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
-        Me.MN_Ctrl = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Execute = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_HARDCOPY = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_Ctrl = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Execute = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_HARDCOPY = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.bar11 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_EndCm = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_EditMn = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_ClearItm = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_UnDoItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_EndCm = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_EditMn = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_ClearItm = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_UnDoItem = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Bar21 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_Cut = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Copy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Paste = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_Oprt = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_SELECTCM = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_PREV = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MN_NEXTCM = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_Cut = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Copy = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Paste = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Oprt = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_SELECTCM = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_PREV = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_NEXTCM = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Bar31 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_Slist = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_ShortCut = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_AllCopy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_FullPast = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SM_Esc = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MN_Slist = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_ShortCut = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_AllCopy = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_FullPast = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_Esc = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -491,7 +517,6 @@
         CType(Me.IM_SELECTCM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IM_Slist, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Line1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MainMenu1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -537,7 +562,7 @@
         Me.HD_MITNOV.MaxLength = 12
         Me.HD_MITNOV.Name = "HD_MITNOV"
         Me.HD_MITNOV.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_MITNOV.Size = New System.Drawing.Size(18, 23)
+        Me.HD_MITNOV.Size = New System.Drawing.Size(18, 20)
         Me.HD_MITNOV.TabIndex = 94
         Me.HD_MITNOV.Text = "12"
         '
@@ -553,7 +578,7 @@
         Me.HD_MITNO.MaxLength = 10
         Me.HD_MITNO.Name = "HD_MITNO"
         Me.HD_MITNO.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_MITNO.Size = New System.Drawing.Size(63, 23)
+        Me.HD_MITNO.Size = New System.Drawing.Size(63, 20)
         Me.HD_MITNO.TabIndex = 93
         Me.HD_MITNO.TabStop = False
         Me.HD_MITNO.Text = "12345678"
@@ -570,7 +595,7 @@
         Me.HD_JDNNO.MaxLength = 10
         Me.HD_JDNNO.Name = "HD_JDNNO"
         Me.HD_JDNNO.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_JDNNO.Size = New System.Drawing.Size(63, 23)
+        Me.HD_JDNNO.Size = New System.Drawing.Size(63, 20)
         Me.HD_JDNNO.TabIndex = 92
         Me.HD_JDNNO.TabStop = False
         Me.HD_JDNNO.Text = "XXXXX6"
@@ -605,7 +630,7 @@
         Me.TL_SBAUZEKN.MaxLength = 17
         Me.TL_SBAUZEKN.Name = "TL_SBAUZEKN"
         Me.TL_SBAUZEKN.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TL_SBAUZEKN.Size = New System.Drawing.Size(105, 23)
+        Me.TL_SBAUZEKN.Size = New System.Drawing.Size(105, 20)
         Me.TL_SBAUZEKN.TabIndex = 87
         Me.TL_SBAUZEKN.Text = "-9,999,999,999"
         Me.TL_SBAUZEKN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -622,7 +647,7 @@
         Me.TL_SBAUODKN.MaxLength = 17
         Me.TL_SBAUODKN.Name = "TL_SBAUODKN"
         Me.TL_SBAUODKN.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TL_SBAUODKN.Size = New System.Drawing.Size(105, 23)
+        Me.TL_SBAUODKN.Size = New System.Drawing.Size(105, 20)
         Me.TL_SBAUODKN.TabIndex = 86
         Me.TL_SBAUODKN.Text = "-9,999,999,999"
         Me.TL_SBAUODKN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -639,7 +664,7 @@
         Me.TL_SBAUZKKN.MaxLength = 17
         Me.TL_SBAUZKKN.Name = "TL_SBAUZKKN"
         Me.TL_SBAUZKKN.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TL_SBAUZKKN.Size = New System.Drawing.Size(105, 23)
+        Me.TL_SBAUZKKN.Size = New System.Drawing.Size(105, 20)
         Me.TL_SBAUZKKN.TabIndex = 85
         Me.TL_SBAUZKKN.Text = "-9,999,999,999"
         Me.TL_SBAUZKKN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -656,7 +681,7 @@
         Me.HD_NHSNMB.MaxLength = 32
         Me.HD_NHSNMB.Name = "HD_NHSNMB"
         Me.HD_NHSNMB.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_NHSNMB.Size = New System.Drawing.Size(220, 23)
+        Me.HD_NHSNMB.Size = New System.Drawing.Size(220, 20)
         Me.HD_NHSNMB.TabIndex = 82
         Me.HD_NHSNMB.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3"
         '
@@ -672,7 +697,7 @@
         Me.HD_NHSNMA.MaxLength = 32
         Me.HD_NHSNMA.Name = "HD_NHSNMA"
         Me.HD_NHSNMA.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_NHSNMA.Size = New System.Drawing.Size(220, 23)
+        Me.HD_NHSNMA.Size = New System.Drawing.Size(220, 20)
         Me.HD_NHSNMA.TabIndex = 81
         Me.HD_NHSNMA.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3"
         '
@@ -688,7 +713,7 @@
         Me.HD_NHSCD.MaxLength = 9
         Me.HD_NHSCD.Name = "HD_NHSCD"
         Me.HD_NHSCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_NHSCD.Size = New System.Drawing.Size(72, 45)
+        Me.HD_NHSCD.Size = New System.Drawing.Size(72, 20)
         Me.HD_NHSCD.TabIndex = 80
         Me.HD_NHSCD.Text = "XXXXXXXX9"
         '
@@ -704,7 +729,7 @@
         Me.HD_KENNMB.MaxLength = 40
         Me.HD_KENNMB.Name = "HD_KENNMB"
         Me.HD_KENNMB.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_KENNMB.Size = New System.Drawing.Size(290, 23)
+        Me.HD_KENNMB.Size = New System.Drawing.Size(290, 20)
         Me.HD_KENNMB.TabIndex = 79
         Me.HD_KENNMB.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3MMMMMMMMM4"
         '
@@ -720,7 +745,7 @@
         Me.HD_KENNMA.MaxLength = 40
         Me.HD_KENNMA.Name = "HD_KENNMA"
         Me.HD_KENNMA.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_KENNMA.Size = New System.Drawing.Size(290, 23)
+        Me.HD_KENNMA.Size = New System.Drawing.Size(290, 20)
         Me.HD_KENNMA.TabIndex = 78
         Me.HD_KENNMA.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3MMMMMMMMM4"
         '
@@ -736,7 +761,7 @@
         Me.HD_OPEID.MaxLength = 10
         Me.HD_OPEID.Name = "HD_OPEID"
         Me.HD_OPEID.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_OPEID.Size = New System.Drawing.Size(48, 23)
+        Me.HD_OPEID.Size = New System.Drawing.Size(48, 20)
         Me.HD_OPEID.TabIndex = 63
         Me.HD_OPEID.Text = "XXXXX6"
         '
@@ -752,7 +777,7 @@
         Me.HD_OPENM.MaxLength = 24
         Me.HD_OPENM.Name = "HD_OPENM"
         Me.HD_OPENM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_OPENM.Size = New System.Drawing.Size(150, 23)
+        Me.HD_OPENM.Size = New System.Drawing.Size(150, 20)
         Me.HD_OPENM.TabIndex = 62
         Me.HD_OPENM.Text = "MMMMMMMMM1MMMMMMMMM2"
         '
@@ -780,7 +805,7 @@
         Me._BD_GNKCD_1.MaxLength = 8
         Me._BD_GNKCD_1.Name = "_BD_GNKCD_1"
         Me._BD_GNKCD_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_GNKCD_1.Size = New System.Drawing.Size(35, 45)
+        Me._BD_GNKCD_1.Size = New System.Drawing.Size(35, 20)
         Me._BD_GNKCD_1.TabIndex = 57
         Me._BD_GNKCD_1.Text = "XX3"
         '
@@ -796,7 +821,7 @@
         Me.HD_URIKJN.MaxLength = 10
         Me.HD_URIKJN.Name = "HD_URIKJN"
         Me.HD_URIKJN.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_URIKJN.Size = New System.Drawing.Size(19, 23)
+        Me.HD_URIKJN.Size = New System.Drawing.Size(19, 20)
         Me.HD_URIKJN.TabIndex = 56
         Me.HD_URIKJN.Text = "12"
         '
@@ -812,7 +837,7 @@
         Me.HD_BINCD.MaxLength = 10
         Me.HD_BINCD.Name = "HD_BINCD"
         Me.HD_BINCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_BINCD.Size = New System.Drawing.Size(18, 23)
+        Me.HD_BINCD.Size = New System.Drawing.Size(18, 20)
         Me.HD_BINCD.TabIndex = 55
         Me.HD_BINCD.Text = "12"
         '
@@ -828,7 +853,7 @@
         Me.HD_TOKJDNNO.MaxLength = 23
         Me.HD_TOKJDNNO.Name = "HD_TOKJDNNO"
         Me.HD_TOKJDNNO.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_TOKJDNNO.Size = New System.Drawing.Size(169, 23)
+        Me.HD_TOKJDNNO.Size = New System.Drawing.Size(169, 20)
         Me.HD_TOKJDNNO.TabIndex = 54
         Me.HD_TOKJDNNO.Text = "XXXXXXXXX1XXXXXXXXX2XXX"
         '
@@ -845,7 +870,7 @@
         Me._BD_TOKJDNNO_1.MaxLength = 17
         Me._BD_TOKJDNNO_1.Name = "_BD_TOKJDNNO_1"
         Me._BD_TOKJDNNO_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_TOKJDNNO_1.Size = New System.Drawing.Size(89, 23)
+        Me._BD_TOKJDNNO_1.Size = New System.Drawing.Size(89, 20)
         Me._BD_TOKJDNNO_1.TabIndex = 52
         Me._BD_TOKJDNNO_1.Text = "XXXXXXXXX1"
         '
@@ -861,7 +886,7 @@
         Me.HD_URIKJNNM.MaxLength = 30
         Me.HD_URIKJNNM.Name = "HD_URIKJNNM"
         Me.HD_URIKJNNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_URIKJNNM.Size = New System.Drawing.Size(75, 23)
+        Me.HD_URIKJNNM.Size = New System.Drawing.Size(75, 20)
         Me.HD_URIKJNNM.TabIndex = 45
         Me.HD_URIKJNNM.Text = "MMMMMMMMM1"
         '
@@ -877,7 +902,7 @@
         Me.HD_JDNTRNM.MaxLength = 24
         Me.HD_JDNTRNM.Name = "HD_JDNTRNM"
         Me.HD_JDNTRNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_JDNTRNM.Size = New System.Drawing.Size(79, 23)
+        Me.HD_JDNTRNM.Size = New System.Drawing.Size(79, 20)
         Me.HD_JDNTRNM.TabIndex = 44
         Me.HD_JDNTRNM.Text = "MMMMMMMMM1"
         '
@@ -893,7 +918,7 @@
         Me.HD_JDNTRKB.MaxLength = 10
         Me.HD_JDNTRKB.Name = "HD_JDNTRKB"
         Me.HD_JDNTRKB.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_JDNTRKB.Size = New System.Drawing.Size(21, 23)
+        Me.HD_JDNTRKB.Size = New System.Drawing.Size(21, 20)
         Me.HD_JDNTRKB.TabIndex = 43
         Me.HD_JDNTRKB.Text = "X2"
         '
@@ -910,7 +935,7 @@
         Me._BD_ODNYTDT_1.MaxLength = 14
         Me._BD_ODNYTDT_1.Name = "_BD_ODNYTDT_1"
         Me._BD_ODNYTDT_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_ODNYTDT_1.Size = New System.Drawing.Size(75, 45)
+        Me._BD_ODNYTDT_1.Size = New System.Drawing.Size(75, 20)
         Me._BD_ODNYTDT_1.TabIndex = 42
         Me._BD_ODNYTDT_1.Text = "9999/99/99"
         '
@@ -927,7 +952,7 @@
         Me._BD_SIKRT_1.MaxLength = 9
         Me._BD_SIKRT_1.Name = "_BD_SIKRT_1"
         Me._BD_SIKRT_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_SIKRT_1.Size = New System.Drawing.Size(65, 45)
+        Me._BD_SIKRT_1.Size = New System.Drawing.Size(65, 20)
         Me._BD_SIKRT_1.TabIndex = 41
         Me._BD_SIKRT_1.Text = "-9999.9％"
         Me._BD_SIKRT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -945,7 +970,7 @@
         Me._BD_UODKN_1.MaxLength = 13
         Me._BD_UODKN_1.Name = "_BD_UODKN_1"
         Me._BD_UODKN_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UODKN_1.Size = New System.Drawing.Size(91, 23)
+        Me._BD_UODKN_1.Size = New System.Drawing.Size(91, 20)
         Me._BD_UODKN_1.TabIndex = 39
         Me._BD_UODKN_1.Text = "-999,999,999"
         Me._BD_UODKN_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -963,7 +988,7 @@
         Me._BD_TEIKATK_1.MaxLength = 13
         Me._BD_TEIKATK_1.Name = "_BD_TEIKATK_1"
         Me._BD_TEIKATK_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_TEIKATK_1.Size = New System.Drawing.Size(91, 23)
+        Me._BD_TEIKATK_1.Size = New System.Drawing.Size(91, 20)
         Me._BD_TEIKATK_1.TabIndex = 38
         Me._BD_TEIKATK_1.Text = "-999,999,999"
         Me._BD_TEIKATK_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -981,7 +1006,7 @@
         Me._BD_UODTK_1.MaxLength = 13
         Me._BD_UODTK_1.Name = "_BD_UODTK_1"
         Me._BD_UODTK_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UODTK_1.Size = New System.Drawing.Size(89, 23)
+        Me._BD_UODTK_1.Size = New System.Drawing.Size(89, 20)
         Me._BD_UODTK_1.TabIndex = 36
         Me._BD_UODTK_1.Text = "999,999,999"
         Me._BD_UODTK_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -999,7 +1024,7 @@
         Me._BD_UODSU_1.MaxLength = 8
         Me._BD_UODSU_1.Name = "_BD_UODSU_1"
         Me._BD_UODSU_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UODSU_1.Size = New System.Drawing.Size(65, 45)
+        Me._BD_UODSU_1.Size = New System.Drawing.Size(65, 20)
         Me._BD_UODSU_1.TabIndex = 35
         Me._BD_UODSU_1.Text = "-999,999"
         Me._BD_UODSU_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1016,7 +1041,7 @@
         Me.HD_TOKRN.MaxLength = 32
         Me.HD_TOKRN.Name = "HD_TOKRN"
         Me.HD_TOKRN.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_TOKRN.Size = New System.Drawing.Size(220, 23)
+        Me.HD_TOKRN.Size = New System.Drawing.Size(220, 20)
         Me.HD_TOKRN.TabIndex = 33
         Me.HD_TOKRN.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3"
         '
@@ -1032,7 +1057,7 @@
         Me.HD_TOKCD.MaxLength = 7
         Me.HD_TOKCD.Name = "HD_TOKCD"
         Me.HD_TOKCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_TOKCD.Size = New System.Drawing.Size(72, 23)
+        Me.HD_TOKCD.Size = New System.Drawing.Size(72, 20)
         Me.HD_TOKCD.TabIndex = 32
         Me.HD_TOKCD.Text = "XXXX5"
         '
@@ -1048,7 +1073,7 @@
         Me.HD_BUMNM.MaxLength = 20
         Me.HD_BUMNM.Name = "HD_BUMNM"
         Me.HD_BUMNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_BUMNM.Size = New System.Drawing.Size(150, 23)
+        Me.HD_BUMNM.Size = New System.Drawing.Size(150, 20)
         Me.HD_BUMNM.TabIndex = 31
         Me.HD_BUMNM.Text = "MMMMMMMMM1MMMMMMMMM2"
         '
@@ -1064,7 +1089,7 @@
         Me.HD_TANNM.MaxLength = 20
         Me.HD_TANNM.Name = "HD_TANNM"
         Me.HD_TANNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_TANNM.Size = New System.Drawing.Size(150, 23)
+        Me.HD_TANNM.Size = New System.Drawing.Size(150, 20)
         Me.HD_TANNM.TabIndex = 30
         Me.HD_TANNM.Text = "MMMMMMMMM1MMMMMMMMM2"
         '
@@ -1080,7 +1105,7 @@
         Me.HD_BINNM.MaxLength = 30
         Me.HD_BINNM.Name = "HD_BINNM"
         Me.HD_BINNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_BINNM.Size = New System.Drawing.Size(74, 23)
+        Me.HD_BINNM.Size = New System.Drawing.Size(74, 20)
         Me.HD_BINNM.TabIndex = 29
         Me.HD_BINNM.Text = "MMMMMMMMM1"
         '
@@ -1096,7 +1121,7 @@
         Me.HD_BUMCD.MaxLength = 7
         Me.HD_BUMCD.Name = "HD_BUMCD"
         Me.HD_BUMCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_BUMCD.Size = New System.Drawing.Size(48, 23)
+        Me.HD_BUMCD.Size = New System.Drawing.Size(48, 20)
         Me.HD_BUMCD.TabIndex = 28
         Me.HD_BUMCD.Text = "123456"
         '
@@ -1112,7 +1137,7 @@
         Me.HD_TANCD.MaxLength = 7
         Me.HD_TANCD.Name = "HD_TANCD"
         Me.HD_TANCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_TANCD.Size = New System.Drawing.Size(48, 23)
+        Me.HD_TANCD.Size = New System.Drawing.Size(48, 20)
         Me.HD_TANCD.TabIndex = 27
         Me.HD_TANCD.Text = "XXXXX6"
         '
@@ -1128,7 +1153,7 @@
         Me.HD_SOUCD.MaxLength = 7
         Me.HD_SOUCD.Name = "HD_SOUCD"
         Me.HD_SOUCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_SOUCD.Size = New System.Drawing.Size(48, 23)
+        Me.HD_SOUCD.Size = New System.Drawing.Size(48, 20)
         Me.HD_SOUCD.TabIndex = 26
         Me.HD_SOUCD.Text = "123"
         '
@@ -1144,7 +1169,7 @@
         Me.HD_SOUNM.MaxLength = 20
         Me.HD_SOUNM.Name = "HD_SOUNM"
         Me.HD_SOUNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_SOUNM.Size = New System.Drawing.Size(150, 23)
+        Me.HD_SOUNM.Size = New System.Drawing.Size(150, 20)
         Me.HD_SOUNM.TabIndex = 25
         Me.HD_SOUNM.Text = "MMMMMMMMM1MMMMMMMMM2"
         '
@@ -1160,7 +1185,7 @@
         Me.HD_IN_TANNM.MaxLength = 24
         Me.HD_IN_TANNM.Name = "HD_IN_TANNM"
         Me.HD_IN_TANNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_IN_TANNM.Size = New System.Drawing.Size(150, 23)
+        Me.HD_IN_TANNM.Size = New System.Drawing.Size(150, 20)
         Me.HD_IN_TANNM.TabIndex = 24
         Me.HD_IN_TANNM.Text = "MMMMMMMMM1MMMMMMMMM2"
         '
@@ -1176,7 +1201,7 @@
         Me.HD_IN_TANCD.MaxLength = 10
         Me.HD_IN_TANCD.Name = "HD_IN_TANCD"
         Me.HD_IN_TANCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_IN_TANCD.Size = New System.Drawing.Size(48, 23)
+        Me.HD_IN_TANCD.Size = New System.Drawing.Size(48, 20)
         Me.HD_IN_TANCD.TabIndex = 23
         Me.HD_IN_TANCD.Text = "XXXXX6"
         '
@@ -1221,7 +1246,7 @@
         Me.TX_Mode.MaxLength = 0
         Me.TX_Mode.Name = "TX_Mode"
         Me.TX_Mode.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TX_Mode.Size = New System.Drawing.Size(58, 37)
+        Me.TX_Mode.Size = New System.Drawing.Size(58, 20)
         Me.TX_Mode.TabIndex = 21
         Me.TX_Mode.Text = "ﾓｰﾄﾞ"
         '
@@ -1568,7 +1593,7 @@
         Me._BD_LINNO_1.MaxLength = 7
         Me._BD_LINNO_1.Name = "_BD_LINNO_1"
         Me._BD_LINNO_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_LINNO_1.Size = New System.Drawing.Size(25, 45)
+        Me._BD_LINNO_1.Size = New System.Drawing.Size(25, 20)
         Me._BD_LINNO_1.TabIndex = 15
         Me._BD_LINNO_1.Text = "12"
         Me._BD_LINNO_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1599,7 +1624,7 @@
         Me.TX_CursorRest.MaxLength = 0
         Me.TX_CursorRest.Name = "TX_CursorRest"
         Me.TX_CursorRest.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TX_CursorRest.Size = New System.Drawing.Size(22, 25)
+        Me.TX_CursorRest.Size = New System.Drawing.Size(22, 13)
         Me.TX_CursorRest.TabIndex = 13
         '
         '_FM_Panel3D1_28
@@ -1655,7 +1680,7 @@
         Me._BD_HINNMA_1.MaxLength = 30
         Me._BD_HINNMA_1.Name = "_BD_HINNMA_1"
         Me._BD_HINNMA_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_HINNMA_1.Size = New System.Drawing.Size(221, 23)
+        Me._BD_HINNMA_1.Size = New System.Drawing.Size(221, 20)
         Me._BD_HINNMA_1.TabIndex = 9
         Me._BD_HINNMA_1.Text = "XXXXXXXXX1XXXXXXXXX2XXXXXXXXX3"
         '
@@ -1672,7 +1697,7 @@
         Me._BD_HINNMB_1.MaxLength = 30
         Me._BD_HINNMB_1.Name = "_BD_HINNMB_1"
         Me._BD_HINNMB_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_HINNMB_1.Size = New System.Drawing.Size(221, 23)
+        Me._BD_HINNMB_1.Size = New System.Drawing.Size(221, 20)
         Me._BD_HINNMB_1.TabIndex = 8
         Me._BD_HINNMB_1.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3"
         '
@@ -1689,7 +1714,7 @@
         Me._BD_SIKTK_1.MaxLength = 13
         Me._BD_SIKTK_1.Name = "_BD_SIKTK_1"
         Me._BD_SIKTK_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_SIKTK_1.Size = New System.Drawing.Size(89, 23)
+        Me._BD_SIKTK_1.Size = New System.Drawing.Size(89, 20)
         Me._BD_SIKTK_1.TabIndex = 6
         Me._BD_SIKTK_1.Text = "999,999,999"
         Me._BD_SIKTK_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1707,7 +1732,7 @@
         Me._BD_UNTNM_1.MaxLength = 8
         Me._BD_UNTNM_1.Name = "_BD_UNTNM_1"
         Me._BD_UNTNM_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UNTNM_1.Size = New System.Drawing.Size(36, 45)
+        Me._BD_UNTNM_1.Size = New System.Drawing.Size(36, 20)
         Me._BD_UNTNM_1.TabIndex = 5
         Me._BD_UNTNM_1.Text = "MMM4"
         '
@@ -1724,7 +1749,7 @@
         Me._BD_HINCD_1.MaxLength = 17
         Me._BD_HINCD_1.Name = "_BD_HINCD_1"
         Me._BD_HINCD_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_HINCD_1.Size = New System.Drawing.Size(89, 23)
+        Me._BD_HINCD_1.Size = New System.Drawing.Size(89, 20)
         Me._BD_HINCD_1.TabIndex = 4
         Me._BD_HINCD_1.Text = "XXXXXXX8"
         '
@@ -1740,7 +1765,7 @@
         Me.HD_JDNDT.MaxLength = 14
         Me.HD_JDNDT.Name = "HD_JDNDT"
         Me.HD_JDNDT.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_JDNDT.Size = New System.Drawing.Size(99, 23)
+        Me.HD_JDNDT.Size = New System.Drawing.Size(99, 20)
         Me.HD_JDNDT.TabIndex = 2
         Me.HD_JDNDT.Text = "9999/99/99"
         '
@@ -1766,7 +1791,7 @@
         Me.HD_DEFNOKDT.MaxLength = 14
         Me.HD_DEFNOKDT.Name = "HD_DEFNOKDT"
         Me.HD_DEFNOKDT.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_DEFNOKDT.Size = New System.Drawing.Size(79, 23)
+        Me.HD_DEFNOKDT.Size = New System.Drawing.Size(79, 20)
         Me.HD_DEFNOKDT.TabIndex = 0
         Me.HD_DEFNOKDT.Text = "9999/99/99"
         '
@@ -1843,6 +1868,7 @@
         Me.TX_Message.Size = New System.Drawing.Size(505, 16)
         Me.TX_Message.TabIndex = 48
         Me.TX_Message.Text = "エラーやプロンプトのメッセージが出力されるところです。"
+        Me.TX_Message.Visible = False
         '
         '_IM_Denkyu_0
         '
@@ -1897,7 +1923,7 @@
         Me._BD_LINCMB_1.MaxLength = 24
         Me._BD_LINCMB_1.Name = "_BD_LINCMB_1"
         Me._BD_LINCMB_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_LINCMB_1.Size = New System.Drawing.Size(78, 23)
+        Me._BD_LINCMB_1.Size = New System.Drawing.Size(78, 20)
         Me._BD_LINCMB_1.TabIndex = 3
         Me._BD_LINCMB_1.Text = "MMMMMMMMM1"
         '
@@ -1914,7 +1940,7 @@
         Me._BD_LINCMA_1.MaxLength = 24
         Me._BD_LINCMA_1.Name = "_BD_LINCMA_1"
         Me._BD_LINCMA_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_LINCMA_1.Size = New System.Drawing.Size(78, 23)
+        Me._BD_LINCMA_1.Size = New System.Drawing.Size(78, 20)
         Me._BD_LINCMA_1.TabIndex = 7
         Me._BD_LINCMA_1.Text = "MMMMMMMMM1"
         '
@@ -2282,7 +2308,6 @@
         '
         'MainMenu1
         '
-        Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Ctrl, Me.MN_EditMn, Me.MN_Oprt, Me.SM_ShortCut})
         Me.MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.MainMenu1.Name = "MainMenu1"
         Me.MainMenu1.Size = New System.Drawing.Size(992, 24)
@@ -2290,54 +2315,50 @@
         '
         'MN_Ctrl
         '
-        Me.MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Execute, Me.MN_HARDCOPY, Me.bar11, Me.MN_EndCm})
         Me.MN_Ctrl.Name = "MN_Ctrl"
-        Me.MN_Ctrl.Size = New System.Drawing.Size(57, 20)
+        Me.MN_Ctrl.Size = New System.Drawing.Size(61, 4)
         Me.MN_Ctrl.Text = "処理(&1)"
         '
         'MN_Execute
         '
         Me.MN_Execute.Name = "MN_Execute"
-        Me.MN_Execute.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.MN_Execute.Size = New System.Drawing.Size(156, 22)
+        Me.MN_Execute.Size = New System.Drawing.Size(61, 4)
         Me.MN_Execute.Text = "実行(&R)"
         '
         'MN_HARDCOPY
         '
         Me.MN_HARDCOPY.Enabled = False
         Me.MN_HARDCOPY.Name = "MN_HARDCOPY"
-        Me.MN_HARDCOPY.Size = New System.Drawing.Size(156, 22)
+        Me.MN_HARDCOPY.Size = New System.Drawing.Size(61, 4)
         Me.MN_HARDCOPY.Text = "画面印刷"
-        Me.MN_HARDCOPY.Visible = False
         '
         'bar11
         '
         Me.bar11.Name = "bar11"
-        Me.bar11.Size = New System.Drawing.Size(153, 6)
+        Me.bar11.Size = New System.Drawing.Size(151, 6)
         '
         'MN_EndCm
         '
         Me.MN_EndCm.Name = "MN_EndCm"
-        Me.MN_EndCm.Size = New System.Drawing.Size(156, 22)
+        Me.MN_EndCm.Size = New System.Drawing.Size(61, 4)
         Me.MN_EndCm.Text = "終了(&X)"
         '
         'MN_EditMn
         '
-        Me.MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
         Me.MN_EditMn.Name = "MN_EditMn"
-        Me.MN_EditMn.Size = New System.Drawing.Size(57, 20)
+        Me.MN_EditMn.Size = New System.Drawing.Size(61, 4)
         Me.MN_EditMn.Text = "編集(&2)"
         '
         'MN_ClearItm
         '
         Me.MN_ClearItm.Name = "MN_ClearItm"
-        Me.MN_ClearItm.Size = New System.Drawing.Size(178, 22)
+        Me.MN_ClearItm.Size = New System.Drawing.Size(61, 4)
         Me.MN_ClearItm.Text = "項目初期化"
         '
         'MN_UnDoItem
         '
         Me.MN_UnDoItem.Name = "MN_UnDoItem"
-        Me.MN_UnDoItem.Size = New System.Drawing.Size(178, 22)
+        Me.MN_UnDoItem.Size = New System.Drawing.Size(61, 4)
         Me.MN_UnDoItem.Text = "項目復元"
         '
         'Bar21
@@ -2348,55 +2369,46 @@
         'MN_Cut
         '
         Me.MN_Cut.Name = "MN_Cut"
-        Me.MN_Cut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.MN_Cut.Size = New System.Drawing.Size(178, 22)
+        Me.MN_Cut.Size = New System.Drawing.Size(61, 4)
         Me.MN_Cut.Text = "切り取り(&X)"
         '
         'MN_Copy
         '
         Me.MN_Copy.Name = "MN_Copy"
-        Me.MN_Copy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.MN_Copy.Size = New System.Drawing.Size(178, 22)
+        Me.MN_Copy.Size = New System.Drawing.Size(61, 4)
         Me.MN_Copy.Text = "コピー(&C)"
         '
         'MN_Paste
         '
         Me.MN_Paste.Name = "MN_Paste"
-        Me.MN_Paste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.MN_Paste.Size = New System.Drawing.Size(178, 22)
+        Me.MN_Paste.Size = New System.Drawing.Size(61, 4)
         Me.MN_Paste.Text = "貼り付け(&V)"
         '
         'MN_Oprt
         '
-        Me.MN_Oprt.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_SELECTCM, Me.MN_PREV, Me.MN_NEXTCM, Me.Bar31, Me.MN_Slist})
         Me.MN_Oprt.Name = "MN_Oprt"
-        Me.MN_Oprt.Size = New System.Drawing.Size(57, 20)
+        Me.MN_Oprt.Size = New System.Drawing.Size(61, 4)
         Me.MN_Oprt.Text = "操作(&3)"
         '
         'MN_SELECTCM
         '
         Me.MN_SELECTCM.Name = "MN_SELECTCM"
-        Me.MN_SELECTCM.ShortcutKeys = System.Windows.Forms.Keys.F7
-        Me.MN_SELECTCM.Size = New System.Drawing.Size(182, 22)
+        Me.MN_SELECTCM.Size = New System.Drawing.Size(61, 4)
         Me.MN_SELECTCM.Text = "選択"
         '
         'MN_PREV
         '
         Me.MN_PREV.Enabled = False
         Me.MN_PREV.Name = "MN_PREV"
-        Me.MN_PREV.ShortcutKeys = System.Windows.Forms.Keys.F8
-        Me.MN_PREV.Size = New System.Drawing.Size(182, 22)
+        Me.MN_PREV.Size = New System.Drawing.Size(61, 4)
         Me.MN_PREV.Text = "前頁"
-        Me.MN_PREV.Visible = False
         '
         'MN_NEXTCM
         '
         Me.MN_NEXTCM.Enabled = False
         Me.MN_NEXTCM.Name = "MN_NEXTCM"
-        Me.MN_NEXTCM.ShortcutKeys = System.Windows.Forms.Keys.F9
-        Me.MN_NEXTCM.Size = New System.Drawing.Size(182, 22)
+        Me.MN_NEXTCM.Size = New System.Drawing.Size(61, 4)
         Me.MN_NEXTCM.Text = "次頁"
-        Me.MN_NEXTCM.Visible = False
         '
         'Bar31
         '
@@ -2406,34 +2418,31 @@
         'MN_Slist
         '
         Me.MN_Slist.Name = "MN_Slist"
-        Me.MN_Slist.ShortcutKeys = System.Windows.Forms.Keys.F5
-        Me.MN_Slist.Size = New System.Drawing.Size(182, 22)
+        Me.MN_Slist.Size = New System.Drawing.Size(61, 4)
         Me.MN_Slist.Text = "候補の一覧(&L&ﾆ)..."
         '
         'SM_ShortCut
         '
-        Me.SM_ShortCut.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SM_AllCopy, Me.SM_FullPast, Me.SM_Esc})
         Me.SM_ShortCut.Name = "SM_ShortCut"
-        Me.SM_ShortCut.Size = New System.Drawing.Size(66, 20)
+        Me.SM_ShortCut.Size = New System.Drawing.Size(61, 4)
         Me.SM_ShortCut.Text = "ShortCut"
-        Me.SM_ShortCut.Visible = False
         '
         'SM_AllCopy
         '
         Me.SM_AllCopy.Name = "SM_AllCopy"
-        Me.SM_AllCopy.Size = New System.Drawing.Size(174, 22)
+        Me.SM_AllCopy.Size = New System.Drawing.Size(61, 4)
         Me.SM_AllCopy.Text = "項目内容コピー(&C)"
         '
         'SM_FullPast
         '
         Me.SM_FullPast.Name = "SM_FullPast"
-        Me.SM_FullPast.Size = New System.Drawing.Size(174, 22)
+        Me.SM_FullPast.Size = New System.Drawing.Size(61, 4)
         Me.SM_FullPast.Text = "項目に貼り付け(&P)"
         '
         'SM_Esc
         '
         Me.SM_Esc.Name = "SM_Esc"
-        Me.SM_Esc.Size = New System.Drawing.Size(174, 22)
+        Me.SM_Esc.Size = New System.Drawing.Size(61, 4)
         Me.SM_Esc.Text = "取消し(Esc)"
         '
         'StatusStrip1
@@ -2450,7 +2459,7 @@
         Me.ToolStripStatusLabel1.AutoSize = False
         Me.ToolStripStatusLabel1.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(195, 17)
         Me.ToolStripStatusLabel1.Spring = True
@@ -2461,7 +2470,7 @@
         '
         Me.ToolStripStatusLabel2.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(195, 17)
         Me.ToolStripStatusLabel2.Spring = True
@@ -2471,7 +2480,7 @@
         '
         Me.ToolStripStatusLabel3.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
         Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(195, 17)
         Me.ToolStripStatusLabel3.Spring = True
@@ -2481,7 +2490,7 @@
         '
         Me.ToolStripStatusLabel4.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
         Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(195, 17)
         Me.ToolStripStatusLabel4.Spring = True
@@ -2491,7 +2500,7 @@
         '
         Me.ToolStripStatusLabel5.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel5.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel5.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel5.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
         Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(195, 17)
         Me.ToolStripStatusLabel5.Spring = True
@@ -2725,7 +2734,7 @@
         Me.Controls.Add(Me._IM_Opt_0)
         Me.Controls.Add(Me.MainMenu1)
         Me.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Font = New System.Drawing.Font("MS Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ForeColor = System.Drawing.SystemColors.WindowText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -2736,7 +2745,9 @@
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "在庫引当/個別解除"
         Me.Frame1.ResumeLayout(False)
+        Me.Frame1.PerformLayout()
         Me.FM_Panel3D4.ResumeLayout(False)
+        Me.FM_Panel3D4.PerformLayout()
         CType(Me._IM_LCONFIG_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._IM_LCONFIG_1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._IM_Denkyu_1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2766,6 +2777,7 @@
         Me._FM_Panel3D1_28.ResumeLayout(False)
         Me._FM_Panel3D1_33.ResumeLayout(False)
         Me._FM_Panel3D1_34.ResumeLayout(False)
+        Me._FM_Panel3D1_34.PerformLayout()
         CType(Me._IM_Denkyu_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._IM_SELECTCM_1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._IM_SELECTCM_0, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2806,8 +2818,6 @@
         CType(Me.IM_SELECTCM, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IM_Slist, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Line1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MainMenu1.ResumeLayout(False)
-        Me.MainMenu1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

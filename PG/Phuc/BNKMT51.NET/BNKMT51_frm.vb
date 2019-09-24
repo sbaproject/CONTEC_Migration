@@ -11,96 +11,98 @@ Friend Class FR_SSSMAIN
     '2019/09/19 ADD E N D
 
     Private Sub FR_SSSMAIN_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles MyBase.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		
-	End Sub
-	
-	Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "メニューに戻ります。"
-	End Sub
-	
-	Private Sub CM_Execute_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Execute.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "登録します。"
-	End Sub
-	
-	Private Sub CM_Hardcopy_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Hardcopy.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "画面を印刷します。"
-	End Sub
-	
-	Private Sub CM_InsertDe_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_InsertDe.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "行を挿入します。"
-	End Sub
-	
-	Private Sub CM_DeleteDe_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DeleteDe.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "行を削除します。"
-	End Sub
-	
-	Private Sub CM_Slist_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Slist.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "ウィンドウを表示します。"
-	End Sub
-	
-	Private Sub CM_Prev_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Prev.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "前のページを表示します。"
-	End Sub
-	
-	Private Sub CM_NextCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_NextCm.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "次のページを表示します。"
-	End Sub
-	
-	Private Sub CM_SelectCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SelectCm.MouseMove
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
-		IM_Denkyu(0).Image = IM_Denkyu(2).Image
-		TX_Message.Text = "一覧表示します。"
-	End Sub
-	
-	'UPGRADE_WARNING: イベント BD_BNKCD.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub BD_BNKCD_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BNKCD.TextChanged
+        Dim Button As Short = eventArgs.Button \ &H100000
+        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+
+    End Sub
+
+    '2019/09/23 DEL STAR
+    '   Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "メニューに戻ります。"
+    'End Sub
+
+    'Private Sub CM_Execute_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Execute.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "登録します。"
+    'End Sub
+
+    'Private Sub CM_Hardcopy_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Hardcopy.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "画面を印刷します。"
+    'End Sub
+
+    'Private Sub CM_InsertDe_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_InsertDe.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "行を挿入します。"
+    'End Sub
+
+    'Private Sub CM_DeleteDe_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DeleteDe.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "行を削除します。"
+    'End Sub
+
+    'Private Sub CM_Slist_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Slist.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "ウィンドウを表示します。"
+    'End Sub
+
+    'Private Sub CM_Prev_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Prev.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "前のページを表示します。"
+    'End Sub
+
+    'Private Sub CM_NextCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_NextCm.MouseMove
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '	IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '	TX_Message.Text = "次のページを表示します。"
+    'End Sub
+
+    '   Private Sub CM_SelectCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SelectCm.MouseMove
+    '       Dim Button As Short = eventArgs.Button \ &H100000
+    '       Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '       Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '       Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Hand Made
+    '       IM_Denkyu(0).Image = IM_Denkyu(2).Image
+    '       TX_Message.Text = "一覧表示します。"
+    '   End Sub
+    '2019/09/23 DEL END
+
+    'UPGRADE_WARNING: イベント BD_BNKCD.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub BD_BNKCD_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BNKCD.TextChanged
 		Dim Index As Short = BD_BNKCD.GetIndex(eventSender) 'Generated.
 		If PP_SSSMAIN.MultiLineF > 0 Then
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
@@ -916,114 +918,116 @@ EventExitSub:
 			PP_SSSMAIN.MouseDownTx = BD_UPDKB(Index).TabIndex
 		End If
 	End Sub
-	
-	Private Sub BD_UPDKB_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles BD_UPDKB.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim Index As Short = BD_UPDKB.GetIndex(eventSender) 'Generated.
-		BD_UPDKB(Index).ReadOnly = False
-		Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index))
-	End Sub
-	
-	Private Sub CM_DeleteDe_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_DeleteDe.Click 'Generated.
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		If PP_SSSMAIN.Mode = Cn_Mode3 Then Beep() : Call AE_CursorCurrent_SSSMAIN() : Exit Sub
-		If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 92 Then
-			If (PP_SSSMAIN.Tx - 2) \ 6 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
-				Call AE_DeleteDe_SSSMAIN()
-			End If
-		Else
-			Beep()
-		End If
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		Call AE_CursorCurrent_SSSMAIN()
-	End Sub
-	
-	Private Sub CM_DELETEDE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(1).Image
-	End Sub
-	
-	Private Sub CM_DELETEDE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(0).Image
-	End Sub
-	
-	Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_EndCm.Click 'Generated.
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		PP_SSSMAIN.NeglectLostFocusCheck = True
-		PP_SSSMAIN.CloseCode = 1
-		Call AE_EndCm_SSSMAIN()
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		Call AE_CursorCurrent_SSSMAIN()
-	End Sub
-	
-	Private Sub CM_ENDCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_ENDCM.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(1).Image
-	End Sub
-	
-	Private Sub CM_ENDCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_ENDCM.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(0).Image
-	End Sub
-	
-	Private Sub CM_Execute_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Execute.Click 'Generated.
-		Dim wk_Cursor As Short
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		If PP_SSSMAIN.Executing Then Exit Sub
-		PP_SSSMAIN.Executing = True
-		PP_SSSMAIN.ExplicitExec = True
-		If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
-			Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
-		End If
-		If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
-			Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
-			PP_SSSMAIN.CursorSet = True
-		Else
-			'UPGRADE_WARNING: オブジェクト Execute_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Execute_GetEvent() Then
-				wk_Cursor = AE_Execute_SSSMAIN()
-			End If
-		End If
-		PP_SSSMAIN.ExplicitExec = False
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		Call AE_CursorSub_SSSMAIN(wk_Cursor)
-		PP_SSSMAIN.Executing = False
-	End Sub
-	
-	Private Sub CM_EXECUTE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EXECUTE.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(1).Image
-	End Sub
 
-    Private Sub CM_EXECUTE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EXECUTE.MouseUp
+    Private Sub BD_UPDKB_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles BD_UPDKB.MouseUp
         Dim Button As Short = eventArgs.Button \ &H100000
         Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
         Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-        If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(0).Image
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        Dim Index As Short = BD_UPDKB.GetIndex(eventSender) 'Generated.
+        BD_UPDKB(Index).ReadOnly = False
+        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index))
     End Sub
+
+    '2019/09/23 DEL STAR
+    '   Private Sub CM_DeleteDe_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_DeleteDe.Click 'Generated.
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	If PP_SSSMAIN.Mode = Cn_Mode3 Then Beep() : Call AE_CursorCurrent_SSSMAIN() : Exit Sub
+    '	If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 92 Then
+    '		If (PP_SSSMAIN.Tx - 2) \ 6 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
+    '			Call AE_DeleteDe_SSSMAIN()
+    '		End If
+    '	Else
+    '		Beep()
+    '	End If
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	Call AE_CursorCurrent_SSSMAIN()
+    'End Sub
+
+    'Private Sub CM_DELETEDE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(1).Image
+    'End Sub
+
+    'Private Sub CM_DELETEDE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(0).Image
+    'End Sub
+
+    'Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_EndCm.Click 'Generated.
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	PP_SSSMAIN.NeglectLostFocusCheck = True
+    '	PP_SSSMAIN.CloseCode = 1
+    '	Call AE_EndCm_SSSMAIN()
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	Call AE_CursorCurrent_SSSMAIN()
+    'End Sub
+
+    'Private Sub CM_ENDCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_ENDCM.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(1).Image
+    'End Sub
+
+    'Private Sub CM_ENDCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_ENDCM.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(0).Image
+    'End Sub
+
+    'Private Sub CM_Execute_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Execute.Click 'Generated.
+    '	Dim wk_Cursor As Short
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	If PP_SSSMAIN.Executing Then Exit Sub
+    '	PP_SSSMAIN.Executing = True
+    '	PP_SSSMAIN.ExplicitExec = True
+    '	If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+    '		Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+    '	End If
+    '	If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+    '		Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+    '		PP_SSSMAIN.CursorSet = True
+    '	Else
+    '		'UPGRADE_WARNING: オブジェクト Execute_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '		If Execute_GetEvent() Then
+    '			wk_Cursor = AE_Execute_SSSMAIN()
+    '		End If
+    '	End If
+    '	PP_SSSMAIN.ExplicitExec = False
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    '	PP_SSSMAIN.Executing = False
+    'End Sub
+
+    'Private Sub CM_EXECUTE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EXECUTE.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(1).Image
+    'End Sub
+
+    '   Private Sub CM_EXECUTE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EXECUTE.MouseUp
+    '       Dim Button As Short = eventArgs.Button \ &H100000
+    '       Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '       Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '       Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '       If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(0).Image
+    '   End Sub
+    '2019/09/23 DEL END
 
     '2019/03/26 DEL START
     'Private Sub CM_Hardcopy_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Hardcopy.Click 'Generated.
@@ -1038,189 +1042,191 @@ EventExitSub:
     'End Sub
     '2019/03/26 DEL E N D
 
-    Private Sub CM_HARDCOPY_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_HARDCOPY.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(1).Image
-	End Sub
-	
-	Private Sub CM_HARDCOPY_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_HARDCOPY.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(0).Image
-	End Sub
-	
-	Private Sub CM_InsertDe_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_InsertDe.Click 'Generated.
-		Dim wk_Cursor As Short
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		If PP_SSSMAIN.Mode = Cn_Mode3 Then Beep() : Call AE_CursorCurrent_SSSMAIN() : Exit Sub
-		If INSERTDE_GETEVENT() Then
-			If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 92 Then
-				If (PP_SSSMAIN.Tx - 2) \ 6 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
-					wk_Cursor = AE_InsertDe_SSSMAIN()
-				End If
-			Else
-				Beep()
-			End If
-		End If
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		Call AE_CursorSub_SSSMAIN(wk_Cursor)
-	End Sub
-	
-	Private Sub CM_INSERTDE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_INSERTDE.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_INSERTDE.Image = IM_INSERTDE(1).Image
-	End Sub
-	
-	Private Sub CM_INSERTDE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_INSERTDE.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_INSERTDE.Image = IM_INSERTDE(0).Image
-	End Sub
-	
-	Private Sub CM_NextCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_NextCm.Click 'Generated.
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
-			Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
-		End If
-		If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
-			Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
-			PP_SSSMAIN.CursorSet = True
-		Else
-			If NEXTCm_GETEVENT() Then
-				If PP_SSSMAIN.Mode >= Cn_Mode3 Then
-					wk_Int = AE_NextCm_SSSMAIN(True)
-				Else
-					Beep()
-				End If
-			End If
-		End If
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		Call AE_CursorInit_SSSMAIN()
-	End Sub
-	
-	Private Sub CM_NEXTCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_NEXTCM.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_NEXTCm.Image = IM_NEXTCM(1).Image
-	End Sub
-	
-	Private Sub CM_NEXTCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_NEXTCM.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_NEXTCm.Image = IM_NEXTCM(0).Image
-	End Sub
-	
-	Private Sub CM_Prev_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Prev.Click 'Generated.
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
-			Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
-		End If
-		If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
-			Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
-			PP_SSSMAIN.CursorSet = True
-		Else
-			If PREV_GETEVENT() Then
-				If PP_SSSMAIN.Mode >= Cn_Mode3 Then
-					wk_Int = AE_Prev_SSSMAIN(True)
-				Else
-					Beep()
-				End If
-			End If
-		End If
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		Call AE_CursorInit_SSSMAIN()
-	End Sub
-	
-	Private Sub CM_PREV_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_PREV.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_PREV.Image = IM_PREV(1).Image
-	End Sub
-	
-	Private Sub CM_PREV_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_PREV.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_PREV.Image = IM_PREV(0).Image
-	End Sub
-	
-	Private Sub CM_SelectCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_SelectCm.Click 'Generated.
-		Dim wk_Cursor As Short
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		If PP_SSSMAIN.Mode = Cn_Mode2 Then
-			Beep()
-			wk_Cursor = Cn_CuCurrent
-		Else
-			wk_Cursor = AE_SelectCm_SSSMAIN(PP_SSSMAIN.Mode, False)
-		End If
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		Call AE_CursorSub_SSSMAIN(wk_Cursor)
-	End Sub
-	
-	Private Sub CM_SELECTCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SELECTCM.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_SelectCm.Image = IM_SelectCm(1).Image
-	End Sub
-	
-	Private Sub CM_SELECTCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SELECTCM.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_SelectCm.Image = IM_SelectCm(0).Image
-	End Sub
-	
-	Private Sub CM_Slist_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Slist.Click 'Generated.
-		PP_SSSMAIN.ButtonClick = True
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-		Call AE_Slist_SSSMAIN()
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
-	End Sub
-	
-	Private Sub CM_SLIST_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SLIST.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_SLIST.Image = IM_Slist(1).Image
-	End Sub
-	
-	Private Sub CM_SLIST_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SLIST.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_SLIST.Image = IM_Slist(0).Image
-	End Sub
-	
-	Private Sub CM_UPDKB_Click() 'Generated.
+    '2019/09/23 DEL STAR
+    '   Private Sub CM_HARDCOPY_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_HARDCOPY.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(1).Image
+    'End Sub
+
+    'Private Sub CM_HARDCOPY_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_HARDCOPY.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(0).Image
+    'End Sub
+
+    'Private Sub CM_InsertDe_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_InsertDe.Click 'Generated.
+    '	Dim wk_Cursor As Short
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	If PP_SSSMAIN.Mode = Cn_Mode3 Then Beep() : Call AE_CursorCurrent_SSSMAIN() : Exit Sub
+    '	If INSERTDE_GETEVENT() Then
+    '		If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 92 Then
+    '			If (PP_SSSMAIN.Tx - 2) \ 6 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
+    '				wk_Cursor = AE_InsertDe_SSSMAIN()
+    '			End If
+    '		Else
+    '			Beep()
+    '		End If
+    '	End If
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    'End Sub
+
+    'Private Sub CM_INSERTDE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_INSERTDE.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_INSERTDE.Image = IM_INSERTDE(1).Image
+    'End Sub
+
+    'Private Sub CM_INSERTDE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_INSERTDE.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_INSERTDE.Image = IM_INSERTDE(0).Image
+    'End Sub
+
+    'Private Sub CM_NextCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_NextCm.Click 'Generated.
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+    '		Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+    '	End If
+    '	If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+    '		Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+    '		PP_SSSMAIN.CursorSet = True
+    '	Else
+    '		If NEXTCm_GETEVENT() Then
+    '			If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+    '				wk_Int = AE_NextCm_SSSMAIN(True)
+    '			Else
+    '				Beep()
+    '			End If
+    '		End If
+    '	End If
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	Call AE_CursorInit_SSSMAIN()
+    'End Sub
+
+    'Private Sub CM_NEXTCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_NEXTCM.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_NEXTCm.Image = IM_NEXTCM(1).Image
+    'End Sub
+
+    'Private Sub CM_NEXTCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_NEXTCM.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_NEXTCm.Image = IM_NEXTCM(0).Image
+    'End Sub
+
+    'Private Sub CM_Prev_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Prev.Click 'Generated.
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+    '		Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+    '	End If
+    '	If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+    '		Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+    '		PP_SSSMAIN.CursorSet = True
+    '	Else
+    '		If PREV_GETEVENT() Then
+    '			If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+    '				wk_Int = AE_Prev_SSSMAIN(True)
+    '			Else
+    '				Beep()
+    '			End If
+    '		End If
+    '	End If
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	Call AE_CursorInit_SSSMAIN()
+    'End Sub
+
+    'Private Sub CM_PREV_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_PREV.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_PREV.Image = IM_PREV(1).Image
+    'End Sub
+
+    'Private Sub CM_PREV_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_PREV.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_PREV.Image = IM_PREV(0).Image
+    'End Sub
+
+    'Private Sub CM_SelectCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_SelectCm.Click 'Generated.
+    '	Dim wk_Cursor As Short
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	If PP_SSSMAIN.Mode = Cn_Mode2 Then
+    '		Beep()
+    '		wk_Cursor = Cn_CuCurrent
+    '	Else
+    '		wk_Cursor = AE_SelectCm_SSSMAIN(PP_SSSMAIN.Mode, False)
+    '	End If
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    'End Sub
+
+    'Private Sub CM_SELECTCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SELECTCM.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_SelectCm.Image = IM_SelectCm(1).Image
+    'End Sub
+
+    'Private Sub CM_SELECTCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SELECTCM.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_SelectCm.Image = IM_SelectCm(0).Image
+    'End Sub
+
+    'Private Sub CM_Slist_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Slist.Click 'Generated.
+    '	PP_SSSMAIN.ButtonClick = True
+    '	If Not PP_SSSMAIN.Operable Then Exit Sub
+    '	PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+    '	Call AE_Slist_SSSMAIN()
+    '	PP_SSSMAIN.NeglectLostFocusCheck = False
+    '	'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '	If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    'End Sub
+
+    'Private Sub CM_SLIST_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SLIST.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_SLIST.Image = IM_Slist(1).Image
+    'End Sub
+
+    '   Private Sub CM_SLIST_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SLIST.MouseUp
+    '       Dim Button As Short = eventArgs.Button \ &H100000
+    '       Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '       Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '       Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '       If PP_SSSMAIN.Operable Then CM_SLIST.Image = IM_Slist(0).Image
+    '   End Sub
+    '2019/09/23 DEL END
+
+    Private Sub CM_UPDKB_Click() 'Generated.
 		PP_SSSMAIN.ButtonClick = True
 		If Not PP_SSSMAIN.Operable Then Exit Sub
 		PP_SSSMAIN.NeglectLostFocusCheck = True
@@ -1575,6 +1581,11 @@ EventExitSub:
         ''2007/12/18 add-end T.KAWAMUKAI
         ReDim M_BNKMT_A_inf(14)
         ' === 20080930 === UPDATE E - RISE)Izumi
+
+        '2019/09/23 ADD START
+        Call SetBar(Me)
+        '2019/09/23 ADD E N D
+
     End Sub
 
     Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -1582,9 +1593,11 @@ EventExitSub:
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason 'Generated.
 		PP_SSSMAIN.UnloadMode = UnloadMode
 		Select Case UnloadMode
-			Case 0, 3
-				PP_SSSMAIN.CloseCode = 2
-				Cancel = True
+            Case 0, 3
+                '2019/09/23 DEL START
+                'PP_SSSMAIN.CloseCode = 2
+                '2019/09/23 DEL END
+                Cancel = True
 				Call AE_EndCm_SSSMAIN()
 			Case 2
 				PP_SSSMAIN.Caption = Me.Text
@@ -2520,7 +2533,8 @@ EventExitSub:
 	End Sub
 
     '2019/09/20 ADD START
-    Private Sub FR_SSSMAIN_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+    Private Sub FR_SSSMAIN_KeyDown(ByVal eventSender As System.Object, ByVal e As KeyEventArgs) Handles Me.KeyDown
+
         Dim li_MsgRtn As Integer
 
         Try
