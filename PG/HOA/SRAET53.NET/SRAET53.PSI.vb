@@ -1,9 +1,14 @@
 Option Strict Off
 Option Explicit On
 Module SSSMAIN0002
-	'メッセージコード
-	'入金消込
-	Public Const gc_strMsgURKET53_E_001 As String = "1URKET53_001" '入力された請求先は得意先マスタに存在しません。
+    'メッセージコード
+    '2019/09/24 ADD START
+    Public Structure Cls_Dsp_Body_Bus_Inf
+        Dim dummy
+    End Structure
+    '2019/09/24 ADD E N D
+    '入金消込
+    Public Const gc_strMsgURKET53_E_001 As String = "1URKET53_001" '入力された請求先は得意先マスタに存在しません。
 	Public Const gc_strMsgURKET53_E_002 As String = "1URKET53_002" '入力された日付は不正な日付です。
 	Public Const gc_strMsgURKET53_E_003 As String = "1URKET53_003" '入力された区分は不正な区分です。
 	Public Const gc_strMsgURKET53_E_004 As String = "1URKET53_004" '入力された消し込み日は月次締されています。
