@@ -12,20 +12,24 @@ Module TUKKB_F51
 	Function TUKKB_CheckC(ByRef PP As clsPP, ByRef CP_TUKKB As clsCP, ByRef TUKKB As Object, ByVal TEKIDT As Object, ByVal De_Index As Object) As Object
 		Dim Rtn As Short
 		Dim wkTUKKB As String
-		'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		TUKKB_CheckC = 0
-		Call TUKMTA_RClear()
-		'
-		'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(TUKKB) = "" Then
+        'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        TUKKB_CheckC = 0
+        '2019/09/25 DEL START
+        'Call TUKMTA_RClear()
+        '2019/09/25 DEL E N D
+        '
+        'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(TUKKB) = "" Then
 			'rtn = DSP_MsgBox(SSS_ERROR, "ITM", 0)
 			'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			TUKKB_CheckC = -1
 		Else
-			'''''       Call SCR_FromMfil(De_INDEX)
-			Call MEIMTA_RClear()
-			'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wkTUKKB = TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(TUKKB))
+            '''''       Call SCR_FromMfil(De_INDEX)
+            '2019/09/25 DEL START
+            'Call MEIMTA_RClear()
+            '2019/09/25 DEL E N D
+            'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wkTUKKB = TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(TUKKB))
 			Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkTUKKB, BtrNormal)
 			If DBSTAT = 0 Then '名称ﾏｽﾀに当該項目が在る時
 				If DB_MEIMTA.DATKB = "9" Then
@@ -38,63 +42,67 @@ Module TUKKB_F51
 				'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				TUKKB_CheckC = -1
 			End If
-			
-			'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If TUKKB_CheckC = 0 Then
-				Call TUKMTA_RClear()
-				'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If Trim(TUKKB) = "" Then
-					'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					TUKKB_CheckC = -1
-				Else
-					'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call DB_GetEq(DBN_TUKMTA, 1, TUKKB & VB6.Format(TEKIDT, "YYYYMMDD"), BtrNormal)
-					If DBSTAT = 0 Then
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						Call SCR_FromMfil(De_Index)
-						If DB_TUKMTA.DATKB = "9" Then
-							'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							Call DP_SSSMAIN_UPDKB(De_Index, "削除")
-						Else
-							'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							Call DP_SSSMAIN_UPDKB(De_Index, "更新")
-						End If
-						'20081002 ADD START RISE)Tanimura '排他処理
-						' [引数De_Indexは画面上の行数(0～)]
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).OPEID = DB_TUKMTA.OPEID ' 最終作業者コード
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).CLTID = DB_TUKMTA.CLTID ' クライアントＩＤ
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).WRTTM = DB_TUKMTA.WRTTM ' タイムスタンプ（時間）
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).WRTDT = DB_TUKMTA.WRTDT ' タイムスタンプ（日付）
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).UOPEID = DB_TUKMTA.UOPEID ' ユーザID（バッチ）
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).UCLTID = DB_TUKMTA.UCLTID ' クライアントID（バッチ）
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).UWRTTM = DB_TUKMTA.UWRTTM ' タイムスタンプ（バッチ時間）
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						M_RATMT_A_inf(De_Index).UWRTDT = DB_TUKMTA.UWRTDT ' タイムスタンプ（バッチ日）
-						'20081002 ADD END   RISE)Tanimura
-					Else
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						Call DP_SSSMAIN_UPDKB(De_Index, "追加")
-						'20081002 ADD START RISE)Tanimura '排他処理
-						'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						Call RATMT51_MF_Clear_UWRTDTTM(De_Index)
-						'20081002 ADD END   RISE)Tanimura
-						Call TUKMTA_RClear()
-						
-					End If
-				End If
-				'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call SCR_FromMfil(De_Index)
-			End If
-			'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call SCR_FromMEIMTA(De_Index)
+
+            'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If TUKKB_CheckC = 0 Then
+                '2019/09/24 DEL START
+                'Call TUKMTA_RClear()
+                '2019/09/24 DEL E N D
+                'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                If Trim(TUKKB) = "" Then
+                    'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    TUKKB_CheckC = -1
+                Else
+                    'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    Call DB_GetEq(DBN_TUKMTA, 1, TUKKB & VB6.Format(TEKIDT, "YYYYMMDD"), BtrNormal)
+                    If DBSTAT = 0 Then
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        Call SCR_FromMfil(De_Index)
+                        If DB_TUKMTA.DATKB = "9" Then
+                            'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            Call DP_SSSMAIN_UPDKB(De_Index, "削除")
+                        Else
+                            'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            Call DP_SSSMAIN_UPDKB(De_Index, "更新")
+                        End If
+                        '20081002 ADD START RISE)Tanimura '排他処理
+                        ' [引数De_Indexは画面上の行数(0～)]
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).OPEID = DB_TUKMTA.OPEID ' 最終作業者コード
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).CLTID = DB_TUKMTA.CLTID ' クライアントＩＤ
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).WRTTM = DB_TUKMTA.WRTTM ' タイムスタンプ（時間）
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).WRTDT = DB_TUKMTA.WRTDT ' タイムスタンプ（日付）
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).UOPEID = DB_TUKMTA.UOPEID ' ユーザID（バッチ）
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).UCLTID = DB_TUKMTA.UCLTID ' クライアントID（バッチ）
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).UWRTTM = DB_TUKMTA.UWRTTM ' タイムスタンプ（バッチ時間）
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        M_RATMT_A_inf(De_Index).UWRTDT = DB_TUKMTA.UWRTDT ' タイムスタンプ（バッチ日）
+                        '20081002 ADD END   RISE)Tanimura
+                    Else
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        Call DP_SSSMAIN_UPDKB(De_Index, "追加")
+                        '20081002 ADD START RISE)Tanimura '排他処理
+                        'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        Call RATMT51_MF_Clear_UWRTDTTM(De_Index)
+                        '20081002 ADD END   RISE)Tanimura
+                        '2019/09/24 DEL START
+                        'Call TUKMTA_RClear()
+                        '2019/09/24 DEL E N D
+
+                    End If
+                End If
+                'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call SCR_FromMfil(De_Index)
+            End If
+            'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call SCR_FromMEIMTA(De_Index)
 			
 		End If
 		

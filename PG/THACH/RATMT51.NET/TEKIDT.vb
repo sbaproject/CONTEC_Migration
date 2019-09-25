@@ -89,12 +89,14 @@ Module TEKIDT_F51
 		'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト TEKIDT_DerivedC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		TEKIDT_DerivedC = TEKIDT
-		'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(TUKKB) = "" Then
-			Call TUKMTA_RClear()
-		Else
-			'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Select Case Trim(TEKIDT)
+        'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(TUKKB) = "" Then
+            '2019/09/24 DEL START
+            'Call TUKMTA_RClear()
+            '2019/09/24 DEL E N D
+        Else
+            'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Select Case Trim(TEKIDT)
 				Case ""
 					'TEKIDT_DerivedC = Date           '本日の日付。
 					'UPGRADE_WARNING: オブジェクト TEKIDT_DerivedC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -137,9 +139,12 @@ Module TEKIDT_F51
 		'
 		'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If Trim(TEKIDT) <> "" Then
-			'UPGRADE_WARNING: オブジェクト CT_TEKIDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CT_TEKIDT.SelStart = 8 'yyyy-mm-dd の dd にカーソルを移動する。
-		End If
+            'UPGRADE_WARNING: オブジェクト CT_TEKIDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24 CHG START
+            'CT_TEKIDT.SelStart = 8 'yyyy-mm-dd の dd にカーソルを移動する。
+            DirectCast(CT_TEKIDT, TextBox).SelectionStart = 8 'yyyy-mm-dd の dd にカーソルを移動する。
+            '2019/09/24 CHG E N D
+        End If
 		'UPGRADE_WARNING: オブジェクト TEKIDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		TEKIDT_Skip = False
 	End Function

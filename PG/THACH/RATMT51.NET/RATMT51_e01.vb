@@ -14,11 +14,13 @@ Module RATMT51_E01
 		Dim I As Short
 		Dim wkTUKKB As String
 		Dim strSQL As String
-		'
-		I = 0
-		Call TUKMTA_RClear()
-		
-		SSS_FASTKEY.Value = SSS_LASTKEY.Value
+        '
+        I = 0
+        '2019/09/25 DEL START
+        'Call TUKMTA_RClear()
+        '2019/09/25 DEL E N D
+
+        SSS_FASTKEY.Value = SSS_LASTKEY.Value
 		''''Call DB_GetGrEq(DBN_TUKMTA, 1, SSS_LASTKEY, BtrNormal)
 		strSQL = ""
 		strSQL = strSQL & "SELECT *"
@@ -56,9 +58,11 @@ Module RATMT51_E01
 				Call SCR_FromMfil(I)
 				Call DP_SSSMAIN_V_DATKB(I, DB_TUKMTA.DATKB) '2006.11.07
 				Call DP_SSSMAIN_V_RATERT(I, DB_TUKMTA.RATERT) '2006.11.07
-				
-				Call MEIMTA_RClear()
-				wkTUKKB = DB_TUKMTA.TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_TUKMTA.TUKKB))
+
+                '2019/09/24 DEL START
+                'Call MEIMTA_RClear()
+                '2019/09/24 DEL E N D
+                wkTUKKB = DB_TUKMTA.TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_TUKMTA.TUKKB))
 				Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkTUKKB, BtrNormal)
 				If DBSTAT = 0 Then 'ñºèÃœΩ¿Ç…ìñäYçÄñ⁄Ç™ç›ÇÈéû
 					Call SCR_FromMEIMTA(I)
