@@ -16,12 +16,16 @@ Module SOUKOKB_F51
 		'
 		'UPGRADE_WARNING: オブジェクト SOUKOKB_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		SOUKOKB_Check = 0
-		Call MEIMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト SOUKOKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(SOUKOKB) = "" Then
-			Call MEIMTA_RClear()
-			'UPGRADE_WARNING: オブジェクト SOUKOKB_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			SOUKOKB_Check = -1
+        '2019/09/25 DEL START
+        'Call MEIMTA_RClear()
+        '2019/09/25 DEL END
+        'UPGRADE_WARNING: オブジェクト SOUKOKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(SOUKOKB) = "" Then
+            '2019/09/25 DEL START
+            'Call MEIMTA_RClear()
+            '2019/09/25 DEL END
+            'UPGRADE_WARNING: オブジェクト SOUKOKB_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            SOUKOKB_Check = -1
 		Else
 			'UPGRADE_WARNING: オブジェクト SOUKOKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			wkSOUKOKB = SOUKOKB & Space(Len(DB_MEIMTA.MEICDA) - Len(SOUKOKB))

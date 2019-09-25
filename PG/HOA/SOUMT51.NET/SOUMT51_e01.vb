@@ -51,16 +51,22 @@ Module SOUMT51_E01
 				Else
 					Call DP_SSSMAIN_UPDKB(I, "çXêV")
 				End If
-				Call MEIMTA_RClear()
-				wkSOUBSCD = DB_SOUMTA.SOUBSCD & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_SOUMTA.SOUBSCD))
+                '2019/09/25 DEL START
+                'Call MEIMTA_RClear()
+                '2019/09/25 DEL END
+                wkSOUBSCD = DB_SOUMTA.SOUBSCD & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_SOUMTA.SOUBSCD))
 				Call DB_GetEq(DBN_MEIMTA, 2, "015" & wkSOUBSCD, BtrNormal)
 				Call DP_SSSMAIN_SOUBSNM(I, Trim(DB_MEIMTA.MEINMA))
-				Call MEIMTA_RClear()
-				wkSOUKOKB = DB_SOUMTA.SOUKOKB & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_SOUMTA.SOUKOKB))
+                '2019/09/25 DEL START
+                'Call MEIMTA_RClear()
+                '2019/09/25 DEL END
+                wkSOUKOKB = DB_SOUMTA.SOUKOKB & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_SOUMTA.SOUKOKB))
 				Call DB_GetEq(DBN_MEIMTA, 2, "026" & wkSOUKOKB, BtrNormal)
 				Call DP_SSSMAIN_SOUKONM(I, Trim(DB_MEIMTA.MEINMA))
-				Call TOKMTA_RClear()
-				Call DB_GetEq(DBN_TOKMTA, 1, DB_SOUMTA.SOUTRICD, BtrNormal)
+                '2019/09/25 DEL START
+                'Call TOKMTA_RClear()
+                '2019/09/25 DEL END
+                Call DB_GetEq(DBN_TOKMTA, 1, DB_SOUMTA.SOUTRICD, BtrNormal)
 				Call SCR_FromTOKMTA(I)
 				I = I + 1
 				Call DB_GetNext(DBN_SOUMTA, BtrNormal)
