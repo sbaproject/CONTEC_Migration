@@ -673,7 +673,10 @@ Friend Class FR_SSSMAIN
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
@@ -884,7 +887,10 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
@@ -1046,7 +1052,10 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
@@ -1209,7 +1218,10 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
@@ -1372,7 +1384,10 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
@@ -1535,7 +1550,10 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
@@ -1697,7 +1715,10 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
@@ -1908,7 +1929,10 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If PP_SSSMAIN.MaskMode = False Then
             'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM) Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM, FORM_LOAD_FLG) Then
+                '2019/09/25 CHG END
                 'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
