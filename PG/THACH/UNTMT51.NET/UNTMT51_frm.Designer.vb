@@ -19,8 +19,8 @@
 	Public ToolTip1 As System.Windows.Forms.ToolTip
 	Public WithEvents HD_OPENM As System.Windows.Forms.TextBox
 	Public WithEvents HD_OPEID As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D4_0 As SSPanel5
-	Public WithEvents TX_Mode As System.Windows.Forms.TextBox
+    Public WithEvents _FM_Panel3D4_0 As Label
+    Public WithEvents TX_Mode As System.Windows.Forms.TextBox
 	Public WithEvents VS_Scrl As System.Windows.Forms.VScrollBar
 	Public WithEvents _IM_Execute_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Execute_0 As System.Windows.Forms.PictureBox
@@ -42,20 +42,20 @@
 	Public WithEvents _IM_SelectCm_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Denkyu_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Denkyu_2 As System.Windows.Forms.PictureBox
-	Public WithEvents FM_Panel3D1 As SSPanel5
-	Public WithEvents _BD_UPDKB_0 As System.Windows.Forms.TextBox
+    Public WithEvents FM_Panel3D1 As Label
+    Public WithEvents _BD_UPDKB_0 As System.Windows.Forms.TextBox
 	Public WithEvents TM_StartUp As System.Windows.Forms.Timer
 	Public WithEvents TX_CursorRest As System.Windows.Forms.TextBox
 	Public WithEvents _BD_UNTNM_0 As System.Windows.Forms.TextBox
 	Public WithEvents _BD_UNTCD_0 As System.Windows.Forms.TextBox
-	Public WithEvents CS_UNTCD As SSCommand5
-	Public WithEvents CM_UPDKB As SSCommand5
-	Public WithEvents TX_Message As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D2_2 As SSPanel5
-	Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
-	Public WithEvents _FM_Panel3D15_0 As SSPanel5
-	Public WithEvents SYSDT As SSPanel5
-	Public WithEvents CM_DELETEDE As System.Windows.Forms.PictureBox
+    Public WithEvents CS_UNTCD As Button
+    Public WithEvents CM_UPDKB As Button
+    Public WithEvents TX_Message As System.Windows.Forms.TextBox
+    Public WithEvents _FM_Panel3D2_2 As Label
+    Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
+    Public WithEvents _FM_Panel3D15_0 As Label
+    Public WithEvents SYSDT As Label
+    Public WithEvents CM_DELETEDE As System.Windows.Forms.PictureBox
 	Public WithEvents CM_INSERTDE As System.Windows.Forms.PictureBox
 	Public WithEvents CM_PREV As System.Windows.Forms.PictureBox
 	Public WithEvents CM_Execute As System.Windows.Forms.PictureBox
@@ -65,15 +65,15 @@
 	Public WithEvents CM_EndCm As System.Windows.Forms.PictureBox
 	Public WithEvents CM_SelectCm As System.Windows.Forms.PictureBox
 	Public WithEvents Image1 As System.Windows.Forms.PictureBox
-	Public WithEvents FM_Panel3D14 As SSPanel5
-	Public WithEvents _FM_Panel3D4_4 As SSPanel5
-	Public WithEvents BD_UNTCD As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
+    Public WithEvents FM_Panel3D14 As Label
+    Public WithEvents _FM_Panel3D4_4 As Label
+    Public WithEvents BD_UNTCD As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_UNTNM As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_UPDKB As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
-	Public WithEvents FM_Panel3D15 As SSPanel5Array
-	Public WithEvents FM_Panel3D2 As SSPanel5Array
-	Public WithEvents FM_Panel3D4 As SSPanel5Array
-	Public WithEvents IM_DELETEDE As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
+    Public WithEvents FM_Panel3D15 As VB6.PanelArray
+    Public WithEvents FM_Panel3D2 As VB6.PanelArray
+    Public WithEvents FM_Panel3D4 As VB6.PanelArray
+    Public WithEvents IM_DELETEDE As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_Denkyu As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_EndCm As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_Execute As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
@@ -120,9 +120,9 @@
 		Me.ToolTip1 = New System.Windows.Forms.ToolTip(components)
 		Me.HD_OPENM = New System.Windows.Forms.TextBox
 		Me.HD_OPEID = New System.Windows.Forms.TextBox
-		Me._FM_Panel3D4_0 = New SSPanel5
-		Me.FM_Panel3D1 = New SSPanel5
-		Me.TX_Mode = New System.Windows.Forms.TextBox
+        Me._FM_Panel3D4_0 = New Label
+        Me.FM_Panel3D1 = New Label
+        Me.TX_Mode = New System.Windows.Forms.TextBox
 		Me.VS_Scrl = New System.Windows.Forms.VScrollBar
 		Me._IM_Execute_1 = New System.Windows.Forms.PictureBox
 		Me._IM_Execute_0 = New System.Windows.Forms.PictureBox
@@ -149,15 +149,15 @@
 		Me.TX_CursorRest = New System.Windows.Forms.TextBox
 		Me._BD_UNTNM_0 = New System.Windows.Forms.TextBox
 		Me._BD_UNTCD_0 = New System.Windows.Forms.TextBox
-		Me.CS_UNTCD = New SSCommand5
-		Me.CM_UPDKB = New SSCommand5
-		Me._FM_Panel3D15_0 = New SSPanel5
-		Me._FM_Panel3D2_2 = New SSPanel5
-		Me.TX_Message = New System.Windows.Forms.TextBox
+        Me.CS_UNTCD = New Button
+        Me.CM_UPDKB = New Button
+        Me._FM_Panel3D15_0 = New Label
+        Me._FM_Panel3D2_2 = New Label
+        Me.TX_Message = New System.Windows.Forms.TextBox
 		Me._IM_Denkyu_0 = New System.Windows.Forms.PictureBox
-		Me.FM_Panel3D14 = New SSPanel5
-		Me.SYSDT = New SSPanel5
-		Me.CM_DELETEDE = New System.Windows.Forms.PictureBox
+        Me.FM_Panel3D14 = New Label
+        Me.SYSDT = New Label
+        Me.CM_DELETEDE = New System.Windows.Forms.PictureBox
 		Me.CM_INSERTDE = New System.Windows.Forms.PictureBox
 		Me.CM_PREV = New System.Windows.Forms.PictureBox
 		Me.CM_Execute = New System.Windows.Forms.PictureBox
@@ -167,14 +167,14 @@
 		Me.CM_EndCm = New System.Windows.Forms.PictureBox
 		Me.CM_SelectCm = New System.Windows.Forms.PictureBox
 		Me.Image1 = New System.Windows.Forms.PictureBox
-		Me._FM_Panel3D4_4 = New SSPanel5
-		Me.BD_UNTCD = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
+        Me._FM_Panel3D4_4 = New Label
+        Me.BD_UNTCD = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_UNTNM = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_UPDKB = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
-		Me.FM_Panel3D15 = New SSPanel5Array(components)
-		Me.FM_Panel3D2 = New SSPanel5Array(components)
-		Me.FM_Panel3D4 = New SSPanel5Array(components)
-		Me.IM_DELETEDE = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
+        Me.FM_Panel3D15 = New VB6.PanelArray(components)
+        Me.FM_Panel3D2 = New VB6.PanelArray(components)
+        Me.FM_Panel3D4 = New VB6.PanelArray(components)
+        Me.IM_DELETEDE = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_Denkyu = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_EndCm = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_Execute = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
@@ -304,18 +304,18 @@
 		Me._FM_Panel3D4_0.Size = New System.Drawing.Size(73, 22)
 		Me._FM_Panel3D4_0.Location = New System.Drawing.Point(399, 92)
 		Me._FM_Panel3D4_0.TabIndex = 1
-		Me._FM_Panel3D4_0.ForeColor = 0
-		Me._FM_Panel3D4_0.Alignment = 8
-		Me._FM_Panel3D4_0.BevelOuter = 1
-		Me._FM_Panel3D4_0.Caption = "íPà ñº"
-		Me._FM_Panel3D4_0.OutLine = -1
-		Me._FM_Panel3D4_0.Name = "_FM_Panel3D4_0"
+        Me._FM_Panel3D4_0.ForeColor = Color.Empty
+        'Me._FM_Panel3D4_0.Alignment = 8
+        'Me._FM_Panel3D4_0.BevelOuter = 1
+        Me._FM_Panel3D4_0.Text = "íPà ñº"
+        'Me._FM_Panel3D4_0.OutLine = -1
+        Me._FM_Panel3D4_0.Name = "_FM_Panel3D4_0"
 		Me.FM_Panel3D1.Size = New System.Drawing.Size(907, 43)
 		Me.FM_Panel3D1.Location = New System.Drawing.Point(0, 534)
 		Me.FM_Panel3D1.TabIndex = 5
-		Me.FM_Panel3D1.ForeColor = 0
-		Me.FM_Panel3D1.OutLine = -1
-		Me.FM_Panel3D1.Name = "FM_Panel3D1"
+        Me.FM_Panel3D1.ForeColor = Color.Empty
+        'Me.FM_Panel3D1.OutLine = -1
+        Me.FM_Panel3D1.Name = "FM_Panel3D1"
 		Me.TX_Mode.AutoSize = False
 		Me.TX_Mode.BackColor = System.Drawing.Color.FromARGB(255, 192, 255)
 		Me.TX_Mode.Size = New System.Drawing.Size(58, 37)
@@ -630,32 +630,32 @@
 		Me.CS_UNTCD.Location = New System.Drawing.Point(327, 92)
 		Me.CS_UNTCD.TabIndex = 9
 		Me.CS_UNTCD.TabStop = 0
-		Me.CS_UNTCD.ForeColor = 0
-		Me.CS_UNTCD.Caption = "*íPà ∫∞ƒﬁ"
-		Me.CS_UNTCD.BevelWidth = 1
-		Me.CS_UNTCD.RoundedCorners = 0
-		Me.CS_UNTCD.Name = "CS_UNTCD"
+        Me.CS_UNTCD.ForeColor = Color.Empty
+        Me.CS_UNTCD.Text = "*íPà ∫∞ƒﬁ"
+        'Me.CS_UNTCD.BevelWidth = 1
+        'Me.CS_UNTCD.RoundedCorners = 0
+        Me.CS_UNTCD.Name = "CS_UNTCD"
 		Me.CM_UPDKB.Size = New System.Drawing.Size(43, 22)
 		Me.CM_UPDKB.Location = New System.Drawing.Point(285, 92)
 		Me.CM_UPDKB.TabIndex = 8
 		Me.CM_UPDKB.TabStop = 0
-		Me.CM_UPDKB.ForeColor = 0
-		Me.CM_UPDKB.Caption = "”∞ƒﬁ"
-		Me.CM_UPDKB.BevelWidth = 1
-		Me.CM_UPDKB.RoundedCorners = 0
-		Me.CM_UPDKB.Name = "CM_UPDKB"
+        Me.CM_UPDKB.ForeColor = Color.Empty
+        Me.CM_UPDKB.Text = "”∞ƒﬁ"
+        'Me.CM_UPDKB.BevelWidth = 1
+        'Me.CM_UPDKB.RoundedCorners = 0
+        Me.CM_UPDKB.Name = "CM_UPDKB"
 		Me._FM_Panel3D15_0.Size = New System.Drawing.Size(766, 49)
 		Me._FM_Panel3D15_0.Location = New System.Drawing.Point(-3, 477)
 		Me._FM_Panel3D15_0.TabIndex = 10
-		Me._FM_Panel3D15_0.ForeColor = 0
-		Me._FM_Panel3D15_0.OutLine = -1
-		Me._FM_Panel3D15_0.Name = "_FM_Panel3D15_0"
+        Me._FM_Panel3D15_0.ForeColor = Color.Empty
+        'Me._FM_Panel3D15_0.OutLine = -1
+        Me._FM_Panel3D15_0.Name = "_FM_Panel3D15_0"
 		Me._FM_Panel3D2_2.Size = New System.Drawing.Size(700, 31)
 		Me._FM_Panel3D2_2.Location = New System.Drawing.Point(45, 9)
 		Me._FM_Panel3D2_2.TabIndex = 11
-		Me._FM_Panel3D2_2.ForeColor = 0
-		Me._FM_Panel3D2_2.BevelOuter = 1
-		Me._FM_Panel3D2_2.Name = "_FM_Panel3D2_2"
+        Me._FM_Panel3D2_2.ForeColor = Color.Empty
+        'Me._FM_Panel3D2_2.BevelOuter = 1
+        Me._FM_Panel3D2_2.Name = "_FM_Panel3D2_2"
 		Me.TX_Message.AutoSize = False
 		Me.TX_Message.BackColor = System.Drawing.SystemColors.Control
 		Me.TX_Message.ForeColor = System.Drawing.Color.Black
@@ -690,16 +690,16 @@
 		Me.FM_Panel3D14.Size = New System.Drawing.Size(763, 37)
 		Me.FM_Panel3D14.Location = New System.Drawing.Point(-3, 0)
 		Me.FM_Panel3D14.TabIndex = 13
-		Me.FM_Panel3D14.ForeColor = 0
-		Me.FM_Panel3D14.OutLine = -1
-		Me.FM_Panel3D14.Name = "FM_Panel3D14"
+        Me.FM_Panel3D14.ForeColor = Color.Empty
+        'Me.FM_Panel3D14.OutLine = -1
+        Me.FM_Panel3D14.Name = "FM_Panel3D14"
 		Me.SYSDT.Size = New System.Drawing.Size(112, 22)
 		Me.SYSDT.Location = New System.Drawing.Point(615, 9)
 		Me.SYSDT.TabIndex = 14
-		Me.SYSDT.ForeColor = 0
-		Me.SYSDT.BevelOuter = 1
-		Me.SYSDT.Caption = "YYYY/MM/DD"
-		Me.SYSDT.Name = "SYSDT"
+        Me.SYSDT.ForeColor = Color.Empty
+        'Me.SYSDT.BevelOuter = 1
+        Me.SYSDT.Text = "YYYY/MM/DD"
+        Me.SYSDT.Name = "SYSDT"
 		Me.CM_DELETEDE.Size = New System.Drawing.Size(24, 22)
 		Me.CM_DELETEDE.Location = New System.Drawing.Point(87, 6)
 		Me.CM_DELETEDE.Image = CType(resources.GetObject("CM_DELETEDE.Image"), System.Drawing.Image)
@@ -792,11 +792,11 @@
 		Me._FM_Panel3D4_4.Size = New System.Drawing.Size(79, 22)
 		Me._FM_Panel3D4_4.Location = New System.Drawing.Point(456, 56)
 		Me._FM_Panel3D4_4.TabIndex = 17
-		Me._FM_Panel3D4_4.ForeColor = 0
-		Me._FM_Panel3D4_4.BevelOuter = 1
-		Me._FM_Panel3D4_4.Caption = "ì¸óÕíSìñé“"
-		Me._FM_Panel3D4_4.OutLine = -1
-		Me._FM_Panel3D4_4.Name = "_FM_Panel3D4_4"
+        Me._FM_Panel3D4_4.ForeColor = Color.Empty
+        'Me._FM_Panel3D4_4.BevelOuter = 1
+        Me._FM_Panel3D4_4.Text = "ì¸óÕíSìñé“"
+        'Me._FM_Panel3D4_4.OutLine = -1
+        Me._FM_Panel3D4_4.Name = "_FM_Panel3D4_4"
 		Me.MN_Ctrl.Name = "MN_Ctrl"
 		Me.MN_Ctrl.Text = "èàóù(&1)"
 		Me.MN_Ctrl.Checked = False
@@ -990,11 +990,11 @@
 		Me.BD_UNTCD.SetIndex(_BD_UNTCD_0, CType(0, Short))
 		Me.BD_UNTNM.SetIndex(_BD_UNTNM_0, CType(0, Short))
 		Me.BD_UPDKB.SetIndex(_BD_UPDKB_0, CType(0, Short))
-		Me.FM_Panel3D15.SetIndex(_FM_Panel3D15_0, CType(0, Short))
-		Me.FM_Panel3D2.SetIndex(_FM_Panel3D2_2, CType(2, Short))
-		Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_0, CType(0, Short))
-		Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_4, CType(4, Short))
-		Me.IM_DELETEDE.SetIndex(_IM_DELETEDE_0, CType(0, Short))
+        'Me.FM_Panel3D15.SetIndex(_FM_Panel3D15_0, CType(0, Short))
+        'Me.FM_Panel3D2.SetIndex(_FM_Panel3D2_2, CType(2, Short))
+        'Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_0, CType(0, Short))
+        'Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_4, CType(4, Short))
+        Me.IM_DELETEDE.SetIndex(_IM_DELETEDE_0, CType(0, Short))
 		Me.IM_DELETEDE.SetIndex(_IM_DELETEDE_1, CType(1, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_1, CType(1, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_2, CType(2, Short))

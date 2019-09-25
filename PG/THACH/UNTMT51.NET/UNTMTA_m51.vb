@@ -262,9 +262,11 @@ Module UNTMTA_M51
 					End If '2006.11.07
 				End If
 			Else
-				'’Ç‰Á
-				Call UNTMTA_RClear()
-				Call Mfil_FromSCR(I)
+                '’Ç‰Á
+                '2019/09/25 DEL START
+                'Call UNTMTA_RClear()
+                '2019/09/25 DEL E N D
+                Call Mfil_FromSCR(I)
 				DB_UNTMTA.DATKB = "1"
 				DB_UNTMTA.RELFL = "1"
 				'            DB_UNTMTA.FOPEID = SSS_OPEID
