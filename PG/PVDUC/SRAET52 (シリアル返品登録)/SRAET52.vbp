@@ -1,0 +1,60 @@
+Type=Exe
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\system32\stdole2.tlb#OLE Automation
+
+Form=frmSRAET52.frm
+Module=Common; Common.bas
+Module=Functions; Functions.bas
+Module=SpreadBas; SpreadBas.bas
+
+Module=ORA_CMN; ORA_CMN.BAS
+Module=AE_PROC; AE_PROC.BAS
+Module=AE_RSMR; AE_RSMR.BAS
+Module=AE_CONST; AE_CONST.BAS
+
+Module=BasOraJet; ORAJET.BAS
+Module=SRAET52_E01; SRAET52.E01.bas
+Module=SRAET52_IEV; SRAET52.IEV.bas
+Module=SSSMAIN0001; SRAET52.FPR.bas
+Module=SSSMAIN0002; SRAET52.PSI.bas
+Module=ACE_CMN; ACE_CMN.BAS
+Module=SSSWIN_BAS; SSSWIN.BAS
+Module=SSSMSG_BAS; SSSMSG.BAS
+Module=AE_CMN; AE_CMN.BAS
+Module=GET_DATA; GET_DATA.bas
+
+
+IconForm="ICN_ICON"
+Startup="FR_SSSMAIN"
+HelpFile=""
+Title="SRAET52"
+ExeName32="SRAET52.exe"
+Path32="..\PRG\EXE"
+Command32="/RPTCLTID:CLTID /RSTDT:20060801 /HINCD:LRBD382 /SBNNO:74100268350464597123 /URISU:1"
+Name="SRAET52"
+HelpContextID="0"
+CompatibleMode="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0
+VersionCompanyName="ëÂç„âcã∆èä"
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=0
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=0
+Unattended=0
+Retained=0
+ThreadPerObject=0
+MaxNumberOfThreads=1
+DebugStartupOption=0
+
+[MS Transaction Server]
+AutoRefresh=1

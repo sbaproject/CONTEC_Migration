@@ -1,0 +1,46 @@
+Attribute VB_Name = "SOUTRICD_F51"
+Option Explicit
+'
+'スロット名      :取引先コード・画面項目スロット
+'ユニット名      :SOUTRICD.F51
+'記述者          :Standard Library
+'作成日付        :2006/06/13
+'使用プログラム  :SOUMT51
+'
+
+Function SOUTRICD_Check(ByVal SOUTRICD, ByVal SOUKOKB, ByVal SISNKB, ByVal De_Index)
+Dim Rtn As Integer
+    '
+    SOUTRICD_Check = 0
+    Call TOKMTA_RClear
+    If LenWid(Trim$(SOUTRICD)) = 0 Then
+        If SOUKOKB = "03" Then
+            SOUTRICD_Check = -1
+        End If
+        If SISNKB = 1 Then
+            SOUTRICD_Check = -1
+        End If
+    Else
+        Call DB_GetEq(DBN_TOKMTA, 1, SOUTRICD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_TOKMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)             ' 削除済レコードです。
+                SOUTRICD_Check = 1
+            End If
+        Else
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)     ' 該当レコードはありません。
+            SOUTRICD_Check = -1
+        End If
+    End If
+    Call SCR_FromTOKMTA(De_Index)
+End Function
+
+Function SOUTRICD_Slist(PP As clsPP, ByVal SOUTRICD)
+    '
+    DB_PARA(DBN_TOKMTA).KeyNo = 1
+    DB_PARA(DBN_TOKMTA).KeyBuf = SOUTRICD
+    WLSTOK.Show 1
+    Unload WLSTOK
+    SOUTRICD_Slist = PP.SlistCom
+End Function
+
