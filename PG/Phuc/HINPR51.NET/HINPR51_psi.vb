@@ -1,9 +1,13 @@
 Option Strict Off
 Option Explicit On
 Module SSSMAIN0002
-	'プログラム総括情報プロシジャ
-	
-	Sub AE_PSIR_SSSMAIN()
+    'プログラム総括情報プロシジャ
+    '2019/09/24 ADD START
+    Public Structure Cls_Dsp_Body_Bus_Inf
+        Dim dummy
+    End Structure
+    '2019/09/24 ADD E N D
+    Sub AE_PSIR_SSSMAIN()
 		Dim AE_PSIC As Object 'Generated.
 		Dim AE_PSI(7) As Object
 		'UPGRADE_WARNING: オブジェクト AE_PSIC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
