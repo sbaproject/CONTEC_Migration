@@ -16,16 +16,21 @@ Module SOUBSCD_F51
 		'
 		'UPGRADE_WARNING: オブジェクト SOUBSCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		SOUBSCD_Check = 0
-		Call MEIMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト SOUBSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(SOUBSCD) = "" Then
-			Call MEIMTA_RClear()
-			'UPGRADE_WARNING: オブジェクト SOUBSCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			SOUBSCD_Check = -1
+        '2019/09/25 DEL START
+        'Call MEIMTA_RClear()
+        '2019/09/25 DEL END
+        'UPGRADE_WARNING: オブジェクト SOUBSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(SOUBSCD) = "" Then
+            '2019/09/25 DEL START
+            'Call MEIMTA_RClear()
+            '2019/09/25 DEL END
+            'UPGRADE_WARNING: オブジェクト SOUBSCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            SOUBSCD_Check = -1
 		Else
-			'UPGRADE_WARNING: オブジェクト SOUBSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wkSOUBSCD = SOUBSCD & Space(Len(DB_MEIMTA.MEICDA) - Len(SOUBSCD))
-			Call DB_GetEq(DBN_MEIMTA, 2, "015" & wkSOUBSCD, BtrNormal)
+            'UPGRADE_WARNING: オブジェクト SOUBSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+
+            wkSOUBSCD = SOUBSCD & Space(Len(DB_MEIMTA.MEICDA) - Len(SOUBSCD))
+            Call DB_GetEq(DBN_MEIMTA, 2, "015" & wkSOUBSCD, BtrNormal)
 			If DBSTAT = 0 Then
 				If DB_MEIMTA.DATKB = "9" Then
 					Call Dsp_Prompt("RNOTFOUND", 1) ' 削除済レコードです。

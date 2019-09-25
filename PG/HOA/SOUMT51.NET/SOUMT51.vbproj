@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <MyType>WindowsForms</MyType>
@@ -20,6 +20,10 @@
     <RootNamespace>SOUMT51</RootNamespace>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>.\bin\</OutputPath>
@@ -29,7 +33,7 @@
     <DefineTrace>True</DefineTrace>
     <DefineConstants>Win32=True</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -40,18 +44,28 @@
     <DefineTrace>True</DefineTrace>
     <DefineConstants>Win32=True</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic.Compatibility">
       <Name>Microsoft.VisualBasic.Compatibility</Name>
     </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\HOA\共通dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PronesDbAccess">
+      <HintPath>..\..\..\..\HOA\共通dll\PronesDbAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>..\..\..\..\HOA\共通dll\System.Data.DataSetExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
@@ -81,48 +95,69 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AE_PROC.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\AE_PROC.vb">
+      <Link>AE_PROC.vb</Link>
     </Compile>
-    <Compile Include="AE_RSMR.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\AE_RSMR.vb">
+      <Link>AE_RSMR.vb</Link>
     </Compile>
-    <Compile Include="AssemblyInfo.vb" />
-    <Compile Include="EXCTBZ.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FIXMTA.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GYMTBZ.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HIKKB.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ICONSSS.Designer.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\ICONSSS.designer.vb">
+      <Link>ICONSSS.designer.vb</Link>
       <DependentUpon>ICONSSS.vb</DependentUpon>
     </Compile>
-    <Compile Include="ICONSSS.vb">
+    <Compile Include="..\..\共通vb\ICONSSS.vb">
+      <Link>ICONSSS.vb</Link>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KNGMTB.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\OPEID.vb">
+      <Link>OPEID.vb</Link>
     </Compile>
-    <Compile Include="MEIMTA.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\OPENM.vb">
+      <Link>OPENM.vb</Link>
     </Compile>
-    <Compile Include="MST_CMN.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
     </Compile>
-    <Compile Include="OPEID.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
     </Compile>
-    <Compile Include="OPENM.vb">
-      <SubType>Code</SubType>
+    <Compile Include="..\..\共通vb\UpgradeSupport.vb">
+      <Link>UpgradeSupport.vb</Link>
     </Compile>
-    <Compile Include="ORAJET.vb">
+    <Compile Include="..\..\共通vb\WLS_HCP.designer.vb">
+      <Link>WLS_HCP.designer.vb</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.vb">
+      <Link>WLS_HCP.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI1.designer.vb">
+      <Link>WLS_MEI1.designer.vb</Link>
+      <DependentUpon>WLS_MEI1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI1.vb">
+      <Link>WLS_MEI1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_SOU1.designer.vb">
+      <Link>WLS_SOU1.designer.vb</Link>
+      <DependentUpon>WLS_SOU1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_SOU1.vb">
+      <Link>WLS_SOU1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK3.designer.vb">
+      <Link>WLS_TOK3.designer.vb</Link>
+      <DependentUpon>WLS_TOK3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK3.vb">
+      <Link>WLS_TOK3.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="HIKKB.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SALPALKB.vb">
@@ -195,90 +230,31 @@
     <Compile Include="SSSWIN.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SYSTBA.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SYSTBB.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SYSTBC.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SYSTBD.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SYSTBF.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SYSTBG.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SYSTBH.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TANMTA.vb">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="TELNO.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TOKMTA.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UNYMTA.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UPDKB.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UpgradeSupport.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="WLS_HCP.Designer.vb">
-      <SubType>Code</SubType>
-      <DependentUpon>WLS_HCP.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WLS_HCP.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WLS_MEI1.Designer.vb">
-      <SubType>Code</SubType>
-      <DependentUpon>WLS_MEI1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WLS_MEI1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WLS_SOU1.Designer.vb">
-      <SubType>Code</SubType>
-      <DependentUpon>WLS_SOU1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WLS_SOU1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WLS_TOK3.Designer.vb">
-      <SubType>Code</SubType>
-      <DependentUpon>WLS_TOK3.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WLS_TOK3.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="ICONSSS.resX">
+    <EmbeddedResource Include="..\..\共通vb\ICONSSS.resX">
+      <Link>ICONSSS.resX</Link>
       <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_HCP.resX">
+      <Link>WLS_HCP.resX</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_MEI1.resX">
+      <Link>WLS_MEI1.resX</Link>
+      <DependentUpon>WLS_MEI1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_SOU1.resX">
+      <Link>WLS_SOU1.resX</Link>
+      <DependentUpon>WLS_SOU1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_TOK3.resX">
+      <Link>WLS_TOK3.resX</Link>
+      <DependentUpon>WLS_TOK3.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SOUMT51_frm.resX">
       <DependentUpon>SOUMT51_frm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WLS_HCP.resX">
-      <DependentUpon>WLS_HCP.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WLS_MEI1.resX">
-      <DependentUpon>WLS_MEI1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WLS_SOU1.resX">
-      <DependentUpon>WLS_SOU1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WLS_TOK3.resX">
-      <DependentUpon>WLS_TOK3.vb</DependentUpon>
     </EmbeddedResource>
     <Content Include="SOUMT51.ico" />
     <None Include="_UpgradeReport.htm">

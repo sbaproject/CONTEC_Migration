@@ -297,8 +297,8 @@ Module SOUMTA_M51
 					End If '2006.11.07
 				End If
 			Else
-				Call SOUMTA_RClear()
-				Call Mfil_FromSCR(I)
+                'Call SOUMTA_RClear()
+                Call Mfil_FromSCR(I)
 				DB_SOUMTA.DATKB = "1"
 				DB_SOUMTA.RELFL = "1"
 				DB_SOUMTA.FOPEID = SSS_OPEID.Value
