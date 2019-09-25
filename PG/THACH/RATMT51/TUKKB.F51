@@ -1,0 +1,92 @@
+Attribute VB_Name = "TUKKB_F51"
+Option Explicit
+'
+'スロット名      :通貨区分・画面項目スロット
+'ユニット名      :TUKKB.F51
+'記述者          :Standard Library
+'作成日付        :2006/05/31
+'使用プログラム  :RATMT51
+'
+
+Function TUKKB_CheckC(PP As clsPP, CP_TUKKB As clsCP, TUKKB, ByVal TEKIDT, ByVal De_Index)
+Dim Rtn As Integer
+Dim wkTUKKB As String
+    TUKKB_CheckC = 0
+    Call TUKMTA_RClear
+    '
+    If Trim$(TUKKB) = "" Then
+        'rtn = DSP_MsgBox(SSS_ERROR, "ITM", 0)
+       TUKKB_CheckC = -1
+    Else
+'''''       Call SCR_FromMfil(De_INDEX)
+        Call MEIMTA_RClear
+        wkTUKKB = TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(TUKKB))
+        Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkTUKKB, BtrNormal)
+        If DBSTAT = 0 Then    '名称ﾏｽﾀに当該項目が在る時
+            If DB_MEIMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                TUKKB_CheckC = -1
+            End If
+        Else
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            TUKKB_CheckC = -1
+        End If
+       
+        If TUKKB_CheckC = 0 Then
+            Call TUKMTA_RClear
+            If Trim$(TUKKB) = "" Then
+                TUKKB_CheckC = -1
+            Else
+            Call DB_GetEq(DBN_TUKMTA, 1, TUKKB & Format$(TEKIDT, "YYYYMMDD"), BtrNormal)
+                If DBSTAT = 0 Then
+                    Call SCR_FromMfil(De_Index)
+                    If DB_TUKMTA.DATKB = "9" Then
+                        Call DP_SSSMAIN_UPDKB(De_Index, "削除")
+                    Else
+                        Call DP_SSSMAIN_UPDKB(De_Index, "更新")
+                    End If
+'20081002 ADD START RISE)Tanimura '排他処理
+                    ' [引数De_Indexは画面上の行数(0～)]
+                    M_RATMT_A_inf(De_Index).OPEID = DB_TUKMTA.OPEID           ' 最終作業者コード
+                    M_RATMT_A_inf(De_Index).CLTID = DB_TUKMTA.CLTID           ' クライアントＩＤ
+                    M_RATMT_A_inf(De_Index).WRTTM = DB_TUKMTA.WRTTM           ' タイムスタンプ（時間）
+                    M_RATMT_A_inf(De_Index).WRTDT = DB_TUKMTA.WRTDT           ' タイムスタンプ（日付）
+                    M_RATMT_A_inf(De_Index).UOPEID = DB_TUKMTA.UOPEID         ' ユーザID（バッチ）
+                    M_RATMT_A_inf(De_Index).UCLTID = DB_TUKMTA.UCLTID         ' クライアントID（バッチ）
+                    M_RATMT_A_inf(De_Index).UWRTTM = DB_TUKMTA.UWRTTM         ' タイムスタンプ（バッチ時間）
+                    M_RATMT_A_inf(De_Index).UWRTDT = DB_TUKMTA.UWRTDT         ' タイムスタンプ（バッチ日）
+'20081002 ADD END   RISE)Tanimura
+                Else
+                    Call DP_SSSMAIN_UPDKB(De_Index, "追加")
+'20081002 ADD START RISE)Tanimura '排他処理
+                    Call RATMT51_MF_Clear_UWRTDTTM(De_Index)
+'20081002 ADD END   RISE)Tanimura
+                    Call TUKMTA_RClear
+                    
+                End If
+            End If
+            Call SCR_FromMfil(De_Index)
+        End If
+        Call SCR_FromMEIMTA(De_Index)
+    
+    End If
+
+End Function
+
+Function TUKKB_Slist(PP As clsPP, ByVal TUKKB)
+    WLS_MEI1.Caption = "通貨区分名称一覧"
+    WLS_MEI1!LST.Clear
+    Call DB_GetGrEq(DBN_MEIMTA, 3, "001", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "001"
+        If DB_MEIMTA.DATKB <> "9" Then
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & LeftWid(DB_MEIMTA.MEINMA, 40)
+        End If
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = LenWid(DB_MEIMTA.KEYCD)
+    WLS_MEI1.Show 1
+    Unload WLS_MEI1
+    TUKKB_Slist = PP.SlistCom
+
+End Function
+

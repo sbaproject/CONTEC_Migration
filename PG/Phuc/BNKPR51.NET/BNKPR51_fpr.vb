@@ -1803,7 +1803,7 @@ Module SSSMAIN0001
              And PP_SSSMAIN.SelValid _
              And DirectCast(Ct, TextBox).SelectionLength = Len(wk_Txt) _
              And Len(wk_Txt) > 0 Then
-                '2019/03/20 CHG E N D
+                '2019/09/20 CHG E N D
                 If CP_SSSMAIN(wk_Px).Alignment <> 1 Then '¶‹l‚ß
 					wk_SS = Len(wk_Txt) - PP_SSSMAIN.Override
 					Do While wk_SS > 0

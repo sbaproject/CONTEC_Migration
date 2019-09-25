@@ -161,10 +161,12 @@ Module SSSMAIN_PR2
 			'
 			Exit Sub
 		End If
-		'
-		'参照先を切り替える
-		Rtn = Crw_ChgLoc
-		If Rtn = 0 Then
+        '
+        '参照先を切り替える
+        '2019/09/25 仮
+        'Rtn = Crw_ChgLoc
+        '2019/09/25 仮
+        If Rtn = 0 Then
 			MsgBox("CRW_PRINT.CRW_STATUS : " & Rtn & Chr(13) & CRW_GETERRMSG(HCRW))
 			Exit Sub
 		End If
@@ -210,8 +212,11 @@ Module SSSMAIN_PR2
 			'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
 			System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor '砂時計
 			Do While CRW_VIEWCHECK()
-				Call Sleep(200)
-				System.Windows.Forms.Application.DoEvents()
+                '2019/09/25 CHG START
+                'Call Sleep(200)
+                System.Threading.Thread.Sleep(200)
+                '2019/09/25 CHG END
+                System.Windows.Forms.Application.DoEvents()
 			Loop 
 			FR_SSSMAIN.Enabled = True
 			System.Windows.Forms.Application.DoEvents()
@@ -350,104 +355,108 @@ Next_Proc:
 				Call WORKING_VIEW(False)
 			End If
 		Else
-			'ダイアログによりプリンタ切替えをされたものを再設定する。
-			'専用帳票の場合クリスタルレポートのユーザー定義を優先する。
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-			If IsDbNull(SSS_Lconfig) Then SSS_Lconfig = ""
-			If SSS_Lconfig <> "USR" Then Call CRW_SET_PRINTER()
-			Select Case LSTKB
-				Case SSS_PRINTER
-					
-					Rtn = CRW_PUTPRINTER()
-					'印刷部数の指定
-					wkPrintOption.StructSize = PE_SIZEOF_PRINT_OPTIONS
-					Rtn = PEGetPrintOptions(HCRW, wkPrintOption)
-					wkPrintOption.StartPageN = SSS_StartPageNo
-					wkPrintOption.stopPageN = SSS_StopPageNo
-					wkPrintOption.nReportCopies = SSS_Copies
-					If SSS_Copies > 1 Then
-						wkPrintOption.collation = IIf((SSS_Collation = 1), PE_COLLATED, PE_UNCOLLATED)
-					End If
-					Rtn = PESetPrintOptions(HCRW, wkPrintOption)
-				Case SSS_VIEW
-					'プレビュー画面のデフォルトサイズを指定
-					Rtn = GetPrivateProfileString("REPORT", "CRW_LEFT", "", wkStr.Value, 128, "SSSWIN.INI")
-					If Rtn > 0 Then wkLeft = Int(CDbl(Left(wkStr.Value, Rtn)))
-					Rtn = GetPrivateProfileString("REPORT", "CRW_TOP", "", wkStr.Value, 128, "SSSWIN.INI")
-					If Rtn > 0 Then wkTop = Int(CDbl(Left(wkStr.Value, Rtn)))
-					Rtn = GetPrivateProfileString("REPORT", "CRW_HEIGHT", "", wkStr.Value, 128, "SSSWIN.INI")
-					If Rtn > 0 Then wkHeight = Int(CDbl(Left(wkStr.Value, Rtn)))
-					Rtn = GetPrivateProfileString("REPORT", "CRW_WIDTH", "", wkStr.Value, 128, "SSSWIN.INI")
-					If Rtn > 0 Then wkWidth = Int(CDbl(Left(wkStr.Value, Rtn)))
-					
-					'正確性チェック
-					If wkTop <= 0 Or wkTop >= VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 Then wkTop = 0
-					If wkLeft <= 0 Or wkLeft >= VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 Then wkLeft = 0
-					If wkWidth <= 0 Or wkWidth >= VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 Then wkWidth = VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15
-					If wkHeight <= 0 Or wkHeight >= VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 Then wkHeight = VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15
-					If wkLeft + wkWidth > VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 Then wkWidth = VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 - wkLeft
-					If wkTop + wkHeight > VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 Then wkHeight = VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 - wkHeight
-					'
-					Rtn = CRW_PUTWINDOW(CStr(FR_SSSMAIN.Text) & "･ﾚﾎﾟｰﾄ", wkLeft, wkTop, wkWidth, wkHeight)
-					'プレビュー画面でのボタン表示／非表示
-					wkWindowOption.StructSize = PE_SIZEOF_WINDOW_OPTIONS
-					Rtn = PEGetWindowOptions(HCRW, wkWindowOption)
-					'CHG START FKS)INABA 2006/11/15******************************************************************
-					'先に取得した権限により、Preview画面の印刷ボタン、プリンタ設定ボタン、ファイル出力ボタンを制御する
-					If gs_PRTAUTH = "1" Then '印刷権限有り
-						wkWindowOption.hasPrintButton = 1
-						wkWindowOption.hasPrintSetupButton = 1
-					Else
-						wkWindowOption.hasPrintButton = 0
-						wkWindowOption.hasPrintSetupButton = 0
-					End If
-					If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
-						wkWindowOption.hasExportButton = 1
-					Else
-						wkWindowOption.hasExportButton = 0
-					End If
-					
-					'wkWindowOption.hasPrintButton = IIf((SSS_Hide_Prnbutton), 0, 1)
-					'wkWindowOption.hasExportButton = IIf((SSS_Hide_Expbutton), 0, 1)
-					'wkWindowOption.hasPrintSetupButton = IIf((SSS_Hide_Prnset), 0, 1)
-					'CHG  END  FKS)INABA 2006/11/15******************************************************************
-					
-					Rtn = PESetWindowOptions(HCRW, wkWindowOption)
-				Case SSS_FILE
-					Rtn = CRW_SETEXPATR()
-			End Select
-			If Rtn = False Then
-				Error_Exit(("ERROR SSS_LIST 出力先選択 RTN=[" & Str(Rtn) & "]"))
-			End If
-			If Rtn = True Or Rtn = 1 Then
-				FR_SSSMAIN.Enabled = False
-				System.Windows.Forms.Application.DoEvents()
-				If CRW_PRINT() = False Then Error_Exit(("ERROR SSS_LIST CRW_PRINT"))
-				'出力状態のチェックのための区分をセット
-				SSS_OUTKB = LSTKB
-				'
-			ElseIf Rtn <> PE_ERR_USERCANCELLED Then 
-				'CRWでエラーが発生した場合
-				Rtn = MsgBox("SSS_LISTでCRWエラーが発生しました：[" & Str(Rtn) & "]")
-				Error_Exit(("ERROR SSS_LIST 出力先選択 RTN=[" & Str(Rtn) & "]"))
-			End If
-			Call WORKING_VIEW(False)
-			'Debug.Print "    クリスタルレポートが出力に要した時間" & chr(9) & chr(9) & ": " & Str$(Timer - PointTime)
-			'Time3 = Timer - PointTime
-			'Debug.Print "トータルで画面表示に要した時間" & Chr(9) & Chr(9) & ": " & Str$(Timer - StartTime)
-			'Debug.Print ""
-			'msg1$ = "印刷データの Jet への出力を開始するまでの時間" & Chr(9) & ": " & Str$(Time1) & Chr(13)
-			'msg1$ = msg1$ + "印刷データを Jet に出力するのに要した時間" & Chr(9) & ": " & Str$(Time2) & Chr(13)
-			'msg1$ = msg1$ + "クリスタルレポートが出力に要した時間" & Chr(9) & Chr(9) & ": " & Str$(Time3) & Chr(13)
-			'msg1$ = msg1$ + "画面表示に要した時間" & Chr(9) & Chr(9) & Chr(9) & ": " & Str$(Timer - StartTime)
-			'MsgBox msg1$
-			Do While CRW_VIEWCHECK()
-				Call Sleep(200)
-				System.Windows.Forms.Application.DoEvents()
-			Loop 
-			FR_SSSMAIN.Enabled = True
-			System.Windows.Forms.Application.DoEvents()
-		End If
+            'ダイアログによりプリンタ切替えをされたものを再設定する。
+            '専用帳票の場合クリスタルレポートのユーザー定義を優先する。
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+            '2019/09/25 仮
+            'If IsDbNull(SSS_Lconfig) Then SSS_Lconfig = ""
+            'If SSS_Lconfig <> "USR" Then Call CRW_SET_PRINTER()
+            '2019/09/25 仮
+            Select Case LSTKB
+                Case SSS_PRINTER
+
+                    Rtn = CRW_PUTPRINTER()
+                    '印刷部数の指定
+                    wkPrintOption.StructSize = PE_SIZEOF_PRINT_OPTIONS
+                    Rtn = PEGetPrintOptions(HCRW, wkPrintOption)
+                    wkPrintOption.StartPageN = SSS_StartPageNo
+                    wkPrintOption.stopPageN = SSS_StopPageNo
+                    wkPrintOption.nReportCopies = SSS_Copies
+                    If SSS_Copies > 1 Then
+                        wkPrintOption.collation = IIf((SSS_Collation = 1), PE_COLLATED, PE_UNCOLLATED)
+                    End If
+                    Rtn = PESetPrintOptions(HCRW, wkPrintOption)
+                Case SSS_VIEW
+                    'プレビュー画面のデフォルトサイズを指定
+                    Rtn = GetPrivateProfileString("REPORT", "CRW_LEFT", "", wkStr.Value, 128, "SSSWIN.INI")
+                    If Rtn > 0 Then wkLeft = Int(CDbl(Left(wkStr.Value, Rtn)))
+                    Rtn = GetPrivateProfileString("REPORT", "CRW_TOP", "", wkStr.Value, 128, "SSSWIN.INI")
+                    If Rtn > 0 Then wkTop = Int(CDbl(Left(wkStr.Value, Rtn)))
+                    Rtn = GetPrivateProfileString("REPORT", "CRW_HEIGHT", "", wkStr.Value, 128, "SSSWIN.INI")
+                    If Rtn > 0 Then wkHeight = Int(CDbl(Left(wkStr.Value, Rtn)))
+                    Rtn = GetPrivateProfileString("REPORT", "CRW_WIDTH", "", wkStr.Value, 128, "SSSWIN.INI")
+                    If Rtn > 0 Then wkWidth = Int(CDbl(Left(wkStr.Value, Rtn)))
+
+                    '正確性チェック
+                    If wkTop <= 0 Or wkTop >= VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 Then wkTop = 0
+                    If wkLeft <= 0 Or wkLeft >= VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 Then wkLeft = 0
+                    If wkWidth <= 0 Or wkWidth >= VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 Then wkWidth = VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15
+                    If wkHeight <= 0 Or wkHeight >= VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 Then wkHeight = VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15
+                    If wkLeft + wkWidth > VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 Then wkWidth = VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) / 15 - wkLeft
+                    If wkTop + wkHeight > VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 Then wkHeight = VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) / 15 - wkHeight
+                    '
+                    Rtn = CRW_PUTWINDOW(CStr(FR_SSSMAIN.Text) & "･ﾚﾎﾟｰﾄ", wkLeft, wkTop, wkWidth, wkHeight)
+                    'プレビュー画面でのボタン表示／非表示
+                    wkWindowOption.StructSize = PE_SIZEOF_WINDOW_OPTIONS
+                    Rtn = PEGetWindowOptions(HCRW, wkWindowOption)
+                    'CHG START FKS)INABA 2006/11/15******************************************************************
+                    '先に取得した権限により、Preview画面の印刷ボタン、プリンタ設定ボタン、ファイル出力ボタンを制御する
+                    If gs_PRTAUTH = "1" Then '印刷権限有り
+                        wkWindowOption.hasPrintButton = 1
+                        wkWindowOption.hasPrintSetupButton = 1
+                    Else
+                        wkWindowOption.hasPrintButton = 0
+                        wkWindowOption.hasPrintSetupButton = 0
+                    End If
+                    If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
+                        wkWindowOption.hasExportButton = 1
+                    Else
+                        wkWindowOption.hasExportButton = 0
+                    End If
+
+                    'wkWindowOption.hasPrintButton = IIf((SSS_Hide_Prnbutton), 0, 1)
+                    'wkWindowOption.hasExportButton = IIf((SSS_Hide_Expbutton), 0, 1)
+                    'wkWindowOption.hasPrintSetupButton = IIf((SSS_Hide_Prnset), 0, 1)
+                    'CHG  END  FKS)INABA 2006/11/15******************************************************************
+
+                    Rtn = PESetWindowOptions(HCRW, wkWindowOption)
+                Case SSS_FILE
+                    Rtn = CRW_SETEXPATR()
+            End Select
+            '2019/09/25 仮
+            'If Rtn = False Then
+            '	Error_Exit(("ERROR SSS_LIST 出力先選択 RTN=[" & Str(Rtn) & "]"))
+            'End If
+            'If Rtn = True Or Rtn = 1 Then
+            '	FR_SSSMAIN.Enabled = False
+            '	System.Windows.Forms.Application.DoEvents()
+            '	If CRW_PRINT() = False Then Error_Exit(("ERROR SSS_LIST CRW_PRINT"))
+            '	'出力状態のチェックのための区分をセット
+            '	SSS_OUTKB = LSTKB
+            '	'
+            'ElseIf Rtn <> PE_ERR_USERCANCELLED Then 
+            '	'CRWでエラーが発生した場合
+            '	Rtn = MsgBox("SSS_LISTでCRWエラーが発生しました：[" & Str(Rtn) & "]")
+            '	Error_Exit(("ERROR SSS_LIST 出力先選択 RTN=[" & Str(Rtn) & "]"))
+            'End If
+            'Call WORKING_VIEW(False)
+            ''Debug.Print "    クリスタルレポートが出力に要した時間" & chr(9) & chr(9) & ": " & Str$(Timer - PointTime)
+            ''Time3 = Timer - PointTime
+            ''Debug.Print "トータルで画面表示に要した時間" & Chr(9) & Chr(9) & ": " & Str$(Timer - StartTime)
+            ''Debug.Print ""
+            ''msg1$ = "印刷データの Jet への出力を開始するまでの時間" & Chr(9) & ": " & Str$(Time1) & Chr(13)
+            ''msg1$ = msg1$ + "印刷データを Jet に出力するのに要した時間" & Chr(9) & ": " & Str$(Time2) & Chr(13)
+            ''msg1$ = msg1$ + "クリスタルレポートが出力に要した時間" & Chr(9) & Chr(9) & ": " & Str$(Time3) & Chr(13)
+            ''msg1$ = msg1$ + "画面表示に要した時間" & Chr(9) & Chr(9) & Chr(9) & ": " & Str$(Timer - StartTime)
+            ''MsgBox msg1$
+            'Do While CRW_VIEWCHECK()
+            '	Call Sleep(200)
+            '	System.Windows.Forms.Application.DoEvents()
+            'Loop 
+            'FR_SSSMAIN.Enabled = True
+            '         System.Windows.Forms.Application.DoEvents()
+            '2019/09/25 仮
+        End If
 		'
 		'出力処理中に再度出力処理を呼ぶとエラーになるため非表示にしていたボタンを表示にする
 		'CHG START FKS)INABA 2006/11/15******************************************************************
@@ -490,17 +499,21 @@ Next_Proc:
 	End Function
 	
 	Function SSSMAIN_BeginPrg() As Object
-		'画面表示前の初期設定処理を行う。
-		'UPGRADE_ISSUE: App プロパティ App.PrevInstance はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
-		If App.PrevInstance Then
-			MsgBox("【" & Trim(SSS_PrgNm) & "】は既に起動中です。重複して起動する事はできません。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly, SSS_PrgNm)
-			End
-		End If
-		' "しばらくお待ちください" ウィンドウ表示
-		'UPGRADE_ISSUE: Load ステートメント はサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="B530EFF2-3132-48F8-B8BC-D88AF543D321"' をクリックしてください。
-		Load(ICN_ICON)
-		'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		SSSMAIN_BeginPrg = True
+        '画面表示前の初期設定処理を行う。
+        'UPGRADE_ISSUE: App プロパティ App.PrevInstance はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
+        '2019/09/25　仮
+        'If App.PrevInstance Then
+        '    MsgBox("【" & Trim(SSS_PrgNm) & "】は既に起動中です。重複して起動する事はできません。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly, SSS_PrgNm)
+        '    End
+        'End If
+        '2019/09/25　仮
+        ' "しばらくお待ちください" ウィンドウ表示
+        'UPGRADE_ISSUE: Load ステートメント はサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="B530EFF2-3132-48F8-B8BC-D88AF543D321"' をクリックしてください。
+        '2019/09/25 DEL START
+        'Load(ICN_ICON)       
+        '2019/09/25 DEL E N D
+        'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        SSSMAIN_BeginPrg = True
 		SSS_ExportFLG = False '初期値：印刷処理
 		'----------------------------------
 		'   SSSWIN プログラム起動チェック
@@ -588,35 +601,39 @@ Next_Proc:
 		Call SSS_LIST(SSS_VIEW)
 		'
 	End Function
-	
-	Sub WLS_SLIST_MOVE(ByVal SlistCom As Object, ByVal LENGTH As Short)
-		Dim LeftWid As String
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SlistCom = LeftWid(SlistCom, LENGTH)
-	End Sub
-	
-	Sub WORKING_VIEW(ByRef Sw As Short)
-		Dim AE_StatusOut As Object
-		'ゲージの表示 etc...
-		'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!GAUGE.FloodPercent の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CType(FR_SSSMAIN.Controls("GAUGE"), Object).FloodPercent = 0
-		If Sw Then
-			'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
-			System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor '砂時計
-			Call AE_StatusOut(PP_SSSMAIN, "作業中！ しばらくお待ちください。", SSSMSG_BAS.Cn_BLUE)
-			'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!GAUGE.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CType(FR_SSSMAIN.Controls("GAUGE"), Object).Visible = True
-			'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CM_LCANCEL.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Visible = True
-		Else
-			'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
-			System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default '既定値
-			CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
-			'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!GAUGE.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CType(FR_SSSMAIN.Controls("GAUGE"), Object).Visible = False
-			'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CM_LCANCEL.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Visible = False
-		End If
-		System.Windows.Forms.Application.DoEvents()
-	End Sub
+
+    Sub WLS_SLIST_MOVE(ByVal SlistCom As Object, ByVal LENGTH As Short)
+        '2019/09/25 DEL START
+        'Dim LeftWid As String
+        '2019/09/25 DEL E N D
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SlistCom = LeftWid(SlistCom, LENGTH)
+    End Sub
+
+    Sub WORKING_VIEW(ByRef Sw As Short)
+        '2019/09/25 DEL START
+        'Dim AE_StatusOut As Object    
+        'ゲージの表示 etc...
+        'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!GAUGE.FloodPercent の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'CType(FR_SSSMAIN.Controls("GAUGE"), Object).FloodPercent = 0
+        'If Sw Then
+        '    'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
+        '    System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor '砂時計
+        '    Call AE_StatusOut(PP_SSSMAIN, "作業中！ しばらくお待ちください。", SSSMSG_BAS.Cn_BLUE)
+        '    'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!GAUGE.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    CType(FR_SSSMAIN.Controls("GAUGE"), Object).Visible = True
+        '    'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CM_LCANCEL.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Visible = True
+        'Else
+        '    'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
+        '    System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default '既定値
+        '    CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
+        '    'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!GAUGE.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    CType(FR_SSSMAIN.Controls("GAUGE"), Object).Visible = False
+        '    'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CM_LCANCEL.Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Visible = False
+        'End If
+        'System.Windows.Forms.Application.DoEvents()
+        '2019/09/25 DEL END
+    End Sub
 End Module
