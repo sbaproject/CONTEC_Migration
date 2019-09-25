@@ -3,11 +3,13 @@ Option Explicit On
 Imports VB = Microsoft.VisualBasic
 Friend Class FR_SSSMAIN
 	Inherits System.Windows.Forms.Form
-	'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
-	'*** End Of Generated Declaration Section ****
-	
-	
-	Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
+    'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
+    '*** End Of Generated Declaration Section ****
+    '2019/09/25 ADD START
+    Private FORM_LOAD_FLG As Boolean = False
+    '2019/09/25 ADD E N D
+
+    Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
@@ -220,25 +222,24 @@ Friend Class FR_SSSMAIN
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If PP_SSSMAIN.Operable Then CM_LSTART.Image = IM_LSTART(0).Image
 	End Sub
-	
-	Private Sub CM_Slist_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Slist.Click
-		Dim Ck_Error As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ButtonClick の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ButtonClick = True
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.KeyDownMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-		Call AE_Slist_SSSMAIN()
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.NeglectLostFocusCheck = False
-		'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
-	End Sub
-	
-	Private Sub CM_SLIST_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SLIST.MouseDown
+
+    Private Sub CM_Slist_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_SLIST.Click
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ButtonClick の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ButtonClick = True
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.KeyDownMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub CM_SLIST_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_SLIST.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
@@ -319,262 +320,251 @@ Friend Class FR_SSSMAIN
 			PP_SSSMAIN.Activated = 1
 		End If
 	End Sub
-	
-	Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
-		Dim wk_Var As Object
-		Dim SetTabCapture As Object
-		Dim ReleaseTabCapture As Object
-		Dim wk_Int As Object
-		Dim CspPurgeFilterReq As Object
-		Dim Cn_Mode1 As Object
-		Dim AE_SetCp As Object
-		Dim Cn_PrfxLen As Object
-		Dim AE_PSI As String
-		Dim AE_PSIC As Object
-		Dim AE_FormInit As String
-		Dim AE_SSSWin As Object
-		Dim AE_CtB As Object
-		Dim AE_ScX As Object 'Generated.
-		Dim wk_De As Short
-		Dim wk_ww As Short
-		Dim wk_Tx As Short
-		Dim wk_TxBase As Short
-		Dim wk_HeadN As Short
-		Dim wk_BodyN As Short
-		Dim wk_EBodyN As Short
-		Dim wk_TailN As Short
-		Dim wk_Top As Single
-		Dim wk_Height As Single
-		Dim wk_Px As Short
-		Dim wk_PxBase As Short
-		Dim wk_SmrBuf As String
-		Dim PY_TTop As Single
-		AE_Title = "商品マスタ一覧リスト                    "
-		'初画面表示の性能チューニング用 ----------
-		'Dim StartTime
-		'   AE_MsgBox "Start Point", vbInformation, AE_Title$
-		'   StartTime = Timer
-		'-----------------------------------------
-		With PP_SSSMAIN
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormWidth の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.FormWidth = 8625
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormHeight の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.FormHeight = 6015
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxDe の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxDe = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxDsp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxDsp = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.HeadN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.HeadN = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BodyN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BodyN = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BodyV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BodyV = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxEDe の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxEDe = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxEDsp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxEDsp = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EBodyN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.EBodyN = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EBodyV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.EBodyV = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TailN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.TailN = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BodyPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BodyPx = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EBodyPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.EBodyPx = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TailPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.TailPx = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PrpC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.PrpC = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Operable = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BrightOnOff の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressVSScroll の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.SuppressVSScroll = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.UniScrl の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.UniScrl = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SetCursorRR の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.SetCursorRR = True
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SetCursorLF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.SetCursorLF = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.VisibleForItem の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.VisibleForItem = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.AllowNullDes の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.AllowNullDes = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.No2Scroll の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.No2Scroll = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SpecSubID の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.SpecSubID = "sss"
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.UnDoDeOp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.UnDoDeOp = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ActiveBlockNo = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxBlockNo = 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If .MainForm = "" Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト AE_ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.ScX = AE_ScX
-				'UPGRADE_WARNING: オブジェクト AE_ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				AE_ScX = AE_ScX + 1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Dim AE_Timer(.ScX) As Object
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Dim AE_CursorRest(.ScX) As Object
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Dim AE_ModeBar(.ScX) As Object
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Dim AE_StatusBar(.ScX) As Object
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Dim AE_StatusCodeBar(.ScX) As Object
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト AE_CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.CtB = AE_CtB
-				'UPGRADE_WARNING: オブジェクト AE_CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				AE_CtB = AE_CtB + 8
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Dim AE_Controls(.CtB + 7) As Object
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainFormFile の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.MainFormFile = "HINPR51.FRM"
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainFormObj の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.MainFormObj = "FR_SSSMAIN"
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SelValid の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.SelValid = False
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ArrowLimit の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.ArrowLimit = False
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NullZero の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.NullZero = True
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ErrorByBackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.ErrorByBackColor = False
-				'UPGRADE_WARNING: オブジェクト AE_SSSWin の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				AE_SSSWin = True
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.AL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.AL = False
-			End If
-			If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, SSSMSG_BAS.Cn_ClCheckError, SSSMSG_BAS.Cn_ClRelCheck, SSSMSG_BAS.Cn_ClChecked) <> "V6.60" Then
+
+    Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
+        '2019/09/25 ADD START
+        FORM_LOAD_FLG = True
+        '2019/09/25 ADD E N D
+        Dim wk_De As Short
+        Dim wk_ww As Short
+        Dim wk_Tx As Short
+        Dim wk_TxBase As Short
+        Dim wk_HeadN As Short
+        Dim wk_BodyN As Short
+        Dim wk_EBodyN As Short
+        Dim wk_TailN As Short
+        Dim wk_Top As Single
+        Dim wk_Height As Single
+        Dim wk_Px As Short
+        Dim wk_PxBase As Short
+        Dim wk_SmrBuf As String
+        Dim PY_TTop As Single
+        AE_Title = "商品マスタ一覧リスト                    "
+        '初画面表示の性能チューニング用 ----------
+        'Dim StartTime
+        '   AE_MsgBox "Start Point", vbInformation, AE_Title$
+        '   StartTime = Timer
+        '-----------------------------------------
+        With PP_SSSMAIN
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormWidth の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .FormWidth = 8625
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormHeight の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .FormHeight = 6015
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxDe の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .MaxDe = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxDsp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .MaxDsp = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.HeadN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .HeadN = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BodyN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .BodyN = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BodyV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .BodyV = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxEDe の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .MaxEDe = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxEDsp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .MaxEDsp = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EBodyN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .EBodyN = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EBodyV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .EBodyV = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TailN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .TailN = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BodyPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .BodyPx = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EBodyPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .EBodyPx = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TailPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .TailPx = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PrpC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .PrpC = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .Operable = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BrightOnOff の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressVSScroll の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .SuppressVSScroll = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.UniScrl の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .UniScrl = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SetCursorRR の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .SetCursorRR = True
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SetCursorLF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .SetCursorLF = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.VisibleForItem の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .VisibleForItem = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.AllowNullDes の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .AllowNullDes = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.No2Scroll の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .No2Scroll = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SpecSubID の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .SpecSubID = "sss"
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.UnDoDeOp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .UnDoDeOp = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .ActiveBlockNo = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .MaxBlockNo = 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If .MainForm = "" Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト AE_ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .ScX = AE_ScX
+                'UPGRADE_WARNING: オブジェクト AE_ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                AE_ScX = AE_ScX + 1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Dim AE_Timer(.ScX) As Object
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Dim AE_CursorRest(.ScX) As Object
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Dim AE_ModeBar(.ScX) As Object
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Dim AE_StatusBar(.ScX) As Object
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Dim AE_StatusCodeBar(.ScX) As Object
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト AE_CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .CtB = AE_CtB
+                'UPGRADE_WARNING: オブジェクト AE_CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                AE_CtB = AE_CtB + 8
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Dim AE_Controls(.CtB + 7) As Object
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainFormFile の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .MainFormFile = "HINPR51.FRM"
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainFormObj の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .MainFormObj = "FR_SSSMAIN"
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SelValid の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .SelValid = False
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ArrowLimit の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .ArrowLimit = False
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NullZero の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .NullZero = True
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ErrorByBackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .ErrorByBackColor = False
+                'UPGRADE_WARNING: オブジェクト AE_SSSWin の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                AE_SSSWin = True
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.AL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .AL = False
+            End If
+            If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClCheckError), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClRelCheck), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClChecked)) <> "V6.60" Then
 #If ActiveXcompile = 0 Then
-				AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
+                AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
 #Else
 				'UPGRADE_NOTE: 式 Else が True に評価されなかったか、またはまったく評価されなかったため、#If #EndIf ブロックはアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="27EE2C3C-05AF-4C04-B2AF-657B4FB6B5FC"' をクリックしてください。
 				AE_MsgBox "再生成が必要です。", vbCritical, "ｅｅｅ"
 #End If
-			End If
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If .MainForm = "" Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.MainForm = "SSSMAIN"
-				Call AE_PSIR_SSSMAIN()
-				wk_ww = 0
-				wk_De = 1
-				wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
-				'UPGRADE_WARNING: オブジェクト AE_PSIC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Do While wk_ww < AE_PSIC
-					wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
-					wk_ww = wk_ww + 1
-					'UPGRADE_WARNING: オブジェクト Cn_PrfxLen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
-						Case "HD_", "HV_"
-							Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
-							wk_HeadN = wk_HeadN + 1
-					End Select
-				Loop 
-			End If
-			HD_OPEID.Text = ""
-			HD_OPENM.Text = ""
-			HD_KHNKB.Text = ""
-			HD_STTHINCD.Text = ""
-			HD_STTHINNM.Text = ""
-			HD_ENDHINCD.Text = ""
-			HD_ENDHINNM.Text = ""
-			HD_HINKB.Text = ""
-			HD_OPEID.TabIndex = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 0) = HD_OPEID
-			HD_OPENM.TabIndex = 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 1) = HD_OPENM
-			HD_KHNKB.TabIndex = 2
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 2) = HD_KHNKB
-			HD_STTHINCD.TabIndex = 3
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 3) = HD_STTHINCD
-			HD_STTHINNM.TabIndex = 4
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 4) = HD_STTHINNM
-			HD_ENDHINCD.TabIndex = 5
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 5) = HD_ENDHINCD
-			HD_ENDHINNM.TabIndex = 6
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 6) = HD_ENDHINNM
-			HD_HINKB.TabIndex = 7
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(.CtB + 7) = HD_HINKB
-			TX_CursorRest.TabIndex = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Timer(.ScX) = TM_StartUp
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_CursorRest(.ScX) = TX_CursorRest
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_ModeBar(.ScX) = TX_Mode
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_StatusBar(.ScX) = TX_Message
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_StatusCodeBar(.ScX) = TX_Message
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Mode1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Mode = Cn_Mode1 : TX_Mode.Text = "追加"
-			Call AE_ClearInitValStatus_SSSMAIN()
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PY_BTop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.PY_BTop = VB6.PixelsToTwipsY(Me.Height)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PY_EBTop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
-			PY_TTop = VB6.PixelsToTwipsY(Me.Height)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxDspC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxDspC = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NrBodyTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.NrBodyTx = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScrlMaxL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ScrlMaxL = 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxEDspC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxEDspC = 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NrEBodyTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.NrEBodyTx = 8
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EScrlMaxL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.EScrlMaxL = 1
-			Call AE_TabStop_SSSMAIN(0, 7, True)
-			TX_CursorRest.TabStop = False
-			TX_Mode.TabStop = False
-			TX_Message.TabStop = False
-			TX_Message.Text = ""
-			'UPGRADE_WARNING: オブジェクト CspPurgeFilterReq() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
-			Call AE_WindowProcSet_SSSMAIN()
-			ReleaseTabCapture(0)
-			SetTabCapture(Me.Handle.ToInt32)
-			'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Var = SSSMAIN_BeginPrg()
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormWidth の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.FormWidth = VB6.PixelsToTwipsX(Me.Width)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormHeight の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.FormHeight = VB6.PixelsToTwipsY(Me.Height)
-			'初画面表示の性能チューニング用 ----------
-			'   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
-			'-----------------------------------------
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerStartUp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.TimerStartUp = True
-		End With
-		TM_StartUp.Enabled = True
-	End Sub
-	
-	Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+            End If
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If .MainForm = "" Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                .MainForm = "SSSMAIN"
+                Call AE_PSIR_SSSMAIN()
+                wk_ww = 0
+                wk_De = 1
+                wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
+                'UPGRADE_WARNING: オブジェクト AE_PSIC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Do While wk_ww < AE_PSIC
+                    wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
+                    wk_ww = wk_ww + 1
+                    'UPGRADE_WARNING: オブジェクト Cn_PrfxLen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
+                        Case "HD_", "HV_"
+                            Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
+                            wk_HeadN = wk_HeadN + 1
+                    End Select
+                Loop
+            End If
+            HD_OPEID.Text = ""
+            HD_OPENM.Text = ""
+            HD_KHNKB.Text = ""
+            HD_STTHINCD.Text = ""
+            HD_STTHINNM.Text = ""
+            HD_ENDHINCD.Text = ""
+            HD_ENDHINNM.Text = ""
+            HD_HINKB.Text = ""
+            HD_OPEID.TabIndex = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 0) = HD_OPEID
+            HD_OPENM.TabIndex = 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 1) = HD_OPENM
+            HD_KHNKB.TabIndex = 2
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 2) = HD_KHNKB
+            HD_STTHINCD.TabIndex = 3
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 3) = HD_STTHINCD
+            HD_STTHINNM.TabIndex = 4
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 4) = HD_STTHINNM
+            HD_ENDHINCD.TabIndex = 5
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 5) = HD_ENDHINCD
+            HD_ENDHINNM.TabIndex = 6
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 6) = HD_ENDHINNM
+            HD_HINKB.TabIndex = 7
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Controls(.CtB + 7) = HD_HINKB
+            TX_CursorRest.TabIndex = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_Timer(.ScX) = TM_StartUp
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_CursorRest(.ScX) = TX_CursorRest
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_ModeBar(.ScX) = TX_Mode
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_StatusBar(.ScX) = TX_Message
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            AE_StatusCodeBar(.ScX) = TX_Message
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Mode1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .Mode = Cn_Mode1 : TX_Mode.Text = "追加"
+            Call AE_ClearInitValStatus_SSSMAIN()
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PY_BTop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .PY_BTop = VB6.PixelsToTwipsY(Me.Height)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PY_EBTop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
+            PY_TTop = VB6.PixelsToTwipsY(Me.Height)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxDspC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .MaxDspC = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NrBodyTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .NrBodyTx = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ScrlMaxL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .ScrlMaxL = 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaxEDspC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .MaxEDspC = 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NrEBodyTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .NrEBodyTx = 8
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.EScrlMaxL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .EScrlMaxL = 1
+            Call AE_TabStop_SSSMAIN(0, 7, True)
+            TX_CursorRest.TabStop = False
+            TX_Mode.TabStop = False
+            TX_Message.TabStop = False
+            TX_Message.Text = ""
+            'UPGRADE_WARNING: オブジェクト CspPurgeFilterReq() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            Call AE_WindowProcSet_SSSMAIN()
+            ReleaseTabCapture(0)
+            SetTabCapture(Me.Handle.ToInt32)
+            'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Var = SSSMAIN_BeginPrg()
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormWidth の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .FormWidth = VB6.PixelsToTwipsX(Me.Width)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.FormHeight の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .FormHeight = VB6.PixelsToTwipsY(Me.Height)
+            '初画面表示の性能チューニング用 ----------
+            '   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
+            '-----------------------------------------
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerStartUp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .TimerStartUp = True
+        End With
+        TM_StartUp.Enabled = True
+    End Sub
+
+    Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 		Dim Cancel As Boolean = eventArgs.Cancel
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason 'Generated.
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.UnloadMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -612,205 +602,185 @@ Friend Class FR_SSSMAIN
 		End If
 		'   Call AE_Resize(PP_SSSMAIN)
 	End Sub
-	
-	Private Sub FR_SSSMAIN_FormClosed(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-		Dim ImmReleaseContext As Object
-		Dim ReleaseTabCapture As Object
-		Dim AE_WindowProcReset As Object
-		Dim wk_Int As Object
-		Dim CspPurgeFilterReq As Object
-		Dim wk_Var As Object 'Generated.
-		Dim ReturnCode As Short
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CloseCode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.CloseCode = 11
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.InitValStatus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.InitValStatus <> PP_SSSMAIN.Mode Then
-			'UPGRADE_WARNING: Form_Unload に変換されていないステートメントがあります。ソース コードを確認してください。
-		Else
-			'UPGRADE_WARNING: Form_Unload に変換されていないステートメントがあります。ソース コードを確認してください。
-		End If
-		'UPGRADE_WARNING: オブジェクト SSSMAIN_Close() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Var = SSSMAIN_Close()
-		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Var <> 0 Then
-		End If
-		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Var = -1 Then
-			'UPGRADE_WARNING: オブジェクト CspPurgeFilterReq() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
-			Call AE_WindowProcReset(PP_SSSMAIN)
-			ReleaseTabCapture(Me.Handle.ToInt32)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.hIMC <> 0 Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMCHwnd の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
-			End If
+
+    Private Sub FR_SSSMAIN_FormClosed(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
+        Dim ReturnCode As Short
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CloseCode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.CloseCode = 11
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.InitValStatus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.InitValStatus <> PP_SSSMAIN.Mode Then
+            'UPGRADE_WARNING: Form_Unload に変換されていないステートメントがあります。ソース コードを確認してください。
+        Else
+            'UPGRADE_WARNING: Form_Unload に変換されていないステートメントがあります。ソース コードを確認してください。
+        End If
+        'UPGRADE_WARNING: オブジェクト SSSMAIN_Close() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Var = SSSMAIN_Close()
+        'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Var <> 0 Then
+        End If
+        'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Var = -1 Then
+            'UPGRADE_WARNING: オブジェクト CspPurgeFilterReq() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            Call AE_WindowProcReset(PP_SSSMAIN)
+            ReleaseTabCapture(Me.Handle.ToInt32)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.hIMC <> 0 Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMCHwnd の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
+            End If
 #If ActiveXcompile = 0 Then
-			End
+            End
 #End If
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf wk_Var = 0 Then 
-			'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
-			Cancel = True
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf wk_Var = 1 Then 
-			'UPGRADE_WARNING: オブジェクト CspPurgeFilterReq() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
-			Call AE_WindowProcReset(PP_SSSMAIN)
-			ReleaseTabCapture(Me.Handle.ToInt32)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.hIMC <> 0 Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMCHwnd の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CloseCode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.CloseCode = -1
-	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_ENDHINCD.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_ENDHINCD_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINCD.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_ENDHINCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_ENDHINCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINCD.Enter
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_ChrInput As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		Dim wk_Slisted As Object
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 5
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 5
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD)
-		HD_ENDHINCD.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistCall Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistCall = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistPx = PP_SSSMAIN.Px
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.KeyDownMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-			'UPGRADE_WARNING: HD_ENDHINCD_GotFocus に変換されていないステートメントがあります。ソース コードを確認してください。
-		Else
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Slisted = PP_SSSMAIN.SlistCom
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		If Not IsDbNull(wk_Slisted) And PP_SSSMAIN.Px = PP_SSSMAIN.SlistPx Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistPx = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.CursorDirection = Cn_Direction1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.CursorDest = Cn_Dest9
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.JustAfterSList の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.JustAfterSList = True
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-			PP_SSSMAIN.SlistCom = System.DBNull.Value
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then
-				'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				CP_SSSMAIN(5).TpStr = wk_Slisted
-				'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CIn の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_ChrInput の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				CP_SSSMAIN(5).CIn = Cn_ChrInput
-				'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				HD_ENDHINCD.Text = wk_Slisted
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_ENDHINCD(AE_Val3(CP_SSSMAIN(5), HD_ENDHINCD), Cn_Status6, True, True)
-			End If
-		End If
-		CM_SLIST.Enabled = True
-	End Sub
-	
-	Private Sub HD_ENDHINCD_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_ENDHINCD.KeyDown
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf wk_Var = 0 Then
+            'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
+            '2019/09/25 CHG START
+            'Cancel = True
+            eventSender.Cancel = True
+            '2019/09/25 CHG E N D
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf wk_Var = 1 Then
+            'UPGRADE_WARNING: オブジェクト CspPurgeFilterReq() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            Call AE_WindowProcReset(PP_SSSMAIN)
+            ReleaseTabCapture(Me.Handle.ToInt32)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.hIMC <> 0 Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.hIMCHwnd の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CloseCode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.CloseCode = -1
+    End Sub
+
+    'UPGRADE_WARNING: イベント HD_ENDHINCD.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_ENDHINCD_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINCD.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_ENDHINCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_ENDHINCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINCD.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        Dim wk_Slisted As Object
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 5
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 5
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD)
+        HD_ENDHINCD.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistCall Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistCall = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistPx = PP_SSSMAIN.Px
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.KeyDownMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+            'UPGRADE_WARNING: HD_ENDHINCD_GotFocus に変換されていないステートメントがあります。ソース コードを確認してください。
+        Else
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Slisted = PP_SSSMAIN.SlistCom
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        If Not IsDBNull(wk_Slisted) And PP_SSSMAIN.Px = PP_SSSMAIN.SlistPx Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistPx = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.CursorDirection = Cn_Direction1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.CursorDest = Cn_Dest9
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.JustAfterSList の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.JustAfterSList = True
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+            PP_SSSMAIN.SlistCom = System.DBNull.Value
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then
+                'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                CP_SSSMAIN(5).TpStr = wk_Slisted
+                'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CIn の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_ChrInput の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                CP_SSSMAIN(5).CIn = Cn_ChrInput
+                'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                HD_ENDHINCD.Text = wk_Slisted
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_ENDHINCD(AE_Val3(CP_SSSMAIN(5), HD_ENDHINCD.Text), Cn_Status6, True, True)
+            End If
+        End If
+        CM_SLIST.Enabled = True
+    End Sub
+
+    Private Sub HD_ENDHINCD_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_ENDHINCD.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_ENDHINCD, KEYCODE, Shift, CP_SSSMAIN(5).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_ENDHINCD(AE_Val3(CP_SSSMAIN(5), HD_ENDHINCD), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(5)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_ENDHINCD, KEYCODE, Shift, CP_SSSMAIN(5).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_ENDHINCD(AE_Val3(CP_SSSMAIN(5), HD_ENDHINCD.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(5)
 		End If
 	End Sub
 	
 	Private Sub HD_ENDHINCD_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_ENDHINCD.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 5 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 5 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -818,73 +788,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_ENDHINCD_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINCD.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(5).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(5).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_ENDHINCD(AE_Val3(CP_SSSMAIN(5), HD_ENDHINCD), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_ENDHINCD.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_ENDHINCD.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(5), CL_SSSMAIN(5), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_ENDHINCD_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_ENDHINCD.MouseDown
+
+    Private Sub HD_ENDHINCD_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINCD.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(5).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(5).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_ENDHINCD(AE_Val3(CP_SSSMAIN(5), HD_ENDHINCD.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_ENDHINCD.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_ENDHINCD.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(5), CL_SSSMAIN(5), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_ENDHINCD_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_ENDHINCD.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_ENDHINCD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。                
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -902,95 +867,83 @@ EventExitSub:
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_SetSel As Object 'Generated.
-		HD_ENDHINCD.ReadOnly = False
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        HD_ENDHINCD.ReadOnly = False
 		Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(5), HD_ENDHINCD)
 	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_ENDHINNM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_ENDHINNM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINNM.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_ENDHINNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_ENDHINNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINNM.Enter
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 6
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 6
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM)
-		HD_ENDHINNM.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		CM_SLIST.Enabled = False
-	End Sub
-	
-	Private Sub HD_ENDHINNM_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_ENDHINNM.KeyDown
+
+    'UPGRADE_WARNING: イベント HD_ENDHINNM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_ENDHINNM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINNM.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_ENDHINNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_ENDHINNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINNM.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 6
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 6
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM)
+        HD_ENDHINNM.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        CM_SLIST.Enabled = False
+    End Sub
+
+    Private Sub HD_ENDHINNM_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_ENDHINNM.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_ENDHINNM, KEYCODE, Shift, CP_SSSMAIN(6).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_ENDHINNM(AE_Val3(CP_SSSMAIN(6), HD_ENDHINNM), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(6)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_ENDHINNM, KEYCODE, Shift, CP_SSSMAIN(6).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_ENDHINNM(AE_Val3(CP_SSSMAIN(6), HD_ENDHINNM.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(6)
 		End If
 	End Sub
 	
 	Private Sub HD_ENDHINNM_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_ENDHINNM.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 6 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 6 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(6), HD_ENDHINNM, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -998,73 +951,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_ENDHINNM_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINNM.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(6).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(6).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_ENDHINNM(AE_Val3(CP_SSSMAIN(6), HD_ENDHINNM), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_ENDHINNM.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_ENDHINNM.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(6), CL_SSSMAIN(6), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_ENDHINNM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_ENDHINNM.MouseDown
+
+    Private Sub HD_ENDHINNM_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_ENDHINNM.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(6).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(6).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_ENDHINNM(AE_Val3(CP_SSSMAIN(6), HD_ENDHINNM.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_ENDHINNM.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_ENDHINNM.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(6), CL_SSSMAIN(6), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_ENDHINNM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_ENDHINNM.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_ENDHINNM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1085,90 +1033,79 @@ EventExitSub:
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
 		HD_ENDHINNM.ReadOnly = False
 	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_HINKB.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_HINKB_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_HINKB.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_HINKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_HINKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_HINKB.Enter
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 7
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 7
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB)
-		HD_HINKB.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		CM_SLIST.Enabled = False
-	End Sub
-	
-	Private Sub HD_HINKB_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_HINKB.KeyDown
+
+    'UPGRADE_WARNING: イベント HD_HINKB.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_HINKB_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_HINKB.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_HINKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_HINKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_HINKB.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 7
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 7
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB)
+        HD_HINKB.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        CM_SLIST.Enabled = False
+    End Sub
+
+    Private Sub HD_HINKB_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_HINKB.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_HINKB, KEYCODE, Shift, CP_SSSMAIN(7).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_HINKB(AE_Val3(CP_SSSMAIN(7), HD_HINKB), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(7)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_HINKB, KEYCODE, Shift, CP_SSSMAIN(7).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_HINKB(AE_Val3(CP_SSSMAIN(7), HD_HINKB.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(7)
 		End If
 	End Sub
 	
 	Private Sub HD_HINKB_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_HINKB.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 7 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 7 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -1176,73 +1113,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_HINKB_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_HINKB.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(7).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(7).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_HINKB(AE_Val3(CP_SSSMAIN(7), HD_HINKB), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_HINKB.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_HINKB.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(7), CL_SSSMAIN(7), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_HINKB_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_HINKB.MouseDown
+
+    Private Sub HD_HINKB_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_HINKB.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(7).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(7).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_HINKB(AE_Val3(CP_SSSMAIN(7), HD_HINKB.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_HINKB.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_HINKB.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(7), CL_SSSMAIN(7), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_HINKB_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_HINKB.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_HINKB)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1260,95 +1192,83 @@ EventExitSub:
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_SetSel As Object 'Generated.
-		HD_HINKB.ReadOnly = False
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        HD_HINKB.ReadOnly = False
 		Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(7), HD_HINKB)
 	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_KHNKB.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_KHNKB_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_KHNKB.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_KHNKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_KHNKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_KHNKB.Enter
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 2
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 2
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB)
-		HD_KHNKB.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		CM_SLIST.Enabled = False
-	End Sub
-	
-	Private Sub HD_KHNKB_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_KHNKB.KeyDown
+
+    'UPGRADE_WARNING: イベント HD_KHNKB.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_KHNKB_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_KHNKB.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_KHNKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_KHNKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_KHNKB.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 2
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 2
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB)
+        HD_KHNKB.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        CM_SLIST.Enabled = False
+    End Sub
+
+    Private Sub HD_KHNKB_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_KHNKB.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_KHNKB, KEYCODE, Shift, CP_SSSMAIN(2).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_KHNKB(AE_Val3(CP_SSSMAIN(2), HD_KHNKB), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(2)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_KHNKB, KEYCODE, Shift, CP_SSSMAIN(2).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_KHNKB(AE_Val3(CP_SSSMAIN(2), HD_KHNKB.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(2)
 		End If
 	End Sub
 	
 	Private Sub HD_KHNKB_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_KHNKB.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 2 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 2 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -1356,73 +1276,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_KHNKB_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_KHNKB.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(2).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(2).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_KHNKB(AE_Val3(CP_SSSMAIN(2), HD_KHNKB), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_KHNKB.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_KHNKB.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(2), CL_SSSMAIN(2), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_KHNKB_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_KHNKB.MouseDown
+
+    Private Sub HD_KHNKB_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_KHNKB.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(2).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(2).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_KHNKB(AE_Val3(CP_SSSMAIN(2), HD_KHNKB.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_KHNKB.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_KHNKB.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(2), CL_SSSMAIN(2), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_KHNKB_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_KHNKB.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_KHNKB)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1440,95 +1355,83 @@ EventExitSub:
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_SetSel As Object 'Generated.
-		HD_KHNKB.ReadOnly = False
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        HD_KHNKB.ReadOnly = False
 		Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(2), HD_KHNKB)
 	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_OPEID.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_OPEID_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_OPEID_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.Enter
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID)
-		HD_OPEID.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		CM_SLIST.Enabled = False
-	End Sub
-	
-	Private Sub HD_OPEID_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_OPEID.KeyDown
+
+    'UPGRADE_WARNING: イベント HD_OPEID.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_OPEID_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_OPEID_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID)
+        HD_OPEID.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        CM_SLIST.Enabled = False
+    End Sub
+
+    Private Sub HD_OPEID_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_OPEID.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_OPEID, KEYCODE, Shift, CP_SSSMAIN(0).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_OPEID(AE_Val3(CP_SSSMAIN(0), HD_OPEID), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(0)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_OPEID, KEYCODE, Shift, CP_SSSMAIN(0).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_OPEID(AE_Val3(CP_SSSMAIN(0), HD_OPEID.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(0)
 		End If
 	End Sub
 	
 	Private Sub HD_OPEID_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_OPEID.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 0 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 0 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -1536,73 +1439,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_OPEID_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(0).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(0).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_OPEID(AE_Val3(CP_SSSMAIN(0), HD_OPEID), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_OPEID.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_OPEID.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(0), CL_SSSMAIN(0), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_OPEID_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_OPEID.MouseDown
+
+    Private Sub HD_OPEID_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(0).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(0).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_OPEID(AE_Val3(CP_SSSMAIN(0), HD_OPEID.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_OPEID.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_OPEID.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(0), CL_SSSMAIN(0), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_OPEID_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_OPEID.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_OPEID)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1620,95 +1518,83 @@ EventExitSub:
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_SetSel As Object 'Generated.
-		HD_OPEID.ReadOnly = False
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        HD_OPEID.ReadOnly = False
 		Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID)
 	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_OPENM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_OPENM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_OPENM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.Enter
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM)
-		HD_OPENM.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		CM_SLIST.Enabled = False
-	End Sub
-	
-	Private Sub HD_OPENM_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_OPENM.KeyDown
+
+    'UPGRADE_WARNING: イベント HD_OPENM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_OPENM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_OPENM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM)
+        HD_OPENM.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        CM_SLIST.Enabled = False
+    End Sub
+
+    Private Sub HD_OPENM_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_OPENM.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_OPENM, KEYCODE, Shift, CP_SSSMAIN(1).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_OPENM(AE_Val3(CP_SSSMAIN(1), HD_OPENM), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(1)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_OPENM, KEYCODE, Shift, CP_SSSMAIN(1).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_OPENM(AE_Val3(CP_SSSMAIN(1), HD_OPENM.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(1)
 		End If
 	End Sub
 	
 	Private Sub HD_OPENM_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_OPENM.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 1 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 1 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -1716,73 +1602,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_OPENM_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(1).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(1).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_OPENM(AE_Val3(CP_SSSMAIN(1), HD_OPENM), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_OPENM.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_OPENM.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(1), CL_SSSMAIN(1), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_OPENM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_OPENM.MouseDown
+
+    Private Sub HD_OPENM_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(1).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(1).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_OPENM(AE_Val3(CP_SSSMAIN(1), HD_OPENM.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_OPENM.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_OPENM.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(1), CL_SSSMAIN(1), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_OPENM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_OPENM.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_OPENM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1803,144 +1684,127 @@ EventExitSub:
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
 		HD_OPENM.ReadOnly = False
 	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_STTHINCD.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_STTHINCD_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINCD.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_STTHINCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_STTHINCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINCD.Enter
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_ChrInput As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		Dim wk_Slisted As Object
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 3
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 3
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD)
-		HD_STTHINCD.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistCall Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistCall = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistPx = PP_SSSMAIN.Px
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.KeyDownMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-			'UPGRADE_WARNING: HD_STTHINCD_GotFocus に変換されていないステートメントがあります。ソース コードを確認してください。
-		Else
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Slisted = PP_SSSMAIN.SlistCom
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		If Not IsDbNull(wk_Slisted) And PP_SSSMAIN.Px = PP_SSSMAIN.SlistPx Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistPx = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.CursorDirection = Cn_Direction1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.CursorDest = Cn_Dest9
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.JustAfterSList の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.JustAfterSList = True
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-			PP_SSSMAIN.SlistCom = System.DBNull.Value
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then
-				'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				CP_SSSMAIN(3).TpStr = wk_Slisted
-				'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CIn の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_ChrInput の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				CP_SSSMAIN(3).CIn = Cn_ChrInput
-				'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				HD_STTHINCD.Text = wk_Slisted
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_STTHINCD(AE_Val3(CP_SSSMAIN(3), HD_STTHINCD), Cn_Status6, True, True)
-			End If
-		End If
-		CM_SLIST.Enabled = True
-	End Sub
-	
-	Private Sub HD_STTHINCD_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_STTHINCD.KeyDown
+
+    'UPGRADE_WARNING: イベント HD_STTHINCD.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_STTHINCD_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINCD.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_STTHINCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_STTHINCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINCD.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        Dim wk_Slisted As Object
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 3
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 3
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD)
+        HD_STTHINCD.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistCall Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistCall = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistPx = PP_SSSMAIN.Px
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.KeyDownMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+            'UPGRADE_WARNING: HD_STTHINCD_GotFocus に変換されていないステートメントがあります。ソース コードを確認してください。
+        Else
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Slisted = PP_SSSMAIN.SlistCom
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        If Not IsDBNull(wk_Slisted) And PP_SSSMAIN.Px = PP_SSSMAIN.SlistPx Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistPx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistPx = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.CursorDirection = Cn_Direction1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.CursorDest = Cn_Dest9
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.JustAfterSList の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.JustAfterSList = True
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+            PP_SSSMAIN.SlistCom = System.DBNull.Value
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then
+                'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                CP_SSSMAIN(3).TpStr = wk_Slisted
+                'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CIn の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_ChrInput の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                CP_SSSMAIN(3).CIn = Cn_ChrInput
+                'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                HD_STTHINCD.Text = wk_Slisted
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_STTHINCD(AE_Val3(CP_SSSMAIN(3), HD_STTHINCD.Text), Cn_Status6, True, True)
+            End If
+        End If
+        CM_SLIST.Enabled = True
+    End Sub
+
+    Private Sub HD_STTHINCD_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_STTHINCD.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_STTHINCD, KEYCODE, Shift, CP_SSSMAIN(3).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_STTHINCD(AE_Val3(CP_SSSMAIN(3), HD_STTHINCD), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(3)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_STTHINCD, KEYCODE, Shift, CP_SSSMAIN(3).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_STTHINCD(AE_Val3(CP_SSSMAIN(3), HD_STTHINCD.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(3)
 		End If
 	End Sub
 	
 	Private Sub HD_STTHINCD_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_STTHINCD.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 3 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 3 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -1948,73 +1812,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_STTHINCD_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINCD.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(3).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(3).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_STTHINCD(AE_Val3(CP_SSSMAIN(3), HD_STTHINCD), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_STTHINCD.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_STTHINCD.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(3), CL_SSSMAIN(3), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_STTHINCD_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_STTHINCD.MouseDown
+
+    Private Sub HD_STTHINCD_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINCD.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(3).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(3).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_STTHINCD(AE_Val3(CP_SSSMAIN(3), HD_STTHINCD.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_STTHINCD.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_STTHINCD.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(3), CL_SSSMAIN(3), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_STTHINCD_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_STTHINCD.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_STTHINCD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -2032,95 +1891,83 @@ EventExitSub:
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_SetSel As Object 'Generated.
-		HD_STTHINCD.ReadOnly = False
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        HD_STTHINCD.ReadOnly = False
 		Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(3), HD_STTHINCD)
 	End Sub
-	
-	'UPGRADE_WARNING: イベント HD_STTHINNM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
-	Private Sub HD_STTHINNM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINNM.TextChanged
-		Dim AE_Change As Object
-		Dim Cn_Status6 As Object
-		Dim Cn_Dest9 As Object
-		Dim Cn_Direction1 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MultiLineF > 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.MaskMode = False Then
-			'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_STTHINNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
-	
-	Private Sub HD_STTHINNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINNM.Enter
-		Dim AE_SetSelLen As Object
-		Dim wk_Int As Object
-		Dim AE_GotFocus As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Tx = 4
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.De2 = -1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.Px = 4
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM)
-		'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Int >= 0 Then
-			'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
-		End If
-		Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM)
-		HD_STTHINNM.BackColor = SSSMSG_BAS.Cn_ClBrightON
-		CM_SLIST.Enabled = False
-	End Sub
-	
-	Private Sub HD_STTHINNM_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_STTHINNM.KeyDown
+
+    'UPGRADE_WARNING: イベント HD_STTHINNM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
+    Private Sub HD_STTHINNM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINNM.TextChanged
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MultiLineF > 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MultiLineF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.MaskMode = False Then
+            'UPGRADE_WARNING: オブジェクト AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_Dest9 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_STTHINNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub HD_STTHINNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINNM.Enter
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.ExTx = PP_SSSMAIN.Tx
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ExTx = -1 Then TX_CursorRest.TabStop = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Tx = 4
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.De2 = -1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.Px = 4
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト AE_GotFocus() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        wk_Int = AE_GotFocus(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM)
+        'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Int >= 0 Then
+            'UPGRADE_WARNING: オブジェクト wk_Int の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorSub_SSSMAIN(wk_Int) : Exit Sub
+        End If
+        Call AE_SetSelLen(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM)
+        HD_STTHINNM.BackColor = SSSMSG_BAS.Cn_ClBrightON
+        CM_SLIST.Enabled = False
+    End Sub
+
+    Private Sub HD_STTHINNM_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_STTHINNM.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim Cn_Mode3 As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_KeyDown_SSSMAIN(HD_STTHINNM, KEYCODE, Shift, CP_SSSMAIN(4).TpStr) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_STTHINNM(AE_Val3(CP_SSSMAIN(4), HD_STTHINNM), Cn_Status6, True, True)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(4)
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().TpStr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_KeyDown_SSSMAIN(HD_STTHINNM, KEYCODE, Shift, CP_SSSMAIN(4).TpStr) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_STTHINNM(AE_Val3(CP_SSSMAIN(4), HD_STTHINNM.Text), Cn_Status6, True, True)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(4)
 		End If
 	End Sub
 	
 	Private Sub HD_STTHINNM_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles HD_STTHINNM.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim AE_KeyPress As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Tx <> 4 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Tx <> 4 Then Beep() : KeyAscii = 0 : GoTo EventExitSub
 		Call AE_KeyPress(PP_SSSMAIN, CP_SSSMAIN(4), HD_STTHINNM, KeyAscii)
 EventExitSub: 
 		eventArgs.KeyChar = Chr(KeyAscii)
@@ -2128,73 +1975,68 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub HD_STTHINNM_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINNM.Leave
-		Dim AE_ColorSub2 As Object
-		Dim Cn_Status1 As Object
-		Dim Ck_Error As Object
-		Dim Cn_Status6 As Object
-		Dim AE_Val3 As Object
-		Dim Cn_CursorToRest As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.OnFocus = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		PP_SSSMAIN.SuppressGotLostFocus = 0
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.NeglectPopupFocus Then
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.SlistSw Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SlistSw = False : Exit Sub
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(4).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(4).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck Then
-				'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call AE_Check_SSSMAIN_STTHINNM(AE_Val3(CP_SSSMAIN(4), HD_STTHINNM), Cn_Status6, False, True)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.LostFocusCheck = True
-			End If
-			'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
-				On Error Resume Next
-				HD_STTHINNM.Focus()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If System.Drawing.ColorTranslator.ToOle(HD_STTHINNM.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(4), CL_SSSMAIN(4), PP_SSSMAIN.Tx)
-		Call AE_CursorRivise_SSSMAIN()
-	End Sub
-	
-	Private Sub HD_STTHINNM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_STTHINNM.MouseDown
+
+    Private Sub HD_STTHINNM_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_STTHINNM.Leave
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.OnFocus = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SuppressGotLostFocus = 2 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SuppressGotLostFocus = 0 : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        PP_SSSMAIN.SuppressGotLostFocus = 0
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.NeglectPopupFocus Then
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_CursorRestSub_SSSMAIN(Cn_CursorToRest) : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistSw Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SlistSw = False : Exit Sub
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ModalFlag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(4).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If CP_SSSMAIN(4).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck Then
+                'UPGRADE_WARNING: オブジェクト Cn_Status6 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call AE_Check_SSSMAIN_STTHINNM(AE_Val3(CP_SSSMAIN(4), HD_STTHINNM.Text), Cn_Status6, False, True)
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.LostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.LostFocusCheck = True
+            End If
+            'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectLostFocusCheck の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
+                On Error Resume Next
+                HD_STTHINNM.Focus()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If System.Drawing.ColorTranslator.ToOle(HD_STTHINNM.BackColor) = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON) Then Call AE_ColorSub2(PP_SSSMAIN, CP_SSSMAIN(4), CL_SSSMAIN(4), PP_SSSMAIN.Tx)
+        Call AE_CursorRivise_SSSMAIN()
+    End Sub
+
+    Private Sub HD_STTHINNM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles HD_STTHINNM.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
-		Dim AE_PopupMenu As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Dim wk_Tx As Short
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Dim wk_Tx As Short
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				'UPGRADE_WARNING: オブジェクト AE_PopupMenu() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_STTHINNM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/25　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/25　仮
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NeglectPopupFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.NeglectPopupFocus = False
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				wk_Tx = PP_SSSMAIN.Tx
 				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -2249,17 +2091,23 @@ EventExitSub:
 		If Not PP_SSSMAIN.Operable Then Exit Sub
 		If TypeOf VB6.GetActiveControl() Is System.Windows.Forms.TextBox Then
 			My.Computer.Clipboard.Clear()
-			'UPGRADE_ISSUE: Control SelLength は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-			If VB6.GetActiveControl().SelLength <= 1 Then
-				On Error Resume Next
+            'UPGRADE_ISSUE: Control SelLength は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+            '2019/09/25 CHG START
+            'If VB6.GetActiveControl().SelLength <= 1 Then
+            If DirectCast(VB6.GetActiveControl(), TextBox).SelectionLength <= 1 Then
+                '2019/09/25 CHG E N D
+                On Error Resume Next
 				'UPGRADE_ISSUE: Control Text は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
 				My.Computer.Clipboard.SetText(VB6.GetActiveControl().Text)
 				On Error GoTo 0
 			Else
 				On Error Resume Next
-				'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-				My.Computer.Clipboard.SetText(VB6.GetActiveControl().SelText)
-				On Error GoTo 0
+                'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+                '2019/09/25 CHG START
+                'My.Computer.Clipboard.SetText(VB6.GetActiveControl().SelText)
+                My.Computer.Clipboard.SetText(DirectCast(VB6.GetActiveControl(), TextBox).SelectedText)
+                '2019/09/25 CHG E N D
+                On Error GoTo 0
 			End If
 		End If
 	End Sub
@@ -2288,121 +2136,119 @@ EventExitSub:
 			End If
 		End If
 	End Sub
-	
-	Public Sub MN_EditMn_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_EditMn.Click
-		Dim Cn_Status2 As Object
-		Dim Cn_Status0 As Object
-		Dim Cn_NormalOrV As Object
-		Dim AE_Controls As Object
-		Dim AE_Val5 As Object
-		Dim Cn_Status8 As Object
-		Dim AE_IsEnable As Object
-		Dim AE_IsWritableInOutMode As Object 'Generated.
-		Const CF_TEXT As Short = 1
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		MN_APPENDC.Enabled = True
-		MN_ClearItm.Enabled = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) And CP_SSSMAIN(PP_SSSMAIN.Px).StatusC <> Cn_Status8 Then MN_ClearItm.Enabled = True
-		End If
-		MN_Copy.Enabled = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If CP_SSSMAIN(PP_SSSMAIN.Px).TypeA = Cn_NormalOrV Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-				If Not IsDbNull(AE_Val5(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx))) Then MN_Copy.Enabled = True
-			End If
-		End If
-		MN_Cut.Enabled = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If CP_SSSMAIN(PP_SSSMAIN.Px).TypeA = Cn_NormalOrV Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength > 0 Then
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
-						'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).FixedFormat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						If CP_SSSMAIN(PP_SSSMAIN.Px).FixedFormat <> 1 Then
-							'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-							If Not IsDbNull(AE_Val5(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx))) Then MN_Cut.Enabled = True
-						End If
-					End If
-				End If
-			End If
-		End If
-		MN_Paste.Enabled = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
-			If TypeOf VB6.GetActiveControl() Is System.Windows.Forms.TextBox Then
-				'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetFormat はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
-				If My.Computer.Clipboard.GetFormat(CF_TEXT) Then
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Paste.Enabled = True
-				End If
-			End If
-		End If
-		MN_UnDoItem.Enabled = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC <= Cn_Status2 Then
-					MN_UnDoItem.Enabled = True
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				ElseIf CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus <> Cn_Status0 Then 
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If IsDbNull(CP_SSSMAIN(PP_SSSMAIN.Px).CuVal) Xor IsDbNull(CP_SSSMAIN(PP_SSSMAIN.Px).ExVal) Then
-						MN_UnDoItem.Enabled = True
-						'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).StatusF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					ElseIf CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus <> CP_SSSMAIN(PP_SSSMAIN.Px).StatusF Or CP_SSSMAIN(PP_SSSMAIN.Px).CuVal <> CP_SSSMAIN(PP_SSSMAIN.Px).ExVal Then 
-						MN_UnDoItem.Enabled = True
-					End If
-				End If
-			End If
-		End If
-	End Sub
-	
-	Public Sub MN_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_EndCm.Click 'Generated.
+
+    Public Sub MN_EditMn_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_EditMn.Click
+        Const CF_TEXT As Short = 1
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        MN_APPENDC.Enabled = True
+        MN_ClearItm.Enabled = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) And CP_SSSMAIN(PP_SSSMAIN.Px).StatusC <> Cn_Status8 Then MN_ClearItm.Enabled = True
+        End If
+        MN_Copy.Enabled = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If CP_SSSMAIN(PP_SSSMAIN.Px).TypeA = Cn_NormalOrV Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+                If Not IsDBNull(AE_Val5(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).ToString())) Then MN_Copy.Enabled = True
+            End If
+        End If
+        MN_Cut.Enabled = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If CP_SSSMAIN(PP_SSSMAIN.Px).TypeA = Cn_NormalOrV Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/25 CHG START
+                'If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength > 0 Then
+                If DirectCast(AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx), TextBox).SelectionLength > 0 Then
+                    '2019/09/25 CHG E N D
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
+                        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).FixedFormat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        If CP_SSSMAIN(PP_SSSMAIN.Px).FixedFormat <> 1 Then
+                            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+                            If Not IsDBNull(AE_Val5(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).ToString())) Then MN_Cut.Enabled = True
+                        End If
+                    End If
+                End If
+            End If
+        End If
+        MN_Paste.Enabled = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
+            If TypeOf VB6.GetActiveControl() Is System.Windows.Forms.TextBox Then
+                'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetFormat はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
+                '2019/09/25 CHG START
+                'If My.Computer.Clipboard.GetFormat(CF_TEXT) Then
+                If My.Computer.Clipboard.ContainsText(CF_TEXT) Then
+                    '2019/09/25 CHG E N D
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Paste.Enabled = True
+                End If
+            End If
+        End If
+        MN_UnDoItem.Enabled = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.OnFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 8 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).StatusC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC <= Cn_Status2 Then
+                    MN_UnDoItem.Enabled = True
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                ElseIf CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus <> Cn_Status0 Then
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If IsDBNull(CP_SSSMAIN(PP_SSSMAIN.Px).CuVal) Xor IsDBNull(CP_SSSMAIN(PP_SSSMAIN.Px).ExVal) Then
+                        MN_UnDoItem.Enabled = True
+                        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).StatusF の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    ElseIf CP_SSSMAIN(PP_SSSMAIN.Px).ExStatus <> CP_SSSMAIN(PP_SSSMAIN.Px).StatusF Or CP_SSSMAIN(PP_SSSMAIN.Px).CuVal <> CP_SSSMAIN(PP_SSSMAIN.Px).ExVal Then
+                        MN_UnDoItem.Enabled = True
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Public Sub MN_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_EndCm.Click 'Generated.
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If Not PP_SSSMAIN.Operable Then Exit Sub
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CloseCode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -2430,75 +2276,71 @@ EventExitSub:
 		If LSTART_GetEvent() Then
 		End If
 	End Sub
-	
-	Public Sub MN_Oprt_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_Oprt.Click
-		Dim Cn_Mode3 As Object
-		Dim AE_IsEnable As Object
-		Dim Cn_InOutMode2 As Object
-		Dim AE_GetInOutMode As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		MN_Slist.Enabled = False
-		If False Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf PP_SSSMAIN.Tx = 3 Then 
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().InOutMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_InOutMode2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) >= Cn_InOutMode2 And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Slist.Enabled = True
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf PP_SSSMAIN.Tx = 5 Then 
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().InOutMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_InOutMode2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) >= Cn_InOutMode2 And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Slist.Enabled = True
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Mode >= Cn_Mode3 Then
-		Else
-		End If
-	End Sub
-	
-	Public Sub MN_Paste_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_Paste.Click
-		Dim AE_IsEnable As Object
-		Dim AE_IsWritableInOutMode As Object
-		Dim AE_Paste As Object 'Generated.
-		Dim MaxLB As Short
-		Dim wk_LnSt As Short
-		Dim Tx As Short
-		Dim Px As Short
-		Dim wk_Txt As String
-		Dim st_Work As String
-		Dim wk_Moji As String
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		If TypeOf VB6.GetActiveControl() Is System.Windows.Forms.TextBox Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
-				'UPGRADE_ISSUE: Control TabIndex は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-				If VB6.GetActiveControl().TabIndex >= 8 Then
-					'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-					'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetText はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
-					VB6.GetActiveControl().SelText = My.Computer.Clipboard.GetText()
-				Else
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call AE_Paste(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), VB6.GetActiveControl())
-				End If
-			End If
-		End If
-	End Sub
-	
-	Public Sub MN_Slist_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_Slist.Click 'Generated.
+
+    Public Sub MN_Oprt_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_Oprt.Click
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        MN_Slist.Enabled = False
+        If False Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf PP_SSSMAIN.Tx = 3 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().InOutMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_InOutMode2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) >= Cn_InOutMode2 And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Slist.Enabled = True
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf PP_SSSMAIN.Tx = 5 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().InOutMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_InOutMode2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_GetInOutMode(CP_SSSMAIN(PP_SSSMAIN.Px).InOutMode, PP_SSSMAIN.Mode) >= Cn_InOutMode2 And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Slist.Enabled = True
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+        Else
+        End If
+    End Sub
+
+    Public Sub MN_Paste_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_Paste.Click
+        Dim MaxLB As Short
+        Dim wk_LnSt As Short
+        Dim Tx As Short
+        Dim Px As Short
+        Dim wk_Txt As String
+        Dim st_Work As String
+        Dim wk_Moji As String
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If TypeOf VB6.GetActiveControl() Is System.Windows.Forms.TextBox Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
+                'UPGRADE_ISSUE: Control TabIndex は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+                If VB6.GetActiveControl().TabIndex >= 8 Then
+                    'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+                    'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetText はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
+                    '2019/09/25 CHG START
+                    'VB6.GetActiveControl().SelText = My.Computer.Clipboard.GetText()
+                    DirectCast(VB6.GetActiveControl(), TextBox).SelectedText = My.Computer.Clipboard.GetText()
+                    '2019/09/25 CHG E N D
+                Else
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    Call AE_Paste(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), VB6.GetActiveControl())
+                End If
+            End If
+        End If
+    End Sub
+
+    Public Sub MN_Slist_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_Slist.Click 'Generated.
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If Not PP_SSSMAIN.Operable Then Exit Sub
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistSw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -2523,233 +2365,210 @@ EventExitSub:
 		If VSTART_GetEvent() Then
 		End If
 	End Sub
-	
-	Public Sub SM_AllCopy_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles SM_AllCopy.Click
-		Dim AE_Controls As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Not PP_SSSMAIN.Operable Then Exit Sub
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.ShortCutTx = -2 Then
-			My.Computer.Clipboard.Clear()
-			On Error Resume Next
-			My.Computer.Clipboard.SetText(TX_Mode.Text)
-			On Error GoTo 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf PP_SSSMAIN.ShortCutTx = -3 Then 
-			My.Computer.Clipboard.Clear()
-			On Error Resume Next
-			My.Computer.Clipboard.SetText(TX_Message.Text)
-			On Error GoTo 0
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf TypeOf AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.ShortCutTx) Is System.Windows.Forms.TextBox Then 
-			My.Computer.Clipboard.Clear()
-			On Error Resume Next
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト AE_Controls().Text の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			My.Computer.Clipboard.SetText(AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.ShortCutTx).Text)
-			On Error GoTo 0
-		End If
-	End Sub
-	
-	Public Sub SM_FullPast_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles SM_FullPast.Click
-		Dim AE_IsEnable As Object
-		Dim AE_IsWritableInOutMode As Object
-		Dim AE_Controls As Object
-		Dim AE_Paste As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.Tx = PP_SSSMAIN.PopupTx
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call AE_Paste(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx))
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.Tx = -1
-		End If
-	End Sub
-	
-	Private Sub TM_StartUp_Tick(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles TM_StartUp.Tick
-		Dim AE_Controls As Object
-		Dim Cn_CuCurrent As Object
-		Dim Cn_Mode1 As Object 'Generated.
-		Dim wk_ww As Short
-		Dim De As Short
-		Dim Tx As Short
-		Dim wk_Cursor As Short
-		TM_StartUp.Enabled = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerStartUp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.TimerStartUp = True Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerStartUp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.TimerStartUp = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.MaskMode = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.Operable = True
-			'UPGRADE_WARNING: オブジェクト Cn_CuCurrent の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_Mode1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If AE_AppendC_SSSMAIN(Cn_Mode1) = Cn_CuCurrent Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CloseCode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CloseCode = 0
-				Call AE_EndCm_SSSMAIN()
-			Else
-				Call AE_CursorInit_SSSMAIN()
-			End If
-		End If
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.TimerWorkId = 1 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.TimerWorkId = 0
-			Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf PP_SSSMAIN.TimerWorkId = 8 Then 
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.TimerWorkId = 0
-			On Error Resume Next
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorSave の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト AE_Controls().SetFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorSave).SetFocus()
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf PP_SSSMAIN.TimerWorkId = 9 Then 
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.TimerWorkId = 0
-			Call AE_CursorSub_SSSMAIN(AE_NextCm_SSSMAIN(True))
-		End If
-	End Sub
-	
-	Private Sub TX_CursorRest_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles TX_CursorRest.Enter
-		Dim Cn_NextTxCleared As Object
-		Dim Cn_CursorToRest As Object
-		Dim Cn_CursorToHome As Object
-		Dim Cn_OutputOnly As Object
-		Dim AE_Controls As Object
-		Dim Cn_OptionButtonC As Object
-		Dim Cn_OptionButtonH As Object
-		Dim AE_Px As Object
-		Dim Cn_Direction1 As Object
-		Dim AE_BackColor As Object 'Generated.
-		CM_SLIST.Enabled = False
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PrpC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.PrpC = 0 Then
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.De2 = -1
-			TX_CursorRest.TabStop = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SSCommand5Ajst の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf PP_SSSMAIN.SSCommand5Ajst Then 
-			TX_CursorRest.TabStop = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BrightOnOff の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト AE_BackColor() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.BrightOnOff = AE_BackColor(CL_SSSMAIN(PP_SSSMAIN.Px) Mod 10)
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SSCommand5Ajst の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SSCommand5Ajst = False
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NextTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf PP_SSSMAIN.NextTx = Cn_NextTxCleared Then 
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.De2 = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.Tx = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.CursorToWhere >= 0 Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If PP_SSSMAIN.CursorToWhere = Cn_CursorToHome Then
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
-					If AE_CursorNext_SSSMAIN(-1) Then TX_CursorRest.TabStop = False
-				Else
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA = Cn_OutputOnly Then
-						'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					ElseIf CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA = Cn_OptionButtonH Or CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA = Cn_OptionButtonC Then 
-					Else
-						'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).TabStop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Enabled の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Visible And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Enabled And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).TabStop Then
-							'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NextTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							PP_SSSMAIN.NextTx = PP_SSSMAIN.CursorToWhere
-							On Error Resume Next
-							'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							'UPGRADE_WARNING: オブジェクト AE_Controls().SetFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).SetFocus()
-							TX_CursorRest.TabStop = False
-						End If
-					End If
-				End If
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.CursorToWhere = Cn_CursorToRest
-			Else
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				PP_SSSMAIN.ExMode = PP_SSSMAIN.Mode
-			End If
-		Else
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.De2 = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If PP_SSSMAIN.Tx >= 0 Then
-				'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA = Cn_OutputOnly Then
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				ElseIf CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA = Cn_OptionButtonH Or CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA = Cn_OptionButtonC Then 
-				Else
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).TabStop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Enabled の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Visible And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Enabled And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).TabStop Then
-						On Error Resume Next
-						'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト AE_Controls().SetFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SetFocus()
-						TX_CursorRest.TabStop = False
-						Exit Sub
-					End If
-				End If
-			End If
-			TX_CursorRest.TabStop = True
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.Tx = -1
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.CursorToWhere = Cn_CursorToRest
-		End If
-	End Sub
-	
-	Private Sub TX_CursorRest_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles TX_CursorRest.KeyDown
+
+    Public Sub SM_AllCopy_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles SM_AllCopy.Click
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.ShortCutTx = -2 Then
+            My.Computer.Clipboard.Clear()
+            On Error Resume Next
+            My.Computer.Clipboard.SetText(TX_Mode.Text)
+            On Error GoTo 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf PP_SSSMAIN.ShortCutTx = -3 Then
+            My.Computer.Clipboard.Clear()
+            On Error Resume Next
+            My.Computer.Clipboard.SetText(TX_Message.Text)
+            On Error GoTo 0
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf TypeOf AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.ShortCutTx) Is System.Windows.Forms.TextBox Then
+            My.Computer.Clipboard.Clear()
+            On Error Resume Next
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト AE_Controls().Text の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            My.Computer.Clipboard.SetText(AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.ShortCutTx).Text)
+            On Error GoTo 0
+        End If
+    End Sub
+
+    Public Sub SM_FullPast_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles SM_FullPast.Click
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ActiveBlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().BlockNo の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PopupTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.Tx = PP_SSSMAIN.PopupTx
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call AE_Paste(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx))
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.Tx = -1
+        End If
+    End Sub
+
+    Private Sub TM_StartUp_Tick(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles TM_StartUp.Tick
+        Dim wk_ww As Short
+        Dim De As Short
+        Dim Tx As Short
+        Dim wk_Cursor As Short
+        TM_StartUp.Enabled = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerStartUp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.TimerStartUp = True Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerStartUp の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.TimerStartUp = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.MaskMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.MaskMode = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Operable の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.Operable = True
+            'UPGRADE_WARNING: オブジェクト Cn_CuCurrent の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_Mode1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If AE_AppendC_SSSMAIN(Cn_Mode1) = Cn_CuCurrent Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CloseCode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CloseCode = 0
+                Call AE_EndCm_SSSMAIN()
+            Else
+                Call AE_CursorInit_SSSMAIN()
+            End If
+        End If
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.TimerWorkId = 1 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.TimerWorkId = 0
+            Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf PP_SSSMAIN.TimerWorkId = 8 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.TimerWorkId = 0
+            On Error Resume Next
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorSave の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト AE_Controls().SetFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/25 CHG START
+            'AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorSave).SetFocus()
+            AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorSave).Focus()
+            '2019/09/25 CHG END
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf PP_SSSMAIN.TimerWorkId = 9 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.TimerWorkId の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.TimerWorkId = 0
+            Call AE_CursorSub_SSSMAIN(AE_NextCm_SSSMAIN(True))
+        End If
+    End Sub
+
+    Private Sub TX_CursorRest_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles TX_CursorRest.Enter
+        CM_SLIST.Enabled = False
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.PrpC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.PrpC = 0 Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.De2 = -1
+            TX_CursorRest.TabStop = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SSCommand5Ajst の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf PP_SSSMAIN.SSCommand5Ajst Then
+            TX_CursorRest.TabStop = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.BrightOnOff の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Px の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト AE_BackColor() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.BrightOnOff = AE_BackColor(CL_SSSMAIN(PP_SSSMAIN.Px) Mod 10)
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SSCommand5Ajst の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SSCommand5Ajst = False
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NextTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf PP_SSSMAIN.NextTx = Cn_NextTxCleared Then
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.De2 = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.Tx = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.CursorToWhere >= 0 Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                If PP_SSSMAIN.CursorToWhere = Cn_CursorToHome Then
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorDirection の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト Cn_Direction1 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+                    If AE_CursorNext_SSSMAIN(-1) Then TX_CursorRest.TabStop = False
+                Else
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA = Cn_OutputOnly Then
+                        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    ElseIf CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA = Cn_OptionButtonH Or CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.CursorToWhere)).TypeA = Cn_OptionButtonC Then
+                    Else
+                        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).TabStop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Enabled の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Visible And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Enabled And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).TabStop Then
+                            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.NextTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            PP_SSSMAIN.NextTx = PP_SSSMAIN.CursorToWhere
+                            On Error Resume Next
+                            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            'UPGRADE_WARNING: オブジェクト AE_Controls().SetFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.CursorToWhere).Focus()
+                            TX_CursorRest.TabStop = False
+                        End If
+                    End If
+                End If
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.CursorToWhere = Cn_CursorToRest
+            Else
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ExMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                PP_SSSMAIN.ExMode = PP_SSSMAIN.Mode
+            End If
+        Else
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.De2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.De2 = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If PP_SSSMAIN.Tx >= 0 Then
+                'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                If CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA = Cn_OutputOnly Then
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Px() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                ElseIf CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA = Cn_OptionButtonH Or CP_SSSMAIN(AE_Px(PP_SSSMAIN, PP_SSSMAIN.Tx)).TypeA = Cn_OptionButtonC Then
+                Else
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).TabStop の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Enabled の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Visible の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Visible And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Enabled And AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).TabStop Then
+                        On Error Resume Next
+                        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CtB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト AE_Controls().SetFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).Focus()
+                        TX_CursorRest.TabStop = False
+                        Exit Sub
+                    End If
+                End If
+            End If
+            TX_CursorRest.TabStop = True
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Tx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.Tx = -1
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.CursorToWhere の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Cn_CursorToRest の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.CursorToWhere = Cn_CursorToRest
+        End If
+    End Sub
+
+    Private Sub TX_CursorRest_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles TX_CursorRest.KeyDown
 		Dim KEYCODE As Short = eventArgs.KeyCode
-		Dim Shift As Short = eventArgs.KeyData \ &H10000
-		Dim wk_Int As Object
-		Dim Cn_CursorToRest As Object
-		Dim Cn_Direction2 As Object
-		Dim Cn_Direction1 As Object
-		Dim Cn_Direction3 As Object
-		Dim Cn_Mode3 As Object
-		Dim wk_Bool As Object
-		Dim Cn_Direction4 As Object 'Generated.
-		Dim wk_TopDe As Short
+        Dim Shift As Short = eventArgs.KeyData \ &H10000
+        Dim wk_TopDe As Short
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.KeyDownMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
@@ -2829,10 +2648,9 @@ EventExitSub:
 	End Sub
 	
 	Private Sub TX_CursorRest_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles TX_CursorRest.KeyPress
-		Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
-		Dim Cn_Mode3 As Object 'Generated.
-		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If PP_SSSMAIN.Mode = Cn_Mode3 Then
+        Dim KeyAscii As Short = Asc(eventArgs.KeyChar)
+        'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.Mode = Cn_Mode3 Then
 			KeyAscii = 0
 		Else
 			KeyAscii = 0
@@ -2875,10 +2693,12 @@ EventExitSub:
 			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			PP_SSSMAIN.ShortCutTx = -3
 			SM_FullPast.Enabled = False
-			'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-			PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
-			TX_Message.Enabled = True
+            'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+            '2019/09/25　仮
+            'PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
+            '2019/09/25　仮
+            TX_Message.Enabled = True
 		End If
 	End Sub
 	
@@ -2915,10 +2735,12 @@ EventExitSub:
 			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.ShortCutTx の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			PP_SSSMAIN.ShortCutTx = -2
 			SM_FullPast.Enabled = False
-			'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-			PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
-			TX_Mode.Enabled = True
+            'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+            '2019/09/25　仮
+            'PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
+            '2019/09/25　仮
+            TX_Mode.Enabled = True
 		End If
 	End Sub
 End Class

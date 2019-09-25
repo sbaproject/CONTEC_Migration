@@ -10,9 +10,10 @@ Module STTHINNM_F51
 	'
 	
 	Function STTHINNM_Derived(ByVal STTHINNM As Object, ByVal STTHINCD As Object, ByVal De_Index As Object) As Object
-		
-		Call HINMTA_RClear()
-		Call DB_GetEq(DBN_HINMTA, 1, STTHINCD, BtrNormal)
+        '2019/09/25 DEL START
+        'Call HINMTA_RClear()
+        '2019/09/25 DEL END
+        Call DB_GetEq(DBN_HINMTA, 1, STTHINCD, BtrNormal)
 		
 		'    If Trim(STTHINCD) = "" Then
 		'       DB_HINMTA.HINNMA = " "
