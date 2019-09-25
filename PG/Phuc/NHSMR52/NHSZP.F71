@@ -1,0 +1,34 @@
+Attribute VB_Name = "NHSZP_F71"
+Option Explicit
+'
+'スロット名      :郵便番号・画面項目スロット
+'ユニット名      :NHSZP.F51
+'記述者          :Standard Library
+'作成日付        :2006/09/22
+'使用プログラム  :NHSMR51
+'
+
+Function NHSZP_CheckC(ByVal NHSZP, ByVal FRNKB)
+Dim Rtn As Integer
+    '
+    NHSZP_CheckC = 0
+    
+    If FRNKB = "0" Then
+        If LenWid(Trim$(NHSZP)) = 0 Then
+        Else
+            If Len(Trim$(NHSZP)) <> Len508 Then
+                Rtn = DSP_MsgBox(SSS_CONFRM, "NHSMR52", 0)  '郵便番号桁数エラー
+                NHSZP_CheckC = -1
+                Exit Function
+            End If
+            
+            If Mid(NHSZP, Len509, 1) <> "-" Then
+                Rtn = DSP_MsgBox(SSS_CONFRM, "NHSMR52", 1)  '郵便番号ハイフン位置エラー
+                NHSZP_CheckC = -1
+                Exit Function
+            End If
+        End If
+    End If
+
+End Function
+

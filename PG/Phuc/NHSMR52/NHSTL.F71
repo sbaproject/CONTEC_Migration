@@ -1,0 +1,97 @@
+Attribute VB_Name = "NHSTL_F71"
+Option Explicit
+'
+' スロット名        : 電話番号・画面項目スロット
+' ユニット名        : NHSTL.F81
+' 記述者            : Standard Library
+' 作成日付          : 2006/09/22
+' 使用プログラム名  : NHSMR51
+'
+' 更新日付          :2006/11/09
+' 更新内容          :エラーチェック追加
+
+Function NHSTL_CheckC(ByVal NHSTL, ByVal FRNKB)
+
+    Dim Rtn         As Integer
+    Dim CntHP       As Integer
+    Dim LenAll      As Integer
+    Dim lngI        As Long
+    Dim lngPOS      As Long
+
+    NHSTL_CheckC = 0
+    
+    LenAll = Len(Trim(NHSTL))
+    
+    If LenAll = 0 Then
+        Exit Function
+    End If
+    
+    '電話番号ハイフン先頭エラー
+    If Left(NHSTL, 1) = "-" Then
+        Rtn = DSP_MsgBox(SSS_ERROR, "TEL_FAX_NO", 0)                'ハイフンが先頭にあります。
+        NHSTL_CheckC = -1
+        Exit Function
+    End If
+    
+    '電話番号ハイフン末尾エラー
+    If Right(Trim(NHSTL), 1) = "-" Then
+        Rtn = DSP_MsgBox(SSS_ERROR, "TEL_FAX_NO", 1)                'ハイフンが末尾にあります。
+        NHSTL_CheckC = -1
+        Exit Function
+    End If
+    
+    '電話番号ハイフン連続入力エラー
+    For lngI = 1 To Len(Trim(NHSTL))
+        If Mid(Trim(NHSTL), lngI, 1) = "-" Then
+            If Mid(Trim(NHSTL), lngI + 1, 1) = "-" Then
+                Rtn = DSP_MsgBox(SSS_ERROR, "TEL_FAX_NO", 2)        'ハイフンを複数連続して入力しています。
+                NHSTL_CheckC = -1
+                Exit Function
+            End If
+        End If
+    Next
+
+    '国内の場合のみチェック
+    If FRNKB = "0" Then
+    
+        '総桁数チェック
+        If LenAll > Len506 Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "TEL_FAX_NO", 3)            '桁数オーバーです。
+            NHSTL_CheckC = -1
+            Exit Function
+        End If
+        
+        'ハイフン個数チェック
+        lngPOS = 0
+        CntHP = 0
+        For lngI = 1 To LenAll
+            If Mid(NHSTL, lngI, 1) = "-" Then
+                CntHP = CntHP + 1
+                If CntHP = Len507 Then
+                    lngPOS = lngI               '2個目の位置を退避
+                End If
+            End If
+        Next
+        If CntHP <> Len507 Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "TEL_FAX_NO", 4)            'ハイフン個数の誤りです。
+            NHSTL_CheckC = -1
+            Exit Function
+        End If
+        
+        '電話番号下桁チェック
+        If Len(Mid(Trim(NHSTL), lngPOS + 1, Len(Trim(NHSTL)) - lngPOS)) <> Len511 Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "TEL_FAX_NO", 5)            '入力が不正です。
+            NHSTL_CheckC = -1
+            Exit Function
+        Else
+            If IsNumeric(Mid(Trim(NHSTL), lngPOS + 1, Len(Trim(NHSTL)) - lngPOS)) = False Then
+                Rtn = DSP_MsgBox(SSS_ERROR, "TEL_FAX_NO", 5)        '入力が不正です。
+                NHSTL_CheckC = -1
+                Exit Function
+            End If
+        End If
+        
+    End If
+    
+End Function
+
