@@ -257,9 +257,12 @@ Friend Class FR_SSSMAIN
 			Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
 			'* セル背景色を解除
 			With vaData
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_CHECK, .MaxRows)
-				Call P_Va_BackColor_LINE_LOCK()
+                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/24 change Start
+                'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_CHECK, .MaxRows)
+                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_CHECK)
+                '2019/09/24 change E N D
+                Call P_Va_BackColor_LINE_LOCK()
 			End With
 			If L_LastCol > 0 And L_LastRow > 0 Then
 				Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
@@ -301,9 +304,12 @@ Friend Class FR_SSSMAIN
 		If msgMsgBox <> MsgBoxResult.Yes Then
 			CM_Execute.Image = IM_Execute(1).Image
 			L_blnLeaveCell = False
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, vaData.MaxRows)
-			Call P_Va_BackColor_LINE_LOCK()
+            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24 change Start
+            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, vaData.MaxRows)
+            Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL)
+            '2019/09/24 change E N D
+            Call P_Va_BackColor_LINE_LOCK()
 			If L_LastCol > 0 And L_LastRow > 0 Then
 				Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
 				Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
@@ -421,16 +427,18 @@ EndLabel:
 		Dim Mst_Inf As TYPE_DB_SYSTBH
 		
 		Me.KeyPreview = True
-		
-		'同一プログラムが起動していた場合は終了する
-		'UPGRADE_ISSUE: App プロパティ App.PrevInstance はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
-		If App.PrevInstance Then
-			Call GP_MsgBox(Common.enmMsg.Critical, "既に起動しています。", LC_strTitle)
-			End
-		End If
-		
-		'フォームの位置をセット
-		Me.Top = VB6.TwipsToPixelsY((VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - VB6.PixelsToTwipsY(Me.Height)) / 2)
+
+        '同一プログラムが起動していた場合は終了する
+        'UPGRADE_ISSUE: App プロパティ App.PrevInstance はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
+        '2019/09/24　仮
+        'If App.PrevInstance Then
+        '    MsgBox("【" & Trim(SSS_PrgNm) & "】は既に起動中です。重複して起動する事はできません。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly, SSS_PrgNm)
+        '    End
+        'End If
+        '2019/09/24　仮
+
+        'フォームの位置をセット
+        Me.Top = VB6.TwipsToPixelsY((VB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - VB6.PixelsToTwipsY(Me.Height)) / 2)
 		Me.Left = VB6.TwipsToPixelsX((VB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) - VB6.PixelsToTwipsX(Me.Width)) / 2)
 		
 		'AppPathの退避
@@ -513,9 +521,13 @@ EndLabel:
 	Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 		Dim Cancel As Boolean = eventArgs.Cancel
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason
-		'DB接続解除
-		Call CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
-		eventArgs.Cancel = Cancel
+        'DB接続解除
+        '2019/09/24 CHG START
+        'Call CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
+        DB_CLOSE(CON)
+        DB_CLOSE(CON_USR9)
+        '2019/09/24 CHG END
+        eventArgs.Cancel = Cancel
 	End Sub
 	
 	'===========================================================================
@@ -535,54 +547,56 @@ EndLabel:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	'===========================================================================
-	'【使用用途】 スプレッドエディットモード変更時
-	'【関 数 名】 vaData_EditChange
-	'【更 新 日】
-	'【備    考】スプレッドが最終行に達した時、新規入力行を生成
-	'===========================================================================
-	Private Sub vaData_EditChange(ByVal Col As Integer, ByVal Row As Integer)
-		
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If LC_lngMAX_ROW <> .MaxRows Then
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If .MaxRows = Row Then
-					'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.MaxRows = .MaxRows + 1
-					'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Row = 1
-					'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Row2 = .MaxRows
-					'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Col = LC_lngCol_NO
-					'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Col2 = LC_lngCol_NO
-					'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.BlockMode = True
-					'UPGRADE_WARNING: オブジェクト vaData.BackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.BackColor = System.Drawing.ColorTranslator.ToOle(Me.BackColor)
-					'UPGRADE_WARNING: オブジェクト vaData.Protect の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Protect = True
-					'UPGRADE_WARNING: オブジェクト vaData.Lock の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Lock = True
-					'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call .SetText(LC_lngCol_NO, Row + 1, Row + 1)
-					Call SetEdit(vaData, LC_lngCol_CHECK, Row + 1)
-					Call SetEdit(vaData, LC_lngCol_SERIAL, Row + 1)
-					Call SetEdit(vaData, LC_lngCol_LOCKBN, Row + 1)
-					Call SetEdit(vaData, LC_lngCol_ZAISYOBN, Row + 1)
-					Call SetEdit(vaData, LC_lngCol_SBN, Row + 1)
-					Call SetEdit(vaData, LC_lngCol_HID_SERIAL, Row + 1)
-				End If
-			End If
-		End With
-		
-	End Sub
-	
-	Private Sub vaData_KeyDown(ByRef KeyCode As Short, ByRef Shift As Short)
+
+    '===========================================================================
+    '【使用用途】 スプレッドエディットモード変更時
+    '【関 数 名】 vaData_EditChange
+    '【更 新 日】
+    '【備    考】スプレッドが最終行に達した時、新規入力行を生成
+    '===========================================================================
+    '2019/09/24 change start
+    'Private Sub vaData_EditChange(ByVal Col As Integer, ByVal Row As Integer)
+
+    '    With vaData
+    '        'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '        If LC_lngMAX_ROW <> .MaxRows Then
+    '            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '            If .MaxRows = Row Then
+    '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .MaxRows = .MaxRows + 1
+    '                'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .Row = 1
+    '                'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .Row2 = .MaxRows
+    '                'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .Col = LC_lngCol_NO
+    '                'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .Col2 = LC_lngCol_NO
+    '                'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .BlockMode = True
+    '                'UPGRADE_WARNING: オブジェクト vaData.BackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .BackColor = System.Drawing.ColorTranslator.ToOle(Me.BackColor)
+    '                'UPGRADE_WARNING: オブジェクト vaData.Protect の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .Protect = True
+    '                'UPGRADE_WARNING: オブジェクト vaData.Lock の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .Lock = True
+    '                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .SetText(LC_lngCol_NO, Row + 1, Row + 1)
+    '                Call SetEdit(vaData, LC_lngCol_CHECK, Row + 1)
+    '                Call SetEdit(vaData, LC_lngCol_SERIAL, Row + 1)
+    '                Call SetEdit(vaData, LC_lngCol_LOCKBN, Row + 1)
+    '                Call SetEdit(vaData, LC_lngCol_ZAISYOBN, Row + 1)
+    '                Call SetEdit(vaData, LC_lngCol_SBN, Row + 1)
+    '                Call SetEdit(vaData, LC_lngCol_HID_SERIAL, Row + 1)
+    '            End If
+    '        End If
+    '    End With
+
+    'End Sub
+    '2019/09/24 change end
+
+    Private Sub vaData_KeyDown(ByRef KeyCode As Short, ByRef Shift As Short)
 		Call F_SendKey(KeyCode)
 	End Sub
 	
@@ -616,78 +630,90 @@ EndLabel:
 		
 		'* セル背景色を解除
 		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, .MaxRows)
-			Call P_Va_BackColor_LINE_LOCK()
+            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24 change start
+            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, .MaxRows)
+            Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL,)
+            '2019/09/24 change E N D
+            Call P_Va_BackColor_LINE_LOCK()
 		End With
 		
 		'データ入力最大行を取得
-		L_lngMAX_EditRow = P_Get_EditMaxRow
-		
-		'セルの値を取得
-		'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Call vaData.GetText(LC_lngCol_ZAISYOBN, Row, varZAISYOBN)
-		'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Call vaData.GetText(LC_lngCol_CHECK, Row, varCHECK)
-		'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Call vaData.GetText(LC_lngCol_SERIAL, Row, varSERIAL)
-		'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Call vaData.GetText(LC_lngCol_LOCKBN, Row, varLOCKBN)
-		If NewRow > 0 Then
-			'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call vaData.GetText(LC_lngCol_LOCKBN, NewRow, varNewRowLOCKBN)
-		End If
-		
-		'入力文字を大文字に変換してセルに再セット
-		'UPGRADE_WARNING: オブジェクト Nz() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Call vaData.SetText(LC_lngCol_SERIAL, Row, StrConv(Nz(varSERIAL), VbStrConv.UpperCase))
-		
-		Select Case Col
+		L_lngMAX_EditRow = P_Get_EditMaxRow()
+
+        'セルの値を取得
+        '2019/09/24　仮
+        '      'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '      Call vaData.GetText(LC_lngCol_ZAISYOBN, Row, varZAISYOBN)
+        ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'Call vaData.GetText(LC_lngCol_CHECK, Row, varCHECK)
+        ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'Call vaData.GetText(LC_lngCol_SERIAL, Row, varSERIAL)
+        ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'Call vaData.GetText(LC_lngCol_LOCKBN, Row, varLOCKBN)
+        '      If NewRow > 0 Then
+        '          'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '          Call vaData.GetText(LC_lngCol_LOCKBN, NewRow, varNewRowLOCKBN)
+        '      End If
+        '2019/09/24　仮
+
+        '入力文字を大文字に変換してセルに再セット
+        'UPGRADE_WARNING: オブジェクト Nz() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/24　仮
+        'Call vaData.SetText(LC_lngCol_SERIAL, Row, StrConv(Nz(varSERIAL), VbStrConv.Uppercase))
+        '2019/09/24　仮
+
+        Select Case Col
 			'チェックボックスのとき
 			Case LC_lngCol_CHECK
 				With vaData
 					'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					If varLOCKBN = LC_strLINE_LOCK Then
 						If Row > 0 Then
-							'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							If Row = .MaxRows Then
-								Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
-								Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
-							Else
-								If Row = NewRow Then
-									Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
-									Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
-								Else
-									If NewCol > 0 And NewRow > 0 Then
-										If NewCol = LC_lngCol_NO Then
-											Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, NewRow, True)
-											Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, NewRow)
-										ElseIf NewCol > LC_lngCol_SERIAL Then 
-											'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-											If NewRow = .MaxRows Then
-												'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-												Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .MaxRows, True)
-												'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-												Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .MaxRows)
-											Else
-												Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, NewRow, True)
-												Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, NewRow)
-											End If
-										Else
-											'UPGRADE_WARNING: オブジェクト varNewRowLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-											If varNewRowLOCKBN = LC_strLINE_LOCK Then
-												Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, NewRow, True)
-												Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, NewRow)
-											Else
-												Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, NewRow, True)
-												Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, NewRow)
-											End If
-										End If
-									End If
-								End If
-							End If
-						Else
+                            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/24　仮
+                            'If Row = .MaxRows Then
+                            '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
+                            '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
+                            'Else
+
+                            '    If Row = NewRow Then
+                            '        Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
+                            '        Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
+                            '    Else
+                            '        If NewCol > 0 And NewRow > 0 Then
+                            '            If NewCol = LC_lngCol_NO Then
+                            '                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, NewRow, True)
+                            '                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, NewRow)
+                            '            ElseIf NewCol > LC_lngCol_SERIAL Then
+                            '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '                '2019/09/24　仮
+                            '                'If NewRow = .MaxRows Then
+                            '                '    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '                '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .MaxRows, True)
+                            '                '    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '                '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .MaxRows)
+                            '                'Else
+                            '                '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, NewRow, True)
+                            '                '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, NewRow)
+                            '                'End If
+                            '                '2019/09/24　仮
+                            '            Else
+                            '                'UPGRADE_WARNING: オブジェクト varNewRowLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '                If varNewRowLOCKBN = LC_strLINE_LOCK Then
+                            '                    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, NewRow, True)
+                            '                    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, NewRow)
+                            '                Else
+                            '                    Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, NewRow, True)
+                            '                    Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, NewRow)
+                            '                End If
+                            '            End If
+                            '        End If
+                            '    End If
+                            'End If
+                            '2019/09/24　仮
+                        Else
 							Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
 							Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 1)
 						End If
@@ -697,21 +723,23 @@ EndLabel:
 								Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, NewRow, True)
 								Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, NewRow)
 							Else
-								If NewCol = LC_lngCol_NO Then
-									Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, NewRow, True)
-									Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, NewRow)
-								ElseIf NewCol > LC_lngCol_SERIAL Then 
-									'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									If NewRow = .MaxRows Then
-										'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-										Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .MaxRows, True)
-										'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-										Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .MaxRows)
-									Else
-										Call GP_Va_Col_EditColor(vaData, NewCol, NewRow, True)
-										Call GP_SpActiveCell(vaData, NewCol, NewRow)
-									End If
-								Else
+                                If NewCol = LC_lngCol_NO Then
+                                    Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, NewRow, True)
+                                    Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, NewRow)
+                                ElseIf NewCol > LC_lngCol_SERIAL Then
+                                    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    '2019/09/24　仮
+                                    'If NewRow = .MaxRows Then
+                                    '    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .MaxRows, True)
+                                    '    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .MaxRows)
+                                    'Else
+                                    '    Call GP_Va_Col_EditColor(vaData, NewCol, NewRow, True)
+                                    '    Call GP_SpActiveCell(vaData, NewCol, NewRow)
+                                    'End If
+                                    '2019/09/24　仮
+                                Else
 									Call GP_Va_Col_EditColor(vaData, NewCol, NewRow, True)
 									Call GP_SpActiveCell(vaData, NewCol, NewRow)
 								End If
@@ -738,15 +766,17 @@ EndLabel:
 							Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
 							If Col > 0 And NewRow > 0 Then
 								If Col > LC_lngCol_SERIAL Then
-									'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									If Row = .MaxRows Then
-										Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
-										Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
-									Else
-										Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
-										Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
-									End If
-								Else
+                                    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    '2019/09/24　仮
+                                    'If Row = .MaxRows Then
+                                    '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
+                                    '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
+                                    'Else
+                                    '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
+                                    '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
+                                    'End If
+                                    '2019/09/24　仮
+                                Else
 									Call GP_Va_Col_EditColor(vaData, Col, Row, True)
 									Call GP_SpActiveCell(vaData, Col, Row)
 								End If
@@ -762,10 +792,12 @@ EndLabel:
 								'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 								varSERIAL_C = ""
 								If Row <> lngJ Then
-									'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									Call .GetText(LC_lngCol_SERIAL, lngJ, varSERIAL_C)
-									'UPGRADE_WARNING: オブジェクト Nz(varSERIAL_C) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									If Nz(varSERIAL_C) <> "" Then
+                                    'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    '2019/09/24　仮
+                                    'Call .GetText(LC_lngCol_SERIAL, lngJ, varSERIAL_C)
+                                    '2019/09/24　仮
+                                    'UPGRADE_WARNING: オブジェクト Nz(varSERIAL_C) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    If Nz(varSERIAL_C) <> "" Then
 										'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 										'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 										If varSERIAL = varSERIAL_C Then
@@ -791,9 +823,11 @@ EndLabel:
 							
 							'* 取得した在庫区分を隠し項目にセット
 							If Row > 0 Then
-								'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								Call .SetText(LC_lngCol_ZAISYOBN, Row, strKBN)
-							End If
+                                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/24　仮
+                                'Call .SetText(LC_lngCol_ZAISYOBN, Row, strKBN)
+                                '2019/09/24　仮
+                            End If
 							
 							'* 在庫処理区分の出荷済み判定を行い、該当したとき警告メッセージを表示
 							If strKBN = LC_strSYUKA Then
@@ -816,20 +850,23 @@ EndLabel:
 								End If
 							End If
 						End If
-						'シリアル№チェックがOKのときは自動でチェックボックスをONにする
-						'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						Call .SetText(LC_lngCol_CHECK, Row, C_strCHECKBOX_ON)
-						
-						If NewCol > LC_lngCol_SERIAL Then
-							'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							If Row = .MaxRows Then
-								Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
-								Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
-							Else
-								Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
-								Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
-							End If
-						ElseIf NewCol < 0 Then 
+                        'シリアル№チェックがOKのときは自動でチェックボックスをONにする
+                        'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/24　仮
+                        'Call .SetText(LC_lngCol_CHECK, Row, C_strCHECKBOX_ON)
+                        '2019/09/24　仮
+                        If NewCol > LC_lngCol_SERIAL Then
+                            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/24　仮
+                            'If Row = .MaxRows Then
+                            '	Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
+                            '	Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
+                            'Else
+                            '	Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
+                            '	Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
+                            'End If
+                            '2019/09/24　仮
+                        ElseIf NewCol < 0 Then 
 							'''                        Call GP_Va_Col_EditColor(vaData, LC_lngCol_HID_SERIAL, 1, True)
 							'''                        Call GP_SpActiveCell(vaData, LC_lngCol_HID_SERIAL, 1)
 						Else
@@ -866,15 +903,17 @@ EndLabel:
 							Exit Sub
 						Else
 							If NewCol > LC_lngCol_SERIAL Then
-								'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								If Row = .MaxRows Then
-									Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
-									Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
-								Else
-									Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
-									Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
-								End If
-							ElseIf NewCol < 0 Then 
+                                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/24　仮
+                                'If Row = .MaxRows Then
+                                '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row, True)
+                                '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row)
+                                'Else
+                                '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, Row + 1, True)
+                                '    Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, Row + 1)
+                                'End If
+                                '2019/09/24　仮
+                            ElseIf NewCol < 0 Then 
 								'''                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_HID_SERIAL, 1, True)
 								'''                            Call GP_SpActiveCell(vaData, LC_lngCol_HID_SERIAL, 1)
 							Else
@@ -903,11 +942,13 @@ EndLabel:
 		End Select
 		
 		If NewRow - 1 > 0 Then
-			'上から順番に入力する仕様である為、前行の値をNULLチェックしNULLならエラー
-			'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call vaData.GetText(LC_lngCol_SERIAL, NewRow - 1, varSERIAL)
-			'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Nz(varSERIAL) = "" Then
+            '上から順番に入力する仕様である為、前行の値をNULLチェックしNULLならエラー
+            'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24　仮
+            'Call vaData.GetText(LC_lngCol_SERIAL, NewRow - 1, varSERIAL)
+            '2019/09/24　仮
+            'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Nz(varSERIAL) = "" Then
 				strMSGKBN = "0"
 				'UPGRADE_WARNING: vaData_LeaveCell に変換されていないステートメントがあります。ソース コードを確認してください。
 				If intRet <> 0 Then
@@ -918,9 +959,11 @@ EndLabel:
 				Call GP_MsgBox(Common.enmMsg.Critical, Mst_Inf.MSGCM, LC_strTitle)
 				'* セル背景色を解除
 				With vaData
-					'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, .MaxRows)
-					Call P_Va_BackColor_LINE_LOCK()
+                    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/24　仮
+                    'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, .MaxRows)
+                    '2019/09/24　仮
+                    Call P_Va_BackColor_LINE_LOCK()
 				End With
 				If Row > 0 Then
 					Call GP_Va_Col_EditColor(vaData, Col, Row, True)
@@ -932,31 +975,37 @@ EndLabel:
 				Exit Sub
 			End If
 		End If
-		
-		'最終入力行のときは[登録]ボタン押下時の処理呼出
-		'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If NewCol = LC_lngCol_LOCKBN And (NewRow > L_lngMAX_EditRow Or NewRow = vaData.MaxRows) Then
-			'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call vaData.GetText(LC_lngCol_SERIAL, NewRow, varSERIAL)
-			'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If Nz(varSERIAL) = "" Then
-				L_lngMAX_EditRow = P_Get_EditMaxRow
-				L_blnLeaveCell = True
-				L_LastCol = Col
-				L_LastRow = Row
-				Call CM_EndCm_Click(CM_EndCm, New System.EventArgs())
-				L_LastCol = -1
-				L_LastRow = -1
-				L_blnLeaveCell = False
-			End If
-		End If
-		
-		If L_blnLeaveCell = True Then
+
+        '最終入力行のときは[登録]ボタン押下時の処理呼出
+        'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/24　仮
+        'If NewCol = LC_lngCol_LOCKBN And (NewRow > L_lngMAX_EditRow Or NewRow = vaData.MaxRows) Then
+        '2019/09/24　仮
+        'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/24　仮
+        'Call vaData.GetText(LC_lngCol_SERIAL, NewRow, varSERIAL)
+
+        'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'If Nz(varSERIAL) = "" Then
+        '        L_lngMAX_EditRow = P_Get_EditMaxRow()
+        '        L_blnLeaveCell = True
+        '        L_LastCol = Col
+        '        L_LastRow = Row
+        '        Call CM_EndCm_Click(CM_EndCm, New System.EventArgs())
+        '        L_LastCol = -1
+        '        L_LastRow = -1
+        '        L_blnLeaveCell = False
+        '    End If
+        'End If
+        '2019/09/24　仮
+        If L_blnLeaveCell = True Then
 			'* セル背景色を解除
 			With vaData
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, .MaxRows)
-				Call P_Va_BackColor_LINE_LOCK()
+                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/24　仮
+                'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False, LC_lngCol_SERIAL, .MaxRows)
+                '2019/09/24　仮
+                Call P_Va_BackColor_LINE_LOCK()
 			End With
 			'* セル背景色を設定
 			If NewCol <> -1 Or NewRow <> -1 Then
@@ -996,27 +1045,29 @@ EndLabel:
 	Private Sub vaData_GotFocus()
 		
 		Dim varLOCKBN As Object
-		
-		'カーソル制御。
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If .ActiveRow > 0 Then
-				'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_LOCKBN, .ActiveRow, varLOCKBN)
-				'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If varLOCKBN = LC_strLINE_LOCK Then
-					'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .ActiveRow, True)
-					'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .ActiveRow)
-				End If
-			Else
-				txtDummy.Focus()
-			End If
-		End With
-		
-	End Sub
+
+        'カーソル制御。
+        '2019/09/24　仮
+        '      With vaData
+        '          'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '          If .ActiveRow > 0 Then
+        '              'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '              'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '              Call .GetText(LC_lngCol_LOCKBN, .ActiveRow, varLOCKBN)
+        '              'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '              If varLOCKBN = LC_strLINE_LOCK Then
+        '                  'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '                  Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .ActiveRow, True)
+        '                  'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '                  Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .ActiveRow)
+        '              End If
+        '          Else
+        '              txtDummy.Focus()
+        '	End If
+        'End With
+        '2019/09/24　仮
+
+    End Sub
 	'=========================================================================【 イベント 】=
 	
 	'=【 メソッド 】=========================================================================
@@ -1027,26 +1078,28 @@ EndLabel:
 	'【備    考】
 	'===========================================================================
 	Private Sub P_Va_BackColor()
-		
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row = 1
-			'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row2 = .MaxRows
-			'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col = LC_lngCol_NO
-			'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col2 = LC_lngCol_NO
-			'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BlockMode = True
-			'UPGRADE_WARNING: オブジェクト vaData.BackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BackColor = System.Drawing.ColorTranslator.ToOle(Me.BackColor)
-			'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BlockMode = False
-		End With
-		
-	End Sub
+
+        '2019/09/24　仮
+        '      With vaData
+        '	'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Row = 1
+        '	'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Row2 = .MaxRows
+        '	'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Col = LC_lngCol_NO
+        '	'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Col2 = LC_lngCol_NO
+        '	'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.BlockMode = True
+        '	'UPGRADE_WARNING: オブジェクト vaData.BackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.BackColor = System.Drawing.ColorTranslator.ToOle(Me.BackColor)
+        '	'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.BlockMode = False
+        'End With
+        '2019/09/24　仮
+
+    End Sub
 	
 	'===========================================================================
 	'【使用用途】 スプレッド背景色設定(行ロック区分判定)
@@ -1070,10 +1123,12 @@ EndLabel:
 		With vaData
 			lngRow = 1
 			For lngRow = 1 To L_lngMAX_EditRow
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_LOCKBN, lngRow, varLOCKBN)
-				'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If varLOCKBN = LC_strLINE_LOCK Then
+                'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/24　仮
+                'Call .GetText(LC_lngCol_LOCKBN, lngRow, varLOCKBN)
+                '2019/09/24　仮
+                'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                If varLOCKBN = LC_strLINE_LOCK Then
 					Call GP_Va_Col_LockColor_Row(vaData, lngRow)
 				End If
 			Next 
@@ -1089,30 +1144,32 @@ EndLabel:
 	'【備    考】
 	'===========================================================================
 	Private Sub P_Va_Lock()
-		
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row = 1
-			'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col = LC_lngCol_NO
-			'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row2 = .MaxRows
-			'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col2 = LC_lngCol_NO
-			'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BlockMode = True
-			'UPGRADE_WARNING: オブジェクト vaData.Protect の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Protect = True
-			'UPGRADE_WARNING: オブジェクト vaData.BackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BackColor = LC_lng_va_Lock_Color
-			'UPGRADE_WARNING: オブジェクト vaData.Lock の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Lock = True
-			'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BlockMode = False
-		End With
-		
-	End Sub
+
+        With vaData
+            '2019/09/24　仮
+            ''UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.Row = 1
+            ''UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.Col = LC_lngCol_NO
+            ''UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            ''UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.Row2 = .MaxRows
+            ''UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.Col2 = LC_lngCol_NO
+            ''UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.BlockMode = True
+            ''UPGRADE_WARNING: オブジェクト vaData.Protect の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.Protect = True
+            ''UPGRADE_WARNING: オブジェクト vaData.BackColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.BackColor = LC_lng_va_Lock_Color
+            ''UPGRADE_WARNING: オブジェクト vaData.Lock の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.Lock = True
+            ''UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '.BlockMode = False
+            '2019/09/24　仮
+        End With
+
+    End Sub
 	
 	'===========================================================================
 	'【使用用途】 スプレッド行ロック制御
@@ -1122,27 +1179,29 @@ EndLabel:
 	'【備    考】
 	'===========================================================================
 	Private Sub P_Va_Lock_Row(ByVal lngRow As Integer)
-		
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row = lngRow
-			'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col = LC_lngCol_NO
-			'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row2 = lngRow
-			'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col2 = LC_lngCol_SERIAL
-			'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BlockMode = True
-			'UPGRADE_WARNING: オブジェクト vaData.Protect の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Protect = True
-			'UPGRADE_WARNING: オブジェクト vaData.Lock の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Lock = True
-			'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.BlockMode = False
-		End With
-		
-		Call GP_Va_Col_LockColor_Row(vaData, lngRow)
+
+        '2019/09/24　仮
+        'With vaData
+        '    'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Row = lngRow
+        '    'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Col = LC_lngCol_NO
+        '    'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Row2 = lngRow
+        '    'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Col2 = LC_lngCol_SERIAL
+        '    'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .BlockMode = True
+        '    'UPGRADE_WARNING: オブジェクト vaData.Protect の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Protect = True
+        '    'UPGRADE_WARNING: オブジェクト vaData.Lock の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Lock = True
+        '    'UPGRADE_WARNING: オブジェクト vaData.BlockMode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .BlockMode = False
+        'End With
+        '2019/09/24　仮
+
+        Call GP_Va_Col_LockColor_Row(vaData, lngRow)
 		
 	End Sub
 	
@@ -1162,27 +1221,32 @@ EndLabel:
 		
 		'データの取得。
 		If P_Get_Data(Usr_Ody_LC) = True Then
-			'データを画面に表示する。
-			Call P_Set_Data(Usr_Ody_LC)
-		Else
+            'データを画面に表示する。
+            '2019/09/24　仮
+            'Call P_Set_Data(Usr_Ody_LC)
+            '2019/09/24　仮
+        Else
 			Call SetEdit(vaData, LC_lngCol_SERIAL, 1)
 			Call SetEdit(vaData, LC_lngCol_LOCKBN, 1)
 			Call SetEdit(vaData, LC_lngCol_ZAISYOBN, 1)
 			Call SetEdit(vaData, LC_lngCol_SBN, 1)
-			Call SetEdit(vaData, LC_lngCol_HID_SERIAL, 1)
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			vaData.MaxRows = LC_lngDEFAULT_ROW
-			intLen = Len(CStr(LC_lngMAX_ROW))
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			For lngI = 1 To vaData.MaxRows
-				Call SetEdit(vaData, LC_lngCol_CHECK, lngI)
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call vaData.SetText(LC_lngCol_NO, lngI, VB.Right(Space(intLen) & CStr(lngI), intLen))
-			Next 
-			Call P_Va_BackColor()
+            Call SetEdit(vaData, LC_lngCol_HID_SERIAL, 1)
+            '2019/09/24　仮
+            '         'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '         vaData.MaxRows = LC_lngDEFAULT_ROW
+            'intLen = Len(CStr(LC_lngMAX_ROW))
+            ''UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'For lngI = 1 To vaData.MaxRows
+            '	Call SetEdit(vaData, LC_lngCol_CHECK, lngI)
+            '             'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '             Call vaData.SetText(LC_lngCol_NO, lngI, VB.Right(Space(intLen) & CStr(lngI), intLen))
+
+            '         Next 
+            '2019/09/24　仮
+            Call P_Va_BackColor()
 		End If
-		
-		Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
+
+        Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
 		Call GP_Va_Col_LockColor(vaData, LC_lngCol_NO)
 		Call P_Va_Lock()
 		
@@ -1193,124 +1257,126 @@ EndLabel:
 		L_blnLeaveCell = False
 		
 	End Function
-	
-	'===========================================================================
-	'【使用用途】 データセット
-	'【関 数 名】 P_Set_Data
-	'【引    数】 ByRef Usr_Ody_LC As U_Ody   :ダイナセット情報構造体
-	'【返    値】 Boolean
-	'【更 新 日】
-	'【備    考】
-	'===========================================================================
-	Private Function P_Set_Data(ByRef Usr_Ody_LC As U_Ody) As Boolean
-		
-		Dim lngI As Integer
-		Dim lngJ As Integer
-		Dim blnFLG As Boolean
-		Dim intLen As Short
-		Dim lngRecCount As Integer
-		Dim varLOCKBN As Object
-		Dim varZAISYOBN As Object
-		
-		On Error GoTo ErrLbl
-		
-		P_Set_Data = False
-		
-		lngI = 0
-		blnFLG = False
-		
-		intLen = Len(CStr(LC_lngMAX_ROW))
-		
-		With vaData
-			Call SetEdit(vaData, LC_lngCol_SERIAL, 1)
-			Call SetEdit(vaData, LC_lngCol_LOCKBN, 1)
-			Call SetEdit(vaData, LC_lngCol_ZAISYOBN, 1)
-			Call SetEdit(vaData, LC_lngCol_SBN, 1)
-			Call SetEdit(vaData, LC_lngCol_HID_SERIAL, 1)
-			'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ReDraw = False
-			'スプレッドの行数の設定
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxRows = 0
-			'スプレッドにデータを表示する。
-			Do Until CF_Ora_EOF(Usr_Ody_LC) = True
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.MaxRows = .MaxRows + 1
-				lngI = lngI + 1
-				Call SetEdit(vaData, LC_lngCol_CHECK, lngI)
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody_LC, CHKFLG, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If CF_Ora_GetDyn(Usr_Ody_LC, "CHKFLG", "") = C_strCHECKBOX_ON Then
-					'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call .SetText(LC_lngCol_CHECK, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "CHKFLG", ""))
-				End If
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .SetText(LC_lngCol_NO, lngI, VB.Right(Space(intLen) & CStr(lngI), intLen))
-				Call SetEdit(vaData, LC_lngCol_SERIAL, lngI)
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .SetText(LC_lngCol_SERIAL, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "SRANO", ""))
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .SetText(LC_lngCol_HID_SERIAL, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "SRANO", ""))
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .SetText(LC_lngCol_LOCKBN, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "LOCKBN", ""))
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .SetText(LC_lngCol_ZAISYOBN, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "ZAISYOBN", ""))
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_LOCKBN, lngI, varLOCKBN)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_ZAISYOBN, lngI, varZAISYOBN)
-				'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If varLOCKBN = LC_strLINE_LOCK Then
-					Call P_Va_Lock_Row(lngI)
-				End If
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .SetText(LC_lngCol_SBN, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "SBNNO", ""))
-				Call CF_Ora_MoveNext(Usr_Ody_LC)
-			Loop 
-			
-			'初期表示するスプレッド行数は最低LC_lngDEFAULT_ROW行とする
-			'UPGRADE_WARNING: オブジェクト Usr_Ody_LC.Obj_Ody.RecordCount の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			lngRecCount = Usr_Ody_LC.Obj_Ody.RecordCount
-			L_lngMAX_EditRow = lngRecCount
-			If lngRecCount > LC_lngDEFAULT_ROW Then
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.MaxRows = lngRecCount
-			Else
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.MaxRows = LC_lngDEFAULT_ROW
-				blnFLG = True
-			End If
-			
-			If blnFLG = True Then
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				For lngJ = lngI To vaData.MaxRows
-					'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call .SetText(LC_lngCol_NO, lngJ, VB.Right(Space(intLen) & CStr(lngJ), intLen))
-					Call SetEdit(vaData, LC_lngCol_CHECK, lngJ)
-					Call SetEdit(vaData, LC_lngCol_SERIAL, lngJ)
-				Next 
-			End If
-			
-			'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ReDraw = True
-		End With
-		
-		P_Set_Data = True
-		
-		
-		Exit Function
-ErrLbl: 
-		Call GP_MsgBox(Common.enmMsg.Critical, Err.Description)
-	End Function
-	
-	'===========================================================================
-	'【使用用途】 データ取得
-	'【関 数 名】 P_Get_Data
-	'【引    数】 ByRef Usr_Ody_LC As U_Ody   :ダイナセット情報構造体
-	'【返    値】 Boolean
-	'【更 新 日】
-	'【備    考】
-	'===========================================================================
-	Private Function P_Get_Data(ByRef Usr_Ody_LC As U_Ody) As Boolean
+
+    '===========================================================================
+    '【使用用途】 データセット
+    '【関 数 名】 P_Set_Data
+    '【引    数】 ByRef Usr_Ody_LC As U_Ody   :ダイナセット情報構造体
+    '【返    値】 Boolean
+    '【更 新 日】
+    '【備    考】
+    '===========================================================================
+    '2019/09/24　仮
+    '    Private Function P_Set_Data(ByRef Usr_Ody_LC As U_Ody) As Boolean
+
+    '        Dim lngI As Integer
+    '        Dim lngJ As Integer
+    '        Dim blnFLG As Boolean
+    '        Dim intLen As Short
+    '        Dim lngRecCount As Integer
+    '        Dim varLOCKBN As Object
+    '        Dim varZAISYOBN As Object
+
+    '        On Error GoTo ErrLbl
+
+    '        P_Set_Data = False
+
+    '        lngI = 0
+    '        blnFLG = False
+
+    '        intLen = Len(CStr(LC_lngMAX_ROW))
+
+    '        With vaData
+    '            Call SetEdit(vaData, LC_lngCol_SERIAL, 1)
+    '            Call SetEdit(vaData, LC_lngCol_LOCKBN, 1)
+    '            Call SetEdit(vaData, LC_lngCol_ZAISYOBN, 1)
+    '            Call SetEdit(vaData, LC_lngCol_SBN, 1)
+    '            Call SetEdit(vaData, LC_lngCol_HID_SERIAL, 1)
+    '            'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '            .ReDraw = False
+    '            'スプレッドの行数の設定
+    '            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '            .MaxRows = 0
+    '            'スプレッドにデータを表示する。
+    '            Do Until CF_Ora_EOF(Usr_Ody_LC) = True
+    '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .MaxRows = .MaxRows + 1
+    '                lngI = lngI + 1
+    '                Call SetEdit(vaData, LC_lngCol_CHECK, lngI)
+    '                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody_LC, CHKFLG, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                If CF_Ora_GetDyn(Usr_Ody_LC, "CHKFLG", "") = C_strCHECKBOX_ON Then
+    '                    'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                    Call .SetText(LC_lngCol_CHECK, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "CHKFLG", ""))
+    '                End If
+    '                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .SetText(LC_lngCol_NO, lngI, VB.Right(Space(intLen) & CStr(lngI), intLen))
+    '                Call SetEdit(vaData, LC_lngCol_SERIAL, lngI)
+    '                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .SetText(LC_lngCol_SERIAL, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "SRANO", ""))
+    '                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .SetText(LC_lngCol_HID_SERIAL, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "SRANO", ""))
+    '                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .SetText(LC_lngCol_LOCKBN, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "LOCKBN", ""))
+    '                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .SetText(LC_lngCol_ZAISYOBN, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "ZAISYOBN", ""))
+    '                'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .GetText(LC_lngCol_LOCKBN, lngI, varLOCKBN)
+    '                'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .GetText(LC_lngCol_ZAISYOBN, lngI, varZAISYOBN)
+    '                'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                If varLOCKBN = LC_strLINE_LOCK Then
+    '                    Call P_Va_Lock_Row(lngI)
+    '                End If
+    '                'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                Call .SetText(LC_lngCol_SBN, lngI, CF_Ora_GetDyn(Usr_Ody_LC, "SBNNO", ""))
+    '                Call CF_Ora_MoveNext(Usr_Ody_LC)
+    '            Loop
+
+    '            '初期表示するスプレッド行数は最低LC_lngDEFAULT_ROW行とする
+    '            'UPGRADE_WARNING: オブジェクト Usr_Ody_LC.Obj_Ody.RecordCount の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '            lngRecCount = Usr_Ody_LC.Obj_Ody.RecordCount
+    '            L_lngMAX_EditRow = lngRecCount
+    '            If lngRecCount > LC_lngDEFAULT_ROW Then
+    '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .MaxRows = lngRecCount
+    '            Else
+    '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                .MaxRows = LC_lngDEFAULT_ROW
+    '                blnFLG = True
+    '            End If
+
+    '            If blnFLG = True Then
+    '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                For lngJ = lngI To vaData.MaxRows
+    '                    'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '                    Call .SetText(LC_lngCol_NO, lngJ, VB.Right(Space(intLen) & CStr(lngJ), intLen))
+    '                    Call SetEdit(vaData, LC_lngCol_CHECK, lngJ)
+    '                    Call SetEdit(vaData, LC_lngCol_SERIAL, lngJ)
+    '                Next
+    '            End If
+
+    '            'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '            .ReDraw = True
+    '        End With
+
+    '        P_Set_Data = True
+
+
+    '        Exit Function
+    'ErrLbl:
+    '        Call GP_MsgBox(Common.enmMsg.Critical, Err.Description)
+    '    End Function
+    '2019/09/24　仮
+
+    '===========================================================================
+    '【使用用途】 データ取得
+    '【関 数 名】 P_Get_Data
+    '【引    数】 ByRef Usr_Ody_LC As U_Ody   :ダイナセット情報構造体
+    '【返    値】 Boolean
+    '【更 新 日】
+    '【備    考】
+    '===========================================================================
+    Private Function P_Get_Data(ByRef Usr_Ody_LC As U_Ody) As Boolean
 		
 		Dim strSQL As String
 		Dim strWKRPTCLTID As String
@@ -1394,63 +1460,65 @@ Errlabel:
 		lngI = 0
 		lngLine = 0
 		intLen = Len(CStr(LC_lngMAX_ROW))
-		
-		With vaData
-			'スプレッドのクリア
-			'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ReDraw = False
-			'UPGRADE_WARNING: オブジェクト vaData.Action の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト ActionClearText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Action = ActionClearText
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.MaxRows = LC_lngDEFAULT_ROW
-			'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col = LC_lngCol_CHECK
-			'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col2 = LC_lngCol_CHECK
-			'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row = 1
-			'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row2 = .MaxRows
-			'UPGRADE_WARNING: オブジェクト vaData.CellType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CellTypeCheckBox の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.CellType = CellTypeCheckBox
-			'UPGRADE_WARNING: オブジェクト vaData.GridColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.GridColor = &H0
-			'UPGRADE_WARNING: オブジェクト vaData.GridSolid の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.GridSolid = True
-			'UPGRADE_WARNING: オブジェクト vaData.TypeCheckType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト TypeCheckTypeNormal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.TypeCheckType = TypeCheckTypeNormal
-			'UPGRADE_WARNING: オブジェクト vaData.TypeCheckCenter の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.TypeCheckCenter = True
-			'UPGRADE_WARNING: オブジェクト vaData.TypeCheckText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.TypeCheckText = ""
-			Call SetEdit(vaData, LC_lngCol_SERIAL, 1)
-			Call SetEdit(vaData, LC_lngCol_LOCKBN, 1)
-			Call SetEdit(vaData, LC_lngCol_ZAISYOBN, 1)
-			Call SetEdit(vaData, LC_lngCol_SBN, 1)
-			Call SetEdit(vaData, LC_lngCol_HID_SERIAL, 1)
-			'行番号をセット
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			For lngI = 0 To vaData.MaxRows
-				lngLine = lngLine + 1
-				'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .SetText(LC_lngCol_NO, lngLine, VB.Right(Space(intLen) & CStr(lngLine), intLen))
-				Call SetEdit(vaData, LC_lngCol_SERIAL, lngLine)
-				Call SetEdit(vaData, LC_lngCol_LOCKBN, lngLine)
-				Call SetEdit(vaData, LC_lngCol_ZAISYOBN, lngLine)
-				Call SetEdit(vaData, LC_lngCol_SBN, lngLine)
-				Call SetEdit(vaData, LC_lngCol_HID_SERIAL, lngLine)
-			Next 
-			'UPGRADE_WARNING: オブジェクト vaData.ColsFrozen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ColsFrozen = LC_lngCol_SERIAL
-			'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ReDraw = True
-		End With
-		
-		Call P_Va_BackColor()
+
+        '2019/09/24　仮
+        '      With vaData
+        '	'スプレッドのクリア
+        '	'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.ReDraw = False
+        '	'UPGRADE_WARNING: オブジェクト vaData.Action の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	'UPGRADE_WARNING: オブジェクト ActionClearText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Action = ActionClearText
+        '	'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.MaxRows = LC_lngDEFAULT_ROW
+        '	'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Col = LC_lngCol_CHECK
+        '	'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Col2 = LC_lngCol_CHECK
+        '	'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Row = 1
+        '	'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.Row2 = .MaxRows
+        '	'UPGRADE_WARNING: オブジェクト vaData.CellType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	'UPGRADE_WARNING: オブジェクト CellTypeCheckBox の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.CellType = CellTypeCheckBox
+        '	'UPGRADE_WARNING: オブジェクト vaData.GridColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.GridColor = &H0
+        '	'UPGRADE_WARNING: オブジェクト vaData.GridSolid の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.GridSolid = True
+        '	'UPGRADE_WARNING: オブジェクト vaData.TypeCheckType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	'UPGRADE_WARNING: オブジェクト TypeCheckTypeNormal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.TypeCheckType = TypeCheckTypeNormal
+        '	'UPGRADE_WARNING: オブジェクト vaData.TypeCheckCenter の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.TypeCheckCenter = True
+        '	'UPGRADE_WARNING: オブジェクト vaData.TypeCheckText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.TypeCheckText = ""
+        '	Call SetEdit(vaData, LC_lngCol_SERIAL, 1)
+        '	Call SetEdit(vaData, LC_lngCol_LOCKBN, 1)
+        '	Call SetEdit(vaData, LC_lngCol_ZAISYOBN, 1)
+        '	Call SetEdit(vaData, LC_lngCol_SBN, 1)
+        '	Call SetEdit(vaData, LC_lngCol_HID_SERIAL, 1)
+        '	'行番号をセット
+        '	'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	For lngI = 0 To vaData.MaxRows
+        '		lngLine = lngLine + 1
+        '		'UPGRADE_WARNING: オブジェクト vaData.SetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		Call .SetText(LC_lngCol_NO, lngLine, VB.Right(Space(intLen) & CStr(lngLine), intLen))
+        '		Call SetEdit(vaData, LC_lngCol_SERIAL, lngLine)
+        '		Call SetEdit(vaData, LC_lngCol_LOCKBN, lngLine)
+        '		Call SetEdit(vaData, LC_lngCol_ZAISYOBN, lngLine)
+        '		Call SetEdit(vaData, LC_lngCol_SBN, lngLine)
+        '		Call SetEdit(vaData, LC_lngCol_HID_SERIAL, lngLine)
+        '	Next 
+        '	'UPGRADE_WARNING: オブジェクト vaData.ColsFrozen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.ColsFrozen = LC_lngCol_SERIAL
+        '	'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	.ReDraw = True
+        'End With
+        '2019/09/24　仮
+
+        Call P_Va_BackColor()
 		Call P_Va_Lock()
 		
 	End Sub
@@ -1647,60 +1715,62 @@ Errlabel:
 		P_NULLCheck = False
 		
 		'データ入力最大行を取得
-		L_lngMAX_EditRow = P_Get_EditMaxRow
-		
-		For lngI = 1 To L_lngMAX_EditRow
-			With vaData
-				'スプレッドデータを取得
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_CHECK, lngI, varCHECK)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_NO, lngI, varNO)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_SERIAL, lngI, varSERIAL)
-				'UPGRADE_WARNING: オブジェクト varCHECK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If varCHECK = C_strCHECKBOX_ON Then
-					'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If varSERIAL <> vbNullString Then
-						'* シリアル№重複チェック
-						lngJ = 1
-						For lngJ = 1 To L_lngMAX_EditRow
-							'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							varSERIAL_C = ""
-							If lngI <> lngJ Then
-								'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								Call .GetText(LC_lngCol_SERIAL, lngJ, varSERIAL_C)
-								'UPGRADE_WARNING: オブジェクト Nz(varSERIAL_C) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								If Nz(varSERIAL_C) <> "" Then
-									'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									If varSERIAL = varSERIAL_C Then
-										'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
-										If intRet <> 0 Then
-											Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OKOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-											Exit Function
-										End If
-										'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-										Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-										If lngJ > 0 Then
-											Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngJ, True)
-											Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngJ)
-										Else
-											Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngI, True)
-											Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngI)
-										End If
-										Exit Function
-									End If
-								End If
-							End If
-						Next 
-						lngEntryLine = lngEntryLine + 1
-					End If
-				End If
-			End With
-		Next lngI
-		
-		P_NULLCheck = True
+		L_lngMAX_EditRow = P_Get_EditMaxRow()
+
+        For lngI = 1 To L_lngMAX_EditRow
+            '2019/09/24　仮
+            'With vaData
+            '    'スプレッドデータを取得
+            '    'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '    Call .GetText(LC_lngCol_CHECK, lngI, varCHECK)
+            '    'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '    Call .GetText(LC_lngCol_NO, lngI, varNO)
+            '    'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '    Call .GetText(LC_lngCol_SERIAL, lngI, varSERIAL)
+            '    'UPGRADE_WARNING: オブジェクト varCHECK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '    If varCHECK = C_strCHECKBOX_ON Then
+            '        'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '        If varSERIAL <> vbNullString Then
+            '            '* シリアル№重複チェック
+            '            lngJ = 1
+            '            For lngJ = 1 To L_lngMAX_EditRow
+            '                'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '                varSERIAL_C = ""
+            '                If lngI <> lngJ Then
+            '                    'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '                    Call .GetText(LC_lngCol_SERIAL, lngJ, varSERIAL_C)
+            '                    'UPGRADE_WARNING: オブジェクト Nz(varSERIAL_C) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '                    If Nz(varSERIAL_C) <> "" Then
+            '                        'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '                        'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '                        If varSERIAL = varSERIAL_C Then
+            '                            'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
+            '                            If intRet <> 0 Then
+            '                                Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
+            '                                Exit Function
+            '                            End If
+            '                            'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '                            Call GP_MsgBox(COMMON.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+            '                            If lngJ > 0 Then
+            '                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngJ, True)
+            '                                Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngJ)
+            '                            Else
+            '                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngI, True)
+            '                                Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngI)
+            '                            End If
+            '                            Exit Function
+            '                        End If
+            '                    End If
+            '                End If
+            '            Next
+            '            lngEntryLine = lngEntryLine + 1
+            '        End If
+            '    End If
+            'End With
+            '2019/09/24　仮
+        Next lngI
+
+        P_NULLCheck = True
 		
 	End Function
 	
@@ -1720,29 +1790,30 @@ Errlabel:
 		Dim varHIDSERIAL As Object
 		
 		P_Get_EditMaxRow = 0
-		
-		lngI = 1
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			For lngI = 1 To .MaxRows
-				'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				lngLine = .MaxRows - lngI
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_CHECK, lngLine, varCHECK)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_SERIAL, lngLine, varSERIAL)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_HID_SERIAL, lngLine, varHIDSERIAL)
-				'UPGRADE_WARNING: オブジェクト Nz(varHIDSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If Nz(varSERIAL) <> "" Or Nz(varHIDSERIAL) <> "" Then
-					P_Get_EditMaxRow = lngLine
-					Exit For
-				End If
-			Next 
-		End With
-		
-	End Function
+
+        lngI = 1
+        '2019/09/24　仮
+        '      With vaData
+        '	'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	For lngI = 1 To .MaxRows
+        '		'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		lngLine = .MaxRows - lngI
+        '		'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		Call .GetText(LC_lngCol_CHECK, lngLine, varCHECK)
+        '		'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		Call .GetText(LC_lngCol_SERIAL, lngLine, varSERIAL)
+        '		'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		Call .GetText(LC_lngCol_HID_SERIAL, lngLine, varHIDSERIAL)
+        '		'UPGRADE_WARNING: オブジェクト Nz(varHIDSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		If Nz(varSERIAL) <> "" Or Nz(varHIDSERIAL) <> "" Then
+        '			P_Get_EditMaxRow = lngLine
+        '			Exit For
+        '		End If
+        '	Next 
+        'End With
+        '2019/09/24　仮
+    End Function
 	
 	'===========================================================================
 	'【使用用途】 SQL文生成＆発行
@@ -1870,14 +1941,16 @@ Errlabel:
 		Dim strCREATE_MODE As enumCREATE_MODE
 		
 		P_Main = False
-		
-		'BEGIN TRAN
-		If CF_Ora_BeginTrans(gv_Oss_USR9) = False Then
-			GoTo EndLbl
-		End If
-		
-		'登録日時を生成
-		datNOW = Now
+
+        'BEGIN TRAN
+        '2019/09/24　仮
+        'If CF_Ora_BeginTrans(gv_Oss_USR9) = False Then
+        '    GoTo EndLbl
+        'End If
+        '2019/09/24　仮
+
+        '登録日時を生成
+        datNOW = Now
 		L_strWRTTM = VB6.Format(datNOW, "HHMMSS")
 		L_strWRTDT = VB6.Format(datNOW, "YYYYMMDD")
 		
@@ -1892,61 +1965,63 @@ Errlabel:
 		lngI = 0
 		lngLineNo = 0
 		For lngI = 1 To L_lngMAX_EditRow
-			With vaData
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_CHECK, lngI, varCHECK)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_NO, lngI, varNO)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_SERIAL, lngI, varSERIAL)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_LOCKBN, lngI, varLOCKBN)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_ZAISYOBN, lngI, varZAISYOBN)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_SBN, lngI, varSBN)
-				'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call .GetText(LC_lngCol_HID_SERIAL, lngI, varHIDSERIAL)
-				'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If Nz(varSERIAL) <> "" Then
-					lngLineNo = lngLineNo + 1
-					' 処理区分判定する
-					'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If varLOCKBN = LC_strLINE_LOCK Then
-						strCREATE_MODE = enumCREATE_MODE.Update
-					Else
-						'手入力行
-						'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						If P_SRANOCheckWK(CStr(varSERIAL)) = False Then
-							strCREATE_MODE = enumCREATE_MODE.Update
-						Else
-							strCREATE_MODE = enumCREATE_MODE.Insert
-						End If
-					End If
-					
-					'UPGRADE_WARNING: オブジェクト varSBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト varZAISYOBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト varCHECK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If P_EXECUTE_SQL(strCREATE_MODE, VB6.Format(lngLineNo, strZero), CStr(varCHECK), CStr(varSERIAL), CStr(varZAISYOBN), CStr(varSBN), L_strWRTTM, L_strWRTDT) = False Then
-						GoTo EndLbl
-					End If
-				Else
-					lngLineNo = lngLineNo + 1
-					'UPGRADE_WARNING: オブジェクト Nz(varHIDSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If Nz(varHIDSERIAL) <> "" Then
-						strCREATE_MODE = enumCREATE_MODE.Delete
-						'UPGRADE_WARNING: オブジェクト varSBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト varZAISYOBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト varCHECK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						If P_EXECUTE_SQL(strCREATE_MODE, VB6.Format(lngLineNo, strZero), CStr(varCHECK), CStr(varSERIAL), CStr(varZAISYOBN), CStr(varSBN), L_strWRTTM, L_strWRTDT) = False Then
-							GoTo EndLbl
-						End If
-					End If
-				End If
-			End With
-		Next lngI
+            With vaData
+                '2019/09/24　仮
+                ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'Call .GetText(LC_lngCol_CHECK, lngI, varCHECK)
+                ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'Call .GetText(LC_lngCol_NO, lngI, varNO)
+                ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'Call .GetText(LC_lngCol_SERIAL, lngI, varSERIAL)
+                ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'Call .GetText(LC_lngCol_LOCKBN, lngI, varLOCKBN)
+                ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'Call .GetText(LC_lngCol_ZAISYOBN, lngI, varZAISYOBN)
+                ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'Call .GetText(LC_lngCol_SBN, lngI, varSBN)
+                ''UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'Call .GetText(LC_lngCol_HID_SERIAL, lngI, varHIDSERIAL)
+                '2019/09/24　仮
+                'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                If Nz(varSERIAL) <> "" Then
+                    lngLineNo = lngLineNo + 1
+                    ' 処理区分判定する
+                    'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If varLOCKBN = LC_strLINE_LOCK Then
+                        strCREATE_MODE = enumCREATE_MODE.Update
+                    Else
+                        '手入力行
+                        'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        If P_SRANOCheckWK(CStr(varSERIAL)) = False Then
+                            strCREATE_MODE = enumCREATE_MODE.Update
+                        Else
+                            strCREATE_MODE = enumCREATE_MODE.Insert
+                        End If
+                    End If
+
+                    'UPGRADE_WARNING: オブジェクト varSBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト varZAISYOBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト varCHECK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If P_EXECUTE_SQL(strCREATE_MODE, VB6.Format(lngLineNo, strZero), CStr(varCHECK), CStr(varSERIAL), CStr(varZAISYOBN), CStr(varSBN), L_strWRTTM, L_strWRTDT) = False Then
+                        GoTo EndLbl
+                    End If
+                Else
+                    lngLineNo = lngLineNo + 1
+                    'UPGRADE_WARNING: オブジェクト Nz(varHIDSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If Nz(varHIDSERIAL) <> "" Then
+                        strCREATE_MODE = enumCREATE_MODE.Delete
+                        'UPGRADE_WARNING: オブジェクト varSBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト varZAISYOBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト varCHECK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        If P_EXECUTE_SQL(strCREATE_MODE, VB6.Format(lngLineNo, strZero), CStr(varCHECK), CStr(varSERIAL), CStr(varZAISYOBN), CStr(varSBN), L_strWRTTM, L_strWRTDT) = False Then
+                            GoTo EndLbl
+                        End If
+                    End If
+                End If
+            End With
+        Next lngI
 		
 		'COMMIT
 		Call CF_Ora_CommitTrans(gv_Oss_USR9)
@@ -2134,84 +2209,86 @@ EndLbl:
 		Dim TypeEditCharSetAlphanumeric As Object
 		Dim CellTypeEdit As Object
 		Dim TypeCheckTypeNormal As Object
-		Dim CellTypeCheckBox As Object
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ReDraw = False
-			'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col = lngCol
-			'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Col2 = lngCol
-			'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row = lngRow
-			'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.Row2 = lngRow
-			'UPGRADE_WARNING: オブジェクト vaData.GridSolid の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.GridSolid = True
-			'UPGRADE_WARNING: オブジェクト vaData.GridColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.GridColor = &H0
-			'UPGRADE_WARNING: オブジェクト vaData.FontSize の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.FontSize = 12
-			If lngCol = LC_lngCol_CHECK Then
-				'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.Col = LC_lngCol_CHECK
-				'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.Col2 = LC_lngCol_CHECK
-				'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.Row = lngRow
-				'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.Row2 = lngRow
-				'UPGRADE_WARNING: オブジェクト vaData.CellType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CellTypeCheckBox の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.CellType = CellTypeCheckBox
-				'UPGRADE_WARNING: オブジェクト vaData.TypeCheckType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト TypeCheckTypeNormal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.TypeCheckType = TypeCheckTypeNormal
-				'UPGRADE_WARNING: オブジェクト vaData.TypeCheckCenter の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.TypeCheckCenter = True
-				'UPGRADE_WARNING: オブジェクト vaData.TypeCheckText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.TypeCheckText = ""
-			Else
-				'UPGRADE_WARNING: オブジェクト vaData.CellType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CellTypeEdit の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.CellType = CellTypeEdit '文字入力
-				'UPGRADE_WARNING: オブジェクト vaData.TypeEditCharSet の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト TypeEditCharSetAlphanumeric の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.TypeEditCharSet = TypeEditCharSetAlphanumeric '半角英数字
-				'UPGRADE_WARNING: オブジェクト vaData.Position の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト PositionCenterLeft の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				.Position = PositionCenterLeft
-			End If
-			'入力桁数をセット
-			Select Case lngCol
-				Case LC_lngCol_SERIAL
-					'UPGRADE_WARNING: オブジェクト vaData.TypeMaxEditLen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.TypeMaxEditLen = C_lngSERIAL_Len
-			End Select
-			'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			.ReDraw = True
-		End With
-	End Sub
+        Dim CellTypeCheckBox As Object
+        '2019/09/24　仮
+        'With vaData
+        '    'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .ReDraw = False
+        '    'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Col = lngCol
+        '    'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Col2 = lngCol
+        '    'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Row = lngRow
+        '    'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .Row2 = lngRow
+        '    'UPGRADE_WARNING: オブジェクト vaData.GridSolid の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .GridSolid = True
+        '    'UPGRADE_WARNING: オブジェクト vaData.GridColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .GridColor = &H0
+        '    'UPGRADE_WARNING: オブジェクト vaData.FontSize の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .FontSize = 12
+        '    If lngCol = LC_lngCol_CHECK Then
+        '        'UPGRADE_WARNING: オブジェクト vaData.Col の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .Col = LC_lngCol_CHECK
+        '        'UPGRADE_WARNING: オブジェクト vaData.Col2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .Col2 = LC_lngCol_CHECK
+        '        'UPGRADE_WARNING: オブジェクト vaData.Row の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .Row = lngRow
+        '        'UPGRADE_WARNING: オブジェクト vaData.Row2 の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .Row2 = lngRow
+        '        'UPGRADE_WARNING: オブジェクト vaData.CellType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        'UPGRADE_WARNING: オブジェクト CellTypeCheckBox の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .CellType = CellTypeCheckBox
+        '        'UPGRADE_WARNING: オブジェクト vaData.TypeCheckType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        'UPGRADE_WARNING: オブジェクト TypeCheckTypeNormal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .TypeCheckType = TypeCheckTypeNormal
+        '        'UPGRADE_WARNING: オブジェクト vaData.TypeCheckCenter の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .TypeCheckCenter = True
+        '        'UPGRADE_WARNING: オブジェクト vaData.TypeCheckText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .TypeCheckText = ""
+        '    Else
+        '        'UPGRADE_WARNING: オブジェクト vaData.CellType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        'UPGRADE_WARNING: オブジェクト CellTypeEdit の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .CellType = CellTypeEdit '文字入力
+        '        'UPGRADE_WARNING: オブジェクト vaData.TypeEditCharSet の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        'UPGRADE_WARNING: オブジェクト TypeEditCharSetAlphanumeric の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .TypeEditCharSet = TypeEditCharSetAlphanumeric '半角英数字
+        '        'UPGRADE_WARNING: オブジェクト vaData.Position の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        'UPGRADE_WARNING: オブジェクト PositionCenterLeft の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '        .Position = PositionCenterLeft
+        '    End If
+        '    '入力桁数をセット
+        '    Select Case lngCol
+        '        Case LC_lngCol_SERIAL
+        '            'UPGRADE_WARNING: オブジェクト vaData.TypeMaxEditLen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '            .TypeMaxEditLen = C_lngSERIAL_Len
+        '    End Select
+        '    'UPGRADE_WARNING: オブジェクト vaData.ReDraw の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    .ReDraw = True
+        ''End With
+        '2019/09/24　仮
+    End Sub
 	
 	Private Sub vaData_MouseDown(ByRef Button As Short, ByRef Shift As Short, ByRef X As Single, ByRef Y As Single)
 		
 		Dim varLOCKBN As Object
-		
-		With vaData
-			'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call .GetText(LC_lngCol_LOCKBN, .ActiveRow, varLOCKBN)
-			
-			'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If varLOCKBN = LC_strLINE_NOT_LOCK Then
-				'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .ActiveRow, True)
-				'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .ActiveRow)
-			End If
-		End With
-		
-	End Sub
+        '2019/09/24　仮
+        '      With vaData
+        '	'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	Call .GetText(LC_lngCol_LOCKBN, .ActiveRow, varLOCKBN)
+
+        '	'UPGRADE_WARNING: オブジェクト varLOCKBN の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '	If varLOCKBN = LC_strLINE_NOT_LOCK Then
+        '		'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, .ActiveRow, True)
+        '		'UPGRADE_WARNING: オブジェクト vaData.ActiveRow の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '		Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, .ActiveRow)
+        '	End If
+        'End With
+        '2019/09/24　仮
+    End Sub
 	
 	Private Sub vaData_Validate(ByRef Cancel As Boolean)
 		L_lngMAX_EditRow = P_Get_EditMaxRow

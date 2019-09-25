@@ -1,0 +1,19 @@
+Attribute VB_Name = "SOUNM_F53"
+Option Explicit
+'
+' スロット名        : 倉庫名称・画面項目スロット
+' ユニット名        : SOUNM.F52
+' 記述者            : Standard Library
+' 作成日付          : 2006/09/26
+' 使用プログラム名  : SOUMT51
+'
+
+Function SOUNM_CHECK(ByVal SOUNM, ByVal SOUCD, ByVal De_Index)
+    
+    If Trim(SOUCD) <> "" Then
+        If Trim(SOUNM) = "" Then
+            SOUNM_CHECK = -1
+        End If
+    End If
+    
+End Function

@@ -1,0 +1,32 @@
+Attribute VB_Name = "HINKB_F51"
+Option Explicit
+'
+' スロット名        : 商品区分区分・画面項目スロット
+' ユニット名        : HINJUNKB.FM1
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : HINMR01
+'
+' 備考              : 1:商品
+'                     2:製品
+'                     3:部品
+'
+
+Function HINKB_CheckC(HINKB)
+    '
+    If Trim$(HINKB) = "" Then
+        HINKB = "1"
+    End If
+    Select Case HINKB
+        Case "1", "2", "3", "4", "5", "9"
+        Case Else
+            HINKB = "1"
+    End Select
+    HINKB_CheckC = 0
+End Function
+
+Function HINKB_InitVal()
+    '
+    HINKB_InitVal = "1"
+End Function
+
