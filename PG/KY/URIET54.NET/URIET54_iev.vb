@@ -16,164 +16,164 @@ Module URIET54_IEV
 	
 	
 	Sub Init_Fil() 'Generated.
-		'
-		DBN_UDNTRA = 0
-		DB_PARA(DBN_UDNTRA).tblid = "UDNTRA"
-		DB_PARA(DBN_UDNTRA).DBID = "USR1"
-		SSS_MFIL = DBN_UDNTRA
-		'
-		DBN_UDNTHA = 1
-		DB_PARA(DBN_UDNTHA).tblid = "UDNTHA"
-		DB_PARA(DBN_UDNTHA).DBID = "USR1"
-		'
-		DBN_JDNTRA = 2
-		DB_PARA(DBN_JDNTRA).tblid = "JDNTRA"
-		DB_PARA(DBN_JDNTRA).DBID = "USR1"
-		'
-		DBN_JDNTHA = 3
-		DB_PARA(DBN_JDNTHA).tblid = "JDNTHA"
-		DB_PARA(DBN_JDNTHA).DBID = "USR1"
-		'
-		DBN_TOKMTA = 4
-		DB_PARA(DBN_TOKMTA).tblid = "TOKMTA"
-		DB_PARA(DBN_TOKMTA).DBID = "USR1"
-		'
-		DBN_BMNMTA = 5
-		DB_PARA(DBN_BMNMTA).tblid = "BMNMTA"
-		DB_PARA(DBN_BMNMTA).DBID = "USR1"
-		'
-		DBN_MEIMTA = 6
-		DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
-		DB_PARA(DBN_MEIMTA).DBID = "USR1"
-		'
-		DBN_TANMTA = 7
-		DB_PARA(DBN_TANMTA).tblid = "TANMTA"
-		DB_PARA(DBN_TANMTA).DBID = "USR1"
-		'
-		DBN_SOUMTA = 8
-		DB_PARA(DBN_SOUMTA).tblid = "SOUMTA"
-		DB_PARA(DBN_SOUMTA).DBID = "USR1"
-		'
-		DBN_NHSMTA = 9
-		DB_PARA(DBN_NHSMTA).tblid = "NHSMTA"
-		DB_PARA(DBN_NHSMTA).DBID = "USR1"
-		'
-		DBN_HINMTA = 10
-		DB_PARA(DBN_HINMTA).tblid = "HINMTA"
-		DB_PARA(DBN_HINMTA).DBID = "USR1"
-		'
-		DBN_SYSTBA = 11
-		DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
-		DB_PARA(DBN_SYSTBA).DBID = "USR1"
-		'
-		DBN_SYSTBB = 12
-		DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
-		DB_PARA(DBN_SYSTBB).DBID = "USR1"
-		'
-		DBN_SYSTBC = 13
-		DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
-		DB_PARA(DBN_SYSTBC).DBID = "USR1"
-		'
-		DBN_SYSTBD = 14
-		DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
-		DB_PARA(DBN_SYSTBD).DBID = "USR1"
-		'
-		DBN_SYSTBF = 15
-		DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
-		DB_PARA(DBN_SYSTBF).DBID = "USR1"
-		'
-		DBN_SYSTBG = 16
-		DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
-		DB_PARA(DBN_SYSTBG).DBID = "USR1"
-		'
-		DBN_SYSTBH = 17
-		DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
-		DB_PARA(DBN_SYSTBH).DBID = "USR1"
-		'
-		DBN_UNYMTA = 18
-		DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
-		DB_PARA(DBN_UNYMTA).DBID = "USR1"
-		'
-		DBN_CLSMTA = 19
-		DB_PARA(DBN_CLSMTA).tblid = "CLSMTA"
-		DB_PARA(DBN_CLSMTA).DBID = "USR1"
-		'
-		DBN_CLSMTB = 20
-		DB_PARA(DBN_CLSMTB).tblid = "CLSMTB"
-		DB_PARA(DBN_CLSMTB).DBID = "USR1"
-		'
-		DBN_SYSTBI = 21
-		DB_PARA(DBN_SYSTBI).tblid = "SYSTBI"
-		DB_PARA(DBN_SYSTBI).DBID = "USR1"
-		'
-		DBN_TOKSME = 22
-		DB_PARA(DBN_TOKSME).tblid = "TOKSME"
-		DB_PARA(DBN_TOKSME).DBID = "USR1"
-		'
-		DBN_TOKSMD = 23
-		DB_PARA(DBN_TOKSMD).tblid = "TOKSMD"
-		DB_PARA(DBN_TOKSMD).DBID = "USR1"
-		'
-		DBN_HINSMA = 24
-		DB_PARA(DBN_HINSMA).tblid = "HINSMA"
-		DB_PARA(DBN_HINSMA).DBID = "USR1"
-		'
-		DBN_SRACNTTB = 25
-		DB_PARA(DBN_SRACNTTB).tblid = "SRACNTTB"
-		DB_PARA(DBN_SRACNTTB).DBID = "USR1"
-		'
-		DBN_SRAET52 = 26
-		DB_PARA(DBN_SRAET52).tblid = "SRAET52"
-		DB_PARA(DBN_SRAET52).DBID = "USR9"
-		'
-		DBN_ODNTRA = 27
-		DB_PARA(DBN_ODNTRA).tblid = "ODNTRA"
-		DB_PARA(DBN_ODNTRA).DBID = "USR1"
-		'
-		DBN_EXCTBZ = 28
-		DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
-		DB_PARA(DBN_EXCTBZ).DBID = "USR1"
-		'
-		DBN_GYMTBZ = 29
-		DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
-		DB_PARA(DBN_GYMTBZ).DBID = "USR1"
-		'
-		DBN_FIXMTA = 30
-		DB_PARA(DBN_FIXMTA).tblid = "FIXMTA"
-		DB_PARA(DBN_FIXMTA).DBID = "USR1"
-		'
-		DBN_KNGMTB = 31
-		DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
-		DB_PARA(DBN_KNGMTB).DBID = "USR1"
-		'20090115 ADD START RISE)Tanimura 'òAóçï[No.523
-		'
-		DBN_ODNTHA = 32
-		DB_PARA(DBN_ODNTHA).tblid = "ODNTHA"
-		DB_PARA(DBN_ODNTHA).DBID = "USR1"
-		'20090115 ADD END   RISE)Tanimura
-		'
-		DBN_FDNTRA = -1
-		'
-		DBN_FDNTHA = -2
-		'
-		DBN_TOKSMA = -3
-		'
-		DBN_TOKSSA = -4
-		'
-		DBN_TOKSSC = -5
-		'
-		DBN_SRJTRA = -6
-		'
-		DBN_SRARSTTB = -7
-		'
-		DBN_TOKSSB = -8
-		'
-		DBN_SKFTHA = -9
-		'
-		DBN_SKFTRA = -10
-		
-		SSS_BILFL = 9
-	End Sub
+        '
+        'DBN_UDNTRA = 0
+        'DB_PARA(DBN_UDNTRA).tblid = "UDNTRA"
+        'DB_PARA(DBN_UDNTRA).DBID = "USR1"
+        'SSS_MFIL = DBN_UDNTRA
+        '
+        'DBN_UDNTHA = 1
+        'DB_PARA(DBN_UDNTHA).tblid = "UDNTHA"
+        'DB_PARA(DBN_UDNTHA).DBID = "USR1"
+        '
+        'DBN_JDNTRA = 2
+        'DB_PARA(DBN_JDNTRA).tblid = "JDNTRA"
+        'DB_PARA(DBN_JDNTRA).DBID = "USR1"
+        '
+        'DBN_JDNTHA = 3
+        'DB_PARA(DBN_JDNTHA).tblid = "JDNTHA"
+        'DB_PARA(DBN_JDNTHA).DBID = "USR1"
+        '
+        'DBN_TOKMTA = 4
+        'DB_PARA(DBN_TOKMTA).tblid = "TOKMTA"
+        'DB_PARA(DBN_TOKMTA).DBID = "USR1"
+        '
+        'DBN_BMNMTA = 5
+        'DB_PARA(DBN_BMNMTA).tblid = "BMNMTA"
+        'DB_PARA(DBN_BMNMTA).DBID = "USR1"
+        '
+        'DBN_MEIMTA = 6
+        'DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
+        'DB_PARA(DBN_MEIMTA).DBID = "USR1"
+        '
+        'DBN_TANMTA = 7
+        'DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+        'DB_PARA(DBN_TANMTA).DBID = "USR1"
+        '
+        'DBN_SOUMTA = 8
+        'DB_PARA(DBN_SOUMTA).tblid = "SOUMTA"
+        'DB_PARA(DBN_SOUMTA).DBID = "USR1"
+        '
+        'DBN_NHSMTA = 9
+        'DB_PARA(DBN_NHSMTA).tblid = "NHSMTA"
+        'DB_PARA(DBN_NHSMTA).DBID = "USR1"
+        '
+        'DBN_HINMTA = 10
+        'DB_PARA(DBN_HINMTA).tblid = "HINMTA"
+        'DB_PARA(DBN_HINMTA).DBID = "USR1"
+        '
+        'DBN_SYSTBA = 11
+        'DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+        'DB_PARA(DBN_SYSTBA).DBID = "USR1"
+        '
+        'DBN_SYSTBB = 12
+        'DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
+        'DB_PARA(DBN_SYSTBB).DBID = "USR1"
+        '
+        'DBN_SYSTBC = 13
+        'DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+        'DB_PARA(DBN_SYSTBC).DBID = "USR1"
+        '
+        'DBN_SYSTBD = 14
+        'DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
+        'DB_PARA(DBN_SYSTBD).DBID = "USR1"
+        '
+        'DBN_SYSTBF = 15
+        'DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
+        'DB_PARA(DBN_SYSTBF).DBID = "USR1"
+        '
+        'DBN_SYSTBG = 16
+        'DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
+        'DB_PARA(DBN_SYSTBG).DBID = "USR1"
+        '
+        'DBN_SYSTBH = 17
+        'DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+        'DB_PARA(DBN_SYSTBH).DBID = "USR1"
+        '
+        'DBN_UNYMTA = 18
+        'DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+        'DB_PARA(DBN_UNYMTA).DBID = "USR1"
+        '
+        'DBN_CLSMTA = 19
+        'DB_PARA(DBN_CLSMTA).tblid = "CLSMTA"
+        'DB_PARA(DBN_CLSMTA).DBID = "USR1"
+        '
+        'DBN_CLSMTB = 20
+        'DB_PARA(DBN_CLSMTB).tblid = "CLSMTB"
+        'DB_PARA(DBN_CLSMTB).DBID = "USR1"
+        '
+        'DBN_SYSTBI = 21
+        'DB_PARA(DBN_SYSTBI).tblid = "SYSTBI"
+        'DB_PARA(DBN_SYSTBI).DBID = "USR1"
+        '
+        'DBN_TOKSME = 22
+        'DB_PARA(DBN_TOKSME).tblid = "TOKSME"
+        'DB_PARA(DBN_TOKSME).DBID = "USR1"
+        '
+        'DBN_TOKSMD = 23
+        'DB_PARA(DBN_TOKSMD).tblid = "TOKSMD"
+        'DB_PARA(DBN_TOKSMD).DBID = "USR1"
+        '
+        'DBN_HINSMA = 24
+        'DB_PARA(DBN_HINSMA).tblid = "HINSMA"
+        'DB_PARA(DBN_HINSMA).DBID = "USR1"
+        '
+        'DBN_SRACNTTB = 25
+        'DB_PARA(DBN_SRACNTTB).tblid = "SRACNTTB"
+        'DB_PARA(DBN_SRACNTTB).DBID = "USR1"
+        '
+        'DBN_SRAET52 = 26
+        'DB_PARA(DBN_SRAET52).tblid = "SRAET52"
+        'DB_PARA(DBN_SRAET52).DBID = "USR9"
+        '
+        'DBN_ODNTRA = 27
+        'DB_PARA(DBN_ODNTRA).tblid = "ODNTRA"
+        'DB_PARA(DBN_ODNTRA).DBID = "USR1"
+        '
+        'DBN_EXCTBZ = 28
+        'DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+        'DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+        '
+        'DBN_GYMTBZ = 29
+        'DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+        'DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+        '
+        'DBN_FIXMTA = 30
+        'DB_PARA(DBN_FIXMTA).tblid = "FIXMTA"
+        'DB_PARA(DBN_FIXMTA).DBID = "USR1"
+        '
+        'DBN_KNGMTB = 31
+        'DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+        'DB_PARA(DBN_KNGMTB).DBID = "USR1"
+        '20090115 ADD START RISE)Tanimura 'òAóçï[No.523
+        '
+        'DBN_ODNTHA = 32
+        'DB_PARA(DBN_ODNTHA).tblid = "ODNTHA"
+        'DB_PARA(DBN_ODNTHA).DBID = "USR1"
+        '20090115 ADD END   RISE)Tanimura
+        '
+        'DBN_FDNTRA = -1
+        '
+        'DBN_FDNTHA = -2
+        '
+        'DBN_TOKSMA = -3
+        '
+        'DBN_TOKSSA = -4
+        '
+        'DBN_TOKSSC = -5
+        '
+        'DBN_SRJTRA = -6
+        '
+        'DBN_SRARSTTB = -7
+        '
+        'DBN_TOKSSB = -8
+        '
+        'DBN_SKFTHA = -9
+        '
+        'DBN_SKFTRA = -10
+
+        'SSS_BILFL = 9
+    End Sub
 	
 	Sub SCR_FromSOUMTA(ByVal De As Short) 'Generated.
 		Call DP_SSSMAIN_OUTSOUCD(De, DB_SOUMTA.SOUCD)
