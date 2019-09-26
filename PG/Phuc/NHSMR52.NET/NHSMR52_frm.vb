@@ -748,14 +748,22 @@ Friend Class FR_SSSMAIN
 		PP_SSSMAIN.CloseCode = 11
 		If PP_SSSMAIN.InitValStatus <> PP_SSSMAIN.Mode Then
 			If AE_MsgLibrary(PP_SSSMAIN, "EndCk") Then
-				'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
-				Cancel = True : Exit Sub
-			End If
+                'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
+                '2019/09/26 CHG START
+                'Cancel = True : Exit Sub
+                eventSender.Cancel = True
+                Exit Sub
+                '2019/09/26 CHG E N D
+            End If
 		Else
 			If AE_MsgLibrary(PP_SSSMAIN, "EndCm") Then
-				'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
-				Cancel = True : Exit Sub
-			End If
+                'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
+                '2019/09/26 CHG START
+                'Cancel = True : Exit Sub
+                eventSender.Cancel = True
+                Exit Sub
+                '2019/09/26 CHG E N D
+            End If
 		End If
 		'UPGRADE_WARNING: オブジェクト SSSMAIN_Close() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -775,11 +783,14 @@ Friend Class FR_SSSMAIN
 			End
 #End If
 			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf wk_Var = 0 Then 
-			'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
-			Cancel = True
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf wk_Var = 1 Then 
+		ElseIf wk_Var = 0 Then
+            'UPGRADE_ISSUE: Event パラメータ Cancel はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FB723E3C-1C06-4D2B-B083-E6CD0D334DA8"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Cancel = True
+            eventSender.Cancel = True
+            '2019/09/26 CHG E N D
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf wk_Var = 1 Then 
 			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
 			Call AE_WindowProcReset(PP_SSSMAIN)
 			ReleaseTabCapture(Me.Handle.ToInt32)
@@ -898,10 +909,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_BINCD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_BINCD.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -998,10 +1011,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_BINRN)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。                
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_BINRN.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1128,10 +1143,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_CHIIKI)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_CHIIKI.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1228,10 +1245,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_CHIIKIRN)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_CHIIKIRN.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1373,10 +1392,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_DENNOA)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_DENNOA.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1473,10 +1494,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_FRNKB)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_FRNKB.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1604,10 +1627,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_GYOSHU)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_GYOSHU.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1704,10 +1729,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_GYOSHURN)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_GYOSHURN.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1803,10 +1830,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NGRPCD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NGRPCD.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -1903,10 +1932,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSADA)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSADA.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2002,10 +2033,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSADB)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSADB.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2101,10 +2134,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSADC)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSADC.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2200,10 +2235,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSBOSNM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSBOSNM.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2330,10 +2367,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCD.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2461,10 +2500,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCLAID)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCLAID.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2561,10 +2602,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCLANM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCLANM.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2691,10 +2734,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCLBID)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCLBID.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2791,10 +2836,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCLBNM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCLBNM.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -2921,10 +2968,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCLCID)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCLCID.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3021,10 +3070,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCLCNM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCLCNM.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3120,10 +3171,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSCTANM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSCTANM.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3219,10 +3272,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSFX)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSFX.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3319,10 +3374,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSMLAD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSMLAD.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3419,10 +3476,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSNK)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSNK.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3518,10 +3577,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSNMA)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSNMA.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3617,10 +3678,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSNMB)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSNMB.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3716,10 +3779,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSNMMKB)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSNMMKB.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3816,10 +3881,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSRN)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSRN.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -3915,10 +3982,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSRNNK)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSRNNK.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -4014,10 +4083,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSTL)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSTL.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -4114,10 +4185,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_NHSZP)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_NHSZP.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -4214,10 +4287,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_OLDNHSCD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_OLDNHSCD.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -4314,10 +4389,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_OLNGRPCD)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_OLNGRPCD.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -4414,10 +4491,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_OPEID)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_OPEID.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -4514,10 +4593,12 @@ EventExitSub:
 		If PP_SSSMAIN.Operable Then
 			If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), HD_OPENM)
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-				PP_SSSMAIN.NeglectPopupFocus = False
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = HD_OPENM.TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
 				System.Windows.Forms.Application.DoEvents()
@@ -4614,17 +4695,23 @@ EventExitSub:
 		If Not PP_SSSMAIN.Operable Then Exit Sub
 		If TypeOf VB6.GetActiveControl() Is System.Windows.Forms.TextBox Then
 			My.Computer.Clipboard.Clear()
-			'UPGRADE_ISSUE: Control SelLength は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-			If VB6.GetActiveControl().SelLength <= 1 Then
-				On Error Resume Next
+            'UPGRADE_ISSUE: Control SelLength は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+            '2019/09/26 CHG START
+            'If VB6.GetActiveControl().SelLength <= 1 Then
+            If DirectCast(VB6.GetActiveControl(), TextBox).SelectionLength <= 1 Then
+                '2019/09/26 CHG E N D
+                On Error Resume Next
 				'UPGRADE_ISSUE: Control Text は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
 				My.Computer.Clipboard.SetText(VB6.GetActiveControl().Text)
 				On Error GoTo 0
 			Else
 				On Error Resume Next
-				'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-				My.Computer.Clipboard.SetText(VB6.GetActiveControl().SelText)
-				On Error GoTo 0
+                'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+                '2019/09/26 CHG START
+                'My.Computer.Clipboard.SetText(VB6.GetActiveControl().SelText)
+                My.Computer.Clipboard.SetText(DirectCast(VB6.GetActiveControl(), TextBox).SelectedText)
+                '2019/09/26 CHG E N D
+                On Error GoTo 0
 			End If
 		End If
 	End Sub
@@ -4682,9 +4769,12 @@ EventExitSub:
 		MN_Cut.Enabled = False
 		If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 35 Then
 			If CP_SSSMAIN(PP_SSSMAIN.Px).TypeA = Cn_NormalOrV Then
-				'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength > 0 Then
-					If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
+                'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/26 CHG START
+                'If AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).SelLength > 0 Then
+                If DirectCast(AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx), TextBox).SelectionLength > 0 Then
+                    '2019/09/26 CHG E N D
+                    If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
 						If CP_SSSMAIN(PP_SSSMAIN.Px).FixedFormat <> 1 Then
 							'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
 							If Not IsDbNull(AE_Val5(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + PP_SSSMAIN.Tx).ToString())) Then MN_Cut.Enabled = True
@@ -4696,9 +4786,12 @@ EventExitSub:
 		MN_Paste.Enabled = False
 		If PP_SSSMAIN.OnFocus And PP_SSSMAIN.Tx >= 0 And PP_SSSMAIN.Tx < 35 Then
 			If TypeOf VB6.GetActiveControl() Is System.Windows.Forms.TextBox Then
-				'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetFormat はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
-				If My.Computer.Clipboard.GetFormat(CF_TEXT) Then
-					If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Paste.Enabled = True
+                'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetFormat はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
+                '2019/09/26 CHG START
+                'If My.Computer.Clipboard.GetFormat(CF_TEXT) Then
+                If My.Computer.Clipboard.ContainsText(CF_TEXT) Then
+                    '2019/09/26 CHG E N D
+                    If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then MN_Paste.Enabled = True
 				End If
 			End If
 		End If
@@ -4811,10 +4904,13 @@ EventExitSub:
 			If AE_IsWritableInOutMode(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px)) And AE_IsEnable(CP_SSSMAIN(PP_SSSMAIN.Px).BlockNo, PP_SSSMAIN.ActiveBlockNo) Then
 				'UPGRADE_ISSUE: Control TabIndex は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
 				If VB6.GetActiveControl().TabIndex >= 35 Then
-					'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-					'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetText はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
-					VB6.GetActiveControl().SelText = My.Computer.Clipboard.GetText()
-				Else
+                    'UPGRADE_ISSUE: Control SelText は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+                    'UPGRADE_ISSUE: Clipboard メソッド Clipboard.GetText はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。                    
+                    '2019/09/26 CHG START
+                    'VB6.GetActiveControl().SelText = My.Computer.Clipboard.GetText()
+                    DirectCast(VB6.GetActiveControl(), TextBox).SelectedText = My.Computer.Clipboard.GetText()
+                    '2019/09/26 CHG E N D
+                Else
 					Call AE_Paste(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), VB6.GetActiveControl())
 				End If
 			End If
@@ -5064,10 +5160,12 @@ EventExitSub:
 			TX_Message.Enabled = False
 			PP_SSSMAIN.ShortCutTx = -3
 			SM_FullPast.Enabled = False
-			'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-			PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
-			TX_Message.Enabled = True
+            'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。            
+            '2019/09/26　仮
+            'PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
+            '2019/09/26　仮
+            TX_Message.Enabled = True
 		End If
 	End Sub
 	
@@ -5102,10 +5200,12 @@ EventExitSub:
 			TX_Mode.Enabled = False
 			PP_SSSMAIN.ShortCutTx = -2
 			SM_FullPast.Enabled = False
-			'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-			'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-			PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
-			TX_Mode.Enabled = True
+            'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+            'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+            '2019/09/26　仮
+            'PopupMenu(SM_ShortCut, vbPopupMenuRightButton)
+            '2019/09/26　仮
+            TX_Mode.Enabled = True
 		End If
 	End Sub
 End Class

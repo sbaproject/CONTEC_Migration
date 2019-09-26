@@ -11,12 +11,14 @@ Module NHSCD_F83
 	
 	Function NHSCD_CheckC(ByVal NHSCD As Object, ByVal De_Index As Object) As Object
 		Dim Rtn As Short
-		'
-		'UPGRADE_WARNING: オブジェクト NHSCD_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		NHSCD_CheckC = 0
-		Call NHSMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト NHSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(NHSCD) = "" Then
+        '
+        'UPGRADE_WARNING: オブジェクト NHSCD_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        NHSCD_CheckC = 0
+        '2019/09/26 DEL START
+        'Call NHSMTA_RClear()
+        '2019/09/26 DEL END
+        'UPGRADE_WARNING: オブジェクト NHSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(NHSCD) = "" Then
 			'必須チェック止める
 			'        NHSCD_CheckC = -1
 		Else

@@ -17,16 +17,18 @@ Module GYOSHU_F72
 		'
 		'UPGRADE_WARNING: オブジェクト GYOSHU_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		GYOSHU_Check = 0
-		' 2006.7.17 AZU Del Start
-		'    If Trim$(GYOSHU) = "" Then GYOSHU = ""
-		'    Call MEIMTA_RClear
-		'    If Trim$(GYOSHU) = "" Then
-		'   GYOSHU_Check = -1
-		' 2006.7.17 AZU Del End
-		' 2006.7.17 AZU Add Start
-		Call MEIMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト GYOSHU の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(GYOSHU) = "" Then
+        ' 2006.7.17 AZU Del Start
+        '    If Trim$(GYOSHU) = "" Then GYOSHU = ""
+        '    Call MEIMTA_RClear
+        '    If Trim$(GYOSHU) = "" Then
+        '   GYOSHU_Check = -1
+        ' 2006.7.17 AZU Del End
+        ' 2006.7.17 AZU Add Start
+        '2019/09/25 DEL START
+        'Call MEIMTA_RClear()
+        '2019/09/25 DEL END
+        'UPGRADE_WARNING: オブジェクト GYOSHU の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(GYOSHU) = "" Then
 			'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			Call DP_SSSMAIN_GYOSHU(De_Index, "")
 			'        Call UnLock_Fields

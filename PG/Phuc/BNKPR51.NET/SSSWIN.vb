@@ -397,7 +397,7 @@ Module SSSWIN_BAS
     '	<VBFixedString(8),System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,SizeConst:=8)> Public WRTDT() As Char '¿≤—Ω¿›ÃﬂÅiì˙ïtÅj      9(08)
     'End Structure
     '   Public DB_SYSTBE As TYPE_DB_SYSTBE
-    '2019/09/23 DEL START
+    '2019/09/23 DEL END
     Public DBN_SYSTBE As Short
 	
 	'==========================================================================
