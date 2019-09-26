@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
@@ -18,6 +18,10 @@
     <RootNamespace>GRKBP00</RootNamespace>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>.\bin\</OutputPath>
@@ -27,7 +31,7 @@
     <DefineTrace>True</DefineTrace>
     <DefineConstants>Win32=True</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -38,18 +42,31 @@
     <DefineTrace>True</DefineTrace>
     <DefineConstants>Win32=True</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.DAO">
+      <HintPath>..\..\..\..\PG\共通dll\Interop.DAO.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.Compatibility">
       <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\..\..\..\PG\共通dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PronesDbAccess">
+      <HintPath>..\..\..\..\PG\共通dll\PronesDbAccess.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>..\..\..\..\PG\共通dll\System.Data.DataSetExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
@@ -72,6 +89,27 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\共通vb\ClsComn.vb">
+      <Link>ClsComn.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ClsMessage.vb">
+      <Link>ClsMessage.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ClsOraDB.vb">
+      <Link>ClsOraDB.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\HKKComBas.vb">
+      <Link>HKKComBas.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ListViewItemComparer.vb">
+      <Link>ListViewItemComparer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
+    </Compile>
     <Compile Include="AssemblyInfo.vb" />
     <Compile Include="GRKBP00M.vb">
       <SubType>Code</SubType>
