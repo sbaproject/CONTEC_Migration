@@ -1,9 +1,14 @@
 Option Strict Off
 Option Explicit On
 Module SSSMAIN0002
-	'プログラム総括情報プロシジャ
-	
-	Sub AE_PSIR_SSSMAIN() 'Generated.
+    'プログラム総括情報プロシジャ
+    '2019/09/26 ADD START
+    Public Structure Cls_Dsp_Body_Bus_Inf
+        Dim dummy
+    End Structure
+    '2019/09/26 ADD E N D
+
+    Sub AE_PSIR_SSSMAIN() 'Generated.
 		ReDim AE_PSI(34)
 		AE_PSIC = 35
 		AE_PSI(0) = "HD_FRNKB 3303 code 1 - A L N 0 0 - 1 -"

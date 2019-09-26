@@ -17,17 +17,19 @@ Module BINCD_F71
 		'
 		'UPGRADE_WARNING: オブジェクト BINCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		BINCD_Check = 0
-		
-		'UPGRADE_WARNING: オブジェクト BINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(BINCD) = "" Then
-			'UPGRADE_WARNING: オブジェクト BINCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			BINCD_Check = -1
-			Exit Function
-		End If
-		
-		Call MEIMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト BINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(BINCD) = "" Then
+
+        'UPGRADE_WARNING: オブジェクト BINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(BINCD) = "" Then
+            'UPGRADE_WARNING: オブジェクト BINCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            BINCD_Check = -1
+            Exit Function
+        End If
+
+        '2019/09/25 DEL START
+        'Call MEIMTA_RClear()
+        '2019/09/25 DEL END
+        'UPGRADE_WARNING: オブジェクト BINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(BINCD) = "" Then
 			'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			Call DP_SSSMAIN_BINCD(De_Index, "")
 			'        Call UnLock_Fields

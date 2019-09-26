@@ -22,9 +22,11 @@ Module NHSCLBID_FM1
 		'
 		'UPGRADE_WARNING: オブジェクト NHSCLBID の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If Trim(NHSCLBID) = "" Then
-			Call CLSMTA_RClear()
-			'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call NHSCLBID_Move(De_Index)
+            '2019/09/25 DEL START
+            'Call CLSMTA_RClear()
+            '2019/09/25 DEL END
+            'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call NHSCLBID_Move(De_Index)
 			'98/09/26 1行追加
 			'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			Call NHSCLCID_Move(De_Index)
@@ -46,10 +48,12 @@ Module NHSCLBID_FM1
 			If DB_PARA(DBN_CLSMTA).Status = 0 And DB_PARA(DBN_CLSMTB).Status = 0 Then
 				'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				Call NHSCLBID_Move(De_Index)
-				'98/09/26 2行追加
-				Call CLSMTA_RClear()
-				'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call NHSCLCID_Move(De_Index)
+                '98/09/26 2行追加
+                '2019/09/25 DEL START
+                'Call CLSMTA_RClear()
+                '2019/09/25 DEL END
+                'UPGRADE_WARNING: オブジェクト De_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call NHSCLCID_Move(De_Index)
 			Else
 				rtn = DSP_MsgBox(SSS_ERROR, "DONTSELECT", 0) ' このコードは選択できません。
 				'UPGRADE_WARNING: オブジェクト NHSCLBID_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -85,16 +89,22 @@ Module NHSCLBID_FM1
 			Do While DBSTAT = 0 And DB_CLSMTB.MSTKB = DB_SYSTBF.MSTKB And DB_CLSMTB.CLSKEYKB = "2"
 				'UPGRADE_WARNING: オブジェクト NHSCLAID の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If DB_CLSMTB.CLAID = NHSCLAID Then
-					'UPGRADE_ISSUE: GoSub ステートメントはサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C5A1A479-AB8B-4D40-AAF4-DB19A2E5E77F"' をクリックしてください。
-					GoSub ReadCLSMTA
-				End If
+                    'UPGRADE_ISSUE: GoSub ステートメントはサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C5A1A479-AB8B-4D40-AAF4-DB19A2E5E77F"' をクリックしてください。					
+                    '2019/09/25 CHG START
+                    'GoSub ReadCLSMTA
+                    GoTo ReadCLSMTA
+                    '2019/09/25 CHG END
+                End If
 				Call DB_GetNext(DBN_CLSMTB, BtrNormal)
 			Loop 
 		Else
 			Do While DBSTAT = 0 And DB_CLSMTB.MSTKB = DB_SYSTBF.MSTKB And DB_CLSMTB.CLSKEYKB = "2"
-				'UPGRADE_ISSUE: GoSub ステートメントはサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C5A1A479-AB8B-4D40-AAF4-DB19A2E5E77F"' をクリックしてください。
-				GoSub ReadCLSMTA
-				Call DB_GetNext(DBN_CLSMTB, BtrNormal)
+                'UPGRADE_ISSUE: GoSub ステートメントはサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="C5A1A479-AB8B-4D40-AAF4-DB19A2E5E77F"' をクリックしてください。
+                '2019/09/25 CHG START
+                'GoSub ReadCLSMTA
+                GoTo ReadCLSMTA
+                '2019/09/25 CHG END
+                Call DB_GetNext(DBN_CLSMTB, BtrNormal)
 			Loop 
 		End If
 		'UPGRADE_WARNING: オブジェクト LenWid() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -110,7 +120,9 @@ ReadCLSMTA:
 		If DBSTAT = 0 Then
 			CType(WLS_LIST.Controls("LST"), Object).Items.Add(DB_CLSMTA.CLSID & "  " & DB_CLSMTA.CLSNM)
 		End If
-		'UPGRADE_WARNING: Return に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-		Return 
-	End Function
+        'UPGRADE_WARNING: Return に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+        '2019/09/25 DEL START
+        'Return
+        '2019/09/25 DEL START
+    End Function
 End Module

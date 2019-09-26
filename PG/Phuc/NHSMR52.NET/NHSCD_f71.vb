@@ -85,13 +85,17 @@ Module NHSCD_F71
 	End Function
 	
 	Function NHSCD_Slist(ByRef PP As clsPP, ByVal NHSCD As Object) As Object
-		'
-		'UPGRADE_WARNING: オブジェクト NHSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		DB_PARA(DBN_NHSMTA).KeyBuf = NHSCD
-		WLSNHS.ShowDialog()
-		WLSNHS.Close()
-		'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト NHSCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		NHSCD_Slist = PP.SlistCom
+        '
+        'UPGRADE_WARNING: オブジェクト NHSCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        DB_PARA(DBN_NHSMTA).KeyBuf = NHSCD
+        '2019/09/25 CHG START
+        'WLSNHS.ShowDialog()
+        'WLSNHS.Close()
+        WLSNHS2.ShowDialog()
+        WLSNHS2.Close()
+        '2019/09/25 CHG END
+        'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト NHSCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        NHSCD_Slist = PP.SlistCom
 	End Function
 End Module

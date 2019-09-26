@@ -62,9 +62,12 @@ Module DENNOA_F51
 	Function DENNOA_Skip(ByRef CT_DENNOA As System.Windows.Forms.Control) As Object
 		'UPGRADE_WARNING: オブジェクト DENNOA_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		DENNOA_Skip = True
-		'UPGRADE_WARNING: オブジェクト CT_DENNOA.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CT_DENNOA.SelStart = 9
-		'UPGRADE_WARNING: オブジェクト DENNOA_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		DENNOA_Skip = False
+        'UPGRADE_WARNING: オブジェクト CT_DENNOA.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/25 CHG START
+        'CT_DENNOA.SelStart = 9
+        DirectCast(CT_DENNOA, TextBox).SelectionStart = 9
+        '2019/09/25 CHG END
+        'UPGRADE_WARNING: オブジェクト DENNOA_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        DENNOA_Skip = False
 	End Function
 End Module

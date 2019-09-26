@@ -157,33 +157,35 @@ Module NHSMTA_M81
 		keyVal = RD_SSSMAIN_NHSCD(0)
 		Call DB_BeginTransaction(CStr(BTR_Exclude))
 		Call DB_GetEq(DBN_NHSMTA, 1, keyVal, BtrLock)
-		If DBSTAT = 0 Then
-			If DB_NHSMTA.DATKB <> "9" Then
-				' === 20080916 === INSERT S - RISE)Izumi
-				'排他更新日時チェック
-				If Val(HAITA_NHSMTA.OPEID) <> Val(DB_NHSMTA.OPEID) Or Val(HAITA_NHSMTA.CLTID) <> Val(DB_NHSMTA.CLTID) Or Val(HAITA_NHSMTA.WRTDT) <> Val(DB_NHSMTA.WRTDT) Or Val(HAITA_NHSMTA.WRTTM) <> Val(DB_NHSMTA.WRTTM) Or Val(HAITA_NHSMTA.UOPEID) <> Val(DB_NHSMTA.UOPEID) Or Val(HAITA_NHSMTA.UCLTID) <> Val(DB_NHSMTA.UCLTID) Or Val(HAITA_NHSMTA.UWRTDT) <> Val(DB_NHSMTA.UWRTDT) Or Val(HAITA_NHSMTA.UWRTTM) <> Val(DB_NHSMTA.UWRTTM) Then
-					
-					Call DB_AbortTransaction()
-					intRtn = MF_DspMsg(gc_strMsgNHSMR52_E_UPD) ' 他のプログラムで更新されたため、訂正できません。
-					Exit Function
-				End If
-				' === 20080916 === INSERT E - RISE)Izumi
-				Call Mfil_FromSCR(0)
-				Call NHSMTA_FromSYSTBF()
-				DB_NHSMTA.RELFL = "1"
-				DB_NHSMTA.WRTTM = wkWRTTM ' Format(Now, "hhmmss")
-				DB_NHSMTA.WRTDT = wkWRTDT ' Format(Now, "YYYYMMDD")
-				DB_NHSMTA.UOPEID = SSS_OPEID.Value
-				DB_NHSMTA.UCLTID = SSS_CLTID.Value
-				DB_NHSMTA.UWRTTM = wkWRTTM ' Format(Now, "hhmmss")
-				DB_NHSMTA.UWRTDT = wkWRTDT ' Format(Now, "YYYYMMDD")
-				DB_NHSMTA.PGID = SSS_PrgId
-				
-			End If
-			Call DB_Update(DBN_NHSMTA, 1)
-		Else
-			Call NHSMTA_RClear()
-			Call Mfil_FromSCR(0)
+        If DBSTAT = 0 Then
+            If DB_NHSMTA.DATKB <> "9" Then
+                ' === 20080916 === INSERT S - RISE)Izumi
+                '排他更新日時チェック
+                If Val(HAITA_NHSMTA.OPEID) <> Val(DB_NHSMTA.OPEID) Or Val(HAITA_NHSMTA.CLTID) <> Val(DB_NHSMTA.CLTID) Or Val(HAITA_NHSMTA.WRTDT) <> Val(DB_NHSMTA.WRTDT) Or Val(HAITA_NHSMTA.WRTTM) <> Val(DB_NHSMTA.WRTTM) Or Val(HAITA_NHSMTA.UOPEID) <> Val(DB_NHSMTA.UOPEID) Or Val(HAITA_NHSMTA.UCLTID) <> Val(DB_NHSMTA.UCLTID) Or Val(HAITA_NHSMTA.UWRTDT) <> Val(DB_NHSMTA.UWRTDT) Or Val(HAITA_NHSMTA.UWRTTM) <> Val(DB_NHSMTA.UWRTTM) Then
+
+                    Call DB_AbortTransaction()
+                    intRtn = MF_DspMsg(gc_strMsgNHSMR52_E_UPD) ' 他のプログラムで更新されたため、訂正できません。
+                    Exit Function
+                End If
+                ' === 20080916 === INSERT E - RISE)Izumi
+                Call Mfil_FromSCR(0)
+                Call NHSMTA_FromSYSTBF()
+                DB_NHSMTA.RELFL = "1"
+                DB_NHSMTA.WRTTM = wkWRTTM ' Format(Now, "hhmmss")
+                DB_NHSMTA.WRTDT = wkWRTDT ' Format(Now, "YYYYMMDD")
+                DB_NHSMTA.UOPEID = SSS_OPEID.Value
+                DB_NHSMTA.UCLTID = SSS_CLTID.Value
+                DB_NHSMTA.UWRTTM = wkWRTTM ' Format(Now, "hhmmss")
+                DB_NHSMTA.UWRTDT = wkWRTDT ' Format(Now, "YYYYMMDD")
+                DB_NHSMTA.PGID = SSS_PrgId
+
+            End If
+            Call DB_Update(DBN_NHSMTA, 1)
+        Else
+            '2019/09/26 DEL START
+            'Call NHSMTA_RClear()
+            '2019/09/26 DEL END
+            Call Mfil_FromSCR(0)
 			Call NHSMTA_FromSYSTBF()
 			DB_NHSMTA.NHSMSTKB = SSS_MSTKB.Value
 			DB_NHSMTA.DATKB = "1"
