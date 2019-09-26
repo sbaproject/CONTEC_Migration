@@ -3,11 +3,13 @@ Option Explicit On
 Imports VB = Microsoft.VisualBasic
 Friend Class FR_SSSMAIN
 	Inherits System.Windows.Forms.Form
-	'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
-	'*** End Of Generated Declaration Section ****
-	
-	
-	Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_EndCm.Click 'Generated.
+    'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
+    '*** End Of Generated Declaration Section ****
+    '2019/09/26 ADD START
+    Private FORM_LOAD_FLG As Boolean = False
+    '2019/09/26 ADD E N D
+
+    Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_EndCm.Click 'Generated.
 		PP_SSSMAIN.ButtonClick = True
 		If Not PP_SSSMAIN.Operable Then Exit Sub
 		PP_SSSMAIN.NeglectLostFocusCheck = True
@@ -470,247 +472,254 @@ Friend Class FR_SSSMAIN
 			PP_SSSMAIN.Activated = 1
 		End If
 	End Sub
-	
-	Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load 'Generated.
-		Dim wk_De As Short
-		Dim wk_ww As Short
-		Dim wk_Tx As Short
-		Dim wk_TxBase As Short
-		Dim wk_HeadN As Short
-		Dim wk_BodyN As Short
-		Dim wk_EBodyN As Short
-		Dim wk_TailN As Short
-		Dim wk_Top As Single
-		Dim wk_Height As Single
-		Dim wk_Px As Short
-		Dim wk_PxBase As Short
-		Dim wk_SmrBuf As String
-		Dim PY_TTop As Single
-		AE_Title = "納入先マスタ登録／訂正                   "
-		'初画面表示の性能チューニング用 ----------
-		'Dim StartTime
-		'   AE_MsgBox "Start Point", vbInformation, AE_Title$
-		'   StartTime = Timer
-		'-----------------------------------------
-		With PP_SSSMAIN
-			.FormWidth = 11715
-			.FormHeight = 7890
-			.MaxDe = -1
-			.MaxDsp = -1
-			.HeadN = 35
-			.BodyN = 0
-			.BodyV = 0
-			.MaxEDe = -1
-			.MaxEDsp = -1
-			.EBodyN = 0
-			.EBodyV = 0
-			.TailN = 0
-			.BodyPx = 35
-			.EBodyPx = 35
-			.TailPx = 35
-			.PrpC = 35
-			.Operable = False
-			.BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
-			.SuppressVSScroll = 0
-			.UniScrl = False
-			.SetCursorRR = True
-			.SetCursorLF = False
-			.VisibleForItem = False
-			.AllowNullDes = False
-			.No2Scroll = False
-			.SpecSubID = "sss"
-			.UnDoDeOp = 0
-			.ActiveBlockNo = -1
-			.MaxBlockNo = 1
-			If .MainForm = "" Then
-				.ScX = AE_ScX
-				AE_ScX = AE_ScX + 1
-				ReDim Preserve AE_Timer(.ScX)
-				ReDim Preserve AE_CursorRest(.ScX)
-				ReDim Preserve AE_ModeBar(.ScX)
-				ReDim Preserve AE_StatusBar(.ScX)
-				ReDim Preserve AE_StatusCodeBar(.ScX)
-				.CtB = AE_CtB
-				AE_CtB = AE_CtB + 35
-				ReDim Preserve AE_Controls(.CtB + 34)
-				.MainFormFile = "NHSMR52.FRM"
-				.MainFormObj = "FR_SSSMAIN"
-				.SelValid = False
-				.ArrowLimit = False
-				.NullZero = True
-				.ErrorByBackColor = False
-				AE_SSSWin = True
-				.AL = False
-			End If
-			If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClCheckError), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClRelCheck), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClChecked)) <> "V6.60" Then
+
+    Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load 'Generated.
+        '2019/09/23 ADD START
+        FORM_LOAD_FLG = True
+        '2019/09/23 ADD E N D
+        Dim wk_De As Short
+        Dim wk_ww As Short
+        Dim wk_Tx As Short
+        Dim wk_TxBase As Short
+        Dim wk_HeadN As Short
+        Dim wk_BodyN As Short
+        Dim wk_EBodyN As Short
+        Dim wk_TailN As Short
+        Dim wk_Top As Single
+        Dim wk_Height As Single
+        Dim wk_Px As Short
+        Dim wk_PxBase As Short
+        Dim wk_SmrBuf As String
+        Dim PY_TTop As Single
+        AE_Title = "納入先マスタ登録／訂正                   "
+        '初画面表示の性能チューニング用 ----------
+        'Dim StartTime
+        '   AE_MsgBox "Start Point", vbInformation, AE_Title$
+        '   StartTime = Timer
+        '-----------------------------------------
+        With PP_SSSMAIN
+            .FormWidth = 11715
+            .FormHeight = 7890
+            .MaxDe = -1
+            .MaxDsp = -1
+            .HeadN = 35
+            .BodyN = 0
+            .BodyV = 0
+            .MaxEDe = -1
+            .MaxEDsp = -1
+            .EBodyN = 0
+            .EBodyV = 0
+            .TailN = 0
+            .BodyPx = 35
+            .EBodyPx = 35
+            .TailPx = 35
+            .PrpC = 35
+            .Operable = False
+            .BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
+            .SuppressVSScroll = 0
+            .UniScrl = False
+            .SetCursorRR = True
+            .SetCursorLF = False
+            .VisibleForItem = False
+            .AllowNullDes = False
+            .No2Scroll = False
+            .SpecSubID = "sss"
+            .UnDoDeOp = 0
+            .ActiveBlockNo = -1
+            .MaxBlockNo = 1
+            If .MainForm = "" Then
+                .ScX = AE_ScX
+                AE_ScX = AE_ScX + 1
+                ReDim Preserve AE_Timer(.ScX)
+                ReDim Preserve AE_CursorRest(.ScX)
+                ReDim Preserve AE_ModeBar(.ScX)
+                ReDim Preserve AE_StatusBar(.ScX)
+                ReDim Preserve AE_StatusCodeBar(.ScX)
+                .CtB = AE_CtB
+                AE_CtB = AE_CtB + 35
+                ReDim Preserve AE_Controls(.CtB + 34)
+                .MainFormFile = "NHSMR52.FRM"
+                .MainFormObj = "FR_SSSMAIN"
+                .SelValid = False
+                .ArrowLimit = False
+                .NullZero = True
+                .ErrorByBackColor = False
+                AE_SSSWin = True
+                .AL = False
+            End If
+            If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClCheckError), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClRelCheck), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClChecked)) <> "V6.60" Then
 #If ActiveXcompile = 0 Then
-				AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
+                AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
 #Else
 				'UPGRADE_NOTE: 式 Else が True に評価されなかったか、またはまったく評価されなかったため、#If #EndIf ブロックはアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="27EE2C3C-05AF-4C04-B2AF-657B4FB6B5FC"' をクリックしてください。
 				AE_MsgBox "再生成が必要です。", vbCritical, "ｅｅｅ"
 #End If
-			End If
-			If .MainForm = "" Then
-				.MainForm = "SSSMAIN"
-				Call AE_PSIR_SSSMAIN()
-				wk_ww = 0
-				wk_De = 1
-				wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
-				Do While wk_ww < AE_PSIC
-					wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
-					wk_ww = wk_ww + 1
-					Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
-						Case "HD_", "HV_"
-							Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
-							wk_HeadN = wk_HeadN + 1
-					End Select
-				Loop 
-			End If
-			HD_FRNKB.Text = ""
-			HD_DENNOA.Text = ""
-			HD_NHSCD.Text = ""
-			HD_NHSNMA.Text = ""
-			HD_NHSNMB.Text = ""
-			HD_NHSNK.Text = ""
-			HD_NHSRN.Text = ""
-			HD_NHSRNNK.Text = ""
-			HD_NHSZP.Text = ""
-			HD_NHSADA.Text = ""
-			HD_NHSADB.Text = ""
-			HD_NHSADC.Text = ""
-			HD_NHSTL.Text = ""
-			HD_NHSFX.Text = ""
-			HD_NHSCTANM.Text = ""
-			HD_NHSBOSNM.Text = ""
-			HD_NHSMLAD.Text = ""
-			HD_GYOSHU.Text = ""
-			HD_GYOSHURN.Text = ""
-			HD_CHIIKI.Text = ""
-			HD_CHIIKIRN.Text = ""
-			HD_BINCD.Text = ""
-			HD_BINRN.Text = ""
-			HD_NGRPCD.Text = ""
-			HD_OLDNHSCD.Text = ""
-			HD_OLNGRPCD.Text = ""
-			HD_NHSCLAID.Text = ""
-			HD_NHSCLANM.Text = ""
-			HD_NHSCLBID.Text = ""
-			HD_NHSCLBNM.Text = ""
-			HD_NHSCLCID.Text = ""
-			HD_NHSCLCNM.Text = ""
-			HD_NHSNMMKB.Text = ""
-			HD_OPEID.Text = ""
-			HD_OPENM.Text = ""
-			HD_FRNKB.TabIndex = 0
-			AE_Controls(.CtB + 0) = HD_FRNKB
-			HD_DENNOA.TabIndex = 1
-			AE_Controls(.CtB + 1) = HD_DENNOA
-			HD_NHSCD.TabIndex = 2
-			AE_Controls(.CtB + 2) = HD_NHSCD
-			HD_NHSNMA.TabIndex = 3
-			AE_Controls(.CtB + 3) = HD_NHSNMA
-			HD_NHSNMB.TabIndex = 4
-			AE_Controls(.CtB + 4) = HD_NHSNMB
-			HD_NHSNK.TabIndex = 5
-			AE_Controls(.CtB + 5) = HD_NHSNK
-			HD_NHSRN.TabIndex = 6
-			AE_Controls(.CtB + 6) = HD_NHSRN
-			HD_NHSRNNK.TabIndex = 7
-			AE_Controls(.CtB + 7) = HD_NHSRNNK
-			HD_NHSZP.TabIndex = 8
-			AE_Controls(.CtB + 8) = HD_NHSZP
-			HD_NHSADA.TabIndex = 9
-			AE_Controls(.CtB + 9) = HD_NHSADA
-			HD_NHSADB.TabIndex = 10
-			AE_Controls(.CtB + 10) = HD_NHSADB
-			HD_NHSADC.TabIndex = 11
-			AE_Controls(.CtB + 11) = HD_NHSADC
-			HD_NHSTL.TabIndex = 12
-			AE_Controls(.CtB + 12) = HD_NHSTL
-			HD_NHSFX.TabIndex = 13
-			AE_Controls(.CtB + 13) = HD_NHSFX
-			HD_NHSCTANM.TabIndex = 14
-			AE_Controls(.CtB + 14) = HD_NHSCTANM
-			HD_NHSBOSNM.TabIndex = 15
-			AE_Controls(.CtB + 15) = HD_NHSBOSNM
-			HD_NHSMLAD.TabIndex = 16
-			AE_Controls(.CtB + 16) = HD_NHSMLAD
-			HD_GYOSHU.TabIndex = 17
-			AE_Controls(.CtB + 17) = HD_GYOSHU
-			HD_GYOSHURN.TabIndex = 18
-			AE_Controls(.CtB + 18) = HD_GYOSHURN
-			HD_CHIIKI.TabIndex = 19
-			AE_Controls(.CtB + 19) = HD_CHIIKI
-			HD_CHIIKIRN.TabIndex = 20
-			AE_Controls(.CtB + 20) = HD_CHIIKIRN
-			HD_BINCD.TabIndex = 21
-			AE_Controls(.CtB + 21) = HD_BINCD
-			HD_BINRN.TabIndex = 22
-			AE_Controls(.CtB + 22) = HD_BINRN
-			HD_NGRPCD.TabIndex = 23
-			AE_Controls(.CtB + 23) = HD_NGRPCD
-			HD_OLDNHSCD.TabIndex = 24
-			AE_Controls(.CtB + 24) = HD_OLDNHSCD
-			HD_OLNGRPCD.TabIndex = 25
-			AE_Controls(.CtB + 25) = HD_OLNGRPCD
-			HD_NHSCLAID.TabIndex = 26
-			AE_Controls(.CtB + 26) = HD_NHSCLAID
-			HD_NHSCLANM.TabIndex = 27
-			AE_Controls(.CtB + 27) = HD_NHSCLANM
-			HD_NHSCLBID.TabIndex = 28
-			AE_Controls(.CtB + 28) = HD_NHSCLBID
-			HD_NHSCLBNM.TabIndex = 29
-			AE_Controls(.CtB + 29) = HD_NHSCLBNM
-			HD_NHSCLCID.TabIndex = 30
-			AE_Controls(.CtB + 30) = HD_NHSCLCID
-			HD_NHSCLCNM.TabIndex = 31
-			AE_Controls(.CtB + 31) = HD_NHSCLCNM
-			HD_NHSNMMKB.TabIndex = 32
-			AE_Controls(.CtB + 32) = HD_NHSNMMKB
-			HD_OPEID.TabIndex = 33
-			AE_Controls(.CtB + 33) = HD_OPEID
-			HD_OPENM.TabIndex = 34
-			AE_Controls(.CtB + 34) = HD_OPENM
-			TX_CursorRest.TabIndex = 35
-			AE_Timer(.ScX) = TM_StartUp
-			AE_CursorRest(.ScX) = TX_CursorRest
-			AE_ModeBar(.ScX) = TX_Mode
-			AE_StatusBar(.ScX) = TX_Message
-			AE_StatusCodeBar(.ScX) = TX_Message
-			.Mode = Cn_Mode1 : TX_Mode.Text = "追加"
-			Call AE_ClearInitValStatus_SSSMAIN()
-			.PY_BTop = VB6.PixelsToTwipsY(Me.Height)
-			.PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
-			PY_TTop = VB6.PixelsToTwipsY(Me.Height)
-			.MaxDspC = 0
-			.NrBodyTx = 35
-			.ScrlMaxL = 1
-			.MaxEDspC = 0
-			.NrEBodyTx = 35
-			.EScrlMaxL = 1
-			Call AE_TabStop_SSSMAIN(0, 34, True)
-			TX_CursorRest.TabStop = False
-			TX_Mode.TabStop = False
-			TX_Message.TabStop = False
-			TX_Message.Text = ""
-			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
-			Call AE_WindowProcSet_SSSMAIN()
-			ReleaseTabCapture(0)
-			SetTabCapture(Me.Handle.ToInt32)
-			'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Var = SSSMAIN_BeginPrg()
-			.FormWidth = VB6.PixelsToTwipsX(Me.Width)
-			.FormHeight = VB6.PixelsToTwipsY(Me.Height)
-			'初画面表示の性能チューニング用 ----------
-			'   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
-			'-----------------------------------------
-			.TimerStartUp = True
-		End With
-		TM_StartUp.Enabled = True
-	End Sub
-	
-	Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+            End If
+            If .MainForm = "" Then
+                .MainForm = "SSSMAIN"
+                Call AE_PSIR_SSSMAIN()
+                wk_ww = 0
+                wk_De = 1
+                wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
+                Do While wk_ww < AE_PSIC
+                    wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
+                    wk_ww = wk_ww + 1
+                    Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
+                        Case "HD_", "HV_"
+                            Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
+                            wk_HeadN = wk_HeadN + 1
+                    End Select
+                Loop
+            End If
+            HD_FRNKB.Text = ""
+            HD_DENNOA.Text = ""
+            HD_NHSCD.Text = ""
+            HD_NHSNMA.Text = ""
+            HD_NHSNMB.Text = ""
+            HD_NHSNK.Text = ""
+            HD_NHSRN.Text = ""
+            HD_NHSRNNK.Text = ""
+            HD_NHSZP.Text = ""
+            HD_NHSADA.Text = ""
+            HD_NHSADB.Text = ""
+            HD_NHSADC.Text = ""
+            HD_NHSTL.Text = ""
+            HD_NHSFX.Text = ""
+            HD_NHSCTANM.Text = ""
+            HD_NHSBOSNM.Text = ""
+            HD_NHSMLAD.Text = ""
+            HD_GYOSHU.Text = ""
+            HD_GYOSHURN.Text = ""
+            HD_CHIIKI.Text = ""
+            HD_CHIIKIRN.Text = ""
+            HD_BINCD.Text = ""
+            HD_BINRN.Text = ""
+            HD_NGRPCD.Text = ""
+            HD_OLDNHSCD.Text = ""
+            HD_OLNGRPCD.Text = ""
+            HD_NHSCLAID.Text = ""
+            HD_NHSCLANM.Text = ""
+            HD_NHSCLBID.Text = ""
+            HD_NHSCLBNM.Text = ""
+            HD_NHSCLCID.Text = ""
+            HD_NHSCLCNM.Text = ""
+            HD_NHSNMMKB.Text = ""
+            HD_OPEID.Text = ""
+            HD_OPENM.Text = ""
+            HD_FRNKB.TabIndex = 0
+            AE_Controls(.CtB + 0) = HD_FRNKB
+            HD_DENNOA.TabIndex = 1
+            AE_Controls(.CtB + 1) = HD_DENNOA
+            HD_NHSCD.TabIndex = 2
+            AE_Controls(.CtB + 2) = HD_NHSCD
+            HD_NHSNMA.TabIndex = 3
+            AE_Controls(.CtB + 3) = HD_NHSNMA
+            HD_NHSNMB.TabIndex = 4
+            AE_Controls(.CtB + 4) = HD_NHSNMB
+            HD_NHSNK.TabIndex = 5
+            AE_Controls(.CtB + 5) = HD_NHSNK
+            HD_NHSRN.TabIndex = 6
+            AE_Controls(.CtB + 6) = HD_NHSRN
+            HD_NHSRNNK.TabIndex = 7
+            AE_Controls(.CtB + 7) = HD_NHSRNNK
+            HD_NHSZP.TabIndex = 8
+            AE_Controls(.CtB + 8) = HD_NHSZP
+            HD_NHSADA.TabIndex = 9
+            AE_Controls(.CtB + 9) = HD_NHSADA
+            HD_NHSADB.TabIndex = 10
+            AE_Controls(.CtB + 10) = HD_NHSADB
+            HD_NHSADC.TabIndex = 11
+            AE_Controls(.CtB + 11) = HD_NHSADC
+            HD_NHSTL.TabIndex = 12
+            AE_Controls(.CtB + 12) = HD_NHSTL
+            HD_NHSFX.TabIndex = 13
+            AE_Controls(.CtB + 13) = HD_NHSFX
+            HD_NHSCTANM.TabIndex = 14
+            AE_Controls(.CtB + 14) = HD_NHSCTANM
+            HD_NHSBOSNM.TabIndex = 15
+            AE_Controls(.CtB + 15) = HD_NHSBOSNM
+            HD_NHSMLAD.TabIndex = 16
+            AE_Controls(.CtB + 16) = HD_NHSMLAD
+            HD_GYOSHU.TabIndex = 17
+            AE_Controls(.CtB + 17) = HD_GYOSHU
+            HD_GYOSHURN.TabIndex = 18
+            AE_Controls(.CtB + 18) = HD_GYOSHURN
+            HD_CHIIKI.TabIndex = 19
+            AE_Controls(.CtB + 19) = HD_CHIIKI
+            HD_CHIIKIRN.TabIndex = 20
+            AE_Controls(.CtB + 20) = HD_CHIIKIRN
+            HD_BINCD.TabIndex = 21
+            AE_Controls(.CtB + 21) = HD_BINCD
+            HD_BINRN.TabIndex = 22
+            AE_Controls(.CtB + 22) = HD_BINRN
+            HD_NGRPCD.TabIndex = 23
+            AE_Controls(.CtB + 23) = HD_NGRPCD
+            HD_OLDNHSCD.TabIndex = 24
+            AE_Controls(.CtB + 24) = HD_OLDNHSCD
+            HD_OLNGRPCD.TabIndex = 25
+            AE_Controls(.CtB + 25) = HD_OLNGRPCD
+            HD_NHSCLAID.TabIndex = 26
+            AE_Controls(.CtB + 26) = HD_NHSCLAID
+            HD_NHSCLANM.TabIndex = 27
+            AE_Controls(.CtB + 27) = HD_NHSCLANM
+            HD_NHSCLBID.TabIndex = 28
+            AE_Controls(.CtB + 28) = HD_NHSCLBID
+            HD_NHSCLBNM.TabIndex = 29
+            AE_Controls(.CtB + 29) = HD_NHSCLBNM
+            HD_NHSCLCID.TabIndex = 30
+            AE_Controls(.CtB + 30) = HD_NHSCLCID
+            HD_NHSCLCNM.TabIndex = 31
+            AE_Controls(.CtB + 31) = HD_NHSCLCNM
+            HD_NHSNMMKB.TabIndex = 32
+            AE_Controls(.CtB + 32) = HD_NHSNMMKB
+            HD_OPEID.TabIndex = 33
+            AE_Controls(.CtB + 33) = HD_OPEID
+            HD_OPENM.TabIndex = 34
+            AE_Controls(.CtB + 34) = HD_OPENM
+            TX_CursorRest.TabIndex = 35
+            AE_Timer(.ScX) = TM_StartUp
+            AE_CursorRest(.ScX) = TX_CursorRest
+            AE_ModeBar(.ScX) = TX_Mode
+            AE_StatusBar(.ScX) = TX_Message
+            AE_StatusCodeBar(.ScX) = TX_Message
+            .Mode = Cn_Mode1 : TX_Mode.Text = "追加"
+            Call AE_ClearInitValStatus_SSSMAIN()
+            .PY_BTop = VB6.PixelsToTwipsY(Me.Height)
+            .PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
+            PY_TTop = VB6.PixelsToTwipsY(Me.Height)
+            .MaxDspC = 0
+            .NrBodyTx = 35
+            .ScrlMaxL = 1
+            .MaxEDspC = 0
+            .NrEBodyTx = 35
+            .EScrlMaxL = 1
+            Call AE_TabStop_SSSMAIN(0, 34, True)
+            TX_CursorRest.TabStop = False
+            TX_Mode.TabStop = False
+            TX_Message.TabStop = False
+            TX_Message.Text = ""
+            '2019/09/26　仮
+            'wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/09/26　仮
+            Call AE_WindowProcSet_SSSMAIN()
+            '2019/09/26　仮
+            'ReleaseTabCapture(0)
+            'SetTabCapture(Me.Handle.ToInt32)
+            '2019/09/26　仮
+            'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Var = SSSMAIN_BeginPrg()
+            .FormWidth = VB6.PixelsToTwipsX(Me.Width)
+            .FormHeight = VB6.PixelsToTwipsY(Me.Height)
+            '初画面表示の性能チューニング用 ----------
+            '   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
+            '-----------------------------------------
+            .TimerStartUp = True
+        End With
+        TM_StartUp.Enabled = True
+    End Sub
+
+    Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 		Dim Cancel As Boolean = eventArgs.Cancel
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason 'Generated.
 		PP_SSSMAIN.UnloadMode = UnloadMode
@@ -807,14 +816,17 @@ Friend Class FR_SSSMAIN
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(21), HD_BINCD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BINCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(21), HD_BINCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(21), HD_BINCD, FORM_LOAD_FLG) Then
+                    '2019/09/26 CHG END
+                    PP_SSSMAIN.CursorDirection = Cn_Direction1
+                    PP_SSSMAIN.CursorDest = Cn_Dest9
+                    Call AE_Check_SSSMAIN_BINCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+                End If
+            End If
+    End Sub
 	
 	Private Sub HD_BINCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_BINCD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -940,14 +952,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(22), HD_BINRN) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BINRN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(22), HD_BINRN) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(22), HD_BINRN, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BINRN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_BINRN_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_BINRN.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1041,14 +1056,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(19), HD_CHIIKI) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_CHIIKI(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(19), HD_CHIIKI) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(19), HD_CHIIKI, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_CHIIKI(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_CHIIKI_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_CHIIKI.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1174,14 +1192,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(20), HD_CHIIKIRN) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_CHIIKIRN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(20), HD_CHIIKIRN) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(20), HD_CHIIKIRN, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_CHIIKIRN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_CHIIKIRN_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_CHIIKIRN.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1275,14 +1296,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_DENNOA) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_DENNOA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_DENNOA) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_DENNOA, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_DENNOA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_DENNOA_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_DENNOA.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1423,14 +1447,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_FRNKB) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_FRNKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_FRNKB) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_FRNKB, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_FRNKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_FRNKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_FRNKB.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1525,14 +1552,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(17), HD_GYOSHU) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_GYOSHU(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(17), HD_GYOSHU) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(17), HD_GYOSHU, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_GYOSHU(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_GYOSHU_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_GYOSHU.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1658,14 +1688,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(18), HD_GYOSHURN) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_GYOSHURN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(18), HD_GYOSHURN) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(18), HD_GYOSHURN, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_GYOSHURN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_GYOSHURN_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_GYOSHURN.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1759,14 +1792,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(23), HD_NGRPCD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NGRPCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG END
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(23), HD_NGRPCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(23), HD_NGRPCD, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NGRPCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NGRPCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NGRPCD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1861,14 +1897,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(9), HD_NHSADA) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSADA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(9), HD_NHSADA) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(9), HD_NHSADA, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSADA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSADA_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSADA.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -1962,14 +2001,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(10), HD_NHSADB) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSADB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(10), HD_NHSADB) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(10), HD_NHSADB, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSADB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSADB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSADB.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2063,14 +2105,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(11), HD_NHSADC) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSADC(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(11), HD_NHSADC) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(11), HD_NHSADC, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSADC(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSADC_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSADC.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2164,14 +2209,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(15), HD_NHSBOSNM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSBOSNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(15), HD_NHSBOSNM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(15), HD_NHSBOSNM, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSBOSNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSBOSNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSBOSNM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2265,14 +2313,16 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_NHSCD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(2), HD_NHSCD, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2398,14 +2448,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(26), HD_NHSCLAID) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCLAID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(26), HD_NHSCLAID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(26), HD_NHSCLAID, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCLAID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCLAID_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCLAID.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2531,14 +2584,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(27), HD_NHSCLANM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCLANM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(27), HD_NHSCLANM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(27), HD_NHSCLANM, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCLANM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCLANM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCLANM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2632,14 +2688,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(28), HD_NHSCLBID) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCLBID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(28), HD_NHSCLBID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(28), HD_NHSCLBID, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCLBID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCLBID_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCLBID.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2765,14 +2824,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(29), HD_NHSCLBNM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCLBNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(29), HD_NHSCLBNM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(29), HD_NHSCLBNM, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCLBNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCLBNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCLBNM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2866,14 +2928,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(30), HD_NHSCLCID) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCLCID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(30), HD_NHSCLCID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(30), HD_NHSCLCID, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCLCID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCLCID_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCLCID.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -2999,14 +3064,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(31), HD_NHSCLCNM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCLCNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(31), HD_NHSCLCNM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(31), HD_NHSCLCNM, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCLCNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCLCNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCLCNM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3100,14 +3168,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(14), HD_NHSCTANM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSCTANM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(14), HD_NHSCTANM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(14), HD_NHSCTANM, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSCTANM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSCTANM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSCTANM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3201,14 +3272,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(13), HD_NHSFX) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSFX(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(13), HD_NHSFX) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(13), HD_NHSFX, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSFX(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSFX_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSFX.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3303,14 +3377,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(16), HD_NHSMLAD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSMLAD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(16), HD_NHSMLAD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(16), HD_NHSMLAD, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSMLAD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSMLAD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSMLAD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3405,14 +3482,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_NHSNK) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSNK(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_NHSNK) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(5), HD_NHSNK, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSNK(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSNK_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSNK.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3506,14 +3586,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_NHSNMA) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSNMA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_NHSNMA) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(3), HD_NHSNMA, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSNMA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSNMA_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSNMA.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3607,14 +3690,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_NHSNMB) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSNMB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_NHSNMB) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(4), HD_NHSNMB, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSNMB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSNMB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSNMB.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3708,14 +3794,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(32), HD_NHSNMMKB) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSNMMKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(32), HD_NHSNMMKB) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(32), HD_NHSNMMKB, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSNMMKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSNMMKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSNMMKB.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3810,14 +3899,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_NHSRN) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSRN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_NHSRN) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(6), HD_NHSRN, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSRN(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSRN_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSRN.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -3911,14 +4003,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_NHSRNNK) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSRNNK(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_NHSRNNK) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(7), HD_NHSRNNK, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSRNNK(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSRNNK_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSRNNK.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -4012,14 +4107,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(12), HD_NHSTL) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSTL(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(12), HD_NHSTL) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(12), HD_NHSTL, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSTL(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSTL_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSTL.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -4114,14 +4212,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(8), HD_NHSZP) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_NHSZP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(8), HD_NHSZP) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(8), HD_NHSZP, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_NHSZP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_NHSZP_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_NHSZP.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -4216,14 +4317,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(24), HD_OLDNHSCD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_OLDNHSCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(24), HD_OLDNHSCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(24), HD_OLDNHSCD, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_OLDNHSCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_OLDNHSCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OLDNHSCD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -4318,14 +4422,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(25), HD_OLNGRPCD) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_OLNGRPCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(25), HD_OLNGRPCD) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(25), HD_OLNGRPCD, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_OLNGRPCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_OLNGRPCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OLNGRPCD.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -4420,14 +4527,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(33), HD_OPEID) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(33), HD_OPEID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(33), HD_OPEID, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_OPEID_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPEID.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
@@ -4522,14 +4632,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(34), HD_OPENM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(34), HD_OPENM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(34), HD_OPENM, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub HD_OPENM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_OPENM.Enter 'Generated.
 		If PP_SSSMAIN.NeglectPopupFocus Then Exit Sub
