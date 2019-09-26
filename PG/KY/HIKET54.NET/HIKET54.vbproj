@@ -1,0 +1,275 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <MyType>WindowsForms</MyType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA85D0AE-79E7-4021-9440-87F070EA77C7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>HIKET54</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>HIKET54.FR_SSSMAIN</StartupObject>
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>3</AssemblyMinorVersion>
+    <AssemblyRevisionNumber>0</AssemblyRevisionNumber>
+    <GenerateRevisionNumber>False</GenerateRevisionNumber>
+    <AssemblyCompanyName>ウッドランド株式会社</AssemblyCompanyName>
+    <StartWithIE>False</StartWithIE>
+    <ApplicationIcon>HIKET54.ico</ApplicationIcon>
+    <RootNamespace>HIKET54</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>HIKET54.xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DefineDebug>True</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>HIKET54.xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DefineDebug>False</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <Lcid>0</Lcid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACE_CMN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AE_CMN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AE_CONST.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AE_PROC.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AE_RSMR.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="AUTHORI.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CLDMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DLGLST3.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>DLGLST3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DLGLST3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HIKET54A_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HIKET54A_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>HIKET54A_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HIKET54A_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HIKET54_e01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HIKET54_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HIKET54_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>HIKET54_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HIKET54_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HIKET54_iev.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HIKET54_o01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HIKET54_psi.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HINMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICONSSS.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ICONSSS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JDNTRA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="KNGMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MEIMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ORAJET.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ORA_CMN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="REPORT.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RNKMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMAIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMSG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSWIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBB.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBC.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBD.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBF.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBH.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TANMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TOKMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UNYMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UpgradeSupport.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WLS_HCP.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WLS_HCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WLS_HIN2_HIN10.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>WLS_HIN2_HIN10.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WLS_HIN2_HIN10.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WLS_MEI.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>WLS_MEI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WLS_MEI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="DLGLST3.resX">
+      <DependentUpon>DLGLST3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HIKET54A_frm.resX">
+      <DependentUpon>HIKET54A_frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HIKET54_frm.resX">
+      <DependentUpon>HIKET54_frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ICONSSS.resX">
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WLS_HCP.resX">
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WLS_HIN2_HIN10.resX">
+      <DependentUpon>WLS_HIN2_HIN10.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WLS_MEI.resX">
+      <DependentUpon>WLS_MEI.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="HIKET54.ico" />
+    <None Include="_UpgradeReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
