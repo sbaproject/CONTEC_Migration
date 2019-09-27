@@ -2202,16 +2202,16 @@ Friend Class FR_SSSMAIN
 				Exit Function
 			End If
 		End If
-		
-		'UPGRADE_WARNING: オブジェクト CS_HIK.NAME の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-		If TypeOf pm_Ctl Is SSCommand5 And pm_Ctl.Name <> CS_HIK.NAME Then
-			'検索画面呼出の場合は終了
-			Exit Function
-		End If
-		
-		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area = IN_AREA_DSP_BD Then
+
+        'UPGRADE_WARNING: オブジェクト CS_HIK.NAME の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+        If TypeOf pm_Ctl Is Button And pm_Ctl.Name <> CS_HIK.Name Then
+            '検索画面呼出の場合は終了
+            Exit Function
+        End If
+
+        'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area = IN_AREA_DSP_BD Then
 			'明細行コントロールか判定
 			If Trg_Index >= Main_Inf.Dsp_Base.Body_Fst_Idx Then
 				'明細検索ボタンの明細行数変数に同じ行数を設定
@@ -2365,20 +2365,20 @@ Friend Class FR_SSSMAIN
 			Case TypeOf pm_Ctl Is System.Windows.Forms.TextBox
 				'選択状態の設定（初期選択）
 				Call CF_Set_Sel_Ini(Main_Inf.Dsp_Sub_Inf(Trg_Index), SEL_INI_MODE_1)
-				
-			Case TypeOf pm_Ctl Is SSPanel5
-				'パネルの場合
-				Call SSSMAIN0001.CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
-				
-			Case TypeOf pm_Ctl Is SSCommand5
-				'ボタンの場合
-				'UPGRADE_ISSUE: Control Tag は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
-				'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-				If TypeOf Main_Inf.Dsp_Sub_Inf(CShort(Me.ActiveControl.Tag)).Ctl Is SSCommand5 Then
-					Call SSSMAIN0001.CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
-				End If
-				
-			Case TypeOf pm_Ctl Is System.Windows.Forms.PictureBox
+
+            Case TypeOf pm_Ctl Is Label
+                'パネルの場合
+                Call SSSMAIN0001.CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
+
+            Case TypeOf pm_Ctl Is Button
+                'ボタンの場合
+                'UPGRADE_ISSUE: Control Tag は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+                'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
+                If TypeOf Main_Inf.Dsp_Sub_Inf(CShort(Me.ActiveControl.Tag)).Ctl Is Button Then
+                    Call SSSMAIN0001.CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
+                End If
+
+            Case TypeOf pm_Ctl Is System.Windows.Forms.PictureBox
 				'イメージの場合
 				Select Case Trg_Index
 					Case CShort(CM_EndCm.Tag)
@@ -3073,12 +3073,12 @@ Friend Class FR_SSSMAIN
 		
 		'画面明細表示
 		Call CF_Body_Dsp(Main_Inf)
-		
-		'入力担当者編集
-		Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
-		
-		'初期フォーカス位置設定
-		Call SSSMAIN0001.F_Init_Cursor_Set(Main_Inf)
+
+        '入力担当者編集
+        Call CF_Set_Frm_IN_TANCD_HIKET54(Me, Main_Inf)
+
+        '初期フォーカス位置設定
+        Call SSSMAIN0001.F_Init_Cursor_Set(Main_Inf)
 		
 	End Function
 	
@@ -3393,10 +3393,13 @@ Friend Class FR_SSSMAIN
 			CF_Chk_Lock_EXCTBZ2 = intRet
 			GoTo CF_Chk_Lock_EXCTBZ_Err
 		End If
-		
-		'トランザクションの開始
-		Call CF_Ora_BeginTrans(gv_Oss_USR1)
-		bolTrn = True
+
+        'トランザクションの開始
+        '2019/09/26 CHG START
+        'Call CF_Ora_BeginTrans(gv_Oss_USR1)
+        Call DB_BeginTrans(CON)
+        '2019/09/26 CHG E N D
+        bolTrn = True
 		
 		'排他制御
 		intRet = AE_Execute_PLSQL_EXCTBZ_2("W", strMsg)
@@ -3620,12 +3623,12 @@ CF_Chk_Lock_EXCTBZ_Err:
 		
 		'画面表示位置設定
 		Call CF_Set_Frm_Location(Me)
-		
-		'入力担当者編集
-		Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
-		
-		'システム共通処理
-		Call CF_System_Process(Me)
+
+        '入力担当者編集
+        Call CF_Set_Frm_IN_TANCD_HIKET54(Me, Main_Inf)
+
+        'システム共通処理
+        Call CF_System_Process(Me)
 		
 	End Sub
 	
@@ -4866,17 +4869,21 @@ CF_Chk_Lock_EXCTBZ_Err:
 			Exit Sub
 		End If
 		Main_Inf.Dsp_Base.IsUnload = True
-		
-		'DB接続解除
-		Call CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
-		
-		Call SSSWIN_LOGWRT("プログラム終了")
-		
-		'共通終了処理？
-		'UPGRADE_NOTE: オブジェクト FR_SSSMAIN をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
-		Me = Nothing
-		
-		eventArgs.Cancel = Cancel
+
+        'DB接続解除
+        '2019/09/26 CHG START
+        'Call CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
+        DB_CLOSE(CON)
+        '2019/09/26 CHG END
+
+        Call SSSWIN_LOGWRT("プログラム終了")
+
+        '共通終了処理？
+        'UPGRADE_NOTE: オブジェクト FR_SSSMAIN をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
+        '2019/09/26 DEL START
+        'Me = Nothing
+        '2019/09/26 DEL E N D
+        eventArgs.Cancel = Cancel
 	End Sub
 	
 	Private Sub HD_SBNNO_KeyUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_SBNNO.KeyUp
@@ -5000,10 +5007,45 @@ CF_Chk_Lock_EXCTBZ_Err:
 			Call Ctl_Item_KeyDown(CS_HIK, KEYCODE, Shift)
 		End If
 	End Sub
-	Private Sub VS_Scrl_Scroll(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.ScrollEventArgs) Handles VS_Scrl.Scroll
-		Select Case eventArgs.type
-			Case System.Windows.Forms.ScrollEventType.EndScroll
-				VS_Scrl_Change(eventArgs.newValue)
-		End Select
-	End Sub
+    Private Sub VS_Scrl_Scroll(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.ScrollEventArgs) Handles VS_Scrl.Scroll
+        Select Case eventArgs.type
+            Case System.Windows.Forms.ScrollEventType.EndScroll
+                VS_Scrl_Change(eventArgs.newValue)
+        End Select
+    End Sub
+    '2019/09/26 ADD START
+    ' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+    '   名称：  Function CF_Set_Frm_IN_TANCD_HIKET54
+    '   概要：  入力担当者編集
+    '   引数：　pm_Form        :フォーム
+    '   戻値：　なし
+    '   備考：
+    ' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+    Public Function CF_Set_Frm_IN_TANCD_HIKET54(ByRef pm_Form As FR_SSSMAIN, ByRef pm_All As Cls_All) As Short
+
+        Dim Trg_Index As Short
+        Dim Dsp_Value As Object
+
+        With pm_Form
+            '入力担当者コード
+            'UPGRADE_ISSUE: Control HD_IN_TANCD は、汎用名前空間 Form 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+            Trg_Index = CShort(.HD_IN_TANCD.Tag)
+            'UPGRADE_WARNING: オブジェクト CF_Cnv_Dsp_Item() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Dsp_Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Dsp_Value = CF_Cnv_Dsp_Item(Inp_Inf.InpTanCd, pm_All.Dsp_Sub_Inf(Trg_Index), False)
+            Call CF_Set_Item_Direct(Dsp_Value, pm_All.Dsp_Sub_Inf(Trg_Index), pm_All, SET_FLG_DB)
+
+            '入力担当者名
+            'UPGRADE_ISSUE: Control HD_IN_TANNM は、汎用名前空間 Form 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
+            Trg_Index = CShort(.HD_IN_TANNM.Tag)
+            'UPGRADE_WARNING: オブジェクト CF_Cnv_Dsp_Item() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト Dsp_Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Dsp_Value = CF_Cnv_Dsp_Item(Inp_Inf.InpTanNm, pm_All.Dsp_Sub_Inf(Trg_Index), False)
+            Call CF_Set_Item_Direct(Dsp_Value, pm_All.Dsp_Sub_Inf(Trg_Index), pm_All, SET_FLG_DB)
+        End With
+
+    End Function
+
+
+    '2019/09/26 ADD E N D
 End Class

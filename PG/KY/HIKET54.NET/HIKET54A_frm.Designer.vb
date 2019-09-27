@@ -36,14 +36,14 @@
 	Public WithEvents _BD_HIKSU_0 As System.Windows.Forms.TextBox
 	Public WithEvents _BD_LOTNO_0 As System.Windows.Forms.TextBox
 	Public WithEvents _BD_NYUYTDT_0 As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D1_9 As SSPanel5
-	Public WithEvents _BD_SOUNM_0 As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D1_8 As SSPanel5
-	Public WithEvents TX_Message As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D1_16 As SSPanel5
-	Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
-	Public WithEvents _FM_Panel3D1_15 As SSPanel5
-	Public WithEvents TX_Mode As System.Windows.Forms.TextBox
+    Public WithEvents _FM_Panel3D1_9 As Label
+    Public WithEvents _BD_SOUNM_0 As System.Windows.Forms.TextBox
+    Public WithEvents _FM_Panel3D1_8 As Label
+    Public WithEvents TX_Message As System.Windows.Forms.TextBox
+    Public WithEvents _FM_Panel3D1_16 As Label
+    Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
+    Public WithEvents _FM_Panel3D1_15 As Label
+    Public WithEvents TX_Mode As System.Windows.Forms.TextBox
 	Public WithEvents _IM_Execute_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Execute_0 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_SELECTCM_1 As System.Windows.Forms.PictureBox
@@ -60,29 +60,29 @@
 	Public WithEvents _IM_EndCm_0 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Slist_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Hardcopy_1 As System.Windows.Forms.PictureBox
-	Public WithEvents _FM_Panel3D4_2 As SSPanel5
-	Public WithEvents TM_StartUp As System.Windows.Forms.Timer
-	Public WithEvents _FM_Panel3D1_10 As SSPanel5
-	Public WithEvents _FM_Panel3D1_13 As SSPanel5
-	Public WithEvents _FM_Panel3D1_14 As SSPanel5
-	Public WithEvents _FM_Panel3D1_11 As SSPanel5
-	Public WithEvents _FM_Panel3D1_12 As SSPanel5
-	Public WithEvents _FM_Panel3D1_6 As SSPanel5
-	Public WithEvents _FM_Panel3D1_7 As SSPanel5
-	Public WithEvents SYSDT As SSPanel5
-	Public WithEvents CM_Execute As System.Windows.Forms.PictureBox
+    Public WithEvents _FM_Panel3D4_2 As Label
+    Public WithEvents TM_StartUp As System.Windows.Forms.Timer
+    Public WithEvents _FM_Panel3D1_10 As Label
+    Public WithEvents _FM_Panel3D1_13 As Label
+    Public WithEvents _FM_Panel3D1_14 As Label
+    Public WithEvents _FM_Panel3D1_11 As Label
+    Public WithEvents _FM_Panel3D1_12 As Label
+    Public WithEvents _FM_Panel3D1_6 As Label
+    Public WithEvents _FM_Panel3D1_7 As Label
+    Public WithEvents SYSDT As Label
+    Public WithEvents CM_Execute As System.Windows.Forms.PictureBox
 	Public WithEvents CM_EndCm As System.Windows.Forms.PictureBox
 	Public WithEvents Image1 As System.Windows.Forms.PictureBox
-	Public WithEvents _FM_Panel3D1_0 As SSPanel5
-	Public WithEvents _FM_Panel3D1_2 As SSPanel5
-	Public WithEvents _FM_Panel3D1_1 As SSPanel5
-	Public WithEvents _FM_Panel3D1_4 As SSPanel5
-	Public WithEvents _FM_Panel3D1_5 As SSPanel5
-	Public WithEvents _FM_Panel3D1_3 As SSPanel5
-	Public WithEvents _FM_Panel3D1_17 As SSPanel5
-	Public WithEvents _FM_Panel3D1_18 As SSPanel5
-	Public WithEvents _FM_Panel3D1_19 As SSPanel5
-	Public WithEvents BD_HIKSU As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
+    Public WithEvents _FM_Panel3D1_0 As Label
+    Public WithEvents _FM_Panel3D1_2 As Label
+    Public WithEvents _FM_Panel3D1_1 As Label
+    Public WithEvents _FM_Panel3D1_4 As Label
+    Public WithEvents _FM_Panel3D1_5 As Label
+    Public WithEvents _FM_Panel3D1_3 As Label
+    Public WithEvents _FM_Panel3D1_17 As Label
+    Public WithEvents _FM_Panel3D1_18 As Label
+    Public WithEvents _FM_Panel3D1_19 As Label
+    Public WithEvents BD_HIKSU As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_INP_HIKSU As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_LOTNO As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_MNSU As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
@@ -90,39 +90,71 @@
 	Public WithEvents BD_RELZAISU As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_SOUNM As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_ZUMISU As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
-	Public WithEvents FM_Panel3D1 As SSPanel5Array
-	Public WithEvents FM_Panel3D4 As SSPanel5Array
-	Public WithEvents IM_Denkyu As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
+    Public WithEvents FM_Panel3D1 As VB6.PanelArray
+    Public WithEvents FM_Panel3D4 As VB6.PanelArray
+    Public WithEvents IM_Denkyu As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_EndCm As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_Execute As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_Hardcopy As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_NEXTCM As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_PREV As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_SELECTCM As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
-	Public WithEvents IM_Slist As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
-	Public WithEvents MN_Execute As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_HARDCOPY As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents Bar11 As System.Windows.Forms.ToolStripSeparator
-	Public WithEvents MN_EndCm As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_Ctrl As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_ClearItm As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_UnDoItem As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents Bar21 As System.Windows.Forms.ToolStripSeparator
-	Public WithEvents MN_Cut As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_Copy As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_Paste As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_EditMn As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_SELECTCM As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_PREV As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_NEXTCM As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents Bar31 As System.Windows.Forms.ToolStripSeparator
-	Public WithEvents MN_Slist As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_Oprt As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents SM_AllCopy As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents SM_FullPast As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents SM_Esc As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents SM_ShortCut As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
+    Public WithEvents IM_Slist As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
+    '2019/09/27 CHG START
+    'Public WithEvents MN_Ctrl As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Execute As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_HARDCOPY As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_EndCm As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_EditMn As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_ClearItm As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_UnDoItem As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Cut As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Copy As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Paste As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Oprt As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_SELECTCM As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_PREV As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_NEXTCM As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents MN_Slist As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_AllCopy As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_Esc As System.Windows.Forms.ToolStripMenuItem
+    'Public WithEvents SM_FullPast As System.Windows.Forms.ToolStripMenuItem
+
+    Public WithEvents MN_Ctrl As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Execute As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_HARDCOPY As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_EndCm As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_EditMn As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_ClearItm As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_UnDoItem As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Cut As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Copy As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Paste As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Oprt As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_SELECTCM As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_PREV As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_NEXTCM As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents MN_Slist As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_AllCopy As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_Esc As System.Windows.Forms.ContextMenuStrip
+    Public WithEvents SM_FullPast As System.Windows.Forms.ContextMenuStrip
+    '2019/09/27 CHG E N D
+
+    Public WithEvents Bar11 As System.Windows.Forms.ToolStripSeparator
+    Public WithEvents Bar21 As System.Windows.Forms.ToolStripSeparator
+
+
+
+
+    Public WithEvents Bar31 As System.Windows.Forms.ToolStripSeparator
+
+
+
+
+
+    Public WithEvents SM_ShortCut As System.Windows.Forms.ToolStripMenuItem
+
+    Public WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
 	'メモ: 以下のプロシージャは Windows フォーム デザイナで必要です。
 	'Windows フォーム デザイナを使って変更できます。
 	'コード エディタを使用して、変更しないでください。
@@ -149,15 +181,15 @@
 		Me._BD_HIKSU_0 = New System.Windows.Forms.TextBox
 		Me._BD_LOTNO_0 = New System.Windows.Forms.TextBox
 		Me._BD_NYUYTDT_0 = New System.Windows.Forms.TextBox
-		Me._FM_Panel3D1_9 = New SSPanel5
-		Me._BD_SOUNM_0 = New System.Windows.Forms.TextBox
-		Me._FM_Panel3D1_8 = New SSPanel5
-		Me._FM_Panel3D1_15 = New SSPanel5
-		Me._FM_Panel3D1_16 = New SSPanel5
-		Me.TX_Message = New System.Windows.Forms.TextBox
+        Me._FM_Panel3D1_9 = New Label
+        Me._BD_SOUNM_0 = New System.Windows.Forms.TextBox
+        Me._FM_Panel3D1_8 = New Label
+        Me._FM_Panel3D1_15 = New Label
+        Me._FM_Panel3D1_16 = New Label
+        Me.TX_Message = New System.Windows.Forms.TextBox
 		Me._IM_Denkyu_0 = New System.Windows.Forms.PictureBox
-		Me._FM_Panel3D4_2 = New SSPanel5
-		Me.TX_Mode = New System.Windows.Forms.TextBox
+        Me._FM_Panel3D4_2 = New Label
+        Me.TX_Mode = New System.Windows.Forms.TextBox
 		Me._IM_Execute_1 = New System.Windows.Forms.PictureBox
 		Me._IM_Execute_0 = New System.Windows.Forms.PictureBox
 		Me._IM_SELECTCM_1 = New System.Windows.Forms.PictureBox
@@ -175,27 +207,27 @@
 		Me._IM_Slist_1 = New System.Windows.Forms.PictureBox
 		Me._IM_Hardcopy_1 = New System.Windows.Forms.PictureBox
 		Me.TM_StartUp = New System.Windows.Forms.Timer(components)
-		Me._FM_Panel3D1_10 = New SSPanel5
-		Me._FM_Panel3D1_13 = New SSPanel5
-		Me._FM_Panel3D1_14 = New SSPanel5
-		Me._FM_Panel3D1_11 = New SSPanel5
-		Me._FM_Panel3D1_12 = New SSPanel5
-		Me._FM_Panel3D1_6 = New SSPanel5
-		Me._FM_Panel3D1_7 = New SSPanel5
-		Me._FM_Panel3D1_0 = New SSPanel5
-		Me.SYSDT = New SSPanel5
-		Me.CM_Execute = New System.Windows.Forms.PictureBox
+        Me._FM_Panel3D1_10 = New Label
+        Me._FM_Panel3D1_13 = New Label
+        Me._FM_Panel3D1_14 = New Label
+        Me._FM_Panel3D1_11 = New Label
+        Me._FM_Panel3D1_12 = New Label
+        Me._FM_Panel3D1_6 = New Label
+        Me._FM_Panel3D1_7 = New Label
+        Me._FM_Panel3D1_0 = New Label
+        Me.SYSDT = New Label
+        Me.CM_Execute = New System.Windows.Forms.PictureBox
 		Me.CM_EndCm = New System.Windows.Forms.PictureBox
 		Me.Image1 = New System.Windows.Forms.PictureBox
-		Me._FM_Panel3D1_2 = New SSPanel5
-		Me._FM_Panel3D1_1 = New SSPanel5
-		Me._FM_Panel3D1_4 = New SSPanel5
-		Me._FM_Panel3D1_5 = New SSPanel5
-		Me._FM_Panel3D1_3 = New SSPanel5
-		Me._FM_Panel3D1_17 = New SSPanel5
-		Me._FM_Panel3D1_18 = New SSPanel5
-		Me._FM_Panel3D1_19 = New SSPanel5
-		Me.BD_HIKSU = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
+        Me._FM_Panel3D1_2 = New Label
+        Me._FM_Panel3D1_1 = New Label
+        Me._FM_Panel3D1_4 = New Label
+        Me._FM_Panel3D1_5 = New Label
+        Me._FM_Panel3D1_3 = New Label
+        Me._FM_Panel3D1_17 = New Label
+        Me._FM_Panel3D1_18 = New Label
+        Me._FM_Panel3D1_19 = New Label
+        Me.BD_HIKSU = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_INP_HIKSU = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_LOTNO = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_MNSU = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
@@ -203,9 +235,9 @@
 		Me.BD_RELZAISU = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_SOUNM = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_ZUMISU = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
-		Me.FM_Panel3D1 = New SSPanel5Array(components)
-		Me.FM_Panel3D4 = New SSPanel5Array(components)
-		Me.IM_Denkyu = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
+        Me.FM_Panel3D1 = New VB6.PanelArray(components)
+        Me.FM_Panel3D4 = New VB6.PanelArray(components)
+        Me.IM_Denkyu = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_EndCm = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_Execute = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_Hardcopy = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
@@ -213,30 +245,55 @@
 		Me.IM_PREV = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_SELECTCM = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_Slist = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
-		Me.MainMenu1 = New System.Windows.Forms.MenuStrip
-		Me.MN_Ctrl = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_Execute = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_HARDCOPY = New System.Windows.Forms.ToolStripMenuItem
-		Me.Bar11 = New System.Windows.Forms.ToolStripSeparator
-		Me.MN_EndCm = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_EditMn = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_ClearItm = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_UnDoItem = New System.Windows.Forms.ToolStripMenuItem
-		Me.Bar21 = New System.Windows.Forms.ToolStripSeparator
-		Me.MN_Cut = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_Copy = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_Paste = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_Oprt = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_SELECTCM = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_PREV = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_NEXTCM = New System.Windows.Forms.ToolStripMenuItem
-		Me.Bar31 = New System.Windows.Forms.ToolStripSeparator
-		Me.MN_Slist = New System.Windows.Forms.ToolStripMenuItem
-		Me.SM_ShortCut = New System.Windows.Forms.ToolStripMenuItem
-		Me.SM_AllCopy = New System.Windows.Forms.ToolStripMenuItem
-		Me.SM_FullPast = New System.Windows.Forms.ToolStripMenuItem
-		Me.SM_Esc = New System.Windows.Forms.ToolStripMenuItem
-		Me._FM_Panel3D1_15.SuspendLayout()
+        Me.MainMenu1 = New System.Windows.Forms.MenuStrip
+        '2019/09/27 CHG START
+        'Me.MN_Ctrl = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_Execute = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_HARDCOPY = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_EndCm = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_EditMn = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_ClearItm = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_UnDoItem = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_Cut = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_Copy = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_Paste = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_Oprt = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_SELECTCM = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_PREV = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_NEXTCM = New System.Windows.Forms.ToolStripMenuItem
+        'Me.MN_Slist = New System.Windows.Forms.ToolStripMenuItem
+        'Me.SM_AllCopy = New System.Windows.Forms.ToolStripMenuItem
+        'Me.SM_Esc = New System.Windows.Forms.ToolStripMenuItem
+        'Me.SM_FullPast = New System.Windows.Forms.ToolStripMenuItem
+
+        Me.MN_Ctrl = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Execute = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_HARDCOPY = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_EndCm = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_EditMn = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_ClearItm = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_UnDoItem = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Cut = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Copy = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Paste = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Oprt = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_SELECTCM = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_PREV = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_NEXTCM = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Slist = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_AllCopy = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_Esc = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_FullPast = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        '2019/09/27 CHG E N D
+        Me.Bar11 = New System.Windows.Forms.ToolStripSeparator
+
+        Me.Bar21 = New System.Windows.Forms.ToolStripSeparator
+
+        Me.Bar31 = New System.Windows.Forms.ToolStripSeparator
+
+        Me.SM_ShortCut = New System.Windows.Forms.ToolStripMenuItem
+
+        Me._FM_Panel3D1_15.SuspendLayout()
 		Me._FM_Panel3D1_16.SuspendLayout()
 		Me._FM_Panel3D4_2.SuspendLayout()
 		Me._FM_Panel3D1_0.SuspendLayout()
@@ -732,12 +789,12 @@
 		Me._FM_Panel3D1_9.Size = New System.Drawing.Size(84, 23)
 		Me._FM_Panel3D1_9.Location = New System.Drawing.Point(187, 156)
 		Me._FM_Panel3D1_9.TabIndex = 8
-		Me._FM_Panel3D1_9.ForeColor = 0
-		Me._FM_Panel3D1_9.Alignment = 8
-		Me._FM_Panel3D1_9.BevelOuter = 1
-		Me._FM_Panel3D1_9.Caption = "ﾛｯﾄ番号"
-		Me._FM_Panel3D1_9.OutLine = -1
-		Me._FM_Panel3D1_9.Name = "_FM_Panel3D1_9"
+        Me._FM_Panel3D1_9.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_9.Alignment = 8
+        'Me._FM_Panel3D1_9.BevelOuter = 1
+        Me._FM_Panel3D1_9.Text = "ﾛｯﾄ番号"
+        'Me._FM_Panel3D1_9.OutLine = -1
+        Me._FM_Panel3D1_9.Name = "_FM_Panel3D1_9"
 		Me._BD_SOUNM_0.AutoSize = False
 		Me._BD_SOUNM_0.BackColor = System.Drawing.SystemColors.Control
 		Me._BD_SOUNM_0.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
@@ -765,24 +822,24 @@
 		Me._FM_Panel3D1_8.Size = New System.Drawing.Size(160, 23)
 		Me._FM_Panel3D1_8.Location = New System.Drawing.Point(28, 156)
 		Me._FM_Panel3D1_8.TabIndex = 6
-		Me._FM_Panel3D1_8.ForeColor = 0
-		Me._FM_Panel3D1_8.Alignment = 8
-		Me._FM_Panel3D1_8.BevelOuter = 1
-		Me._FM_Panel3D1_8.Caption = "倉庫"
-		Me._FM_Panel3D1_8.OutLine = -1
-		Me._FM_Panel3D1_8.Name = "_FM_Panel3D1_8"
+        Me._FM_Panel3D1_8.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_8.Alignment = 8
+        'Me._FM_Panel3D1_8.BevelOuter = 1
+        Me._FM_Panel3D1_8.Text = "倉庫"
+        'Me._FM_Panel3D1_8.OutLine = -1
+        Me._FM_Panel3D1_8.Name = "_FM_Panel3D1_8"
 		Me._FM_Panel3D1_15.Size = New System.Drawing.Size(788, 49)
 		Me._FM_Panel3D1_15.Location = New System.Drawing.Point(-6, 510)
 		Me._FM_Panel3D1_15.TabIndex = 3
-		Me._FM_Panel3D1_15.ForeColor = 0
-		Me._FM_Panel3D1_15.OutLine = -1
-		Me._FM_Panel3D1_15.Name = "_FM_Panel3D1_15"
+        Me._FM_Panel3D1_15.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_15.OutLine = -1
+        Me._FM_Panel3D1_15.Name = "_FM_Panel3D1_15"
 		Me._FM_Panel3D1_16.Size = New System.Drawing.Size(723, 31)
 		Me._FM_Panel3D1_16.Location = New System.Drawing.Point(44, 8)
 		Me._FM_Panel3D1_16.TabIndex = 4
-		Me._FM_Panel3D1_16.ForeColor = 0
-		Me._FM_Panel3D1_16.BevelOuter = 1
-		Me._FM_Panel3D1_16.Name = "_FM_Panel3D1_16"
+        Me._FM_Panel3D1_16.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_16.BevelOuter = 1
+        Me._FM_Panel3D1_16.Name = "_FM_Panel3D1_16"
 		Me.TX_Message.AutoSize = False
 		Me.TX_Message.BackColor = System.Drawing.SystemColors.Control
 		Me.TX_Message.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
@@ -817,9 +874,9 @@
 		Me._FM_Panel3D4_2.Size = New System.Drawing.Size(907, 38)
 		Me._FM_Panel3D4_2.Location = New System.Drawing.Point(-8, 623)
 		Me._FM_Panel3D4_2.TabIndex = 0
-		Me._FM_Panel3D4_2.ForeColor = 0
-		Me._FM_Panel3D4_2.OutLine = -1
-		Me._FM_Panel3D4_2.Name = "_FM_Panel3D4_2"
+        Me._FM_Panel3D4_2.ForeColor = Color.Empty
+        'Me._FM_Panel3D4_2.OutLine = -1
+        Me._FM_Panel3D4_2.Name = "_FM_Panel3D4_2"
 		Me.TX_Mode.AutoSize = False
 		Me.TX_Mode.BackColor = System.Drawing.Color.FromARGB(255, 192, 255)
 		Me.TX_Mode.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
@@ -992,79 +1049,79 @@
 		Me._FM_Panel3D1_10.Size = New System.Drawing.Size(90, 23)
 		Me._FM_Panel3D1_10.Location = New System.Drawing.Point(270, 156)
 		Me._FM_Panel3D1_10.TabIndex = 13
-		Me._FM_Panel3D1_10.ForeColor = 0
-		Me._FM_Panel3D1_10.Alignment = 8
-		Me._FM_Panel3D1_10.BevelOuter = 1
-		Me._FM_Panel3D1_10.Caption = "入庫予定日"
-		Me._FM_Panel3D1_10.OutLine = -1
-		Me._FM_Panel3D1_10.Name = "_FM_Panel3D1_10"
+        Me._FM_Panel3D1_10.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_10.Alignment = 8
+        'Me._FM_Panel3D1_10.BevelOuter = 1
+        Me._FM_Panel3D1_10.Text = "入庫予定日"
+        'Me._FM_Panel3D1_10.OutLine = -1
+        Me._FM_Panel3D1_10.Name = "_FM_Panel3D1_10"
 		Me._FM_Panel3D1_13.Size = New System.Drawing.Size(79, 23)
 		Me._FM_Panel3D1_13.Location = New System.Drawing.Point(515, 156)
 		Me._FM_Panel3D1_13.TabIndex = 14
-		Me._FM_Panel3D1_13.ForeColor = 0
-		Me._FM_Panel3D1_13.Alignment = 8
-		Me._FM_Panel3D1_13.BevelOuter = 1
-		Me._FM_Panel3D1_13.Caption = "引当可能数"
-		Me._FM_Panel3D1_13.OutLine = -1
-		Me._FM_Panel3D1_13.Name = "_FM_Panel3D1_13"
+        Me._FM_Panel3D1_13.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_13.Alignment = 8
+        'Me._FM_Panel3D1_13.BevelOuter = 1
+        Me._FM_Panel3D1_13.Text = "引当可能数"
+        'Me._FM_Panel3D1_13.OutLine = -1
+        Me._FM_Panel3D1_13.Name = "_FM_Panel3D1_13"
 		Me._FM_Panel3D1_14.Size = New System.Drawing.Size(79, 23)
 		Me._FM_Panel3D1_14.Location = New System.Drawing.Point(671, 156)
 		Me._FM_Panel3D1_14.TabIndex = 15
-		Me._FM_Panel3D1_14.ForeColor = 0
-		Me._FM_Panel3D1_14.Alignment = 8
-		Me._FM_Panel3D1_14.BevelOuter = 1
-		Me._FM_Panel3D1_14.Caption = "引当数"
-		Me._FM_Panel3D1_14.OutLine = -1
-		Me._FM_Panel3D1_14.Name = "_FM_Panel3D1_14"
+        Me._FM_Panel3D1_14.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_14.Alignment = 8
+        'Me._FM_Panel3D1_14.BevelOuter = 1
+        Me._FM_Panel3D1_14.Text = "引当数"
+        'Me._FM_Panel3D1_14.OutLine = -1
+        Me._FM_Panel3D1_14.Name = "_FM_Panel3D1_14"
 		Me._FM_Panel3D1_11.Size = New System.Drawing.Size(79, 23)
 		Me._FM_Panel3D1_11.Location = New System.Drawing.Point(359, 156)
 		Me._FM_Panel3D1_11.TabIndex = 19
-		Me._FM_Panel3D1_11.ForeColor = 0
-		Me._FM_Panel3D1_11.Alignment = 8
-		Me._FM_Panel3D1_11.BevelOuter = 1
-		Me._FM_Panel3D1_11.Caption = "現在庫数"
-		Me._FM_Panel3D1_11.OutLine = -1
-		Me._FM_Panel3D1_11.Name = "_FM_Panel3D1_11"
+        Me._FM_Panel3D1_11.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_11.Alignment = 8
+        'Me._FM_Panel3D1_11.BevelOuter = 1
+        Me._FM_Panel3D1_11.Text = "現在庫数"
+        'Me._FM_Panel3D1_11.OutLine = -1
+        Me._FM_Panel3D1_11.Name = "_FM_Panel3D1_11"
 		Me._FM_Panel3D1_12.Size = New System.Drawing.Size(79, 23)
 		Me._FM_Panel3D1_12.Location = New System.Drawing.Point(437, 156)
 		Me._FM_Panel3D1_12.TabIndex = 21
-		Me._FM_Panel3D1_12.ForeColor = 0
-		Me._FM_Panel3D1_12.Alignment = 8
-		Me._FM_Panel3D1_12.BevelOuter = 1
-		Me._FM_Panel3D1_12.Caption = "引当済数"
-		Me._FM_Panel3D1_12.OutLine = -1
-		Me._FM_Panel3D1_12.Name = "_FM_Panel3D1_12"
+        Me._FM_Panel3D1_12.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_12.Alignment = 8
+        'Me._FM_Panel3D1_12.BevelOuter = 1
+        Me._FM_Panel3D1_12.Text = "引当済数"
+        'Me._FM_Panel3D1_12.OutLine = -1
+        Me._FM_Panel3D1_12.Name = "_FM_Panel3D1_12"
 		Me._FM_Panel3D1_6.Size = New System.Drawing.Size(65, 23)
 		Me._FM_Panel3D1_6.Location = New System.Drawing.Point(550, 101)
 		Me._FM_Panel3D1_6.TabIndex = 23
-		Me._FM_Panel3D1_6.ForeColor = 0
-		Me._FM_Panel3D1_6.Alignment = 8
-		Me._FM_Panel3D1_6.BevelOuter = 1
-		Me._FM_Panel3D1_6.Caption = "数量"
-		Me._FM_Panel3D1_6.OutLine = -1
-		Me._FM_Panel3D1_6.Name = "_FM_Panel3D1_6"
+        Me._FM_Panel3D1_6.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_6.Alignment = 8
+        'Me._FM_Panel3D1_6.BevelOuter = 1
+        Me._FM_Panel3D1_6.Text = "数量"
+        'Me._FM_Panel3D1_6.OutLine = -1
+        Me._FM_Panel3D1_6.Name = "_FM_Panel3D1_6"
 		Me._FM_Panel3D1_7.Size = New System.Drawing.Size(67, 23)
 		Me._FM_Panel3D1_7.Location = New System.Drawing.Point(681, 101)
 		Me._FM_Panel3D1_7.TabIndex = 25
-		Me._FM_Panel3D1_7.ForeColor = 0
-		Me._FM_Panel3D1_7.Alignment = 8
-		Me._FM_Panel3D1_7.BevelOuter = 1
-		Me._FM_Panel3D1_7.Caption = "引当済数"
-		Me._FM_Panel3D1_7.OutLine = -1
-		Me._FM_Panel3D1_7.Name = "_FM_Panel3D1_7"
+        Me._FM_Panel3D1_7.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_7.Alignment = 8
+        'Me._FM_Panel3D1_7.BevelOuter = 1
+        Me._FM_Panel3D1_7.Text = "引当済数"
+        'Me._FM_Panel3D1_7.OutLine = -1
+        Me._FM_Panel3D1_7.Name = "_FM_Panel3D1_7"
 		Me._FM_Panel3D1_0.Size = New System.Drawing.Size(782, 37)
 		Me._FM_Panel3D1_0.Location = New System.Drawing.Point(0, 0)
 		Me._FM_Panel3D1_0.TabIndex = 26
-		Me._FM_Panel3D1_0.ForeColor = 0
-		Me._FM_Panel3D1_0.OutLine = -1
-		Me._FM_Panel3D1_0.Name = "_FM_Panel3D1_0"
+        Me._FM_Panel3D1_0.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_0.OutLine = -1
+        Me._FM_Panel3D1_0.Name = "_FM_Panel3D1_0"
 		Me.SYSDT.Size = New System.Drawing.Size(112, 22)
 		Me.SYSDT.Location = New System.Drawing.Point(640, 6)
 		Me.SYSDT.TabIndex = 27
-		Me.SYSDT.ForeColor = 0
-		Me.SYSDT.BevelOuter = 1
-		Me.SYSDT.Caption = "YYYY/MM/DD"
-		Me.SYSDT.Name = "SYSDT"
+        Me.SYSDT.ForeColor = Color.Empty
+        'Me.SYSDT.BevelOuter = 1
+        Me.SYSDT.Text = "YYYY/MM/DD"
+        Me.SYSDT.Name = "SYSDT"
 		Me.CM_Execute.Size = New System.Drawing.Size(24, 22)
 		Me.CM_Execute.Location = New System.Drawing.Point(37, 6)
 		Me.CM_Execute.Image = CType(resources.GetObject("CM_Execute.Image"), System.Drawing.Image)
@@ -1094,166 +1151,166 @@
 		Me._FM_Panel3D1_2.Size = New System.Drawing.Size(88, 23)
 		Me._FM_Panel3D1_2.Location = New System.Drawing.Point(127, 68)
 		Me._FM_Panel3D1_2.TabIndex = 28
-		Me._FM_Panel3D1_2.ForeColor = 0
-		Me._FM_Panel3D1_2.BevelOuter = 1
-		Me._FM_Panel3D1_2.Caption = "製　番"
-		Me._FM_Panel3D1_2.OutLine = -1
-		Me._FM_Panel3D1_2.Name = "_FM_Panel3D1_2"
+        Me._FM_Panel3D1_2.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_2.BevelOuter = 1
+        Me._FM_Panel3D1_2.Text = "製　番"
+        'Me._FM_Panel3D1_2.OutLine = -1
+        Me._FM_Panel3D1_2.Name = "_FM_Panel3D1_2"
 		Me._FM_Panel3D1_1.Size = New System.Drawing.Size(84, 23)
 		Me._FM_Panel3D1_1.Location = New System.Drawing.Point(472, 44)
 		Me._FM_Panel3D1_1.TabIndex = 31
-		Me._FM_Panel3D1_1.ForeColor = 0
-		Me._FM_Panel3D1_1.Alignment = 1
-		Me._FM_Panel3D1_1.BevelOuter = 1
-		Me._FM_Panel3D1_1.Caption = " 入力担当者"
-		Me._FM_Panel3D1_1.OutLine = -1
-		Me._FM_Panel3D1_1.Name = "_FM_Panel3D1_1"
+        Me._FM_Panel3D1_1.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_1.Alignment = 1
+        'Me._FM_Panel3D1_1.BevelOuter = 1
+        Me._FM_Panel3D1_1.Text = " 入力担当者"
+        'Me._FM_Panel3D1_1.OutLine = -1
+        Me._FM_Panel3D1_1.Name = "_FM_Panel3D1_1"
 		Me._FM_Panel3D1_4.Size = New System.Drawing.Size(221, 23)
 		Me._FM_Panel3D1_4.Location = New System.Drawing.Point(107, 101)
 		Me._FM_Panel3D1_4.TabIndex = 32
-		Me._FM_Panel3D1_4.ForeColor = 0
-		Me._FM_Panel3D1_4.Alignment = 8
-		Me._FM_Panel3D1_4.BevelOuter = 1
-		Me._FM_Panel3D1_4.Caption = "型　　式"
-		Me._FM_Panel3D1_4.OutLine = -1
-		Me._FM_Panel3D1_4.Name = "_FM_Panel3D1_4"
+        Me._FM_Panel3D1_4.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_4.Alignment = 8
+        'Me._FM_Panel3D1_4.BevelOuter = 1
+        Me._FM_Panel3D1_4.Text = "型　　式"
+        'Me._FM_Panel3D1_4.OutLine = -1
+        Me._FM_Panel3D1_4.Name = "_FM_Panel3D1_4"
 		Me._FM_Panel3D1_5.Size = New System.Drawing.Size(224, 23)
 		Me._FM_Panel3D1_5.Location = New System.Drawing.Point(327, 101)
 		Me._FM_Panel3D1_5.TabIndex = 33
-		Me._FM_Panel3D1_5.ForeColor = 0
-		Me._FM_Panel3D1_5.Alignment = 8
-		Me._FM_Panel3D1_5.BevelOuter = 1
-		Me._FM_Panel3D1_5.Caption = "品　　名"
-		Me._FM_Panel3D1_5.OutLine = -1
-		Me._FM_Panel3D1_5.Name = "_FM_Panel3D1_5"
+        Me._FM_Panel3D1_5.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_5.Alignment = 8
+        'Me._FM_Panel3D1_5.BevelOuter = 1
+        Me._FM_Panel3D1_5.Text = "品　　名"
+        'Me._FM_Panel3D1_5.OutLine = -1
+        Me._FM_Panel3D1_5.Name = "_FM_Panel3D1_5"
 		Me._FM_Panel3D1_3.Size = New System.Drawing.Size(80, 23)
 		Me._FM_Panel3D1_3.Location = New System.Drawing.Point(28, 101)
 		Me._FM_Panel3D1_3.TabIndex = 34
-		Me._FM_Panel3D1_3.ForeColor = 0
-		Me._FM_Panel3D1_3.Alignment = 8
-		Me._FM_Panel3D1_3.BevelOuter = 1
-		Me._FM_Panel3D1_3.Caption = "製品ｺｰﾄﾞ"
-		Me._FM_Panel3D1_3.OutLine = -1
-		Me._FM_Panel3D1_3.Name = "_FM_Panel3D1_3"
+        Me._FM_Panel3D1_3.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_3.Alignment = 8
+        'Me._FM_Panel3D1_3.BevelOuter = 1
+        Me._FM_Panel3D1_3.Text = "製品ｺｰﾄﾞ"
+        'Me._FM_Panel3D1_3.OutLine = -1
+        Me._FM_Panel3D1_3.Name = "_FM_Panel3D1_3"
 		Me._FM_Panel3D1_17.Size = New System.Drawing.Size(97, 15)
 		Me._FM_Panel3D1_17.Location = New System.Drawing.Point(14, 44)
 		Me._FM_Panel3D1_17.TabIndex = 38
-		Me._FM_Panel3D1_17.ForeColor = 0
-		Me._FM_Panel3D1_17.Alignment = 1
-		Me._FM_Panel3D1_17.BorderWidth = 1
-		Me._FM_Panel3D1_17.BevelOuter = 0
-		Me._FM_Panel3D1_17.Caption = "＜伝票情報＞"
-		Me._FM_Panel3D1_17.FloodColor = 16777215
-		Me._FM_Panel3D1_17.Name = "_FM_Panel3D1_17"
+        Me._FM_Panel3D1_17.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_17.Alignment = 1
+        'Me._FM_Panel3D1_17.BorderWidth = 1
+        'Me._FM_Panel3D1_17.BevelOuter = 0
+        Me._FM_Panel3D1_17.Text = "＜伝票情報＞"
+        'Me._FM_Panel3D1_17.FloodColor = 16777215
+        Me._FM_Panel3D1_17.Name = "_FM_Panel3D1_17"
 		Me._FM_Panel3D1_18.Size = New System.Drawing.Size(68, 23)
 		Me._FM_Panel3D1_18.Location = New System.Drawing.Point(614, 101)
 		Me._FM_Panel3D1_18.TabIndex = 41
-		Me._FM_Panel3D1_18.ForeColor = 0
-		Me._FM_Panel3D1_18.Alignment = 8
-		Me._FM_Panel3D1_18.BevelOuter = 1
-		Me._FM_Panel3D1_18.Caption = "手動済数"
-		Me._FM_Panel3D1_18.OutLine = -1
-		Me._FM_Panel3D1_18.Name = "_FM_Panel3D1_18"
+        Me._FM_Panel3D1_18.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_18.Alignment = 8
+        'Me._FM_Panel3D1_18.BevelOuter = 1
+        Me._FM_Panel3D1_18.Text = "手動済数"
+        'Me._FM_Panel3D1_18.OutLine = -1
+        Me._FM_Panel3D1_18.Name = "_FM_Panel3D1_18"
 		Me._FM_Panel3D1_19.Size = New System.Drawing.Size(79, 23)
 		Me._FM_Panel3D1_19.Location = New System.Drawing.Point(594, 156)
 		Me._FM_Panel3D1_19.TabIndex = 43
-		Me._FM_Panel3D1_19.ForeColor = 0
-		Me._FM_Panel3D1_19.Alignment = 8
-		Me._FM_Panel3D1_19.BevelOuter = 1
-		Me._FM_Panel3D1_19.Caption = "手動引当数"
-		Me._FM_Panel3D1_19.OutLine = -1
-		Me._FM_Panel3D1_19.Name = "_FM_Panel3D1_19"
+        Me._FM_Panel3D1_19.ForeColor = Color.Empty
+        'Me._FM_Panel3D1_19.Alignment = 8
+        'Me._FM_Panel3D1_19.BevelOuter = 1
+        Me._FM_Panel3D1_19.Text = "手動引当数"
+        'Me._FM_Panel3D1_19.OutLine = -1
+        Me._FM_Panel3D1_19.Name = "_FM_Panel3D1_19"
 		Me.MN_Ctrl.Name = "MN_Ctrl"
 		Me.MN_Ctrl.Text = "処理(&1)"
-		Me.MN_Ctrl.Checked = False
-		Me.MN_Ctrl.Enabled = True
+        'Me.MN_Ctrl.Checked = False
+        Me.MN_Ctrl.Enabled = True
 		Me.MN_Ctrl.Visible = True
 		Me.MN_Execute.Name = "MN_Execute"
 		Me.MN_Execute.Text = "登録(&R)"
-		Me.MN_Execute.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.R, System.Windows.Forms.Keys)
-		Me.MN_Execute.Checked = False
-		Me.MN_Execute.Enabled = True
+        'Me.MN_Execute.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.R, System.Windows.Forms.Keys)
+        'Me.MN_Execute.Checked = False
+        Me.MN_Execute.Enabled = True
 		Me.MN_Execute.Visible = True
 		Me.MN_HARDCOPY.Name = "MN_HARDCOPY"
 		Me.MN_HARDCOPY.Text = "画面印刷"
 		Me.MN_HARDCOPY.Enabled = False
 		Me.MN_HARDCOPY.Visible = False
-		Me.MN_HARDCOPY.Checked = False
-		Me.Bar11.Enabled = True
+        'Me.MN_HARDCOPY.Checked = False
+        Me.Bar11.Enabled = True
 		Me.Bar11.Visible = True
 		Me.Bar11.Name = "Bar11"
 		Me.MN_EndCm.Name = "MN_EndCm"
 		Me.MN_EndCm.Text = "終了(&X)"
-		Me.MN_EndCm.Checked = False
-		Me.MN_EndCm.Enabled = True
+        'Me.MN_EndCm.Checked = False
+        Me.MN_EndCm.Enabled = True
 		Me.MN_EndCm.Visible = True
 		Me.MN_EditMn.Name = "MN_EditMn"
 		Me.MN_EditMn.Text = "編集(&2)"
-		Me.MN_EditMn.Checked = False
-		Me.MN_EditMn.Enabled = True
+        'Me.MN_EditMn.Checked = False
+        Me.MN_EditMn.Enabled = True
 		Me.MN_EditMn.Visible = True
 		Me.MN_ClearItm.Name = "MN_ClearItm"
 		Me.MN_ClearItm.Text = "項目初期化"
-		Me.MN_ClearItm.Checked = False
-		Me.MN_ClearItm.Enabled = True
+        'Me.MN_ClearItm.Checked = False
+        Me.MN_ClearItm.Enabled = True
 		Me.MN_ClearItm.Visible = True
 		Me.MN_UnDoItem.Name = "MN_UnDoItem"
 		Me.MN_UnDoItem.Text = "項目復元"
-		Me.MN_UnDoItem.Checked = False
-		Me.MN_UnDoItem.Enabled = True
+        'Me.MN_UnDoItem.Checked = False
+        Me.MN_UnDoItem.Enabled = True
 		Me.MN_UnDoItem.Visible = True
 		Me.Bar21.Enabled = True
 		Me.Bar21.Visible = True
 		Me.Bar21.Name = "Bar21"
 		Me.MN_Cut.Name = "MN_Cut"
 		Me.MN_Cut.Text = "切り取り(&T)"
-		Me.MN_Cut.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.X, System.Windows.Forms.Keys)
-		Me.MN_Cut.Checked = False
-		Me.MN_Cut.Enabled = True
+        'Me.MN_Cut.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.X, System.Windows.Forms.Keys)
+        'Me.MN_Cut.Checked = False
+        Me.MN_Cut.Enabled = True
 		Me.MN_Cut.Visible = True
 		Me.MN_Copy.Name = "MN_Copy"
 		Me.MN_Copy.Text = "コピー(&C)"
-		Me.MN_Copy.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.C, System.Windows.Forms.Keys)
-		Me.MN_Copy.Checked = False
-		Me.MN_Copy.Enabled = True
+        'Me.MN_Copy.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.C, System.Windows.Forms.Keys)
+        'Me.MN_Copy.Checked = False
+        Me.MN_Copy.Enabled = True
 		Me.MN_Copy.Visible = True
 		Me.MN_Paste.Name = "MN_Paste"
 		Me.MN_Paste.Text = "貼り付け(&P)"
-		Me.MN_Paste.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.V, System.Windows.Forms.Keys)
-		Me.MN_Paste.Checked = False
-		Me.MN_Paste.Enabled = True
+        'Me.MN_Paste.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.V, System.Windows.Forms.Keys)
+        'Me.MN_Paste.Checked = False
+        Me.MN_Paste.Enabled = True
 		Me.MN_Paste.Visible = True
 		Me.MN_Oprt.Name = "MN_Oprt"
 		Me.MN_Oprt.Text = "操作(&3)"
 		Me.MN_Oprt.Visible = False
-		Me.MN_Oprt.Checked = False
-		Me.MN_Oprt.Enabled = True
+        'Me.MN_Oprt.Checked = False
+        Me.MN_Oprt.Enabled = True
 		Me.MN_SELECTCM.Name = "MN_SELECTCM"
 		Me.MN_SELECTCM.Text = "選択"
-		Me.MN_SELECTCM.ShortcutKeys = CType(System.Windows.Forms.Keys.F7, System.Windows.Forms.Keys)
-		Me.MN_SELECTCM.Checked = False
-		Me.MN_SELECTCM.Enabled = True
+        'Me.MN_SELECTCM.ShortcutKeys = CType(System.Windows.Forms.Keys.F7, System.Windows.Forms.Keys)
+        'Me.MN_SELECTCM.Checked = False
+        Me.MN_SELECTCM.Enabled = True
 		Me.MN_SELECTCM.Visible = True
 		Me.MN_PREV.Name = "MN_PREV"
 		Me.MN_PREV.Text = "前頁"
 		Me.MN_PREV.Enabled = False
-		Me.MN_PREV.ShortcutKeys = CType(System.Windows.Forms.Keys.F8, System.Windows.Forms.Keys)
-		Me.MN_PREV.Visible = False
-		Me.MN_PREV.Checked = False
-		Me.MN_NEXTCM.Name = "MN_NEXTCM"
+        'Me.MN_PREV.ShortcutKeys = CType(System.Windows.Forms.Keys.F8, System.Windows.Forms.Keys)
+        Me.MN_PREV.Visible = False
+        'Me.MN_PREV.Checked = False
+        Me.MN_NEXTCM.Name = "MN_NEXTCM"
 		Me.MN_NEXTCM.Text = "次頁"
 		Me.MN_NEXTCM.Enabled = False
-		Me.MN_NEXTCM.ShortcutKeys = CType(System.Windows.Forms.Keys.F9, System.Windows.Forms.Keys)
-		Me.MN_NEXTCM.Visible = False
-		Me.MN_NEXTCM.Checked = False
-		Me.Bar31.Enabled = True
+        'Me.MN_NEXTCM.ShortcutKeys = CType(System.Windows.Forms.Keys.F9, System.Windows.Forms.Keys)
+        Me.MN_NEXTCM.Visible = False
+        'Me.MN_NEXTCM.Checked = False
+        Me.Bar31.Enabled = True
 		Me.Bar31.Visible = True
 		Me.Bar31.Name = "Bar31"
 		Me.MN_Slist.Name = "MN_Slist"
 		Me.MN_Slist.Text = "候補の一覧(&L&ﾆ)..."
-		Me.MN_Slist.ShortcutKeys = CType(System.Windows.Forms.Keys.F5, System.Windows.Forms.Keys)
-		Me.MN_Slist.Checked = False
-		Me.MN_Slist.Enabled = True
+        'Me.MN_Slist.ShortcutKeys = CType(System.Windows.Forms.Keys.F5, System.Windows.Forms.Keys)
+        'Me.MN_Slist.Checked = False
+        Me.MN_Slist.Enabled = True
 		Me.MN_Slist.Visible = True
 		Me.SM_ShortCut.Name = "SM_ShortCut"
 		Me.SM_ShortCut.Text = "ShortCut"
@@ -1262,18 +1319,18 @@
 		Me.SM_ShortCut.Enabled = True
 		Me.SM_AllCopy.Name = "SM_AllCopy"
 		Me.SM_AllCopy.Text = "項目内容コピー(&C)"
-		Me.SM_AllCopy.Checked = False
-		Me.SM_AllCopy.Enabled = True
+        'Me.SM_AllCopy.Checked = False
+        Me.SM_AllCopy.Enabled = True
 		Me.SM_AllCopy.Visible = True
 		Me.SM_FullPast.Name = "SM_FullPast"
 		Me.SM_FullPast.Text = "項目に貼り付け(&P)"
-		Me.SM_FullPast.Checked = False
-		Me.SM_FullPast.Enabled = True
+        'Me.SM_FullPast.Checked = False
+        Me.SM_FullPast.Enabled = True
 		Me.SM_FullPast.Visible = True
 		Me.SM_Esc.Name = "SM_Esc"
 		Me.SM_Esc.Text = "取消し(Esc)"
-		Me.SM_Esc.Checked = False
-		Me.SM_Esc.Enabled = True
+        'Me.SM_Esc.Checked = False
+        Me.SM_Esc.Enabled = True
 		Me.SM_Esc.Visible = True
 		Me.Controls.Add(_BD_MNSU_0)
 		Me.Controls.Add(HD_MNSU)
@@ -1347,28 +1404,28 @@
 		Me.BD_RELZAISU.SetIndex(_BD_RELZAISU_0, CType(0, Short))
 		Me.BD_SOUNM.SetIndex(_BD_SOUNM_0, CType(0, Short))
 		Me.BD_ZUMISU.SetIndex(_BD_ZUMISU_0, CType(0, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_9, CType(9, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_8, CType(8, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_16, CType(16, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_15, CType(15, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_10, CType(10, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_13, CType(13, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_14, CType(14, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_11, CType(11, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_12, CType(12, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_6, CType(6, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_7, CType(7, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_0, CType(0, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_2, CType(2, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_1, CType(1, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_4, CType(4, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_5, CType(5, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_3, CType(3, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_17, CType(17, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_18, CType(18, Short))
-		Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_19, CType(19, Short))
-		Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_2, CType(2, Short))
-		Me.IM_Denkyu.SetIndex(_IM_Denkyu_0, CType(0, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_9, CType(9, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_8, CType(8, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_16, CType(16, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_15, CType(15, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_10, CType(10, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_13, CType(13, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_14, CType(14, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_11, CType(11, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_12, CType(12, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_6, CType(6, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_7, CType(7, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_0, CType(0, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_2, CType(2, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_1, CType(1, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_4, CType(4, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_5, CType(5, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_3, CType(3, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_17, CType(17, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_18, CType(18, Short))
+        'Me.FM_Panel3D1.SetIndex(_FM_Panel3D1_19, CType(19, Short))
+        'Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_2, CType(2, Short))
+        Me.IM_Denkyu.SetIndex(_IM_Denkyu_0, CType(0, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_2, CType(2, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_1, CType(1, Short))
 		Me.IM_EndCm.SetIndex(_IM_EndCm_1, CType(1, Short))
@@ -1403,13 +1460,13 @@
 		CType(Me.BD_LOTNO, System.ComponentModel.ISupportInitialize).EndInit()
 		CType(Me.BD_INP_HIKSU, System.ComponentModel.ISupportInitialize).EndInit()
 		CType(Me.BD_HIKSU, System.ComponentModel.ISupportInitialize).EndInit()
-		MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_Ctrl, Me.MN_EditMn, Me.MN_Oprt, Me.SM_ShortCut})
-		MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_Execute, Me.MN_HARDCOPY, Me.Bar11, Me.MN_EndCm})
-		MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
-		MN_Oprt.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_SELECTCM, Me.MN_PREV, Me.MN_NEXTCM, Me.Bar31, Me.MN_Slist})
-		SM_ShortCut.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.SM_AllCopy, Me.SM_FullPast, Me.SM_Esc})
-		Me.Controls.Add(MainMenu1)
-		Me._FM_Panel3D1_15.ResumeLayout(False)
+        'MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_Ctrl, Me.MN_EditMn, Me.MN_Oprt, Me.SM_ShortCut})
+        'MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_Execute, Me.MN_HARDCOPY, Me.Bar11, Me.MN_EndCm})
+        'MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
+        'MN_Oprt.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_SELECTCM, Me.MN_PREV, Me.MN_NEXTCM, Me.Bar31, Me.MN_Slist})
+        'SM_ShortCut.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.SM_AllCopy, Me.SM_FullPast, Me.SM_Esc})
+        'Me.Controls.Add(MainMenu1)
+        Me._FM_Panel3D1_15.ResumeLayout(False)
 		Me._FM_Panel3D1_16.ResumeLayout(False)
 		Me._FM_Panel3D4_2.ResumeLayout(False)
 		Me._FM_Panel3D1_0.ResumeLayout(False)

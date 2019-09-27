@@ -157,15 +157,24 @@ Module SSSMAIN0003
 		'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
 		Select Case True
 			Case TypeOf pm_Dsp_Sub_Inf.Ctl Is System.Windows.Forms.TextBox
-				'ﾃｷｽﾄﾎﾞｯｸｽの場合
-				'現在のﾃｷｽﾄ上の選択状態を取得
-				'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
-				'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
-				'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
-				Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
+                'ﾃｷｽﾄﾎﾞｯｸｽの場合
+                '現在のﾃｷｽﾄ上の選択状態を取得
+                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/26 CHG START
+                'Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
+                Act_SelStart = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart
+                '2019/09/26 CHG E N D
+                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/26 CHG START
+                'Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
+                Act_SelLength = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength
+                '2019/09/26 CHG E N D
+                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/26 CHG START
+                'Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
+                Act_SelStr = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectedText
+                '2019/09/26 CHG E N D
+                Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
 				
 				'現在の値を取得
 				'UPGRADE_WARNING: オブジェクト CF_Get_Item_Value() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -330,15 +339,24 @@ Module SSSMAIN0003
 		'ﾃｷｽﾄﾎﾞｯｸｽのみ対象
 		'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
 		If TypeOf pm_Dsp_Sub_Inf.Ctl Is System.Windows.Forms.TextBox Then
-			
-			'現在のﾃｷｽﾄ上の選択状態を取得
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
-			Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
+
+            '現在のﾃｷｽﾄ上の選択状態を取得
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
+            Act_SelStart = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart
+            '2019/09/26 CHG E N D
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
+            Act_SelLength = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength
+            '2019/09/26 CHG E N D
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
+            Act_SelStr = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectedText
+            '2019/09/26 CHG E N D
+            Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
 			
 			'現在の値を取得
 			'UPGRADE_WARNING: オブジェクト CF_Get_Item_Value() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -405,16 +423,21 @@ Module SSSMAIN0003
 					'文字設定
 					Call CF_Set_Item_Not_Change(Wk_DspMoji, pm_Dsp_Sub_Inf, pm_All)
 					pm_KeyAscii = 0
-					
-					'編集後のSelStartを決定
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart + 1
-					'編集後のSelLengthを決定
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-					
-					'数値項目特別処理
-					If pm_Dsp_Sub_Inf.Detail.In_Typ = IN_TYP_NUM Then
+
+                    '編集後のSelStartを決定
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart + 1
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart + 1
+                    '2019/09/26 CHG E N D
+                    '編集後のSelLengthを決定
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                    '2019/09/26 CHG E N D
+                    '数値項目特別処理
+                    If pm_Dsp_Sub_Inf.Detail.In_Typ = IN_TYP_NUM Then
 						
 						'小数部があり小数桁数と設定値が同じ場合
 						If pm_Dsp_Sub_Inf.Detail.Num_Fra_Fig > 0 And Len(CF_Get_Num_Fra_Part(Wk_DspMoji)) >= pm_Dsp_Sub_Inf.Detail.Num_Fra_Fig Then
@@ -431,14 +454,20 @@ Module SSSMAIN0003
 					Else
 						'数値項目以外
 						If CF_Ctr_AnsiLenB(CF_Trim_Item(Wk_DspMoji, pm_Dsp_Sub_Inf)) >= pm_Dsp_Sub_Inf.Detail.Dsp_MaxLengthB Then
-							'編集後の文字がMAXの場合
-							'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							pm_Dsp_Sub_Inf.Ctl.SelStart = Len(Wk_DspMoji)
-							'編集後のSelLengthを決定
-							'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							pm_Dsp_Sub_Inf.Ctl.SelLength = 0
-							'現在ﾌｫｰｶｽ位置から右へ移動
-							Call F_Set_Right_Next_Focus(pm_Dsp_Sub_Inf, pm_Move_Flg, pm_All, pm_Run_Flg)
+                            '編集後の文字がMAXの場合
+                            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/26 CHG START
+                            'pm_Dsp_Sub_Inf.Ctl.SelStart = Len(Wk_DspMoji)
+                            DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Len(Wk_DspMoji)
+                            '2019/09/26 CHG E N D
+                            '編集後のSelLengthを決定
+                            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/26 CHG START
+                            'pm_Dsp_Sub_Inf.Ctl.SelLength = 0
+                            DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = 0
+                            '2019/09/26 CHG E N D
+                            '現在ﾌｫｰｶｽ位置から右へ移動
+                            Call F_Set_Right_Next_Focus(pm_Dsp_Sub_Inf, pm_Move_Flg, pm_All, pm_Run_Flg)
 						End If
 					End If
 					
@@ -514,14 +543,20 @@ Module SSSMAIN0003
 									End If
 									'編集後のSelLengthを決定
 									Wk_SelLength = 0
-									
-									'編集後のSelStartを決定
-									'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
-									'編集後のSelLengthを決定
-									'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-								End If
+
+                                    '編集後のSelStartを決定
+                                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    '2019/09/26 CHG START
+                                    'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
+                                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart
+                                    '2019/09/26 CHG E N D
+                                    '編集後のSelLengthを決定
+                                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    '2019/09/26 CHG START
+                                    'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                                    '2019/09/26 CHG E N D
+                                End If
 								
 								'入力不可
 								Beep()
@@ -573,16 +608,21 @@ Module SSSMAIN0003
 						'文字設定
 						Call CF_Set_Item_Not_Change(Wk_DspMoji, pm_Dsp_Sub_Inf, pm_All)
 						pm_KeyAscii = 0
-						
-						'編集後のSelStartを決定
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
-						'編集後のSelLengthを決定
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-						
-						'編集後の移動先を判定
-						If pm_Dsp_Sub_Inf.Detail.Fil_Point = FIL_POINT_LEFT Then
+
+                        '編集後のSelStartを決定
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart
+                        '2019/09/26 CHG E N D
+                        '編集後のSelLengthを決定
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                        '2019/09/26 CHG E N D
+                        '編集後の移動先を判定
+                        If pm_Dsp_Sub_Inf.Detail.Fil_Point = FIL_POINT_LEFT Then
 							'詰文字が左詰の場合
 							
 							If Wk_SelStart >= Len(Wk_DspMoji) Then
@@ -612,17 +652,22 @@ Module SSSMAIN0003
 						Else
 							'詰文字が左詰以外の場合
 							If CF_Ctr_AnsiLenB(CF_Trim_Item(Wk_DspMoji, pm_Dsp_Sub_Inf)) >= pm_Dsp_Sub_Inf.Detail.Dsp_MaxLengthB Then
-								'編集後の文字がMAXの場合
-								
-								'編集後のSelStartを決定
-								'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								pm_Dsp_Sub_Inf.Ctl.SelStart = Len(Wk_DspMoji)
-								'編集後のSelLengthを決定
-								'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								pm_Dsp_Sub_Inf.Ctl.SelLength = 1
-								
-								'現在ﾌｫｰｶｽ位置から右へ移動
-								Call F_Set_Right_Next_Focus(pm_Dsp_Sub_Inf, pm_Move_Flg, pm_All, pm_Run_Flg)
+                                '編集後の文字がMAXの場合
+
+                                '編集後のSelStartを決定
+                                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/26 CHG START
+                                'pm_Dsp_Sub_Inf.Ctl.SelStart = Len(Wk_DspMoji)
+                                DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Len(Wk_DspMoji)
+                                '2019/09/26 CHG E N D
+                                '編集後のSelLengthを決定
+                                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/26 CHG START
+                                'pm_Dsp_Sub_Inf.Ctl.SelLength = 1
+                                DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = 1
+                                '2019/09/26 CHG E N D
+                                '現在ﾌｫｰｶｽ位置から右へ移動
+                                Call F_Set_Right_Next_Focus(pm_Dsp_Sub_Inf, pm_Move_Flg, pm_All, pm_Run_Flg)
 							End If
 						End If
 					Else
@@ -731,16 +776,21 @@ Module SSSMAIN0003
 						'文字設定
 						Call CF_Set_Item_Not_Change(Wk_DspMoji, pm_Dsp_Sub_Inf, pm_All)
 						pm_KeyAscii = 0
-						
-						'編集後のSelStartを決定
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
-						'編集後のSelLengthを決定
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-						
-						'編集後の移動先を判定
-						If Wk_SelStart >= Len(Wk_DspMoji) - 1 Then
+
+                        '編集後のSelStartを決定
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart
+                        '2019/09/26 CHG E N D
+                        '編集後のSelLengthを決定
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                        '2019/09/26 CHG E N D
+                        '編集後の移動先を判定
+                        If Wk_SelStart >= Len(Wk_DspMoji) - 1 Then
 							'編集後の開始位置が最後の文字以降の場合
 							'数値項目特別処理
 							If pm_Dsp_Sub_Inf.Detail.In_Typ = IN_TYP_NUM Then
@@ -797,16 +847,22 @@ Module SSSMAIN0003
 								Next 
 								'編集後のSelLengthを決定
 								Wk_SelLength = Act_SelLength
-								
-								'編集後のSelStartを決定
-								'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
-								'編集後のSelLengthを決定
-								'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-								
-								'削除不可
-								Exit Function
+
+                                '編集後のSelStartを決定
+                                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/26 CHG START
+                                'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
+                                DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart
+                                '2019/09/26 CHG E N D
+                                '編集後のSelLengthを決定
+                                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/26 CHG START
+                                'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                                DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                                '2019/09/26 CHG E N D
+
+                                '削除不可
+                                Exit Function
 							Case Else
 								
 						End Select
@@ -908,13 +964,18 @@ Module SSSMAIN0003
 						'削除後の文字置き換え
 						'文字設定
 						Call CF_Set_Item_Not_Change(Wk_DspMoji, pm_Dsp_Sub_Inf, pm_All)
-						
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-						
-					Case Else
+
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart
+                        '2019/09/26 CHG E N D
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                        '2019/09/26 CHG E N D
+                    Case Else
 						pm_KeyAscii = 0
 						
 				End Select
@@ -969,12 +1030,14 @@ Module SSSMAIN0003
 			If CF_Jge_Enabled_PopupMenu(pm_Trg_Dsp_Sub_Inf, pm_Act_Dsp_Sub_Inf, pm_All) = True Then
 				'ﾛｽﾄﾌｫｰｶｽｲﾍﾞﾝﾄの抑制
 				pm_All.Dsp_Base.LostFocus_Flg = True
-				'ﾎﾟｯﾌﾟｱｯﾌﾟﾒﾆｭｰ表示
-				'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
-				'UPGRADE_ISSUE: Form メソッド FR_SSSSUB01.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-				FR_SSSSUB01.PopupMenu(FR_SSSSUB01.SM_ShortCut, vbPopupMenuLeftButton)
-				'ﾛｽﾄﾌｫｰｶｽｲﾍﾞﾝﾄの抑制解除
-				pm_All.Dsp_Base.LostFocus_Flg = False
+                'ﾎﾟｯﾌﾟｱｯﾌﾟﾒﾆｭｰ表示
+                'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
+                'UPGRADE_ISSUE: Form メソッド FR_SSSSUB01.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+                '2019/09/26　仮
+                'FR_SSSSUB01.PopupMenu(FR_SSSSUB01.SM_ShortCut, vbPopupMenuLeftButton)
+                '2019/09/26　仮
+                'ﾛｽﾄﾌｫｰｶｽｲﾍﾞﾝﾄの抑制解除
+                pm_All.Dsp_Base.LostFocus_Flg = False
 				System.Windows.Forms.Application.DoEvents()
 			End If
 			
@@ -1161,15 +1224,24 @@ Module SSSMAIN0003
 		If Paste_Value = "" Then
 			Exit Function
 		End If
-		
-		'現在のﾃｷｽﾄ上の選択状態を取得
-		'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
-		'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
-		'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
-		Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
+
+        '現在のﾃｷｽﾄ上の選択状態を取得
+        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
+        Act_SelStart = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart
+        '2019/09/26 CHG E N D
+        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        Act_SelLength = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength
+        'Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
+        '2019/09/26 CHG E N D
+        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
+        Act_SelStr = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectedText
+        '2019/09/26 CHG E N D
+        Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
 		'現在の値を取得
 		'UPGRADE_WARNING: オブジェクト CF_Get_Item_Value() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		Wk_CurMoji = CF_Get_Input_Ok_Item(CF_Get_Item_Value(pm_Dsp_Sub_Inf), pm_Dsp_Sub_Inf)
@@ -1239,16 +1311,21 @@ Module SSSMAIN0003
 		
 		'ﾁｪﾝｼﾞｲﾍﾞﾝﾄを起こさずに編集
 		Call CF_Set_Item_Not_Change(Wk_DspMoji, pm_Dsp_Sub_Inf, pm_All)
-		
-		'編集後のSelStartを決定
-		'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
-		'編集後のSelLengthを決定
-		'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-		
-		'入力後の後処理
-		Call CF_Ctl_Input_Aft(pm_Dsp_Sub_Inf, pm_All)
+
+        '編集後のSelStartを決定
+        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
+        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart
+        '2019/09/26 CHG E N D
+        '編集後のSelLengthを決定
+        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+        '2019/09/26 CHG E N D
+        '入力後の後処理
+        Call CF_Ctl_Input_Aft(pm_Dsp_Sub_Inf, pm_All)
 		
 	End Function
 	
@@ -1312,14 +1389,17 @@ Module SSSMAIN0003
 			'チェックＮＧの場合
 			GoTo End_F_Ctl_Upd_Process
 		End If
-		
-		' === 20080728 === INSERT S - RISE)Izumi
-		'トランザクションの開始
-		Call CF_Ora_BeginTrans(gv_Oss_USR1)
-		bolTran = True
-		
-		'明細行数を取得する
-		intMeiCnt = UBound(pm_All.Dsp_Body_Inf.Row_Inf)
+
+        ' === 20080728 === INSERT S - RISE)Izumi
+        'トランザクションの開始
+        '2019/09/26 CHG START
+        'Call CF_Ora_BeginTrans(gv_Oss_USR1)
+        Call DB_BeginTrans(CON)
+        '2019/09/26 CHG E N D
+        bolTran = True
+
+        '明細行数を取得する
+        intMeiCnt = UBound(pm_All.Dsp_Body_Inf.Row_Inf)
 		
 		Dim ls_sql As String
 		For intCnt = 1 To intMeiCnt
@@ -3669,25 +3749,40 @@ F_DTLTRA_Insert_err:
 		'現在のｺﾝﾄﾛｰﾙがﾃｷｽﾄﾎﾞｯｸｽの場合
 		'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
 		If TypeOf pm_Dsp_Sub_Inf.Ctl Is System.Windows.Forms.TextBox Then
-			'現在のﾃｷｽﾄ上の選択状態を取得
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
-			Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
+            '現在のﾃｷｽﾄ上の選択状態を取得
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
+            Act_SelStart = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart
+            '2019/09/26 CHG E N D
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
+            Act_SelLength = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength
+            '2019/09/26 CHG E N D
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
+            Act_SelStr = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectedText
+            '2019/09/26 CHG E N D
+            Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
 			
 			If Act_SelStart = 0 And Act_SelStrB = pm_Dsp_Sub_Inf.Detail.Dsp_MaxLengthB Then
 				'全選択の場合（選択文字が最大バイト数と一致）
 				If pm_Dsp_Sub_Inf.Detail.Fil_Point = FIL_POINT_LEFT Then
-					'詰文字が左詰の場合
-					'１文字目を選択する
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelStart = 0
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelLength = 1
-				Else
+                    '詰文字が左詰の場合
+                    '１文字目を選択する
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelStart = 0
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = 0
+                    '2019/09/26 CHG E N D
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelLength = 1
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = 1
+                    '2019/09/26 CHG E N D
+                Else
 					'詰文字が左詰以外の場合
 					'１つ前の項目へ
 					Call F_Set_Befe_Focus(pm_Dsp_Sub_Inf, pm_Move_Flg, pm_All, pm_Run_Flg)
@@ -3725,12 +3820,19 @@ F_DTLTRA_Insert_err:
 						Else
 							Wk_SelLength = 1
 						End If
-						
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
-						'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-					End If
+
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelStart = Wk_SelStart
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Wk_SelStart
+                        '2019/09/26 CHG E N D
+                        'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        '2019/09/26 CHG START
+                        'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                        DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                        '2019/09/26 CHG E N D
+
+                    End If
 					
 				End If
 			End If
@@ -3766,32 +3868,53 @@ F_DTLTRA_Insert_err:
 		'現在のｺﾝﾄﾛｰﾙがﾃｷｽﾄﾎﾞｯｸｽの場合
 		'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
 		If TypeOf pm_Dsp_Sub_Inf.Ctl Is System.Windows.Forms.TextBox Then
-			'現在のﾃｷｽﾄ上の選択状態を取得
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
-			'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
-			Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
+            '現在のﾃｷｽﾄ上の選択状態を取得
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelStart = pm_Dsp_Sub_Inf.Ctl.SelStart
+            Act_SelStart = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart
+            '2019/09/26 CHG E N D
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelLength = pm_Dsp_Sub_Inf.Ctl.SelLength
+            Act_SelLength = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength
+            '2019/09/26 CHG E N D
+            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/26 CHG START
+            'Act_SelStr = pm_Dsp_Sub_Inf.Ctl.SelText
+            Act_SelStr = DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectedText
+            '2019/09/26 CHG E N D
+            Act_SelStrB = CF_Ctr_AnsiLenB(Act_SelStr)
 			
 			If Act_SelStart = 0 And Act_SelStrB = pm_Dsp_Sub_Inf.Detail.Dsp_MaxLengthB Then
 				'全選択の場合（選択文字が最大バイト数と一致）
 				If pm_Dsp_Sub_Inf.Detail.Fil_Point = FIL_POINT_LEFT Then
-					'詰文字が左詰の場合
-					'最終文字を選択する
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf)) - 1
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelLength = 1
-				Else
-					'詰文字が左詰以外の場合
-					'１桁目を選択する
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelStart = 1
-					'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					pm_Dsp_Sub_Inf.Ctl.SelLength = 1
-				End If
+                    '詰文字が左詰の場合
+                    '最終文字を選択する
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf)) - 1
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf)) - 1
+                    '2019/09/26 CHG E N D
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelLength = 1
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = 1
+                    '2019/09/26 CHG E N D
+                Else
+                    '詰文字が左詰以外の場合
+                    '１桁目を選択する
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelStart = 1
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = 1
+                    '2019/09/26 CHG E N D
+                    'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/26 CHG START
+                    'pm_Dsp_Sub_Inf.Ctl.SelLength = 1
+                    DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = 1
+                    '2019/09/26 CHG E N D
+                End If
 			Else
 				If Act_SelStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf)) Then
 					'選択開始位置が一番右の場合
@@ -3807,22 +3930,34 @@ F_DTLTRA_Insert_err:
 					If Str_Wk = "" Then
 						'次の１桁がない場合
 						If pm_Dsp_Sub_Inf.Detail.Fil_Point = FIL_POINT_LEFT Then
-							'詰文字が左詰の場合
-							'一番右へ移動し選択なし状態に
-							'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							pm_Dsp_Sub_Inf.Ctl.SelStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf))
-							'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							pm_Dsp_Sub_Inf.Ctl.SelLength = 0
-						Else
+                            '詰文字が左詰の場合
+                            '一番右へ移動し選択なし状態に
+                            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/26 CHG START
+                            'pm_Dsp_Sub_Inf.Ctl.SelStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf))
+                            DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf))
+                            '2019/09/26 CHG E N D
+                            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/26 CHG START
+                            'pm_Dsp_Sub_Inf.Ctl.SelLength = 0
+                            DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = 0
+                            '2019/09/26 CHG E N D
+                        Else
 							'詰文字が左詰以外の場合
 							If Act_SelLength = 0 Then
-								'移動前の選択文字数がない場合
-								'一番右へ移動し選択なし状態に
-								'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								pm_Dsp_Sub_Inf.Ctl.SelStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf))
-								'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								pm_Dsp_Sub_Inf.Ctl.SelLength = 0
-							Else
+                                '移動前の選択文字数がない場合
+                                '一番右へ移動し選択なし状態に
+                                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/26 CHG START
+                                'pm_Dsp_Sub_Inf.Ctl.SelStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf))
+                                DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Len(CF_Get_Item_Value(pm_Dsp_Sub_Inf))
+                                '2019/09/26 CHG E N D
+                                'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/09/26 CHG START
+                                'pm_Dsp_Sub_Inf.Ctl.SelLength = 0
+                                DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = 0
+                                '2019/09/26 CHG E N D
+                            Else
 								'ENTキー押下と同様に次の項目へ
 								Call F_Set_Next_Focus(pm_Dsp_Sub_Inf, NEXT_FOCUS_MODE_KEYRIGHT, pm_Move_Flg, pm_All, pm_Run_Flg)
 							End If
@@ -3868,12 +4003,19 @@ F_DTLTRA_Insert_err:
 							Else
 								Wk_SelLength = 1
 							End If
-							
-							'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							pm_Dsp_Sub_Inf.Ctl.SelStart = Next_SelStart
-							'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
-						End If
+
+                            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/26 CHG START
+                            'pm_Dsp_Sub_Inf.Ctl.SelStart = Next_SelStart
+                            DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionStart = Next_SelStart
+                            '2019/09/26 CHG E N D
+                            'UPGRADE_WARNING: オブジェクト pm_Dsp_Sub_Inf.Ctl.SelLength の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '2019/09/26 CHG START
+                            'pm_Dsp_Sub_Inf.Ctl.SelLength = Wk_SelLength
+                            DirectCast(pm_Dsp_Sub_Inf.Ctl, TextBox).SelectionLength = Wk_SelLength
+                            '2019/09/26 CHG E N D
+
+                        End If
 					End If
 				End If
 				
@@ -6396,9 +6538,11 @@ ERR_F_GET_BD_DATA:
 		On Error Resume Next
 		System.Windows.Forms.Application.DoEvents()
 		FR_SSSSUB01.Cursor = System.Windows.Forms.Cursors.WaitCursor
-		'UPGRADE_ISSUE: Form メソッド FR_SSSSUB01.PrintForm はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-		FR_SSSSUB01.PrintForm()
-		FR_SSSSUB01.Cursor = System.Windows.Forms.Cursors.Arrow
+        'UPGRADE_ISSUE: Form メソッド FR_SSSSUB01.PrintForm はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
+        '2019/09/26　仮
+        'FR_SSSSUB01.PrintForm()
+        '2019/09/26　仮
+        FR_SSSSUB01.Cursor = System.Windows.Forms.Cursors.Arrow
 		If Err.Number <> 0 Then
 			If AE_MsgLibrary(PP_SSSMAIN, "HardcopyError") Then AE_Hardcopy_SSSMAIN = Cn_CuCurrent : Exit Function
 		End If
