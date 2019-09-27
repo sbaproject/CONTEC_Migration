@@ -57,13 +57,17 @@ Module BNKPR51_E01
 		'
 		DLGLST1.ShowDialog()
 		Select Case SSS_RTNWIN
-			Case 0 ' 印刷
-				rtn = LSTART_GetEvent()
-			Case 1 ' プレビュー
+            Case 0 ' 印刷
+                '2019/09/27 DEL START
+                'rtn = LSTART_GetEvent()
+                '2019/09/27 DEL END
+            Case 1 ' プレビュー
 				rtn = VSTART_GetEvent()
-			Case 2 ' ファイル出力
-				rtn = FSTART_GetEvent()
-			Case Else
+            Case 2 ' ファイル出力
+                '2019/09/27 DEL START
+                'rtn = FSTART_GetEvent()
+                '2019/09/27 DEL END
+            Case Else
 		End Select
 	End Sub
 End Module

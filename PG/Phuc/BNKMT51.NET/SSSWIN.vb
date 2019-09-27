@@ -760,7 +760,7 @@ ErrDate:
         ''
         DB_SYSTBH.MSGNM = msgName
         'Call DB_GetEq(DBN_SYSTBH, 1, MSGKB & DB_SYSTBH.MSGNM & VB6.Format(MSGSQ, "0"), BtrNormal)
-        '2019/09/23s CHG START
+        '2019/09/23 CHG START
         'Call SYSTBH_GetFirst(MSGKB, DB_SYSTBH.MSGNM, "")
         Dim sqlWhereStr As String = ""
         sqlWhereStr = " WHERE MSGKB = '" & MSGKB & "'"

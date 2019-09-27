@@ -1358,10 +1358,14 @@ Module SSSMAIN0001
 		wk_Var = SSSMAIN_Close()
 		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If wk_Var = -1 Then
-			wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
-			Call AE_WindowProcReset(PP_SSSMAIN)
-			ReleaseTabCapture(FR_SSSMAIN.Handle.ToInt32)
-			If PP_SSSMAIN.hIMC <> 0 Then
+            '2019/09/27 DEL START
+            'wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
+            '2019/09/27 DEL E N D
+            Call AE_WindowProcReset(PP_SSSMAIN)
+            '2019/09/27 DEL START
+            'ReleaseTabCapture(FR_SSSMAIN.Handle.ToInt32)
+            '2019/09/27 DEL E N D
+            If PP_SSSMAIN.hIMC <> 0 Then
 				Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
 			End If
 #If ActiveXcompile = 0 Then
@@ -2444,11 +2448,15 @@ CheckOrSkip:
 					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					CP_SSSMAIN(2).TpStr = wk_Slisted
 					CP_SSSMAIN(2).CIn = Cn_ChrInput
-					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 2) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					AE_Controls(PP_SSSMAIN.CtB + 2) = wk_Slisted
-					Call AE_Check_SSSMAIN_STTBNKCD(AE_Val3(CP_SSSMAIN(2), AE_Controls(PP_SSSMAIN.CtB + 2).ToString()), Cn_Status6, True, True)
-				End If
+                    'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 2) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/27 CHG START
+                    'AE_Controls(PP_SSSMAIN.CtB + 2) = wk_Slisted
+                    'Call AE_Check_SSSMAIN_STTBNKCD(AE_Val3(CP_SSSMAIN(2), AE_Controls(PP_SSSMAIN.CtB + 2).ToString()), Cn_Status6, True, True)
+                    AE_Controls(PP_SSSMAIN.CtB + 2).Text = wk_Slisted
+                    Call AE_Check_SSSMAIN_STTBNKCD(AE_Val3(CP_SSSMAIN(2), AE_Controls(PP_SSSMAIN.CtB + 2).Text), Cn_Status6, True, True)
+                    '2019/09/27 CHG START
+                End If
 			Else
 				PP_SSSMAIN.CursorDest = Cn_Dest0
 				PP_SSSMAIN.NextTx = PP_SSSMAIN.Tx
@@ -2480,11 +2488,15 @@ CheckOrSkip:
 					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					CP_SSSMAIN(4).TpStr = wk_Slisted
 					CP_SSSMAIN(4).CIn = Cn_ChrInput
-					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 4) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					AE_Controls(PP_SSSMAIN.CtB + 4) = wk_Slisted
-					Call AE_Check_SSSMAIN_ENDBNKCD(AE_Val3(CP_SSSMAIN(4), AE_Controls(PP_SSSMAIN.CtB + 4).ToString()), Cn_Status6, True, True)
-				End If
+                    'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 4) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/27 CHG START
+                    'AE_Controls(PP_SSSMAIN.CtB + 4) = wk_Slisted
+                    'Call AE_Check_SSSMAIN_ENDBNKCD(AE_Val3(CP_SSSMAIN(4), AE_Controls(PP_SSSMAIN.CtB + 4).ToString()), Cn_Status6, True, True)
+                    AE_Controls(PP_SSSMAIN.CtB + 4).Text = wk_Slisted
+                    Call AE_Check_SSSMAIN_ENDBNKCD(AE_Val3(CP_SSSMAIN(4), AE_Controls(PP_SSSMAIN.CtB + 4).Text), Cn_Status6, True, True)
+                    '2019/09/27 CHG END
+                End If
 			Else
 				PP_SSSMAIN.CursorDest = Cn_Dest0
 				PP_SSSMAIN.NextTx = PP_SSSMAIN.Tx

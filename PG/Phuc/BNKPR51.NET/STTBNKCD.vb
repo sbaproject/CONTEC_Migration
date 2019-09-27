@@ -37,11 +37,14 @@ Module STTBNKCD_F52
 	End Function
 	
 	Function STTBNKCD_Slist(ByRef PP As clsPP, ByVal STTBNKCD As Object) As Object
-		'
-		DB_PARA(DBN_BNKMTA).KeyNo = 1
-		'UPGRADE_WARNING: オブジェクト STTBNKCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		DB_PARA(DBN_BNKMTA).KeyBuf = STTBNKCD
-		WLSBNK.ShowDialog()
+        '
+
+        '2019/09/27 DEL START
+        'DB_PARA(DBN_BNKMTA).KeyNo = 1
+        ''UPGRADE_WARNING: オブジェクト STTBNKCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'DB_PARA(DBN_BNKMTA).KeyBuf = STTBNKCD
+        '2019/09/27 DEL END
+        WLSBNK.ShowDialog()
 		WLSBNK.Close()
 		'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト STTBNKCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
