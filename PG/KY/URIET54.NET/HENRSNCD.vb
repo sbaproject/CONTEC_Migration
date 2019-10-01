@@ -28,18 +28,18 @@ Module HENRSNCD_F51
         Else
             'UPGRADE_WARNING: オブジェクト HENRSNCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             wkHENRSNCD = HENRSNCD & Space(Len(DB_MEIMTA.MEICDA) - Len(HENRSNCD))
-			Call DB_GetEq(DBN_MEIMTA, 2, "009" & wkHENRSNCD, BtrNormal)
-			If DBSTAT = 0 Then
-				If DB_MEIMTA.DATKB = "9" Then
-					Call Dsp_Prompt("RNOTFOUND", 1) ' 削除レコードです。
-					'UPGRADE_WARNING: オブジェクト HENRSNCD_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					HENRSNCD_CheckC = -1
-				Else
-					'UPGRADE_WARNING: オブジェクト DE_INDEX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call HENRSNCD_Move(DE_INDEX)
-				End If
-			Else
-				Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0) ' 該当レコードはありません。
+            Call DB_GetEq(DBN_MEIMTA, 2, "009" & wkHENRSNCD, BtrNormal)
+            If DBSTAT = 0 Then
+                If DB_MEIMTA.DATKB = "9" Then
+                    Call Dsp_Prompt("RNOTFOUND", 1) ' 削除レコードです。
+                    'UPGRADE_WARNING: オブジェクト HENRSNCD_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    HENRSNCD_CheckC = -1
+                Else
+                    'UPGRADE_WARNING: オブジェクト DE_INDEX の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    Call HENRSNCD_Move(DE_INDEX)
+                End If
+            Else
+                Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0) ' 該当レコードはありません。
 				'UPGRADE_WARNING: オブジェクト HENRSNCD_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				HENRSNCD_CheckC = -1
 			End If

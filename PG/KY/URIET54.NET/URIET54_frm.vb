@@ -167,9 +167,9 @@ EventExitSub:
 				SM_FullPast.Enabled = AE_PopupMenu(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_HINCD(Index))
                 'UPGRADE_ISSUE: 定数 vbPopupMenuLeftButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
                 'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
-                '2019/09/19　仮
+                '2019/19/19　仮
                 'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
-                '2019/09/19　仮
+                '2019/19/19　仮
                 PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
 				If PP_SSSMAIN.PopupTx = BD_HINCD(Index).TabIndex Then wk_Tx = PP_SSSMAIN.PopupTx
@@ -1320,8 +1320,14 @@ EventExitSub:
 	End Sub
 	
 	Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
-		Dim NewLargeChange As Short 'Generated.
-		Dim wk_De As Short
+
+        '2019/09/19 ADD START
+        FORM_LOAD_FLG = True
+        '2019/09/19 ADD E N D
+
+
+        Dim NewLargeChange As Short 'Generated.
+        Dim wk_De As Short
 		Dim wk_ww As Short
 		Dim wk_Tx As Short
 		Dim wk_TxBase As Short
@@ -1577,22 +1583,28 @@ EventExitSub:
 			TX_Message.TabStop = False
 			TX_Message.Text = ""
 			wk_De = 1
-			Do While wk_De <= .MaxDspC
-				wk_ww = 0
-				Do While wk_ww < 6
-					wk_Tx = 18 + 6 * wk_De + wk_ww
-					AE_Controls(.CtB + wk_Tx).Top = VB6.TwipsToPixelsY(AE_BodyTop(wk_ww) + .PY_BHgt * wk_De)
-					wk_ww = wk_ww + 1
-				Loop 
-				wk_De = wk_De + 1
-			Loop 
-			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
-			Call AE_WindowProcSet_SSSMAIN()
-			ReleaseTabCapture(0)
-			SetTabCapture(Me.Handle.ToInt32)
-			'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Var = SSSMAIN_BeginPrg(PP_SSSMAIN)
+            Do While wk_De <= .MaxDspC
+                wk_ww = 0
+                Do While wk_ww < 6
+                    wk_Tx = 18 + 6 * wk_De + wk_ww
+                    AE_Controls(.CtB + wk_Tx).Top = VB6.TwipsToPixelsY(AE_BodyTop(wk_ww) + .PY_BHgt * wk_De)
+                    wk_ww = wk_ww + 1
+                Loop
+                wk_De = wk_De + 1
+            Loop
+            '2019/09/19　仮　API
+            'wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/09/19　仮　API
+            Call AE_WindowProcSet_SSSMAIN()
+            '2019/09/19　仮　API
+            'ReleaseTabCapture(0)
+            '2019/09/19　仮　API
+            '2019/09/19　仮　API
+            'SetTabCapture(Me.Handle.ToInt32)
+            '2019/09/19　仮　API
+            'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Var = SSSMAIN_BeginPrg(PP_SSSMAIN)
 			.FormWidth = VB6.PixelsToTwipsX(Me.Width)
 			.FormHeight = VB6.PixelsToTwipsY(Me.Height)
 			'初画面表示の性能チューニング用 ----------
@@ -1600,17 +1612,23 @@ EventExitSub:
 			'-----------------------------------------
 			.TimerStartUp = True
 		End With
-		TM_StartUp.Enabled = True
-	End Sub
+        TM_StartUp.Enabled = True
+
+        '2019/09/30 ADD START
+        Call SetBar(Me)
+        '2019/09/30 ADD E N D
+    End Sub
 	
 	Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 		Dim Cancel As Boolean = eventArgs.Cancel
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason 'Generated.
 		PP_SSSMAIN.UnloadMode = UnloadMode
 		Select Case UnloadMode
-			Case 0, 3
-				PP_SSSMAIN.CloseCode = 2
-				Cancel = True
+            Case 0, 3
+                '2019/09/30 DEL START
+                'PP_SSSMAIN.CloseCode = 2
+                '2019/09/30 DEL E N D
+                Cancel = True
 				Call AE_EndCm_SSSMAIN()
 			Case 2
 				PP_SSSMAIN.Caption = Me.Text
@@ -4388,4 +4406,129 @@ EventExitSub:
 				VS_Scrl_Change(eventArgs.newValue)
 		End Select
 	End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        '2019/09/30 ADD START
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.CloseCode = 1
+        Call AE_EndCm_SSSMAIN()
+        '2019/09/30 ADD E N D
+    End Sub
+
+    '2019/09/30 ADD START
+    Private Sub FR_SSSMAIN_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F5
+                    '参照
+                    Me.btnF5.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
+
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Executing Then Exit Sub
+        PP_SSSMAIN.Executing = True
+        PP_SSSMAIN.ExplicitExec = True
+        wk_Cursor = AE_Execute_SSSMAIN()
+        PP_SSSMAIN.ExplicitExec = False
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+        PP_SSSMAIN.Executing = False
+    End Sub
+
+    Private Sub CM_SLIST_Click_1(sender As Object, e As EventArgs) Handles CM_SLIST.Click
+
+    End Sub
+
+    Private Sub CM_INSERTDE_Click_1(sender As Object, e As EventArgs) Handles CM_INSERTDE.Click
+
+    End Sub
+
+    Private Sub CM_DELETEDE_Click_1(sender As Object, e As EventArgs) Handles CM_DELETEDE.Click
+
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        Dim wk_Cursor As Short
+        If Not PP_SSSMAIN.Operable Then
+            Exit Sub
+        End If
+        wk_Cursor = AE_AppendC_SSSMAIN(PP_SSSMAIN.Mode)
+        If wk_Cursor = Cn_CuInit Then
+            Call AE_CursorInit_SSSMAIN()
+        End If
+    End Sub
+
+    Private Sub btnF5_Click(sender As Object, e As EventArgs) Handles btnF5.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub CS_UDNDT_Click(sender As Object, e As EventArgs) Handles CS_UDNDT.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub CS_HENRSNCD_Click(sender As Object, e As EventArgs) Handles CS_HENRSNCD.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub CS_HENSTTCD_Click(sender As Object, e As EventArgs) Handles CS_HENSTTCD.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub CS_OUTSOUCD_Click(sender As Object, e As EventArgs) Handles CS_OUTSOUCD.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+    '2019/09/30 ADD E N D
 End Class

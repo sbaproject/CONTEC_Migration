@@ -38,10 +38,13 @@ Module UDNDT_F56
 				UDNDT_Check = -1
 				Exit Function
 			End If
-			'請求締日チェック
-			'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_TOKCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wkTOKCD = RD_SSSMAIN_TOKCD(-1) & Space(Len(DB_TOKMTA.TOKCD) - Len(RD_SSSMAIN_TOKCD(-1)))
-			Call DB_GetEq(DBN_TOKMTA, 1, wkTOKCD, BtrNormal)
+            '請求締日チェック
+            'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_TOKCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/30 CHG START
+            'wkTOKCD = RD_SSSMAIN_TOKCD(-1) & Space(Len(DB_TOKMTA.TOKCD) - Len(RD_SSSMAIN_TOKCD(-1)))
+            wkTOKCD = RD_SSSMAIN_TOKCD(-1) & Space(Len(DB_NullReplace(DB_TOKMTA.TOKCD, Space(10))) - Len(RD_SSSMAIN_TOKCD(-1)))
+            '2019/09/30 CHG E N D
+            Call DB_GetEq(DBN_TOKMTA, 1, wkTOKCD, BtrNormal)
 			If DBSTAT = 0 Then
 				'UPGRADE_WARNING: オブジェクト UDNDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If UDNDT <= CNV_DATE(DB_TOKMTA.TOKSMEDT) Then
