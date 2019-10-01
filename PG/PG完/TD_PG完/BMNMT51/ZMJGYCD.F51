@@ -1,0 +1,33 @@
+Attribute VB_Name = "ZMJGYCD_F51"
+Option Explicit
+'
+' スロット名        : 会計事業所コード・画面項目スロット
+' ユニット名        : ZMJGYCD.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/05/30
+' 使用プログラム名  : BMNMT51
+'
+
+Function ZMJGYCD_CheckC(ZMJGYCD, ByVal De_Index)
+Dim rtn As Integer
+Dim wkZMJGYCD As String
+    
+    ZMJGYCD_CheckC = 0
+    If LenWid(Trim$(ZMJGYCD)) = 0 Then
+        rtn = Dsp_Msgbox(SSS_ERROR, "RNOTFOUND", 0)
+        ZMJGYCD_CheckC = -1
+    Else
+        wkZMJGYCD = ZMJGYCD & Space(Len(DB_MEIMTA.MEICDA) - Len(ZMJGYCD))
+        Call DB_GetEq(DBN_MEIMTA, 2, "021" & wkZMJGYCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_MEIMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                ZMJGYCD_CheckC = 1
+            End If
+        Else
+            rtn = Dsp_Msgbox(SSS_ERROR, "RNOTFOUND", 0)
+            ZMJGYCD_CheckC = -1
+        End If
+    End If
+
+End Function

@@ -1,0 +1,64 @@
+Attribute VB_Name = "RNKCD_F51"
+Option Explicit
+'
+' スロット名        : ランク・画面項目スロット
+' ユニット名        : RNKCD.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/06/14
+' 使用プログラム名  : HINMT51
+'
+
+Function RNKCD_CheckC(ByVal RNKCD, ByVal SKHINGRP, ByVal URISETDT, ByVal De_INDEX)
+Dim rtn As Integer
+Dim wkRNKCD As String
+    '
+    If Trim(SKHINGRP) = "" Then Exit Function
+    RNKCD_CheckC = 0
+    If Trim$(RNKCD) = "" Then
+        RNKCD_CheckC = -1
+    Else
+        Call MEIMTA_RClear
+        wkRNKCD = RNKCD & Space(Len(DB_MEIMTA.MEICDA) - Len(RNKCD))
+        Call DB_GetEq(DBN_MEIMTA, 2, "059" & wkRNKCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_MEIMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                RNKCD_CheckC = -1
+            End If
+        Else
+            rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            RNKCD_CheckC = -1
+        End If
+        If RNKCD_CheckC = 0 Then
+            Call DB_GetEq(DBN_RNKMTA, 1, SKHINGRP & RNKCD & Format$(URISETDT, "YYYYMMDD"), BtrNormal)
+            If DBSTAT = 0 Then
+                Call SCR_FromMfil(De_INDEX)
+                If DB_RNKMTA.DATKB = "9" Then
+                    Call DP_SSSMAIN_UPDKB(De_INDEX, "削除")
+                Else
+                    Call DP_SSSMAIN_UPDKB(De_INDEX, "更新")
+                End If
+            Else
+                Call DP_SSSMAIN_UPDKB(De_INDEX, "追加")
+            End If
+        End If
+    End If
+End Function
+
+Function RNKCD_Slist(PP As clsPP, ByVal RNKCD)
+    '
+    WLS_MEI1.Caption = "ランク一覧"
+    WLS_MEI1!LST.Clear
+    Call DB_GetGrEq(DBN_MEIMTA, 3, "059", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "059"
+        If DB_MEIMTA.DATKB <> "9" Then
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & LeftWid(DB_MEIMTA.MEINMA, 40)
+        End If
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = LenWid(DB_MEIMTA.MEICDA)
+    WLS_MEI1.Show 1
+    Unload WLS_MEI1
+    RNKCD_Slist = PP.SlistCom
+End Function
+

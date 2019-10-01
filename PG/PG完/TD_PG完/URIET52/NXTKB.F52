@@ -1,0 +1,56 @@
+Attribute VB_Name = "NXTKB_F52"
+Option Explicit
+'
+' スロット名        : 帳端区分・画面項目スロット
+' ユニット名        : NXTKB.F01
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : URIET01
+
+'帳端区分が入力された場合に、そのチェックを行う。
+Function NXTKB_CheckC(NXTKB)
+    NXTKB_CheckC = 0        '正常終了。
+    If Trim$(NXTKB) = "" Then
+        NXTKB = "0"
+    Else
+        If SSSVal(NXTKB) > 2 Then NXTKB = "0"
+    End If
+End Function
+
+Function NXTKB_InitVal()
+    NXTKB_InitVal = "0"
+End Function
+
+Function NXTKB_Slist(PP As clsPP, ByVal TOKSMEKB, ByVal TOKSMEDD, ByVal TOKSMECC, ByVal UDNDT)
+Dim wkSSADT0    As String
+Dim wkSSADT1    As String
+Dim wkSSADT2    As String
+    
+'   === 請求締め日付取得 ===
+    If SSSVal(DB_TOKMTA.TOKSMEKB) = 1 Then
+'       --- 月X回締め ---
+        wkSSADT0 = Get_SMEDT1(SSSVal(DB_TOKMTA.TOKSMEDD), SSSVal(DB_TOKMTA.TOKSMECC), Format$(UDNDT, "YYYY/MM/DD"), SSSVal("0"))
+        wkSSADT1 = Get_SMEDT1(SSSVal(DB_TOKMTA.TOKSMEDD), SSSVal(DB_TOKMTA.TOKSMECC), Format$(UDNDT, "YYYY/MM/DD"), SSSVal("1"))
+        wkSSADT2 = Get_SMEDT1(SSSVal(DB_TOKMTA.TOKSMEDD), SSSVal(DB_TOKMTA.TOKSMECC), Format$(UDNDT, "YYYY/MM/DD"), SSSVal("2"))
+    Else
+'       --- 週締め ---
+        wkSSADT0 = Get_SMEDT2(SSSVal(DB_TOKMTA.TOKSDWKB), Format$(UDNDT, "YYYY/MM/DD"), SSSVal("0"))
+        wkSSADT1 = Get_SMEDT2(SSSVal(DB_TOKMTA.TOKSDWKB), Format$(UDNDT, "YYYY/MM/DD"), SSSVal("1"))
+        wkSSADT2 = Get_SMEDT2(SSSVal(DB_TOKMTA.TOKSDWKB), Format$(UDNDT, "YYYY/MM/DD"), SSSVal("2"))
+    End If
+    
+    WLS_LIST.Caption = "帳端区分"
+    WLS_LIST!LST.Clear
+'''''    WLS_LIST!LST.AddItem "0 今回請求"
+'''''    WLS_LIST!LST.AddItem "1 次回請求"
+'''''    WLS_LIST!LST.AddItem "2 次々回請求"
+    
+    WLS_LIST!LST.AddItem "0 " & Mid((wkSSADT0), 6, 5) & "請求"
+    WLS_LIST!LST.AddItem "1 " & Mid((wkSSADT1), 6, 5) & "請求"
+    WLS_LIST!LST.AddItem "2 " & Mid((wkSSADT2), 6, 5) & "請求"
+    SSS_WLSLIST_KETA = 1
+    WLS_LIST.Show 1 '0:入力候補一覧は入力後に残す指定。
+    Unload WLS_LIST
+    NXTKB_Slist = PP.SlistCom
+End Function
+

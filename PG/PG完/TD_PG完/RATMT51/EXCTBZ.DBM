@@ -1,0 +1,23 @@
+Attribute VB_Name = "EXCTBZ_DBM"
+        Option Explicit
+'==========================================================================
+'   EXCTBZ.DBM   排他テーブル                     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_EXCTBZ
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    GYMCD          As String * 10    '業務コード            0000000000
+    LCKTM          As String * 6     '時刻                  9(06)
+    SEQNO          As String * 10    '連番                  0000000000
+    INTLCD         As String * 10    '内部コード            0000000000
+    EXTCD          As String * 10    '外部コード            0000000000
+End Type
+Global DB_EXCTBZ As TYPE_DB_EXCTBZ
+Global DBN_EXCTBZ As Integer
+' Index1( CLTID + GYMCD )
+' Index2( GYMCD )
+
+Sub EXCTBZ_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_EXCTBZ, G_LB)
+    Call ResetBuf(DBN_EXCTBZ)
+End Sub

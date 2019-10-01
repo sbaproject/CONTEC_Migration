@@ -1,0 +1,25 @@
+Attribute VB_Name = "JDNTRKB_F51"
+Option Explicit
+'
+' スロット名        : 受注取引区分・画面項目スロット
+' ユニット名        : JDNTRKB.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/24
+' 使用プログラム名  : URIET53
+'
+
+Function JDNTRKB_Slist(PP As clsPP)
+    WLS_MEI1.Caption = "受注取引区分一覧"
+    WLS_MEI1!LST.Clear
+    Call DB_GetGrEq(DBN_MEIMTA, 3, "006", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "006"
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & DB_MEIMTA.MEINMA
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = 2
+    WLS_MEI1.Show 1
+    JDNTRKB_Slist = PP.SlistCom
+
+End Function
+
+

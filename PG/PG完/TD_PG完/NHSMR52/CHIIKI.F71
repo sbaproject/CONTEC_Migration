@@ -1,0 +1,88 @@
+Attribute VB_Name = "CHIIKI_F71"
+Option Explicit
+'
+'スロット名      :商品コード・画面項目スロット
+'ユニット名      :CHIIKI.F71
+'記述者          :Standard Library
+'作成日付        :1996/07/03
+'使用プログラム  :NHSMR52
+'
+
+Function CHIIKI_Check(ByVal CHIIKI, ByVal De_Index)
+Dim rtn As Integer
+Dim MEINMA As String    ' 2006.7.17 AZU Add
+Dim wkCHIIKI As String    ' 2006.7.18 AZU Add
+
+    '
+    CHIIKI_Check = 0
+' 2006.7.17 AZU Del Start
+'    If Trim$(CHIIKI) = "" Then CHIIKI = ""
+'    Call MEIMTA_RClear
+'    If Trim$(CHIIKI) = "" Then
+      '  CHIIKI_Check = -1
+' 2006.7.17 AZU Del End
+' 2006.7.17 AZU Add Start
+    Call MEIMTA_RClear
+    If Trim$(CHIIKI) = "" Then
+        Call DP_SSSMAIN_CHIIKI(De_Index, "")
+'        Call UnLock_Fields
+       ' GYOSHU_Check = -1
+        Call DP_SSSMAIN_CHIIKIRN(De_Index, "")
+' 2006.7.17 AZU Add End
+        CHIIKI_Check = -1                               '2006.12.26
+    Else
+        wkCHIIKI = CHIIKI & Space(Len(DB_MEIMTA.MEICDA) - Len(CHIIKI)) & Space(Len(DB_MEIMTA.MEICDB))   ' 2006.7.18 AZU Add
+        'Call DB_GetEq(DBN_MEIMTA, 1, CHIIKI, BtrNormal)
+        'Call DB_GetGrEq(DBN_MEIMTA, 2, "1" & "004" & CHIIKI, BtrNormal)    ' 2006.7.17 AZU Add
+        Call DB_GetGrEq(DBN_MEIMTA, 1, "004" & wkCHIIKI, BtrNormal)         ' 2006.7.18 AZU Add
+        If DBSTAT = 0 Then
+            If DB_MEIMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                CHIIKI_Check = 1
+            End If
+        Else
+            rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            CHIIKI_Check = -1
+        End If
+' 2006.7.17 AZU Add Start
+        If CHIIKI_Check = 0 Then
+            If Trim(CHIIKI) = Trim(DB_MEIMTA.MEICDA) Then
+                Call DP_SSSMAIN_CHIIKI(De_Index, Trim(DB_MEIMTA.MEICDA))
+                Call DP_SSSMAIN_CHIIKIRN(De_Index, Trim(DB_MEIMTA.MEINMA))
+            Else
+                rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+                CHIIKI_Check = -1
+                Call DP_SSSMAIN_CHIIKIRN(De_Index, " ")
+            End If
+        End If
+' 2006.7.17 AZU Add End
+    End If
+    'Call SCR_FromMEIMTA(De_Index)
+End Function
+
+Function CHIIKI_Slist(PP As clsPP, ByVal CHIIKI)
+    '
+    'WLS_LIST.Caption = "地域一覧"
+    WLS_MEI1.Caption = "地域一覧"
+    'WLS_LIST!LST.Clear
+    WLS_MEI1!LST.Clear
+    Call DB_GetGrEq(DBN_MEIMTA, 1, "004", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "004"
+        If DB_MEIMTA.DATKB <> "9" Then
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & LeftWid(DB_MEIMTA.MEINMA, 40)
+        End If
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+' 2006.7.17 AZU Mod Start
+'    SSS_WLSLIST_KETA = LenWid(DB_MEIMTA.KEYCD)
+    SSS_WLSLIST_KETA = 5
+' 2006.7.17 AZU Mod End
+    'DB_PARA(DBN_MEIMTA).KeyNo = 1
+    'DB_PARA(DBN_MEIMTA).KeyBuf = CHIIKI
+    'WLS_LIST.Show 1
+    WLS_MEI1.Show 1
+    'Unload WLS_LIST
+    Unload WLS_MEI1
+    CHIIKI_Slist = PP.SlistCom
+End Function
+

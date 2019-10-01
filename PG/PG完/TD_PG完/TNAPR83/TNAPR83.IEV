@@ -1,0 +1,23 @@
+Attribute VB_Name = "TNAPR83_IEV"
+Option Explicit
+Global Const SSS_MAX_DB% = 20
+Global DB_PARA(SSS_MAX_DB) As TYPE_DB_PARA
+Global Const SSS_PrgId = "TNAPR83"
+Global Const SSS_PrgNm = "íIâµí≤ç∏ï\èoóÕ            "
+Global Const SSS_FraId = "ET1"
+
+Sub Init_Fil()  'Generated.
+End Sub
+
+Sub SetBuf(ByVal Fno As Integer)  'Generated.
+End Sub
+
+Sub ResetBuf(ByVal Fno As Integer)  'Generated.
+End Sub
+
+Function RecordFromObject(ByVal Fno As Integer) As Integer  'Generated.
+End Function
+
+Function ObjectFromRecord(ByVal Fno As Integer) As Integer  'Generated.
+End Function
+

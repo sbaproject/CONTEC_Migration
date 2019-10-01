@@ -1,0 +1,198 @@
+Option Explicit
+Global Const SSS_MAX_DB% = 17
+Global DB_PARA(SSS_MAX_DB) As TYPE_DB_PARA
+Global Const SSS_PrgId = "TNADL51"
+Global Const SSS_PrgNm = "ç›å…è∆âÔÅiêªïiï Åj            "
+Global Const SSS_FraId = "DL4"
+
+Sub Init_Fil () 'Generated.
+    '
+    DBN_TNADL51 = 0
+    DB_PARA(DBN_TNADL51).TBLID = "TNADL51"
+    DB_PARA(DBN_TNADL51).DBID = "USR1"
+    SSS_MFIL = DBN_TNADL51
+    '
+    DBN_HINMTA = 1
+    DB_PARA(DBN_HINMTA).TBLID = "HINMTA"
+    DB_PARA(DBN_HINMTA).DBID = "USR1"
+    '
+    DBN_SYSTBA = 2
+    DB_PARA(DBN_SYSTBA).TBLID = "SYSTBA"
+    DB_PARA(DBN_SYSTBA).DBID = "USR1"
+    '
+    DBN_SYSTBB = 3
+    DB_PARA(DBN_SYSTBB).TBLID = "SYSTBB"
+    DB_PARA(DBN_SYSTBB).DBID = "USR1"
+    '
+    DBN_SYSTBC = 4
+    DB_PARA(DBN_SYSTBC).TBLID = "SYSTBC"
+    DB_PARA(DBN_SYSTBC).DBID = "USR1"
+    '
+    DBN_SYSTBD = 5
+    DB_PARA(DBN_SYSTBD).TBLID = "SYSTBD"
+    DB_PARA(DBN_SYSTBD).DBID = "USR1"
+    '
+    DBN_SYSTBF = 6
+    DB_PARA(DBN_SYSTBF).TBLID = "SYSTBF"
+    DB_PARA(DBN_SYSTBF).DBID = "USR1"
+    '
+    DBN_SYSTBG = 7
+    DB_PARA(DBN_SYSTBG).TBLID = "SYSTBG"
+    DB_PARA(DBN_SYSTBG).DBID = "USR1"
+    '
+    DBN_SYSTBH = 8
+    DB_PARA(DBN_SYSTBH).TBLID = "SYSTBH"
+    DB_PARA(DBN_SYSTBH).DBID = "USR1"
+    '
+    DBN_CLSMTA = 9
+    DB_PARA(DBN_CLSMTA).TBLID = "CLSMTA"
+    DB_PARA(DBN_CLSMTA).DBID = "USR1"
+    '
+    DBN_CLSMTB = 10
+    DB_PARA(DBN_CLSMTB).TBLID = "CLSMTB"
+    DB_PARA(DBN_CLSMTB).DBID = "USR1"
+    '
+    DBN_TANMTA = 11
+    DB_PARA(DBN_TANMTA).TBLID = "TANMTA"
+    DB_PARA(DBN_TANMTA).DBID = "USR1"
+    '
+    DBN_UNYMTA = 12
+    DB_PARA(DBN_UNYMTA).TBLID = "UNYMTA"
+    DB_PARA(DBN_UNYMTA).DBID = "USR1"
+    '
+    DBN_EXCTBZ = 13
+    DB_PARA(DBN_EXCTBZ).TBLID = "EXCTBZ"
+    DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+    '
+    DBN_GYMTBZ = 14
+    DB_PARA(DBN_GYMTBZ).TBLID = "GYMTBZ"
+    DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+    '
+    DBN_KNGMTB = 15
+    DB_PARA(DBN_KNGMTB).TBLID = "KNGMTB"
+    DB_PARA(DBN_KNGMTB).DBID = "USR1"
+    '
+    DBN_MEIMTA = 16
+    DB_PARA(DBN_MEIMTA).TBLID = "MEIMTA"
+    DB_PARA(DBN_MEIMTA).DBID = "USR1"
+    '
+    DBN_SOUMTA = -1
+    '
+    DBN_HINMTB = -2
+    '
+    DBN_ZAISMA = -3
+
+    SSS_BILFL = 9
+End Sub
+
+Sub SCR_FromHINMTA (ByVal De As Integer) 'Generated.
+    Call DP_SSSMAIN_HINCD(De, DB_HINMTA.HINCD)
+    Call DP_SSSMAIN_HINNMA(De, DB_HINMTA.HINNMA)
+    Call DP_SSSMAIN_HINNMB(De, DB_HINMTA.HINNMB)
+    Call DP_SSSMAIN_UNTNM(De, DB_HINMTA.UNTNM)
+End Sub
+
+Sub HINMTA_FromSCR (ByVal De As Integer) 'Generated.
+    DB_HINMTA.HINCD = RD_SSSMAIN_HINCD(De)
+    DB_HINMTA.HINNMA = RD_SSSMAIN_HINNMA(De)
+    DB_HINMTA.HINNMB = RD_SSSMAIN_HINNMB(De)
+    DB_HINMTA.UNTNM = RD_SSSMAIN_UNTNM(De)
+    DB_HINMTA.OPEID = SSS_OPEID
+    DB_HINMTA.CLTID = SSS_CLTID
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+        DB_HINMTA.WRTTM = Format(Now, "hhmmss")
+        DB_HINMTA.WRTDT = Format(Now, "YYYYMMDD")
+    Else
+        DB_HINMTA.WRTTM = DB_ORATM
+        DB_HINMTA.WRTDT = DB_ORADT
+    End If
+End Sub
+
+Sub SCR_FromMfil (ByVal De As Integer) 'Generated.
+    Call DP_SSSMAIN_RELZAISU(De, DB_TNADL51.RELZAISU)
+    Call DP_SSSMAIN_SMAINPSU(De, DB_TNADL51.SMAINPSU)
+    Call DP_SSSMAIN_SMAOUTSU(De, DB_TNADL51.SMAOUTSU)
+    Call DP_SSSMAIN_SMAZAISU(De, DB_TNADL51.SMAZAISU)
+    Call DP_SSSMAIN_SMZZAISU(De, DB_TNADL51.SMZZAISU)
+    Call DP_SSSMAIN_SOUCD(De, DB_TNADL51.SOUCD)
+    Call DP_SSSMAIN_SOUNM(De, DB_TNADL51.SOUNM)
+    Call DP_SSSMAIN_ZAISAISU(De, DB_TNADL51.ZAISAISU)
+End Sub
+
+Sub Mfil_FromSCR (ByVal De As Integer) 'Generated.
+    DB_TNADL51.RELZAISU = RD_SSSMAIN_RELZAISU(De)
+    DB_TNADL51.SMAINPSU = RD_SSSMAIN_SMAINPSU(De)
+    DB_TNADL51.SMAOUTSU = RD_SSSMAIN_SMAOUTSU(De)
+    DB_TNADL51.SMAZAISU = RD_SSSMAIN_SMAZAISU(De)
+    DB_TNADL51.SMZZAISU = RD_SSSMAIN_SMZZAISU(De)
+    DB_TNADL51.SOUCD = RD_SSSMAIN_SOUCD(De)
+    DB_TNADL51.SOUNM = RD_SSSMAIN_SOUNM(De)
+    DB_TNADL51.ZAISAISU = RD_SSSMAIN_ZAISAISU(De)
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+    Else
+    End If
+End Sub
+
+Sub UpdSmf () 'Generated.
+End Sub
+
+Sub SetBuf (ByVal Fno As Integer) 'Generated.
+    Select Case Fno
+        Case DBN_TNADL51: Lset G_LB = DB_TNADL51
+        Case DBN_HINMTA: Lset G_LB = DB_HINMTA
+        Case DBN_SYSTBA: Lset G_LB = DB_SYSTBA
+        Case DBN_SYSTBB: Lset G_LB = DB_SYSTBB
+        Case DBN_SYSTBC: Lset G_LB = DB_SYSTBC
+        Case DBN_SYSTBD: Lset G_LB = DB_SYSTBD
+        Case DBN_SYSTBF: Lset G_LB = DB_SYSTBF
+        Case DBN_SYSTBG: Lset G_LB = DB_SYSTBG
+        Case DBN_SYSTBH: Lset G_LB = DB_SYSTBH
+        Case DBN_CLSMTA: Lset G_LB = DB_CLSMTA
+        Case DBN_CLSMTB: Lset G_LB = DB_CLSMTB
+        Case DBN_TANMTA: Lset G_LB = DB_TANMTA
+        Case DBN_UNYMTA: Lset G_LB = DB_UNYMTA
+        Case DBN_EXCTBZ: Lset G_LB = DB_EXCTBZ
+        Case DBN_GYMTBZ: Lset G_LB = DB_GYMTBZ
+        Case DBN_KNGMTB: Lset G_LB = DB_KNGMTB
+        Case DBN_MEIMTA: Lset G_LB = DB_MEIMTA
+    End Select
+End Sub
+
+Sub ResetBuf (ByVal Fno As Integer) 'Generated.
+    Select Case Fno
+        Case DBN_TNADL51: Lset DB_TNADL51 = G_LB
+        Case DBN_HINMTA: Lset DB_HINMTA = G_LB
+        Case DBN_SYSTBA: Lset DB_SYSTBA = G_LB
+        Case DBN_SYSTBB: Lset DB_SYSTBB = G_LB
+        Case DBN_SYSTBC: Lset DB_SYSTBC = G_LB
+        Case DBN_SYSTBD: Lset DB_SYSTBD = G_LB
+        Case DBN_SYSTBF: Lset DB_SYSTBF = G_LB
+        Case DBN_SYSTBG: Lset DB_SYSTBG = G_LB
+        Case DBN_SYSTBH: Lset DB_SYSTBH = G_LB
+        Case DBN_CLSMTA: Lset DB_CLSMTA = G_LB
+        Case DBN_CLSMTB: Lset DB_CLSMTB = G_LB
+        Case DBN_TANMTA: Lset DB_TANMTA = G_LB
+        Case DBN_UNYMTA: Lset DB_UNYMTA = G_LB
+        Case DBN_EXCTBZ: Lset DB_EXCTBZ = G_LB
+        Case DBN_GYMTBZ: Lset DB_GYMTBZ = G_LB
+        Case DBN_KNGMTB: Lset DB_KNGMTB = G_LB
+        Case DBN_MEIMTA: Lset DB_MEIMTA = G_LB
+    End Select
+End Sub
+
+Function RecordFromObject (ByVal Fno As Integer) As Integer 'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else :
+    End Select
+    RecordFromObject = Rtc
+End Function
+
+Function ObjectFromRecord (ByVal Fno As Integer) As Integer 'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else :
+    End Select
+    ObjectFromRecord = Rtc
+End Function
+

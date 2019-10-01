@@ -1,0 +1,15 @@
+Attribute VB_Name = "LINNO_F51"
+Option Explicit
+'
+' スロット名        : 行番号・画面項目スロット
+' ユニット名        : LINNO.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/07/21
+' 使用プログラム名  : SUODET52
+'
+
+Function LINNO_InitVal(ByVal De_index)
+    '
+    LINNO_InitVal = Format$(De_index + 1, "00")
+End Function
+

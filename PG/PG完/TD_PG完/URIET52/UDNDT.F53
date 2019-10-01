@@ -1,0 +1,95 @@
+Attribute VB_Name = "UDNDT_F53"
+Option Explicit
+'
+' スロット名        : 売上日付・画面項目スロット
+' ユニット名        : UDNDT.F53
+' 記述者            : Standard Library
+' 作成日付          : 2006/09/22
+' 使用プログラム名  : URIET52
+'
+'
+Dim NotFirst As Boolean
+
+Function UDNDT_Check(ByVal UDNDT)
+Dim Rtn As Integer
+Dim wkTOKCD As String
+    '
+'    If SetFirst = True Then
+'        SetFirst = False
+'        Exit Function
+'    End If
+    
+    UDNDT_Check = 0
+    Rtn = CHECK_DATE(UDNDT)
+    If Rtn Then
+        If UDNDT <= CNV_DATE(DB_SYSTBA.UKSMEDT) Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "DATE_1", 0) '月次仮締日を過ぎています。
+            UDNDT_Check = -1
+            Exit Function
+        End If
+        '
+        wkTOKCD = RD_SSSMAIN_TOKCD(-1) & Space(Len(DB_TOKMTA.TOKCD) - Len(RD_SSSMAIN_TOKCD(-1)))
+        Call DB_GetEq(DBN_TOKMTA, 1, wkTOKCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If UDNDT <= CNV_DATE(DB_TOKMTA.TOKSMEDT) Then
+                Rtn = DSP_MsgBox(SSS_ERROR, "DATE_1", 1) '登録された得意先の請求締日を過ぎています。
+                UDNDT_Check = -1
+                Exit Function
+            End If
+        End If
+        If CNV_DATE(DB_UNYMTA.UNYDT) < UDNDT Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "DATE_1", 3) '運用日以降は入力できません。
+            UDNDT_Check = -1
+            Exit Function
+        End If
+        '2007/11/15 FKS)minamoto ADD START
+        '2007/11/26 FKS)minamoto CHG START
+        'If UDNDT < CNV_DATE(DB_JDNTHA.JDNDT) Then
+        If UDNDT < CNV_DATE(DB_JDNTHA.REGDT) Then
+        '2007/11/26 FKS)minamoto CHG END
+            Rtn = DSP_MsgBox(SSS_ERROR, "DATE_1", 6) '受注日より前の日の為、入力できません。
+            UDNDT_Check = -1
+            Exit Function
+        End If
+        '2007/11/15 FKS)minamoto ADD END
+'ADD START FKS)INABA 2010/06/03 **************************************************************
+'連絡票№799
+        If Left$(UDNDT, 7) < Left$(CNV_DATE(DB_JDNTHA.JDNDT), 7) Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "DATE_1", 8) '売上月が受注月以前の為入力できません
+            UDNDT_Check = -1
+            Exit Function
+        End If
+'ADD  END  FKS)INABA 2010/06/03 **************************************************************
+    Else
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)
+        UDNDT_Check = -1
+    End If
+End Function
+
+Function UDNDT_InitVal(ByVal UDNDT)
+    '
+    If NotFirst = False Or Not IsDate(UDNDT) Then
+        NotFirst = True
+        UDNDT_InitVal = DB_UNYMTA.UNYDT     '運用マスタの運用日付。
+    '２行追加 1998/05/23 月次更新済みチェック
+    ElseIf UDNDT <= CNV_DATE(DB_SYSTBA.MONUPDDT) Then
+        UDNDT_InitVal = DB_UNYMTA.UNYDT
+    Else
+        UDNDT_InitVal = UDNDT          '前の伝票の日付。
+    End If
+End Function
+
+Function UDNDT_Skip(CT_UDNDT As Control)
+    '
+    CT_UDNDT.SelStart = 8   'yyyy-mm-dd の dd の場所へスキップ。
+    UDNDT_Skip = False
+End Function
+
+Function UDNDT_Slist(ByVal UDNDT, PP As clsPP)
+    '
+    Set_date = UDNDT
+    WLS_DATE.Show 1
+    Unload WLS_DATE
+    UDNDT_Slist = Set_date
+End Function
+

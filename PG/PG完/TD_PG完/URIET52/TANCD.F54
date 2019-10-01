@@ -1,0 +1,19 @@
+Attribute VB_Name = "TANCD_F54"
+Option Explicit
+'
+'スロット名      :担当者コード・画面項目スロット
+'ユニット名      :TANCD.F54
+'記述者          :Standard Library
+'作成日付        :2006/08/24
+'使用プログラム  :URIET53/SEIPR54
+'
+
+Function TANCD_Slist(PP As clsPP, ByVal TANCD)
+    '
+    DB_PARA(DBN_TANMTA).KeyNo = 1
+    DB_PARA(DBN_TANMTA).KeyBuf = TANCD
+    WLSTAN.Show 1
+    Unload WLSTAN
+    TANCD_Slist = PP.SLISTCOM
+End Function
+

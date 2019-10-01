@@ -1,0 +1,40 @@
+Attribute VB_Name = "HIKKB_F51"
+Option Explicit
+'
+' スロット名         : 引当対象区分・画面項目スロット
+' ユニット名         : HIKKB.F51
+' 記述者             : Standard Library
+' 作成日付           : 2006/08/28
+' 使用プログラム名   : SOUMT51
+'
+
+Function HIKKB_CheckC(HIKKB)
+Dim Rtn As Integer
+    '
+    HIKKB_CheckC = 0
+    Select Case HIKKB
+        Case "1", "9"
+        Case Else
+            HIKKB = "1"
+    End Select
+
+End Function
+'
+'Function HIKKB_InitVal(ByVal SOUCD, ByVal De_Index As Integer)
+'    If Trim$(SOUCD) = "" Then
+'     HIKKB_InitVal = " "
+'    Else
+'     HIKKB_InitVal = "1"
+'    End If
+'
+'End Function
+Function HIKKB_DerivedC(ByVal HIKKB, ByVal SOUCD, ByVal De_Index As Integer)
+Dim Rtn As Integer
+    '
+  If Trim$(SOUCD) <> "" Then
+    If Trim(HIKKB) = "" Then
+
+     HIKKB_DerivedC = "1"
+    End If
+  End If
+End Function

@@ -1,0 +1,51 @@
+Attribute VB_Name = "MEIMTC_DBM"
+        Option Explicit
+'==========================================================================
+'   MEIMTC.DBM   適用日名称マスタ                 UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_MEIMTC
+    DATKB          As String * 1     '伝票削除区分          0
+    KEYCD          As String * 3     'キー                  000
+    MEIKMKNM       As String * 20    '項目名
+    MEICDA         As String * 20    'コード１
+    MEICDB         As String * 5     'コード２
+    STTTKDT        As String * 8     '適用開始日
+    ENDTKDT        As String * 8     '適用終了日            YYYY/MM/DD
+    MEINMA         As String * 40    '名称１
+    MEINMB         As String * 20    '名称２
+    MEINMC         As String * 20    '名称３
+    MEISUA         As Currency       '数値項目１            ###,###,##0.0000;;#
+    MEISUB         As Currency       '数値項目２            ###,##0.0000;;#
+    MEISUC         As Currency       '数値項目３            ###,##0.0000;;#
+    MEIKBA         As String * 1     '区分１
+    MEIKBB         As String * 1     '区分２
+    MEIKBC         As String * 1     '区分３
+    DSPORD         As String * 3     '表示順序
+    RELFL          As String * 1     '連携フラグ            0
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    PGID           As String * 7     'プログラムID          !@@@@@@@@
+End Type
+Global DB_MEIMTC As TYPE_DB_MEIMTC
+Global DBN_MEIMTC As Integer
+' Index1( KEYCD + MEICDA + MEICDB + STTTKDT + ENDTKDT )
+' Index2( KEYCD + MEICDA )
+' Index3( KEYCD + DSPORD + MEICDA )
+' Index4( KEYCD + MEICDB + MEICDA )
+' Index5( KEYCD + MEIKBA )
+
+Sub MEIMTC_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_MEIMTC, G_LB)
+    Call ResetBuf(DBN_MEIMTC)
+End Sub

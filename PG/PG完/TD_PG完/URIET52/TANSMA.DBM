@@ -1,0 +1,26 @@
+	Option Explicit
+'==========================================================================
+'   TANSMA.DBM   íSìñé“ÉTÉ}Éä                     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TANSMA
+    TANCD          As String * 6     'íSìñé“ÉRÅ[Éh          000000              
+    SMADT          As String * 8     'åoóùí˜ì˙ït            YYYY/MM/DD          
+    SMAUODKN       As Currency       'éÛíçèWåvã‡äz          ###,###,##0.0000;;# 
+    SMAURIKN(09)   As Currency       'îÑè„èWåvã‡äz          ###,###,##0.0000;;# 
+    SMAUZEKN       As Currency       'îÑè„è¡îÔê≈ã‡äz        ###,###,##0.0000;;# 
+    SMAYSUKN       As Currency       'îÑè„ó\éZã‡äz          ###,###,##0.0000;;# 
+    SMAYSAKN       As Currency       'ëeóòó\éZã‡äz          ###,###,##0.0000;;# 
+    SMAGNKKN(09)   As Currency       'å¥âøèWåvã‡äz          ###,###,##0.0000;;# 
+    WRTTM          As String * 6     '¿≤—Ω¿›Ãﬂ(éûä‘)        9(06)               
+    WRTDT          As String * 8     '¿≤—Ω¿›Ãﬂ(ì˙ït)        YYYY/MM/DD          
+End Type
+Global DB_TANSMA As TYPE_DB_TANSMA
+Global DBN_TANSMA As Integer
+' Index1( TANCD + SMADT )
+' Index2( SMADT + TANCD )
+
+Sub TANSMA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TANSMA, G_LB)
+    Call ResetBuf(DBN_TANSMA)
+End Sub

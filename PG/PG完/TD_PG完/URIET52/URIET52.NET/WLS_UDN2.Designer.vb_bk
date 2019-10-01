@@ -1,0 +1,567 @@
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> Partial Class WLSUDN
+#Region "Windows フォーム デザイナによって生成されたコード "
+	<System.Diagnostics.DebuggerNonUserCode()> Public Sub New()
+		MyBase.New()
+		'この呼び出しは、Windows フォーム デザイナで必要です。
+		InitializeComponent()
+	End Sub
+	'Form は、コンポーネント一覧に後処理を実行するために dispose をオーバーライドします。
+	<System.Diagnostics.DebuggerNonUserCode()> Protected Overloads Overrides Sub Dispose(ByVal Disposing As Boolean)
+		If Disposing Then
+			If Not components Is Nothing Then
+				components.Dispose()
+			End If
+		End If
+		MyBase.Dispose(Disposing)
+	End Sub
+	'Windows フォーム デザイナで必要です。
+	Private components As System.ComponentModel.IContainer
+	Public ToolTip1 As System.Windows.Forms.ToolTip
+    Public WithEvents KEYBAK As System.Windows.Forms.ListBox
+    '2019/06/04 CHG START
+    'Public WithEvents WLSLABEL As SSPanel5
+    Public WithEvents WLSLABEL As Label
+    '2091/06/04 CHG END
+    Public WithEvents LST As System.Windows.Forms.ListBox
+	Public WithEvents WLSOK As System.Windows.Forms.Button
+	Public WithEvents WLSCANCEL As System.Windows.Forms.Button
+	Public WithEvents WLSJDNTRKB As System.Windows.Forms.TextBox
+	Public WithEvents COM_JDNTRKB As System.Windows.Forms.Button
+	Public WithEvents HD_TEXT As System.Windows.Forms.TextBox
+	Public WithEvents WLSTANCD As System.Windows.Forms.TextBox
+	Public WithEvents COM_TANCD As System.Windows.Forms.Button
+	Public WithEvents COM_TOKCD As System.Windows.Forms.Button
+	Public WithEvents WLSTOKCD As System.Windows.Forms.TextBox
+	Public WithEvents COM_UDNDT As System.Windows.Forms.Button
+	Public WithEvents WLSUDNDT As System.Windows.Forms.TextBox
+    '2091/06/04 CHG START
+    'Public WithEvents _FM_Panel3D2_1 As SSPanel5
+    Public WithEvents _FM_Panel3D2_1 As Label
+    '2019/06/04 CHG END
+    Public WithEvents WLSJDNTRNM As System.Windows.Forms.Label
+	Public WithEvents WLSTOKNM As System.Windows.Forms.Label
+	Public WithEvents WLSTANNM As System.Windows.Forms.Label
+	Public WithEvents Label1 As System.Windows.Forms.Label
+    '2019/06/04 CHG START
+    'Public WithEvents Panel3D1 As SSPanel5
+    Public WithEvents Panel3D1 As Label
+    '2019/06/04 CHG END
+    Public WithEvents Lst1 As System.Windows.Forms.ListBox
+	Public WithEvents _IM_MAE_0 As System.Windows.Forms.PictureBox
+	Public WithEvents _IM_ATO_0 As System.Windows.Forms.PictureBox
+	Public WithEvents _IM_ATO_1 As System.Windows.Forms.PictureBox
+	Public WithEvents _IM_MAE_1 As System.Windows.Forms.PictureBox
+	Public WithEvents WLSMAE As System.Windows.Forms.PictureBox
+	Public WithEvents WLSATO As System.Windows.Forms.PictureBox
+    '2019/06/04 CHG START
+    'Public WithEvents FM_Panel3D2 As SSPanel5Array
+    Public WithEvents FM_Panel3D2 As VB6.LabelArray
+    '2019/06/04 CHG END
+    Public WithEvents IM_ATO As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
+	Public WithEvents IM_MAE As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
+	'メモ: 以下のプロシージャは Windows フォーム デザイナで必要です。
+	'Windows フォーム デザイナを使って変更できます。
+	'コード エディタを使用して、変更しないでください。
+	<System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+		Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(WLSUDN))
+		Me.components = New System.ComponentModel.Container()
+		Me.ToolTip1 = New System.Windows.Forms.ToolTip(components)
+        Me.KEYBAK = New System.Windows.Forms.ListBox
+        '2019/06/04 CHG START
+        '      Me.WLSLABEL = New SSPanel5
+        'Me.LST = New System.Windows.Forms.ListBox
+        'Me.WLSOK = New System.Windows.Forms.Button
+        'Me.WLSCANCEL = New System.Windows.Forms.Button
+        'Me.Panel3D1 = New SSPanel5
+        Me.WLSLABEL = New Label
+        Me.LST = New System.Windows.Forms.ListBox
+        Me.WLSOK = New System.Windows.Forms.Button
+        Me.WLSCANCEL = New System.Windows.Forms.Button
+        Me.Panel3D1 = New Label
+        '2019/06/04 CHG END
+        Me.WLSJDNTRKB = New System.Windows.Forms.TextBox
+		Me.COM_JDNTRKB = New System.Windows.Forms.Button
+		Me.HD_TEXT = New System.Windows.Forms.TextBox
+		Me.WLSTANCD = New System.Windows.Forms.TextBox
+		Me.COM_TANCD = New System.Windows.Forms.Button
+		Me.COM_TOKCD = New System.Windows.Forms.Button
+		Me.WLSTOKCD = New System.Windows.Forms.TextBox
+		Me.COM_UDNDT = New System.Windows.Forms.Button
+        Me.WLSUDNDT = New System.Windows.Forms.TextBox
+        '2019/06/04 CHG START
+        'Me._FM_Panel3D2_1 = New SSPanel5
+        Me._FM_Panel3D2_1 = New Label
+        '2019/06/04 CHG END
+        Me.WLSJDNTRNM = New System.Windows.Forms.Label
+		Me.WLSTOKNM = New System.Windows.Forms.Label
+		Me.WLSTANNM = New System.Windows.Forms.Label
+		Me.Label1 = New System.Windows.Forms.Label
+		Me.Lst1 = New System.Windows.Forms.ListBox
+		Me._IM_MAE_0 = New System.Windows.Forms.PictureBox
+		Me._IM_ATO_0 = New System.Windows.Forms.PictureBox
+		Me._IM_ATO_1 = New System.Windows.Forms.PictureBox
+		Me._IM_MAE_1 = New System.Windows.Forms.PictureBox
+		Me.WLSMAE = New System.Windows.Forms.PictureBox
+		Me.WLSATO = New System.Windows.Forms.PictureBox
+        '2019/06/04 CHG START
+        'Me.FM_Panel3D2 = New SSPanel5Array(components)
+        Me.FM_Panel3D2 = New VB6.LabelArray(components)
+        '2019/06/04 CHG END
+        Me.IM_ATO = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
+		Me.IM_MAE = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
+		Me.Panel3D1.SuspendLayout()
+		Me.SuspendLayout()
+		Me.ToolTip1.Active = True
+		CType(Me.FM_Panel3D2, System.ComponentModel.ISupportInitialize).BeginInit()
+		CType(Me.IM_ATO, System.ComponentModel.ISupportInitialize).BeginInit()
+		CType(Me.IM_MAE, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+		Me.BackColor = System.Drawing.Color.FromARGB(192, 192, 192)
+		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+		Me.Text = "売上伝票検索"
+		Me.ClientSize = New System.Drawing.Size(957, 492)
+		Me.Location = New System.Drawing.Point(184, 158)
+		Me.ControlBox = False
+		Me.Font = New System.Drawing.Font("ＭＳ ゴシック", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+		Me.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.MaximizeBox = False
+		Me.MinimizeBox = False
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Enabled = True
+		Me.KeyPreview = False
+		Me.Cursor = System.Windows.Forms.Cursors.Default
+		Me.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.ShowInTaskbar = True
+		Me.HelpButton = False
+		Me.WindowState = System.Windows.Forms.FormWindowState.Normal
+		Me.Name = "WLSUDN"
+		Me.KEYBAK.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.KEYBAK.Size = New System.Drawing.Size(93, 341)
+		Me.KEYBAK.Location = New System.Drawing.Point(1024, 96)
+		Me.KEYBAK.TabIndex = 19
+		Me.KEYBAK.Visible = False
+		Me.KEYBAK.BackColor = System.Drawing.SystemColors.Window
+		Me.KEYBAK.CausesValidation = True
+		Me.KEYBAK.Enabled = True
+		Me.KEYBAK.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.KEYBAK.IntegralHeight = True
+		Me.KEYBAK.Cursor = System.Windows.Forms.Cursors.Default
+		Me.KEYBAK.SelectionMode = System.Windows.Forms.SelectionMode.One
+		Me.KEYBAK.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.KEYBAK.Sorted = False
+		Me.KEYBAK.TabStop = True
+		Me.KEYBAK.MultiColumn = False
+		Me.KEYBAK.Name = "KEYBAK"
+		Me.WLSLABEL.Size = New System.Drawing.Size(1002, 25)
+		Me.WLSLABEL.Location = New System.Drawing.Point(3, 96)
+        Me.WLSLABEL.TabIndex = 9
+        '2019/06/05 CHG START
+        'Me.WLSLABEL.Caption = "WLSLABEL"
+        Me.WLSLABEL.Text = "WLSLABEL"
+        '2019/06/05 CHG END
+        '2019/06/05 DELL START
+        '      Me.WLSLABEL.BackColor = 12632256
+        'Me.WLSLABEL.ForeColor = 0
+        'Me.WLSLABEL.Alignment = 1
+        'Me.WLSLABEL.BevelOuter = 1
+
+        '      Me.WLSLABEL.OutLine = -1
+        'Me.WLSLABEL.RoundedCorners = 0
+        '2019/06/05 DELL END
+        Me.WLSLABEL.Name = "WLSLABEL"
+		Me.LST.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.LST.Size = New System.Drawing.Size(1002, 309)
+		Me.LST.Location = New System.Drawing.Point(3, 120)
+		Me.LST.TabIndex = 0
+		Me.LST.BackColor = System.Drawing.SystemColors.Window
+		Me.LST.CausesValidation = True
+		Me.LST.Enabled = True
+		Me.LST.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.LST.IntegralHeight = True
+		Me.LST.Cursor = System.Windows.Forms.Cursors.Default
+		Me.LST.SelectionMode = System.Windows.Forms.SelectionMode.One
+		Me.LST.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.LST.Sorted = False
+		Me.LST.TabStop = True
+		Me.LST.Visible = True
+		Me.LST.MultiColumn = False
+		Me.LST.Name = "LST"
+		Me.WLSOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.WLSOK.BackColor = System.Drawing.SystemColors.Control
+		Me.WLSOK.Text = "OK"
+		Me.WLSOK.Size = New System.Drawing.Size(61, 22)
+		Me.WLSOK.Location = New System.Drawing.Point(396, 444)
+		Me.WLSOK.TabIndex = 6
+		Me.WLSOK.CausesValidation = True
+		Me.WLSOK.Enabled = True
+		Me.WLSOK.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.WLSOK.Cursor = System.Windows.Forms.Cursors.Default
+		Me.WLSOK.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSOK.TabStop = True
+		Me.WLSOK.Name = "WLSOK"
+		Me.WLSCANCEL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.WLSCANCEL.BackColor = System.Drawing.SystemColors.Control
+		Me.WLSCANCEL.Text = "ｷｬﾝｾﾙ"
+		Me.WLSCANCEL.Size = New System.Drawing.Size(61, 22)
+		Me.WLSCANCEL.Location = New System.Drawing.Point(459, 444)
+		Me.WLSCANCEL.TabIndex = 7
+		Me.WLSCANCEL.CausesValidation = True
+		Me.WLSCANCEL.Enabled = True
+		Me.WLSCANCEL.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.WLSCANCEL.Cursor = System.Windows.Forms.Cursors.Default
+		Me.WLSCANCEL.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSCANCEL.TabStop = True
+		Me.WLSCANCEL.Name = "WLSCANCEL"
+		Me.Panel3D1.Size = New System.Drawing.Size(1013, 77)
+		Me.Panel3D1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3D1.TabIndex = 8
+        '2019/06/05 DELL START
+        '      Me.Panel3D1.BackColor = 12632256
+        'Me.Panel3D1.ForeColor = 0
+        'Me.Panel3D1.OutLine = -1
+        '2019/06/05 DELL END
+        Me.Panel3D1.Name = "Panel3D1"
+		Me.WLSJDNTRKB.AutoSize = False
+		Me.WLSJDNTRKB.Size = New System.Drawing.Size(29, 25)
+		Me.WLSJDNTRKB.Location = New System.Drawing.Point(636, 8)
+		Me.WLSJDNTRKB.Maxlength = 2
+		Me.WLSJDNTRKB.TabIndex = 3
+		Me.WLSJDNTRKB.AcceptsReturn = True
+		Me.WLSJDNTRKB.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.WLSJDNTRKB.BackColor = System.Drawing.SystemColors.Window
+		Me.WLSJDNTRKB.CausesValidation = True
+		Me.WLSJDNTRKB.Enabled = True
+		Me.WLSJDNTRKB.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.WLSJDNTRKB.HideSelection = True
+		Me.WLSJDNTRKB.ReadOnly = False
+		Me.WLSJDNTRKB.Cursor = System.Windows.Forms.Cursors.IBeam
+		Me.WLSJDNTRKB.MultiLine = False
+		Me.WLSJDNTRKB.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSJDNTRKB.ScrollBars = System.Windows.Forms.ScrollBars.None
+		Me.WLSJDNTRKB.TabStop = True
+		Me.WLSJDNTRKB.Visible = True
+		Me.WLSJDNTRKB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.WLSJDNTRKB.Name = "WLSJDNTRKB"
+		Me.COM_JDNTRKB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.COM_JDNTRKB.BackColor = System.Drawing.SystemColors.Control
+		Me.COM_JDNTRKB.Text = "受注取区"
+		Me.COM_JDNTRKB.Size = New System.Drawing.Size(78, 25)
+		Me.COM_JDNTRKB.Location = New System.Drawing.Point(560, 8)
+		Me.COM_JDNTRKB.TabIndex = 17
+		Me.COM_JDNTRKB.TabStop = False
+		Me.COM_JDNTRKB.CausesValidation = True
+		Me.COM_JDNTRKB.Enabled = True
+		Me.COM_JDNTRKB.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.COM_JDNTRKB.Cursor = System.Windows.Forms.Cursors.Default
+		Me.COM_JDNTRKB.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.COM_JDNTRKB.Name = "COM_JDNTRKB"
+		Me.HD_TEXT.AutoSize = False
+		Me.HD_TEXT.Size = New System.Drawing.Size(84, 25)
+		Me.HD_TEXT.IMEMode = System.Windows.Forms.ImeMode.Off
+		Me.HD_TEXT.Location = New System.Drawing.Point(456, 8)
+		Me.HD_TEXT.Maxlength = 6
+		Me.HD_TEXT.TabIndex = 2
+		Me.HD_TEXT.AcceptsReturn = True
+		Me.HD_TEXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.HD_TEXT.BackColor = System.Drawing.SystemColors.Window
+		Me.HD_TEXT.CausesValidation = True
+		Me.HD_TEXT.Enabled = True
+		Me.HD_TEXT.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.HD_TEXT.HideSelection = True
+		Me.HD_TEXT.ReadOnly = False
+		Me.HD_TEXT.Cursor = System.Windows.Forms.Cursors.IBeam
+		Me.HD_TEXT.MultiLine = False
+		Me.HD_TEXT.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.HD_TEXT.ScrollBars = System.Windows.Forms.ScrollBars.None
+		Me.HD_TEXT.TabStop = True
+		Me.HD_TEXT.Visible = True
+		Me.HD_TEXT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.HD_TEXT.Name = "HD_TEXT"
+		Me.WLSTANCD.AutoSize = False
+		Me.WLSTANCD.Size = New System.Drawing.Size(52, 25)
+		Me.WLSTANCD.IMEMode = System.Windows.Forms.ImeMode.Off
+		Me.WLSTANCD.Location = New System.Drawing.Point(102, 8)
+		Me.WLSTANCD.Maxlength = 6
+		Me.WLSTANCD.TabIndex = 1
+		Me.WLSTANCD.AcceptsReturn = True
+		Me.WLSTANCD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.WLSTANCD.BackColor = System.Drawing.SystemColors.Window
+		Me.WLSTANCD.CausesValidation = True
+		Me.WLSTANCD.Enabled = True
+		Me.WLSTANCD.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.WLSTANCD.HideSelection = True
+		Me.WLSTANCD.ReadOnly = False
+		Me.WLSTANCD.Cursor = System.Windows.Forms.Cursors.IBeam
+		Me.WLSTANCD.MultiLine = False
+		Me.WLSTANCD.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSTANCD.ScrollBars = System.Windows.Forms.ScrollBars.None
+		Me.WLSTANCD.TabStop = True
+		Me.WLSTANCD.Visible = True
+		Me.WLSTANCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.WLSTANCD.Name = "WLSTANCD"
+		Me.COM_TANCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.COM_TANCD.Text = "営業担当者"
+		Me.COM_TANCD.Size = New System.Drawing.Size(97, 25)
+		Me.COM_TANCD.Location = New System.Drawing.Point(6, 8)
+		Me.COM_TANCD.TabIndex = 13
+		Me.COM_TANCD.BackColor = System.Drawing.SystemColors.Control
+		Me.COM_TANCD.CausesValidation = True
+		Me.COM_TANCD.Enabled = True
+		Me.COM_TANCD.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.COM_TANCD.Cursor = System.Windows.Forms.Cursors.Default
+		Me.COM_TANCD.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.COM_TANCD.TabStop = True
+		Me.COM_TANCD.Name = "COM_TANCD"
+		Me.COM_TOKCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.COM_TOKCD.Text = "得意先      "
+		Me.COM_TOKCD.Size = New System.Drawing.Size(105, 25)
+		Me.COM_TOKCD.Location = New System.Drawing.Point(352, 40)
+		Me.COM_TOKCD.TabIndex = 12
+		Me.COM_TOKCD.BackColor = System.Drawing.SystemColors.Control
+		Me.COM_TOKCD.CausesValidation = True
+		Me.COM_TOKCD.Enabled = True
+		Me.COM_TOKCD.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.COM_TOKCD.Cursor = System.Windows.Forms.Cursors.Default
+		Me.COM_TOKCD.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.COM_TOKCD.TabStop = True
+		Me.COM_TOKCD.Name = "COM_TOKCD"
+		Me.WLSTOKCD.AutoSize = False
+		Me.WLSTOKCD.Size = New System.Drawing.Size(84, 25)
+		Me.WLSTOKCD.IMEMode = System.Windows.Forms.ImeMode.Off
+		Me.WLSTOKCD.Location = New System.Drawing.Point(456, 40)
+		Me.WLSTOKCD.Maxlength = 10
+		Me.WLSTOKCD.TabIndex = 5
+		Me.WLSTOKCD.AcceptsReturn = True
+		Me.WLSTOKCD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.WLSTOKCD.BackColor = System.Drawing.SystemColors.Window
+		Me.WLSTOKCD.CausesValidation = True
+		Me.WLSTOKCD.Enabled = True
+		Me.WLSTOKCD.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.WLSTOKCD.HideSelection = True
+		Me.WLSTOKCD.ReadOnly = False
+		Me.WLSTOKCD.Cursor = System.Windows.Forms.Cursors.IBeam
+		Me.WLSTOKCD.MultiLine = False
+		Me.WLSTOKCD.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSTOKCD.ScrollBars = System.Windows.Forms.ScrollBars.None
+		Me.WLSTOKCD.TabStop = True
+		Me.WLSTOKCD.Visible = True
+		Me.WLSTOKCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.WLSTOKCD.Name = "WLSTOKCD"
+		Me.COM_UDNDT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.COM_UDNDT.BackColor = System.Drawing.SystemColors.Control
+		Me.COM_UDNDT.Text = "売上日    "
+		Me.COM_UDNDT.Size = New System.Drawing.Size(97, 25)
+		Me.COM_UDNDT.Location = New System.Drawing.Point(6, 40)
+		Me.COM_UDNDT.TabIndex = 10
+		Me.COM_UDNDT.CausesValidation = True
+		Me.COM_UDNDT.Enabled = True
+		Me.COM_UDNDT.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.COM_UDNDT.Cursor = System.Windows.Forms.Cursors.Default
+		Me.COM_UDNDT.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.COM_UDNDT.TabStop = True
+		Me.COM_UDNDT.Name = "COM_UDNDT"
+		Me.WLSUDNDT.AutoSize = False
+		Me.WLSUDNDT.Size = New System.Drawing.Size(84, 25)
+		Me.WLSUDNDT.IMEMode = System.Windows.Forms.ImeMode.Off
+		Me.WLSUDNDT.Location = New System.Drawing.Point(102, 40)
+		Me.WLSUDNDT.Maxlength = 10
+		Me.WLSUDNDT.TabIndex = 4
+		Me.WLSUDNDT.AcceptsReturn = True
+		Me.WLSUDNDT.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.WLSUDNDT.BackColor = System.Drawing.SystemColors.Window
+		Me.WLSUDNDT.CausesValidation = True
+		Me.WLSUDNDT.Enabled = True
+		Me.WLSUDNDT.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.WLSUDNDT.HideSelection = True
+		Me.WLSUDNDT.ReadOnly = False
+		Me.WLSUDNDT.Cursor = System.Windows.Forms.Cursors.IBeam
+		Me.WLSUDNDT.MultiLine = False
+		Me.WLSUDNDT.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSUDNDT.ScrollBars = System.Windows.Forms.ScrollBars.None
+		Me.WLSUDNDT.TabStop = True
+		Me.WLSUDNDT.Visible = True
+		Me.WLSUDNDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.WLSUDNDT.Name = "WLSUDNDT"
+		Me._FM_Panel3D2_1.Size = New System.Drawing.Size(105, 25)
+		Me._FM_Panel3D2_1.Location = New System.Drawing.Point(352, 8)
+        Me._FM_Panel3D2_1.TabIndex = 14
+        '2019/06/04 CHG  START
+        'Me._FM_Panel3D2_1.Caption = "開始受注番号"
+        Me._FM_Panel3D2_1.Text = "開始受注番号"
+        '2019/06/04 CHG END
+        '2019/06/04 DELL START
+        '      Me._FM_Panel3D2_1.ForeColor = 0
+        'Me._FM_Panel3D2_1.Alignment = 8
+        'Me._FM_Panel3D2_1.BevelOuter = 1
+        '      Me._FM_Panel3D2_1.OutLine = -1
+        '2019/06/04 DELL END
+        Me._FM_Panel3D2_1.Name = "_FM_Panel3D2_1"
+		Me.WLSJDNTRNM.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.WLSJDNTRNM.BackColor = System.Drawing.Color.FromARGB(192, 192, 192)
+		Me.WLSJDNTRNM.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.WLSJDNTRNM.Size = New System.Drawing.Size(115, 25)
+		Me.WLSJDNTRNM.Location = New System.Drawing.Point(664, 8)
+		Me.WLSJDNTRNM.TabIndex = 18
+		Me.WLSJDNTRNM.Enabled = True
+		Me.WLSJDNTRNM.Cursor = System.Windows.Forms.Cursors.Default
+		Me.WLSJDNTRNM.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSJDNTRNM.UseMnemonic = True
+		Me.WLSJDNTRNM.Visible = True
+		Me.WLSJDNTRNM.AutoSize = False
+		Me.WLSJDNTRNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.WLSJDNTRNM.Name = "WLSJDNTRNM"
+		Me.WLSTOKNM.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.WLSTOKNM.BackColor = System.Drawing.Color.FromARGB(192, 192, 192)
+		Me.WLSTOKNM.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.WLSTOKNM.Size = New System.Drawing.Size(379, 25)
+		Me.WLSTOKNM.Location = New System.Drawing.Point(540, 40)
+		Me.WLSTOKNM.TabIndex = 16
+		Me.WLSTOKNM.Enabled = True
+		Me.WLSTOKNM.Cursor = System.Windows.Forms.Cursors.Default
+		Me.WLSTOKNM.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSTOKNM.UseMnemonic = True
+		Me.WLSTOKNM.Visible = True
+		Me.WLSTOKNM.AutoSize = False
+		Me.WLSTOKNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.WLSTOKNM.Name = "WLSTOKNM"
+		Me.WLSTANNM.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.WLSTANNM.BackColor = System.Drawing.Color.FromARGB(192, 192, 192)
+		Me.WLSTANNM.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.WLSTANNM.Size = New System.Drawing.Size(187, 25)
+		Me.WLSTANNM.Location = New System.Drawing.Point(152, 8)
+		Me.WLSTANNM.TabIndex = 15
+		Me.WLSTANNM.Enabled = True
+		Me.WLSTANNM.Cursor = System.Windows.Forms.Cursors.Default
+		Me.WLSTANNM.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.WLSTANNM.UseMnemonic = True
+		Me.WLSTANNM.Visible = True
+		Me.WLSTANNM.AutoSize = False
+		Me.WLSTANNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.WLSTANNM.Name = "WLSTANNM"
+		Me.Label1.BackColor = System.Drawing.Color.FromARGB(192, 192, 192)
+		Me.Label1.Text = "以降"
+		Me.Label1.Size = New System.Drawing.Size(41, 25)
+		Me.Label1.Location = New System.Drawing.Point(192, 48)
+		Me.Label1.TabIndex = 11
+		Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopLeft
+		Me.Label1.Enabled = True
+		Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.Label1.Cursor = System.Windows.Forms.Cursors.Default
+		Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.Label1.UseMnemonic = True
+		Me.Label1.Visible = True
+		Me.Label1.AutoSize = False
+		Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me.Label1.Name = "Label1"
+		Me.Lst1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Lst1.Size = New System.Drawing.Size(41, 309)
+		Me.Lst1.Location = New System.Drawing.Point(968, 120)
+		Me.Lst1.TabIndex = 20
+		Me.Lst1.Visible = False
+		Me.Lst1.BackColor = System.Drawing.SystemColors.Window
+		Me.Lst1.CausesValidation = True
+		Me.Lst1.Enabled = True
+		Me.Lst1.ForeColor = System.Drawing.SystemColors.WindowText
+		Me.Lst1.IntegralHeight = True
+		Me.Lst1.Cursor = System.Windows.Forms.Cursors.Default
+		Me.Lst1.SelectionMode = System.Windows.Forms.SelectionMode.One
+		Me.Lst1.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.Lst1.Sorted = False
+		Me.Lst1.TabStop = True
+		Me.Lst1.MultiColumn = False
+		Me.Lst1.Name = "Lst1"
+		Me._IM_MAE_0.Size = New System.Drawing.Size(24, 22)
+		Me._IM_MAE_0.Location = New System.Drawing.Point(399, 528)
+		Me._IM_MAE_0.Image = CType(resources.GetObject("_IM_MAE_0.Image"), System.Drawing.Image)
+		Me._IM_MAE_0.Visible = False
+		Me._IM_MAE_0.Enabled = True
+		Me._IM_MAE_0.Cursor = System.Windows.Forms.Cursors.Default
+		Me._IM_MAE_0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal
+		Me._IM_MAE_0.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me._IM_MAE_0.Name = "_IM_MAE_0"
+		Me._IM_ATO_0.Size = New System.Drawing.Size(24, 22)
+		Me._IM_ATO_0.Location = New System.Drawing.Point(459, 528)
+		Me._IM_ATO_0.Image = CType(resources.GetObject("_IM_ATO_0.Image"), System.Drawing.Image)
+		Me._IM_ATO_0.Visible = False
+		Me._IM_ATO_0.Enabled = True
+		Me._IM_ATO_0.Cursor = System.Windows.Forms.Cursors.Default
+		Me._IM_ATO_0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal
+		Me._IM_ATO_0.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me._IM_ATO_0.Name = "_IM_ATO_0"
+		Me._IM_ATO_1.Size = New System.Drawing.Size(24, 22)
+		Me._IM_ATO_1.Location = New System.Drawing.Point(486, 528)
+		Me._IM_ATO_1.Image = CType(resources.GetObject("_IM_ATO_1.Image"), System.Drawing.Image)
+		Me._IM_ATO_1.Visible = False
+		Me._IM_ATO_1.Enabled = True
+		Me._IM_ATO_1.Cursor = System.Windows.Forms.Cursors.Default
+		Me._IM_ATO_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal
+		Me._IM_ATO_1.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me._IM_ATO_1.Name = "_IM_ATO_1"
+		Me._IM_MAE_1.Size = New System.Drawing.Size(24, 22)
+		Me._IM_MAE_1.Location = New System.Drawing.Point(426, 528)
+		Me._IM_MAE_1.Image = CType(resources.GetObject("_IM_MAE_1.Image"), System.Drawing.Image)
+		Me._IM_MAE_1.Visible = False
+		Me._IM_MAE_1.Enabled = True
+		Me._IM_MAE_1.Cursor = System.Windows.Forms.Cursors.Default
+		Me._IM_MAE_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal
+		Me._IM_MAE_1.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me._IM_MAE_1.Name = "_IM_MAE_1"
+		Me.WLSMAE.Size = New System.Drawing.Size(24, 22)
+		Me.WLSMAE.Location = New System.Drawing.Point(363, 444)
+		Me.WLSMAE.Image = CType(resources.GetObject("WLSMAE.Image"), System.Drawing.Image)
+		Me.WLSMAE.Enabled = True
+		Me.WLSMAE.Cursor = System.Windows.Forms.Cursors.Default
+		Me.WLSMAE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal
+		Me.WLSMAE.Visible = True
+		Me.WLSMAE.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me.WLSMAE.Name = "WLSMAE"
+		Me.WLSATO.Size = New System.Drawing.Size(24, 22)
+		Me.WLSATO.Location = New System.Drawing.Point(528, 444)
+		Me.WLSATO.Image = CType(resources.GetObject("WLSATO.Image"), System.Drawing.Image)
+		Me.WLSATO.Enabled = True
+		Me.WLSATO.Cursor = System.Windows.Forms.Cursors.Default
+		Me.WLSATO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal
+		Me.WLSATO.Visible = True
+		Me.WLSATO.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me.WLSATO.Name = "WLSATO"
+		Me.Controls.Add(KEYBAK)
+		Me.Controls.Add(WLSLABEL)
+		Me.Controls.Add(LST)
+		Me.Controls.Add(WLSOK)
+		Me.Controls.Add(WLSCANCEL)
+		Me.Controls.Add(Panel3D1)
+		Me.Controls.Add(Lst1)
+		Me.Controls.Add(_IM_MAE_0)
+		Me.Controls.Add(_IM_ATO_0)
+		Me.Controls.Add(_IM_ATO_1)
+		Me.Controls.Add(_IM_MAE_1)
+		Me.Controls.Add(WLSMAE)
+		Me.Controls.Add(WLSATO)
+		Me.Panel3D1.Controls.Add(WLSJDNTRKB)
+		Me.Panel3D1.Controls.Add(COM_JDNTRKB)
+		Me.Panel3D1.Controls.Add(HD_TEXT)
+		Me.Panel3D1.Controls.Add(WLSTANCD)
+		Me.Panel3D1.Controls.Add(COM_TANCD)
+		Me.Panel3D1.Controls.Add(COM_TOKCD)
+		Me.Panel3D1.Controls.Add(WLSTOKCD)
+		Me.Panel3D1.Controls.Add(COM_UDNDT)
+		Me.Panel3D1.Controls.Add(WLSUDNDT)
+		Me.Panel3D1.Controls.Add(_FM_Panel3D2_1)
+		Me.Panel3D1.Controls.Add(WLSJDNTRNM)
+		Me.Panel3D1.Controls.Add(WLSTOKNM)
+		Me.Panel3D1.Controls.Add(WLSTANNM)
+		Me.Panel3D1.Controls.Add(Label1)
+		Me.FM_Panel3D2.SetIndex(_FM_Panel3D2_1, CType(1, Short))
+		Me.IM_ATO.SetIndex(_IM_ATO_0, CType(0, Short))
+		Me.IM_ATO.SetIndex(_IM_ATO_1, CType(1, Short))
+		Me.IM_MAE.SetIndex(_IM_MAE_0, CType(0, Short))
+		Me.IM_MAE.SetIndex(_IM_MAE_1, CType(1, Short))
+		CType(Me.IM_MAE, System.ComponentModel.ISupportInitialize).EndInit()
+		CType(Me.IM_ATO, System.ComponentModel.ISupportInitialize).EndInit()
+		CType(Me.FM_Panel3D2, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.Panel3D1.ResumeLayout(False)
+		Me.ResumeLayout(False)
+		Me.PerformLayout()
+	End Sub
+#End Region 
+End Class

@@ -1,0 +1,117 @@
+Attribute VB_Name = "SSSMAIN0002"
+Option Explicit
+'プログラム総括情報プロシジャ
+'□□□□□□□□ プログラム単位の共通処理 Start □□□□□□□□□□□□□□□□
+''================================================================================
+'☆　画面ボディ部の行単位の業務情報　　　　　☆
+'☆　　Cls_Dsp_Body_Row_Infとの互換性を　　　☆
+'☆　　共通の全てのＰＧで宣言する　　　　　　☆
+'☆　　そのため以下の｢Dummy｣は必須！！ 　　　☆
+Public Type Cls_Dsp_Body_Bus_Inf
+    Dummy           As String           'ダミー
+    '推定在庫照会用
+    IsDataRow           As Boolean          'データ保持行フラグ
+    DATKB               As String           'データ区分
+    LINNO               As Long             '行番号
+    JDNNO               As String           '受注番号
+    MITNO               As String           '参照見積番号
+    MITNOV              As String           '版数
+'***add-S-tom
+    LIN                 As String           '行番号
+'***add-E-tom
+    STKDLVDT            As String           '入出庫日
+    DLVSU               As Currency         '出庫数
+    HIKSU               As Currency         '引当数
+    JOTAI               As String           '状態
+    STKSU               As Currency         '入庫数
+    SZAISU              As Currency         '推定在庫数
+' === 20070209 === INSERT S - ACE)Yano
+    DENDT               As String           '受注日
+' === 20070209 === INSERT E -
+    SBNNO               As String           '製番
+    TOKRN               As String           '得意先名称
+    SOUNM               As String           '倉庫名
+    TOKJDNNO            As String           '客先注文番号
+    COLORFLG1           As String           'カラーフラグ１
+    COLORFLG2           As String           'カラーフラグ２
+    COLORFLG3           As String           'カラーフラグ３
+    COLORFLG4           As String           'カラーフラグ４
+    COLORFLG5           As String           'カラーフラグ５
+' === 20060803 === INSERT S - ACE)Nagasawa 運用日の最後のデータに対して着色を行う
+    COLORFLG6           As String           'カラーフラグ６
+' === 20060803 === INSERT E -
+' === 20110131 === INSERT S - TOM)Morimoto 管理番号追加
+    DATNO               As String           '管理番号
+' === 20110131 === INSERT E -
+    
+    '推定在庫照会（明細）用
+    SUB_IsDataRow       As Boolean          'データ保持行フラグ
+    SUB_LINNO           As String           '行番号
+    SUB_HINCD           As String           '製品コード
+    SUB_HINNMA          As String           '型式
+' === 20110124 === INSERT S - TOM)Morimoto 発注用伝票管理番号を保持
+'    SUB_HINNMB          As String           '商品名１
+    SUB_TOKJDNNO        As String           '客先注文番号
+' === 20110124 === INSERT E -
+    SUB_UODSU           As Currency         '受注数量
+    SUB_UNTNM           As String           '単位名
+    SUB_UODTK           As Currency         '受注単価
+    SUB_UODKN           As Currency         '受注金額
+    SUB_SBT             As String           '種別
+    SUB_SIKTK           As Currency         '営業仕切単価
+    SUB_TEIKATK         As Currency         '定価
+    SUB_SIKRT           As String           '仕切率(出力しない場合用にString)
+    SUB_SIKSA           As String           '仕切差(出力しない場合用にString)
+    SUB_ODNYTDT         As String           '出荷予定日
+    SUB_OTPSU           As String           '出荷実績数(出力しない場合用にString)
+    SUB_OTYSU           As String           '出荷予定数(出力しない場合用にString)
+
+' === 20061114 === INSERT S - ACE)Yano  製番出庫 推定在庫照会（明細）用
+    SUB2_IsDataRow      As Boolean          'データ保持行フラグ
+    SUB2_HINCD          As String           '製品コード
+    SUB2_HINNMA         As String           '型式
+    SUB2_HINNMB         As String           '商品名１
+    SUB2_UODSU          As Currency         '数量
+    SUB2_OUTSMSU        As Currency         '出荷実績数量
+    SUB2_UNTNM          As String           '単位名
+    SUB2_LINCMA         As String           '明細備考１
+    SUB2_LINCMB         As String           '明細備考２
+' === 20061114 === INSERT E -
+
+'***add-S-tom*** 引当状況照会追加
+    SUB3_IsDataRow      As Boolean          'データ保持行フラグ
+    SUB3_TRAKB          As String           '種別
+    SUB3_TRANO          As String           '製番
+    SUB3_TRADT          As String           '入出庫日
+    SUB3_SYUSU          As Currency         '出庫
+    SUB3_HIKSU          As Currency         '引当
+    SUB3_ATMNKB         As String           '自／手
+    SUB3_NYUSU          As Currency         '入庫
+    SUB3_TOKRN          As String           '得意先
+    SUB3_BUMNM          As String           '営業部門
+    SUB3_SOUNM          As String           '倉庫
+'***add-E-tom***
+
+End Type
+''================================================================================
+    'メッセージコード
+    '推定在庫照会（明細）
+    Public Const gc_strMsgTNADL71_E_001         As String = "2TNADL71_001"  '該当するデータが存在しません。
+    '推定在庫照会
+    Public Const gc_strMsgTNADL71_A_002         As String = "1TNADL71_002"  '終了してよろしいですか？
+    Public Const gc_strMsgTNADL71_E_003         As String = "2TNADL71_003"  'ＤＢ更新エラーが発生しました。
+    Public Const gc_strMsgTNADL71_E_004         As String = "2TNADL71_004"  '入力値が許容範囲外です。
+    Public Const gc_strMsgTNADL71_E_005         As String = "2TNADL71_005"  '削除済みレコードです。
+    Public Const gc_strMsgTNADL71_E_006         As String = "2TNADL71_006"  '該当するデータが存在しません。
+    Public Const gc_strMsgTNADL71_E_007         As String = "2TNADL71_007"  'データ取得処理で異常が発生しました。
+    Public Const gc_strMsgTNADL71_E_008         As String = "2TNADL71_008"  '入力されていない項目があります。入力してください。
+    Public Const gc_strMsgTNADL71_E_009         As String = "2TNADL71_009"  '受注・見積、又は製番出庫のデータではありません。
+    Public Const gc_strMsgTNADL71_E_010         As String = "2TNADL71_010"  'このコードは使用できません。
+' === 20060908 === INSERT S - ACE)Sejima 実行ボタンイメージ対応
+    Public Const gc_strMsgTNADL71_E_011         As String = "2TNADL71_011"  'これ以降のデータはありません。
+' === 20060908 === INSERT E
+' === 20061121 === INSERT S - ACE)Nagasawa 支給品情報の表示
+    Public Const gc_strMsgTNADL71_E_012         As String = "2TNADL71_012"  '見込の支給品のため明細の表示は行えません。
+' === 20061121 === INSERT E -
+
+'□□□□□□□□ プログラム単位の共通処理 End □□□□□□□□□□□□□□□□

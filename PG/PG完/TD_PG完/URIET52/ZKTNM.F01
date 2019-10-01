@@ -1,0 +1,25 @@
+Option Explicit
+'
+' スロット名        : 取引区分名称・画面項目スロット
+' ユニット名        : ZKTNM.F01
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : URIET01
+'
+
+'商品ファイルより商品名１取得。
+Function ZKTNM_Derived (ByVal ZKTKB)
+    Select Case ZKTKB
+        Case "1"
+            ZKTNM_Derived = "通常"
+        Case "2"
+            ZKTNM_Derived = "直送"
+        Case "3"
+            ZKTNM_Derived = "預り"
+        Case "4"
+            ZKTNM_Derived = "委託"
+        Case Else
+            ZKTNM_Derived = "通常"
+    End Select
+End Function
+

@@ -1,0 +1,44 @@
+Attribute VB_Name = "ENTDT_F04"
+Option Explicit
+'
+' スロット名        : 締め日計算・画面項目スロット
+' ユニット名        : ENTDT.F04
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : URIET01
+'
+
+Function ENTDT_Derived(ByVal UDNDT, ByVal TOKCD, ByVal NXTKB)
+    Dim WL_SMADT, WL_SSADT, WL_KESDT
+    '
+    If Trim$(UDNDT) = "" Then Exit Function
+    If Trim$(TOKCD) = "" Then Exit Function
+    If Trim$(NXTKB) = "" Then Exit Function
+
+'   --- 経理締め日付取得 ---
+'CHG START FKS)INABA 2009/10/28************
+    WL_SMADT = Get_Acedt(CNV_DATE(DB_UNYMTA.UNYDT))
+'    WL_SMADT = Get_Acedt(UDNDT)
+'CHG  END  FKS)INABA 2009/10/28************
+'
+    If TOKCD <> DB_TOKMTA.TOKCD Then
+        Call DB_GetEq(DBN_TOKMTA, 1, TOKCD, BtrNormal)
+    End If
+'   === 請求締め日付取得 ===
+    If SSSVal(DB_TOKMTA.TOKSMEKB) = 1 Then
+'       --- 月X回締め ---
+        WL_SSADT = Get_SMEDT1(SSSVal(DB_TOKMTA.TOKSMEDD), SSSVal(DB_TOKMTA.TOKSMECC), Format$(UDNDT, "YYYY/MM/DD"), SSSVal(NXTKB))
+        WL_KESDT = Get_KESDT1(SSSVal(DB_TOKMTA.TOKSMEDD), SSSVal(DB_TOKMTA.TOKSMECC), SSSVal(DB_TOKMTA.TOKKESCC), SSSVal(DB_TOKMTA.TOKKESDD), Format$(WL_SSADT, "YYYY/MM/DD"))
+    Else
+'       --- 週締め ---
+        WL_SSADT = Get_SMEDT2(SSSVal(DB_TOKMTA.TOKSDWKB), Format$(UDNDT, "YYYY/MM/DD"), SSSVal(NXTKB))
+        WL_KESDT = Get_KESDT2(SSSVal(DB_TOKMTA.TOKSDWKB), SSSVal(DB_TOKMTA.TOKKESCC), SSSVal(DB_TOKMTA.TOKKDWKB), Format$(WL_SSADT, "YYYY/MM/DD"))
+    End If
+'
+    SSS_SMADT = Format$(WL_SMADT, "YYYYMMDD")
+    SSS_SSADT = Format$(WL_SSADT, "YYYYMMDD")
+    SSS_KESDT = Format$(WL_KESDT, "YYYYMMDD")
+'
+    ENTDT_Derived = Format$(UDNDT, "YYYYMMDD")
+End Function
+

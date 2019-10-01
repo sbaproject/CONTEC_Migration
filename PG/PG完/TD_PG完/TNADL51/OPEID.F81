@@ -1,0 +1,29 @@
+Attribute VB_Name = "OPEID_F81"
+Option Explicit
+'
+' スロット名        : 最終作業者コード・画面項目スロット
+' ユニット名        : OPEID.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/06/05
+' 使用プログラム名  : THSMR51,TNADL51
+'
+
+Function OPEID_InitVal(ByVal OPEID, PP As clsPP, CP_OPEID As clsCP)
+    '
+    OPEID_InitVal = SSS_OPEID
+    If Trim$(SSS_OPEID) = "" Then
+        Call TANMTA_RClear
+        Call OPEID_Move(-1)
+    Else
+        Call TANMTA_RClear
+        Call DB_GetEq(DBN_TANMTA, 1, SSS_OPEID, BtrNormal)
+        Call OPEID_Move(-1)
+    End If
+    
+End Function
+
+Sub OPEID_Move(ByVal De As Integer)
+    '
+    Call DP_SSSMAIN_OPENM(De, LeftWid$(DB_TANMTA.TANNM, 20))
+End Sub
+

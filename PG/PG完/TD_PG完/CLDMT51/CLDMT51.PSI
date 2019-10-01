@@ -1,0 +1,61 @@
+Attribute VB_Name = "SSSMAIN0002"
+Option Explicit
+'プログラム総括情報プロシジャ
+'□□□□□□□□ プログラム単位の共通処理 Start □□□□□□□□□□□□□□□□
+''================================================================================
+'☆　画面ボディ部の行単位の業務情報　　　　　☆
+'☆　　Cls_Dsp_Body_Row_Infとの互換性を　　　☆
+'☆　　共通の全てのＰＧで宣言する　　　　　　☆
+'☆　　そのため以下の｢Dummy｣は必須！！ 　　　☆
+Public Type Cls_Dsp_Body_Bus_Inf
+    Dummy           As String     'ダミー
+    Selected        As String     '選択/非選択
+    DATKB           As String     '伝票削除区分
+    CLDDT           As String     '日付
+    CLDWKKB         As String     '曜日
+    CLDHLKB         As String     '祝日
+    SLSMDD          As String     '営業通算日数
+    PRDKDDD         As String     '生産稼働日数
+    DTBKDDD         As String     '物流稼働日数
+    CLDSMDD         As String     '暦日通算日数
+    SLDKB           As String     '営業日区分
+    BNKKDKB         As String     '銀行稼動区分
+    PRDKDKB         As String     '生産稼動区分
+    DTBKDKB         As String     '物流稼動区分
+'2007/12/27 add-str T.KAWAMUKAI 2007/12/17 del M.SUEZAWA
+'''    WRTTM           As String       '更新時間
+'''    WRTDT           As String       '更新日付
+'''    UWRTTM          As String       'バッチ時間
+'''    UWRTDT          As String       'バッチ日付
+'2007/12/27 add-end T.KAWAMUKAI
+' === 20081001 === INSERT S - RISE)Izumi
+'更新時刻、更新日付、バッチ更新時刻、バッチ更新日付　退避用
+    OPEID           As String * 8 '最終作業者コード
+    CLTID           As String * 5 'クライアントＩＤ
+    UOPEID          As String * 8 '最終作業者コード（バッチ）
+    UCLTID          As String * 5 'クライアントＩＤ（バッチ）
+    WRTTM           As String * 6 'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT           As String * 8 'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    UWRTTM          As String * 6 'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    UWRTDT          As String * 8 'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+' === 20081001 === INSERT E - RISE)Izumi
+End Type
+
+''================================================================================
+    'メッセージコード
+    '固定値登録
+    Public Const gc_strMsgCLDMT51_E_001         As String = "2CLDMT51_001"      '入力区分が違います。
+    Public Const gc_strMsgCLDMT51_E_002         As String = "2CLDMT51_002"      '該当するデータが存在しません。
+    Public Const gc_strMsgCLDMT51_A_003         As String = "1CLDMT51_003"      '終了してよろしいですか？
+    Public Const gc_strMsgCLDMT51_A_004         As String = "1CLDMT51_004"      '更新してよろしいですか？
+    Public Const gc_strMsgCLDMT51_E_005         As String = "2CLDMT51_005"      '処理を終了しました｡
+    Public Const gc_strMsgCLDMT51_E_006         As String = "2CLDMT51_006"      '入力されていない項目があります。入力してください。
+    Public Const gc_strMsgCLDMT51_E_007         As String = "2CLDMT51_007"      'システムエラー
+    Public Const gc_strMsgCLDMT51_E_008         As String = "2CLDMT51_008"      '明細行に登録するデータがありません。
+    Public Const gc_strMsgCLDMT51_A_009         As String = "1CLDMT51_009"      '未登録のデータが存在します。更新を行います。
+    Public Const gc_strMsgCLDMT51_E_010         As String = "2CLDMT51_010"      '登録年月が変更されているため更新できません。
+    Public Const gc_strMsgCLDMT51_A_011         As String = "1CLDMT51_011"      '未登録のまま終了してもよろしいですか？
+    Public Const gc_strMsgCLDMT51_E_012         As String = "2CLDMT51_012"      '更新権限がありません。
+    
+'□□□□□□□□ プログラム単位の共通処理 End □□□□□□□□□□□□□□□□
+

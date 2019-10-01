@@ -1,0 +1,32 @@
+	Option Explicit
+'==========================================================================
+'   TOKSMB.DBM   得意先別商品サマリ               UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKSMB
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    TANCD          As String * 6     '担当者コード          000000              
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SMAUODSU       As Currency       '受注集計数量          ##,###,###,##0.00;;#
+    SMAUODKN       As Currency       '受注集計金額          ###,###,##0.0000;;# 
+    SMAURISU(09)   As Currency       '売上集計数量          ##,###,###,##0.00;;#
+    SMAURIKN(09)   As Currency       '売上集計金額          ###,###,##0.0000;;# 
+    SMAGNKKN(09)   As Currency       '原価集計金額          ###,###,##0.0000;;# 
+    SMAAZISU       As Currency       '預かり入庫数量        ###,###,##0.00;;#   
+    SMAAZOSU       As Currency       '預かり出庫数量        ###,###,##0.00;;#   
+    SMAAZIKN       As Currency       '預かり入庫金額        ###,###,###,###     
+    SMAAZOKN       As Currency       '預かり出庫金額        ###,###,###,###     
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_TOKSMB As TYPE_DB_TOKSMB
+Global DBN_TOKSMB As Integer
+' Index1( TOKCD + HINCD + TANCD + SMADT )
+' Index2( HINCD + TOKCD + SMADT )
+' Index3( SMADT + TOKCD + HINCD + TANCD )
+
+Sub TOKSMB_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKSMB, G_LB)
+    Call ResetBuf(DBN_TOKSMB)
+End Sub

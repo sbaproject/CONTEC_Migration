@@ -1,0 +1,100 @@
+Attribute VB_Name = "UDNDKBID_F01"
+Option Explicit
+'
+' スロット名        : 取引区分・画面項目スロット
+' ユニット名        : UDNDKBID.F01
+' 記述者            : Standard Library
+' 作成日付          : 1998/04/28
+' 使用プログラム名  : URIET01
+'
+
+'取引区分コードが入力された場合に、そのチェックを行う。
+Function UDNDKBID_Check(PP As clsPP, CP_UDNDKBID As clsCP, UDNDKBID, ByVal EX_UDNDKBID, ByVal DE_INDEX)
+    Dim Rtn As Integer
+
+    UDNDKBID_Check = 0                    '正常終了。
+    If Trim$(UDNDKBID) = "" Then Exit Function
+'    If EX_UDNDKBID = UDNDKBID Then Exit Function  1998/04/28 delete
+    
+    DB_UDNTRA.LINNO = Format$(DE_INDEX + 1, "000")
+    If UDNDKBID = "99" Then UDNDKBID = "01"
+    Call DB_GetEq(DBN_SYSTBD, 1, WG_DKBSB & UDNDKBID, BtrNormal)
+    If DBSTAT = 0 Then
+        If Trim$(DB_SYSTBD.DFLDKBCD) <> "" Then
+            Call DB_GetEq(DBN_HINMTA, 1, DB_SYSTBD.DFLDKBCD, BtrNormal)
+            If DBSTAT = 0 Then
+                If EX_UDNDKBID <> UDNDKBID Then  '1998/05/20 Insert
+                    Call AE_ClearDe_SSSMAIN
+                    Call SCR_FromHINMTA(DE_INDEX)
+                End If                           '1998/05/20 Insert
+            Else
+                Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 3)
+                UDNDKBID_Check = -1
+                Exit Function
+            End If
+            Call AE_InOutModeN_SSSMAIN("HINCD", "0000")
+            Call AE_InOutModeN_SSSMAIN("HINNMA", "0000")
+            Call AE_InOutModeN_SSSMAIN("HINNMB", "0000")
+            Call AE_InOutModeN_SSSMAIN("IRISU", "0000")
+            Call AE_InOutModeN_SSSMAIN("CASSU", "0000")
+            Call AE_InOutModeN_SSSMAIN("URISU", "0000")
+            Call AE_InOutModeN_SSSMAIN("URITK", "0000")
+        End If
+        Select Case SSSVal(DB_SYSTBD.UPDID)
+            Case 0, 1
+                Call AE_InOutModeN_SSSMAIN("HINCD", "3303")
+                Call AE_InOutModeN_SSSMAIN("HINNMA", "2202")
+                Call AE_InOutModeN_SSSMAIN("HINNMB", "2202")
+                'Call AE_InOutModeN_SSSMAIN("IRISU", "2202")
+                Call AE_InOutModeN_SSSMAIN("CASSU", "2202")
+                Call AE_InOutModeN_SSSMAIN("URISU", "2202")
+                Call AE_InOutModeN_SSSMAIN("URITK", "2202")
+            Case Else
+        End Select
+        Call SCR_FromSYSTBD(DE_INDEX)
+    Else
+        Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+        UDNDKBID_Check = -1
+    End If
+End Function
+
+Function UDNDKBID_Derived(PP As clsPP, ByVal UDNDKBID, ByVal HINCD, ByVal DE_INDEX)
+    UDNDKBID_Derived = UDNDKBID
+    If Trim$(UDNDKBID) <> "" Then Exit Function
+    If Trim$(HINCD) = "" Then Exit Function
+    UDNDKBID = "01"
+    UDNDKBID_Derived = UDNDKBID
+    '
+    Call DB_GetEq(DBN_SYSTBD, 1, WG_DKBSB & UDNDKBID, BtrNormal)
+    If DBSTAT = 0 Then
+        Call SCR_FromSYSTBD(DE_INDEX)
+        Call DP_SSSMAIN_HINCD(DE_INDEX, HINCD)
+    Else
+        UDNDKBID_Derived = Null
+    End If
+End Function
+
+Function UDNDKBID_Skip(PP As clsPP, ByVal HINCD)
+    UDNDKBID_Skip = True
+    If PP.CursorDirection = 0 Or PP.CursorDirection = 2 Or PP.CursorDirection = 4 Then  '1999/05/20 Update
+        UDNDKBID_Skip = False
+    End If
+End Function
+
+'商品分類コードの入力候補一覧を表示する。
+Function UDNDKBID_Slist(PP As clsPP)
+    WLS_LIST.Caption = "区分"
+    WLS_LIST!LST.Clear
+    Call DB_GetGrEq(DBN_SYSTBD, 1, WG_DKBSB, BtrNormal)
+    Do While DBSTAT = 0 And DB_SYSTBD.DKBSB = WG_DKBSB
+        If DB_SYSTBD.DKBID <> "99" Then
+            WLS_LIST!LST.AddItem DB_SYSTBD.DKBID + " " + DB_SYSTBD.DKBNM
+        End If
+        Call DB_GetNext(DBN_SYSTBD, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = 2
+    WLS_LIST.Show 1 '0:入力候補一覧は入力後に残す指定。
+    Unload WLS_LIST
+    UDNDKBID_Slist = PP.SlistCom
+End Function
+

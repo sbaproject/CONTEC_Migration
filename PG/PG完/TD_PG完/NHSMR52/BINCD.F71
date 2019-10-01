@@ -1,0 +1,83 @@
+Attribute VB_Name = "BINCD_F71"
+Option Explicit
+'
+'スロット名      :商品コード・画面項目スロット
+'ユニット名      :BINCD.F01
+'記述者          :Standard Library
+'作成日付        :2006/07/23
+'使用プログラム  :NHSFR52
+'
+
+Function BINCD_Check(ByVal BINCD, ByVal De_Index)
+Dim Rtn As Integer
+  Dim MEINMA As String
+    Dim wkBINCD As String    ' 2006.7.18 AZU Add
+    
+    '
+    BINCD_Check = 0
+    
+    If Trim$(BINCD) = "" Then
+        BINCD_Check = -1
+        Exit Function
+    End If
+    
+    Call MEIMTA_RClear
+    If Trim$(BINCD) = "" Then
+        Call DP_SSSMAIN_BINCD(De_Index, "")
+'        Call UnLock_Fields
+       ' BINCD_Check = -1
+       Call DP_SSSMAIN_BINRN(De_Index, " ")
+       
+    Else
+        wkBINCD = BINCD & Space(Len(DB_MEIMTA.MEICDA) - Len(BINCD)) & Space(Len(DB_MEIMTA.MEICDB))   ' 2006.7.18 AZU Add
+        'Call DB_GetGrEq(DBN_MEIMTA, 2, "1" & "002" & BINCD, BtrNormal)
+        Call DB_GetGrEq(DBN_MEIMTA, 1, "002" & wkBINCD, BtrNormal)      ' 2006.7.18 AZU Add
+        If DBSTAT = 0 Then
+            If DB_MEIMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                BINCD_Check = 1
+            End If
+        Else
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            BINCD_Check = -1
+        End If
+        If BINCD_Check = 0 Then
+            If Trim(BINCD) = Trim(DB_MEIMTA.MEICDA) Then
+                Call DP_SSSMAIN_BINCD(De_Index, Trim(DB_MEIMTA.MEICDA))
+                Call DP_SSSMAIN_BINRN(De_Index, Trim(DB_MEIMTA.MEINMA))
+            Else
+                Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+                BINCD_Check = -1
+                Call DP_SSSMAIN_BINRN(De_Index, " ")
+            End If
+        End If
+    End If
+    
+End Function
+
+Function BINCD_Slist(PP As clsPP, ByVal BINCD)
+       '
+    'WLS_LIST.Caption = "便区分一覧"
+    WLS_MEI1.Caption = "便区分一覧"
+    'WLS_LIST!LST.Clear
+    WLS_MEI1!LST.Clear
+    'Call DB_GetGrEq(DBN_MEIMTA, 2, "1" & "002" & "   ", BtrNormal)
+    Call DB_GetGrEq(DBN_MEIMTA, 1, "002", BtrNormal)
+    
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "002"
+        If DB_MEIMTA.DATKB <> "9" Then
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & LeftWid(DB_MEIMTA.MEINMA, 40)
+        End If
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = LenWid(DB_MEIMTA.KEYCD)
+    'WLS_LIST.Show 1
+    WLS_MEI1.Show 1
+    'Unload WLS_LIST
+    Unload WLS_MEI1
+    BINCD_Slist = PP.SlistCom
+
+End Function
+Function BINCD_InitVal()
+'    BINCD_InitVal = "00"
+End Function

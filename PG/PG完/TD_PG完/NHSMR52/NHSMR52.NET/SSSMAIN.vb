@@ -1,0 +1,193 @@
+Option Strict Off
+Option Explicit On
+Module SSSMAIN_MR1
+	'
+	'for NewRRR VA03 by SWaN Corp.
+	'最終更新日=2002/8/28
+	''''''''''''''''''''''''''''''
+	Sub SSS_CLOSE()
+		'
+		Call DB_RESET()
+		Call DB_End()
+	End Sub
+	
+	'処理対象のデータの範囲を設定する。
+	Function SSSMAIN_Select() As Object
+		Call SET_GAMEN_KEY()
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_Select の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_Select = 4
+	End Function
+	
+	'ファイルの中のカレントレコードの更新を行う。
+	Function SSSMAIN_Update() As Object
+		'
+		FR_SSSMAIN.Enabled = False
+		SSSMAIN_Update = UpdMst()
+		FR_SSSMAIN.Enabled = True
+	End Function
+	
+	'更新モードになるときの処理を行う。
+	Function SSSMAIN_UpdateC() As Object
+		'    If FR_SSSMAIN.BackColor <> &HE0FFFF Then FR_SSSMAIN.BackColor = &HE0FFFF
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_UpdateC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_UpdateC = True
+	End Function
+	
+	'ファイルにカレントレコードの追加処理を行う。
+	Function SSSMAIN_Append() As Object
+		'
+		FR_SSSMAIN.Enabled = False
+		SSSMAIN_Append = UpdMst()
+		FR_SSSMAIN.Enabled = True
+	End Function
+	
+	'追加モードになるときの処理を行う。
+	Function SSSMAIN_AppendC() As Object
+		'    If FR_SSSMAIN.BackColor <> &HC0C0C0 Then FR_SSSMAIN.BackColor = &HC0C0C0
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_AppendC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_AppendC = True
+	End Function
+	
+	'画面表示前の初期設定処理を行う。
+	Function SSSMAIN_BeginPrg() As Object
+        'UPGRADE_ISSUE: App プロパティ App.PrevInstance はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"' をクリックしてください。
+        '20190820 CHG START
+        'If App.PrevInstance Then
+        '	MsgBox("【" & Trim(SSS_PrgNm) & "】は既に起動中です。重複して起動する事はできません。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly, SSS_PrgNm)
+        '	End
+        'End If
+        If PrevInstance Then
+            MsgBox("【" & Trim(SSS_PrgNm) & "】は既に起動中です。重複して起動する事はできません。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly, SSS_PrgNm)
+            End
+        End If
+        '20190820 CHG END
+        ' "しばらくお待ちください" ウィンドウ表示  97/05/29
+        'UPGRADE_ISSUE: Load ステートメント はサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="B530EFF2-3132-48F8-B8BC-D88AF543D321"' をクリックしてください。
+        '20190820 CHG START
+        'Load(ICN_ICON)
+        ICN_ICON.Show()
+        '20190820 CHG END
+        'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        SSSMAIN_BeginPrg = True
+		'----------------------------------
+		'   SSSWIN プログラム起動チェック
+		'----------------------------------
+		Call SSSWIN_INIT()
+		Call SSSWIN_OPEN()
+		Call INITDSP()
+		' "しばらくお待ちください" ウィンドウ消去  97/05/29
+		ICN_ICON.Close()
+	End Function
+	
+	'終了時の後処理を行う。
+	Function SSSMAIN_Close() As Object
+		Call SSSWIN_CLOSE()
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_Close の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_Close = True
+	End Function
+	
+	'処理対象のデータの中のカレントレコードを再度読み込む。
+	Function SSSMAIN_Current() As Object
+		Dim I As Short
+		'
+		Call DB_GetGrEq(SSS_MFIL, 1, SSS_LASTKEY.Value, BtrNormal)
+		If DBSTAT = 0 Then
+			I = 1
+			Call SSSMAIN_DSPMST()
+		Else
+			I = 0
+		End If
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_Current の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_Current = I
+	End Function
+	
+	'ファイルからカレントレコードを削除する。
+	Function SSSMAIN_Delete() As Object
+		'
+		FR_SSSMAIN.Enabled = False
+		SSSMAIN_Delete = DelMst()
+		FR_SSSMAIN.Enabled = True
+	End Function
+	
+	Sub SSSMAIN_DSPMST()
+		Call SCR_FromMfil(0)
+		SSS_LASTKEY.Value = DB_PARA(SSS_MFIL).KeyBuf
+	End Sub
+	
+	Function SSSMAIN_First() As Object
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_First の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_First = 0
+	End Function
+	
+	'更新モードになるときの処理を行う。
+	Function SSSMAIN_Indicate() As Object
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_Indicate の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_Indicate = 3
+	End Function
+	
+	Function SSSMAIN_Last() As Object
+		'UPGRADE_WARNING: オブジェクト SSSMAIN_Last の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_Last = 0
+	End Function
+	
+	'処理対象のデータの中からカレントの次のレコードを読み込む。
+	Function SSSMAIN_Next() As Object
+		'
+		SSSMAIN_Next = MST_Next()
+	End Function
+	
+	'処理対象のデータの中からカレントの一つ前のレコードを読み込む。
+	Function SSSMAIN_Prev() As Object
+		'
+		'UPGRADE_WARNING: オブジェクト MST_Prev() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		SSSMAIN_Prev = MST_Prev()
+	End Function
+	
+	Sub WLS_SLIST_MOVE(ByVal SlistCom As Object, ByVal LENGTH As Short)
+		'UPGRADE_WARNING: オブジェクト SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+		PP_SSSMAIN.SlistCom = LeftWid(SlistCom, LENGTH)
+	End Sub
+	
+	Function PREV_GETEVENT() As Short
+		Dim Rtn As Object
+		'変更データ有り時更新判定処理
+		PREV_GETEVENT = -1
+		If PP_SSSMAIN.InitValStatus <> PP_SSSMAIN.Mode And PP_SSSMAIN.Mode >= 3 Then '1999/01/05  Update
+			'UPGRADE_WARNING: オブジェクト Rtn の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+			Rtn = MsgBox("未登録のデータが存在します。更新を行います。", 48 + MsgBoxStyle.YesNoCancel)
+			If Rtn = MsgBoxResult.Yes Then 'はい選択時（更新＋改ページ）
+				If AE_CompleteCheck_SSSMAIN(0) = 0 Then '1999/01/05  Insert
+					FR_SSSMAIN.Enabled = False
+					Call UpdMst()
+					FR_SSSMAIN.Enabled = True
+				Else '1999/01/05  Insert
+					PREV_GETEVENT = 0 '必須処理キャンセル  '1999/01/05  Insert
+				End If '1999/01/05  Insert
+			ElseIf Rtn = MsgBoxResult.Cancel Then 
+				PREV_GETEVENT = 0 'キャンセル選択時（処理キャンセル）
+			End If
+		End If
+	End Function
+	
+	Function NEXTCm_GETEVENT() As Short
+		Dim Rtn As Object
+		'変更データ有り時更新判定処理
+		NEXTCm_GETEVENT = -1
+		If PP_SSSMAIN.InitValStatus <> PP_SSSMAIN.Mode And PP_SSSMAIN.Mode >= 3 Then '1999/01/05  Update
+			'UPGRADE_WARNING: オブジェクト Rtn の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+			Rtn = MsgBox("未登録のデータが存在します。更新を行います。", 48 + MsgBoxStyle.YesNoCancel)
+			If Rtn = MsgBoxResult.Yes Then 'はい選択時（更新＋改ページ）
+				If AE_CompleteCheck_SSSMAIN(0) = 0 Then '1999/01/05  Insert
+					FR_SSSMAIN.Enabled = False
+					Call UpdMst()
+					FR_SSSMAIN.Enabled = True
+				Else '1999/01/05  Insert
+					NEXTCm_GETEVENT = 0 '必須処理キャンセル  '1999/01/05  Insert
+				End If '1999/01/05  Insert
+			ElseIf Rtn = MsgBoxResult.Cancel Then 
+				NEXTCm_GETEVENT = 0 'キャンセル選択時（処理キャンセル）
+			End If
+		End If
+	End Function
+End Module

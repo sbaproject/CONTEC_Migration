@@ -1,0 +1,47 @@
+Attribute VB_Name = "ZKMUZEKN_F01"
+Option Explicit
+'
+' スロット名        : 売上消費税(税込)・画面項目スロット
+' ユニット名        : ZKMUZEKN.F01
+' 記述者            : Standard Library
+' 作成日付          : 1997/06/11
+' 使用プログラム名  : URIET01
+'
+
+Function ZKMUZEKN_Derived (ByVal DE_INDEX, ByVal URIKN, ByVal TOKCD, ByVal HINCD, ByVal UDNDT)
+    Dim WL_TOKZEIKB, WL_TOKZCLKB, WL_TOKRPSKB, WL_TOKZRNKB, WL_HINZEIKB, WL_ZEIRNKKB
+    Dim WL_ZKMUZEKN As Currency, WL_ZEIRT As Currency
+    
+    ZKMUZEKN_Derived = 0
+    If Trim$(URIKN) = "" Or SSSVal(URIKN) = 0 Then Exit Function
+    WL_TOKZEIKB = RD_SSSMAIN_TOKZEIKB(0)
+    WL_TOKZCLKB = RD_SSSMAIN_TOKZCLKB(0)
+    WL_TOKRPSKB = RD_SSSMAIN_TOKRPSKB(0)
+    WL_TOKZRNKB = RD_SSSMAIN_TOKZRNKB(0)
+    WL_HINZEIKB = RD_SSSMAIN_HINZEIKB(DE_INDEX)
+    WL_ZEIRNKKB = RD_SSSMAIN_ZEIRNKKB(DE_INDEX)
+    SSS_WRKDT(0) = RD_SSSMAIN_UDNDT(0)
+
+    If SSSVal(WL_TOKZEIKB) = 9 Then Exit Function
+    If SSSVal(WL_TOKZCLKB) <> 1 Then Exit Function
+    If (SSSVal(WL_HINZEIKB) = 1) Or (SSSVal(WL_HINZEIKB) = 9) Then Exit Function
+    If SSSVal(WL_TOKZEIKB) <> 2 And SSSVal(WL_HINZEIKB) <> 2 Then Exit Function
+
+'   売上計上では, 消費税の手入力は原則として認めない
+'   もし手入力が必要な場合は､ SZEKN.F01のように次行を有効にする
+'    if &UKBCD[CWK]=10 RETURN
+    WL_ZKMUZEKN = 0
+    Call DB_GetLsEq(DBN_SYSTBB, 2, WL_ZEIRNKKB & SSS_WRKDT(0), BtrNormal)
+    If (DBSTAT <> 0) Or (DB_SYSTBB.ZEIRNKKB <> WL_ZEIRNKKB) Then Exit Function
+
+    WL_ZEIRT = DB_SYSTBB.ZEIRT
+
+'======================================================================
+'   得意先の税区分と、商品の税区分の組み合わせにより、税抜・税込の
+'   判定を行う。
+'======================================================================
+    WL_ZKMUZEKN = URIKN * WL_ZEIRT / (100 + WL_ZEIRT)
+    WL_ZKMUZEKN = DCMFRC(WL_ZKMUZEKN, SSSVal(WL_TOKZRNKB), SSSVal(WL_TOKRPSKB) - 1)
+    ZKMUZEKN_Derived = WL_ZKMUZEKN
+End Function
+

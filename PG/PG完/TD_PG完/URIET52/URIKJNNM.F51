@@ -1,0 +1,105 @@
+Attribute VB_Name = "URIKJNNM_F51"
+Option Explicit
+'
+' スロット名        : 売上基準名称・画面項目スロット
+' ユニット名        : URIKJNNM.F51
+' 記述者            :
+' 作成日付          : 2006/09/22
+' 使用プログラム名  : URIET52
+
+'''' ADD 2010/07/02  FKS) T.Yamamoto    Start    連絡票№FC10070201
+Type M_TYPE_EVTTBL_PARA
+    IVWRDT              As String * 10      ' イベント発生日
+    IVWRTM              As String * 6       ' イベント発生時間
+    PGID                As String * 10      ' プログラムＩＤ
+    CLTID               As String * 5       ' クライアントＩＤ
+    IVCLASS             As String * 3       ' イベント種別
+    IVCODE              As String * 10      ' イベントコード
+    IVPOINT             As String * 30      ' イベント発生箇所
+    SNDPROFLG           As String * 1       ' 送信可否フラグ
+    IVMSG               As String           ' イベント内容
+End Type
+Private M_EVTTBL_PARA   As M_TYPE_EVTTBL_PARA
+'''' ADD 2010/07/02  FKS) T.Yamamoto    End
+
+Function URIKJNNM_Derived(ByVal URIKJN)
+Dim Rtn As Integer
+Dim KEY_CODE As String
+
+    If Trim$(URIKJN) <> "" Then
+'''' ADD 2010/07/02  FKS) T.Yamamoto    Start    連絡票№FC10070201
+Dim strSQL As String
+Dim strExePath As String
+    
+      strSQL = ""
+      strSQL = strSQL & "SELECT DISTINCT 1 FROM SYSTBH" & vbCrLf
+      strSQL = strSQL & " WHERE EXISTS (" & vbCrLf
+      strSQL = strSQL & "               SELECT C_JYUCYU_NO" & vbCrLf
+      strSQL = strSQL & "                 FROM JDN_SHINKO" & vbCrLf
+      strSQL = strSQL & "                WHERE C_FAC_CD = 'CONTEC'" & vbCrLf
+      strSQL = strSQL & "                  AND C_JYUCYU_NO = TRIM('" & RD_SSSMAIN_JDNNO(-1) & "')" & vbCrLf
+      strSQL = strSQL & "                  AND  C_SHINKO_CLS = '1'" & vbCrLf
+      strSQL = strSQL & "              )" & vbCrLf
+      Call DB_GetSQL4(DBN_SYSTBH, strSQL)
+      If DBSTAT = 0 Then
+        URIKJNNM_Derived = "進行基準"
+      Else
+        'EOF, NULL以外
+        If Not (DBSTAT = 1403 Or DBSTAT = 1405) Then
+            'イベントテーブルへメッセージを書き込む
+            With M_EVTTBL_PARA
+                .IVWRDT = Format$(Now(), "YYYYMMDD")                        ' イベント発生日
+                .IVWRTM = Format$(Now(), "HHMMSS")                          ' イベント発生時間
+                .PGID = SSS_PrgId                                           ' プログラムＩＤ
+                .CLTID = SSS_CLTID                                          ' クライアントＩＤ
+                .IVCLASS = "ERR"                                            ' イベント種別
+                .IVCODE = "0"                                               ' イベントコード
+                .IVPOINT = "URIKJNNM_Derived"                               ' イベント発生箇所
+                .SNDPROFLG = "1"                                            ' 送信可否フラグ
+                .IVMSG = "OraError=[JDN_SHINKO:" & DBSTAT & "]"             ' イベント内容
+    
+                strExePath = SSS_INIDAT(2) & "EXE\EVTLG01.EXE " & Chr$(34) & _
+                                .IVWRDT & .IVWRTM & .PGID & .CLTID & .IVCLASS & _
+                                .IVCODE & .IVPOINT & .SNDPROFLG & .IVMSG & Chr$(34)
+            End With
+            Call Shell(strExePath)
+        End If
+'''' ADD 2010/07/02  FKS) T.Yamamoto    End
+        Call MEIMTA_RClear
+        KEY_CODE = Format$(URIKJN, "00")
+        Call DB_GetEq(DBN_MEIMTA, 1, "005" & KEY_CODE & " ", BtrNormal)
+        If DBSTAT <> 0 Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            URIKJNNM_Derived = ""
+            Exit Function
+        End If
+        Call SCR_FromMEIMTA_URIKJN(0)
+'''' ADD 2010/07/02  FKS) T.Yamamoto    Start    連絡票№FC10070201
+      End If
+'''' ADD 2010/07/02  FKS) T.Yamamoto    End
+    Else
+        URIKJNNM_Derived = ""
+    End If
+    
+'
+'    If Trim$(URIKJN) <> "" Then
+'        Select Case Trim$(URIKJN)
+'            Case "1"
+'                URIKJNNM_Derived = "出荷基準"
+'            Case "2"
+'                URIKJNNM_Derived = "検収基準"
+'            Case "3"
+'                URIKJNNM_Derived = "役務完了基準"
+'            Case "4"
+'                URIKJNNM_Derived = "工事完了基準"
+'        End Select
+'    Else
+'        URIKJNNM_Derived = ""
+'    End If
+End Function
+
+Sub SCR_FromMEIMTA_URIKJN(ByVal De As Integer)  'Generated.
+    Call DP_SSSMAIN_URIKJN(De, Trim$(DB_MEIMTA.MEICDA))
+    Call DP_SSSMAIN_URIKJNNM(De, Trim$(DB_MEIMTA.MEINMA))
+End Sub
+

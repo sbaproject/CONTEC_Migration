@@ -1,0 +1,27 @@
+Attribute VB_Name = "GYMTBZ_DBM"
+        Option Explicit
+'==========================================================================
+'   GYMTBZ.DBM   業務制御テーブル                 UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_GYMTBZ
+    GYMCD          As String * 10    '業務コード            0000000000
+    GYMNM          As String * 30    '業務名
+    NGGYMCD        As String * 10    '起動不可業務コード    0000000000
+    RELFL          As String * 1     '連携フラグ            0
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD
+End Type
+Global DB_GYMTBZ As TYPE_DB_GYMTBZ
+Global DBN_GYMTBZ As Integer
+' Index1( GYMCD + NGGYMCD )
+' Index2( NGGYMCD )
+
+Sub GYMTBZ_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_GYMTBZ, G_LB)
+    Call ResetBuf(DBN_GYMTBZ)
+End Sub

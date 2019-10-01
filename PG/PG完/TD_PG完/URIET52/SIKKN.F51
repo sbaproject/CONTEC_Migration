@@ -1,0 +1,29 @@
+Attribute VB_Name = "SIKKN_F51"
+Option Explicit
+'
+' スロット名        : 営業仕切金額・画面項目スロット
+' ユニット名        : SIKKN.F51
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : URIET01
+'
+
+'売上単価＊売上数量
+Function SIKKN_Derived(ByVal SIKKN, ByVal SIKTK, ByVal URISU, CP_SIKKN As clsCP)
+    '
+    SIKKN_Derived = SIKKN
+    If Trim$(SIKTK) = "" Or Not IsNumeric(SIKTK) Then Exit Function
+    If Trim$(URISU) = "" Or Not IsNumeric(URISU) Then Exit Function
+    On Error GoTo OverFlow
+    '' 2003/08/28 変更した単価 が 0 の場合前回の金額が残る
+    If SIKTK <> 0 Or URISU <> 0 Then
+    ''If SIKTK <> 0 And URISU <> 0 Then
+'        SIKKN_Derived = SIKTK * URISU                  '1996/08/26 Delete
+        SIKKN_Derived = DCMFRC(SIKTK * URISU, 0, 0)     '1996/08/26 Insert
+    End If
+    Exit Function
+OverFlow:
+    CP_SIKKN.StatusC = Cn_StatusError
+    SIKKN_Derived = "??????????????????"
+End Function
+

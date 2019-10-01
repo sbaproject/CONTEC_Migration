@@ -1,0 +1,30 @@
+	Option Explicit
+'==========================================================================
+'   TOKMTB.DBM   販売単価履歴マスタ               UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKMTB
+    DATKB          As String * 1     '伝票削除区分          0                   
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    URITKDT (05)   As String * 8     '適用日                YYYY/MM/DD          
+    UDNNO   (05)   As String * 8     '売上伝票番号          0000000000          
+    UDNDT   (05)   As String * 8     '売上伝票日付          YYYY/MM/DD          
+    HISURITK(05)   As Currency       '販売履歴単価          ###,###,##0.0000;;# 
+    BIKO    (05)   As String * 20    '備考                                      
+    RELFL          As String * 1     '連携フラグ            0                   
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+End Type
+Global DB_TOKMTB As TYPE_DB_TOKMTB
+Global DBN_TOKMTB As Integer
+' Index1( TOKCD + HINCD )
+
+Sub TOKMTB_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKMTB, G_LB)
+    Call ResetBuf(DBN_TOKMTB)
+End Sub

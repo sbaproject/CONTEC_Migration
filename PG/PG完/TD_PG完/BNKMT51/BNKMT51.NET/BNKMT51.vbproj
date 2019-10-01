@@ -1,0 +1,257 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <MyType>WindowsForms</MyType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{53403678-B2F1-40EC-9B6F-719C321FC6D0}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>BNKMT51</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>BNKMT51.FR_SSSMAIN</StartupObject>
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>3</AssemblyMinorVersion>
+    <AssemblyRevisionNumber>0</AssemblyRevisionNumber>
+    <GenerateRevisionNumber>False</GenerateRevisionNumber>
+    <AssemblyCompanyName>ウッドランド株式会社</AssemblyCompanyName>
+    <StartWithIE>False</StartWithIE>
+    <ApplicationIcon>BNKMT51.ico</ApplicationIcon>
+    <RootNamespace>BNKMT51</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>BNKMT51.xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DefineDebug>True</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>BNKMT51.xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DefineDebug>False</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.DAO, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Interop.DAO.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Oracle.DataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PronesDbAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\PronesDbAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <Lcid>0</Lcid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\共通vb\ACE_CMN.vb">
+      <Link>ACE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\AE_CMN.vb">
+      <Link>AE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\AE_CONST.vb">
+      <Link>AE_CONST.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\AE_PROC.vb">
+      <Link>AE_PROC.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\AE_RSMR.vb">
+      <Link>AE_RSMR.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\ClsComn.vb">
+      <Link>ClsComn.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\COMMON_SEARCH.vb">
+      <Link>COMMON_SEARCH.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\OPEID.vb">
+      <Link>OPEID.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\OPENM.vb">
+      <Link>OPENM.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\ORA_CMN.vb">
+      <Link>ORA_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\UpgradeSupport.vb">
+      <Link>UpgradeSupport.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\WLS_BNK1.designer.vb">
+      <Link>WLS_BNK1.designer.vb</Link>
+      <DependentUpon>WLS_BNK1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\WLS_BNK1.vb">
+      <Link>WLS_BNK1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\WLS_HCP.designer.vb">
+      <Link>WLS_HCP.designer.vb</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\WLS_HCP.vb">
+      <Link>WLS_HCP.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\WLS_LIST.designer.vb">
+      <Link>WLS_LIST.designer.vb</Link>
+      <DependentUpon>WLS_LIST.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\共通vb\WLS_LIST.vb">
+      <Link>WLS_LIST.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="BNKCD.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BNKMT51_e01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BNKMT51_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BNKMT51_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>BNKMT51_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BNKMT51_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BNKMT51_iev.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BNKMT51_psi.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BNKMTA_dbm.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BNKMTA_m51.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BNKNM.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICONSSS.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ICONSSS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SSSMAIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMSG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSWIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="STNNM.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UPDKB.vb" />
+    <EmbeddedResource Include="..\..\..\共通vb\WLS_BNK1.resX">
+      <Link>WLS_BNK1.resX</Link>
+      <DependentUpon>WLS_BNK1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\共通vb\WLS_HCP.resX">
+      <Link>WLS_HCP.resX</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\共通vb\WLS_LIST.resX">
+      <Link>WLS_LIST.resX</Link>
+      <DependentUpon>WLS_LIST.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BNKMT51_frm.resX">
+      <DependentUpon>BNKMT51_frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ICONSSS.resX">
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="BNKMT51.ico" />
+    <None Include="app.config" />
+    <None Include="_UpgradeReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

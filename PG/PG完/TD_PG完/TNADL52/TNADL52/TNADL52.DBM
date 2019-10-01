@@ -1,0 +1,25 @@
+	Option Explicit
+'==========================================================================
+'   TNADL52.DBM  在庫照会（倉庫別）ワーク         UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TNADL52
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    HINNMA         As String * 50    '型式                                      
+    HINNMB         As String * 50    '商品名１                                  
+    UNTNM          As String * 4     '単位名                                    
+    SMZZAISU       As Currency       '棚卸数量              ##,###,##0.00;;#    
+    SMAINPSU       As Currency       '入荷集計数量          ##,###,##0.00;;#    
+    SMAOUTSU       As Currency       '棚卸数量              ##,###,##0.00;;#    
+    ZAISAISU       As Currency       '棚卸差異数量          ###,##0.00;;#       
+    SMAZAISU       As Currency       '当月在庫数            ##,###,##0.00;;#    
+    RELZAISU       As Currency       '現在在庫数            #,###,##0.00;;#     
+End Type
+Global DB_TNADL52 As TYPE_DB_TNADL52
+Global DBN_TNADL52 As Integer
+' Index1( HINCD )
+
+Sub TNADL52_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TNADL52, G_LB)
+    Call ResetBuf(DBN_TNADL52)
+End Sub

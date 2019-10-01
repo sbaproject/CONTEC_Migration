@@ -1,0 +1,26 @@
+	Option Explicit
+'==========================================================================
+'   TOKSMC.DBM   売上サマリ                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKSMC
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SMAUODKN       As Currency       '受注集計金額          ###,###,##0.0000;;# 
+    SMAURIKN(09)   As Currency       '売上集計金額          ###,###,##0.0000;;# 
+    SMAUZEKN       As Currency       '売上消費税金額        ###,###,##0.0000;;# 
+    SMAGNKKN(09)   As Currency       '原価集計金額          ###,###,##0.0000;;# 
+    SMAYSUKN       As Currency       '売上予算金額          ###,###,##0.0000;;# 
+    SMAYSAKN       As Currency       '粗利予算金額          ###,###,##0.0000;;# 
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_TOKSMC As TYPE_DB_TOKSMC
+Global DBN_TOKSMC As Integer
+' Index1( TOKCD + SMADT )
+' Index2( SMADT + TOKCD )
+
+Sub TOKSMC_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKSMC, G_LB)
+    Call ResetBuf(DBN_TOKSMC)
+End Sub

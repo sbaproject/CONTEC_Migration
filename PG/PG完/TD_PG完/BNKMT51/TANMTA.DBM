@@ -1,0 +1,58 @@
+Attribute VB_Name = "TANMTA_DBM"
+        Option Explicit
+'==========================================================================
+'   TANMTA.DBM   担当者マスタ                     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TANMTA
+    DATKB          As String * 1     '伝票削除区分          0
+    TANMSTKB       As String * 1     'マスタ区分(担当者)    0
+    TANCD          As String * 6     '担当者コード          000000
+    MAETANCD       As String * 6     '前回担当者コード
+    MMTANCD        As String * 6     '前々回担当者コード
+    TANNM          As String * 40    '担当者名
+    TANNK          As String * 10    '担当者名称カナ
+    TANCLAKB       As String * 1     '分類区分１(担当者)    0
+    TANCLBKB       As String * 1     '分類区分２(担当者)    0
+    TANCLCKB       As String * 1     '分類区分３(担当者)    0
+    TANCLAID       As String * 6     '分類コード１(担当者)  !@@@@@@
+    TANCLBID       As String * 6     '分類コード２(担当者)  !@@@@@@
+    TANCLCID       As String * 6     '分類コード３(担当者)  !@@@@@@
+    TANCLANM       As String * 20    '分類名称１(担当者)
+    TANCLBNM       As String * 20    '分類名称２(担当者)
+    TANCLCNM       As String * 20    '分類名称３(担当者)
+    TANBMNCD       As String * 6     '所属部門コード        000000
+    KEIBMNCD       As String * 6     '経理部門コード        000000
+    TANMLAD        As String * 50    'メールアドレス
+    KNGGRCD        As String * 3     '権限グループ          !@@@
+    TANTKDT        As String * 8     '適用日                YYYY/MM/DD
+    OLDBMNCD       As String * 6     '旧部門コード          000000
+    OLDGRCD        As String * 3     '旧権限グループ        !@@@
+    TANDELDT       As String * 8     '削除年月日            YYYY/MM/DD
+    RELFL          As String * 1     '連携フラグ            0
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    PGID           As String * 7     'プログラムID          !@@@@@@@@
+End Type
+Global DB_TANMTA As TYPE_DB_TANMTA
+Global DBN_TANMTA As Integer
+' Index1( TANCD )
+' Index2( TANNK + TANCD )
+' Index3( TANCLAID + TANCLBID + TANCLCID + TANCD )
+' Index4( TANCLBID + TANCLCID + TANCD )
+' Index5( TANCLCID + TANCD )
+
+Sub TANMTA_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_TANMTA, G_LB)
+    Call ResetBuf(DBN_TANMTA)
+End Sub
