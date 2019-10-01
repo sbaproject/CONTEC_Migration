@@ -8,17 +8,21 @@ Friend Class FR_SSSSUB01
 	'=== 当画面の全情報を格納 =================
 	'UPGRADE_WARNING: 構造体 Main_Inf の配列は、使用する前に初期化する必要があります。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"' をクリックしてください。
 	Private Main_Inf As Cls_All
-	'=== 当画面の全情報を格納 =================
-	Private Const FM_PANEL3D1_CNT As Short = 21 'パネルコントロール数
-	
-	' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
-	'   名称：  Function Init_Def_Dsp
-	'   概要：  各画面の項目情報を設定
-	'   引数：　なし
-	'   戻値：　なし
-	'   備考：  全画面ローカル共通処理
-	' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
-	Private Function Init_Def_Dsp() As Short
+    '=== 当画面の全情報を格納 =================
+    Private Const FM_PANEL3D1_CNT As Short = 21 'パネルコントロール数
+
+    '2019/09/20 ADD START
+    Private FORM_LOAD_FLG As Boolean = False
+    '2019/09/20 ADD END
+
+    ' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+    '   名称：  Function Init_Def_Dsp
+    '   概要：  各画面の項目情報を設定
+    '   引数：　なし
+    '   戻値：　なし
+    '   備考：  全画面ローカル共通処理
+    ' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+    Private Function Init_Def_Dsp() As Short
 		
 		Dim Index_Wk As Short
 		Dim BD_Cnt As Short
@@ -38,9 +42,12 @@ Friend Class FR_SSSSUB01
 		'Ｓ★★★★★★★★★★★★★★★★★★★★★★★★★★★★Ｓ
 		'画面基礎情報設定
 		With Main_Inf.Dsp_Base
-			.Dsp_Ctg = DSP_CTG_REVISION '画面分類
-			.Item_Cnt = 186 '画面項目数
-			.Dsp_Body_Cnt = 15 '画面表示明細数（０：明細なし、１～：表示時明細数）
+            .Dsp_Ctg = DSP_CTG_REVISION '画面分類
+            '2019/09/30 CHG START
+            '.Item_Cnt = 186 '画面項目数
+            .Item_Cnt = 165 '画面項目数
+            '2019/09/30 CHG END
+            .Dsp_Body_Cnt = 15 '画面表示明細数（０：明細なし、１～：表示時明細数）
 			.Max_Body_Cnt = 99 '最大表示明細数（０：明細なし、１～：最大明細数）
 			.Body_Col_Cnt = 8 '明細の列項目数
 			.Dsp_Body_Move_Qty = .Dsp_Body_Cnt - 1 '画面移動量
@@ -132,11 +139,15 @@ Friend Class FR_SSSSUB01
 		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Locked = True
 		
 		Index_Wk = Index_Wk + 1
-		'登録
-		MN_Execute.Tag = CStr(Index_Wk)
-		Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Execute
-		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
+        '登録
+        '2019/09/30 CHG START
+        'MN_Execute.Tag = CStr(Index_Wk)
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Execute
+        btnF1.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF1
+        '2019/09/30 CHG END
+        'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
 		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Typ = IN_TYP_ELSE
 		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Str_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -198,11 +209,15 @@ Friend Class FR_SSSSUB01
 		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Locked = True
 		
 		Index_Wk = Index_Wk + 1
-		'終了
-		MN_EndCm.Tag = CStr(Index_Wk)
-		Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_EndCm
-		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
+        '終了
+        '2019/09/30 CHG START
+        'MN_EndCm.Tag = CStr(Index_Wk)
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_EndCm
+        btnF12.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF12
+        '2019/09/30 CHG END
+        'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
 		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Typ = IN_TYP_ELSE
 		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Str_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1716,48 +1731,51 @@ Friend Class FR_SSSSUB01
 		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Focus_Ctl = False
 		'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Locked の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Locked = True
-		
-		'///////////////////
-		'// その他編集
-		'///////////////////
-		For Wk_Cnt = 0 To FM_PANEL3D1_CNT - 1
-			Index_Wk = Index_Wk + 1
-			'FM_Panel3D1
-			'UPGRADE_WARNING: オブジェクト FM_Panel3D1().Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			FM_Panel3D1(Wk_Cnt).Tag = Index_Wk
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = FM_Panel3D1(Wk_Cnt)
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_ELSE
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Typ = IN_TYP_ELSE
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Str_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Str_Typ = IN_STR_TYP_ELSE
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.MaxLengthB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.MaxLengthB = 0
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Dsp_MaxLengthB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Dsp_MaxLengthB = 0
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Num_Int_Fig の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Num_Int_Fig = 0
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Num_Fra_Fig の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Num_Fra_Fig = 0
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Num_Sign_Fig の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Num_Sign_Fig = IN_NUM_ELSE
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Fil_Chr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Fil_Chr = ""
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Fil_Point の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Fil_Point = FIL_POINT_ELSE
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Dsp_Fmt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Dsp_Fmt = ""
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Body_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Body_Index = 0
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Focus_Ctl の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Focus_Ctl = False
-			'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Locked の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Locked = True
-		Next 
-		
-		'明細部の隠し行を非表示/使用不可に設定
-		BD_SOUNM(0).Visible = False : BD_SOUNM(0).Enabled = False
+
+        '///////////////////
+        '// その他編集
+        '///////////////////
+        '2019/09/30 ADD START
+        'For Wk_Cnt = 0 To FM_PANEL3D1_CNT - 1
+        '    Index_Wk = Index_Wk + 1
+        '    'FM_Panel3D1
+        '    'UPGRADE_WARNING: オブジェクト FM_Panel3D1().Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    FM_Panel3D1(Wk_Cnt).Tag = Index_Wk
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = FM_Panel3D1(Wk_Cnt)
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_ELSE
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Typ = IN_TYP_ELSE
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Str_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Str_Typ = IN_STR_TYP_ELSE
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.MaxLengthB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.MaxLengthB = 0
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Dsp_MaxLengthB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Dsp_MaxLengthB = 0
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Num_Int_Fig の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Num_Int_Fig = 0
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Num_Fra_Fig の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Num_Fra_Fig = 0
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Num_Sign_Fig の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Num_Sign_Fig = IN_NUM_ELSE
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Fil_Chr の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Fil_Chr = ""
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Fil_Point の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Fil_Point = FIL_POINT_ELSE
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Dsp_Fmt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Dsp_Fmt = ""
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Body_Index の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Body_Index = 0
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Focus_Ctl の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Focus_Ctl = False
+        '    'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.Locked の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Locked = True
+        'Next
+        '2019/09/30 ADD END
+
+
+        '明細部の隠し行を非表示/使用不可に設定
+        BD_SOUNM(0).Visible = False : BD_SOUNM(0).Enabled = False
 		BD_LOTNO(0).Visible = False : BD_LOTNO(0).Enabled = False
 		BD_NYUYTDT(0).Visible = False : BD_NYUYTDT(0).Enabled = False
 		BD_RELZAISU(0).Visible = False : BD_RELZAISU(0).Enabled = False
@@ -2382,8 +2400,14 @@ Friend Class FR_SSSSUB01
 	'   備考：  全画面ローカル共通処理
 	' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
 	Private Function Ctl_Item_Change(ByRef pm_Ctl As System.Windows.Forms.Control) As Short
-		
-		Dim Trg_Index As Short
+
+        '2019/09/30 ADD START
+        If FORM_LOAD_FLG = False Then
+            Return 0
+        End If
+        '2019/09/30 ADD END
+
+        Dim Trg_Index As Short
 		
 		If Main_Inf.Dsp_Base.Change_Flg = True Then
 			Main_Inf.Dsp_Base.Change_Flg = False
@@ -2548,18 +2572,22 @@ Friend Class FR_SSSSUB01
 			Case CShort(MN_Ctrl.Tag)
 				'処理１
 				Call Ctl_MN_Ctrl_Click()
-				
-			Case CShort(MN_Execute.Tag)
-				'実行
-				Call Ctl_MN_Execute_Click()
+                '2019/09/30 CHG START
+            'Case CShort(MN_Execute.Tag)
+            Case CShort(btnF1.Tag)
+                '2019/09/30 CHG END
+                '実行
+                Call Ctl_MN_Execute_Click()
 				
 			Case CShort(MN_HARDCOPY.Tag)
 				'画面印刷
 				Call Ctl_MN_HARDCOPY_Click()
-				
-			Case CShort(MN_EndCm.Tag)
-				'終了
-				Call Ctl_MN_EndCm_Click()
+                '2019/09/30 CHG START
+            'Case CShort(MN_EndCm.Tag)
+            Case CShort(btnF12.Tag)
+                '2019/09/30 CHG END
+                '終了
+                Call Ctl_MN_EndCm_Click()
 				
 			Case CShort(MN_EditMn.Tag)
 				'処理２
@@ -3177,14 +3205,20 @@ Friend Class FR_SSSSUB01
 		If gv_bolHIKET51_INIT = False Then
 			'終了しますか？
 			If AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_A_001, Main_Inf) = MsgBoxResult.No Then
-				Cancel = MsgBoxResult.Cancel
-				Exit Sub
+                Cancel = MsgBoxResult.Cancel
+                '2019/09/26 ADD START
+                eventArgs.Cancel = Cancel
+                '2019/09/26 ADD END
+                Exit Sub
 			End If
 		Else
 			'未登録のまま終了しますか？
 			If AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_A_013, Main_Inf) = MsgBoxResult.No Then
-				Cancel = MsgBoxResult.Cancel
-				Exit Sub
+                Cancel = MsgBoxResult.Cancel
+                '2019/09/26 ADD START
+                eventArgs.Cancel = Cancel
+                '2019/09/26 ADD END
+                Exit Sub
 			End If
 		End If
 		
@@ -3260,11 +3294,15 @@ Friend Class FR_SSSSUB01
 		
 		'システム共通処理
 		Call CF_System_Process(Me)
-		
-		'画面編集フラグ初期化
-		gv_bolHIKET51_INIT = False
-		
-	End Sub
+
+        '画面編集フラグ初期化
+        gv_bolHIKET51_INIT = False
+
+        '2019/09/26 ADD START
+        SetBar(Me)
+        '2019/09/26 ADD END
+
+    End Sub
 	
 	'□□□□□□□□ 全画面ローカル共通処理 End □□□□□□□□□□□□□□□□
 	' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
@@ -4939,5 +4977,67 @@ Friend Class FR_SSSSUB01
         End With
 
     End Function
+
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Call Ctl_Item_Click(btnF1)
+    End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        Call Ctl_Item_Click(btnF12)
+    End Sub
+
+    Public Function SetBar(ByRef po_Form As Form) As Boolean
+
+        '--------------------------------------------------------------------------
+        '変数の定義
+        '--------------------------------------------------------------------------
+        Dim li_MsgRtn As Integer    'MsgBoxの戻り値
+
+        '--------------------------------------------------------------------------
+        'エラートラップ宣言
+        '--------------------------------------------------------------------------
+        Try
+            '--------------------------------------------------------------------------
+            '処理開始
+            '--------------------------------------------------------------------------
+            '---戻り値設定---'
+            SetBar = False
+
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel1").Text = DB_NullReplace(CNV_DATE(DB_UNYMTA.UNYDT), Format(Now(), "yyyy/MM/dd"))
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel2").Text = DB_NullReplace(DB_UNYMTA.TERMNO, "")
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel3").Text = DB_NullReplace(SSS_OPEID.Value, "")
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel4").Text = SSS_PrgId
+
+            '---戻り値設定---'
+            SetBar = True
+
+            '--------------------------------------------------------------------------
+            'エラートラップルーチン
+            '--------------------------------------------------------------------------
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("ﾀｲﾄﾙﾊﾞｰ,ｽﾃｰﾀｽﾊﾞｰ設定関数エラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+
+    End Function
+
+    Private Sub FR_SSSMAIN_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
     '2019/09/20 ADD END
 End Class

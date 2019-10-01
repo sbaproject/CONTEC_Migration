@@ -1416,9 +1416,13 @@ Module SSSMAIN0003
         Call DB_BeginTrans(CON)
         '2019/09/20 CHG END
         bolTran = True
-		
-		' 見積トランの場合
-		If HIKET51_Interface.Mode = CDbl("1") Then
+
+        '2019/10/01 ADD START
+        Dim dt As DataTable = New DataTable
+        '2019/10/01 ADD END
+
+        ' 見積トランの場合
+        If HIKET51_Interface.Mode = CDbl("1") Then
 			' 見積トランから現在の更新日時を取得する
 			ls_sql = ""
 			ls_sql = ls_sql & "SELECT"
@@ -1436,36 +1440,42 @@ Module SSSMAIN0003
 			ls_sql = ls_sql & "  TRA.DATKB  =  '" & CF_Ora_String(gc_strDATKB_USE, 1) & "' "
 			ls_sql = ls_sql & "AND"
 			ls_sql = ls_sql & "  TRA.MITNO  =  '" & CF_Ora_String(HIKET51_Interface.DENNO1, 10) & "' "
-			ls_sql = ls_sql & "AND"
-			ls_sql = ls_sql & "  TRA.MITNOV =  '" & CF_Ora_String(HIKET51_Interface.DENNO2, 2) & "' "
-			ls_sql = ls_sql & "AND"
-			ls_sql = ls_sql & "  TRA.LINNO  =  '" & CF_Ora_String(HIKET51_Interface.LINNO, 3) & "' "
-			
-			ls_sql = ls_sql & "FOR UPDATE"
-			
-			' DBアクセス
-			Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
-			
-			If DBSTAT <> 0 Then
+            'ls_sql = ls_sql & "AND"
+            'ls_sql = ls_sql & "  TRA.MITNOV =  '" & CF_Ora_String(HIKET51_Interface.DENNO2, 2) & "' "
+            'ls_sql = ls_sql & "AND"
+            'ls_sql = ls_sql & "  TRA.LINNO  =  '" & CF_Ora_String(HIKET51_Interface.LINNO, 3) & "' "
+
+            ls_sql = ls_sql & "FOR UPDATE"
+
+            ' DBアクセス
+            '2019/10/01 CHG START
+            'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
+            dt = DB_GetTable(ls_sql)
+            '2019/10/01 CHG END
+            If DBSTAT <> 0 Then
 				' データなしの場合
 				intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
 				GoTo Err_F_Ctl_Upd_Process
 				
 			Else
-				' 更新前データと異なるデータが存在した場合はエラーとする。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If HIKET51_Interface.OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or HIKET51_Interface.CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or HIKET51_Interface.WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or HIKET51_Interface.WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or HIKET51_Interface.UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or HIKET51_Interface.UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or HIKET51_Interface.UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or HIKET51_Interface.UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
-					intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
-					GoTo Err_F_Ctl_Upd_Process
-				End If
-			End If
+                ' 更新前データと異なるデータが存在した場合はエラーとする。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/10/01 CHG START
+                'If HIKET51_Interface.OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or HIKET51_Interface.CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or HIKET51_Interface.WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or HIKET51_Interface.WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or HIKET51_Interface.UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or HIKET51_Interface.UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or HIKET51_Interface.UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or HIKET51_Interface.UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
+                If HIKET51_Interface.OPEID <> DB_NullReplace(dt.Rows(0)("OPEID"), "") Or HIKET51_Interface.CLTID <> DB_NullReplace(dt.Rows(0)("CLTID"), "") Or HIKET51_Interface.WRTTM <> DB_NullReplace(dt.Rows(0)("WRTTM"), "") Or HIKET51_Interface.WRTDT <> DB_NullReplace(dt.Rows(0)("WRTDT"), "") Or HIKET51_Interface.UOPEID <> DB_NullReplace(dt.Rows(0)("UOPEID"), "") Or HIKET51_Interface.UCLTID <> DB_NullReplace(dt.Rows(0)("UCLTID"), "") Or HIKET51_Interface.UWRTTM <> DB_NullReplace(dt.Rows(0)("UWRTTM"), "") Or HIKET51_Interface.UWRTDT <> DB_NullReplace(dt.Rows(0)("UWRTDT"), "") Then
+                    '2019/10/01 CHG END
+                    intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
+                    GoTo Err_F_Ctl_Upd_Process
+                End If
+
+            End If
 			
 			' 受注トランの場合
 		Else
@@ -1512,30 +1522,36 @@ Module SSSMAIN0003
 			ls_sql = ls_sql & "                 ) "
 			
 			ls_sql = ls_sql & "FOR UPDATE"
-			
-			' DBアクセス
-			Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
-			
-			If DBSTAT <> 0 Then
+
+            ' DBアクセス
+            '2019/10/01 CHG START
+            'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
+            dt = DB_GetTable(ls_sql)
+            '2019/10/01 CHG END
+
+            If DBSTAT <> 0 Then
 				' データなしの場合
 				intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
 				GoTo Err_F_Ctl_Upd_Process
 				
 			Else
-				' 更新前データと異なるデータが存在した場合はエラーとする。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				If HIKET51_Interface.OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or HIKET51_Interface.CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or HIKET51_Interface.WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or HIKET51_Interface.WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or HIKET51_Interface.UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or HIKET51_Interface.UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or HIKET51_Interface.UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or HIKET51_Interface.UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
-					intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
-					GoTo Err_F_Ctl_Upd_Process
-				End If
-			End If
+                ' 更新前データと異なるデータが存在した場合はエラーとする。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/10/01 CHG START
+                'If HIKET51_Interface.OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or HIKET51_Interface.CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or HIKET51_Interface.WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or HIKET51_Interface.WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or HIKET51_Interface.UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or HIKET51_Interface.UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or HIKET51_Interface.UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or HIKET51_Interface.UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
+                If HIKET51_Interface.OPEID <> DB_NullReplace(dt.Rows(0)("OPEID"), "") Or HIKET51_Interface.CLTID <> DB_NullReplace(dt.Rows(0)("CLTID"), "") Or HIKET51_Interface.WRTTM <> DB_NullReplace(dt.Rows(0)("WRTTM"), "") Or HIKET51_Interface.WRTDT <> DB_NullReplace(dt.Rows(0)("WRTDT"), "") Or HIKET51_Interface.UOPEID <> DB_NullReplace(dt.Rows(0)("UOPEID"), "") Or HIKET51_Interface.UCLTID <> DB_NullReplace(dt.Rows(0)("UCLTID"), "") Or HIKET51_Interface.UWRTTM <> DB_NullReplace(dt.Rows(0)("UWRTTM"), "") Or HIKET51_Interface.UWRTDT <> DB_NullReplace(dt.Rows(0)("UWRTDT"), "") Then
+                    '2019/10/01 CHG END
+                    intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
+                    GoTo Err_F_Ctl_Upd_Process
+                End If
+            End If
 		End If
 		
 		mv_intINPHIKSU_Col = CShort(FR_SSSSUB01.BD_INP_HIKSU(1).Tag) - CShort(FR_SSSSUB01.BD_SOUNM(1).Tag) + 1 ' 引当数
@@ -1578,30 +1594,37 @@ Module SSSMAIN0003
 							ls_sql = ls_sql & "  HIN.HINCD = '" & CF_Ora_String(strHinCd, 10) & "' "
 							
 							ls_sql = ls_sql & "FOR UPDATE"
-							
-							' DBアクセス
-							Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
-							
-							If DBSTAT <> 0 Then
+
+                            ' DBアクセス
+                            '2019/10/01 CHG START
+                            'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
+                            dt = DB_GetTable(ls_sql)
+                            '2019/10/01 CHG END
+
+                            If DBSTAT <> 0 Then
 								' データなしの場合
 								intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
 								GoTo Err_F_Ctl_Upd_Process
 								
 							Else
-								' 更新前データと異なるデータが存在した場合はエラーとする。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								If pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
-									intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
-									GoTo Err_F_Ctl_Upd_Process
-								End If
-							End If
+                                ' 更新前データと異なるデータが存在した場合はエラーとする。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                '2019/10/01 CHG START
+                                'If pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
+                                If pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_OPEID <> DB_NullReplace(dt.Rows(0)("OPEID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_CLTID <> DB_NullReplace(dt.Rows(0)("CLTID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTTM <> DB_NullReplace(dt.Rows(0)("WRTTM"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTDT <> DB_NullReplace(dt.Rows(0)("WRTDT"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UOPEID <> DB_NullReplace(dt.Rows(0)("UOPEID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UCLTID <> DB_NullReplace(dt.Rows(0)("UCLTID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTTM <> DB_NullReplace(dt.Rows(0)("UWRTTM"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTDT <> DB_NullReplace(dt.Rows(0)("UWRTDT"), "") Then
+                                    '2019/10/01 CHG END
+                                    intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
+                                    GoTo Err_F_Ctl_Upd_Process
+                                End If
+
+                            End If
 						End If
 						
 						'SUB_KB = "2"(入荷予定ファイル)の場合は処理を行う
@@ -1638,27 +1661,32 @@ Module SSSMAIN0003
 							ls_sql = ls_sql & "  INP.LOTNO   =  '" & CF_Ora_String(strLotNo, 12) & "' "
 							
 							ls_sql = ls_sql & "FOR UPDATE"
-							
-							' DBアクセス
-							Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
-							
-							If DBSTAT <> 0 Then
+
+                            ' DBアクセス                            
+                            '2019/10/01 CHG START
+                            'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
+                            dt = DB_GetTable(ls_sql)
+                            '2019/10/01 CHG END
+
+                            If DBSTAT <> 0 Then
 								' データなしの場合
 								intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
 								GoTo Err_F_Ctl_Upd_Process
 								
 							Else
-								' 更新前データと異なるデータが存在した場合はエラーとする。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								If pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
-									intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
+                                ' 更新前データと異なるデータが存在した場合はエラーとする。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UWRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UCLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, UOPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'If pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
+                                If pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_OPEID <> DB_NullReplace(dt.Rows(0)("OPEID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_CLTID <> DB_NullReplace(dt.Rows(0)("CLTID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTTM <> DB_NullReplace(dt.Rows(0)("WRTTM"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_WRTDT <> DB_NullReplace(dt.Rows(0)("WRTDT"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UOPEID <> DB_NullReplace(dt.Rows(0)("UOPEID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UCLTID <> DB_NullReplace(dt.Rows(0)("UCLTID"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTTM <> DB_NullReplace(dt.Rows(0)("UWRTTM"), "") Or pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Bus_Inf.SUB_UWRTDT <> DB_NullReplace(dt.Rows(0)("UWRTDT"), "") Then
+                                    '2019/10/01 CHG END
+                                    intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
 									GoTo Err_F_Ctl_Upd_Process
 								End If
 							End If
@@ -1731,26 +1759,33 @@ Module SSSMAIN0003
 									ls_sql = ls_sql & "  HINCD   =  '" & CF_Ora_String(.SUB_HINCD, 10) & "' "
 									
 									ls_sql = ls_sql & "FOR UPDATE"
-									
-									' DBアクセス
-									Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
-									
-									If DBSTAT <> 0 Then
+
+                                    ' DBアクセス
+                                    '2019/10/01 CHG START
+                                    'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
+                                    dt = DB_GetTable(ls_sql)
+                                    '2019/10/01 CHG END
+
+                                    If DBSTAT <> 0 Then
 										' データなしの場合
 										intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
 										GoTo Err_F_Ctl_Upd_Process
 										
 									Else
-										' 更新前データと異なるデータが存在した場合はエラーとする。
-										'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-										'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-										'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-										'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-										If TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Then
-											intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
-											GoTo Err_F_Ctl_Upd_Process
-										End If
-									End If
+                                        ' 更新前データと異なるデータが存在した場合はエラーとする。
+                                        'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTDT, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                        'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, WRTTM, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                        'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                        'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                        '2019/10/01 CHG START
+                                        'If TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Then
+                                        If TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_OPEID <> DB_NullReplace(dt.Rows(0)("OPEID"), "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_CLTID <> DB_NullReplace(dt.Rows(0)("CLTID"), "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_WRTTM <> DB_NullReplace(dt.Rows(0)("WRTTM"), "") Or TYPE_DTLTRA_EXEC_BEF(intLoop).SUB_WRTDT <> DB_NullReplace(dt.Rows(0)("WRTDT"), "") Then
+                                            '2019/10/01 CHG END
+                                            intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
+                                            GoTo Err_F_Ctl_Upd_Process
+                                        End If
+
+                                    End If
 								End If
 							End With
 						Next intLoop
@@ -5547,35 +5582,45 @@ ERR_EXIT:
 			strSQL = F_GET_JDN_HD_SQL(strCode1, strCode3)
 			intMode = 2
 		End If
-		
-		'DBアクセス
-		Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-		
-		If CF_Ora_EOF(Usr_Ody) = True Then
-			'取得データなし（つまり、すべて対象外）
-			F_GET_HD_DATA = 0
-			'メッセージ表示
-			Call AE_CmnMsgLibrary(SSS_PrgId, gc_strMsgHIKET51_E_009, pm_All)
-			
-			Exit Function
-		End If
-		
-		If CF_Ora_EOF(Usr_Ody) = False Then
-			'モード
-			pm_HIKET51A_DSP_DATA.Mode = intMode
-			' === 20070127 === INSERT S - ACE)Yano
-			'数量(ヘッダ)
-			'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			pm_HIKET51A_DSP_DATA.UODSU = CF_Ora_GetDyn(Usr_Ody, "UODSU", 0)
-			' === 20070127 === INSERT E -
-			'引当済数(ヘッダ)
-			'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			pm_HIKET51A_DSP_DATA.ZUMISU = CF_Ora_GetDyn(Usr_Ody, "ZUMISU", 0)
-			
-		End If
-		
-		'クローズ
-		Call CF_Ora_CloseDyn(Usr_Ody)
+
+        'DBアクセス
+        '2019/10/01 CHG START
+        'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
+        'If CF_Ora_EOF(Usr_Ody) = True Then
+        Dim dt As DataTable = DB_GetTable(strSQL)
+        If dt Is Nothing OrElse dt.Rows.Count <= 0 Then
+            '2019/10/01 CHG END
+            '取得データなし（つまり、すべて対象外）
+            F_GET_HD_DATA = 0
+            'メッセージ表示
+            Call AE_CmnMsgLibrary(SSS_PrgId, gc_strMsgHIKET51_E_009, pm_All)
+
+            Exit Function
+        End If
+        '2019/10/01 CHG START
+        'If CF_Ora_EOF(Usr_Ody) = False Then
+        If dt Is Nothing OrElse dt.Rows.Count > 0 Then
+            '2019/10/01 CHG END
+            'モード
+            pm_HIKET51A_DSP_DATA.Mode = intMode
+            ' === 20070127 === INSERT S - ACE)Yano
+            '数量(ヘッダ)
+            'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/01 CHG START
+            'pm_HIKET51A_DSP_DATA.UODSU = CF_Ora_GetDyn(Usr_Ody, "UODSU", 0)
+            pm_HIKET51A_DSP_DATA.UODSU = DB_NullReplace(dt.Rows(0)("UODSU"), 0)
+            '2019/10/01 CHG END
+            ' === 20070127 === INSERT E -
+            '引当済数(ヘッダ)
+            'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/01 CHG START
+            'pm_HIKET51A_DSP_DATA.ZUMISU = CF_Ora_GetDyn(Usr_Ody, "ZUMISU", 0)
+            pm_HIKET51A_DSP_DATA.ZUMISU = DB_NullReplace(dt.Rows(0)("ZUMISU"), 0)
+            '2019/10/01 CHG END
+        End If
+
+        'クローズ
+        Call CF_Ora_CloseDyn(Usr_Ody)
 		
 		' === 20080715 === INSERT S - ACE)Nagasawa 引当内訳ファイルの引当数には出荷指示数も含むよう修正
 		'自動/手動出荷指示数取得
@@ -5620,14 +5665,17 @@ ERR_F_GET_HD_DATA:
 		''''''    pm_HIKET51A_DSP_DATA = HIKET51A_DSP_DATA_Clr
 		
 		'入荷予定ファイル取得
-		strSQL = F_GET_INP_SQL
-		
-		'DBアクセス
-		Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-		
-		If CF_Ora_EOF(Usr_Ody) = True Then
-			'取得データなし（つまり、すべて対象外）
-			F_GET_BD_DATA = 0
+		strSQL = F_GET_INP_SQL()
+
+        'DBアクセス
+        '2019/10/01 CHG START
+        'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
+        Dim dt As DataTable = DB_GetTable(strSQL)
+        'If CF_Ora_EOF(Usr_Ody) = True Then
+        If dt Is Nothing OrElse dt.Rows.Count <= 0 Then
+            '2019/10/01 CHG END
+            '取得データなし（つまり、すべて対象外）
+            F_GET_BD_DATA = 0
 			'メッセージ表示
 			'''Call AE_CmnMsgLibrary(SSS_PrgId, gc_strMsgHIKET51_E_009, pm_All)
 			
@@ -5643,322 +5691,426 @@ ERR_F_GET_HD_DATA:
 		Dim strKEY_TRANO As String
 		Dim strKEY_MITNOV As String
 		Dim strKEY_LINNO As String
-		If CF_Ora_EOF(Usr_Ody) = False Then
-			
-			With pm_HIKET51A_DSP_DATA
-				'１レコード目より見出し情報退避
-				'受注データ、見積データ共通部分
-				.LINNO = HIKET51_Interface.LINNO '行番号
-				.TANNM = HIKET51_Interface.TANNM '営業担当者
-				.HINCD = HIKET51_Interface.HINCD '製品コード
-				.HINNMA = HIKET51_Interface.HINNMA '型式
-				.HINNMB = HIKET51_Interface.HINNMB '品名
-				' === 20070127 === UPDATE S - ACE)Yano
-				'           .UODSU = HIKET51_Interface.UODSU                            '数量
-				' === 20070127 === UPDATE E -
-				'見積データの場合
-				If .Mode = 1 Then
-					.DENSBT = "見　積" '伝票種別
-					.JDNNO = HIKET51_Interface.DENNO1 & "-" & HIKET51_Interface.DENNO2 '伝票番号
-					'受注データの場合
-				Else
-					.DENSBT = "受　注" '伝票種別
-					.JDNNO = HIKET51_Interface.DENNO1 '伝票番号
-				End If
-			End With
-			
-			intCnt = 0
-			'取得全レコードよりボディ情報退避
-			Do Until CF_Ora_EOF(Usr_Ody) = True
-				intCnt = intCnt + 1
-				'データ件数退避
-				gv_bolHIKET51A_CNT = intCnt
-				
-				'行追加
-				ReDim Preserve pm_All.Dsp_Body_Inf.Row_Inf(intCnt)
-				'行項目情報コピー
-				Call CF_Copy_Dsp_Body_Row_Inf(pm_All.Dsp_Body_Inf.Row_Inf(0), pm_All.Dsp_Body_Inf.Row_Inf(intCnt))
-				
-				With pm_All.Dsp_Body_Inf.Row_Inf(intCnt)
-					'(6.)
-					.Bus_Inf.SUB_IsDataRow = True
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_KB = CF_Ora_GetDyn(Usr_Ody, "KB", "") '区分
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_SOUCD = CF_Ora_GetDyn(Usr_Ody, "SOUCD", "") '倉庫コード
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_HINCD = CF_Ora_GetDyn(Usr_Ody, "HINCD", "") '製品コード
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_SISNKB = CF_Ora_GetDyn(Usr_Ody, "SISNKB", "") '資産元区分
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_SOUTRICD = CF_Ora_GetDyn(Usr_Ody, "SOUTRICD", "") '取引先コード
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_SOUKOKB = CF_Ora_GetDyn(Usr_Ody, "SOUKOKB", "") '倉庫区分
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_SOUNM = CF_Ora_GetDyn(Usr_Ody, "SOUNM", "") '倉庫名
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_LOTNO = CF_Ora_GetDyn(Usr_Ody, "LOTNO", "") 'ロット番号
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_NYUYTDT = CF_Ora_GetDyn(Usr_Ody, "INPYTDT", "") '入庫予定日
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_RELZAISU = CF_Ora_GetDyn(Usr_Ody, "RELZAISU", 0) '現在庫数
-					' === 20080715 === UPDATE S - ACE)Nagasawa 引当内訳ファイルの引当数には出荷指示数も含むよう修正
-					'                .Bus_Inf.SUB_ZUMISU = CF_Ora_GetDyn(Usr_Ody, "ZUMISU", 0)               '引当済数
-					'                .Bus_Inf.SUB_HIKSU = CF_Ora_GetDyn(Usr_Ody, "HIKSU", 0)                 '引当可能数
-					'                .Bus_Inf.SUB_INP_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0)         '引当数
-					'                .Bus_Inf.SUB_MOTO_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0)        '引当数
-					'' === 20070109 === INSERT S - ACE)Nagasawa
-					'                .Bus_Inf.SUB_HIKSU_BEF = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0)         '前回入力引当済数
-					'' === 20070109 === INSERT E -
-					'' === 20070205 === INSERT S - ACE)Yano
-					'                .Bus_Inf.SUB_MNSU = CF_Ora_GetDyn(Usr_Ody, "MNSU", 0)                   '手動引当数
-					'' === 20070205 === INSERT E -
-					
-					'出荷指示数
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_FRDSU = CF_Ora_GetDyn(Usr_Ody, "FRDSU", 0)
-					'引当済数
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_ZUMISU = CF_Ora_GetDyn(Usr_Ody, "ZUMISU", 0) - .Bus_Inf.SUB_FRDSU
-					'引当可能数
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_HIKSU = CF_Ora_GetDyn(Usr_Ody, "HIKSU", 0)
-					'引当数
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_INP_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0) - .Bus_Inf.SUB_FRDSU
-					'元引当数
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_MOTO_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0) - .Bus_Inf.SUB_FRDSU
-					'前回入力引当済数
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_HIKSU_BEF = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0) - .Bus_Inf.SUB_FRDSU
-					'手動引当数
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, MNSU, 0) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If CF_Ora_GetDyn(Usr_Ody, "MNSU", 0) - .Bus_Inf.SUB_FRDSU >= 0 Then
-						'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						.Bus_Inf.SUB_MNSU = CF_Ora_GetDyn(Usr_Ody, "MNSU", 0) - .Bus_Inf.SUB_FRDSU
-					Else
-						.Bus_Inf.SUB_MNSU = 0
-					End If
-					' === 20080715 === UPDATE E -
-					'20080725 ADD START RISE)Tanimura '排他処理
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_OPEID = CF_Ora_GetDyn(Usr_Ody, "OPEID", "") ' 最終作業者コード
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_CLTID = CF_Ora_GetDyn(Usr_Ody, "CLTID", "") ' クライアントＩＤ
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_WRTTM = CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") ' タイムスタンプ（バッチ時間）
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_WRTDT = CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") ' タイムスタンプ（バッチ日）
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_UOPEID = CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") ' 最終作業者コード
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_UCLTID = CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") ' クライアントＩＤ
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_UWRTTM = CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") ' タイムスタンプ（バッチ時間）
-					'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					.Bus_Inf.SUB_UWRTDT = CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") ' タイムスタンプ（バッチ日）
-					'20080725 ADD END   RISE)Tanimura
-					
-					'ヘッダ情報に明細の合計を退避
-					HIKET51A_DSP_DATA_Inf.HIKSUKEI = HIKET51A_DSP_DATA_Inf.HIKSUKEI + CDec(.Bus_Inf.SUB_INP_HIKSU)
-					' === 20070205 === INSERT S - ACE)Yano
-					HIKET51A_DSP_DATA_Inf.MNSU = HIKET51A_DSP_DATA_Inf.MNSU + CDec(.Bus_Inf.SUB_MNSU)
-					' === 20070205 === INSERT E -
-					'(7.)
-					'画面ボディ情報(PM_ALL.Dsp_Body_Inf)に編集
-					Wk_Index = CShort(FR_SSSSUB01.BD_SOUNM(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_SOUNM, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					Wk_Index = CShort(FR_SSSSUB01.BD_LOTNO(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_LOTNO, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					Wk_Index = CShort(FR_SSSSUB01.BD_NYUYTDT(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_NYUYTDT, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					Wk_Index = CShort(FR_SSSSUB01.BD_RELZAISU(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_RELZAISU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					Wk_Index = CShort(FR_SSSSUB01.BD_ZUMISU(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_ZUMISU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					Wk_Index = CShort(FR_SSSSUB01.BD_HIKSU(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_HIKSU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					' === 20070205 === INSERT S - ACE)Yano
-					Wk_Index = CShort(FR_SSSSUB01.BD_MNSU(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_MNSU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					' === 20070205 === INSERT E -
-					Wk_Index = CShort(FR_SSSSUB01.BD_INP_HIKSU(1).Tag)
-					Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_INP_HIKSU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
-					
-				End With
-				
-				'ボディ部を入力済みに設定
-				pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Status = BODY_ROW_STATE_INPUT
-				'次レコード
-				Call CF_Ora_MoveNext(Usr_Ody)
-			Loop 
-			
-			'行情報の配列は、最低、画面表示明細数分必要
-			'（満たない場合、CF_Body_Dsp にてエラーが発生する）
-			'なので、ここで配列の Redim を行う　　※いずれ共通化？？
-			If intCnt < pm_All.Dsp_Base.Dsp_Body_Cnt Then
-				'行追加
-				ReDim Preserve pm_All.Dsp_Body_Inf.Row_Inf(pm_All.Dsp_Base.Dsp_Body_Cnt)
-				For intIdx = intCnt + 1 To pm_All.Dsp_Base.Dsp_Body_Cnt
-					'行項目情報コピー
-					Call CF_Copy_Dsp_Body_Row_Inf(pm_All.Dsp_Body_Inf.Row_Inf(0), pm_All.Dsp_Body_Inf.Row_Inf(intIdx))
-					pm_All.Dsp_Body_Inf.Row_Inf(intIdx).Bus_Inf.SUB_IsDataRow = False
-				Next intIdx
-			End If
-			
-			With pm_HIKET51A_DSP_DATA
-				'引当済数
-				.ZUMISU = HIKET51A_DSP_DATA_Inf.HIKSUKEI
-			End With
-			
-			'20080725 ADD START RISE)Tanimura '排他処理
-			
-			intIndex = 0
-			
-			' ダミー作成
-			ReDim Preserve TYPE_DTLTRA_EXEC_BEF(intIndex)
-			
-			For intLoop = 1 To UBound(pm_All.Dsp_Body_Inf.Row_Inf)
-				'初期化
-				strKEY_HINCD = ""
-				strKEY_INPYTDT = ""
-				strKEY_LOTNO = ""
-				strKEY_SOUCD = ""
-				strKEY_TRANO = ""
-				strKEY_MITNOV = ""
-				strKEY_LINNO = ""
-				
-				With pm_All.Dsp_Body_Inf.Row_Inf(intLoop)
-					'倉庫別在庫の場合
-					If .Bus_Inf.SUB_KB = "1" Then
-						'製品コード
-						strKEY_HINCD = .Bus_Inf.SUB_HINCD
-						'入荷予定日
-						strKEY_INPYTDT = "        "
-						'ロット番号
-						strKEY_LOTNO = "                    "
-						'倉庫コード
-						strKEY_SOUCD = .Bus_Inf.SUB_SOUCD
-						'見積番号,受注番号
-						strKEY_TRANO = HIKET51_Interface.DENNO1
-						'版数
-						strKEY_MITNOV = HIKET51_Interface.DENNO2
-						'行番号
-						strKEY_LINNO = HIKET51_Interface.LINNO
-					Else
-						'製品コード
-						strKEY_HINCD = .Bus_Inf.SUB_HINCD
-						'入荷予定日
-						strKEY_INPYTDT = .Bus_Inf.SUB_NYUYTDT
-						'ロット番号
-						strKEY_LOTNO = .Bus_Inf.SUB_LOTNO
-						'倉庫コード
-						strKEY_SOUCD = .Bus_Inf.SUB_SOUCD
-						'見積番号,受注番号
-						strKEY_TRANO = HIKET51_Interface.DENNO1
-						'版数
-						strKEY_MITNOV = HIKET51_Interface.DENNO2
-						'行番号
-						strKEY_LINNO = HIKET51_Interface.LINNO
-					End If
-					
-					'引当内訳ファイル取得SQL
-					strSQL = ""
-					strSQL = strSQL & " Select"
-					strSQL = strSQL & "     TRAKB "
-					strSQL = strSQL & "   , TRANO "
-					strSQL = strSQL & "   , MITNOV "
-					strSQL = strSQL & "   , LINNO "
-					strSQL = strSQL & "   , PUDLNO "
-					strSQL = strSQL & "   , TRADT "
-					strSQL = strSQL & "   , ATMNKB "
-					strSQL = strSQL & "   , HIKNO "
-					strSQL = strSQL & "   , HINCD "
-					strSQL = strSQL & "   , INPYTDT "
-					strSQL = strSQL & "   , LOTNO "
-					strSQL = strSQL & "   , SOUCD "
-					strSQL = strSQL & "   , SISNKB "
-					strSQL = strSQL & "   , SOUTRICD "
-					strSQL = strSQL & "   , SOUKOKB "
-					strSQL = strSQL & "   , HIKSU "
-					strSQL = strSQL & "   , OPEID "
-					strSQL = strSQL & "   , CLTID "
-					strSQL = strSQL & "   , WRTTM "
-					strSQL = strSQL & "   , WRTDT "
-					strSQL = strSQL & " From"
-					strSQL = strSQL & "     DTLTRA"
-					strSQL = strSQL & " Where"
-					strSQL = strSQL & "     HINCD = '" & CF_Ora_String(strKEY_HINCD, 10) & "' "
-					strSQL = strSQL & " And INPYTDT = '" & CF_Ora_String(strKEY_INPYTDT, 8) & "' "
-					strSQL = strSQL & " And LOTNO    = '" & CF_Ora_String(strKEY_LOTNO, 20) & "' "
-					strSQL = strSQL & " And SOUCD    = '" & CF_Ora_String(strKEY_SOUCD, 3) & "' "
-					
-					'見積
-					If HIKET51_Interface.Mode = CDbl("1") Then
-						strSQL = strSQL & " And TRANO  = '" & CF_Ora_String(strKEY_TRANO, 20) & "' "
-						strSQL = strSQL & " And MITNOV = '" & CF_Ora_String(strKEY_MITNOV, 2) & "' "
-						strSQL = strSQL & " And LINNO  = '" & CF_Ora_String(strKEY_LINNO, 3) & "' "
-					Else
-						strSQL = strSQL & " And TRANO  = '" & CF_Ora_String(strKEY_TRANO, 20) & "' "
-						strSQL = strSQL & " And LINNO  = '" & CF_Ora_String(strKEY_LINNO, 3) & "' "
-					End If
-					
-					strSQL = strSQL & " Order By "
-					strSQL = strSQL & "     ATMNKB DESC "
-					
-					'DBアクセス
-					Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-					
-					Do Until CF_Ora_EOF(Usr_Ody)
-						intIndex = intIndex + 1
-						
-						ReDim Preserve TYPE_DTLTRA_EXEC_BEF(intIndex)
-						
-						With TYPE_DTLTRA_EXEC_BEF(intIndex)
-							.HINCD = strKEY_HINCD ' 製品コード
-							.INPYTDT = strKEY_INPYTDT ' 入庫予定日
-							.LOTNO = strKEY_LOTNO ' ロット番号
-							.SOUCD = strKEY_SOUCD ' 倉庫コード
-							.TRANO = strKEY_TRANO ' トラン番号
-							.MITNOV = strKEY_MITNOV ' 版数
-							.LINNO = strKEY_LINNO ' 行番号
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_TRAKB = CF_Ora_GetDyn(Usr_Ody, "TRAKB", "") ' トラン種別
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_TRANO = CF_Ora_GetDyn(Usr_Ody, "TRANO", "") ' トラン番号
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_MITNOV = CF_Ora_GetDyn(Usr_Ody, "MITNOV", "") ' 版数
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_LINNO = CF_Ora_GetDyn(Usr_Ody, "LINNO", "") ' 行番号
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_PUDLNO = CF_Ora_GetDyn(Usr_Ody, "PUDLNO", "") ' 入出庫番号
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_TRADT = CF_Ora_GetDyn(Usr_Ody, "TRADT", "") ' トラン日付
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_HIKNO = CF_Ora_GetDyn(Usr_Ody, "HIKNO", "") ' 引当番号
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_HINCD = CF_Ora_GetDyn(Usr_Ody, "HINCD", "") ' 製品コード
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_OPEID = CF_Ora_GetDyn(Usr_Ody, "OPEID", "") ' 最終作業者コード
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_CLTID = CF_Ora_GetDyn(Usr_Ody, "CLTID", "") ' クライアントＩＤ
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_WRTTM = CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") ' タイムスタンプ（バッチ時間）
-							'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-							.SUB_WRTDT = CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") ' タイムスタンプ（バッチ日）
-						End With
-						
-						'次レコード
-						Call CF_Ora_MoveNext(Usr_Ody)
-					Loop 
-				End With
-			Next intLoop
-			'20080725 ADD END   RISE)Tanimura
-		End If
-		
-		'クローズ
-		Call CF_Ora_CloseDyn(Usr_Ody)
+        '2019/10/01 CHG START
+        'If CF_Ora_EOF(Usr_Ody) = False Then
+        If dt Is Nothing OrElse dt.Rows.Count > 0 Then
+            '2019/10/01 CHG END
+            With pm_HIKET51A_DSP_DATA
+                    '１レコード目より見出し情報退避
+                    '受注データ、見積データ共通部分
+                    .LINNO = HIKET51_Interface.LINNO '行番号
+                    .TANNM = HIKET51_Interface.TANNM '営業担当者
+                    .HINCD = HIKET51_Interface.HINCD '製品コード
+                    .HINNMA = HIKET51_Interface.HINNMA '型式
+                    .HINNMB = HIKET51_Interface.HINNMB '品名
+                    ' === 20070127 === UPDATE S - ACE)Yano
+                    '           .UODSU = HIKET51_Interface.UODSU                            '数量
+                    ' === 20070127 === UPDATE E -
+                    '見積データの場合
+                    If .Mode = 1 Then
+                        .DENSBT = "見　積" '伝票種別
+                        .JDNNO = HIKET51_Interface.DENNO1 & "-" & HIKET51_Interface.DENNO2 '伝票番号
+                        '受注データの場合
+                    Else
+                        .DENSBT = "受　注" '伝票種別
+                        .JDNNO = HIKET51_Interface.DENNO1 '伝票番号
+                    End If
+                End With
+
+                intCnt = 0
+            '取得全レコードよりボディ情報退避
+            '2019/10/01 CHG START
+            'Do Until CF_Ora_EOF(Usr_Ody) = True
+            For Each row As DataRow In dt.Rows
+                '2019/10/01 CHG END            
+                intCnt = intCnt + 1
+                'データ件数退避
+                gv_bolHIKET51A_CNT = intCnt
+
+                '行追加
+                ReDim Preserve pm_All.Dsp_Body_Inf.Row_Inf(intCnt)
+                '行項目情報コピー
+                Call CF_Copy_Dsp_Body_Row_Inf(pm_All.Dsp_Body_Inf.Row_Inf(0), pm_All.Dsp_Body_Inf.Row_Inf(intCnt))
+
+                With pm_All.Dsp_Body_Inf.Row_Inf(intCnt)
+                    '2019/10/01 CHG START
+                    ''(6.)
+                    '.Bus_Inf.SUB_IsDataRow = True
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_KB = CF_Ora_GetDyn(Usr_Ody, "KB", "") '区分
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_SOUCD = CF_Ora_GetDyn(Usr_Ody, "SOUCD", "") '倉庫コード
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_HINCD = CF_Ora_GetDyn(Usr_Ody, "HINCD", "") '製品コード
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_SISNKB = CF_Ora_GetDyn(Usr_Ody, "SISNKB", "") '資産元区分
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_SOUTRICD = CF_Ora_GetDyn(Usr_Ody, "SOUTRICD", "") '取引先コード
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_SOUKOKB = CF_Ora_GetDyn(Usr_Ody, "SOUKOKB", "") '倉庫区分
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_SOUNM = CF_Ora_GetDyn(Usr_Ody, "SOUNM", "") '倉庫名
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_LOTNO = CF_Ora_GetDyn(Usr_Ody, "LOTNO", "") 'ロット番号
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_NYUYTDT = CF_Ora_GetDyn(Usr_Ody, "INPYTDT", "") '入庫予定日
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_RELZAISU = CF_Ora_GetDyn(Usr_Ody, "RELZAISU", 0) '現在庫数
+                    '' === 20080715 === UPDATE S - ACE)Nagasawa 引当内訳ファイルの引当数には出荷指示数も含むよう修正
+                    ''                .Bus_Inf.SUB_ZUMISU = CF_Ora_GetDyn(Usr_Ody, "ZUMISU", 0)               '引当済数
+                    ''                .Bus_Inf.SUB_HIKSU = CF_Ora_GetDyn(Usr_Ody, "HIKSU", 0)                 '引当可能数
+                    ''                .Bus_Inf.SUB_INP_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0)         '引当数
+                    ''                .Bus_Inf.SUB_MOTO_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0)        '引当数
+                    ''' === 20070109 === INSERT S - ACE)Nagasawa
+                    ''                .Bus_Inf.SUB_HIKSU_BEF = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0)         '前回入力引当済数
+                    ''' === 20070109 === INSERT E -
+                    ''' === 20070205 === INSERT S - ACE)Yano
+                    ''                .Bus_Inf.SUB_MNSU = CF_Ora_GetDyn(Usr_Ody, "MNSU", 0)                   '手動引当数
+                    ''' === 20070205 === INSERT E -
+
+                    ''出荷指示数
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_FRDSU = CF_Ora_GetDyn(Usr_Ody, "FRDSU", 0)
+                    ''引当済数
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_ZUMISU = CF_Ora_GetDyn(Usr_Ody, "ZUMISU", 0) - .Bus_Inf.SUB_FRDSU
+                    ''引当可能数
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_HIKSU = CF_Ora_GetDyn(Usr_Ody, "HIKSU", 0)
+                    ''引当数
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_INP_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0) - .Bus_Inf.SUB_FRDSU
+                    ''元引当数
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_MOTO_HIKSU = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0) - .Bus_Inf.SUB_FRDSU
+                    ''前回入力引当済数
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_HIKSU_BEF = CF_Ora_GetDyn(Usr_Ody, "INP_HIKSU", 0) - .Bus_Inf.SUB_FRDSU
+                    ''手動引当数
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, MNSU, 0) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'If CF_Ora_GetDyn(Usr_Ody, "MNSU", 0) - .Bus_Inf.SUB_FRDSU >= 0 Then
+                    '    'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '    .Bus_Inf.SUB_MNSU = CF_Ora_GetDyn(Usr_Ody, "MNSU", 0) - .Bus_Inf.SUB_FRDSU
+                    'Else
+                    '    .Bus_Inf.SUB_MNSU = 0
+                    'End If
+                    '' === 20080715 === UPDATE E -
+                    ''20080725 ADD START RISE)Tanimura '排他処理
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_OPEID = CF_Ora_GetDyn(Usr_Ody, "OPEID", "") ' 最終作業者コード
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_CLTID = CF_Ora_GetDyn(Usr_Ody, "CLTID", "") ' クライアントＩＤ
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_WRTTM = CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") ' タイムスタンプ（バッチ時間）
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_WRTDT = CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") ' タイムスタンプ（バッチ日）
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_UOPEID = CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") ' 最終作業者コード
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_UCLTID = CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") ' クライアントＩＤ
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_UWRTTM = CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") ' タイムスタンプ（バッチ時間）
+                    ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '.Bus_Inf.SUB_UWRTDT = CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") ' タイムスタンプ（バッチ日）
+                    ''20080725 ADD END   RISE)Tanimura
+
+                    .Bus_Inf.SUB_IsDataRow = True
+
+                    .Bus_Inf.SUB_KB = DB_NullReplace(row("KB"), "") '区分
+
+                    .Bus_Inf.SUB_SOUCD = DB_NullReplace(row("SOUCD"), "") '倉庫コード
+
+                    .Bus_Inf.SUB_HINCD = DB_NullReplace(row("HINCD"), "") '製品コード
+
+                    .Bus_Inf.SUB_SISNKB = DB_NullReplace(row("SISNKB"), "") '資産元区分
+
+                    .Bus_Inf.SUB_SOUTRICD = DB_NullReplace(row("SOUTRICD"), "") '取引先コード
+
+                    .Bus_Inf.SUB_SOUKOKB = DB_NullReplace(row("SOUKOKB"), "") '倉庫区分
+
+                    .Bus_Inf.SUB_SOUNM = DB_NullReplace(row("SOUNM"), "") '倉庫名
+
+                    .Bus_Inf.SUB_LOTNO = DB_NullReplace(row("LOTNO"), "") 'ロット番号
+
+                    .Bus_Inf.SUB_NYUYTDT = DB_NullReplace(row("INPYTDT"), "") '入庫予定日
+
+                    .Bus_Inf.SUB_RELZAISU = DB_NullReplace(row("RELZAISU"), 0) '現在庫数
+                    '出荷指示数
+                    .Bus_Inf.SUB_FRDSU = DB_NullReplace(row("FRDSU"), 0)
+                    '引当済数
+                    .Bus_Inf.SUB_ZUMISU = DB_NullReplace(row("ZUMISU"), 0) - .Bus_Inf.SUB_FRDSU
+                    '引当可能数
+                    .Bus_Inf.SUB_HIKSU = DB_NullReplace(row("HIKSU"), 0)
+                    '引当数
+                    .Bus_Inf.SUB_INP_HIKSU = DB_NullReplace(row("INP_HIKSU"), 0) - .Bus_Inf.SUB_FRDSU
+                    '元引当数
+                    .Bus_Inf.SUB_MOTO_HIKSU = DB_NullReplace(row("INP_HIKSU"), 0) - .Bus_Inf.SUB_FRDSU
+                    '前回入力引当済数
+                    .Bus_Inf.SUB_HIKSU_BEF = DB_NullReplace(row("INP_HIKSU"), 0) - .Bus_Inf.SUB_FRDSU
+                    '手動引当数
+
+                    If DB_NullReplace(row("MNSU"), 0) - .Bus_Inf.SUB_FRDSU >= 0 Then
+                        .Bus_Inf.SUB_MNSU = DB_NullReplace(row("MNSU"), 0) - .Bus_Inf.SUB_FRDSU
+                    Else
+                        .Bus_Inf.SUB_MNSU = 0
+                    End If
+
+                    .Bus_Inf.SUB_OPEID = DB_NullReplace(row("OPEID"), "") ' 最終作業者コード
+
+                    .Bus_Inf.SUB_CLTID = DB_NullReplace(row("CLTID"), "") ' クライアントＩＤ
+
+                    .Bus_Inf.SUB_WRTTM = DB_NullReplace(row("WRTTM"), "") ' タイムスタンプ（バッチ時間）
+
+                    .Bus_Inf.SUB_WRTDT = DB_NullReplace(row("WRTDT"), "") ' タイムスタンプ（バッチ日）
+
+                    .Bus_Inf.SUB_UOPEID = DB_NullReplace(row("UOPEID"), "") ' 最終作業者コード
+
+                    .Bus_Inf.SUB_UCLTID = DB_NullReplace(row("UCLTID"), "") ' クライアントＩＤ
+
+                    .Bus_Inf.SUB_UWRTTM = DB_NullReplace(row("UWRTTM"), "") ' タイムスタンプ（バッチ時間）
+
+                    .Bus_Inf.SUB_UWRTDT = DB_NullReplace(row("UWRTDT"), "") ' タイムスタンプ（バッチ日）
+
+                    '2019/10/01 CHG END
+
+                    'ヘッダ情報に明細の合計を退避
+                    HIKET51A_DSP_DATA_Inf.HIKSUKEI = HIKET51A_DSP_DATA_Inf.HIKSUKEI + CDec(.Bus_Inf.SUB_INP_HIKSU)
+                    ' === 20070205 === INSERT S - ACE)Yano
+                    HIKET51A_DSP_DATA_Inf.MNSU = HIKET51A_DSP_DATA_Inf.MNSU + CDec(.Bus_Inf.SUB_MNSU)
+                    ' === 20070205 === INSERT E -
+                    '(7.)
+                    '画面ボディ情報(PM_ALL.Dsp_Body_Inf)に編集
+                    Wk_Index = CShort(FR_SSSSUB01.BD_SOUNM(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_SOUNM, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+                    Wk_Index = CShort(FR_SSSSUB01.BD_LOTNO(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_LOTNO, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+                    Wk_Index = CShort(FR_SSSSUB01.BD_NYUYTDT(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_NYUYTDT, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+                    Wk_Index = CShort(FR_SSSSUB01.BD_RELZAISU(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_RELZAISU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+                    Wk_Index = CShort(FR_SSSSUB01.BD_ZUMISU(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_ZUMISU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+                    Wk_Index = CShort(FR_SSSSUB01.BD_HIKSU(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_HIKSU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+                    ' === 20070205 === INSERT S - ACE)Yano
+                    Wk_Index = CShort(FR_SSSSUB01.BD_MNSU(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_MNSU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+                    ' === 20070205 === INSERT E -
+                    Wk_Index = CShort(FR_SSSSUB01.BD_INP_HIKSU(1).Tag)
+                    Call CF_Edi_Dsp_Body_Inf(.Bus_Inf.SUB_INP_HIKSU, pm_All.Dsp_Sub_Inf(Wk_Index), intCnt, pm_All, SET_FLG_DEF)
+
+                End With
+
+                'ボディ部を入力済みに設定
+                pm_All.Dsp_Body_Inf.Row_Inf(intCnt).Status = BODY_ROW_STATE_INPUT
+                '次レコード
+                '2019/10/01 DEL START
+                'Call CF_Ora_MoveNext(Usr_Ody)
+                '2019/10/01 DEL END
+            Next
+
+            '行情報の配列は、最低、画面表示明細数分必要
+            '（満たない場合、CF_Body_Dsp にてエラーが発生する）
+            'なので、ここで配列の Redim を行う　　※いずれ共通化？？
+            If intCnt < pm_All.Dsp_Base.Dsp_Body_Cnt Then
+                    '行追加
+                    ReDim Preserve pm_All.Dsp_Body_Inf.Row_Inf(pm_All.Dsp_Base.Dsp_Body_Cnt)
+                    For intIdx = intCnt + 1 To pm_All.Dsp_Base.Dsp_Body_Cnt
+                        '行項目情報コピー
+                        Call CF_Copy_Dsp_Body_Row_Inf(pm_All.Dsp_Body_Inf.Row_Inf(0), pm_All.Dsp_Body_Inf.Row_Inf(intIdx))
+                        pm_All.Dsp_Body_Inf.Row_Inf(intIdx).Bus_Inf.SUB_IsDataRow = False
+                    Next intIdx
+                End If
+
+                With pm_HIKET51A_DSP_DATA
+                    '引当済数
+                    .ZUMISU = HIKET51A_DSP_DATA_Inf.HIKSUKEI
+                End With
+
+                '20080725 ADD START RISE)Tanimura '排他処理
+
+                intIndex = 0
+
+                ' ダミー作成
+                ReDim Preserve TYPE_DTLTRA_EXEC_BEF(intIndex)
+
+                For intLoop = 1 To UBound(pm_All.Dsp_Body_Inf.Row_Inf)
+                    '初期化
+                    strKEY_HINCD = ""
+                    strKEY_INPYTDT = ""
+                    strKEY_LOTNO = ""
+                    strKEY_SOUCD = ""
+                    strKEY_TRANO = ""
+                    strKEY_MITNOV = ""
+                    strKEY_LINNO = ""
+
+                    With pm_All.Dsp_Body_Inf.Row_Inf(intLoop)
+                        '倉庫別在庫の場合
+                        If .Bus_Inf.SUB_KB = "1" Then
+                            '製品コード
+                            strKEY_HINCD = .Bus_Inf.SUB_HINCD
+                            '入荷予定日
+                            strKEY_INPYTDT = "        "
+                            'ロット番号
+                            strKEY_LOTNO = "                    "
+                            '倉庫コード
+                            strKEY_SOUCD = .Bus_Inf.SUB_SOUCD
+                            '見積番号,受注番号
+                            strKEY_TRANO = HIKET51_Interface.DENNO1
+                            '版数
+                            strKEY_MITNOV = HIKET51_Interface.DENNO2
+                            '行番号
+                            strKEY_LINNO = HIKET51_Interface.LINNO
+                        Else
+                            '製品コード
+                            strKEY_HINCD = .Bus_Inf.SUB_HINCD
+                            '入荷予定日
+                            strKEY_INPYTDT = .Bus_Inf.SUB_NYUYTDT
+                            'ロット番号
+                            strKEY_LOTNO = .Bus_Inf.SUB_LOTNO
+                            '倉庫コード
+                            strKEY_SOUCD = .Bus_Inf.SUB_SOUCD
+                            '見積番号,受注番号
+                            strKEY_TRANO = HIKET51_Interface.DENNO1
+                            '版数
+                            strKEY_MITNOV = HIKET51_Interface.DENNO2
+                            '行番号
+                            strKEY_LINNO = HIKET51_Interface.LINNO
+                        End If
+
+                        '引当内訳ファイル取得SQL
+                        strSQL = ""
+                        strSQL = strSQL & " Select"
+                        strSQL = strSQL & "     TRAKB "
+                        strSQL = strSQL & "   , TRANO "
+                        strSQL = strSQL & "   , MITNOV "
+                        strSQL = strSQL & "   , LINNO "
+                        strSQL = strSQL & "   , PUDLNO "
+                        strSQL = strSQL & "   , TRADT "
+                        strSQL = strSQL & "   , ATMNKB "
+                        strSQL = strSQL & "   , HIKNO "
+                        strSQL = strSQL & "   , HINCD "
+                        strSQL = strSQL & "   , INPYTDT "
+                        strSQL = strSQL & "   , LOTNO "
+                        strSQL = strSQL & "   , SOUCD "
+                        strSQL = strSQL & "   , SISNKB "
+                        strSQL = strSQL & "   , SOUTRICD "
+                        strSQL = strSQL & "   , SOUKOKB "
+                        strSQL = strSQL & "   , HIKSU "
+                        strSQL = strSQL & "   , OPEID "
+                        strSQL = strSQL & "   , CLTID "
+                        strSQL = strSQL & "   , WRTTM "
+                        strSQL = strSQL & "   , WRTDT "
+                        strSQL = strSQL & " From"
+                        strSQL = strSQL & "     DTLTRA"
+                        strSQL = strSQL & " Where"
+                        strSQL = strSQL & "     HINCD = '" & CF_Ora_String(strKEY_HINCD, 10) & "' "
+                        strSQL = strSQL & " And INPYTDT = '" & CF_Ora_String(strKEY_INPYTDT, 8) & "' "
+                        strSQL = strSQL & " And LOTNO    = '" & CF_Ora_String(strKEY_LOTNO, 20) & "' "
+                        strSQL = strSQL & " And SOUCD    = '" & CF_Ora_String(strKEY_SOUCD, 3) & "' "
+
+                        '見積
+                        If HIKET51_Interface.Mode = CDbl("1") Then
+                            strSQL = strSQL & " And TRANO  = '" & CF_Ora_String(strKEY_TRANO, 20) & "' "
+                            strSQL = strSQL & " And MITNOV = '" & CF_Ora_String(strKEY_MITNOV, 2) & "' "
+                            strSQL = strSQL & " And LINNO  = '" & CF_Ora_String(strKEY_LINNO, 3) & "' "
+                        Else
+                            strSQL = strSQL & " And TRANO  = '" & CF_Ora_String(strKEY_TRANO, 20) & "' "
+                            strSQL = strSQL & " And LINNO  = '" & CF_Ora_String(strKEY_LINNO, 3) & "' "
+                        End If
+
+                        strSQL = strSQL & " Order By "
+                        strSQL = strSQL & "     ATMNKB DESC "
+
+                    'DBアクセス
+                    '2019/10/01 CHG START
+                    'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
+
+                    'Do Until CF_Ora_EOF(Usr_Ody)
+                    dt = DB_GetTable(strSQL)
+                    For Each row As DataRow In dt.Rows
+
+                        '2019/10/01 CHG END
+                        intIndex = intIndex + 1
+
+                        ReDim Preserve TYPE_DTLTRA_EXEC_BEF(intIndex)
+
+                        With TYPE_DTLTRA_EXEC_BEF(intIndex)
+                            .HINCD = strKEY_HINCD ' 製品コード
+                            .INPYTDT = strKEY_INPYTDT ' 入庫予定日
+                            .LOTNO = strKEY_LOTNO ' ロット番号
+                            .SOUCD = strKEY_SOUCD ' 倉庫コード
+                            .TRANO = strKEY_TRANO ' トラン番号
+                            .MITNOV = strKEY_MITNOV ' 版数
+                            .LINNO = strKEY_LINNO ' 行番号
+
+                            '2019/10/01 CHG START
+
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_TRAKB = CF_Ora_GetDyn(Usr_Ody, "TRAKB", "") ' トラン種別
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_TRANO = CF_Ora_GetDyn(Usr_Ody, "TRANO", "") ' トラン番号
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_MITNOV = CF_Ora_GetDyn(Usr_Ody, "MITNOV", "") ' 版数
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_LINNO = CF_Ora_GetDyn(Usr_Ody, "LINNO", "") ' 行番号
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_PUDLNO = CF_Ora_GetDyn(Usr_Ody, "PUDLNO", "") ' 入出庫番号
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_TRADT = CF_Ora_GetDyn(Usr_Ody, "TRADT", "") ' トラン日付
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_HIKNO = CF_Ora_GetDyn(Usr_Ody, "HIKNO", "") ' 引当番号
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_HINCD = CF_Ora_GetDyn(Usr_Ody, "HINCD", "") ' 製品コード
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_OPEID = CF_Ora_GetDyn(Usr_Ody, "OPEID", "") ' 最終作業者コード
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_CLTID = CF_Ora_GetDyn(Usr_Ody, "CLTID", "") ' クライアントＩＤ
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_WRTTM = CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") ' タイムスタンプ（バッチ時間）
+                            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                            '.SUB_WRTDT = CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") ' タイムスタンプ（バッチ日）
+
+                            .SUB_TRAKB = DB_NullReplace(row("TRAKB"), "") ' トラン種別
+
+                            .SUB_TRANO = DB_NullReplace(row("TRANO"), "") ' トラン番号
+
+                            .SUB_MITNOV = DB_NullReplace(row("MITNOV"), "")  ' 版数
+
+                            .SUB_LINNO = DB_NullReplace(row("LINNO"), "") ' 行番号
+
+                            .SUB_PUDLNO = DB_NullReplace(row("PUDLNO"), "") ' 入出庫番号
+
+                            .SUB_TRADT = DB_NullReplace(row("TRADT"), "") ' トラン日付
+
+                            .SUB_HIKNO = DB_NullReplace(row("HIKNO"), "") ' 引当番号
+
+                            .SUB_HINCD = DB_NullReplace(row("HINCD"), "") ' 製品コード
+
+                            .SUB_OPEID = DB_NullReplace(row("OPEID"), "") ' 最終作業者コード
+
+                            .SUB_CLTID = DB_NullReplace(row("CLTID"), "") ' クライアントＩＤ
+
+                            .SUB_WRTTM = DB_NullReplace(row("WRTTM"), "") ' タイムスタンプ（バッチ時間）
+
+                            .SUB_WRTDT = DB_NullReplace(row("WRTDT"), "") ' タイムスタンプ（バッチ日）
+
+                            '2019/10/01 CHG END
+
+                        End With
+
+                        '次レコード
+                        '2019/10/01 DEL START
+                        'Call CF_Ora_MoveNext(Usr_Ody)
+                        '2019/10/01 DEL END
+                    Next
+                End With
+                Next intLoop
+                '20080725 ADD END   RISE)Tanimura
+            End If
+
+            'クローズ
+            Call CF_Ora_CloseDyn(Usr_Ody)
 		
 		
 		F_GET_BD_DATA = intCnt
@@ -6697,18 +6849,27 @@ ERR_F_GET_BD_DATA:
 		strSQL = strSQL & " And TRA.DATNO    = TRB.DATNO"
 		strSQL = strSQL & " And TRA.JDNNO    = TRB.JDNNO"
 		strSQL = strSQL & " And TRA.LINNO    = TRB.LINNO"
-		
-		'DBアクセス
-		Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-		If CF_Ora_EOF(Usr_Ody) = True Then
-			curAtzHikSu_JDN = 0
-			curMnzHikSu_JDN = 0
-		Else
-			'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			curAtzHikSu_JDN = CF_Ora_GetDyn(Usr_Ody, "ATZHIKSU", 0)
-			'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			curMnzHikSu_JDN = CF_Ora_GetDyn(Usr_Ody, "MNZHIKSU", 0)
-		End If
+
+        'DBアクセス
+        '2019/10/01 CHG START
+        'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
+        'If CF_Ora_EOF(Usr_Ody) = True Then
+        Dim dt As DataTable = DB_GetTable(strSQL)
+        If dt Is Nothing OrElse dt.Rows.Count <= 0 Then
+            '2019/10/01 CHG END
+            curAtzHikSu_JDN = 0
+            curMnzHikSu_JDN = 0
+        Else
+            '2019/10/01 CHG START
+            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'curAtzHikSu_JDN = CF_Ora_GetDyn(Usr_Ody, "ATZHIKSU", 0)
+            ''UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'curMnzHikSu_JDN = CF_Ora_GetDyn(Usr_Ody, "MNZHIKSU", 0)
+
+            curAtzHikSu_JDN = DB_NullReplace(dt.Rows(0)("ATZHIKSU"), 0)
+            curMnzHikSu_JDN = DB_NullReplace(dt.Rows(0)("MNZHIKSU"), 0)
+            '2019/10/01 CHG END
+        End If
 		'クローズ
 		Call CF_Ora_CloseDyn(Usr_Ody)
 		
@@ -6724,14 +6885,21 @@ ERR_F_GET_BD_DATA:
 		strSQL = strSQL & " And TRANO  = '" & CF_Ora_String(Trim(HIKET51_Interface.DENNO1), 20) & "' "
 		strSQL = strSQL & " And LINNO  = '" & CF_Ora_String(Trim(HIKET51_Interface.LINNO), 3) & "' "
 		strSQL = strSQL & " And ATMNKB = 'A' "
-		'DBアクセス
-		Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-		If CF_Ora_EOF(Usr_Ody) = True Then
-			curAtzHikSu_DTL = 0
+        'DBアクセス
+        '2019/10/01 CHG START
+        'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
+        'If CF_Ora_EOF(Usr_Ody) = True Then
+        dt = DB_GetTable(strSQL)
+        If dt Is Nothing OrElse dt.Rows.Count <= 0 Then
+            '2019/10/01 CHG END
+            curAtzHikSu_DTL = 0
 		Else
-			'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			curAtzHikSu_DTL = CF_Ora_GetDyn(Usr_Ody, "ATZHIKSU", 0)
-		End If
+            'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/01 CHG START
+            'curAtzHikSu_DTL = CF_Ora_GetDyn(Usr_Ody, "ATZHIKSU", 0)
+            curAtzHikSu_DTL = DB_NullReplace(dt.Rows(0)("ATZHIKSU"), 0)
+            '2019/10/01 CHG END
+        End If
 		'クローズ
 		Call CF_Ora_CloseDyn(Usr_Ody)
 		
@@ -6747,14 +6915,21 @@ ERR_F_GET_BD_DATA:
 		strSQL = strSQL & " And TRANO  = '" & CF_Ora_String(Trim(HIKET51_Interface.DENNO1), 20) & "' "
 		strSQL = strSQL & " And LINNO  = '" & CF_Ora_String(Trim(HIKET51_Interface.LINNO), 3) & "' "
 		strSQL = strSQL & " And ATMNKB = 'M' "
-		'DBアクセス
-		Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-		If CF_Ora_EOF(Usr_Ody) = True Then
-			curMnzHikSu_DTL = 0
+        'DBアクセス
+        '2019/10/01 CHG START
+        'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
+        'If CF_Ora_EOF(Usr_Ody) = True Then
+        dt = DB_GetTable(strSQL)
+        If dt Is Nothing OrElse dt.Rows.Count <= 0 Then
+            '2019/10/01 CHG END
+            curMnzHikSu_DTL = 0
 		Else
-			'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			curMnzHikSu_DTL = CF_Ora_GetDyn(Usr_Ody, "MNZHIKSU", 0)
-		End If
+            'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/01 CHG START
+            'curMnzHikSu_DTL = CF_Ora_GetDyn(Usr_Ody, "MNZHIKSU", 0)
+            curMnzHikSu_DTL = DB_NullReplace(dt.Rows(0)("MNZHIKSU"), 0)
+            '2019/10/01 CHG END
+        End If
 		'クローズ
 		Call CF_Ora_CloseDyn(Usr_Ody)
 		

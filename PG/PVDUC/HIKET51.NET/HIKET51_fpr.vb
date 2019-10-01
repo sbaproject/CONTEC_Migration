@@ -3331,20 +3331,20 @@ Module SSSMAIN0001
 		
 		'DBアクセス
 		Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-		
-		If CF_Ora_EOF(Usr_Ody) = True Then
-			'取得データなし（つまり、すべて対象外）
-			F_GET_BD_DATA = 0
-			'メッセージ表示
-			' === 20070121 === UPDATE S - ACE)Nagasawa メッセージの変更
-			'        Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_003, pm_All)
-			Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_020, pm_All)
-			' === 20070121 === UPDATE E -
-			
-			Exit Function
-		End If
-		
-		If CF_Ora_EOF(Usr_Ody) = False Then
+
+        If CF_Ora_EOF(Usr_Ody) = True Then
+            '取得データなし（つまり、すべて対象外）
+            F_GET_BD_DATA = 0
+            'メッセージ表示
+            ' === 20070121 === UPDATE S - ACE)Nagasawa メッセージの変更
+            '        Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_003, pm_All)
+            Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_020, pm_All)
+            ' === 20070121 === UPDATE E -
+
+            Exit Function
+        End If
+
+        If CF_Ora_EOF(Usr_Ody) = False Then
 			
 			With pm_HIKET51_DSP_DATA
 				'１レコード目より見出し情報退避
@@ -3887,28 +3887,28 @@ ERR_F_GET_BD_DATA:
 		strSQL = strSQL & "    ,MEIMTA MEI"
 		strSQL = strSQL & "    ,TANMTA TAN"
 		strSQL = strSQL & "    ,HINMTA HIN"
-		strSQL = strSQL & " Where"
-		strSQL = strSQL & "     THA.DATNO = TRA.DATNO"
-		strSQL = strSQL & " And TRA.DATKB = '" & gc_strDATKB_USE & "'"
-		'セットアップの場合、中見出しは除く
-		'    If HIKET51_JdnTrKb = gc_strJDNTRKB_SET Then
-		'        strSQL = strSQL & " And TRA.LINNO <> '001'"
-		'    End If
-		strSQL = strSQL & " And TRA.KHIKKB = '1'"
-		'    strSQL = strSQL & " And MEI.DATKB (+) = '" & gc_strDSPKB_OK & "'"
-		strSQL = strSQL & " And MEI.KEYCD (+) = '" & gc_strKEYCD_JDNTRKB & "'"
-		strSQL = strSQL & " And THA.JDNTRKB = MEI.MEICDA (+)"
-		strSQL = strSQL & " And THA.JDNTRKB IN ('01', '11', '21')"
-		'    strSQL = strSQL & " And TAN.DATKB (+) = '" & gc_strDSPKB_OK & "'"
-		strSQL = strSQL & " And THA.OPEID = TAN.TANCD (+)"
-		'    strSQL = strSQL & " And HIN.DATKB (+) = '" & gc_strDSPKB_OK & "'"
-		strSQL = strSQL & " And HIN.JODHIKKB = '1'"
-		strSQL = strSQL & " And HIN.ORTSTPKB <> '9'"
-		strSQL = strSQL & " And TRA.HINCD = HIN.HINCD (+)"
-		strSQL = strSQL & " And THA.MITNO = '" & CF_Ora_Sgl(pm_strCode1) & "' "
-		strSQL = strSQL & " And THA.MITNOV = '" & CF_Ora_Sgl(pm_strCode2) & "' "
-		strSQL = strSQL & " And THA.DATKB = '" & gc_strDSPKB_OK & "' "
-		strSQL = strSQL & " Order By"
+        strSQL = strSQL & " Where"
+        strSQL = strSQL & "     THA.DATNO = TRA.DATNO"
+        strSQL = strSQL & " And TRA.DATKB = '" & gc_strDATKB_USE & "'"
+        'セットアップの場合、中見出しは除く
+        '    If HIKET51_JdnTrKb = gc_strJDNTRKB_SET Then
+        '        strSQL = strSQL & " And TRA.LINNO <> '001'"
+        '    End If
+        strSQL = strSQL & " And TRA.KHIKKB = '1'"
+        '    strSQL = strSQL & " And MEI.DATKB (+) = '" & gc_strDSPKB_OK & "'"
+        strSQL = strSQL & " And MEI.KEYCD (+) = '" & gc_strKEYCD_JDNTRKB & "'"
+        strSQL = strSQL & " And THA.JDNTRKB = MEI.MEICDA (+)"
+        strSQL = strSQL & " And THA.JDNTRKB IN ('01', '11', '21')"
+        '    strSQL = strSQL & " And TAN.DATKB (+) = '" & gc_strDSPKB_OK & "'"
+        strSQL = strSQL & " And THA.OPEID = TAN.TANCD (+)"
+        '    strSQL = strSQL & " And HIN.DATKB (+) = '" & gc_strDSPKB_OK & "'"
+        strSQL = strSQL & " And HIN.JODHIKKB = '1'"
+        strSQL = strSQL & " And HIN.ORTSTPKB <> '9'"
+        strSQL = strSQL & " And TRA.HINCD = HIN.HINCD (+)"
+        strSQL = strSQL & " And THA.MITNO = '" & CF_Ora_Sgl(pm_strCode1) & "' "
+        strSQL = strSQL & " And THA.MITNOV = '" & CF_Ora_Sgl(pm_strCode2) & "' "
+        strSQL = strSQL & " And THA.DATKB = '" & gc_strDSPKB_OK & "' "
+        strSQL = strSQL & " Order By"
 		strSQL = strSQL & "     TRA.LINNO"
 		
 		F_GET_MIT_SQL = strSQL
@@ -4149,7 +4149,12 @@ ERR_F_GET_BD_DATA:
                 'UPGRADE_WARNING: オブジェクト pm_All.Dsp_Sub_Inf().Ctl.Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '2019/09/20 CHG START
                 'pm_All.Dsp_Sub_Inf(Trg_Index).Ctl.Value = True
-                DirectCast(pm_All.Dsp_Sub_Inf(Trg_Index).Ctl, CheckBox).Checked = True
+                If TypeOf pm_All.Dsp_Sub_Inf(Trg_Index).Ctl Is CheckBox Then
+                    DirectCast(pm_All.Dsp_Sub_Inf(Trg_Index).Ctl, CheckBox).Checked = True
+                ElseIf TypeOf pm_All.Dsp_Sub_Inf(Trg_Index).Ctl Is RadioButton Then
+                    DirectCast(pm_All.Dsp_Sub_Inf(Trg_Index).Ctl, RadioButton).Checked = True
+                End If
+
                 '2019/09/20 CHG END
                 ' === 20060922 === UPDATE E
             Else
@@ -4159,7 +4164,12 @@ ERR_F_GET_BD_DATA:
                 'UPGRADE_WARNING: オブジェクト pm_All.Dsp_Sub_Inf().Ctl.Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '2019/09/20 CHG START
                 'pm_All.Dsp_Sub_Inf(Trg_Index).Ctl.Value = False
-                DirectCast(pm_All.Dsp_Sub_Inf(Trg_Index).Ctl, CheckBox).Checked = False
+                If TypeOf pm_All.Dsp_Sub_Inf(Trg_Index).Ctl Is CheckBox Then
+                    DirectCast(pm_All.Dsp_Sub_Inf(Trg_Index).Ctl, CheckBox).Checked = False
+                ElseIf TypeOf pm_All.Dsp_Sub_Inf(Trg_Index).Ctl Is RadioButton Then
+                    DirectCast(pm_All.Dsp_Sub_Inf(Trg_Index).Ctl, RadioButton).Checked = False
+                End If
+
                 '2019/09/20 CHG END
                 ' === 20060922 === UPDATE E
             End If
@@ -4501,17 +4511,20 @@ ERR_F_GET_BD_DATA:
 		strSQL = strSQL & "  And   HIN.HINCD = '" & Trim(pm_All.Dsp_Body_Inf.Row_Inf(HIKET51_Bd_Sel_Index).Bus_Inf.HINCD) & "' "
 		strSQL = strSQL & "  And   HIN.ZAIKB = '" & CF_Ora_String(gc_strZAIKB_OK, 1) & "' "
 		strSQL = strSQL & "  And   HIN.TNACM = '220' "
-		
-		'DBアクセス
-		Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
-		
-		If CF_Ora_EOF(Usr_Ody) = True Then
-			'取得データなし
-			F_CHK_SOU = 0
-		End If
-		
-		'クローズ
-		Call CF_Ora_CloseDyn(Usr_Ody)
+
+        'DBアクセス
+        '2019/10/01 CHG START
+        'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, strSQL)
+        Dim dt As DataTable = DB_GetTable(strSQL)
+        'If CF_Ora_EOF(Usr_Ody) = True Then
+        If dt Is Nothing OrElse dt.Rows.Count <= 0 Then
+            '2019/10/01 CHG END
+            '取得データなし
+            F_CHK_SOU = 0
+        End If
+
+        'クローズ
+        Call CF_Ora_CloseDyn(Usr_Ody)
 		
 		Exit Function
 		
