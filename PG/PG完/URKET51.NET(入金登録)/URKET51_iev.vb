@@ -1,0 +1,512 @@
+Option Strict Off
+Option Explicit On
+Module URKET51_IEV
+	Public Const SSS_MAX_DB As Short = 22
+	Public DB_PARA(SSS_MAX_DB) As TYPE_DB_PARA
+	Public Const SSS_PrgId As String = "URKET51"
+	Public Const SSS_PrgNm As String = "“ü‹à“o˜^                      "
+	Public Const SSS_FraId As String = "ET1"
+	
+	Sub PRNBIL() 'Generated.
+		
+	End Sub
+	
+	
+	Sub Init_Fil() 'Generated.
+		'    '
+		'    DBN_UDNTRA = 0
+		'    DB_PARA(DBN_UDNTRA).tblid = "UDNTRA"
+		'    DB_PARA(DBN_UDNTRA).DBID = "USR1"
+		'    SSS_MFIL = DBN_UDNTRA
+		'    '
+		'    DBN_UDNTHA = 1
+		'    DB_PARA(DBN_UDNTHA).tblid = "UDNTHA"
+		'    DB_PARA(DBN_UDNTHA).DBID = "USR1"
+		'    '
+		'    DBN_TOKMTA = 2
+		'    DB_PARA(DBN_TOKMTA).tblid = "TOKMTA"
+		'    DB_PARA(DBN_TOKMTA).DBID = "USR1"
+		'    '
+		'    DBN_TANMTA = 3
+		'    DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+		'    DB_PARA(DBN_TANMTA).DBID = "USR1"
+		'    '
+		'    DBN_BNKMTA = 4
+		'    DB_PARA(DBN_BNKMTA).tblid = "BNKMTA"
+		'    DB_PARA(DBN_BNKMTA).DBID = "USR1"
+		'    '
+		'    DBN_SYSTBA = 5
+		'    DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+		'    DB_PARA(DBN_SYSTBA).DBID = "USR1"
+		'    '
+		'    DBN_SYSTBB = 6
+		'    DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
+		'    DB_PARA(DBN_SYSTBB).DBID = "USR1"
+		'    '
+		'    DBN_SYSTBC = 7
+		'    DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+		'    DB_PARA(DBN_SYSTBC).DBID = "USR1"
+		'    '
+		'    DBN_SYSTBD = 8
+		'    DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
+		'    DB_PARA(DBN_SYSTBD).DBID = "USR1"
+		'    '
+		'    DBN_SYSTBF = 9
+		'    DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
+		'    DB_PARA(DBN_SYSTBF).DBID = "USR1"
+		'    '
+		'    DBN_SYSTBG = 10
+		'    DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
+		'    DB_PARA(DBN_SYSTBG).DBID = "USR1"
+		'    '
+		'    DBN_SYSTBH = 11
+		'    DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+		'    DB_PARA(DBN_SYSTBH).DBID = "USR1"
+		'    '
+		'    DBN_CLSMTA = 12
+		'    DB_PARA(DBN_CLSMTA).tblid = "CLSMTA"
+		'    DB_PARA(DBN_CLSMTA).DBID = "USR1"
+		'    '
+		'    DBN_CLSMTB = 13
+		'    DB_PARA(DBN_CLSMTB).tblid = "CLSMTB"
+		'    DB_PARA(DBN_CLSMTB).DBID = "USR1"
+		'    '
+		'    DBN_TUKMTA = 14
+		'    DB_PARA(DBN_TUKMTA).tblid = "TUKMTA"
+		'    DB_PARA(DBN_TUKMTA).DBID = "USR1"
+		'    '
+		'    DBN_MEIMTA = 15
+		'    DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
+		'    DB_PARA(DBN_MEIMTA).DBID = "USR1"
+		'    '
+		'    DBN_FBTRA = 16
+		'    DB_PARA(DBN_FBTRA).tblid = "FBTRA"
+		'    DB_PARA(DBN_FBTRA).DBID = "USR1"
+		'    '
+		'    DBN_FBDDL01 = 17
+		'    DB_PARA(DBN_FBDDL01).tblid = "FBDDL01"
+		'    DB_PARA(DBN_FBDDL01).DBID = "USR1"
+		'    '
+		'    DBN_UNYMTA = 18
+		'    DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+		'    DB_PARA(DBN_UNYMTA).DBID = "USR1"
+		'    '
+		'    DBN_EXCTBZ = 19
+		'    DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+		'    DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+		'    '
+		'    DBN_GYMTBZ = 20
+		'    DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+		'    DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+		'    '
+		'    DBN_KNGMTB = 21
+		'    DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+		'    DB_PARA(DBN_KNGMTB).DBID = "USR1"
+		'    '
+		'    DBN_TOKSMA = -1
+		'    '
+		'    DBN_TOKSSA = -2
+		'    '
+		'    DBN_TOKSSB = -3
+		'    '
+		'    DBN_TOKSSC = -4
+		'    '
+		'    DBN_TOKSMD = -5
+		'    '
+		'    DBN_TOKSME = -6
+		'    '
+		'    DBN_UTGTRA = -7
+		'
+		'    SSS_BILFL = 9
+	End Sub
+	
+	Sub SCR_FromBNKMTA(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_BNKCD(De, DB_BNKMTA.BNKCD)
+		'    Call DP_SSSMAIN_BNKNM(De, DB_BNKMTA.BNKNM)
+	End Sub
+	
+	Sub BNKMTA_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_BNKMTA.BNKCD = RD_SSSMAIN_BNKCD(De)
+		'    DB_BNKMTA.BNKNM = RD_SSSMAIN_BNKNM(De)
+		'    DB_BNKMTA.OPEID = SSS_OPEID
+		'    DB_BNKMTA.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_BNKMTA.WRTTM = Format(Now, "hhmmss")
+		'        DB_BNKMTA.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_BNKMTA.WRTTM = DB_ORATM
+		'        DB_BNKMTA.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub SCR_FromFBTRA(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_FBRFNO(De, DB_FBTRA.FBRFNO)
+		'    Call DP_SSSMAIN_NYUDT(De, DB_FBTRA.FBKJDT)
+		'    Call DP_SSSMAIN_NYUKN(De, DB_FBTRA.FBNYUKN)
+	End Sub
+	
+	Sub FBTRA_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_FBTRA.FBRFNO = RD_SSSMAIN_FBRFNO(De)
+		'    DB_FBTRA.FBKJDT = RD_SSSMAIN_NYUDT(De)
+		'    DB_FBTRA.FBNYUKN = RD_SSSMAIN_NYUKN(De)
+		'    DB_FBTRA.OPEID = SSS_OPEID
+		'    DB_FBTRA.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_FBTRA.WRTTM = Format(Now, "hhmmss")
+		'        DB_FBTRA.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_FBTRA.WRTTM = DB_ORATM
+		'        DB_FBTRA.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub SCR_FromMEIMTA(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_TUKKB(De, DB_MEIMTA.MEICDA)
+	End Sub
+	
+	Sub MEIMTA_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_MEIMTA.MEICDA = RD_SSSMAIN_TUKKB(De)
+		'    DB_MEIMTA.OPEID = SSS_OPEID
+		'    DB_MEIMTA.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_MEIMTA.WRTTM = Format(Now, "hhmmss")
+		'        DB_MEIMTA.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_MEIMTA.WRTTM = DB_ORATM
+		'        DB_MEIMTA.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub SCR_FromSYSTBD(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_DFLDKBCD(De, DB_SYSTBD.DFLDKBCD)
+		'    Call DP_SSSMAIN_DKBFLA(De, DB_SYSTBD.DKBFLA)
+		'    Call DP_SSSMAIN_DKBFLB(De, DB_SYSTBD.DKBFLB)
+		'    Call DP_SSSMAIN_DKBFLC(De, DB_SYSTBD.DKBFLC)
+		'    Call DP_SSSMAIN_DKBID(De, DB_SYSTBD.DKBID)
+		'    Call DP_SSSMAIN_DKBNM(De, DB_SYSTBD.DKBNM)
+		'    Call DP_SSSMAIN_DKBTEGFL(De, DB_SYSTBD.DKBTEGFL)
+		'    Call DP_SSSMAIN_DKBZAIFL(De, DB_SYSTBD.DKBZAIFL)
+		'    Call DP_SSSMAIN_UPDID(De, DB_SYSTBD.UPDID)
+	End Sub
+	
+	Sub SYSTBD_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_SYSTBD.DFLDKBCD = RD_SSSMAIN_DFLDKBCD(De)
+		'    DB_SYSTBD.DKBFLA = RD_SSSMAIN_DKBFLA(De)
+		'    DB_SYSTBD.DKBFLB = RD_SSSMAIN_DKBFLB(De)
+		'    DB_SYSTBD.DKBFLC = RD_SSSMAIN_DKBFLC(De)
+		'    DB_SYSTBD.DKBID = RD_SSSMAIN_DKBID(De)
+		'    DB_SYSTBD.DKBNM = RD_SSSMAIN_DKBNM(De)
+		'    DB_SYSTBD.DKBTEGFL = RD_SSSMAIN_DKBTEGFL(De)
+		'    DB_SYSTBD.DKBZAIFL = RD_SSSMAIN_DKBZAIFL(De)
+		'    DB_SYSTBD.UPDID = RD_SSSMAIN_UPDID(De)
+		'    DB_SYSTBD.OPEID = SSS_OPEID
+		'    DB_SYSTBD.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_SYSTBD.WRTTM = Format(Now, "hhmmss")
+		'        DB_SYSTBD.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_SYSTBD.WRTTM = DB_ORATM
+		'        DB_SYSTBD.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub SCR_FromTOKMTA(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_BNKCD(De, DB_TOKMTA.BNKCD)
+		'    Call DP_SSSMAIN_FRNKB(De, DB_TOKMTA.FRNKB)
+		'    Call DP_SSSMAIN_HMEIGI(De, DB_TOKMTA.HMEIGI)
+		'    Call DP_SSSMAIN_KOZNO(De, DB_TOKMTA.KOZNO)
+		'    Call DP_SSSMAIN_LSTID(De, DB_TOKMTA.LSTID)
+		'    Call DP_SSSMAIN_TANCD(De, DB_TOKMTA.TANCD)
+		'    Call DP_SSSMAIN_TKNRPSKB(De, DB_TOKMTA.TKNRPSKB)
+		'    Call DP_SSSMAIN_TKNZRNKB(De, DB_TOKMTA.TKNZRNKB)
+		'    Call DP_SSSMAIN_TOKCD(De, DB_TOKMTA.TOKCD)
+		'    Call DP_SSSMAIN_TOKJUNKB(De, DB_TOKMTA.TOKJUNKB)
+		'    Call DP_SSSMAIN_TOKKDWKB(De, DB_TOKMTA.TOKKDWKB)
+		'    Call DP_SSSMAIN_TOKKESCC(De, DB_TOKMTA.TOKKESCC)
+		'    Call DP_SSSMAIN_TOKKESDD(De, DB_TOKMTA.TOKKESDD)
+		'    Call DP_SSSMAIN_TOKNMMKB(De, DB_TOKMTA.TOKNMMKB)
+		'    Call DP_SSSMAIN_TOKRN(De, DB_TOKMTA.TOKRN)
+		'    Call DP_SSSMAIN_TOKRPSKB(De, DB_TOKMTA.TOKRPSKB)
+		'    Call DP_SSSMAIN_TOKSDWKB(De, DB_TOKMTA.TOKSDWKB)
+		'    Call DP_SSSMAIN_TOKSEICD(De, DB_TOKMTA.TOKSEICD)
+		'    Call DP_SSSMAIN_TOKSMECC(De, DB_TOKMTA.TOKSMECC)
+		'    Call DP_SSSMAIN_TOKSMEDD(De, DB_TOKMTA.TOKSMEDD)
+		'    Call DP_SSSMAIN_TOKSMEKB(De, DB_TOKMTA.TOKSMEKB)
+		'    Call DP_SSSMAIN_TOKZCLKB(De, DB_TOKMTA.TOKZCLKB)
+		'    Call DP_SSSMAIN_TOKZEIKB(De, DB_TOKMTA.TOKZEIKB)
+		'    Call DP_SSSMAIN_TOKZRNKB(De, DB_TOKMTA.TOKZRNKB)
+		'    Call DP_SSSMAIN_TUKKB(De, DB_TOKMTA.TUKKB)
+		'    Call DP_SSSMAIN_YKNKB(De, DB_TOKMTA.YKNKB)
+	End Sub
+	
+	Sub TOKMTA_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_TOKMTA.BNKCD = RD_SSSMAIN_BNKCD(De)
+		'    DB_TOKMTA.FRNKB = RD_SSSMAIN_FRNKB(De)
+		'    DB_TOKMTA.HMEIGI = RD_SSSMAIN_HMEIGI(De)
+		'    DB_TOKMTA.KOZNO = RD_SSSMAIN_KOZNO(De)
+		'    DB_TOKMTA.LSTID = RD_SSSMAIN_LSTID(De)
+		'    DB_TOKMTA.TANCD = RD_SSSMAIN_TANCD(De)
+		'    DB_TOKMTA.TKNRPSKB = RD_SSSMAIN_TKNRPSKB(De)
+		'    DB_TOKMTA.TKNZRNKB = RD_SSSMAIN_TKNZRNKB(De)
+		'    DB_TOKMTA.TOKCD = RD_SSSMAIN_TOKCD(De)
+		'    DB_TOKMTA.TOKJUNKB = RD_SSSMAIN_TOKJUNKB(De)
+		'    DB_TOKMTA.TOKKDWKB = RD_SSSMAIN_TOKKDWKB(De)
+		'    DB_TOKMTA.TOKKESCC = RD_SSSMAIN_TOKKESCC(De)
+		'    DB_TOKMTA.TOKKESDD = RD_SSSMAIN_TOKKESDD(De)
+		'    DB_TOKMTA.TOKNMMKB = RD_SSSMAIN_TOKNMMKB(De)
+		'    DB_TOKMTA.TOKRN = RD_SSSMAIN_TOKRN(De)
+		'    DB_TOKMTA.TOKRPSKB = RD_SSSMAIN_TOKRPSKB(De)
+		'    DB_TOKMTA.TOKSDWKB = RD_SSSMAIN_TOKSDWKB(De)
+		'    DB_TOKMTA.TOKSEICD = RD_SSSMAIN_TOKSEICD(De)
+		'    DB_TOKMTA.TOKSMECC = RD_SSSMAIN_TOKSMECC(De)
+		'    DB_TOKMTA.TOKSMEDD = RD_SSSMAIN_TOKSMEDD(De)
+		'    DB_TOKMTA.TOKSMEKB = RD_SSSMAIN_TOKSMEKB(De)
+		'    DB_TOKMTA.TOKZCLKB = RD_SSSMAIN_TOKZCLKB(De)
+		'    DB_TOKMTA.TOKZEIKB = RD_SSSMAIN_TOKZEIKB(De)
+		'    DB_TOKMTA.TOKZRNKB = RD_SSSMAIN_TOKZRNKB(De)
+		'    DB_TOKMTA.TUKKB = RD_SSSMAIN_TUKKB(De)
+		'    DB_TOKMTA.YKNKB = RD_SSSMAIN_YKNKB(De)
+		'    DB_TOKMTA.OPEID = SSS_OPEID
+		'    DB_TOKMTA.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_TOKMTA.WRTTM = Format(Now, "hhmmss")
+		'        DB_TOKMTA.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_TOKMTA.WRTTM = DB_ORATM
+		'        DB_TOKMTA.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub SCR_FromTUKMTA(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_TUKKB(De, DB_TUKMTA.TUKKB)
+	End Sub
+	
+	Sub TUKMTA_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_TUKMTA.TUKKB = RD_SSSMAIN_TUKKB(De)
+		'    DB_TUKMTA.OPEID = SSS_OPEID
+		'    DB_TUKMTA.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_TUKMTA.WRTTM = Format(Now, "hhmmss")
+		'        DB_TUKMTA.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_TUKMTA.WRTTM = DB_ORATM
+		'        DB_TUKMTA.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub SCR_FromUDNTHA(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_ENTDT(De, DB_UDNTHA.DENDT)
+		'    Call DP_SSSMAIN_FRNKB(De, DB_UDNTHA.FRNKB)
+		'    Call DP_SSSMAIN_LSTID(De, DB_UDNTHA.LSTID)
+		'    Call DP_SSSMAIN_NYUDT(De, DB_UDNTHA.REGDT)
+		'    Call DP_SSSMAIN_NYUDT(De, DB_UDNTHA.UDNDT)
+		'    Call DP_SSSMAIN_NYUKB(De, DB_UDNTHA.NYUCD)
+		'    Call DP_SSSMAIN_SBAFRNKN(De, DB_UDNTHA.SBAFRNKN)
+		'    Call DP_SSSMAIN_SBANYUKN(De, DB_UDNTHA.SBANYUKN)
+		'    Call DP_SSSMAIN_TKNRPSKB(De, DB_UDNTHA.TKNRPSKB)
+		'    Call DP_SSSMAIN_TKNZRNKB(De, DB_UDNTHA.TKNZRNKB)
+		'    Call DP_SSSMAIN_TOKCD(De, DB_UDNTHA.TOKCD)
+		'    Call DP_SSSMAIN_TOKJUNKB(De, DB_UDNTHA.TOKJUNKB)
+		'    Call DP_SSSMAIN_TOKKDWKB(De, DB_UDNTHA.TOKKDWKB)
+		'    Call DP_SSSMAIN_TOKKESCC(De, DB_UDNTHA.TOKKESCC)
+		'    Call DP_SSSMAIN_TOKKESDD(De, DB_UDNTHA.TOKKESDD)
+		'    Call DP_SSSMAIN_TOKNMMKB(De, DB_UDNTHA.TOKNMMKB)
+		'    Call DP_SSSMAIN_TOKRN(De, DB_UDNTHA.TOKRN)
+		'    Call DP_SSSMAIN_TOKRPSKB(De, DB_UDNTHA.TOKRPSKB)
+		'    Call DP_SSSMAIN_TOKSDWKB(De, DB_UDNTHA.TOKSDWKB)
+		'    Call DP_SSSMAIN_TOKSEICD(De, DB_UDNTHA.TOKSEICD)
+		'    Call DP_SSSMAIN_TOKSMECC(De, DB_UDNTHA.TOKSMECC)
+		'    Call DP_SSSMAIN_TOKSMEDD(De, DB_UDNTHA.TOKSMEDD)
+		'    Call DP_SSSMAIN_TOKSMEKB(De, DB_UDNTHA.TOKSMEKB)
+		'    Call DP_SSSMAIN_TOKZCLKB(De, DB_UDNTHA.TOKZCLKB)
+		'    Call DP_SSSMAIN_TOKZEIKB(De, DB_UDNTHA.TOKZEIKB)
+		'    Call DP_SSSMAIN_TOKZRNKB(De, DB_UDNTHA.TOKZRNKB)
+		'    Call DP_SSSMAIN_TUKKB(De, DB_UDNTHA.TUKKB)
+	End Sub
+	
+	Sub UDNTHA_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_UDNTHA.DENDT = RD_SSSMAIN_ENTDT(De)
+		'    DB_UDNTHA.FRNKB = RD_SSSMAIN_FRNKB(De)
+		'    DB_UDNTHA.LSTID = RD_SSSMAIN_LSTID(De)
+		'    DB_UDNTHA.REGDT = RD_SSSMAIN_NYUDT(De)
+		'    DB_UDNTHA.UDNDT = RD_SSSMAIN_NYUDT(De)
+		'    DB_UDNTHA.NYUCD = RD_SSSMAIN_NYUKB(De)
+		'    DB_UDNTHA.SBAFRNKN = RD_SSSMAIN_SBAFRNKN(De)
+		'    DB_UDNTHA.SBANYUKN = RD_SSSMAIN_SBANYUKN(De)
+		'    DB_UDNTHA.TKNRPSKB = RD_SSSMAIN_TKNRPSKB(De)
+		'    DB_UDNTHA.TKNZRNKB = RD_SSSMAIN_TKNZRNKB(De)
+		'    DB_UDNTHA.TOKCD = RD_SSSMAIN_TOKCD(De)
+		'    DB_UDNTHA.TOKJUNKB = RD_SSSMAIN_TOKJUNKB(De)
+		'    DB_UDNTHA.TOKKDWKB = RD_SSSMAIN_TOKKDWKB(De)
+		'    DB_UDNTHA.TOKKESCC = RD_SSSMAIN_TOKKESCC(De)
+		'    DB_UDNTHA.TOKKESDD = RD_SSSMAIN_TOKKESDD(De)
+		'    DB_UDNTHA.TOKNMMKB = RD_SSSMAIN_TOKNMMKB(De)
+		'    DB_UDNTHA.TOKRN = RD_SSSMAIN_TOKRN(De)
+		'    DB_UDNTHA.TOKRPSKB = RD_SSSMAIN_TOKRPSKB(De)
+		'    DB_UDNTHA.TOKSDWKB = RD_SSSMAIN_TOKSDWKB(De)
+		'    DB_UDNTHA.TOKSEICD = RD_SSSMAIN_TOKSEICD(De)
+		'    DB_UDNTHA.TOKSMECC = RD_SSSMAIN_TOKSMECC(De)
+		'    DB_UDNTHA.TOKSMEDD = RD_SSSMAIN_TOKSMEDD(De)
+		'    DB_UDNTHA.TOKSMEKB = RD_SSSMAIN_TOKSMEKB(De)
+		'    DB_UDNTHA.TOKZCLKB = RD_SSSMAIN_TOKZCLKB(De)
+		'    DB_UDNTHA.TOKZEIKB = RD_SSSMAIN_TOKZEIKB(De)
+		'    DB_UDNTHA.TOKZRNKB = RD_SSSMAIN_TOKZRNKB(De)
+		'    DB_UDNTHA.TUKKB = RD_SSSMAIN_TUKKB(De)
+		'    DB_UDNTHA.OPEID = SSS_OPEID
+		'    DB_UDNTHA.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_UDNTHA.WRTTM = Format(Now, "hhmmss")
+		'        DB_UDNTHA.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_UDNTHA.WRTTM = DB_ORATM
+		'        DB_UDNTHA.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub SCR_FromMfil(ByVal De As Short) 'Generated.
+		'    Call DP_SSSMAIN_BNKCD(De, DB_UDNTRA.BNKCD)
+		'    Call DP_SSSMAIN_BNKNM(De, DB_UDNTRA.BNKNM)
+		'    Call DP_SSSMAIN_DFLDKBCD(De, DB_UDNTRA.DFLDKBCD)
+		'    Call DP_SSSMAIN_DKBFLA(De, DB_UDNTRA.DKBFLA)
+		'    Call DP_SSSMAIN_DKBFLB(De, DB_UDNTRA.DKBFLB)
+		'    Call DP_SSSMAIN_DKBFLC(De, DB_UDNTRA.DKBFLC)
+		'    Call DP_SSSMAIN_DKBID(De, DB_UDNTRA.DKBID)
+		'    Call DP_SSSMAIN_DKBNM(De, DB_UDNTRA.DKBNM)
+		'    Call DP_SSSMAIN_DKBTEGFL(De, DB_UDNTRA.DKBTEGFL)
+		'    Call DP_SSSMAIN_DKBZAIFL(De, DB_UDNTRA.DKBZAIFL)
+		'    Call DP_SSSMAIN_FNYUKN(De, DB_UDNTRA.FNYUKN)
+		'    Call DP_SSSMAIN_KANKOZ(De, DB_UDNTRA.HINSIRCD)
+		'    Call DP_SSSMAIN_LINCMA(De, DB_UDNTRA.LINCMA)
+		'    Call DP_SSSMAIN_LINCMB(De, DB_UDNTRA.LINCMB)
+		'    Call DP_SSSMAIN_LINNO(De, DB_UDNTRA.LINNO)
+		'    Call DP_SSSMAIN_NYUDT(De, DB_UDNTRA.UDNDT)
+		'    Call DP_SSSMAIN_NYUKN(De, DB_UDNTRA.NYUKN)
+		'    Call DP_SSSMAIN_TEGDT(De, DB_UDNTRA.TEGDT)
+		'    Call DP_SSSMAIN_TEGNO(De, DB_UDNTRA.TEGNO)
+		'    Call DP_SSSMAIN_TOKCD(De, DB_UDNTRA.TOKCD)
+		'    Call DP_SSSMAIN_TOKSEICD(De, DB_UDNTRA.TOKSEICD)
+		'    Call DP_SSSMAIN_TUKKB(De, DB_UDNTRA.TUKKB)
+		'    Call DP_SSSMAIN_UPDID(De, DB_UDNTRA.UPDID)
+	End Sub
+	
+	Sub Mfil_FromSCR(ByVal De As Short) 'Generated.
+		'    DB_UDNTRA.BNKCD = RD_SSSMAIN_BNKCD(De)
+		'    DB_UDNTRA.BNKNM = RD_SSSMAIN_BNKNM(De)
+		'    DB_UDNTRA.DFLDKBCD = RD_SSSMAIN_DFLDKBCD(De)
+		'    DB_UDNTRA.DKBFLA = RD_SSSMAIN_DKBFLA(De)
+		'    DB_UDNTRA.DKBFLB = RD_SSSMAIN_DKBFLB(De)
+		'    DB_UDNTRA.DKBFLC = RD_SSSMAIN_DKBFLC(De)
+		'    DB_UDNTRA.DKBID = RD_SSSMAIN_DKBID(De)
+		'    DB_UDNTRA.DKBNM = RD_SSSMAIN_DKBNM(De)
+		'    DB_UDNTRA.DKBTEGFL = RD_SSSMAIN_DKBTEGFL(De)
+		'    DB_UDNTRA.DKBZAIFL = RD_SSSMAIN_DKBZAIFL(De)
+		'    DB_UDNTRA.FNYUKN = RD_SSSMAIN_FNYUKN(De)
+		'    DB_UDNTRA.HINSIRCD = RD_SSSMAIN_KANKOZ(De)
+		'    DB_UDNTRA.LINCMA = RD_SSSMAIN_LINCMA(De)
+		'    DB_UDNTRA.LINCMB = RD_SSSMAIN_LINCMB(De)
+		'    DB_UDNTRA.LINNO = RD_SSSMAIN_LINNO(De)
+		'    DB_UDNTRA.UDNDT = RD_SSSMAIN_NYUDT(De)
+		'    DB_UDNTRA.NYUKN = RD_SSSMAIN_NYUKN(De)
+		'    DB_UDNTRA.TEGDT = RD_SSSMAIN_TEGDT(De)
+		'    DB_UDNTRA.TEGNO = RD_SSSMAIN_TEGNO(De)
+		'    DB_UDNTRA.TOKCD = RD_SSSMAIN_TOKCD(De)
+		'    DB_UDNTRA.TOKSEICD = RD_SSSMAIN_TOKSEICD(De)
+		'    DB_UDNTRA.TUKKB = RD_SSSMAIN_TUKKB(De)
+		'    DB_UDNTRA.UPDID = RD_SSSMAIN_UPDID(De)
+		'    DB_UDNTRA.OPEID = SSS_OPEID
+		'    DB_UDNTRA.CLTID = SSS_CLTID
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'        DB_UDNTRA.WRTTM = Format(Now, "hhmmss")
+		'        DB_UDNTRA.WRTDT = Format(Now, "YYYYMMDD")
+		'    Else
+		'        DB_UDNTRA.WRTTM = DB_ORATM
+		'        DB_UDNTRA.WRTDT = DB_ORADT
+		'    End If
+	End Sub
+	
+	Sub FBDDL01_FromFBTRA() 'Generated.
+		'    Dim I As Integer
+		'
+		'    DB_FBDDL01.FBBNKNK = DB_FBTRA.FBBNKNK
+		'    DB_FBDDL01.FBCLTCD = DB_FBTRA.FBCLTCD
+		'    DB_FBDDL01.FBCLTNM = DB_FBTRA.FBCLTNM
+		'    DB_FBDDL01.FBRFNO = DB_FBTRA.FBRFNO
+		'    DB_FBDDL01.FBSTNNK = DB_FBTRA.FBSTNNK
+		'    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+		'    Else
+		'    End If
+	End Sub
+	
+	Sub UpdSmf() 'Generated.
+	End Sub
+	
+	Sub SetBuf(ByVal Fno As Short) 'Generated.
+		'    Select Case Fno
+		'        Case DBN_UDNTRA: LSet G_LB = DB_UDNTRA
+		'        Case DBN_UDNTHA: LSet G_LB = DB_UDNTHA
+		'        Case DBN_TOKMTA: LSet G_LB = DB_TOKMTA
+		'        Case DBN_TANMTA: LSet G_LB = DB_TANMTA
+		'        Case DBN_BNKMTA: LSet G_LB = DB_BNKMTA
+		'        Case DBN_SYSTBA: LSet G_LB = DB_SYSTBA
+		'        Case DBN_SYSTBB: LSet G_LB = DB_SYSTBB
+		'        Case DBN_SYSTBC: LSet G_LB = DB_SYSTBC
+		'        Case DBN_SYSTBD: LSet G_LB = DB_SYSTBD
+		'        Case DBN_SYSTBF: LSet G_LB = DB_SYSTBF
+		'        Case DBN_SYSTBG: LSet G_LB = DB_SYSTBG
+		'        Case DBN_SYSTBH: LSet G_LB = DB_SYSTBH
+		'        Case DBN_CLSMTA: LSet G_LB = DB_CLSMTA
+		'        Case DBN_CLSMTB: LSet G_LB = DB_CLSMTB
+		'        Case DBN_TUKMTA: LSet G_LB = DB_TUKMTA
+		'        Case DBN_MEIMTA: LSet G_LB = DB_MEIMTA
+		'        Case DBN_FBTRA: LSet G_LB = DB_FBTRA
+		'        Case DBN_FBDDL01: LSet G_LB = DB_FBDDL01
+		'        Case DBN_UNYMTA: LSet G_LB = DB_UNYMTA
+		'        Case DBN_EXCTBZ: LSet G_LB = DB_EXCTBZ
+		'        Case DBN_GYMTBZ: LSet G_LB = DB_GYMTBZ
+		'        Case DBN_KNGMTB: LSet G_LB = DB_KNGMTB
+		'    End Select
+	End Sub
+	
+	Sub ResetBuf(ByVal Fno As Short) 'Generated.
+		'    Select Case Fno
+		'        Case DBN_UDNTRA: LSet DB_UDNTRA = G_LB
+		'        Case DBN_UDNTHA: LSet DB_UDNTHA = G_LB
+		'        Case DBN_TOKMTA: LSet DB_TOKMTA = G_LB
+		'        Case DBN_TANMTA: LSet DB_TANMTA = G_LB
+		'        Case DBN_BNKMTA: LSet DB_BNKMTA = G_LB
+		'        Case DBN_SYSTBA: LSet DB_SYSTBA = G_LB
+		'        Case DBN_SYSTBB: LSet DB_SYSTBB = G_LB
+		'        Case DBN_SYSTBC: LSet DB_SYSTBC = G_LB
+		'        Case DBN_SYSTBD: LSet DB_SYSTBD = G_LB
+		'        Case DBN_SYSTBF: LSet DB_SYSTBF = G_LB
+		'        Case DBN_SYSTBG: LSet DB_SYSTBG = G_LB
+		'        Case DBN_SYSTBH: LSet DB_SYSTBH = G_LB
+		'        Case DBN_CLSMTA: LSet DB_CLSMTA = G_LB
+		'        Case DBN_CLSMTB: LSet DB_CLSMTB = G_LB
+		'        Case DBN_TUKMTA: LSet DB_TUKMTA = G_LB
+		'        Case DBN_MEIMTA: LSet DB_MEIMTA = G_LB
+		'        Case DBN_FBTRA: LSet DB_FBTRA = G_LB
+		'        Case DBN_FBDDL01: LSet DB_FBDDL01 = G_LB
+		'        Case DBN_UNYMTA: LSet DB_UNYMTA = G_LB
+		'        Case DBN_EXCTBZ: LSet DB_EXCTBZ = G_LB
+		'        Case DBN_GYMTBZ: LSet DB_GYMTBZ = G_LB
+		'        Case DBN_KNGMTB: LSet DB_KNGMTB = G_LB
+		'    End Select
+	End Sub
+	
+	Function RecordFromObject(ByVal Fno As Short) As Short 'Generated.
+		'Dim Rtc As Integer
+		'    Select Case Fno
+		'        Case Else:
+		'    End Select
+		'    RecordFromObject = Rtc
+	End Function
+	
+	Function ObjectFromRecord(ByVal Fno As Short) As Short 'Generated.
+		'Dim Rtc As Integer
+		'    Select Case Fno
+		'        Case Else:
+		'    End Select
+		'    ObjectFromRecord = Rtc
+	End Function
+End Module

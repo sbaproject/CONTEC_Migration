@@ -1,0 +1,247 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <MyType>WindowsForms</MyType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7CD808F2-7946-44D5-B05F-4E593E98C644}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>MEIMT52</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>MEIMT52.FR_SSSMAIN</StartupObject>
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>3</AssemblyMinorVersion>
+    <AssemblyRevisionNumber>0</AssemblyRevisionNumber>
+    <GenerateRevisionNumber>False</GenerateRevisionNumber>
+    <AssemblyCompanyName>ウッドランド株式会社</AssemblyCompanyName>
+    <StartWithIE>False</StartWithIE>
+    <ApplicationIcon>MEIMT52.ico</ApplicationIcon>
+    <RootNamespace>MEIMT52</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>MEIMT52.xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DefineDebug>True</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>MEIMT52.xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DefineDebug>False</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\..\共通dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PronesDbAccess">
+      <HintPath>..\..\共通dll\PronesDbAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\共通dll\System.Data.DataSetExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <Lcid>0</Lcid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\共通vb\ACE_CMN.vb">
+      <Link>ACE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CMN.vb">
+      <Link>AE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CONST.vb">
+      <Link>AE_CONST.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_PROC.vb">
+      <Link>AE_PROC.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_RSMR.vb">
+      <Link>AE_RSMR.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\COMMON_SEARCH.vb">
+      <Link>COMMON_SEARCH.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.Designer.vb">
+      <Link>ICONSSS.Designer.vb</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.vb">
+      <Link>ICONSSS.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\OPEID.vb">
+      <Link>OPEID.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\OPENM.vb">
+      <Link>OPENM.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORA_CMN.vb">
+      <Link>ORA_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.Designer.vb">
+      <Link>WLS_HCP.Designer.vb</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.vb">
+      <Link>WLS_HCP.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI1.Designer.vb">
+      <Link>WLS_MEI1.Designer.vb</Link>
+      <DependentUpon>WLS_MEI1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI1.vb">
+      <Link>WLS_MEI1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI2.Designer.vb">
+      <Link>WLS_MEI2.Designer.vb</Link>
+      <DependentUpon>WLS_MEI2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI2.vb">
+      <Link>WLS_MEI2.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="FRKEYCD.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FRMEINM.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MEIMT52_e51.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MEIMT52_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MEIMT52_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>MEIMT52_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MEIMT52_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MEIMT52_iev.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MEIMT52_psi.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MEIMTA_m51.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMAIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMSG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSWIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UPDKB.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UpgradeSupport.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Content Include="System.Data.DataSetExtensions.dll" />
+    <EmbeddedResource Include="..\..\共通vb\ICONSSS.resX">
+      <Link>ICONSSS.resX</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_HCP.resX">
+      <Link>WLS_HCP.resX</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_MEI1.resX">
+      <Link>WLS_MEI1.resX</Link>
+      <DependentUpon>WLS_MEI1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_MEI2.resx">
+      <Link>WLS_MEI2.resx</Link>
+      <DependentUpon>WLS_MEI2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MEIMT52_frm.resX">
+      <DependentUpon>MEIMT52_frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="MEIMT52.ico" />
+    <None Include="app.config" />
+    <None Include="_UpgradeReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,1729 @@
+﻿<html>
+	<head>
+		<META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" href="_UpgradeReport_Files\UpgradeReport.css">
+		<title>Project1.vbp アップグレード レポート</title>
+		
+		<script language="javascript">
+			function outliner () {
+				oMe = window.event.srcElement
+				//get child element
+				var child = document.all[event.srcElement.getAttribute("child",false)];
+				//if child element exists, expand or collapse it.
+				if (null != child)
+					child.className = child.className == "collapsed" ? "expanded" : "collapsed";
+			}
+		
+			function changepic() {
+				uMe = window.event.srcElement;
+				var check = uMe.src.toLowerCase();
+				if (check.lastIndexOf("upgradereport_plus.gif") != -1)
+				{
+					uMe.src = "_UpgradeReport_Files/UpgradeReport_Minus.gif"
+				}
+				else
+				{
+					uMe.src = "_UpgradeReport_Files/UpgradeReport_Plus.gif"
+				}
+			}
+		</script>
+		
+	</head>
+	<body topmargin="0" leftmargin="0" rightmargin="0" onclick="outliner();">
+		<h1>Project1.vbp のアップグレード レポート</h1>
+		
+		<p><span class="note">
+		<b>アップグレードの時間:  </b>2019/05/10 17:27<br>
+		</span></p>
+		
+		<h2>アップグレードの概要</h2>
+		<table cellpadding="2" cellspacing="0" width="98%" border="1" bordercolor="white" class="infotable">
+		    <tr>
+		        <td nowrap class="header" width="45%">見つかった問題の種類</td>
+		        <td nowrap class="header" width="45%">詳細情報</td>
+		        <td nowrap class="header" align="right">カウント</td>
+		    </tr>
+		    <tr class="row">
+		    <td class="SummaryIssueTypeContent">
+		        <IMG alt="選択範囲の展開/縮小" class="expanded" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Minus.gif" width="9" child="SummaryIssueType0">
+		        &nbsp;コンパイル エラー
+		    </td>
+		    <td class="SummaryIssueTypeHelp">
+		        コンパイルを妨げる問題が発見されました。これらの問題はアプリケーションが実行される前に解決される必要があります。
+		    </td>
+		    <td class="SummaryIssueTypeCount">
+		        11
+		    </td>
+		    </tr>
+		    <tr class="expanded" bgcolor="white" id="SummaryIssueType0">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType0GUID0">
+		            &nbsp;プロパティおよびメソッドの一部をアップグレードできませんでした
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'>プロパティまたはメソッドはアップグレードされませんでした</a>
+		        </td>
+		        <td class="SummaryCount">3</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType0GUID0">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType0GUID0File0">
+		                        &nbsp;frmRptViewer.frm
+		                    </td>
+		                    <td class="SummaryFileCount">3</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType0GUID0File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent">Printer</td>
+		                            <td class="issuecontent">Printers</td>
+		                            <td class="issuecontent">DeviceName</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'>Printer プロパティ Printers.DeviceName はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent">Printer</td>
+		                            <td class="issuecontent">Printers</td>
+		                            <td class="issuecontent">DriverName</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'>Printer プロパティ Printers.DriverName はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent">Printer</td>
+		                            <td class="issuecontent">Printers</td>
+		                            <td class="issuecontent">Port</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'>Printer プロパティ Printers.Port はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType0GUID1">
+		            &nbsp;一部のオブジェクトおよびコレクションはアップグレードされませんでした
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>オブジェクトまたはコレクションはアップグレードされませんでした</a>
+		        </td>
+		        <td class="SummaryCount">8</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType0GUID1">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType0GUID1File0">
+		                        &nbsp;frmRptViewer.frm
+		                    </td>
+		                    <td class="SummaryFileCount">2</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType0GUID1File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.Report オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.ConnectionProperty オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType0GUID1File1">
+		                        &nbsp;mod_Ora.bas
+		                    </td>
+		                    <td class="SummaryFileCount">3</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType0GUID1File1" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">(Declarations)</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraSessionClass オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">(Declarations)</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraDatabase オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">(Declarations)</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraDynaset オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType0GUID1File2">
+		                        &nbsp;Module1.bas
+		                    </td>
+		                    <td class="SummaryFileCount">3</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType0GUID1File2" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraFields オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.Report オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.ConnectionProperty オブジェクト はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		    <td class="SummaryIssueTypeContent">
+		        <IMG alt="選択範囲の展開/縮小" class="expanded" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Minus.gif" width="9" child="SummaryIssueType1">
+		        &nbsp;デザイン エラー
+		    </td>
+		    <td class="SummaryIssueTypeHelp">
+		        実行時に設定されるプロパティの一部は直接相当する値がないためアップグレードできませんでした。目的どおりに機能していることを確認するために、アプリケーションを十分にテストしてください。
+		    </td>
+		    <td class="SummaryIssueTypeCount">
+		        88
+		    </td>
+		    </tr>
+		    <tr class="expanded" bgcolor="white" id="SummaryIssueType1">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType1GUID0">
+		            &nbsp;プロパティおよびメソッドの一部をアップグレードできませんでした
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"'>プロパティまたはメソッドはアップグレードされませんでした</a>
+		        </td>
+		        <td class="SummaryCount">3</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType1GUID0">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType1GUID0File0">
+		                        &nbsp;frmRptViewer.frm
+		                    </td>
+		                    <td class="SummaryFileCount">3</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType1GUID0File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent">Printers</td>
+		                            <td class="issuecontent">Printers</td>
+		                            <td class="issuecontent">Count</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"'>Printers メソッド Printers.Count はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">(レイアウト)</td>
+		                            <td class="issuecontent">CommandButton</td>
+		                            <td class="issuecontent">cmdCSV</td>
+		                            <td class="issuecontent">MaskColor</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"'>CommandButton プロパティ cmdCSV.MaskColor はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">(レイアウト)</td>
+		                            <td class="issuecontent">CommandButton</td>
+		                            <td class="issuecontent">cmdCSV</td>
+		                            <td class="issuecontent">UseMaskColor</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"'>CommandButton プロパティ cmdCSV.UseMaskColor はアップグレードされませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType1GUID1">
+		            &nbsp;遅延バインディングの既定のプロパティ参照の一部を解決できませんでした
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>遅延バインディングの既定のプロパティ参照を解決できませんでした</a>
+		        </td>
+		        <td class="SummaryCount">85</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType1GUID1">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType1GUID1File0">
+		                        &nbsp;frmRptViewer.frm
+		                    </td>
+		                    <td class="SummaryFileCount">24</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType1GUID1File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">(レイアウト)</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト New (System.Drawing.Size, 779, 539) の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">(レイアウト)</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト New (System.Drawing.Point, 0, 8) の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">cmdPrt_Click</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.PrintReport の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">4</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRAPP.OpenReport の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">5</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">6</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">7</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">8</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">9</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">10</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">11</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">12</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">13</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">14</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.SelectPrinter の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">15</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">16</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">17</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">18</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.ReportSource の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">19</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.ViewReport の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">20</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">Trim</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">21</td>
+		                            <td class="issuecontent">Form_Resize</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Top の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">22</td>
+		                            <td class="issuecontent">Form_Resize</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Left の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">23</td>
+		                            <td class="issuecontent">Form_Resize</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Height の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">24</td>
+		                            <td class="issuecontent">Form_Resize</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Width の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType1GUID1File1">
+		                        &nbsp;mod_Ora.bas
+		                    </td>
+		                    <td class="SummaryFileCount">30</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType1GUID1File1" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.CreateDynaset の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Ody.Fields の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Ody.Fields の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">4</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.LastServerErr の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">5</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.LastServerErrText の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">6</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.LastServerErrReset の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">7</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">CLng</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Option の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">8</td>
+		                            <td class="issuecontent">CF_Ora_CreateDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">UCase$</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Flds().Name の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">9</td>
+		                            <td class="issuecontent">CF_Ora_EOF</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Ody.EOF の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">10</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">11</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Default の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">12</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">13</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Flds(CInt(Str_FldNm)) の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">14</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">15</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">16</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">17</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">18</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">19</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">Format$</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">20</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">21</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Default の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">22</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">23</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn2 の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">24</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn2 の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">25</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">26</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn2 の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">27</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">28</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">Format$</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">29</td>
+		                            <td class="issuecontent">F_Ora_Connect</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Oss.dbopendatabase の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">30</td>
+		                            <td class="issuecontent">F_Ora_Connect2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Osc.OpenDatabase の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType1GUID1File2">
+		                        &nbsp;Module1.bas
+		                    </td>
+		                    <td class="SummaryFileCount">31</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType1GUID1File2" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト ODatabase.DbCreateDynaset の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.MoveFirst の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.Fields の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">4</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.EOF の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">5</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.MoveNext の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">6</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.RecordCount の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">7</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">CStr</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト OraFields().Value の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">8</td>
+		                            <td class="issuecontent">CSV_OUTPUT2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.CancelError の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">9</td>
+		                            <td class="issuecontent">CSV_OUTPUT2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.Filter の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">10</td>
+		                            <td class="issuecontent">CSV_OUTPUT2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.ShowSave の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">11</td>
+		                            <td class="issuecontent">CSV_OUTPUT2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト cdlCancel の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">12</td>
+		                            <td class="issuecontent">CSV_OUTPUT2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.FileName の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">13</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRAPP.OpenReport の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">14</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">15</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">16</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">17</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">18</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">19</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">20</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">21</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">22</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">23</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">24</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">25</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト crEDTDiskFile の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">26</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.ExportOptions の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">27</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.ExportOptions の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">28</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト crEFTPortableDocFormat の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">29</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.ExportOptions の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">30</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Export の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">31</td>
+		                            <td class="issuecontent">PDF_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">Trim</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		    <td class="SummaryIssueTypeContent">
+		        <IMG alt="選択範囲の展開/縮小" class="expanded" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Minus.gif" width="9" child="SummaryIssueType2">
+		        &nbsp;警告
+		    </td>
+		    <td class="SummaryIssueTypeHelp">
+		        アプリケーションの実行時に予期しない結果を発生させる可能性のある相違点があります。目的どおりに機能していることを確認するために、アプリケーションを十分にテストしてください。
+		    </td>
+		    <td class="SummaryIssueTypeCount">
+		        9
+		    </td>
+		    </tr>
+		    <tr class="expanded" bgcolor="white" id="SummaryIssueType2">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID0">
+		            &nbsp;Sub Main が実行を終えるとき、アプリケーションは終了します
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="E08DDC71-66BA-424F-A612-80AF11498FF8"'>Sub Main() が完了したときにアプリケーションは終了します</a>
+		        </td>
+		        <td class="SummaryCount">1</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType2GUID0">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID0File0">
+		                        &nbsp;Module1.bas
+		                    </td>
+		                    <td class="SummaryFileCount">1</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType2GUID0File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">(Declarations)</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="E08DDC71-66BA-424F-A612-80AF11498FF8"'>Sub Main() が完了したときにアプリケーションは終了します。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID1">
+		            &nbsp;ユーザ定義型の配列は、使用の前に初期化されなければなりません
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"'>構造体にある配列は初期化される必要がある可能性があります</a>
+		        </td>
+		        <td class="SummaryCount">1</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType2GUID1">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID1File0">
+		                        &nbsp;Module1.bas
+		                    </td>
+		                    <td class="SummaryFileCount">1</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType2GUID1File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"'>構造体 Usr_Ody の配列は、使用する前に初期化する必要があります。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID2">
+		            &nbsp;
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="vbup206"'></a>
+		        </td>
+		        <td class="SummaryCount">1</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType2GUID2">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID2File0">
+		                        &nbsp;Module1.bas
+		                    </td>
+		                    <td class="SummaryFileCount">1</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType2GUID2File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">CSV_OUTPUT</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="vbup206"'>CSV_OUTPUT に変換されていないステートメントがあります。ソース コードを確認してください。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID3">
+		            &nbsp;一部のイベントはフォームが初期化されるときに発生する可能性があります
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"'>フォームが初期化されるときにイベントが発生する可能性があります</a>
+		        </td>
+		        <td class="SummaryCount">1</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType2GUID3">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID3File0">
+		                        &nbsp;frmRptViewer.frm
+		                    </td>
+		                    <td class="SummaryFileCount">1</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType2GUID3File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">Form_Resize</td>
+		                            <td class="issuecontent">Form</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">Resize</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"'>イベント frmRptViewer.Resize は、フォームが初期化されたときに発生します。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID4">
+		            &nbsp;一部のプロパティおよびメソッドには新しい動作が伴います
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'>プロパティまたはメソッドには新しい動作が含まれます</a>
+		        </td>
+		        <td class="SummaryCount">2</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType2GUID4">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID4File0">
+		                        &nbsp;frmRptViewer.frm
+		                    </td>
+		                    <td class="SummaryFileCount">2</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType2GUID4File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent">Screen</td>
+		                            <td class="issuecontent">Screen</td>
+		                            <td class="issuecontent">MousePointer</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'>Screen プロパティ Screen.MousePointer には新しい動作が含まれます。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent">Screen</td>
+		                            <td class="issuecontent">Screen</td>
+		                            <td class="issuecontent">MousePointer</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'>Screen プロパティ Screen.MousePointer には新しい動作が含まれます。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID5">
+		            &nbsp;Null には新しい動作が含まれます
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"'>Null の動作は変更されています</a>
+		        </td>
+		        <td class="SummaryCount">3</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType2GUID5">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType2GUID5File0">
+		                        &nbsp;mod_Ora.bas
+		                    </td>
+		                    <td class="SummaryFileCount">3</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType2GUID5File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">IsNull</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"'>Null/IsNull() の使用が見つかりました。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">CF_Ora_GetDyn2</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">IsNull</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"'>Null/IsNull() の使用が見つかりました。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">GetChar</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent">IsNull</td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"'>Null/IsNull() の使用が見つかりました。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		    <td class="SummaryIssueTypeContent">
+		        <IMG alt="選択範囲の展開/縮小" class="expanded" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Minus.gif" width="9" child="SummaryIssueType3">
+		        &nbsp;その他
+		    </td>
+		    <td class="SummaryIssueTypeHelp">
+		        アップグレード中に追加的な問題が発見されました。これらの問題はアプリケーションの実行前に調査されなければなりません。
+		    </td>
+		    <td class="SummaryIssueTypeCount">
+		        5
+		    </td>
+		    </tr>
+		    <tr class="expanded" bgcolor="white" id="SummaryIssueType3">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		    <tr class="row">
+		        <td class="SummaryIssueContent">
+		            <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType3GUID0">
+		            &nbsp;文字列へのバイト配列の割り当ては、異なる動作を伴う可能性があります
+		        </td>
+		        <td class="SummaryIssueHelp">
+		            <a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>関数を使うためにコードがアップグレードされましたが、動作が異なる可能性があります</a>
+		        </td>
+		        <td class="SummaryCount">5</td>
+		    </tr>
+		    <tr class="collapsed" bgcolor="white" id="SummaryIssueType3GUID0">
+		        <td colspan="3">
+		            <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="white" class="content">
+		                <tr class="row">
+		                    <td colspan="3" width="97%" class="SummaryFileContent">
+		                        <IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="SummaryIssueType3GUID0File0">
+		                        &nbsp;frmRptViewer.frm
+		                    </td>
+		                    <td class="SummaryFileCount">5</td>
+		                </tr>
+		                <tr class="collapsed" id="SummaryIssueType3GUID0File0" bgcolor="#ffffff">
+		                    <td colspan="4">
+		                    <table cellpadding="2" cellspacing="0" width="97%" border="1" bordercolor="#dcdcdc" class="content">
+		                        <tr bgcolor="#ffffff">
+		                            <td width="10" class="issuehdr">#</td>
+		                            <td nowrap class="issuehdr">場所</td>
+		                            <td nowrap class="issuehdr">オブジェクトの種類</td>
+		                            <td nowrap class="issuehdr">オブジェクト名</td>
+		                            <td nowrap class="issuehdr">プロパティ</td>
+		                            <td nowrap class="issuehdr">説明</td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">1</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">2</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">3</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">4</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td>
+		                        </tr>
+		                        <tr bgcolor="#ffffff">
+		                            <td class="issuecontent">5</td>
+		                            <td class="issuecontent">Form_Load</td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"></td>
+		                            <td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td>
+		                        </tr>
+		                    </table>
+		                    </td>
+		                </tr>
+		            </table>
+		        </td>
+		    </tr>
+		            </table>
+		        </td>
+		    </tr>
+		    <tr class="row">
+		        <td colspan=2 class="content">合計</td>
+		        <td class="SummaryCount">113</td>
+		    </tr>
+		</table>
+		
+		<h2><IMG alt="選択範囲の展開/縮小" class="expandable" height="11" onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="DetailList"> プロジェクト内各ファイルの詳細</h2>
+		<span id="DetailList" class="collapsed">
+		<table cellpadding="2" cellspacing="0" width="98%" border="1"bordercolor="white" class="infotable">
+			<tr>
+				<td nowrap class="header">新しいファイル名</td>
+				<td nowrap class="header">元のファイル名</td>
+				<td nowrap class="header">ファイルの種類</td>
+				<td nowrap class="header">状態</td>
+				<td nowrap class="header">エラー</td>
+				<td nowrap class="header">警告</td>
+				<td nowrap class="header">問題の総数</td>
+			</tr>
+		<tr class="row">
+			<td class="content"><IMG alt="選択範囲の展開/縮小" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue0">&nbsp;(グローバルな問題)</td>
+			<td class="content"></td>
+			<td class="content"></td>
+			<td class="content">
+		</td>	<td class="content">0</td>
+			<td class="content">0</td>
+			<td class="content">0</td>
+		</tr>
+			<tr class="collapsed" id="issue0" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">グローバル アップデートの問題:</td></tr><tr><td class="issuenone">なし</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="選択範囲の展開/縮小" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue1">&nbsp;frmRptViewer.vb</td>
+			<td class="content">frmRptViewer.frm</td>
+			<td class="content">フォーム</td>
+			<td class="content">
+		アップグレードの問題</td>	<td class="content">15</td>
+			<td class="content">25</td>
+			<td class="content">40</td>
+		</tr>
+			<tr class="collapsed" id="issue1" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">frmRptViewer.frm のアップグレードに関する問題:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>重大度レベル</td><td class="issuehdr">場所</td><td class="issuehdr">オブジェクトの種類</td><td class="issuehdr">オブジェクト名</td><td class="issuehdr">プロパティ</td><td class="issuehdr">説明</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>修正が必要</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>修正が必要</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>修正が必要</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td></tr>
+					<tr><td width="10" class="issuecontent">4</td><td class="issuecontent" nowrap>修正が必要</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td></tr>
+					<tr><td width="10" class="issuecontent">5</td><td class="issuecontent" nowrap>修正が必要</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="93DD716C-10E3-41BE-A4A8-3BA40157905B"'>System.Text.UnicodeEncoding.Unicode.GetBytes() を使うためにコードがアップグレードされましたが、動作が異なる可能性があります。</a></td></tr>
+					<tr><td width="10" class="issuecontent">6</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.Report オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">7</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.ConnectionProperty オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">8</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">Form_Load</td><td class="issuecontent">Printer</td><td class="issuecontent">Printers</td><td class="issuecontent">DeviceName</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'>Printer プロパティ Printers.DeviceName はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">9</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">Form_Load</td><td class="issuecontent">Printer</td><td class="issuecontent">Printers</td><td class="issuecontent">DriverName</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'>Printer プロパティ Printers.DriverName はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">10</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">Form_Load</td><td class="issuecontent">Printer</td><td class="issuecontent">Printers</td><td class="issuecontent">Port</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'>Printer プロパティ Printers.Port はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">11</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">Form_Load</td><td class="issuecontent">Printers</td><td class="issuecontent">Printers</td><td class="issuecontent">Count</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"'>Printers メソッド Printers.Count はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">12</td><td class="issuecontent" nowrap>デザイン エラー</td><td class="issuecontent">(レイアウト)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト New (System.Drawing.Size, 779, 539) の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">13</td><td class="issuecontent" nowrap>デザイン エラー</td><td class="issuecontent">(レイアウト)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト New (System.Drawing.Point, 0, 8) の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">14</td><td class="issuecontent" nowrap>デザイン エラー</td><td class="issuecontent">(レイアウト)</td><td class="issuecontent">CommandButton</td><td class="issuecontent">cmdCSV</td><td class="issuecontent">MaskColor</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"'>CommandButton プロパティ cmdCSV.MaskColor はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">15</td><td class="issuecontent" nowrap>デザイン エラー</td><td class="issuecontent">(レイアウト)</td><td class="issuecontent">CommandButton</td><td class="issuecontent">cmdCSV</td><td class="issuecontent">UseMaskColor</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"'>CommandButton プロパティ cmdCSV.UseMaskColor はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">16</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">cmdPrt_Click</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.PrintReport の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">17</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRAPP.OpenReport の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">18</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">19</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">20</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">21</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">22</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">23</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">24</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">25</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">26</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">27</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.SelectPrinter の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">28</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">29</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">30</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">31</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.ReportSource の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">32</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.ViewReport の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">33</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Trim</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">34</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent">Screen</td><td class="issuecontent">Screen</td><td class="issuecontent">MousePointer</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'>Screen プロパティ Screen.MousePointer には新しい動作が含まれます。</a></td></tr>
+					<tr><td width="10" class="issuecontent">35</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Load</td><td class="issuecontent">Screen</td><td class="issuecontent">Screen</td><td class="issuecontent">MousePointer</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'>Screen プロパティ Screen.MousePointer には新しい動作が含まれます。</a></td></tr>
+					<tr><td width="10" class="issuecontent">36</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Resize</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Top の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">37</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Resize</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Left の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">38</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Resize</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Height の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">39</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Resize</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRViewer91.Width の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">40</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">Form_Resize</td><td class="issuecontent">Form</td><td class="issuecontent"></td><td class="issuecontent">Resize</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"'>イベント frmRptViewer.Resize は、フォームが初期化されたときに発生します。</a></td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="選択範囲の展開/縮小" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue2">&nbsp;mod_Ora.vb</td>
+			<td class="content">mod_Ora.bas</td>
+			<td class="content">モジュール</td>
+			<td class="content">
+		アップグレードの問題</td>	<td class="content">3</td>
+			<td class="content">33</td>
+			<td class="content">36</td>
+		</tr>
+			<tr class="collapsed" id="issue2" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">mod_Ora.bas のアップグレードに関する問題:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>重大度レベル</td><td class="issuehdr">場所</td><td class="issuehdr">オブジェクトの種類</td><td class="issuehdr">オブジェクト名</td><td class="issuehdr">プロパティ</td><td class="issuehdr">説明</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">(Declarations)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraSessionClass オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">(Declarations)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraDatabase オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">(Declarations)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraDynaset オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">4</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.CreateDynaset の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">5</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Ody.Fields の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">6</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Ody.Fields の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">7</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.LastServerErr の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">8</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.LastServerErrText の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">9</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Odb.LastServerErrReset の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">10</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">CLng</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Option の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">11</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_CreateDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">UCase$</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Flds().Name の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">12</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_EOF</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Ody.EOF の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">13</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">14</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Default の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">15</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">16</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Ody.Obj_Flds(CInt(Str_FldNm)) の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">17</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">18</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">19</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">20</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">21</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">22</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Format$</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">23</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">IsNull</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"'>Null/IsNull() の使用が見つかりました。</a></td></tr>
+					<tr><td width="10" class="issuecontent">24</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">25</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Default の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">26</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">27</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn2 の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">28</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn2 の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">29</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Default の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">30</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CF_Ora_GetDyn2 の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">31</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">32</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Format$</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Var_Value の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">33</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CF_Ora_GetDyn2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">IsNull</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"'>Null/IsNull() の使用が見つかりました。</a></td></tr>
+					<tr><td width="10" class="issuecontent">34</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">F_Ora_Connect</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Oss.dbopendatabase の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">35</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">F_Ora_Connect2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト pm_Osc.OpenDatabase の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">36</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">GetChar</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">IsNull</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"'>Null/IsNull() の使用が見つかりました。</a></td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="選択範囲の展開/縮小" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue3">&nbsp;Module1.vb</td>
+			<td class="content">Module1.bas</td>
+			<td class="content">モジュール</td>
+			<td class="content">
+		アップグレードの問題</td>	<td class="content">3</td>
+			<td class="content">34</td>
+			<td class="content">37</td>
+		</tr>
+			<tr class="collapsed" id="issue3" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Module1.bas のアップグレードに関する問題:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>重大度レベル</td><td class="issuehdr">場所</td><td class="issuehdr">オブジェクトの種類</td><td class="issuehdr">オブジェクト名</td><td class="issuehdr">プロパティ</td><td class="issuehdr">説明</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>OraFields オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.Report オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>コンパイル エラー</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'>CRAXDRT.ConnectionProperty オブジェクト はアップグレードされませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">4</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">(Declarations)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="E08DDC71-66BA-424F-A612-80AF11498FF8"'>Sub Main() が完了したときにアプリケーションは終了します。</a></td></tr>
+					<tr><td width="10" class="issuecontent">5</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト ODatabase.DbCreateDynaset の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">6</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.MoveFirst の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">7</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.Fields の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">8</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.EOF の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">9</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.MoveNext の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">10</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Odynaset.RecordCount の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">11</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="814DF224-76BD-4BB4-BFFB-EA359CB9FC48"'>構造体 Usr_Ody の配列は、使用する前に初期化する必要があります。</a></td></tr>
+					<tr><td width="10" class="issuecontent">12</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">CSV_OUTPUT に変換されていないステートメントがあります。ソース コードを確認してください。</td></tr>
+					<tr><td width="10" class="issuecontent">13</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">CStr</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト OraFields().Value の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">14</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.CancelError の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">15</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.Filter の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">16</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.ShowSave の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">17</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト cdlCancel の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">18</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">CSV_OUTPUT2</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト frmRptViewer.CmDlg.FileName の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">19</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト CRAPP.OpenReport の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">20</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">21</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">22</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">23</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">24</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">25</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">26</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Database の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">27</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">28</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">29</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperOrientation の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">30</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.PaperSize の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">31</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト crEDTDiskFile の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">32</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.ExportOptions の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">33</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.ExportOptions の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">34</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト crEFTPortableDocFormat の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">35</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.ExportOptions の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">36</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.Export の既定プロパティを解決できませんでした。</a></td></tr>
+					<tr><td width="10" class="issuecontent">37</td><td class="issuecontent" nowrap>実行時の警告</td><td class="issuecontent">PDF_OUTPUT</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Trim</td><td class="issuecontent"><a href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'>オブジェクト Report.RecordSelectionFormula の既定プロパティを解決できませんでした。</a></td></tr>
+				</table>
+			</td></tr>
+		<tr valign="top">
+			<td class="foot">3 ファイル</td>
+			<td class="foot">&nbsp;</td>
+			<td class="foot">フォーム: 1<br>モジュール: 2</td>
+			<td class="foot">
+		アップグレード済み: 3<BR>
+		未アップグレード: 0
+		</td>
+			<td class="foot">21</td>
+			<td class="foot">92</td>
+			<td class="foot">113</td>
+		</tr>
+		</table>
+		</span>
+		<p class="help">
+			<A href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="a16bd8ca-916d-4cd3-821c-417999d3cb97"'>アップグレードされたプロジェクトに関するトラブルシューティングについてはここをクリックしてください。</A>
+		</p>
+				<p>
+					<table class = "note">
+						<tr><td nowrap><b>アップグレードの設定</b></td></tr>
+						<tr><td nowrap><b>ログ ファイル:</b> Project1.log</td></tr>
+						<tr><td nowrap><b>プロジェクトの移行先:</b> WinExe</td></tr>
+						<tr><td nowrap><b>出力ディレクトリ:</b> D:\PG\GNKPRT\GNKPRT.NET</td></tr>
+						<tr><td nowrap><b>出力名:</b> Project1.vbproj</td></tr>
+						<tr><td nowrap><b>プロジェクト名:</b> Project1</td></tr>
+						<tr><td nowrap><b>プロジェクト パス:</b> D:\PG\GNKPRT\Project1.vbp</td></tr>
+					</table>
+				</p>
+	</body>
+</html>

@@ -1,0 +1,373 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <MyType>WindowsForms</MyType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D2EB8720-01CD-48A9-A794-ABDF27DC7B6C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>URKET52</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>URKET52.FR_SSSMAIN</StartupObject>
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>3</AssemblyMinorVersion>
+    <AssemblyRevisionNumber>0</AssemblyRevisionNumber>
+    <GenerateRevisionNumber>False</GenerateRevisionNumber>
+    <AssemblyCompanyName>株式会社コンテック</AssemblyCompanyName>
+    <StartWithIE>False</StartWithIE>
+    <RootNamespace>URKET52</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>URKET52.xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DefineDebug>True</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>URKET52.xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DefineDebug>False</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\共通dll\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.DAO, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\共通dll\Interop.DAO.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Oracle.DataAccess.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PronesDbAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\共通dll\PronesDbAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <Lcid>0</Lcid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="Microsoft.StdFormat">
+      <Guid>{6B263850-900B-11D0-9484-00A0C91110ED}</Guid>
+      <Lcid>0</Lcid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>primary</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\共通vb\ACE_CMN.vb">
+      <Link>ACE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CMN.vb">
+      <Link>AE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CONST.vb">
+      <Link>AE_CONST.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_PROC.vb">
+      <Link>AE_PROC.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_RSMR.vb">
+      <Link>AE_RSMR.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AUTHORI.vb">
+      <Link>AUTHORI.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ClsComn.vb">
+      <Link>ClsComn.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\COMMON_SEARCH.vb">
+      <Link>COMMON_SEARCH.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\DLGLST3.designer.vb">
+      <Link>DLGLST3.designer.vb</Link>
+            <DependentUpon>DLGLST3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\DLGLST3.vb">
+      <Link>DLGLST3.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.Designer.vb">
+      <Link>ICONSSS.Designer.vb</Link>
+            <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.vb">
+      <Link>ICONSSS.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORA_CMN.vb">
+      <Link>ORA_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\UpgradeSupport.vb">
+      <Link>UpgradeSupport.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_BNK2.Designer.vb">
+      <Link>WLS_BNK2.Designer.vb</Link>
+            <DependentUpon>WLS_BNK2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_BNK2.vb">
+      <Link>WLS_BNK2.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_DATE.Designer.vb">
+      <Link>WLS_DATE.Designer.vb</Link>
+            <DependentUpon>WLS_DATE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_DATE.vb">
+      <Link>WLS_DATE.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.Designer.vb">
+      <Link>WLS_HCP.Designer.vb</Link>
+            <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.vb">
+      <Link>WLS_HCP.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_LIST.Designer.vb">
+      <Link>WLS_LIST.Designer.vb</Link>
+            <DependentUpon>WLS_LIST.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_LIST.vb">
+      <Link>WLS_LIST.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI.Designer.vb">
+      <Link>WLS_MEI.Designer.vb</Link>
+            <DependentUpon>WLS_MEI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI.vb">
+      <Link>WLS_MEI.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_NDN3.Designer.vb">
+      <Link>WLS_NDN3.Designer.vb</Link>
+            <DependentUpon>WLS_NDN3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_NDN3.vb">
+      <Link>WLS_NDN3.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_PRN.Designer.vb">
+      <Link>WLS_PRN.Designer.vb</Link>
+            <DependentUpon>WLS_PRN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_PRN.vb">
+      <Link>WLS_PRN.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TAN1.designer.vb">
+      <Link>WLS_TAN1.designer.vb</Link>
+      <DependentUpon>WLS_TAN1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TAN1.vb">
+      <Link>WLS_TAN1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK6.Designer.vb">
+      <Link>WLS_TOK6.Designer.vb</Link>
+            <DependentUpon>WLS_TOK6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK6.vb">
+      <Link>WLS_TOK6.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="NKNDL01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="REPORT_CMN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMAIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMSG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSWIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UDNTRA_m92.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKET52_DBM.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKET52_e01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKET52_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKET52_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>URKET52_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="URKET52_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="URKET52_iev.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKET52_psi.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="..\..\共通vb\DLGLST3.resX">
+      <Link>DLGLST3.resX</Link>
+            <DependentUpon>DLGLST3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\ICONSSS.resX">
+      <Link>ICONSSS.resX</Link>
+            <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_BNK2.resX">
+      <Link>WLS_BNK2.resX</Link>
+            <DependentUpon>WLS_BNK2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_DATE.resX">
+      <Link>WLS_DATE.resX</Link>
+            <DependentUpon>WLS_DATE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_HCP.resX">
+      <Link>WLS_HCP.resX</Link>
+            <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_LIST.resX">
+      <Link>WLS_LIST.resX</Link>
+            <DependentUpon>WLS_LIST.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_MEI.resX">
+      <Link>WLS_MEI.resX</Link>
+            <DependentUpon>WLS_MEI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_NDN3.resX">
+      <Link>WLS_NDN3.resX</Link>
+            <DependentUpon>WLS_NDN3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_PRN.resX">
+      <Link>WLS_PRN.resX</Link>
+            <DependentUpon>WLS_PRN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_TAN1.resX">
+      <Link>WLS_TAN1.resX</Link>
+            <DependentUpon>WLS_TAN1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_TOK6.resX">
+      <Link>WLS_TOK6.resX</Link>
+            <DependentUpon>WLS_TOK6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="URKET52_frm.resX">
+      <DependentUpon>URKET52_frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="_UpgradeReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

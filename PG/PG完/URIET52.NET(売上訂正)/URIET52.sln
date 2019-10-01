@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "URIET52", "URIET52.vbproj", "{F26BD14A-0283-46D8-822C-9FFCFE7A4006}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F26BD14A-0283-46D8-822C-9FFCFE7A4006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26BD14A-0283-46D8-822C-9FFCFE7A4006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26BD14A-0283-46D8-822C-9FFCFE7A4006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26BD14A-0283-46D8-822C-9FFCFE7A4006}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E2F94F7F-BD86-4ED1-8E61-4C8DC582C8EC}
+	EndGlobalSection
+EndGlobal
