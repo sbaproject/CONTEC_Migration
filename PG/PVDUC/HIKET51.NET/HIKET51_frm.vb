@@ -148,8 +148,12 @@ Friend Class FR_SSSMAIN
 
         Index_Wk = Index_Wk + 1
         '実行
-        MN_Execute.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Execute
+        '2019/09/26 CHG START
+        'MN_Execute.Tag = CStr(Index_Wk)
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Execute
+        btnF1.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF1
+        '2019/09/26 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -214,8 +218,12 @@ Friend Class FR_SSSMAIN
 
         Index_Wk = Index_Wk + 1
         '終了
-        MN_EndCm.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_EndCm
+        '2019/09/26 CHG START
+        'MN_EndCm.Tag = CStr(Index_Wk)
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_EndCm
+        btnF12.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF12
+        '2019/09/26 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -280,8 +288,12 @@ Friend Class FR_SSSMAIN
 
         Index_Wk = Index_Wk + 1
         '項目初期化
-        MN_ClearItm.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_ClearItm
+        '2019/09/26 CHG START
+        'MN_ClearItm.Tag = CStr(Index_Wk)
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_ClearItm        
+        btnF9.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF9
+        '2019/09/26 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -577,8 +589,12 @@ Friend Class FR_SSSMAIN
 
         Index_Wk = Index_Wk + 1
         '候補の一覧
-        MN_Slist.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Slist
+        '2019/09/26 CHG START
+        'MN_Slist.Tag = CStr(Index_Wk)
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Slist
+        btnF5.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF5
+        '2019/09/26 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -852,7 +868,7 @@ Friend Class FR_SSSMAIN
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.Locked = True
 
         Index_Wk = Index_Wk + 1
-        '検索イメージ
+        '検索イメージ        
         CM_SELECTCM.Tag = Index_Wk
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = CM_SELECTCM
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -3702,10 +3718,11 @@ Friend Class FR_SSSMAIN
     '   備考：  全画面ローカル共通処理
     ' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
     Private Function Ctl_Item_Change(ByRef pm_Ctl As System.Windows.Forms.Control) As Short
-
+        '2019/09/20 ADD START
         If FORM_LOAD_FLG = False Then
             Return 0
         End If
+        '2019/09/20 ADD END
 
         Dim Trg_Index As Short
 
@@ -3949,7 +3966,10 @@ Friend Class FR_SSSMAIN
                 '処理１
                 Call Ctl_MN_Ctrl_Click()
 
-            Case CShort(MN_Execute.Tag)
+                '2019/09/26 CHG START
+            'Case CShort(MN_Execute.Tag)
+            Case CShort(btnF1.Tag)
+                '2019/09/26 CHG END
                 '実行
                 Call Ctl_MN_Execute_Click()
 
@@ -3961,10 +3981,14 @@ Friend Class FR_SSSMAIN
                 '画面印刷
                 Call Ctl_MN_HARDCOPY_Click()
 
-            Case CShort(MN_EndCm.Tag)
+                 '2019/09/26 CHG START
+            'Case CShort(MN_EndCm.Tag)
+            Case CShort(btnF12.Tag)
+                '2019/09/26 CHG END
                 '終了
                 Call Ctl_MN_EndCm_Click()
                 Exit Function
+
 
             Case CShort(MN_EditMn.Tag)
                 '処理２
@@ -3972,8 +3996,11 @@ Friend Class FR_SSSMAIN
 
                 '        Case CInt(MN_APPENDC.Tag)
                 '            '画面初期化
-                '            Call Ctl_MN_APPENDC_Click
-
+                'Call Ctl_MN_APPENDC_Click()
+                '2019/09/26 ADD START
+            Case CShort(btnF9.Tag)
+                Call Ctl_MN_APPENDC_Click()
+                '2019/09/26 ADD END
             Case CShort(MN_ClearItm.Tag)
                 '項目初期化
                 Call Ctl_MN_ClearItm_Click()
@@ -4013,8 +4040,10 @@ Friend Class FR_SSSMAIN
             Case CShort(MN_Oprt.Tag)
                 '操作３
                 Call Ctl_MN_Oprt_Click()
-
-            Case CShort(MN_SELECTCM.Tag)
+                '2019/09/26 CHG START
+            'Case CShort(MN_SELECTCM.Tag)
+            Case CShort(btnF9.Tag)
+                '2019/09/26 CHG END
                 '選択（明細部クリア）
                 Call Ctl_MN_SELECTCM_Click()
 
@@ -4026,7 +4055,10 @@ Friend Class FR_SSSMAIN
                 '            '次ページ
                 '            Call Ctl_MN_NEXTCM_Click
 
-            Case CShort(MN_Slist.Tag)
+            '2019/09/26 CHG START
+            'Case CShort(MN_Slist.Tag)
+            Case CShort(btnF5.Tag)
+                '2019/09/26 CHG END
                 '候補の一覧
                 Call Ctl_MN_Slist_Click()
 
@@ -4043,17 +4075,26 @@ Friend Class FR_SSSMAIN
                 Call Ctl_SM_FullPast_Click()
 
                 '■メニューイメージ
-            Case CShort(CM_EndCm.Tag)
+            '2019/09/26 CHG START
+            'Case CShort(CM_EndCm.Tag)
+            Case CShort(btnF12.Tag)
+                '2019/09/26 CHG END
                 '終了
                 Call Ctl_MN_EndCm_Click()
                 Exit Function
 
-            Case CShort(CM_Execute.Tag)
+            '2019/09/26 CHG START
+            'Case CShort(CM_Execute.Tag)
+            Case CShort(btnF1.Tag)
+                '2019/09/26 CHG END
                 '実行
                 Call Ctl_MN_Execute_Click()
 
                 ' === 20060802 === INSERT S - ACE)Nagasawa
-            Case CShort(CM_SLIST.Tag)
+            '2019/09/26 CHG START
+            'Case CShort(CM_Slist.Tag)
+            Case CShort(btnF5.Tag)
+                '2019/09/26 CHG END
                 '検索W表示
                 Call Ctl_MN_Slist_Click()
                 ' === 20060802 === INSERT E -
@@ -4335,6 +4376,11 @@ Friend Class FR_SSSMAIN
         '画面内容初期化
         Call SSSMAIN0001.F_Init_Clr_Dsp(-1, Main_Inf)
 
+        '2019/09/26 ADD START
+        '入力担当者編集
+        Call CF_Set_Frm_IN_TANCD_HIKET51(Me, Main_Inf)
+        '2019/09/26 ADD END
+
         'ヘッダ部入力制御
         Call F_Set_Inp_Item_Focus_Ctl(True, Main_Inf)
 
@@ -4388,7 +4434,7 @@ Friend Class FR_SSSMAIN
         'UPGRADE_ISSUE: Control Tag は、汎用名前空間 ActiveControl 内にあるため、解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="084D22AD-ECB1-400F-B4C7-418ECEC5E36E"' をクリックしてください。
         Act_Index = CShort(Me.ActiveControl.Tag)
 
-        '画面内容初期化
+        ''画面内容初期化
         Call SSSMAIN0001.F_Init_Clr_Dsp(Act_Index, Main_Inf)
 
         'Ｓ★★★★★★★★★★★★★★★★★★★★★★★★★★★★Ｓ
@@ -4971,22 +5017,62 @@ Friend Class FR_SSSMAIN
 
         Dim Bd_Index As Short
 
-        '１行目のNoのTopとHeightを基準とする
-        BD_LINNO_Top = VB6.FromPixelsUserY(BD_LINNO(1).Top, 0, 10944.1, 653)
-        BD_LINNO_Height = VB6.FromPixelsUserHeight(BD_LINNO(1).Height, 10944.1, 653) + Hosei_Value
+
+        '2019/09/30 CHG START
+
+        ''１行目のNoのTopとHeightを基準とする
+        'BD_LINNO_Top = VB6.FromPixelsUserY(BD_LINNO(1).Top, 0, 10944.1, 653)
+        'BD_LINNO_Height = VB6.FromPixelsUserHeight(BD_LINNO(1).Height, 10944.1, 653) + Hosei_Value
+
+        ''１行目｢No｣から｢客先注文番号｣までの相対位置を取得
+        'BD_TOKJDNNO_Top = VB6.FromPixelsUserY(BD_TOKJDNNO(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        ''１行目｢No｣から｢品名｣までの相対位置を取得
+        'BD_HINNMB_Top = VB6.FromPixelsUserY(BD_HINNMB(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        ''１行目｢No｣から｢営業仕切｣までの相対位置を取得
+        'BD_SIKTK_Top = VB6.FromPixelsUserY(BD_SIKTK(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        ''１行目｢No｣から｢定価｣までの相対位置を取得
+        'BD_TEIKATK_Top = VB6.FromPixelsUserY(BD_TEIKATK(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        ''１行目｢No｣から｢仕切率｣までの相対位置を取得
+        'BD_SIKRT_Top = VB6.FromPixelsUserY(BD_SIKRT(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        ''１行目｢No｣から｢備考２｣までの相対位置を取得
+        'BD_LINCMB_Top = VB6.FromPixelsUserY(BD_LINCMB(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+
+        ''表示最終行まで処理
+        'For Bd_Index = 1 To Main_Inf.Dsp_Base.Dsp_Body_Cnt
+        '    '配置
+        '    BD_SELECTB(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    '        BD_SELECT(Bd_Index).Top = BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1)
+        '    BD_LINNO(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_HINCD(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_TOKJDNNO(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1) + BD_TOKJDNNO_Top)
+        '    BD_HINNMA(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_HINNMB(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1) + BD_HINNMB_Top)
+        '    BD_GNKCD(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_UODSU(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_UNTNM(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_UODTK(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_SIKTK(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1) + BD_SIKTK_Top)
+        '    BD_UODKN(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_TEIKATK(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1) + BD_TEIKATK_Top)
+        '    BD_SIKRT(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_ODNYTDT(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_LINCMA(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
+        '    BD_LINCMB(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1) + BD_LINCMB_Top)
+        BD_LINNO_Top = VB6.PixelsToTwipsY(BD_LINNO(1).Top)
+        BD_LINNO_Height = VB6.PixelsToTwipsY(BD_LINNO(1).Height) + Hosei_Value
 
         '１行目｢No｣から｢客先注文番号｣までの相対位置を取得
-        BD_TOKJDNNO_Top = VB6.FromPixelsUserY(BD_TOKJDNNO(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        BD_TOKJDNNO_Top = VB6.PixelsToTwipsY(BD_TOKJDNNO(1).Top) - BD_LINNO_Top
         '１行目｢No｣から｢品名｣までの相対位置を取得
-        BD_HINNMB_Top = VB6.FromPixelsUserY(BD_HINNMB(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        BD_HINNMB_Top = VB6.PixelsToTwipsY(BD_HINNMB(1).Top) - BD_LINNO_Top
         '１行目｢No｣から｢営業仕切｣までの相対位置を取得
-        BD_SIKTK_Top = VB6.FromPixelsUserY(BD_SIKTK(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        BD_SIKTK_Top = VB6.PixelsToTwipsY(BD_SIKTK(1).Top) - BD_LINNO_Top
         '１行目｢No｣から｢定価｣までの相対位置を取得
-        BD_TEIKATK_Top = VB6.FromPixelsUserY(BD_TEIKATK(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        BD_TEIKATK_Top = VB6.PixelsToTwipsY(BD_TEIKATK(1).Top) - BD_LINNO_Top
         '１行目｢No｣から｢仕切率｣までの相対位置を取得
-        BD_SIKRT_Top = VB6.FromPixelsUserY(BD_SIKRT(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        BD_SIKRT_Top = VB6.PixelsToTwipsY(BD_SIKRT(1).Top) - BD_LINNO_Top
         '１行目｢No｣から｢備考２｣までの相対位置を取得
-        BD_LINCMB_Top = VB6.FromPixelsUserY(BD_LINCMB(1).Top, 0, 10944.1, 653) - BD_LINNO_Top
+        BD_LINCMB_Top = VB6.PixelsToTwipsY(BD_LINCMB(1).Top) - BD_LINNO_Top
 
         '表示最終行まで処理
         For Bd_Index = 1 To Main_Inf.Dsp_Base.Dsp_Body_Cnt
@@ -5009,6 +5095,8 @@ Friend Class FR_SSSMAIN
             BD_ODNYTDT(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
             BD_LINCMA(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1))
             BD_LINCMB(Bd_Index).Top = VB6.TwipsToPixelsY(BD_LINNO_Top + BD_LINNO_Height * (Bd_Index - 1) + BD_LINCMB_Top)
+
+            '2019/09/30 CHG END
 
             '表示
             BD_SELECTB(Bd_Index).Visible = True
@@ -5033,8 +5121,10 @@ Friend Class FR_SSSMAIN
         Next
 
         'スクロールバーの設定
-        VS_Scrl.Top = VB6.ToPixelsUserY(BD_LINNO_Top, 0, 10944.1, 653)
-        VS_Scrl.Height = VB6.ToPixelsUserHeight(BD_LINNO_Height * Main_Inf.Dsp_Base.Dsp_Body_Cnt, 10944.1, 653)
+        '2019/09/30 DEL START
+        'VS_Scrl.Top = VB6.ToPixelsUserY(BD_LINNO_Top, 0, 10944.1, 653)
+        'VS_Scrl.Height = VB6.ToPixelsUserHeight(BD_LINNO_Height * Main_Inf.Dsp_Base.Dsp_Body_Cnt, 10944.1, 653)
+        '2019/09/30 DEL END
 
     End Function
 
@@ -5089,6 +5179,10 @@ Friend Class FR_SSSMAIN
 
         'システム共通処理
         Call CF_System_Process(Me)
+
+        '2019/09/26 ADD START
+        SetBar(Me)
+        '2019/09/26 ADD END
 
     End Sub
 
@@ -8234,6 +8328,9 @@ Friend Class FR_SSSMAIN
         'メッセージ出力
         If AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_A_001, Main_Inf) <> MsgBoxResult.Yes Then
             Cancel = True
+            '2019/09/26 ADD START
+            eventArgs.Cancel = Cancel
+            '2019/09/26 ADD END
             Exit Sub
         End If
         ' === 20060907 === INSERT S - ACE)Sejima
@@ -8681,9 +8778,129 @@ Friend Class FR_SSSMAIN
         End With
 
     End Function
-    '2019/09/20 ADD END
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Call Ctl_Item_Click(btnF1)
+    End Sub
+
+    Private Sub btnF2_Click(sender As Object, e As EventArgs) Handles btnF2.Click
 
     End Sub
+
+    Private Sub btnF3_Click(sender As Object, e As EventArgs) Handles btnF3.Click
+
+    End Sub
+
+    Private Sub btnF4_Click(sender As Object, e As EventArgs) Handles btnF4.Click
+
+    End Sub
+
+    Private Sub btnF5_Click(sender As Object, e As EventArgs) Handles btnF5.Click
+        Ctl_Item_Click(btnF5)
+    End Sub
+
+    Private Sub btnF6_Click(sender As Object, e As EventArgs) Handles btnF6.Click
+
+    End Sub
+
+    Private Sub btnF7_Click(sender As Object, e As EventArgs) Handles btnF7.Click
+
+    End Sub
+
+    Private Sub btnF8_Click(sender As Object, e As EventArgs) Handles btnF8.Click
+
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        Call Ctl_Item_Click(btnF9)
+    End Sub
+
+    Private Sub btnF10_Click(sender As Object, e As EventArgs) Handles btnF10.Click
+
+    End Sub
+
+    Private Sub btnF11_Click(sender As Object, e As EventArgs) Handles btnF11.Click
+
+    End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        Call Ctl_Item_Click(btnF12)
+    End Sub
+
+    Private Sub CS_MITNO_Click(sender As Object, e As EventArgs) Handles CS_MITNO.Click
+        Call Ctl_Item_Click(CS_MITNO)
+    End Sub
+
+    Private Sub CS_JDNNO_Click(sender As Object, e As EventArgs) Handles CS_JDNNO.Click
+        Call Ctl_Item_Click(CS_JDNNO)
+    End Sub
+
+    Public Function SetBar(ByRef po_Form As Form) As Boolean
+
+        '--------------------------------------------------------------------------
+        '変数の定義
+        '--------------------------------------------------------------------------
+        Dim li_MsgRtn As Integer    'MsgBoxの戻り値
+
+        '--------------------------------------------------------------------------
+        'エラートラップ宣言
+        '--------------------------------------------------------------------------
+        Try
+            '--------------------------------------------------------------------------
+            '処理開始
+            '--------------------------------------------------------------------------
+            '---戻り値設定---'
+            SetBar = False
+
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel1").Text = DB_NullReplace(CNV_DATE(DB_UNYMTA.UNYDT), Format(Now(), "yyyy/MM/dd"))
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel2").Text = DB_NullReplace(DB_UNYMTA.TERMNO, "")
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel3").Text = DB_NullReplace(SSS_OPEID.Value, "")
+            DirectCast(po_Form.Controls("StatusStrip1"), StatusStrip).Items("ToolStripStatusLabel4").Text = SSS_PrgId
+
+            '---戻り値設定---'
+            SetBar = True
+
+            '--------------------------------------------------------------------------
+            'エラートラップルーチン
+            '--------------------------------------------------------------------------
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("ﾀｲﾄﾙﾊﾞｰ,ｽﾃｰﾀｽﾊﾞｰ設定関数エラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+
+    End Function
+
+    Private Sub FR_SSSMAIN_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F5
+                    '参照
+                    Me.btnF5.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
+
+    Private Sub CS_HIK_Click(sender As Object, e As EventArgs) Handles CS_HIK.Click
+        Call Ctl_Item_Click(CS_HIK)
+    End Sub
+
+    '2019/09/20 ADD END
+
 End Class

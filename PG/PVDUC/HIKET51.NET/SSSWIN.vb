@@ -839,12 +839,12 @@ ErrDate:
 	End Function
 	
 	Sub Init_Prompt()
-		' プロンプト表示領域を初期化します。
-		'
-		CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(0).Image = CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(1).Image
-		CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
-		CType(FR_SSSMAIN.Controls("TX_Message"), Object).ForeColor = System.Drawing.ColorTranslator.FromOle(&H0)
-	End Sub
+        ' プロンプト表示領域を初期化します。
+        '
+        'CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(0).Image = CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(1).Image
+        'CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
+        'CType(FR_SSSMAIN.Controls("TX_Message"), Object).ForeColor = System.Drawing.ColorTranslator.FromOle(&H0)
+    End Sub
 	
 	Function JSTDT(ByVal IN_DT As String) As String
 		Dim FormatDate As String

@@ -6,10 +6,14 @@ Module SSSMAIN_ET1
 	'最終更新日=2002/8/28
 	''''''''''''''''''''''''''''''
 	Sub SSS_CLOSE()
-		'
-		Call DB_End()
-		Call CRW_END()
-	End Sub
+        '
+        '2019/09/30 DEL START
+        'Call DB_End()
+        '2019/09/30 DEL E N D
+        '2019/09/30 仮
+        'Call CRW_END()
+        '2019/09/30 仮
+    End Sub
 	
 	'ファイルにカレントレコードの追加処理を行う。
 	Function SSSMAIN_Append() As Object
@@ -78,21 +82,24 @@ Module SSSMAIN_ET1
 		' "しばらくお待ちください" ウィンドウ消去  97/05/29
 		ICN_ICON.Close()
 	End Function
-	
-	'終了時の後処理を行う。
-	Function SSSMAIN_Close() As Object
-		' 排他テーブル更新（CLOSE）
-		Call SSSWIN_EXCTBZ_CLOSE()
-		' === 20130416 === INSERT S - FWEST)Koroyasu 排他制御の解除
-		Call SSSWIN_Unlock_EXCTBZ()
-		' === 20130416 === INSERT E -
-		Call SSSWIN_CLOSE()
-		'UPGRADE_WARNING: オブジェクト SSSMAIN_Close の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		SSSMAIN_Close = True
-	End Function
-	
-	'処理対象のデータの中のカレントレコードを再度読み込む。
-	Function SSSMAIN_Current() As Object
+
+    '終了時の後処理を行う。
+    Function SSSMAIN_Close() As Object
+        '2019/09/30　仮
+        ' 排他テーブル更新（CLOSE）
+        'Call SSSWIN_EXCTBZ_CLOSE()
+        ' === 20130416 === INSERT S - FWEST)Koroyasu 排他制御の解除
+        'Call SSSWIN_Unlock_EXCTBZ()
+        ' === 20130416 === INSERT E -
+        '2019/09/30　仮
+        Call SSSWIN_CLOSE()
+
+        'UPGRADE_WARNING: オブジェクト SSSMAIN_Close の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        SSSMAIN_Close = True
+    End Function
+
+    '処理対象のデータの中のカレントレコードを再度読み込む。
+    Function SSSMAIN_Current() As Object
 		'UPGRADE_WARNING: オブジェクト DSPTRN() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		SSSMAIN_Current = DSPTRN()
 	End Function
