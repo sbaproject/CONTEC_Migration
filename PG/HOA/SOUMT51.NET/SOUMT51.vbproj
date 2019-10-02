@@ -95,11 +95,23 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\共通vb\ACE_CMN.vb">
+      <Link>ACE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CMN.vb">
+      <Link>AE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CONST.vb">
+      <Link>AE_CONST.vb</Link>
+    </Compile>
     <Compile Include="..\..\共通vb\AE_PROC.vb">
       <Link>AE_PROC.vb</Link>
     </Compile>
     <Compile Include="..\..\共通vb\AE_RSMR.vb">
       <Link>AE_RSMR.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\COMMON_SEARCH.vb">
+      <Link>COMMON_SEARCH.vb</Link>
     </Compile>
     <Compile Include="..\..\共通vb\ICONSSS.designer.vb">
       <Link>ICONSSS.designer.vb</Link>
@@ -117,6 +129,9 @@
     </Compile>
     <Compile Include="..\..\共通vb\ORAJET.vb">
       <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORA_CMN.vb">
+      <Link>ORA_CMN.vb</Link>
     </Compile>
     <Compile Include="..\..\共通vb\TABLEDATA.vb">
       <Link>TABLEDATA.vb</Link>

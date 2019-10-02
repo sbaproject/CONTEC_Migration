@@ -448,10 +448,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (IsDBNull(CC_NewVal) = False AndAlso IsDBNull(.CuVal) = False AndAlso CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG END
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -613,10 +616,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG STAR
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG END
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -772,10 +778,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG STAR
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG END
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -1501,10 +1510,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG STAR
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG END
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -1947,10 +1959,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG STAR
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG END
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -2274,10 +2289,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG END
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -2436,10 +2454,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG STAR
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG END
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -2598,10 +2619,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, 0) = DB_NullReplace(.CuVal, 0) Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/09/27 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -4731,10 +4755,15 @@ Module SSSMAIN0001
 			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			If IsNothing(CP_SSSMAIN(wk_Px).CuVal) Then CP_SSSMAIN(wk_Px).CuVal = System.DBNull.Value
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If CC_NewVal = CP_SSSMAIN(wk_Px).CuVal And CP_SSSMAIN(wk_Px).StatusC >= Cn_Status6 Then
-				Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/27 CHG START
+            'If CC_NewVal = CP_SSSMAIN(wk_Px).CuVal And CP_SSSMAIN(wk_Px).StatusC >= Cn_Status6 Then
+            If IsDBNull(CC_NewVal) = False _
+             AndAlso IsDBNull(CP_SSSMAIN(wk_Px).CuVal) = False _
+             AndAlso CC_NewVal = CP_SSSMAIN(wk_Px).CuVal And CP_SSSMAIN(wk_Px).StatusC >= Cn_Status6 Then
+                '2019/09/27 CHG E N D
+                Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
 				'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
 			ElseIf IsDbNull(CC_NewVal) And IsDbNull(CP_SSSMAIN(wk_Px).CuVal) And CP_SSSMAIN(wk_Px).StatusC >= Cn_Status6 Then 
 			Else
@@ -4927,10 +4956,14 @@ Module SSSMAIN0001
 		wk_Var = SSSMAIN_Close()
 		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If wk_Var = -1 Then
-			wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
-			Call AE_WindowProcReset(PP_SSSMAIN)
-			ReleaseTabCapture(FR_SSSMAIN.Handle.ToInt32)
-			If PP_SSSMAIN.hIMC <> 0 Then
+            '2019/09/26 DEL START
+            'wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
+            '2019/09/26 DEL E N D
+            Call AE_WindowProcReset(PP_SSSMAIN)
+            '2019/09/26 DEL START
+            'ReleaseTabCapture(FR_SSSMAIN.Handle.ToInt32)
+            '2019/09/26 DEL E N D
+            If PP_SSSMAIN.hIMC <> 0 Then
 				Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
 			End If
 #If ActiveXcompile = 0 Then
@@ -6790,11 +6823,18 @@ CheckOrSkip:
 					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					CP_SSSMAIN(3 + wk_PxBase).TpStr = wk_Slisted
 					CP_SSSMAIN(3 + wk_PxBase).CIn = Cn_ChrInput
-					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase) = wk_Slisted
-					Call AE_Check_SSSMAIN_BMNCD(AE_Val3(CP_SSSMAIN(3 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase).ToString()), Cn_Status6, True, True)
-				End If
+                    'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/27 CHG START
+                    'AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase) = wk_Slisted
+                    AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase).Text = wk_Slisted
+                    ''2019/09/27 CHG END
+
+                    '2019/09/27 CHG START
+                    'Call AE_Check_SSSMAIN_BMNCD(AE_Val3(CP_SSSMAIN(3 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase).ToString()), Cn_Status6, True, True)
+                    Call AE_Check_SSSMAIN_BMNCD(AE_Val3(CP_SSSMAIN(3 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 3 + wk_TxBase).Text), Cn_Status6, True, True)
+                    '2019/09/27 CHG END
+                End If
 			Else
 				PP_SSSMAIN.CursorDest = Cn_Dest0
 				PP_SSSMAIN.NextTx = PP_SSSMAIN.Tx
@@ -6829,11 +6869,17 @@ CheckOrSkip:
 					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					CP_SSSMAIN(4 + wk_PxBase).TpStr = wk_Slisted
 					CP_SSSMAIN(4 + wk_PxBase).CIn = Cn_ChrInput
-					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 4 + wk_TxBase) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					AE_Controls(PP_SSSMAIN.CtB + 4 + wk_TxBase) = wk_Slisted
-					Call AE_Check_SSSMAIN_STTTKDT(AE_Val3(CP_SSSMAIN(4 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 4 + wk_TxBase).ToString()), Cn_Status6, True, True)
-				End If
+                    'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 4 + wk_TxBase) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/27 CHG START 
+                    'AE_Controls(PP_SSSMAIN.CtB + 4 + wk_TxBase) = wk_Slisted
+                    AE_Controls(PP_SSSMAIN.CtB + 4).Text = wk_Slisted
+                    '2019/09/27 CHG E N D 
+                    '2019/09/27 CHG START
+                    'Call AE_Check_SSSMAIN_STTTKDT(AE_Val3(CP_SSSMAIN(4 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 4 + wk_TxBase).ToString()), Cn_Status6, True, True)
+                    Call AE_Check_SSSMAIN_STTTKDT(AE_Val3(CP_SSSMAIN(4 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 4 + wk_PxBase).Text), Cn_Status6, True, True)
+                    '2019/09/27 CHG E N D
+                End If
 			Else
 				PP_SSSMAIN.CursorDest = Cn_Dest0
 				PP_SSSMAIN.NextTx = PP_SSSMAIN.Tx
@@ -6868,11 +6914,17 @@ CheckOrSkip:
 					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					CP_SSSMAIN(5 + wk_PxBase).TpStr = wk_Slisted
 					CP_SSSMAIN(5 + wk_PxBase).CIn = Cn_ChrInput
-					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase) = wk_Slisted
-					Call AE_Check_SSSMAIN_ENDTKDT(AE_Val3(CP_SSSMAIN(5 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase).ToString()), Cn_Status6, True, True)
-				End If
+                    'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/09/27 CHG START
+                    'AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase) = wk_Slisted
+                    AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase).Text = wk_Slisted
+                    '2019/09/27 CHG E N D
+                    '2019/09/27 CHG START
+                    'Call AE_Check_SSSMAIN_ENDTKDT(AE_Val3(CP_SSSMAIN(5 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase).ToString()), Cn_Status6, True, True)
+                    Call AE_Check_SSSMAIN_ENDTKDT(AE_Val3(CP_SSSMAIN(5 + wk_PxBase), AE_Controls(PP_SSSMAIN.CtB + 5 + wk_TxBase).Text), Cn_Status6, True, True)
+                    '2019/09/27 CHG E N D
+                End If
 			Else
 				PP_SSSMAIN.CursorDest = Cn_Dest0
 				PP_SSSMAIN.NextTx = PP_SSSMAIN.Tx
@@ -7121,13 +7173,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(16 + wk_PxBase), AE_Val3(CP_SSSMAIN(16 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(16 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(16 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(16 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(16 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(16 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(16 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(16 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(16 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(16 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(16 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(16 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(16 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(16 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(16 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(16 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(16 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(16 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(16 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(16 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(16 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(16 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(16 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(16 + wk_PxBase), CL_SSSMAIN(16 + wk_PxBase))
@@ -7150,13 +7207,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(17 + wk_PxBase), AE_Val3(CP_SSSMAIN(17 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(17 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(17 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(17 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(17 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(17 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(17 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(17 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(17 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(17 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(17 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(17 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(17 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(17 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(17 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(17 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(17 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(17 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(17 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(17 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(17 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(17 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(17 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(17 + wk_PxBase), CL_SSSMAIN(17 + wk_PxBase))
@@ -7179,13 +7241,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(18 + wk_PxBase), AE_Val3(CP_SSSMAIN(18 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(18 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(18 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(18 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(18 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(18 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(18 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(18 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(18 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(18 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(18 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(18 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(18 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(18 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(18 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(18 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(18 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(18 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(18 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(18 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(18 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(18 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(18 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(18 + wk_PxBase), CL_SSSMAIN(18 + wk_PxBase))
@@ -7208,13 +7275,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(3 + wk_PxBase), AE_Val3(CP_SSSMAIN(3 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(3 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(3 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(3 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(3 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(3 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(3 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(3 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(3 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(3 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(3 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(3 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(3 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(3 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(3 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(3 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(3 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(3 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(3 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(3 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(3 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(3 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(3 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(3 + wk_PxBase), CL_SSSMAIN(3 + wk_PxBase))
@@ -7237,13 +7309,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(22 + wk_PxBase), AE_Val3(CP_SSSMAIN(22 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(22 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(22 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(22 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(22 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(22 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(22 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(22 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(22 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(22 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(22 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(22 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(22 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(22 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(22 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(22 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(22 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(22 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(22 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(22 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(22 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(22 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(22 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(22 + wk_PxBase), CL_SSSMAIN(22 + wk_PxBase))
@@ -7266,13 +7343,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(20 + wk_PxBase), AE_Val3(CP_SSSMAIN(20 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(20 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(20 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(20 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(20 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(20 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(20 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(20 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(20 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(20 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(20 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(20 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(20 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(20 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(20 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(20 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(20 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(20 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(20 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(20 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(20 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(20 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(20 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(20 + wk_PxBase), CL_SSSMAIN(20 + wk_PxBase))
@@ -7295,13 +7377,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(24 + wk_PxBase), AE_Val3(CP_SSSMAIN(24 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(24 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(24 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(24 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(24 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(24 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(24 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(24 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(24 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(24 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(24 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(24 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(24 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(24 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(24 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(24 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(24 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(24 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(24 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(24 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(24 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(24 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(24 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(24 + wk_PxBase), CL_SSSMAIN(24 + wk_PxBase))
@@ -7324,13 +7411,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(6 + wk_PxBase), AE_Val3(CP_SSSMAIN(6 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(6 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(6 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(6 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(6 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(6 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(6 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(6 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(6 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(6 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(6 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(6 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(6 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(6 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(6 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(6 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(6 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(6 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(6 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(6 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(6 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(6 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(6 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(6 + wk_PxBase), CL_SSSMAIN(6 + wk_PxBase))
@@ -7353,13 +7445,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(23 + wk_PxBase), AE_Val3(CP_SSSMAIN(23 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(23 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(23 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(23 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(23 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(23 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(23 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(23 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(23 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(23 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(23 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(23 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(23 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(23 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(23 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(23 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(23 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(23 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(23 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(23 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(23 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(23 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(23 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(23 + wk_PxBase), CL_SSSMAIN(23 + wk_PxBase))
@@ -7382,13 +7479,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(7 + wk_PxBase), AE_Val3(CP_SSSMAIN(7 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(7 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(7 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(7 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(7 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(7 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(7 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(7 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(7 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(7 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(7 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(7 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(7 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(7 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(7 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(7 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(7 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(7 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(7 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(7 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(7 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(7 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(7 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(7 + wk_PxBase), CL_SSSMAIN(7 + wk_PxBase))
@@ -7411,13 +7513,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(19 + wk_PxBase), AE_Val3(CP_SSSMAIN(19 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(19 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(19 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(19 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(19 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(19 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(19 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(19 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(19 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(19 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(19 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(19 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(19 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(19 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(19 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(19 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(19 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(19 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(19 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(19 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(19 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(19 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(19 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(19 + wk_PxBase), CL_SSSMAIN(19 + wk_PxBase))
@@ -7440,13 +7547,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(21 + wk_PxBase), AE_Val3(CP_SSSMAIN(21 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(21 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(21 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(21 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(21 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(21 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(21 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(21 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(21 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(21 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(21 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(21 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(21 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(21 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(21 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(21 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(21 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(21 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(21 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(21 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(21 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(21 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(21 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(21 + wk_PxBase), CL_SSSMAIN(21 + wk_PxBase))
@@ -7469,13 +7581,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(15 + wk_PxBase), AE_Val3(CP_SSSMAIN(15 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(15 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(15 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(15 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(15 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(15 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(15 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(15 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(15 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(15 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(15 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(15 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(15 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(15 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(15 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(15 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(15 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(15 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(15 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(15 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(15 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(15 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(15 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(15 + wk_PxBase), CL_SSSMAIN(15 + wk_PxBase))
@@ -7498,13 +7615,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(13 + wk_PxBase), AE_Val3(CP_SSSMAIN(13 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(13 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(13 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(13 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(13 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(13 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(13 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(13 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(13 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(13 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(13 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(13 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(13 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(13 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(13 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(13 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(13 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(13 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(13 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(13 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(13 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(13 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(13 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(13 + wk_PxBase), CL_SSSMAIN(13 + wk_PxBase))
@@ -7527,13 +7649,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(5 + wk_PxBase), AE_Val3(CP_SSSMAIN(5 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(5 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(5 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(5 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(5 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(5 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(5 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(5 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(5 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(5 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(5 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(5 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(5 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(5 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(5 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(5 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(5 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(5 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(5 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(5 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(5 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(5 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(5 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(5 + wk_PxBase), CL_SSSMAIN(5 + wk_PxBase))
@@ -7556,13 +7683,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(11 + wk_PxBase), AE_Val3(CP_SSSMAIN(11 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(11 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(11 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(11 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(11 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(11 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(11 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(11 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(11 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(11 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(11 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(11 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(11 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(11 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(11 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(11 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(11 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(11 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(11 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(11 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(11 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(11 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(11 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(11 + wk_PxBase), CL_SSSMAIN(11 + wk_PxBase))
@@ -7585,13 +7717,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(12 + wk_PxBase), AE_Val3(CP_SSSMAIN(12 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(12 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(12 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(12 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(12 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(12 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(12 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(12 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(12 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(12 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(12 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(12 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(12 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(12 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(12 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(12 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(12 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(12 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(12 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(12 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(12 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(12 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(12 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(12 + wk_PxBase), CL_SSSMAIN(12 + wk_PxBase))
@@ -7614,13 +7751,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(4 + wk_PxBase), AE_Val3(CP_SSSMAIN(4 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(4 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(4 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(4 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(4 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(4 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(4 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(4 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(4 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(4 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(4 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。       
+        '2019/09/27 CHG START
+        'If CP_SSSMAIN(4 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(4 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(4 + wk_PxBase).CuVal) = False _
+                    AndAlso IsDBNull(V) = False _
+                    AndAlso CP_SSSMAIN(4 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(4 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/27 CHG E N D
+            CP_SSSMAIN(4 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(4 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(4 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(4 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(4 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(4 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(4 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(4 + wk_PxBase), CL_SSSMAIN(4 + wk_PxBase))
@@ -7643,13 +7785,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(14 + wk_PxBase), AE_Val3(CP_SSSMAIN(14 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(14 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(14 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(14 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(14 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(14 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(14 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(14 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(14 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(14 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(14 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(14 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(14 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(14 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(14 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(14 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(14 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(14 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(14 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(14 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(14 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(14 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(14 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(14 + wk_PxBase), CL_SSSMAIN(14 + wk_PxBase))
@@ -7672,13 +7819,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(2 + wk_PxBase), AE_Val3(CP_SSSMAIN(2 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(2 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(2 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(2 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(2 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(2 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(2 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(2 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(2 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(2 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(2 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(2 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(2 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(2 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(2 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(2 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(2 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(2 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(2 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(2 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(2 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(2 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(2 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(2 + wk_PxBase), CL_SSSMAIN(2 + wk_PxBase))
@@ -7701,13 +7853,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(10 + wk_PxBase), AE_Val3(CP_SSSMAIN(10 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(10 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(10 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(10 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(10 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(10 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(10 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(10 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(10 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(10 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(10 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(10 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(10 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(10 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(10 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(10 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(10 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(10 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(10 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(10 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(10 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(10 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(10 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(10 + wk_PxBase), CL_SSSMAIN(10 + wk_PxBase))
@@ -7730,13 +7887,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(9 + wk_PxBase), AE_Val3(CP_SSSMAIN(9 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(9 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(9 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(9 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(9 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(9 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(9 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(9 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(9 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(9 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(9 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(9 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(9 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(9 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(9 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(9 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(9 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(9 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(9 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(9 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(9 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(9 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(9 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(9 + wk_PxBase), CL_SSSMAIN(9 + wk_PxBase))
@@ -7759,13 +7921,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(8 + wk_PxBase), AE_Val3(CP_SSSMAIN(8 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(8 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(8 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(8 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(8 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(8 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(8 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(8 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(8 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(8 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(8 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(8 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(8 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(8 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(8 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(8 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(8 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(8 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(8 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(8 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(8 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(8 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(8 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(8 + wk_PxBase), CL_SSSMAIN(8 + wk_PxBase))
@@ -7788,13 +7955,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(26 + wk_PxBase), AE_Val3(CP_SSSMAIN(26 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(26 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(26 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(26 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(26 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(26 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(26 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(26 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(26 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(26 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(26 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/03/29 CHG START
+        'If CP_SSSMAIN(26 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(26 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(26 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(26 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(26 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/03/29 CHG E N D
+            CP_SSSMAIN(26 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(26 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(26 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(26 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(26 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(26 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(26 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(26 + wk_PxBase), CL_SSSMAIN(26 + wk_PxBase))
@@ -7816,13 +7988,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(27 + wk_PxBase), AE_Val3(CP_SSSMAIN(27 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(27 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(27 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(27 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(27 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(27 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(27 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(27 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(27 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(27 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(27 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(27 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(27 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(27 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(27 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(27 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(27 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(27 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(27 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(27 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(27 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(27 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(27 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(27 + wk_PxBase), CL_SSSMAIN(27 + wk_PxBase))
@@ -7844,13 +8021,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(28 + wk_PxBase), AE_Val3(CP_SSSMAIN(28 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(28 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(28 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(28 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(28 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(28 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(28 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(28 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(28 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(28 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(28 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/03/29 CHG START
+        'If CP_SSSMAIN(28 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(28 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(28 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(28 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(28 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/03/29 CHG START
+            CP_SSSMAIN(28 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(28 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(28 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(28 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(28 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(28 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(28 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(28 + wk_PxBase), CL_SSSMAIN(28 + wk_PxBase))
@@ -7872,13 +8054,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(29 + wk_PxBase), AE_Val3(CP_SSSMAIN(29 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(29 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(29 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(29 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(29 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(29 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(29 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(29 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(29 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(29 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(29 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(29 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(29 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(29 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(29 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(29 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/06/26 CHG E N D
+            CP_SSSMAIN(29 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(29 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(29 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(29 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(29 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(29 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(29 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(29 + wk_PxBase), CL_SSSMAIN(29 + wk_PxBase))
@@ -7900,13 +8087,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(30 + wk_PxBase), AE_Val3(CP_SSSMAIN(30 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(30 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(30 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(30 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(30 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(30 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(30 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(30 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(30 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(30 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(30 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START   
+        'If CP_SSSMAIN(30 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(30 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(30 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(30 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(30 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG START
+            CP_SSSMAIN(30 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(30 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(30 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(30 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(30 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(30 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(30 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(30 + wk_PxBase), CL_SSSMAIN(30 + wk_PxBase))
@@ -7928,13 +8120,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(31 + wk_PxBase), AE_Val3(CP_SSSMAIN(31 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(31 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(31 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(31 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(31 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(31 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(31 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(31 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(31 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(31 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(31 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/03/29 CHG START
+        'If CP_SSSMAIN(31 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(31 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(31 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(31 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(31 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(31 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(31 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(31 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(31 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(31 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(31 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(31 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(31 + wk_PxBase), CL_SSSMAIN(31 + wk_PxBase))
@@ -7956,13 +8153,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(32 + wk_PxBase), AE_Val3(CP_SSSMAIN(32 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(32 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(32 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(32 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(32 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(32 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(32 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(32 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(32 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(32 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(32 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(32 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(32 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(32 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(32 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(32 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(32 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(32 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(32 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(32 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(32 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(32 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(32 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(32 + wk_PxBase), CL_SSSMAIN(32 + wk_PxBase))
@@ -7984,13 +8186,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(33 + wk_PxBase), AE_Val3(CP_SSSMAIN(33 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(33 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(33 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(33 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(33 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(33 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(33 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(33 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(33 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(33 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(33 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(33 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(33 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(33 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(33 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(33 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(33 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(33 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(33 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(33 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(33 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(33 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(33 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(33 + wk_PxBase), CL_SSSMAIN(33 + wk_PxBase))
@@ -8012,13 +8219,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(34 + wk_PxBase), AE_Val3(CP_SSSMAIN(34 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(34 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(34 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(34 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(34 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(34 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(34 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(34 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(34 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(34 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(34 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(34 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(34 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(34 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(34 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(34 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(34 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(34 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(34 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(34 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(34 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(34 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(34 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(34 + wk_PxBase), CL_SSSMAIN(34 + wk_PxBase))
@@ -8040,13 +8252,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(35 + wk_PxBase), AE_Val3(CP_SSSMAIN(35 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(35 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(35 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(35 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(35 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(35 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(35 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(35 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(35 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(35 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(35 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(35 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(35 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(35 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(35 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(35 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(35 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(35 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(35 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(35 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(35 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(35 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(35 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(35 + wk_PxBase), CL_SSSMAIN(35 + wk_PxBase))
@@ -8068,13 +8285,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(25 + wk_PxBase), AE_Val3(CP_SSSMAIN(25 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(25 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(25 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(25 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(25 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(25 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(25 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(25 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(25 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(25 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(25 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(25 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(25 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(25 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(25 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(25 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(25 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(25 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(25 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(25 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(25 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(25 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(25 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(25 + wk_PxBase), CL_SSSMAIN(25 + wk_PxBase))
@@ -8096,13 +8318,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(36 + wk_PxBase), AE_Val3(CP_SSSMAIN(36 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(36 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(36 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(36 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(36 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(36 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(36 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(36 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(36 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(36 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(36 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(36 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(36 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(36 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(36 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(36 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(36 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(36 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(36 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(36 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(36 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(36 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(36 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(36 + wk_PxBase), CL_SSSMAIN(36 + wk_PxBase))
@@ -8124,13 +8351,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(37 + wk_PxBase), AE_Val3(CP_SSSMAIN(37 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(37 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(37 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(37 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(37 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(37 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(37 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(37 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(37 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(37 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(37 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(37 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(37 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(37 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(37 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(37 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(37 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(37 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(37 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(37 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(37 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(37 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(37 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(37 + wk_PxBase), CL_SSSMAIN(37 + wk_PxBase))
@@ -8152,13 +8384,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(38 + wk_PxBase), AE_Val3(CP_SSSMAIN(38 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(38 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(38 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(38 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(38 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(38 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(38 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(38 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(38 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(38 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(38 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(38 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(38 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(38 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(38 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(38 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/06/26 CHG E N D
+            CP_SSSMAIN(38 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(38 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(38 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(38 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(38 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(38 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(38 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(38 + wk_PxBase), CL_SSSMAIN(38 + wk_PxBase))
@@ -8180,13 +8417,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(39 + wk_PxBase), AE_Val3(CP_SSSMAIN(39 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(39 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(39 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(39 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(39 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(39 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(39 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(39 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(39 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(39 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(39 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(39 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(39 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(39 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(39 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(39 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(39 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(39 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(39 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(39 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(39 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(39 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(39 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(39 + wk_PxBase), CL_SSSMAIN(39 + wk_PxBase))
@@ -8208,13 +8450,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(40 + wk_PxBase), AE_Val3(CP_SSSMAIN(40 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(40 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(40 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(40 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(40 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(40 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(40 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(40 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(40 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(40 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(40 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(40 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(40 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(40 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(40 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(40 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(40 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(40 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(40 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(40 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(40 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(40 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(40 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(40 + wk_PxBase), CL_SSSMAIN(40 + wk_PxBase))
@@ -8236,13 +8483,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(41 + wk_PxBase), AE_Val3(CP_SSSMAIN(41 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(41 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(41 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(41 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(41 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(41 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(41 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(41 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(41 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(41 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(41 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(41 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(41 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(41 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(41 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(41 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(41 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(41 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(41 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(41 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(41 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(41 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(41 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(41 + wk_PxBase), CL_SSSMAIN(41 + wk_PxBase))
@@ -8264,13 +8516,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(42 + wk_PxBase), AE_Val3(CP_SSSMAIN(42 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(42 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(42 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(42 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(42 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(42 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(42 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(42 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(42 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(42 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(42 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(42 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(42 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(42 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(42 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(42 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(42 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(42 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(42 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(42 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(42 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(42 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(42 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(42 + wk_PxBase), CL_SSSMAIN(42 + wk_PxBase))
@@ -8292,13 +8549,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(43 + wk_PxBase), AE_Val3(CP_SSSMAIN(43 + wk_PxBase), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(43 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(43 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(43 + wk_PxBase).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(43 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(43 + wk_PxBase).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(43 + wk_PxBase).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(43 + wk_PxBase).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(43 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(43 + wk_PxBase).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(43 + wk_PxBase).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(43 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(43 + wk_PxBase).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(42 + wk_PxBase).CuVal) = False _
+                AndAlso IsDBNull(V) = False _
+                AndAlso CP_SSSMAIN(42 + wk_PxBase).CuVal <> V Or CP_SSSMAIN(42 + wk_PxBase).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(43 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(43 + wk_PxBase).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(43 + wk_PxBase).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(43 + wk_PxBase).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(43 + wk_PxBase).StatusC = Cn_Status6 : CP_SSSMAIN(43 + wk_PxBase).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(43 + wk_PxBase).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(43 + wk_PxBase), CL_SSSMAIN(43 + wk_PxBase))
@@ -8318,13 +8580,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(0), AE_Val3(CP_SSSMAIN(0), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(0).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(0).CuVal <> V Or CP_SSSMAIN(0).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(0).StatusC = Cn_Status6 : CP_SSSMAIN(0).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(0).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(0).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(0).StatusC = Cn_Status6 : CP_SSSMAIN(0).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(0).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/26 CHG START
+        'If CP_SSSMAIN(0).CuVal <> V Or CP_SSSMAIN(0).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(0).CuVal) = False _
+         AndAlso IsDBNull(V) = False _
+         AndAlso CP_SSSMAIN(0).CuVal <> V Or CP_SSSMAIN(0).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(0).StatusC = Cn_Status6 : CP_SSSMAIN(0).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(0).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(0).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(0).StatusC = Cn_Status6 : CP_SSSMAIN(0).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(0).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(0), CL_SSSMAIN(0))
@@ -8345,13 +8612,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(1), AE_Val3(CP_SSSMAIN(1), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(1).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(1).CuVal <> V Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(1).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(1).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'If CP_SSSMAIN(1).CuVal <> V Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
+        '2019/09/26 CHG START
+        If IsDBNull(CP_SSSMAIN(1).CuVal) = False _
+         AndAlso IsDBNull(V) = False _
+         AndAlso CP_SSSMAIN(1).CuVal <> V Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
+            '2019/09/26 CHG E N D
+            CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(1).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(1).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(1), CL_SSSMAIN(1))
