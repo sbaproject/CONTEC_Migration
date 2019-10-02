@@ -14,70 +14,72 @@ Module BMNMT51_IEV
 	Public Const SSS_FraId As String = "MT1"
 	
 	Sub Init_Fil() 'Generated.
-		'
-		DBN_BMNMTA = 0
-		DB_PARA(DBN_BMNMTA).tblid = "BMNMTA"
-		DB_PARA(DBN_BMNMTA).DBID = "USR1"
-		SSS_MFIL = DBN_BMNMTA
-		'
-		DBN_SYSTBA = 1
-		DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
-		DB_PARA(DBN_SYSTBA).DBID = "USR1"
-		'
-		DBN_SYSTBB = 2
-		DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
-		DB_PARA(DBN_SYSTBB).DBID = "USR1"
-		'
-		DBN_SYSTBC = 3
-		DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
-		DB_PARA(DBN_SYSTBC).DBID = "USR1"
-		'
-		DBN_SYSTBD = 4
-		DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
-		DB_PARA(DBN_SYSTBD).DBID = "USR1"
-		'
-		DBN_SYSTBF = 5
-		DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
-		DB_PARA(DBN_SYSTBF).DBID = "USR1"
-		'
-		DBN_SYSTBG = 6
-		DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
-		DB_PARA(DBN_SYSTBG).DBID = "USR1"
-		'
-		DBN_SYSTBH = 7
-		DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
-		DB_PARA(DBN_SYSTBH).DBID = "USR1"
-		'
-		DBN_TANMTA = 8
-		DB_PARA(DBN_TANMTA).tblid = "TANMTA"
-		DB_PARA(DBN_TANMTA).DBID = "USR1"
-		'
-		DBN_MEIMTA = 9
-		DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
-		DB_PARA(DBN_MEIMTA).DBID = "USR1"
-		'
-		DBN_FIXMTA = 10
-		DB_PARA(DBN_FIXMTA).tblid = "FIXMTA"
-		DB_PARA(DBN_FIXMTA).DBID = "USR1"
-		'
-		DBN_UNYMTA = 11
-		DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
-		DB_PARA(DBN_UNYMTA).DBID = "USR1"
-		'
-		DBN_EXCTBZ = 12
-		DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
-		DB_PARA(DBN_EXCTBZ).DBID = "USR1"
-		'
-		DBN_GYMTBZ = 13
-		DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
-		DB_PARA(DBN_GYMTBZ).DBID = "USR1"
-		'
-		DBN_KNGMTB = 14
-		DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
-		DB_PARA(DBN_KNGMTB).DBID = "USR1"
-		
-		'2008/12/16 RISE)izumi ADD START  òAóçï[áÇ:643
-		DBN_MEIMTC = 15
+        '2019/09/26 DEL START
+        '      DBN_BMNMTA = 0
+        'DB_PARA(DBN_BMNMTA).tblid = "BMNMTA"
+        'DB_PARA(DBN_BMNMTA).DBID = "USR1"
+        'SSS_MFIL = DBN_BMNMTA
+        ''
+        'DBN_SYSTBA = 1
+        'DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+        'DB_PARA(DBN_SYSTBA).DBID = "USR1"
+        ''
+        'DBN_SYSTBB = 2
+        'DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
+        'DB_PARA(DBN_SYSTBB).DBID = "USR1"
+        ''
+        'DBN_SYSTBC = 3
+        'DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+        'DB_PARA(DBN_SYSTBC).DBID = "USR1"
+        ''
+        'DBN_SYSTBD = 4
+        'DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
+        'DB_PARA(DBN_SYSTBD).DBID = "USR1"
+        ''
+        'DBN_SYSTBF = 5
+        'DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
+        'DB_PARA(DBN_SYSTBF).DBID = "USR1"
+        ''
+        'DBN_SYSTBG = 6
+        'DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
+        'DB_PARA(DBN_SYSTBG).DBID = "USR1"
+        ''
+        'DBN_SYSTBH = 7
+        'DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+        'DB_PARA(DBN_SYSTBH).DBID = "USR1"
+        ''
+        'DBN_TANMTA = 8
+        'DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+        'DB_PARA(DBN_TANMTA).DBID = "USR1"
+        ''
+        'DBN_MEIMTA = 9
+        'DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
+        'DB_PARA(DBN_MEIMTA).DBID = "USR1"
+        ''
+        'DBN_FIXMTA = 10
+        'DB_PARA(DBN_FIXMTA).tblid = "FIXMTA"
+        'DB_PARA(DBN_FIXMTA).DBID = "USR1"
+        ''
+        'DBN_UNYMTA = 11
+        'DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+        'DB_PARA(DBN_UNYMTA).DBID = "USR1"
+        ''
+        'DBN_EXCTBZ = 12
+        'DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+        'DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+        ''
+        'DBN_GYMTBZ = 13
+        'DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+        'DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+        ''
+        'DBN_KNGMTB = 14
+        'DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+        '      DB_PARA(DBN_KNGMTB).DBID = "USR1"
+
+        '2019/09/26 DEL E N D
+
+        '2008/12/16 RISE)izumi ADD START  òAóçï[áÇ:643
+        DBN_MEIMTC = 15
 		DB_PARA(DBN_MEIMTC).tblid = "MEIMTC"
 		DB_PARA(DBN_MEIMTC).DBID = "USR1"
 		'2008/12/16 RISE)izumi ADD END

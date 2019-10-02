@@ -3,20 +3,16 @@ Option Explicit On
 Imports VB = Microsoft.VisualBasic
 Friend Class FR_SSSMAIN
 	Inherits System.Windows.Forms.Form
-	'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
-	'*** End Of Generated Declaration Section ****
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	Private Sub FR_SSSMAIN_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles MyBase.MouseMove
+    'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
+    '*** End Of Generated Declaration Section ****
+
+
+    '2019/09/25 ADD START
+    Private FORM_LOAD_FLG As Boolean = False
+    '2019/09/25 ADD E N D
+
+
+    Private Sub FR_SSSMAIN_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles MyBase.MouseMove
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
@@ -112,14 +108,17 @@ Friend Class FR_SSSMAIN
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADA(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNADA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADA(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADA(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNADA(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNADA_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNADA.Enter
 		Dim Index As Short = BD_BMNADA.GetIndex(eventSender) 'Generated.
@@ -239,14 +238,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADB(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNADB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADB(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADB(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNADB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNADB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNADB.Enter
 		Dim Index As Short = BD_BMNADB.GetIndex(eventSender) 'Generated.
@@ -366,14 +368,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADC(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNADC(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADC(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNADC(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNADC(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNADC_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNADC.Enter
 		Dim Index As Short = BD_BMNADC.GetIndex(eventSender) 'Generated.
@@ -493,14 +498,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNCD(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNCD(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNCD(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNCD.Enter
 		Dim Index As Short = BD_BMNCD.GetIndex(eventSender) 'Generated.
@@ -652,14 +660,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNCDUP(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNCDUP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNCDUP(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNCDUP(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNCDUP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNCDUP_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNCDUP.Enter
 		Dim Index As Short = BD_BMNCDUP.GetIndex(eventSender) 'Generated.
@@ -811,14 +822,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNFX(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNFX(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNFX(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNFX(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNFX(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNFX_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNFX.Enter
 		Dim Index As Short = BD_BMNFX.GetIndex(eventSender) 'Generated.
@@ -939,14 +953,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNLV(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNLV(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNLV(Index)) Then
+            '2019/09/25 CHG E N D
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNLV(Index), FORM_LOAD_FLG) Then
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNLV(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNLV_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNLV.Enter
 		Dim Index As Short = BD_BMNLV.GetIndex(eventSender) 'Generated.
@@ -1067,14 +1084,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNNM(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNNM(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNNM(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNNM.Enter
 		Dim Index As Short = BD_BMNNM.GetIndex(eventSender) 'Generated.
@@ -1194,14 +1214,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNNMUP(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNNMUP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNNMUP(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNNMUP(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNNMUP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNNMUP_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNNMUP.Enter
 		Dim Index As Short = BD_BMNNMUP.GetIndex(eventSender) 'Generated.
@@ -1321,14 +1344,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNPRNM(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNPRNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNPRNM(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNPRNM(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D 
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNPRNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNPRNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNPRNM.Enter
 		Dim Index As Short = BD_BMNPRNM.GetIndex(eventSender) 'Generated.
@@ -1448,14 +1474,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNTL(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNTL(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNTL(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNTL(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNTL(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNTL_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNTL.Enter
 		Dim Index As Short = BD_BMNTL.GetIndex(eventSender) 'Generated.
@@ -1576,14 +1605,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNURL(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNURL(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNURL(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNURL(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNURL(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNURL_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNURL.Enter
 		Dim Index As Short = BD_BMNURL.GetIndex(eventSender) 'Generated.
@@ -1703,14 +1735,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNZP(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_BMNZP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNZP(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BMNZP(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_BMNZP(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_BMNZP_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BMNZP.Enter
 		Dim Index As Short = BD_BMNZP.GetIndex(eventSender) 'Generated.
@@ -1831,14 +1866,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_EIGYOCD(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_EIGYOCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/25 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_EIGYOCD(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_EIGYOCD(Index), FORM_LOAD_FLG) Then
+                '2019/09/25 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_EIGYOCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_EIGYOCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_EIGYOCD.Enter
 		Dim Index As Short = BD_EIGYOCD.GetIndex(eventSender) 'Generated.
@@ -1959,14 +1997,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ENDTKDT(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_ENDTKDT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ENDTKDT(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ENDTKDT(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_ENDTKDT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_ENDTKDT_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_ENDTKDT.Enter
 		Dim Index As Short = BD_ENDTKDT.GetIndex(eventSender) 'Generated.
@@ -2134,14 +2175,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_HTANCD(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_HTANCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_HTANCD(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_HTANCD(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_HTANCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_HTANCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_HTANCD.Enter
 		Dim Index As Short = BD_HTANCD.GetIndex(eventSender) 'Generated.
@@ -2262,14 +2306,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STANCD(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_STANCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STANCD(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STANCD(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_STANCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_STANCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_STANCD.Enter
 		Dim Index As Short = BD_STANCD.GetIndex(eventSender) 'Generated.
@@ -2390,14 +2437,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STTTKDT(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_STTTKDT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STTTKDT(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STTTKDT(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_STTTKDT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_STTTKDT_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_STTTKDT.Enter
 		Dim Index As Short = BD_STTTKDT.GetIndex(eventSender) 'Generated.
@@ -2565,14 +2615,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TIKKB(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_TIKKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TIKKB(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TIKKB(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_TIKKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_TIKKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_TIKKB.Enter
 		Dim Index As Short = BD_TIKKB.GetIndex(eventSender) 'Generated.
@@ -2693,14 +2746,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_UPDKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_UPDKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_UPDKB_DoubleClick(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_UPDKB.DoubleClick
 		Dim Index As Short = BD_UPDKB.GetIndex(eventSender) 'Generated.
@@ -2836,14 +2892,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMBMNCD(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_ZMBMNCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMBMNCD(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMBMNCD(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_ZMBMNCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_ZMBMNCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_ZMBMNCD.Enter
 		Dim Index As Short = BD_ZMBMNCD.GetIndex(eventSender) 'Generated.
@@ -2964,14 +3023,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMCD(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_ZMCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMCD(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMCD(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_ZMCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_ZMCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_ZMCD.Enter
 		Dim Index As Short = BD_ZMCD.GetIndex(eventSender) 'Generated.
@@ -3092,14 +3154,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMJGYCD(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_ZMJGYCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMJGYCD(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_ZMJGYCD(Index), FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_ZMJGYCD(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_ZMJGYCD_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_ZMJGYCD.Enter
 		Dim Index As Short = BD_ZMJGYCD.GetIndex(eventSender) 'Generated.
@@ -3227,91 +3292,107 @@ EventExitSub:
 		PP_SSSMAIN.NeglectLostFocusCheck = False
 		Call AE_CursorCurrent_SSSMAIN()
 	End Sub
-	
-	Private Sub CM_DELETEDE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(1).Image
-	End Sub
-	
-	Private Sub CM_DELETEDE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseUp
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(0).Image
-	End Sub
 
-    Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_EndCm.Click, btnF1.Click 'Generated.
-        PP_SSSMAIN.ButtonClick = True
-        If Not PP_SSSMAIN.Operable Then Exit Sub
-        PP_SSSMAIN.NeglectLostFocusCheck = True
-        PP_SSSMAIN.CloseCode = 1
-        Call AE_EndCm_SSSMAIN()
-        PP_SSSMAIN.NeglectLostFocusCheck = False
-        Call AE_CursorCurrent_SSSMAIN()
-    End Sub
+    '2019/09/27 DEL START
+    'Private Sub CM_DELETEDE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(1).Image
+    'End Sub
+    '2019/09/27 DEL E N D 
 
-    Private Sub CM_ENDCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseDown
-        Dim Button As Short = eventArgs.Button \ &H100000
-        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-        If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(1).Image
-    End Sub
+    '2019/09/27 DEL START
+    '   Private Sub CM_DELETEDE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_DELETEDE.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_DELETEDE.Image = IM_DELETEDE(0).Image
+    'End Sub
+    '2019/09/27 DEL E N D
 
-    Private Sub CM_ENDCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseUp
-        Dim Button As Short = eventArgs.Button \ &H100000
-        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-        If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(0).Image
-    End Sub
+    '2019/09/27 DEL START
+    'Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs)  'Generated.
+    '    PP_SSSMAIN.ButtonClick = True
+    '    If Not PP_SSSMAIN.Operable Then Exit Sub
+    '    PP_SSSMAIN.NeglectLostFocusCheck = True
+    '    PP_SSSMAIN.CloseCode = 1
+    '    Call AE_EndCm_SSSMAIN()
+    '    PP_SSSMAIN.NeglectLostFocusCheck = False
+    '    Call AE_CursorCurrent_SSSMAIN()
+    'End Sub
+    '2019/09/27 DEL E N D
 
-    Private Sub CM_Execute_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Execute.Click 'Generated.
-        Dim wk_Cursor As Short
-        PP_SSSMAIN.ButtonClick = True
-        If Not PP_SSSMAIN.Operable Then Exit Sub
-        If PP_SSSMAIN.Executing Then Exit Sub
-        PP_SSSMAIN.Executing = True
-        PP_SSSMAIN.ExplicitExec = True
-        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
-            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
-        End If
-        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
-            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
-            PP_SSSMAIN.CursorSet = True
-        Else
-            'UPGRADE_WARNING: オブジェクト Execute_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If Execute_GetEvent() Then
-                wk_Cursor = AE_Execute_SSSMAIN()
-            End If
-        End If
-        PP_SSSMAIN.ExplicitExec = False
-        PP_SSSMAIN.NeglectLostFocusCheck = False
-        Call AE_CursorSub_SSSMAIN(wk_Cursor)
-        PP_SSSMAIN.Executing = False
-    End Sub
+    '2019/09/27 DEL START
+    'Private Sub CM_ENDCM_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_ENDCM.MouseDown
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(1).Image
+    '   End Sub
+    '2019/09/27 DEL E N D
 
-    Private Sub CM_EXECUTE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Execute.MouseDown
-        Dim Button As Short = eventArgs.Button \ &H100000
-        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-        If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(1).Image
-    End Sub
+    '2019/09/27 DEL START
+    'Private Sub CM_ENDCM_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_ENDCM.MouseUp
+    '	Dim Button As Short = eventArgs.Button \ &H100000
+    '	Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '	Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '	Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '	If PP_SSSMAIN.Operable Then CM_EndCm.Image = IM_EndCm(0).Image
+    '   End Sub
+    '2019/09/27 DEL E N D
 
-    Private Sub CM_EXECUTE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Execute.MouseUp
-        Dim Button As Short = eventArgs.Button \ &H100000
-        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-        If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(0).Image
-    End Sub
+    '2019/09/27 DEL START
+    'Private Sub CM_Execute_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Execute.Click 'Generated.
+    '    Dim wk_Cursor As Short
+    '    PP_SSSMAIN.ButtonClick = True
+    '    If Not PP_SSSMAIN.Operable Then Exit Sub
+    '    If PP_SSSMAIN.Executing Then Exit Sub
+    '    PP_SSSMAIN.Executing = True
+    '    PP_SSSMAIN.ExplicitExec = True
+    '    If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+    '        Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+    '    End If
+    '    If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+    '        Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+    '        PP_SSSMAIN.CursorSet = True
+    '    Else
+    '        'UPGRADE_WARNING: オブジェクト Execute_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '        If Execute_GetEvent() Then
+    '            wk_Cursor = AE_Execute_SSSMAIN()
+    '        End If
+    '    End If
+    '    PP_SSSMAIN.ExplicitExec = False
+    '    PP_SSSMAIN.NeglectLostFocusCheck = False
+    '    Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    '    PP_SSSMAIN.Executing = False
+    'End Sub
+    '2019/09/27 DEL E N D
 
-    '2019/09/19 DEL START
+    '2019/09/27 DEL START
+    'Private Sub CM_EXECUTE_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Execute.MouseDown
+    '    Dim Button As Short = eventArgs.Button \ &H100000
+    '    Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '    Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '    Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '    If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(1).Image
+    'End Sub
+    '2019/09/27 DEL E N D
+
+    '2019/09/27 DEL START
+    'Private Sub CM_EXECUTE_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Execute.MouseUp
+    '    Dim Button As Short = eventArgs.Button \ &H100000
+    '    Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '    Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '    Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '    If PP_SSSMAIN.Operable Then CM_Execute.Image = IM_Execute(0).Image
+    'End Sub
+    '2019/09/27 DEL E N D
+
+    '2019/09/27 DEL START
     'Private Sub CM_Hardcopy_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Hardcopy.Click 'Generated.
     '    Dim wk_Cursor As Short
     '    PP_SSSMAIN.ButtonClick = True
@@ -3322,23 +3403,25 @@ EventExitSub:
     '    PP_SSSMAIN.NeglectLostFocusCheck = False
     '    Call AE_CursorSub_SSSMAIN(wk_Cursor)
     'End Sub
-    '2019/09/19 DEL E N D
 
-    Private Sub CM_HARDCOPY_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Hardcopy.MouseDown
-        Dim Button As Short = eventArgs.Button \ &H100000
-        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-        If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(1).Image
-    End Sub
 
-    Private Sub CM_HARDCOPY_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Hardcopy.MouseUp
-        Dim Button As Short = eventArgs.Button \ &H100000
-        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-        If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(0).Image
-    End Sub
+    'Private Sub CM_HARDCOPY_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Hardcopy.MouseDown
+    '    Dim Button As Short = eventArgs.Button \ &H100000
+    '    Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '    Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '    Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '    If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(1).Image
+    'End Sub
+
+    'Private Sub CM_HARDCOPY_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_Hardcopy.MouseUp
+    '    Dim Button As Short = eventArgs.Button \ &H100000
+    '    Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+    '    Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+    '    Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+    '    If PP_SSSMAIN.Operable Then CM_Hardcopy.Image = IM_Hardcopy(0).Image
+    'End Sub
+
+    '2019/09/27 DEL E N D
 
     Private Sub CM_InsertDe_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_INSERTDE.Click 'Generated.
         Dim wk_Cursor As Short
@@ -3751,6 +3834,14 @@ EventExitSub:
     End Sub
 
     Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
+        ' 2019/09/25 add START hou
+        MyBase.KeyPreview = True
+        ' 2019/09/25 add END hou
+
+        '2019/09/25 ADD START
+        FORM_LOAD_FLG = True
+        '2019/09/25 ADD E N D
+
         Dim NewLargeChange As Short 'Generated.
         Dim Wk_De As Short
         Dim wk_ww As Short
@@ -4029,10 +4120,16 @@ EventExitSub:
                 Loop
                 Wk_De = Wk_De + 1
             Loop
-            wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/09/26　仮　API
+            'wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/09/26　仮　API
             Call AE_WindowProcSet_SSSMAIN()
-            ReleaseTabCapture(0)
-            SetTabCapture(Me.Handle.ToInt32)
+            '2019/09/26　仮　API
+            'ReleaseTabCapture(0)
+            '2019/09/26　仮　API
+            '2019/09/26　仮　API
+            'SetTabCapture(Me.Handle.ToInt32)
+            '2019/09/26　仮　API
             'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             wk_Var = SSSMAIN_BeginPrg()
@@ -4059,7 +4156,9 @@ EventExitSub:
         PP_SSSMAIN.UnloadMode = UnloadMode
         Select Case UnloadMode
             Case 0, 3
-                PP_SSSMAIN.CloseCode = 2
+                '2019/09/27 DEL START
+                'PP_SSSMAIN.CloseCode = 2
+                '2019/09/27 DEL END
                 Cancel = True
                 Call AE_EndCm_SSSMAIN()
             Case 2
@@ -4152,7 +4251,10 @@ EventExitSub:
             If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
         End If
         If PP_SSSMAIN.MaskMode = False Then
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
                 PP_SSSMAIN.CursorDest = Cn_Dest9
                 Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
@@ -4254,7 +4356,10 @@ EventExitSub:
             If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
         End If
         If PP_SSSMAIN.MaskMode = False Then
-            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
+            '2019/09/26 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM, FORM_LOAD_FLG) Then
+                '2019/09/26 CHG E N D
                 PP_SSSMAIN.CursorDirection = Cn_Direction1
                 PP_SSSMAIN.CursorDest = Cn_Dest9
                 Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
@@ -4964,7 +5069,9 @@ EventExitSub:
         If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
             TX_Mode.Enabled = False
             PP_SSSMAIN.ShortCutTx = -2
-            SM_FullPast.Enabled = False
+            '2019/09/27 DEL START
+            'SM_FullPast.Enabled = False
+            '2019/09/27 DEL E N D
             'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
             'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
             '2019/09/19　仮
@@ -4993,16 +5100,184 @@ EventExitSub:
     End Sub
 
 
-    '2019/04/02 ADD START
+    '2019/09/27 ADD START
+
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Executing Then Exit Sub
+        PP_SSSMAIN.Executing = True
+        PP_SSSMAIN.ExplicitExec = True
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            'UPGRADE_WARNING: オブジェクト Execute_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Execute_GetEvent() Then
+                wk_Cursor = AE_Execute_SSSMAIN()
+            End If
+        End If
+        PP_SSSMAIN.ExplicitExec = False
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+        PP_SSSMAIN.Executing = False
+    End Sub
+
+    Private Sub btnF3_Click(sender As Object, e As EventArgs) Handles btnF3.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            If PREV_GETEVENT() Then
+                If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+                    wk_Int = AE_Prev_SSSMAIN(True)
+                Else
+                    Beep()
+                End If
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorInit_SSSMAIN()
+    End Sub
+
+    Private Sub btnF4_Click(sender As Object, e As EventArgs) Handles btnF4.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            If NEXTCm_GETEVENT() Then
+                If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+                    wk_Int = AE_NextCm_SSSMAIN(True)
+                Else
+                    Beep()
+                End If
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorInit_SSSMAIN()
+    End Sub
+
+
     Private Sub btnF12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnF12.Click
         If Not PP_SSSMAIN.Operable Then Exit Sub
         PP_SSSMAIN.CloseCode = 1
         Call AE_EndCm_SSSMAIN()
     End Sub
-    '2019/04/02 ADD E N D
 
-    '2019/09/18 ADD START
+    Private Sub btnF2_Click(sender As Object, e As EventArgs) Handles btnF2.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub btnF5_Click(sender As Object, e As EventArgs) Handles btnF5.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+    '2019/09/27 ADD E N D
 
 
-    '2019/09/18 ADD E N D
+    Private Sub FR_SSSMAIN_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                '実行
+                Case Keys.F1
+                    Me.btnF1.PerformClick()
+                '売上/受注
+                Case Keys.F2
+                    Me.btnF2.PerformClick()
+                '累計
+                Case Keys.F3
+                    Me.btnF3.PerformClick()
+                '印刷
+                Case Keys.F4
+                    Me.btnF4.PerformClick()
+                'ヘルプ
+                Case Keys.F5
+                    Me.btnF5.PerformClick()
+                '単品詳細
+                Case Keys.F6
+                    Me.btnF6.PerformClick()
+                '前頁へ
+                Case Keys.F7
+                    Me.btnF7.PerformClick()
+                '次頁へ
+                Case Keys.F8
+                    Me.btnF8.PerformClick()
+                'クリア
+                Case Keys.F9
+                    Me.btnF9.PerformClick()
+                ''システム詳細
+                'Case Keys.F10
+                '    Me.btnF10.PerformClick()
+                ''ｾｯﾄｱｯﾌﾟ詳細
+                'Case Keys.F11
+                '    Me.btnF11.PerformClick()
+                '終了
+                Case Keys.F12
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+
+
+
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        Dim wk_Cursor As Short
+        If Not PP_SSSMAIN.Operable Then
+            Exit Sub
+        End If
+        wk_Cursor = AE_AppendC_SSSMAIN(PP_SSSMAIN.Mode)
+        If wk_Cursor = Cn_CuInit Then
+            Call AE_CursorInit_SSSMAIN()
+        End If
+
+    End Sub
+
+    Private Sub btnF8_Click(sender As Object, e As EventArgs) Handles btnF8.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Mode = Cn_Mode3 Then Beep() : Call AE_CursorCurrent_SSSMAIN() : Exit Sub
+        If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 117 Then
+            If (PP_SSSMAIN.Tx - 2) \ 23 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
+                Call AE_DeleteDe_SSSMAIN()
+            End If
+        Else
+            Beep()
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+
 End Class

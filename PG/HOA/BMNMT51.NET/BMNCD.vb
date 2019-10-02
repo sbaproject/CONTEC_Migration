@@ -78,12 +78,14 @@ Module BMNCD_F51
 	End Function
 	
 	Function BMNCD_Slist(ByRef PP As clsPP, ByVal BMNCD As Object, ByVal De_Index As Object) As Object
-		
-		WLSBMN.Text = "部門一覧"
-		DB_PARA(DBN_BMNMTA).KeyNo = 1
-		''''DB_PARA(DBN_BMNMTA).KeyBuf = BMNCD
-		DB_PARA(DBN_BMNMTA).KeyBuf = ""
-		WLSBMN.ShowDialog()
+
+        WLSBMN.Text = "部門一覧"
+        '2010/09/27 START 
+        'DB_PARA(DBN_BMNMTA).KeyNo = 1
+        ''''DB_PARA(DBN_BMNMTA).KeyBuf = BMNCD
+        'DB_PARA(DBN_BMNMTA).KeyBuf = ""
+        '2010/09/27 E N D
+        WLSBMN.ShowDialog()
 		WLSBMN.Close()
 		''''BMNCD_Slist = PP.SlistCom
 		'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
