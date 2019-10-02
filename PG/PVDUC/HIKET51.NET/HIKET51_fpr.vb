@@ -254,10 +254,13 @@ Module SSSMAIN0001
 			
 			' === 20070102 === INSERT S - ACE)Nagasawa 背景色変更
 			If pm_All.Dsp_Base.Head_Ok_Flg = True Then
-				'元の項目へﾌｫｰｶｽ移動
-				'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.CS_HIK.Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-				Call CF_Set_Item_SetFocus(pm_All.Dsp_Sub_Inf(CShort(FR_SSSMAIN.CS_HIK.Tag)), pm_All)
-				Exit Function
+                '元の項目へﾌｫｰｶｽ移動
+                'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.CS_HIK.Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/10/01 CHG START
+                'Call CF_Set_Item_SetFocus(pm_All.Dsp_Sub_Inf(CShort(FR_SSSMAIN.CS_HIK.Tag)), pm_All)
+                Call CF_Set_Item_SetFocus(pm_All.Dsp_Sub_Inf(CShort(FR_SSSMAIN.btnF6.Tag)), pm_All)
+                '2019/10/01 CHG END
+                Exit Function
 			End If
 			' === 20070102 === INSERT E
 			
@@ -3748,14 +3751,18 @@ ERR_F_GET_BD_DATA:
 			Call CF_Set_Item_Direct(Dsp_Value, pm_All.Dsp_Sub_Inf(Trg_Index), pm_All)
 			
 		End With
-		
-		'■ボディ部
-		'スクロールバー値設定
-		'最大値
-		Call CF_Set_VScrl_Max(F_Get_VScrl_Max(pm_intCnt, pm_All.Dsp_Base.Dsp_Body_Cnt), pm_All.Dsp_Sub_Inf(CShort(pm_All.Bd_Vs_Scrl.Tag)), pm_All)
-		
-		'最上行設定（検索直後なので１）
-		pm_All.Dsp_Body_Inf.Cur_Top_Index = 1
+
+        '■ボディ部
+        'スクロールバー値設定
+        '最大値
+        '2019/10/01 CHG START
+        'Call CF_Set_VScrl_Max(F_Get_VScrl_Max(pm_intCnt, pm_All.Dsp_Base.Dsp_Body_Cnt), pm_All.Dsp_Sub_Inf(CShort(pm_All.Bd_Vs_Scrl.Tag)), pm_All)
+        pm_intCnt = IIf(pm_intCnt = 1, pm_intCnt, pm_intCnt - 1)
+        Call CF_Set_VScrl_Max(pm_intCnt, pm_All.Dsp_Sub_Inf(CShort(pm_All.Bd_Vs_Scrl.Tag)), pm_All)
+        '2019/10/01 CHG END
+
+        '最上行設定（検索直後なので１）
+        pm_All.Dsp_Body_Inf.Cur_Top_Index = 1
 		
 		'明細編集メイン
 		Call CF_Body_Dsp(pm_All)
@@ -3909,9 +3916,9 @@ ERR_F_GET_BD_DATA:
         strSQL = strSQL & " And THA.MITNOV = '" & CF_Ora_Sgl(pm_strCode2) & "' "
         strSQL = strSQL & " And THA.DATKB = '" & gc_strDSPKB_OK & "' "
         strSQL = strSQL & " Order By"
-		strSQL = strSQL & "     TRA.LINNO"
-		
-		F_GET_MIT_SQL = strSQL
+        strSQL = strSQL & "     TRA.LINNO"
+
+        F_GET_MIT_SQL = strSQL
 		
 	End Function
 	
@@ -4245,23 +4252,26 @@ ERR_F_GET_BD_DATA:
 		Dim Trg_Index As Short
 		
 		F_Set_Inp_Item_Focus_Ctl = 9
-		
-		' === 20070102 === DELETE S - ACE)Nagasawa 背景色変更
-		'    '見積番号
-		'    Trg_Index = CInt(FR_SSSMAIN.HD_MITNO.Tag)
-		'    Call CF_Set_Item_Focus_Ctl(pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
-		'    '版数
-		'    Trg_Index = CInt(FR_SSSMAIN.HD_MITNOV.Tag)
-		'    Call CF_Set_Item_Focus_Ctl(pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
-		'    '受注番号
-		'    Trg_Index = CInt(FR_SSSMAIN.HD_JDNNO.Tag)
-		'    Call CF_Set_Item_Focus_Ctl(pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
-		' === 20070102 === DELETE E -
-		
-		'引当/解除ボタン
-		'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.CS_HIK.Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		Trg_Index = CShort(FR_SSSMAIN.CS_HIK.Tag)
-		Call CF_Set_Item_Focus_Ctl(Not pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
+
+        ' === 20070102 === DELETE S - ACE)Nagasawa 背景色変更
+        '    '見積番号
+        '    Trg_Index = CInt(FR_SSSMAIN.HD_MITNO.Tag)
+        '    Call CF_Set_Item_Focus_Ctl(pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
+        '    '版数
+        '    Trg_Index = CInt(FR_SSSMAIN.HD_MITNOV.Tag)
+        '    Call CF_Set_Item_Focus_Ctl(pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
+        '    '受注番号
+        '    Trg_Index = CInt(FR_SSSMAIN.HD_JDNNO.Tag)
+        '    Call CF_Set_Item_Focus_Ctl(pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
+        ' === 20070102 === DELETE E -
+
+        '引当/解除ボタン
+        'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.CS_HIK.Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/01 CHG START
+        'Trg_Index = CShort(FR_SSSMAIN.CS_HIK.Tag)
+        Trg_Index = CShort(FR_SSSMAIN.btnF6.Tag)
+        '2019/10/01 CHG END
+        Call CF_Set_Item_Focus_Ctl(Not pm_Value, pm_All.Dsp_Sub_Inf(Trg_Index))
 		
 		F_Set_Inp_Item_Focus_Ctl = 0
 		
@@ -4831,10 +4841,12 @@ ERR_F_CHK_SOU:
 				'候補の一覧
 				Trg_Index = CShort(FR_SSSMAIN.MN_Slist.Tag)
 				pm_All.Dsp_Sub_Inf(Trg_Index).Ctl.Enabled = True
-				
-			Case CShort(FR_SSSMAIN.CS_HIK.Tag)
-				'実行
-				Trg_Index = CShort(FR_SSSMAIN.MN_Execute.Tag)
+            '2019/10/01 CHG START	
+            'Case CShort(FR_SSSMAIN.CS_HIK.Tag)
+            Case CShort(FR_SSSMAIN.btnF6.Tag)
+                '2019/10/01 CHG END
+                '実行
+                Trg_Index = CShort(FR_SSSMAIN.MN_Execute.Tag)
 				pm_All.Dsp_Sub_Inf(Trg_Index).Ctl.Enabled = False
 				'画面印刷
 				Trg_Index = CShort(FR_SSSMAIN.MN_HARDCOPY.Tag)

@@ -151,8 +151,8 @@ Friend Class FR_SSSMAIN
         '2019/09/26 CHG START
         'MN_Execute.Tag = CStr(Index_Wk)
         'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Execute
-        btnF1.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF1
+        btnF2.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF2
         '2019/09/26 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -2821,8 +2821,12 @@ Friend Class FR_SSSMAIN
         Index_Wk = Index_Wk + 1
         '引当／解除ボタン
         'UPGRADE_WARNING: オブジェクト CS_HIK.Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        CS_HIK.Tag = Index_Wk
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = CS_HIK
+        '2019/09/26 CHG START
+        'CS_HIK.Tag = Index_Wk
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = CS_HIK
+        btnF6.Tag = Index_Wk
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF6
+        '2019/09/26 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_TL
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -3584,13 +3588,16 @@ Friend Class FR_SSSMAIN
         ' === 20060802 === INSERT S - ACE)Nagasawa 検索画面表示ボタンを押したことが見えるようにする対応
         'UPGRADE_WARNING: オブジェクト CS_HIK.NAME の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'UPGRADE_WARNING: TypeOf に新しい動作が指定されています。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"' をクリックしてください。
-        If TypeOf pm_Ctl Is Button And pm_Ctl.Name <> CS_HIK.Name Then
-            '検索画面呼出の場合は終了
-            Exit Function
-        End If
+        '2019/10/01 CHG START
+        'If TypeOf pm_Ctl Is Button And pm_Ctl.Name <> CS_HIK.Name Then
+        If TypeOf pm_Ctl Is Button And pm_Ctl.Name <> btnF6.Name Then
+                '2019/10/01 CHG END
+                '検索画面呼出の場合は終了
+                Exit Function
+            End If
 
-        'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        If Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area = IN_AREA_DSP_BD Then
+            'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area = IN_AREA_DSP_BD Then
             '明細行コントロールか判定
             If Trg_Index >= Main_Inf.Dsp_Base.Body_Fst_Idx Then
                 '明細検索ボタンの明細行数変数に同じ行数を設定
@@ -3968,7 +3975,7 @@ Friend Class FR_SSSMAIN
 
                 '2019/09/26 CHG START
             'Case CShort(MN_Execute.Tag)
-            Case CShort(btnF1.Tag)
+            Case CShort(btnF2.Tag)
                 '2019/09/26 CHG END
                 '実行
                 Call Ctl_MN_Execute_Click()
@@ -4085,7 +4092,7 @@ Friend Class FR_SSSMAIN
 
             '2019/09/26 CHG START
             'Case CShort(CM_Execute.Tag)
-            Case CShort(btnF1.Tag)
+            Case CShort(btnF2.Tag)
                 '2019/09/26 CHG END
                 '実行
                 Call Ctl_MN_Execute_Click()
@@ -4104,7 +4111,10 @@ Friend Class FR_SSSMAIN
                 Call Ctl_MN_SELECTCM_Click()
 
                 '■ほか
-            Case CShort(CS_HIK.Tag)
+                '2019/09/26 CHG START
+            'Case CShort(CS_HIK.Tag)
+            Case CShort(btnF6.Tag)
+                '2019/09/26 CHG END
                 '引当／解除ボタン
                 Call Ctl_CS_HIK_Click()
 
@@ -4842,7 +4852,10 @@ Friend Class FR_SSSMAIN
 
         '割当ｲﾝﾃﾞｯｸｽ取得
         'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.CS_HIK.Tag の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        Trg_Index = CShort(Me.CS_HIK.Tag)
+        '2019/09/26 CHG START
+        'Trg_Index = CShort(Me.CS_HIK.Tag)
+        Trg_Index = CShort(Me.btnF6.Tag)
+        '2019/09/26 CHG END
 
         If CF_Set_Focus_Ctl(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf) = True Then
 
@@ -7372,7 +7385,10 @@ Friend Class FR_SSSMAIN
     Private Sub CS_HIK_GotFocus()
         Debug.Print("CS_HIK_GotFocus")
         'UPGRADE_WARNING: オブジェクト CS_HIK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        Call Ctl_Item_GotFocus(CS_HIK)
+        '2019/10/01 CHG START
+        'Call Ctl_Item_GotFocus(CS_HIK)
+        Call Ctl_Item_GotFocus(btnF6)
+        '2019/10/01 CHG END
     End Sub
 
     Private Sub HD_MITNOV_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_MITNOV.Enter
@@ -7657,7 +7673,10 @@ Friend Class FR_SSSMAIN
     Private Sub CS_HIK_LostFocus()
         Debug.Print("CS_HIK_LostFocus")
         'UPGRADE_WARNING: オブジェクト CS_HIK の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        Call Ctl_Item_LostFocus(CS_HIK)
+        '2019/10/01 CHG START
+        'Call Ctl_Item_LostFocus(CS_HIK)
+        Call Ctl_Item_LostFocus(btnF6)
+        '2019/10/01 CHG END
     End Sub
 
     Private Sub HD_MITNOV_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles HD_MITNOV.Leave
@@ -8780,11 +8799,11 @@ Friend Class FR_SSSMAIN
     End Function
 
     Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
-        Call Ctl_Item_Click(btnF1)
+
     End Sub
 
     Private Sub btnF2_Click(sender As Object, e As EventArgs) Handles btnF2.Click
-
+        Call Ctl_Item_Click(btnF2)
     End Sub
 
     Private Sub btnF3_Click(sender As Object, e As EventArgs) Handles btnF3.Click
@@ -8800,7 +8819,7 @@ Friend Class FR_SSSMAIN
     End Sub
 
     Private Sub btnF6_Click(sender As Object, e As EventArgs) Handles btnF6.Click
-
+        Call Ctl_Item_Click(btnF6)
     End Sub
 
     Private Sub btnF7_Click(sender As Object, e As EventArgs) Handles btnF7.Click
@@ -8874,13 +8893,17 @@ Friend Class FR_SSSMAIN
 
         Try
             Select Case e.KeyCode
-                Case Keys.F1
-                    '更新
-                    Me.btnF1.PerformClick()
+                Case Keys.F2
+                    '検索
+                    Me.btnF2.PerformClick()
 
                 Case Keys.F5
                     '参照
                     Me.btnF5.PerformClick()
+
+                Case Keys.F6
+                    '引当／解除
+                    Me.btnF6.PerformClick()
 
                 Case Keys.F9
                     'クリア

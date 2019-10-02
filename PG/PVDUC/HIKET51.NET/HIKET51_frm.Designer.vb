@@ -785,10 +785,10 @@
         '
         Me.VS_Scrl.Cursor = System.Windows.Forms.Cursors.Default
         Me.VS_Scrl.LargeChange = 1
-        Me.VS_Scrl.Location = New System.Drawing.Point(924, 281)
+        Me.VS_Scrl.Location = New System.Drawing.Point(923, 281)
         Me.VS_Scrl.Maximum = 32767
         Me.VS_Scrl.Name = "VS_Scrl"
-        Me.VS_Scrl.Size = New System.Drawing.Size(22, 266)
+        Me.VS_Scrl.Size = New System.Drawing.Size(22, 215)
         Me.VS_Scrl.TabIndex = 60
         Me.VS_Scrl.TabStop = True
         '
@@ -798,14 +798,16 @@
         Me._BD_GNKCD_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_GNKCD_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_GNKCD_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_GNKCD_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_GNKCD_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_GNKCD_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_GNKCD.SetIndex(Me._BD_GNKCD_1, CType(1, Short))
         Me._BD_GNKCD_1.Location = New System.Drawing.Point(396, 282)
         Me._BD_GNKCD_1.MaxLength = 8
+        Me._BD_GNKCD_1.Multiline = True
         Me._BD_GNKCD_1.Name = "_BD_GNKCD_1"
         Me._BD_GNKCD_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_GNKCD_1.Size = New System.Drawing.Size(35, 20)
+        Me._BD_GNKCD_1.Size = New System.Drawing.Size(35, 37)
         Me._BD_GNKCD_1.TabIndex = 57
         Me._BD_GNKCD_1.Text = "XX3"
         '
@@ -863,14 +865,15 @@
         Me._BD_TOKJDNNO_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_TOKJDNNO_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_TOKJDNNO_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_TOKJDNNO_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_TOKJDNNO_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_TOKJDNNO_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_TOKJDNNO.SetIndex(Me._BD_TOKJDNNO_1, CType(1, Short))
-        Me._BD_TOKJDNNO_1.Location = New System.Drawing.Point(88, 301)
+        Me._BD_TOKJDNNO_1.Location = New System.Drawing.Point(88, 300)
         Me._BD_TOKJDNNO_1.MaxLength = 17
         Me._BD_TOKJDNNO_1.Name = "_BD_TOKJDNNO_1"
         Me._BD_TOKJDNNO_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_TOKJDNNO_1.Size = New System.Drawing.Size(89, 20)
+        Me._BD_TOKJDNNO_1.Size = New System.Drawing.Size(89, 19)
         Me._BD_TOKJDNNO_1.TabIndex = 52
         Me._BD_TOKJDNNO_1.Text = "XXXXXXXXX1"
         '
@@ -928,14 +931,16 @@
         Me._BD_ODNYTDT_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_ODNYTDT_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_ODNYTDT_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_ODNYTDT_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_ODNYTDT_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_ODNYTDT_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_ODNYTDT.SetIndex(Me._BD_ODNYTDT_1, CType(1, Short))
         Me._BD_ODNYTDT_1.Location = New System.Drawing.Point(771, 282)
         Me._BD_ODNYTDT_1.MaxLength = 14
+        Me._BD_ODNYTDT_1.Multiline = True
         Me._BD_ODNYTDT_1.Name = "_BD_ODNYTDT_1"
         Me._BD_ODNYTDT_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_ODNYTDT_1.Size = New System.Drawing.Size(75, 20)
+        Me._BD_ODNYTDT_1.Size = New System.Drawing.Size(75, 37)
         Me._BD_ODNYTDT_1.TabIndex = 42
         Me._BD_ODNYTDT_1.Text = "9999/99/99"
         '
@@ -945,14 +950,16 @@
         Me._BD_SIKRT_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_SIKRT_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_SIKRT_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_SIKRT_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_SIKRT_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_SIKRT_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_SIKRT.SetIndex(Me._BD_SIKRT_1, CType(1, Short))
         Me._BD_SIKRT_1.Location = New System.Drawing.Point(707, 282)
         Me._BD_SIKRT_1.MaxLength = 9
+        Me._BD_SIKRT_1.Multiline = True
         Me._BD_SIKRT_1.Name = "_BD_SIKRT_1"
         Me._BD_SIKRT_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_SIKRT_1.Size = New System.Drawing.Size(65, 20)
+        Me._BD_SIKRT_1.Size = New System.Drawing.Size(65, 37)
         Me._BD_SIKRT_1.TabIndex = 41
         Me._BD_SIKRT_1.Text = "-9999.9Åì"
         Me._BD_SIKRT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -963,6 +970,7 @@
         Me._BD_UODKN_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_UODKN_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_UODKN_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_UODKN_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_UODKN_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_UODKN_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_UODKN.SetIndex(Me._BD_UODKN_1, CType(1, Short))
@@ -970,7 +978,7 @@
         Me._BD_UODKN_1.MaxLength = 13
         Me._BD_UODKN_1.Name = "_BD_UODKN_1"
         Me._BD_UODKN_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UODKN_1.Size = New System.Drawing.Size(91, 20)
+        Me._BD_UODKN_1.Size = New System.Drawing.Size(91, 19)
         Me._BD_UODKN_1.TabIndex = 39
         Me._BD_UODKN_1.Text = "-999,999,999"
         Me._BD_UODKN_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -981,14 +989,15 @@
         Me._BD_TEIKATK_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_TEIKATK_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_TEIKATK_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_TEIKATK_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_TEIKATK_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_TEIKATK_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_TEIKATK.SetIndex(Me._BD_TEIKATK_1, CType(1, Short))
-        Me._BD_TEIKATK_1.Location = New System.Drawing.Point(617, 301)
+        Me._BD_TEIKATK_1.Location = New System.Drawing.Point(617, 300)
         Me._BD_TEIKATK_1.MaxLength = 13
         Me._BD_TEIKATK_1.Name = "_BD_TEIKATK_1"
         Me._BD_TEIKATK_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_TEIKATK_1.Size = New System.Drawing.Size(91, 20)
+        Me._BD_TEIKATK_1.Size = New System.Drawing.Size(91, 19)
         Me._BD_TEIKATK_1.TabIndex = 38
         Me._BD_TEIKATK_1.Text = "-999,999,999"
         Me._BD_TEIKATK_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -999,6 +1008,7 @@
         Me._BD_UODTK_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_UODTK_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_UODTK_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_UODTK_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_UODTK_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_UODTK_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_UODTK.SetIndex(Me._BD_UODTK_1, CType(1, Short))
@@ -1006,7 +1016,7 @@
         Me._BD_UODTK_1.MaxLength = 13
         Me._BD_UODTK_1.Name = "_BD_UODTK_1"
         Me._BD_UODTK_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UODTK_1.Size = New System.Drawing.Size(89, 20)
+        Me._BD_UODTK_1.Size = New System.Drawing.Size(89, 19)
         Me._BD_UODTK_1.TabIndex = 36
         Me._BD_UODTK_1.Text = "999,999,999"
         Me._BD_UODTK_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1017,14 +1027,16 @@
         Me._BD_UODSU_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_UODSU_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_UODSU_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_UODSU_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_UODSU_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_UODSU_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_UODSU.SetIndex(Me._BD_UODSU_1, CType(1, Short))
         Me._BD_UODSU_1.Location = New System.Drawing.Point(430, 282)
         Me._BD_UODSU_1.MaxLength = 8
+        Me._BD_UODSU_1.Multiline = True
         Me._BD_UODSU_1.Name = "_BD_UODSU_1"
         Me._BD_UODSU_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UODSU_1.Size = New System.Drawing.Size(65, 20)
+        Me._BD_UODSU_1.Size = New System.Drawing.Size(65, 37)
         Me._BD_UODSU_1.TabIndex = 35
         Me._BD_UODSU_1.Text = "-999,999"
         Me._BD_UODSU_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1586,6 +1598,7 @@
         Me._BD_LINNO_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_LINNO_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_LINNO_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_LINNO_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_LINNO_1.ForeColor = System.Drawing.Color.Black
         Me._BD_LINNO_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_LINNO.SetIndex(Me._BD_LINNO_1, CType(1, Short))
@@ -1594,7 +1607,7 @@
         Me._BD_LINNO_1.Multiline = True
         Me._BD_LINNO_1.Name = "_BD_LINNO_1"
         Me._BD_LINNO_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_LINNO_1.Size = New System.Drawing.Size(25, 39)
+        Me._BD_LINNO_1.Size = New System.Drawing.Size(25, 37)
         Me._BD_LINNO_1.TabIndex = 15
         Me._BD_LINNO_1.Text = "12"
         Me._BD_LINNO_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1674,6 +1687,7 @@
         Me._BD_HINNMA_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_HINNMA_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_HINNMA_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_HINNMA_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_HINNMA_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_HINNMA_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_HINNMA.SetIndex(Me._BD_HINNMA_1, CType(1, Short))
@@ -1681,7 +1695,7 @@
         Me._BD_HINNMA_1.MaxLength = 30
         Me._BD_HINNMA_1.Name = "_BD_HINNMA_1"
         Me._BD_HINNMA_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_HINNMA_1.Size = New System.Drawing.Size(221, 20)
+        Me._BD_HINNMA_1.Size = New System.Drawing.Size(221, 19)
         Me._BD_HINNMA_1.TabIndex = 9
         Me._BD_HINNMA_1.Text = "XXXXXXXXX1XXXXXXXXX2XXXXXXXXX3"
         '
@@ -1691,14 +1705,15 @@
         Me._BD_HINNMB_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_HINNMB_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_HINNMB_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_HINNMB_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_HINNMB_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_HINNMB_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_HINNMB.SetIndex(Me._BD_HINNMB_1, CType(1, Short))
-        Me._BD_HINNMB_1.Location = New System.Drawing.Point(176, 301)
+        Me._BD_HINNMB_1.Location = New System.Drawing.Point(176, 300)
         Me._BD_HINNMB_1.MaxLength = 30
         Me._BD_HINNMB_1.Name = "_BD_HINNMB_1"
         Me._BD_HINNMB_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_HINNMB_1.Size = New System.Drawing.Size(221, 20)
+        Me._BD_HINNMB_1.Size = New System.Drawing.Size(221, 19)
         Me._BD_HINNMB_1.TabIndex = 8
         Me._BD_HINNMB_1.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3"
         '
@@ -1708,14 +1723,15 @@
         Me._BD_SIKTK_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_SIKTK_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_SIKTK_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_SIKTK_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_SIKTK_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_SIKTK_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_SIKTK.SetIndex(Me._BD_SIKTK_1, CType(1, Short))
-        Me._BD_SIKTK_1.Location = New System.Drawing.Point(529, 301)
+        Me._BD_SIKTK_1.Location = New System.Drawing.Point(529, 300)
         Me._BD_SIKTK_1.MaxLength = 13
         Me._BD_SIKTK_1.Name = "_BD_SIKTK_1"
         Me._BD_SIKTK_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_SIKTK_1.Size = New System.Drawing.Size(89, 20)
+        Me._BD_SIKTK_1.Size = New System.Drawing.Size(89, 19)
         Me._BD_SIKTK_1.TabIndex = 6
         Me._BD_SIKTK_1.Text = "999,999,999"
         Me._BD_SIKTK_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1726,14 +1742,16 @@
         Me._BD_UNTNM_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_UNTNM_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_UNTNM_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_UNTNM_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_UNTNM_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_UNTNM_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_UNTNM.SetIndex(Me._BD_UNTNM_1, CType(1, Short))
         Me._BD_UNTNM_1.Location = New System.Drawing.Point(494, 282)
         Me._BD_UNTNM_1.MaxLength = 8
+        Me._BD_UNTNM_1.Multiline = True
         Me._BD_UNTNM_1.Name = "_BD_UNTNM_1"
         Me._BD_UNTNM_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_UNTNM_1.Size = New System.Drawing.Size(36, 20)
+        Me._BD_UNTNM_1.Size = New System.Drawing.Size(36, 37)
         Me._BD_UNTNM_1.TabIndex = 5
         Me._BD_UNTNM_1.Text = "MMM4"
         '
@@ -1743,6 +1761,7 @@
         Me._BD_HINCD_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_HINCD_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_HINCD_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_HINCD_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_HINCD_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_HINCD_1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.BD_HINCD.SetIndex(Me._BD_HINCD_1, CType(1, Short))
@@ -1750,7 +1769,7 @@
         Me._BD_HINCD_1.MaxLength = 17
         Me._BD_HINCD_1.Name = "_BD_HINCD_1"
         Me._BD_HINCD_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_HINCD_1.Size = New System.Drawing.Size(89, 20)
+        Me._BD_HINCD_1.Size = New System.Drawing.Size(89, 19)
         Me._BD_HINCD_1.TabIndex = 4
         Me._BD_HINCD_1.Text = "XXXXXXX8"
         '
@@ -1917,14 +1936,15 @@
         Me._BD_LINCMB_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_LINCMB_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_LINCMB_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_LINCMB_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_LINCMB_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_LINCMB_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_LINCMB.SetIndex(Me._BD_LINCMB_1, CType(1, Short))
-        Me._BD_LINCMB_1.Location = New System.Drawing.Point(845, 301)
+        Me._BD_LINCMB_1.Location = New System.Drawing.Point(845, 300)
         Me._BD_LINCMB_1.MaxLength = 24
         Me._BD_LINCMB_1.Name = "_BD_LINCMB_1"
         Me._BD_LINCMB_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_LINCMB_1.Size = New System.Drawing.Size(78, 20)
+        Me._BD_LINCMB_1.Size = New System.Drawing.Size(78, 19)
         Me._BD_LINCMB_1.TabIndex = 3
         Me._BD_LINCMB_1.Text = "MMMMMMMMM1"
         '
@@ -1934,6 +1954,7 @@
         Me._BD_LINCMA_1.BackColor = System.Drawing.SystemColors.Control
         Me._BD_LINCMA_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._BD_LINCMA_1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me._BD_LINCMA_1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me._BD_LINCMA_1.ForeColor = System.Drawing.SystemColors.WindowText
         Me._BD_LINCMA_1.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.BD_LINCMA.SetIndex(Me._BD_LINCMA_1, CType(1, Short))
@@ -1941,7 +1962,7 @@
         Me._BD_LINCMA_1.MaxLength = 24
         Me._BD_LINCMA_1.Name = "_BD_LINCMA_1"
         Me._BD_LINCMA_1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._BD_LINCMA_1.Size = New System.Drawing.Size(78, 20)
+        Me._BD_LINCMA_1.Size = New System.Drawing.Size(78, 19)
         Me._BD_LINCMA_1.TabIndex = 7
         Me._BD_LINCMA_1.Text = "MMMMMMMMM1"
         '
@@ -2180,12 +2201,14 @@
         '
         'CS_HIK
         '
-        Me.CS_HIK.Location = New System.Drawing.Point(64, 566)
+        Me.CS_HIK.Enabled = False
+        Me.CS_HIK.Location = New System.Drawing.Point(64, 540)
         Me.CS_HIK.Name = "CS_HIK"
         Me.CS_HIK.Size = New System.Drawing.Size(97, 23)
         Me.CS_HIK.TabIndex = 97
         Me.CS_HIK.TabStop = False
         Me.CS_HIK.Text = "à¯ìñÅ^âèú"
+        Me.CS_HIK.Visible = False
         '
         '_IM_SELECTCM_1
         '
@@ -2513,6 +2536,7 @@
         'btnF12
         '
         Me.btnF12.CausesValidation = False
+        Me.btnF12.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF12.Location = New System.Drawing.Point(878, 606)
         Me.btnF12.Name = "btnF12"
         Me.btnF12.Size = New System.Drawing.Size(75, 39)
@@ -2523,6 +2547,7 @@
         'btnF11
         '
         Me.btnF11.Enabled = False
+        Me.btnF11.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF11.Location = New System.Drawing.Point(804, 606)
         Me.btnF11.Name = "btnF11"
         Me.btnF11.Size = New System.Drawing.Size(75, 39)
@@ -2534,6 +2559,7 @@
         '
         Me.btnF10.CausesValidation = False
         Me.btnF10.Enabled = False
+        Me.btnF10.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF10.Location = New System.Drawing.Point(730, 606)
         Me.btnF10.Name = "btnF10"
         Me.btnF10.Size = New System.Drawing.Size(75, 39)
@@ -2544,6 +2570,7 @@
         'btnF9
         '
         Me.btnF9.CausesValidation = False
+        Me.btnF9.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF9.Location = New System.Drawing.Point(656, 606)
         Me.btnF9.Name = "btnF9"
         Me.btnF9.Size = New System.Drawing.Size(75, 39)
@@ -2554,6 +2581,7 @@
         'btnF8
         '
         Me.btnF8.Enabled = False
+        Me.btnF8.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF8.Location = New System.Drawing.Point(569, 606)
         Me.btnF8.Name = "btnF8"
         Me.btnF8.Size = New System.Drawing.Size(75, 39)
@@ -2564,6 +2592,7 @@
         'btnF7
         '
         Me.btnF7.Enabled = False
+        Me.btnF7.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF7.Location = New System.Drawing.Point(495, 606)
         Me.btnF7.Name = "btnF7"
         Me.btnF7.Size = New System.Drawing.Size(75, 39)
@@ -2573,16 +2602,17 @@
         '
         'btnF6
         '
-        Me.btnF6.Enabled = False
+        Me.btnF6.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF6.Location = New System.Drawing.Point(421, 606)
         Me.btnF6.Name = "btnF6"
         Me.btnF6.Size = New System.Drawing.Size(75, 39)
         Me.btnF6.TabIndex = 111
-        Me.btnF6.Text = "(F6)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  "
+        Me.btnF6.Text = "(F6)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "à¯ìñÅ^âèú" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnF6.UseVisualStyleBackColor = True
         '
         'btnF5
         '
+        Me.btnF5.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF5.Location = New System.Drawing.Point(347, 606)
         Me.btnF5.Name = "btnF5"
         Me.btnF5.Size = New System.Drawing.Size(75, 39)
@@ -2593,6 +2623,7 @@
         'btnF4
         '
         Me.btnF4.Enabled = False
+        Me.btnF4.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF4.Location = New System.Drawing.Point(261, 606)
         Me.btnF4.Name = "btnF4"
         Me.btnF4.Size = New System.Drawing.Size(75, 39)
@@ -2603,6 +2634,7 @@
         'btnF3
         '
         Me.btnF3.Enabled = False
+        Me.btnF3.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF3.Location = New System.Drawing.Point(187, 606)
         Me.btnF3.Name = "btnF3"
         Me.btnF3.Size = New System.Drawing.Size(75, 39)
@@ -2612,16 +2644,18 @@
         '
         'btnF2
         '
-        Me.btnF2.Enabled = False
+        Me.btnF2.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF2.Location = New System.Drawing.Point(113, 606)
         Me.btnF2.Name = "btnF2"
         Me.btnF2.Size = New System.Drawing.Size(75, 39)
         Me.btnF2.TabIndex = 107
-        Me.btnF2.Text = "(F2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  "
+        Me.btnF2.Text = "(F2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "åüçı"
         Me.btnF2.UseVisualStyleBackColor = True
         '
         'btnF1
         '
+        Me.btnF1.Enabled = False
+        Me.btnF1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!)
         Me.btnF1.Location = New System.Drawing.Point(39, 606)
         Me.btnF1.Name = "btnF1"
         Me.btnF1.Size = New System.Drawing.Size(75, 39)
