@@ -76,9 +76,14 @@ Friend Class FR_SSSMAIN
 	Private Const LC_lngDEFAULT_ROW As Integer = 1 '* デフォルトセット行
 
     'スプレッドの項目    
+    '2019/09/23 CHG START
+    'Private Const LC_lngCol_CHECK As Integer = 1 '* 返品チェック
+    'Private Const LC_lngCol_NO As Integer = 2 '* 行№
+    'Private Const LC_lngCol_SERIAL As Integer = 3 '* シリアル№  
     Private Const LC_lngCol_CHECK As Integer = 0 '* 返品チェック
     Private Const LC_lngCol_NO As Integer = 1 '* 行№
-    Private Const LC_lngCol_SERIAL As Integer = 2 '* シリアル№    
+    Private Const LC_lngCol_SERIAL As Integer = 2 '* シリアル№ 
+    '2019/09/23 CHG END
 
     '出荷済み区分
     Private Const LC_strSYUKA As String = "02"
