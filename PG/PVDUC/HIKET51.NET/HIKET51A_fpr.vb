@@ -1439,12 +1439,11 @@ Module SSSMAIN0003
 			ls_sql = ls_sql & "WHERE"
 			ls_sql = ls_sql & "  TRA.DATKB  =  '" & CF_Ora_String(gc_strDATKB_USE, 1) & "' "
 			ls_sql = ls_sql & "AND"
-			ls_sql = ls_sql & "  TRA.MITNO  =  '" & CF_Ora_String(HIKET51_Interface.DENNO1, 10) & "' "
-            'ls_sql = ls_sql & "AND"
-            'ls_sql = ls_sql & "  TRA.MITNOV =  '" & CF_Ora_String(HIKET51_Interface.DENNO2, 2) & "' "
-            'ls_sql = ls_sql & "AND"
-            'ls_sql = ls_sql & "  TRA.LINNO  =  '" & CF_Ora_String(HIKET51_Interface.LINNO, 3) & "' "
-
+            ls_sql = ls_sql & "  TRA.MITNO  =  '" & CF_Ora_String(HIKET51_Interface.DENNO1, 10) & "' "
+            ls_sql = ls_sql & "AND"
+            ls_sql = ls_sql & "  TRA.MITNOV =  '" & CF_Ora_String(HIKET51_Interface.DENNO2, 2) & "' "
+            ls_sql = ls_sql & "AND"
+            ls_sql = ls_sql & "  TRA.LINNO  =  '" & CF_Ora_String(HIKET51_Interface.LINNO, 3) & "' "
             ls_sql = ls_sql & "FOR UPDATE"
 
             ' DBアクセス
