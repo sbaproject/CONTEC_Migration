@@ -1449,8 +1449,8 @@ Module SSSMAIN0003
 
             ' DBアクセス
             '2019/10/01 CHG START
-            Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
-            'dt = DB_GetTable(ls_sql)
+            'Call CF_Ora_CreateDyn(gv_Odb_USR1, Usr_Ody, ls_sql)
+            dt = DB_GetTable(ls_sql)
             '2019/10/01 CHG END
             If DBSTAT <> 0 Then
 				' データなしの場合
@@ -1468,11 +1468,11 @@ Module SSSMAIN0003
                 'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, CLTID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト CF_Ora_GetDyn(Usr_Ody, OPEID, ) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '2019/10/01 CHG START
-                If HIKET51_Interface.OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or HIKET51_Interface.CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or HIKET51_Interface.WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or HIKET51_Interface.WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or HIKET51_Interface.UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or HIKET51_Interface.UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or HIKET51_Interface.UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or HIKET51_Interface.UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
-                    'If HIKET51_Interface.OPEID <> DB_NullReplace(dt.Rows(0)("OPEID"), "") Or HIKET51_Interface.CLTID <> DB_NullReplace(dt.Rows(0)("CLTID"), "") Or HIKET51_Interface.WRTTM <> DB_NullReplace(dt.Rows(0)("WRTTM"), "") Or HIKET51_Interface.WRTDT <> DB_NullReplace(dt.Rows(0)("WRTDT"), "") Or HIKET51_Interface.UOPEID <> DB_NullReplace(dt.Rows(0)("UOPEID"), "") Or HIKET51_Interface.UCLTID <> DB_NullReplace(dt.Rows(0)("UCLTID"), "") Or HIKET51_Interface.UWRTTM <> DB_NullReplace(dt.Rows(0)("UWRTTM"), "") Or HIKET51_Interface.UWRTDT <> DB_NullReplace(dt.Rows(0)("UWRTDT"), "") Then
+                'If HIKET51_Interface.OPEID <> CF_Ora_GetDyn(Usr_Ody, "OPEID", "") Or HIKET51_Interface.CLTID <> CF_Ora_GetDyn(Usr_Ody, "CLTID", "") Or HIKET51_Interface.WRTTM <> CF_Ora_GetDyn(Usr_Ody, "WRTTM", "") Or HIKET51_Interface.WRTDT <> CF_Ora_GetDyn(Usr_Ody, "WRTDT", "") Or HIKET51_Interface.UOPEID <> CF_Ora_GetDyn(Usr_Ody, "UOPEID", "") Or HIKET51_Interface.UCLTID <> CF_Ora_GetDyn(Usr_Ody, "UCLTID", "") Or HIKET51_Interface.UWRTTM <> CF_Ora_GetDyn(Usr_Ody, "UWRTTM", "") Or HIKET51_Interface.UWRTDT <> CF_Ora_GetDyn(Usr_Ody, "UWRTDT", "") Then
+                If HIKET51_Interface.OPEID <> DB_NullReplace(dt.Rows(0)("OPEID"), "") Or HIKET51_Interface.CLTID <> DB_NullReplace(dt.Rows(0)("CLTID"), "") Or HIKET51_Interface.WRTTM <> DB_NullReplace(dt.Rows(0)("WRTTM"), "") Or HIKET51_Interface.WRTDT <> DB_NullReplace(dt.Rows(0)("WRTDT"), "") Or HIKET51_Interface.UOPEID <> DB_NullReplace(dt.Rows(0)("UOPEID"), "") Or HIKET51_Interface.UCLTID <> DB_NullReplace(dt.Rows(0)("UCLTID"), "") Or HIKET51_Interface.UWRTTM <> DB_NullReplace(dt.Rows(0)("UWRTTM"), "") Or HIKET51_Interface.UWRTDT <> DB_NullReplace(dt.Rows(0)("UWRTDT"), "") Then
                     '2019/10/01 CHG END
                     intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
-                        GoTo Err_F_Ctl_Upd_Process
+                    GoTo Err_F_Ctl_Upd_Process
                     End If
 
                 End If
