@@ -25,11 +25,13 @@ Module ENDHINCD_F53
 			ENDHINCD_Check = -1
 			Exit Function
 		End If
-		
-		Call HINMTA_RClear()
-		'UPGRADE_WARNING: オブジェクト ENDHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト LenWid(ENDHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If LenWid(ENDHINCD) = 0 Or Trim(ENDHINCD) = "" Or ENDHINCD = "ZZZZZZZZ" Then
+
+        '2019/09/25 DEL START
+        'Call HINMTA_RClear()
+        '2019/09/25 DEL END
+        'UPGRADE_WARNING: オブジェクト ENDHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト LenWid(ENDHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If LenWid(ENDHINCD) = 0 Or Trim(ENDHINCD) = "" Or ENDHINCD = "ZZZZZZZZ" Then
 		Else
 			Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
 			''''''''If DBSTAT = 0 Then
@@ -53,12 +55,18 @@ Module ENDHINCD_F53
 	
 	
 	Function ENDHINCD_Slist(ByRef PP As clsPP, ByVal STTHINCD As Object) As Object
-		'UPGRADE_WARNING: オブジェクト STTHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		DB_PARA(DBN_HINMTA).KeyBuf = STTHINCD
-		WLSHIN.ShowDialog()
-		WLSHIN.Close()
-		'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト ENDHINCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ENDHINCD_Slist = PP.SlistCom
+        'UPGRADE_WARNING: オブジェクト STTHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/25 DEL START
+        'DB_PARA(DBN_HINMTA).KeyBuf = STTHINCD
+        '2019/09/25 DEL END
+        '2019/09/25 CHG START
+        'WLSHIN.ShowDialog()
+        'WLSHIN.Close()
+        WLSHIN4.ShowDialog()
+        WLSHIN4.Close()
+        '2019/09/25 CHG END
+        'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト ENDHINCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ENDHINCD_Slist = PP.SlistCom
 	End Function
 End Module

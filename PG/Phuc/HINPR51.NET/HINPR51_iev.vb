@@ -16,82 +16,83 @@ Module HINPR51_IEV
 	Public WG_HINKB As String
 	
 	Sub Init_Fil() 'Generated.
-		'
-		DBN_HINPR51 = 0
-		DB_PARA(DBN_HINPR51).tblid = "HINPR51"
-		DB_PARA(DBN_HINPR51).DBID = "USR9"
-		SSS_MFIL = DBN_HINPR51
-		'
-		DBN_SYSTBA = 1
-		DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
-		DB_PARA(DBN_SYSTBA).DBID = "USR1"
-		'
-		DBN_SYSTBB = 2
-		DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
-		DB_PARA(DBN_SYSTBB).DBID = "USR1"
-		'
-		DBN_SYSTBC = 3
-		DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
-		DB_PARA(DBN_SYSTBC).DBID = "USR1"
-		'
-		DBN_SYSTBD = 4
-		DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
-		DB_PARA(DBN_SYSTBD).DBID = "USR1"
-		'
-		DBN_SYSTBF = 5
-		DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
-		DB_PARA(DBN_SYSTBF).DBID = "USR1"
-		'
-		DBN_SYSTBG = 6
-		DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
-		DB_PARA(DBN_SYSTBG).DBID = "USR1"
-		'
-		DBN_SYSTBH = 7
-		DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
-		DB_PARA(DBN_SYSTBH).DBID = "USR1"
-		'
-		DBN_CLSMTA = 8
-		DB_PARA(DBN_CLSMTA).tblid = "CLSMTA"
-		DB_PARA(DBN_CLSMTA).DBID = "USR1"
-		'
-		DBN_CLSMTB = 9
-		DB_PARA(DBN_CLSMTB).tblid = "CLSMTB"
-		DB_PARA(DBN_CLSMTB).DBID = "USR1"
-		'
-		DBN_TANMTA = 10
-		DB_PARA(DBN_TANMTA).tblid = "TANMTA"
-		DB_PARA(DBN_TANMTA).DBID = "USR1"
-		'
-		DBN_UNYMTA = 11
-		DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
-		DB_PARA(DBN_UNYMTA).DBID = "USR1"
-		'
-		DBN_HINMTA = 12
-		DB_PARA(DBN_HINMTA).tblid = "HINMTA"
-		DB_PARA(DBN_HINMTA).DBID = "USR1"
-		'
-		DBN_SIRMTA = 13
-		DB_PARA(DBN_SIRMTA).tblid = "SIRMTA"
-		DB_PARA(DBN_SIRMTA).DBID = "USR1"
-		'
-		DBN_MEIMTA = 14
-		DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
-		DB_PARA(DBN_MEIMTA).DBID = "USR1"
-		'
-		DBN_EXCTBZ = 15
-		DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
-		DB_PARA(DBN_EXCTBZ).DBID = "USR1"
-		'
-		DBN_GYMTBZ = 16
-		DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
-		DB_PARA(DBN_GYMTBZ).DBID = "USR1"
-		'
-		DBN_KNGMTB = 17
-		DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
-		DB_PARA(DBN_KNGMTB).DBID = "USR1"
-		
-		SSS_LSTMFIL = DBN_HINPR51
-	End Sub
+        '
+        '2019/09/25 DEL START
+        'DBN_HINPR51 = 0
+        'DB_PARA(DBN_HINPR51).tblid = "HINPR51"
+        'DB_PARA(DBN_HINPR51).DBID = "USR9"
+        'SSS_MFIL = DBN_HINPR51
+        ''
+        'DBN_SYSTBA = 1
+        'DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+        'DB_PARA(DBN_SYSTBA).DBID = "USR1"
+        ''
+        'DBN_SYSTBB = 2
+        'DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
+        'DB_PARA(DBN_SYSTBB).DBID = "USR1"
+        ''
+        'DBN_SYSTBC = 3
+        'DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+        'DB_PARA(DBN_SYSTBC).DBID = "USR1"
+        ''
+        'DBN_SYSTBD = 4
+        'DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
+        'DB_PARA(DBN_SYSTBD).DBID = "USR1"
+        ''
+        'DBN_SYSTBF = 5
+        'DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
+        'DB_PARA(DBN_SYSTBF).DBID = "USR1"
+        ''
+        'DBN_SYSTBG = 6
+        'DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
+        'DB_PARA(DBN_SYSTBG).DBID = "USR1"
+        ''
+        'DBN_SYSTBH = 7
+        'DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+        'DB_PARA(DBN_SYSTBH).DBID = "USR1"
+        ''
+        'DBN_CLSMTA = 8
+        'DB_PARA(DBN_CLSMTA).tblid = "CLSMTA"
+        'DB_PARA(DBN_CLSMTA).DBID = "USR1"
+        ''
+        'DBN_CLSMTB = 9
+        'DB_PARA(DBN_CLSMTB).tblid = "CLSMTB"
+        'DB_PARA(DBN_CLSMTB).DBID = "USR1"
+        ''
+        'DBN_TANMTA = 10
+        'DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+        'DB_PARA(DBN_TANMTA).DBID = "USR1"
+        ''
+        'DBN_UNYMTA = 11
+        'DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+        'DB_PARA(DBN_UNYMTA).DBID = "USR1"
+        ''
+        'DBN_HINMTA = 12
+        'DB_PARA(DBN_HINMTA).tblid = "HINMTA"
+        'DB_PARA(DBN_HINMTA).DBID = "USR1"
+        ''
+        'DBN_SIRMTA = 13
+        'DB_PARA(DBN_SIRMTA).tblid = "SIRMTA"
+        'DB_PARA(DBN_SIRMTA).DBID = "USR1"
+        ''
+        'DBN_MEIMTA = 14
+        'DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
+        'DB_PARA(DBN_MEIMTA).DBID = "USR1"
+        ''
+        'DBN_EXCTBZ = 15
+        'DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+        'DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+        ''
+        'DBN_GYMTBZ = 16
+        'DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+        'DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+        ''
+        'DBN_KNGMTB = 17
+        'DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+        'DB_PARA(DBN_KNGMTB).DBID = "USR1"
+        '2019/09/25 DEL END
+        SSS_LSTMFIL = 0
+    End Sub
 	
 	Sub SCR_FromMfil(ByVal De As Short) 'Generated.
 		Call DP_SSSMAIN_ENDHINCD(De, DB_HINPR51.ENDHINCD)
@@ -278,126 +279,128 @@ Module HINPR51_IEV
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_HINKB() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		WG_HINKB = RD_SSSMAIN_HINKB(0)
 	End Sub
-	
-	Sub SetBuf(ByVal Fno As Short) 'Generated.
-		Select Case Fno
-			Case DBN_HINPR51
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_HINPR51)
-			Case DBN_SYSTBA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SYSTBA)
-			Case DBN_SYSTBB
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SYSTBB)
-			Case DBN_SYSTBC
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SYSTBC)
-			Case DBN_SYSTBD
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SYSTBD)
-			Case DBN_SYSTBF
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SYSTBF)
-			Case DBN_SYSTBG
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SYSTBG)
-			Case DBN_SYSTBH
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SYSTBH)
-			Case DBN_CLSMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_CLSMTA)
-			Case DBN_CLSMTB
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_CLSMTB)
-			Case DBN_TANMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_TANMTA)
-			Case DBN_UNYMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_UNYMTA)
-			Case DBN_HINMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_HINMTA)
-			Case DBN_SIRMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_SIRMTA)
-			Case DBN_MEIMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_MEIMTA)
-			Case DBN_EXCTBZ
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_EXCTBZ)
-			Case DBN_GYMTBZ
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_GYMTBZ)
-			Case DBN_KNGMTB
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				G_LB = LSet(DB_KNGMTB)
-		End Select
-	End Sub
-	
-	Sub ResetBuf(ByVal Fno As Short) 'Generated.
-		Select Case Fno
-			Case DBN_HINPR51
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_HINPR51 = LSet(G_LB)
-			Case DBN_SYSTBA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SYSTBA = LSet(G_LB)
-			Case DBN_SYSTBB
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SYSTBB = LSet(G_LB)
-			Case DBN_SYSTBC
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SYSTBC = LSet(G_LB)
-			Case DBN_SYSTBD
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SYSTBD = LSet(G_LB)
-			Case DBN_SYSTBF
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SYSTBF = LSet(G_LB)
-			Case DBN_SYSTBG
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SYSTBG = LSet(G_LB)
-			Case DBN_SYSTBH
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SYSTBH = LSet(G_LB)
-			Case DBN_CLSMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_CLSMTA = LSet(G_LB)
-			Case DBN_CLSMTB
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_CLSMTB = LSet(G_LB)
-			Case DBN_TANMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_TANMTA = LSet(G_LB)
-			Case DBN_UNYMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_UNYMTA = LSet(G_LB)
-			Case DBN_HINMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_HINMTA = LSet(G_LB)
-			Case DBN_SIRMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_SIRMTA = LSet(G_LB)
-			Case DBN_MEIMTA
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_MEIMTA = LSet(G_LB)
-			Case DBN_EXCTBZ
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_EXCTBZ = LSet(G_LB)
-			Case DBN_GYMTBZ
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_GYMTBZ = LSet(G_LB)
-			Case DBN_KNGMTB
-				'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
-				DB_KNGMTB = LSet(G_LB)
-		End Select
-	End Sub
-	
-	Function RecordFromObject(ByVal Fno As Short) As Short 'Generated.
+
+    '2019/09/25 DEL START
+    'Sub SetBuf(ByVal Fno As Short) 'Generated.
+    '	Select Case Fno
+    '		Case DBN_HINPR51
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_HINPR51)
+    '		Case DBN_SYSTBA
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SYSTBA)
+    '		Case DBN_SYSTBB
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SYSTBB)
+    '		Case DBN_SYSTBC
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SYSTBC)
+    '		Case DBN_SYSTBD
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SYSTBD)
+    '		Case DBN_SYSTBF
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SYSTBF)
+    '		Case DBN_SYSTBG
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SYSTBG)
+    '		Case DBN_SYSTBH
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SYSTBH)
+    '		Case DBN_CLSMTA
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_CLSMTA)
+    '		Case DBN_CLSMTB
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_CLSMTB)
+    '		Case DBN_TANMTA
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_TANMTA)
+    '		Case DBN_UNYMTA
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_UNYMTA)
+    '		Case DBN_HINMTA
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_HINMTA)
+    '		Case DBN_SIRMTA
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_SIRMTA)
+    '		Case DBN_MEIMTA
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_MEIMTA)
+    '		Case DBN_EXCTBZ
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_EXCTBZ)
+    '		Case DBN_GYMTBZ
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_GYMTBZ)
+    '		Case DBN_KNGMTB
+    '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '			G_LB = LSet(DB_KNGMTB)
+    '	End Select
+    'End Sub
+
+    '   Sub ResetBuf(ByVal Fno As Short) 'Generated.
+    '       Select Case Fno
+    '           Case DBN_HINPR51
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_HINPR51 = LSet(G_LB)
+    '           Case DBN_SYSTBA
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SYSTBA = LSet(G_LB)
+    '           Case DBN_SYSTBB
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SYSTBB = LSet(G_LB)
+    '           Case DBN_SYSTBC
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SYSTBC = LSet(G_LB)
+    '           Case DBN_SYSTBD
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SYSTBD = LSet(G_LB)
+    '           Case DBN_SYSTBF
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SYSTBF = LSet(G_LB)
+    '           Case DBN_SYSTBG
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SYSTBG = LSet(G_LB)
+    '           Case DBN_SYSTBH
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SYSTBH = LSet(G_LB)
+    '           Case DBN_CLSMTA
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_CLSMTA = LSet(G_LB)
+    '           Case DBN_CLSMTB
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_CLSMTB = LSet(G_LB)
+    '           Case DBN_TANMTA
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_TANMTA = LSet(G_LB)
+    '           Case DBN_UNYMTA
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_UNYMTA = LSet(G_LB)
+    '           Case DBN_HINMTA
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_HINMTA = LSet(G_LB)
+    '           Case DBN_SIRMTA
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_SIRMTA = LSet(G_LB)
+    '           Case DBN_MEIMTA
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_MEIMTA = LSet(G_LB)
+    '           Case DBN_EXCTBZ
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_EXCTBZ = LSet(G_LB)
+    '           Case DBN_GYMTBZ
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_GYMTBZ = LSet(G_LB)
+    '           Case DBN_KNGMTB
+    '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
+    '               DB_KNGMTB = LSet(G_LB)
+    '       End Select
+    '   End Sub
+    '2019/09/25 DEL END
+
+    Function RecordFromObject(ByVal Fno As Short) As Short 'Generated.
 		Dim Rtc As Short
 		Select Case Fno
 			Case Else

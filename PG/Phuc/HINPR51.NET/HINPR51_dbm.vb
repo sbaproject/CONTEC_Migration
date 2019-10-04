@@ -220,13 +220,15 @@ Module HINPR51_DBM
 	End Structure
 	Public DB_HINPR51 As TYPE_DB_HINPR51
 	Public DBN_HINPR51 As Short
-	' Index1( RPTCLTID + HINCD )
-	
-	Sub HINPR51_RClear()
-		Dim TmpStat As Object
-		'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		TmpStat = Dll_RClear(DBN_HINPR51, G_LB)
-		Call ResetBuf(DBN_HINPR51)
-	End Sub
+    ' Index1( RPTCLTID + HINCD )
+
+    '2019/09/25 DEL START
+    'Sub HINPR51_RClear()
+    '    Dim TmpStat As Object
+    '    'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '    'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '    TmpStat = Dll_RClear(DBN_HINPR51, G_LB)
+    '    Call ResetBuf(DBN_HINPR51)
+    'End Sub
+    '2019/09/25 DEL END
 End Module

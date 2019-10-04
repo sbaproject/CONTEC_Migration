@@ -10,9 +10,11 @@ Module ENDHINNM_F51
 	'
 	
 	Function ENDHINNM_Derived(ByVal ENDHINNM As Object, ByVal ENDHINCD As Object, ByVal De_Index As Object) As Object
-		
-		Call HINMTA_RClear()
-		Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
+
+        '2019/09/25 DEL START
+        'Call HINMTA_RClear()
+        '2019/09/25 DEL END
+        Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
 		
 		'    If Trim(ENDHINCD) = "" Then
 		'       DB_HINMTA.HINNMA = " "
