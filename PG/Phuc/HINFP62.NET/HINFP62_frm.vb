@@ -179,8 +179,13 @@ err_CS_TFPATH_B_Click:
         SYSDT.Text = VB6.Format(GV_UNYDate, "@@@@/@@/@@")
         '2019/09/24 CHG END
         HD_IN_TANCD.Text = Inp_Inf.InpTanCd
-		HD_IN_TANNM.Text = Inp_Inf.InpTanNm
-		Exit Sub
+        HD_IN_TANNM.Text = Inp_Inf.InpTanNm
+
+        '2019/09/30 ADD START
+        Call SetBar(Me)
+        '2019/09/30 ADD E N D
+
+        Exit Sub
 Error_Handler: 
 		'ロールバック
 		If bolTrans Then
@@ -470,4 +475,340 @@ err_MN_EXECUTE_Click:
 	Private Sub TX_Message_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles TX_Message.Enter
 		System.Windows.Forms.SendKeys.Send("{Tab}")
 	End Sub
+    '2019/10/04 ADD START
+    Private Sub FR_SSSMAIN_KeyDown(ByVal eventSender As System.Object, ByVal e As KeyEventArgs) Handles Me.KeyDown
+
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F10
+                    'CSV取込
+                    Me.btnF10.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
+    Private Sub CS_TFPATH_B_Click(sender As Object, e As EventArgs) Handles CS_TFPATH_B.Click
+        On Error GoTo err_CS_TFPATH_B_Click
+        With CMDialogL
+            'UPGRADE_WARNING: オブジェクト CMDialogL.CancelError の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24 仮
+            '.CancelError = True
+            '2019/09/24 仮
+            'UPGRADE_WARNING: オブジェクト CMDialogL.DefaultExt の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .DefaultExt = gv_strOUT_TYPE
+            'UPGRADE_WARNING: オブジェクト CMDialogL.Filter の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            .Filter = "*" & gv_strOUT_TYPE & "|*" & gv_strOUT_TYPE & "|*.*|*.*"
+            'UPGRADE_WARNING: オブジェクト CMDialogL.ShowOpen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/24 仮
+            '.ShowOpen()
+            '2019/09/24 仮
+            'UPGRADE_WARNING: オブジェクト CMDialogL.FileName の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            HD_TFPATH_B.Text = .FileName
+        End With
+        Exit Sub
+err_CS_TFPATH_B_Click:
+        HD_TFPATH_B.Text = ""
+    End Sub
+
+    Private Sub btnF10_Click(sender As Object, e As EventArgs) Handles btnF10.Click
+        CMDialogL.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        CMDialogL.FilterIndex = 1
+        If CMDialogL.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            HD_TFPATH_B.Text = System.IO.Path.GetFullPath(CMDialogL.FileName)
+        End If
+
+    End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        HD_TFPATH_B.Text = ""
+    End Sub
+
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Dim objfso As New Scripting.FileSystemObject
+        Dim objFile As Scripting.File
+        Dim strfile As String 'コピー先ファイル名
+        'PL/SQL呼び出し用
+        Dim strSQL As String
+        Dim lngParam1 As Integer
+        Dim strParam2 As String
+        Dim strParam3 As String
+        Dim strParam4 As String
+        Dim strParam5 As String
+        Dim strParam6 As String
+        Dim strParam7 As String
+        Dim strParam8 As String
+        Dim strParam9 As String
+        Dim lngParam10 As Integer
+        Dim strParam11 As New VB6.FixedLengthString(3000)
+        'UPGRADE_ISSUE: OraParameter オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
+        Dim param(13) As OraParameter 'PL/SQLのバインド変数
+        Dim bolRet As Boolean
+        Dim intret As Short
+        '2019/09/24 DEL START
+        'Dim intCursor As Short
+        '2019/09/24 DEL END
+        Dim Err_Cd As Integer
+        Dim strlogfile As String 'ログファイル名
+        Dim strSVfolder As String
+        Dim strERR_CODE As String
+        Dim strLocalPath As String 'サーバ側のローカルパス変数
+        On Error GoTo err_MN_EXECUTE_Click
+        If AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_001, pm_All) = MsgBoxResult.No Then
+            AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_004, pm_All)
+            Exit Sub
+        End If
+        'ファイルの存在可否
+        If objfso.FileExists(HD_TFPATH_B.Text) Then
+        Else
+            '存在しないとき終了する。
+            AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_008, pm_All)
+            Exit Sub
+        End If
+        '更新権限がない場合は処理を行わない
+        '    If Inp_Inf.InpJDNUPDKB <> gc_strJDNUPDKB_OK Then
+        '        Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgUODFP51_E_NOUPDKNG, pm_All)
+        '        Exit Sub: Inp_Inf.InpFILEAUTH
+        '    End If
+        'カーソル退避
+        '2019/09/24 DEL START
+        'intCursor = Me.Cursor
+        '2019/09/24 DEL START
+        Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
+
+        objFile = objfso.GetFile(HD_TFPATH_B.Text)
+        Select Case F_Ctl_CopyFiles(objFile.Name, strfile)
+            Case 0
+                '正常
+            Case 8
+                'INIファイルが読み込めない
+                AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_E_066, pm_All)
+                Exit Sub
+            Case 9
+                'コピーができない
+                AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_E_067, pm_All)
+                Exit Sub
+        End Select
+        'サーバのローカルパスを取得する。
+        If Get_INIFile_String(My.Application.Info.DirectoryPath & IIf(VB.Right(My.Application.Info.DirectoryPath, 1) = "\", "", "\") & SSS_PrgId & ".INI", "PATH", "ServerLocalLOG", strLocalPath) Then
+        Else
+            AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_E_066, pm_All)
+            Exit Sub
+        End If
+        'PL/SQLに引数を渡す。
+        'ファイルパス
+        'ファイル名
+        '
+        '実行日時の取得
+        Call CF_Get_SysDt()
+
+        '運用日付の取得
+        Call CF_Get_UnyDt()
+
+        '引数設定
+        lngParam1 = mc_lngRunMode_Web
+        strParam2 = strLocalPath
+        strParam3 = objfso.GetFile(strfile).ParentFolder.Path
+        strParam4 = objfso.GetFileName(strfile)
+        strParam5 = SSS_CLTID.Value
+        strParam6 = SSS_OPEID.Value
+        strParam7 = GV_SysDate
+        strParam8 = GV_SysTime
+        strParam9 = GV_UNYDate
+        lngParam10 = 0
+        strParam11.Value = ""
+        'PL/SQLを実行する。
+        'パラメータの初期設定を行う（バインド変数）
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P1", lngParam1, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P2", strParam2, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P3", strParam3, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P4", strParam4, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P5", strParam5, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P6", strParam6, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P7", strParam7, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P8", strParam8, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P9", strParam9, ORAPARM_INPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P10", lngParam10, ORAPARM_OUTPUT)
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Add("P11", strParam11.Value, ORAPARM_OUTPUT)
+
+        'データ型をオブジェクトにセット
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(1) = gv_Odb_USR1.Parameters("P1")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(2) = gv_Odb_USR1.Parameters("P2")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(3) = gv_Odb_USR1.Parameters("P3")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(4) = gv_Odb_USR1.Parameters("P4")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(5) = gv_Odb_USR1.Parameters("P5")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(6) = gv_Odb_USR1.Parameters("P6")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(7) = gv_Odb_USR1.Parameters("P7")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(8) = gv_Odb_USR1.Parameters("P8")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(9) = gv_Odb_USR1.Parameters("P9")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(10) = gv_Odb_USR1.Parameters("P10")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(11) = gv_Odb_USR1.Parameters("P11")
+
+        '各オブジェクトのデータ型を設定
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(1).ServerType = ORATYPE_NUMBER
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(2).ServerType = ORATYPE_VARCHAR2
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(3).ServerType = ORATYPE_VARCHAR2
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(4).ServerType = ORATYPE_VARCHAR2
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(5).ServerType = ORATYPE_VARCHAR2
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(6).ServerType = ORATYPE_VARCHAR2
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(7).ServerType = ORATYPE_CHAR
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(8).ServerType = ORATYPE_CHAR
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(9).ServerType = ORATYPE_CHAR
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(10).ServerType = ORATYPE_NUMBER
+        'UPGRADE_WARNING: オブジェクト param().serverType の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        param(11).ServerType = ORATYPE_VARCHAR2
+        'PL/SQL呼び出しSQL
+        strSQL = "BEGIN HINFP62.MAIN_SUB(:P1,:P2,:P3,:P4,:P5,:P6,:P7,:P8,:P9,:P10,:P11); End;"
+
+        'DBアクセス
+        bolRet = CF_Ora_Execute(gv_Odb_USR1, strSQL)
+        If bolRet = False Then
+            GoTo Ctl_MN_Execute_Click_END
+        End If
+
+        'エラー情報取得
+        'UPGRADE_WARNING: オブジェクト param().Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        lngParam10 = param(10).Value
+        'UPGRADE_WARNING: オブジェクト param().Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        If Not IsDBNull(param(11).Value) Then
+            'UPGRADE_WARNING: オブジェクト param().Value の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            strParam11.Value = param(11).Value
+        Else
+            strParam11.Value = ""
+        End If
+
+        Err_Cd = lngParam10
+
+        If InStr(strParam11.Value, ":") <> 0 Then
+            strlogfile = Trim(Mid(strParam11.Value, InStr(strParam11.Value, ":") + 1))
+            strERR_CODE = VB.Left(strParam11.Value, InStr(strParam11.Value, ":") - 1)
+        Else
+            strERR_CODE = strParam11.Value
+        End If
+        If lngParam10 = 0 Then
+            Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_003, pm_All)
+        Else
+            'ログファイルをサーバから取得する。
+            Select Case F_Ctl_CopyFiles2(strlogfile, objFile.ParentFolder.Path)
+                Case 0
+                    '正常
+                    'ログファイルの削除
+                    Call F_Ctl_DeleteFiles(strlogfile)
+                Case 8
+                    'INIファイル取得ミス
+                    strERR_CODE = gc_strMsgHINFP62_E_066
+                Case 9
+                    'コピーができない。
+                    strERR_CODE = gc_strMsgHINFP62_E_067
+            End Select
+            If InStr(strERR_CODE, "HINFP62") <> 0 Then
+                Call AE_CmnMsgLibrary(SSS_PrgNm, strERR_CODE, pm_All)
+            Else
+                Call AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_I_009, pm_All)
+            End If
+        End If
+
+Ctl_MN_Execute_Click_END:
+        '** パラメタ解消
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P1")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P2")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P3")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P4")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P5")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P6")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P7")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P8")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P9")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P10")
+        'UPGRADE_WARNING: オブジェクト gv_Odb_USR1.Parameters の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        gv_Odb_USR1.Parameters.Remove("P11")
+
+        '取込ファイルの削除
+        Call F_Ctl_DeleteFiles(strfile)
+
+Ctl_MN_Execute_Click_END2:
+
+        'カーソル戻す
+        'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.MousePointer はカスタム マウスポインタをサポートしません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="45116EAB-7060-405E-8ABE-9DBB40DC2E86"' をクリックしてください。
+        '2019/09/24 CHG START
+        'Me.Cursor = intCursor
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+        '2019/09/24 CHG END
+        Exit Sub
+err_MN_EXECUTE_Click:
+        'PL/SQLエラー
+        AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHINFP62_E_064, pm_All) 'DBエラーがありました。
+        '取込ファイルの削除
+        Call F_Ctl_DeleteFiles(strfile)
+        'カーソル戻す
+        'UPGRADE_ISSUE: Form プロパティ FR_SSSMAIN.MousePointer はカスタム マウスポインタをサポートしません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="45116EAB-7060-405E-8ABE-9DBB40DC2E86"' をクリックしてください。
+        '2019/09/24 CHG START
+        'Me.Cursor = intCursor
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+        '2019/09/24 CHG END
+    End Sub
+    '2019/10/04 ADD END
 End Class
