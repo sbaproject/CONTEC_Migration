@@ -30,7 +30,7 @@ Module STTBNKCD_F52
             GetRowsCommon(DBN_BNKMTA, "Where BNKCD = '" & STTBNKCD & "'")
 
             If DBSTAT = 0 Then
-                Call SCR_FromMfilENDBNKCD(De_Index)
+                Call SCR_FromMfil(De_Index)
             End If
             '2019/10/03 CHG END
             ''''''''If DBSTAT = 0 Then

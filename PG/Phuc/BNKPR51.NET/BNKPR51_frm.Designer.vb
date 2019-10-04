@@ -1010,6 +1010,7 @@
         '
         'btnF8
         '
+        Me.btnF8.Enabled = False
         Me.btnF8.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF8.Location = New System.Drawing.Point(574, 339)
         Me.btnF8.Name = "btnF8"
@@ -1020,8 +1021,9 @@
         '
         'btnF7
         '
+        Me.btnF7.Enabled = False
         Me.btnF7.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.btnF7.Location = New System.Drawing.Point(496, 339)
+        Me.btnF7.Location = New System.Drawing.Point(502, 339)
         Me.btnF7.Name = "btnF7"
         Me.btnF7.Size = New System.Drawing.Size(75, 35)
         Me.btnF7.TabIndex = 264
@@ -1030,6 +1032,7 @@
         '
         'btnF6
         '
+        Me.btnF6.Enabled = False
         Me.btnF6.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF6.Location = New System.Drawing.Point(418, 339)
         Me.btnF6.Name = "btnF6"
@@ -1060,6 +1063,7 @@
         '
         'btnF3
         '
+        Me.btnF3.Enabled = False
         Me.btnF3.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF3.Location = New System.Drawing.Point(167, 339)
         Me.btnF3.Name = "btnF3"
@@ -1070,6 +1074,7 @@
         '
         'btnF2
         '
+        Me.btnF2.Enabled = False
         Me.btnF2.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF2.Location = New System.Drawing.Point(88, 339)
         Me.btnF2.Name = "btnF2"
@@ -1080,6 +1085,7 @@
         '
         'btnF1
         '
+        Me.btnF1.Enabled = False
         Me.btnF1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF1.Location = New System.Drawing.Point(9, 339)
         Me.btnF1.Name = "btnF1"
