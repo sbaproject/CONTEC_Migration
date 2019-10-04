@@ -34,9 +34,9 @@ Module HINPR51_E01
 		If gs_PRTAUTH = "1" Then '印刷権限有り
 			CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
-			CType(FR_SSSMAIN.Controls("MN_LSTART"), Object).Enabled = True
-			CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
-		Else
+            'CType(FR_SSSMAIN.Controls("MN_LSTART"), Object).Enabled = True
+            'CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
+        Else
 			CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = False
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("MN_LSTART"), Object).Enabled = False
@@ -45,9 +45,9 @@ Module HINPR51_E01
 		If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = True
-			CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
-			CType(FR_SSSMAIN.Controls("MN_FSTART"), Object).Enabled = True
-		Else
+            'CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
+            'CType(FR_SSSMAIN.Controls("MN_FSTART"), Object).Enabled = True
+        Else
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = False
 			CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True

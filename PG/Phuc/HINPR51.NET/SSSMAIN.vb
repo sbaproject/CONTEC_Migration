@@ -75,11 +75,13 @@ Module SSSMAIN_PR2
 	End Function
 	
 	Sub SSS_CLOSE()
-		'
-		Call CRW_CLOSE()
-		Call CRW_END()
-		'
-		Call DB_RESET()
+        '
+        '2019/10/04 DEL START
+        'Call CRW_CLOSE()
+        'Call CRW_END()
+        '2019/10/04 DEL END
+        '
+        Call DB_RESET()
 		Call DB_End()
 		'
 		System.Windows.Forms.Application.DoEvents()

@@ -420,10 +420,14 @@ Friend Class FR_SSSMAIN
             TX_Mode.TabStop = False
             TX_Message.TabStop = False
             TX_Message.Text = ""
-            wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/10/04　仮　API
+            'wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/10/04　仮　API
             Call AE_WindowProcSet_SSSMAIN()
-            ReleaseTabCapture(0)
-            SetTabCapture(Me.Handle.ToInt32)
+            '2019/10/04　仮　API
+            'ReleaseTabCapture(0)
+            'SetTabCapture(Me.Handle.ToInt32)
+            '2019/10/04　仮　API
             'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             wk_Var = SSSMAIN_BeginPrg()
@@ -435,6 +439,10 @@ Friend Class FR_SSSMAIN
             .TimerStartUp = True
         End With
         TM_StartUp.Enabled = True
+
+        '2019/10/04 ADD START
+        Call SetBar(Me)
+        '2019/10/04 ADD E N D
     End Sub
 
     Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -443,8 +451,10 @@ Friend Class FR_SSSMAIN
 		PP_SSSMAIN.UnloadMode = UnloadMode
 		Select Case UnloadMode
 			Case 0, 3
-				PP_SSSMAIN.CloseCode = 2
-				Cancel = True
+                '2019/10/04 DEL START
+                'PP_SSSMAIN.CloseCode = 2
+                '2019/10/04 DEL END
+                Cancel = True
 				Call AE_EndCm_SSSMAIN()
 			Case 2
 				PP_SSSMAIN.Caption = Me.Text
@@ -1888,16 +1898,16 @@ EventExitSub:
 			eventArgs.Handled = True
 		End If
 	End Sub
-	
-	Private Sub TX_Mode_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles TX_Mode.MouseDown
-		Dim Button As Short = eventArgs.Button \ &H100000
-		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
-		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
-		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
-		If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
-			TX_Mode.Enabled = False
-			PP_SSSMAIN.ShortCutTx = -2
-			SM_FullPast.Enabled = False
+
+    Private Sub TX_Mode_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles TX_Mode.MouseDown
+        Dim Button As Short = eventArgs.Button \ &H100000
+        Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
+        Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
+        Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y) 'Generated.
+        If (Button And VB6.MouseButtonConstants.RightButton) = VB6.MouseButtonConstants.RightButton Then
+            TX_Mode.Enabled = False
+            PP_SSSMAIN.ShortCutTx = -2
+            SM_FullPast.Enabled = False
             'UPGRADE_ISSUE: 定数 vbPopupMenuRightButton はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"' をクリックしてください。
             'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。                        
             '2019/09/25　仮
@@ -1905,6 +1915,70 @@ EventExitSub:
             SM_ShortCut.Show()
             '2019/09/25　仮
             TX_Mode.Enabled = True
-		End If
-	End Sub
+        End If
+    End Sub
+
+    '2019/10/04 ADD START
+    Private Sub FR_SSSMAIN_KeyDown(ByVal eventSender As System.Object, ByVal e As KeyEventArgs) Handles Me.KeyDown
+
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F4
+                    '印刷
+                    Me.btnF4.PerformClick()
+
+                Case Keys.F5
+                    '参照
+                    Me.btnF5.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
+
+    Private Sub btnF4_Click(sender As Object, e As EventArgs) Handles btnF4.Click
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        INQ_LIST()
+    End Sub
+
+    Private Sub btnF5_Click(sender As Object, e As EventArgs) Handles btnF5.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        Dim wk_Cursor As Short
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        wk_Cursor = AE_AppendC_SSSMAIN(PP_SSSMAIN.Mode)
+        If wk_Cursor = Cn_CuInit Then Call AE_CursorInit_SSSMAIN()
+    End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.CloseCode = 1
+        Call AE_EndCm_SSSMAIN()
+    End Sub
+
+    Private Sub CM_LCANCEL_Click(sender As Object, e As EventArgs) Handles CM_LCANCEL.Click
+        SSS_LSTOP = True
+    End Sub
+    '2019/10/04 ADD END
+
 End Class
