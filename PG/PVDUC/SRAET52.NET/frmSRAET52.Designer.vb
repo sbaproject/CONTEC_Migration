@@ -496,6 +496,7 @@
         '
         'vaData
         '
+        Me.vaData.AllowUserToAddRows = False
         Me.vaData.HorizontalScrollBarMode = GrapeCity.Win.MultiRow.ScrollBarMode.Automatic
         Me.vaData.Location = New System.Drawing.Point(72, 133)
         Me.vaData.Name = "vaData"
