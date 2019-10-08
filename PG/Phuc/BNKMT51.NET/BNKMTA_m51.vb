@@ -70,10 +70,19 @@ Module BNKMTA_M51
         '更新時間チェック（画面に表示されている明細分）
         I = 0
         Dim strSQL As String
+        '2019/10/03 ADD START
+        Dim pWhere As String = ""
+        Dim dt As DataTable = Nothing
+        Dim updSQL As String = ""
+        '2019/10/03 ADD END
         Do While I < PP_SSSMAIN.LastDe
             'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_BNKCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             DB_BNKMTA.BNKCD = RD_SSSMAIN_BNKCD(I)
-            Call DB_GetEq(DBN_BNKMTA, 1, DB_BNKMTA.BNKCD, BtrNormal)
+            '2019/10/03 CHG START
+            'Call DB_GetEq(DBN_BNKMTA, 1, DB_BNKMTA.BNKCD, BtrNormal)
+            pWhere = "WHERE BNKCD = '" & DB_BNKMTA.BNKCD & "'"
+            GetRowsCommon(DBN_BNKMTA, pWhere)
+            '2019/10/03 CHG END
             If DBSTAT = 0 Then
                 ' === 20080930 === INSERT S - RISE)Izumi チェック項目追加
                 strOPEID = DB_BNKMTA.OPEID '最終作業者コード
@@ -100,7 +109,22 @@ Module BNKMTA_M51
                     strSQL = strSQL & " WHERE BNKCD = '" + RD_SSSMAIN_BNKCD(I) + "'"
                     'ロックする
                     strSQL = strSQL & "          FOR UPDATE"
-                    Call DB_GetSQL2(DBN_BNKMTA, strSQL)
+
+                    '2019/10/03 CHG START
+                    'Call DB_GetSQL2(DBN_BNKMTA, strSQL)
+                    dt = DB_GetTable(strSQL)
+                    If Not dt Is Nothing Then
+                        DB_BNKMTA.OPEID = DB_NullReplace(dt.Rows(0)("OPEID"), "")
+                        DB_BNKMTA.CLTID = DB_NullReplace(dt.Rows(0)("CLTID"), "")
+                        DB_BNKMTA.UOPEID = DB_NullReplace(dt.Rows(0)("UOPEID"), "")
+                        DB_BNKMTA.UCLTID = DB_NullReplace(dt.Rows(0)("UCLTID"), "")
+                        DB_BNKMTA.WRTDT = DB_NullReplace(dt.Rows(0)("WRTDT"), "")
+                        DB_BNKMTA.WRTTM = DB_NullReplace(dt.Rows(0)("WRTTM"), "")
+                        DB_BNKMTA.UWRTDT = DB_NullReplace(dt.Rows(0)("UWRTDT"), "")
+                        DB_BNKMTA.UWRTTM = DB_NullReplace(dt.Rows(0)("UWRTTM"), "")
+                    End If
+                    '2019/10/03 CHG END
+
                     ' === 20080930 === INSERT S - RISE)Izumi チェック項目追加
                     strOPEID = DB_BNKMTA.OPEID '最終作業者コード
                     strCLTID = DB_BNKMTA.CLTID 'クライアントＩＤ
@@ -184,7 +208,22 @@ Module BNKMTA_M51
                             strSQL = strSQL & " WHERE BNKCD = '" + RD_SSSMAIN_BNKCD(I) + "'"
                             'ロックする
                             strSQL = strSQL & "          FOR UPDATE"
-                            Call DB_GetSQL2(DBN_BNKMTA, strSQL)
+
+                            '2019/10/03 CHG START
+                            'Call DB_GetSQL2(DBN_BNKMTA, strSQL)
+                            dt = DB_GetTable(strSQL)
+                            If Not dt Is Nothing Then
+                                DB_BNKMTA.OPEID = DB_NullReplace(dt.Rows(0)("OPEID"), "")
+                                DB_BNKMTA.CLTID = DB_NullReplace(dt.Rows(0)("CLTID"), "")
+                                DB_BNKMTA.UOPEID = DB_NullReplace(dt.Rows(0)("UOPEID"), "")
+                                DB_BNKMTA.UCLTID = DB_NullReplace(dt.Rows(0)("UCLTID"), "")
+                                DB_BNKMTA.WRTDT = DB_NullReplace(dt.Rows(0)("WRTDT"), "")
+                                DB_BNKMTA.WRTTM = DB_NullReplace(dt.Rows(0)("WRTTM"), "")
+                                DB_BNKMTA.UWRTDT = DB_NullReplace(dt.Rows(0)("UWRTDT"), "")
+                                DB_BNKMTA.UWRTTM = DB_NullReplace(dt.Rows(0)("UWRTTM"), "")
+                            End If
+                            '2019/10/03 CHG END
+
                             ' === 20080930 === INSERT S - RISE)Izumi チェック項目追加
                             strOPEID = DB_BNKMTA.OPEID '最終作業者コード
                             strCLTID = DB_BNKMTA.CLTID 'クライアントＩＤ
@@ -240,7 +279,13 @@ Module BNKMTA_M51
         Do While I < PP_SSSMAIN.LastDe
             'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_BNKCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             DB_BNKMTA.BNKCD = RD_SSSMAIN_BNKCD(I)
-            Call DB_GetEq(DBN_BNKMTA, 1, DB_BNKMTA.BNKCD, BtrLock)
+
+            '2019/10/03 CHG START
+            'Call DB_GetEq(DBN_BNKMTA, 1, DB_BNKMTA.BNKCD, BtrLock)
+            pWhere = "WHERE BNKCD = '" & DB_BNKMTA.BNKCD & "'"
+            GetRowsCommon(DBN_BNKMTA, pWhere)
+            '2019/10/03 CHG END
+
             If DBSTAT = 0 Then
                 'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_UPDKB() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 updkb = RD_SSSMAIN_UPDKB(I)
@@ -257,7 +302,40 @@ Module BNKMTA_M51
                     DB_BNKMTA.UWRTTM = wkWRTTM ' Format(Now, "hhmmss")
                     DB_BNKMTA.UWRTDT = wkWRTDT ' Format(Now, "YYYYMMDD")
                     DB_BNKMTA.PGID = SSS_PrgId
-                    Call DB_Update(DBN_BNKMTA, 1)
+
+                    '2019/10/03 CHG START
+                    'Call DB_Update(DBN_BNKMTA, 1)
+                    updSQL = ""
+                    updSQL = updSQL & " UPDATE "
+                    updSQL = updSQL & "        BNKMTA "
+                    updSQL = updSQL & " SET "
+
+                    updSQL = updSQL & " DATKB		=	'" & DB_BNKMTA.DATKB & "' "
+                    updSQL = updSQL & ",BNKCD		=	'" & DB_BNKMTA.BNKCD & "' "
+                    updSQL = updSQL & ",BNKNM	    =	'" & DB_BNKMTA.BNKNM & "' "
+                    updSQL = updSQL & ",STNNM		=	'" & DB_BNKMTA.STNNM & "' "
+                    updSQL = updSQL & ",BNKNK		=	'" & DB_BNKMTA.BNKNK & "' "
+                    updSQL = updSQL & ",STNNK		=	'" & DB_BNKMTA.STNNK & "' "
+                    updSQL = updSQL & ",RELFL		=	'" & DB_BNKMTA.RELFL & "' "
+                    updSQL = updSQL & ",FOPEID		=	'" & DB_BNKMTA.FOPEID & "' "
+                    updSQL = updSQL & ",FCLTID		=	'" & DB_BNKMTA.FCLTID & "' "
+                    updSQL = updSQL & ",WRTFSTTM	=	'" & DB_BNKMTA.WRTFSTTM & "' "
+                    updSQL = updSQL & ",WRTFSTDT	=	'" & DB_BNKMTA.WRTFSTDT & "' "
+                    updSQL = updSQL & ",OPEID		=	'" & DB_BNKMTA.OPEID & "' "
+                    updSQL = updSQL & ",CLTID		=	'" & DB_BNKMTA.CLTID & "' "
+                    updSQL = updSQL & ",WRTTM		=	'" & DB_BNKMTA.WRTTM & "' "
+                    updSQL = updSQL & ",WRTDT		=	'" & DB_BNKMTA.WRTDT & "' "
+                    updSQL = updSQL & ",UOPEID		=	'" & DB_BNKMTA.UOPEID & "' "
+                    updSQL = updSQL & ",UCLTID		=	'" & DB_BNKMTA.UCLTID & "' "
+                    updSQL = updSQL & ",UWRTTM		=	'" & DB_BNKMTA.UWRTTM & "' "
+                    updSQL = updSQL & ",UWRTDT		=	'" & DB_BNKMTA.UWRTDT & "' "
+                    updSQL = updSQL & ",PGID		=	'" & DB_BNKMTA.PGID & "' "
+
+                    updSQL = updSQL & "  WHERE "
+                    updSQL = updSQL & "        BNKCD     = '" & DB_BNKMTA.BNKCD & "' "
+
+                    DB_Execute(updSQL)
+                    '2019/10/03 CHG END
                 Else
                     'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_DATKB(I) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                     'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_STNNK() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -279,7 +357,41 @@ Module BNKMTA_M51
                         DB_BNKMTA.UWRTTM = wkWRTTM 'Format(Now, "hhmmss")
                         DB_BNKMTA.UWRTDT = wkWRTDT 'Format(Now, "YYYYMMDD")
                         DB_BNKMTA.PGID = SSS_PrgId
-                        Call DB_Update(DBN_BNKMTA, 1)
+
+                        '2019/10/03 CHG START
+                        'Call DB_Update(DBN_BNKMTA, 1)
+                        updSQL = ""
+                        updSQL = updSQL & " UPDATE "
+                        updSQL = updSQL & "        BNKMTA "
+                        updSQL = updSQL & " SET "
+
+                        updSQL = updSQL & " DATKB		=	'" & DB_BNKMTA.DATKB & "' "
+                        updSQL = updSQL & ",BNKCD		=	'" & DB_BNKMTA.BNKCD & "' "
+                        updSQL = updSQL & ",BNKNM	    =	'" & DB_BNKMTA.BNKNM & "' "
+                        updSQL = updSQL & ",STNNM		=	'" & DB_BNKMTA.STNNM & "' "
+                        updSQL = updSQL & ",BNKNK		=	'" & DB_BNKMTA.BNKNK & "' "
+                        updSQL = updSQL & ",STNNK		=	'" & DB_BNKMTA.STNNK & "' "
+                        updSQL = updSQL & ",RELFL		=	'" & DB_BNKMTA.RELFL & "' "
+                        updSQL = updSQL & ",FOPEID		=	'" & DB_BNKMTA.FOPEID & "' "
+                        updSQL = updSQL & ",FCLTID		=	'" & DB_BNKMTA.FCLTID & "' "
+                        updSQL = updSQL & ",WRTFSTTM	=	'" & DB_BNKMTA.WRTFSTTM & "' "
+                        updSQL = updSQL & ",WRTFSTDT	=	'" & DB_BNKMTA.WRTFSTDT & "' "
+                        updSQL = updSQL & ",OPEID		=	'" & DB_BNKMTA.OPEID & "' "
+                        updSQL = updSQL & ",CLTID		=	'" & DB_BNKMTA.CLTID & "' "
+                        updSQL = updSQL & ",WRTTM		=	'" & DB_BNKMTA.WRTTM & "' "
+                        updSQL = updSQL & ",WRTDT		=	'" & DB_BNKMTA.WRTDT & "' "
+                        updSQL = updSQL & ",UOPEID		=	'" & DB_BNKMTA.UOPEID & "' "
+                        updSQL = updSQL & ",UCLTID		=	'" & DB_BNKMTA.UCLTID & "' "
+                        updSQL = updSQL & ",UWRTTM		=	'" & DB_BNKMTA.UWRTTM & "' "
+                        updSQL = updSQL & ",UWRTDT		=	'" & DB_BNKMTA.UWRTDT & "' "
+                        updSQL = updSQL & ",PGID		=	'" & DB_BNKMTA.PGID & "' "
+
+                        updSQL = updSQL & "  WHERE "
+                        updSQL = updSQL & "        BNKCD     = '" & DB_BNKMTA.BNKCD & "' "
+
+                        DB_Execute(updSQL)
+                        '2019/10/03 CHG END
+
                     End If '2006.11.07
                 End If
             Else
@@ -302,7 +414,37 @@ Module BNKMTA_M51
                 DB_BNKMTA.UWRTDT = wkWRTDT 'Format(Now, "YYYYMMDD")
                 DB_BNKMTA.PGID = SSS_PrgId
 
-                Call DB_Insert(DBN_BNKMTA, 1)
+
+                '2019/10/03 CHG START
+                'Call DB_Insert(DBN_BNKMTA, 1)
+                updSQL = ""
+                updSQL = updSQL & " '" & DB_BNKMTA.DATKB & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.BNKCD & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.BNKNM & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.STNNM & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.BNKNK & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.STNNK & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.BNKKMKCD & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.BNKUTICD & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.RELFL & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.FOPEID & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.FCLTID & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.WRTFSTTM & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.WRTFSTDT & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.OPEID & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.CLTID & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.WRTTM & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.WRTDT & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.UOPEID & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.UCLTID & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.UWRTTM & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.UWRTDT & "' "
+                updSQL = updSQL & ",'" & DB_BNKMTA.PGID & "' "
+
+                updSQL = DB_InsertSQL(DBN_BNKMTA, updSQL)
+                DB_Execute(updSQL)
+                '2019/10/03 CHG END
+
             End If
             I = I + 1
         Loop

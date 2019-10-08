@@ -4982,6 +4982,34 @@ Friend Class FR_SSSSUB01
         Call Ctl_Item_Click(btnF1)
     End Sub
 
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+
+        '画面内容初期化
+        Call SSSMAIN0003.F_Init_Clr_Dsp(-1, Main_Inf)
+
+        Call CF_Set_Frm_IN_TANCD_HIKET51(Me, Main_Inf)
+
+        '画面明細部初期化
+        Call SSSMAIN0003.F_Init_Clr_Dsp_Body(-1, Main_Inf)
+
+        '初期表示編集
+        Call Edi_Dsp_Def()
+
+        '画面明細表示
+        Call CF_Body_Dsp(Main_Inf)
+
+        'ボディ部編集_サブ照会画面用
+        Call SSSMAIN0003.F_DSP_BD_Inf_SUB(0, Main_Inf)
+
+        '明細カラー付け
+        Call SSSMAIN0003.CF_Set_BD_Color(Main_Inf)
+
+        '画面編集フラグ初期化
+        gv_bolHIKET51_INIT = False
+
+
+    End Sub
+
     Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
         Call Ctl_Item_Click(btnF12)
     End Sub
@@ -5029,6 +5057,10 @@ Friend Class FR_SSSSUB01
                     '更新
                     Me.btnF1.PerformClick()
 
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
                 Case Keys.F12
                     '終了
                     Me.btnF12.PerformClick()
@@ -5039,5 +5071,6 @@ Friend Class FR_SSSSUB01
             li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
         End Try
     End Sub
+
     '2019/09/20 ADD END
 End Class

@@ -1508,7 +1508,6 @@
         'btnF9
         '
         Me.btnF9.CausesValidation = False
-        Me.btnF9.Enabled = False
         Me.btnF9.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.75!, System.Drawing.FontStyle.Bold)
         Me.btnF9.Location = New System.Drawing.Point(640, 518)
         Me.btnF9.Name = "btnF9"
@@ -1558,7 +1557,7 @@
         Me.btnF5.Name = "btnF5"
         Me.btnF5.Size = New System.Drawing.Size(75, 39)
         Me.btnF5.TabIndex = 122
-        Me.btnF5.Text = "(F5)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "éQè∆"
+        Me.btnF5.Text = "(F5)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnF5.UseVisualStyleBackColor = True
         '
         'btnF4
@@ -1601,7 +1600,7 @@
         Me.btnF1.Name = "btnF1"
         Me.btnF1.Size = New System.Drawing.Size(75, 39)
         Me.btnF1.TabIndex = 118
-        Me.btnF1.Text = "(F1)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
+        Me.btnF1.Text = "(F1)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "çXêV" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnF1.UseVisualStyleBackColor = True
         '
         'FR_SSSSUB01
