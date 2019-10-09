@@ -1383,20 +1383,24 @@ Module SSSMAIN0001
 		'UPGRADE_WARNING: オブジェクト SSSMAIN_Close() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		wk_Var = SSSMAIN_Close()
-		'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If wk_Var = -1 Then
-			wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
-			Call AE_WindowProcReset(PP_SSSMAIN)
-			ReleaseTabCapture(FR_SSSMAIN.Handle.ToInt32)
-			If PP_SSSMAIN.hIMC <> 0 Then
-				Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
-			End If
+        'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If wk_Var = -1 Then
+            '2019/10/03 DEL START
+            'wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
+            '2019/10/03 DEL E N D
+            Call AE_WindowProcReset(PP_SSSMAIN)
+            '2019/10/03 DEL START
+            'ReleaseTabCapture(FR_SSSMAIN.Handle.ToInt32)
+            '2019/10/03 DEL E N D
+            If PP_SSSMAIN.hIMC <> 0 Then
+                Call ImmReleaseContext(PP_SSSMAIN.hIMCHwnd, PP_SSSMAIN.hIMC)
+            End If
 #If ActiveXcompile = 0 Then
-			End
+            End
 #End If
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ElseIf wk_Var = 1 Then 
-			wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ElseIf wk_Var = 1 Then
+            wk_Int = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
 			Call AE_WindowProcReset(PP_SSSMAIN)
 			ReleaseTabCapture(FR_SSSMAIN.Handle.ToInt32)
 			If PP_SSSMAIN.hIMC <> 0 Then
@@ -2461,11 +2465,16 @@ CheckOrSkip:
 					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					CP_SSSMAIN(0).TpStr = wk_Slisted
 					CP_SSSMAIN(0).CIn = Cn_ChrInput
-					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 0) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					AE_Controls(PP_SSSMAIN.CtB + 0) = wk_Slisted
-					Call AE_Check_SSSMAIN_ODNYTDT(AE_Val3(CP_SSSMAIN(0), AE_Controls(PP_SSSMAIN.CtB + 0).ToString()), Cn_Status6, True, True)
-				End If
+                    'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 0) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/10/04 CHG START
+                    'AE_Controls(PP_SSSMAIN.CtB + 0) = wk_Slisted
+                    AE_Controls(PP_SSSMAIN.CtB + 0).Text = wk_Slisted
+                    'Call AE_Check_SSSMAIN_ODNYTDT(AE_Val3(CP_SSSMAIN(0), AE_Controls(PP_SSSMAIN.CtB + 0).ToString()), Cn_Status6, True, True)
+                    Call AE_Check_SSSMAIN_ODNYTDT(AE_Val3(CP_SSSMAIN(0), AE_Controls(PP_SSSMAIN.CtB + 0).Text), Cn_Status6, True, True)
+                    '2019/10/04 CHG E N D
+
+                End If
 			Else
 				PP_SSSMAIN.CursorDest = Cn_Dest0
 				PP_SSSMAIN.NextTx = PP_SSSMAIN.Tx
@@ -2497,11 +2506,16 @@ CheckOrSkip:
 					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					CP_SSSMAIN(1).TpStr = wk_Slisted
 					CP_SSSMAIN(1).CIn = Cn_ChrInput
-					'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 1) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					AE_Controls(PP_SSSMAIN.CtB + 1) = wk_Slisted
-					Call AE_Check_SSSMAIN_SOUCD(AE_Val3(CP_SSSMAIN(1), AE_Controls(PP_SSSMAIN.CtB + 1).ToString()), Cn_Status6, True, True)
-				End If
+                    'UPGRADE_WARNING: オブジェクト wk_Slisted の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト AE_Controls(PP_SSSMAIN.CtB + 1) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    '2019/10/04 CHG START
+                    'AE_Controls(PP_SSSMAIN.CtB + 1) = wk_Slisted
+                    AE_Controls(PP_SSSMAIN.CtB + 1).Text = wk_Slisted
+                    'Call AE_Check_SSSMAIN_SOUCD(AE_Val3(CP_SSSMAIN(1), AE_Controls(PP_SSSMAIN.CtB + 1).ToString()), Cn_Status6, True, True)
+                    Call AE_Check_SSSMAIN_SOUCD(AE_Val3(CP_SSSMAIN(1), AE_Controls(PP_SSSMAIN.CtB + 1).Text), Cn_Status6, True, True)
+                    '2019/10/04 CHG E N D
+
+                End If
 			Else
 				PP_SSSMAIN.CursorDest = Cn_Dest0
 				PP_SSSMAIN.NextTx = PP_SSSMAIN.Tx
@@ -2727,13 +2741,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(1), AE_Val3(CP_SSSMAIN(1), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(1).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(1).CuVal <> V Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(1).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(1).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/04 CHG START
+        'If CP_SSSMAIN(1).CuVal <> V Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(1).CuVal) = False _
+         AndAlso IsDBNull(V) = False _
+         AndAlso CP_SSSMAIN(1).CuVal <> V Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
+            '2019/10/04 CHG E N D
+            CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(1).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(1).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(1).StatusC = Cn_Status6 : CP_SSSMAIN(1).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(1).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(1), CL_SSSMAIN(1))
@@ -2754,13 +2773,18 @@ CheckOrSkip:
 		'UPGRADE_WARNING: オブジェクト AE_NormData() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		V = AE_NormData(CP_SSSMAIN(2), AE_Val3(CP_SSSMAIN(2), CStr(DBItem)))
-		'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(2).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If CP_SSSMAIN(2).CuVal <> V Or CP_SSSMAIN(2).StatusC <> Cn_Status8 Then
-			CP_SSSMAIN(2).StatusC = Cn_Status6 : CP_SSSMAIN(2).StatusF = Cn_Status6
-			'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
-		ElseIf (IsDbNull(CP_SSSMAIN(2).CuVal) Xor IsDbNull(V)) Or CP_SSSMAIN(2).StatusC <> Cn_Status8 Then 
-			CP_SSSMAIN(2).StatusC = Cn_Status6 : CP_SSSMAIN(2).StatusF = Cn_Status6
+        'UPGRADE_WARNING: オブジェクト V の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(2).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/04 CHG START
+        'If CP_SSSMAIN(2).CuVal <> V Or CP_SSSMAIN(2).StatusC <> Cn_Status8 Then
+        If IsDBNull(CP_SSSMAIN(2).CuVal) = False _
+         AndAlso IsDBNull(V) = False _
+         AndAlso CP_SSSMAIN(2).CuVal <> V Or CP_SSSMAIN(2).StatusC <> Cn_Status8 Then
+            '2019/10/04 CHG E N D
+            CP_SSSMAIN(2).StatusC = Cn_Status6 : CP_SSSMAIN(2).StatusF = Cn_Status6
+            'UPGRADE_WARNING: Null/IsNull() の使用が見つかりました。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="2EED02CB-5C0E-4DC1-AE94-4FAA3A30F51A"' をクリックしてください。
+        ElseIf (IsDBNull(CP_SSSMAIN(2).CuVal) Xor IsDBNull(V)) Or CP_SSSMAIN(2).StatusC <> Cn_Status8 Then
+            CP_SSSMAIN(2).StatusC = Cn_Status6 : CP_SSSMAIN(2).StatusF = Cn_Status6
 		End If
 		CP_SSSMAIN(2).CheckRtnCode = 0
 		Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(2), CL_SSSMAIN(2))

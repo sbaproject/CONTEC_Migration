@@ -61,11 +61,19 @@ Module FIXMT51_E01
 			' CL_SSSMAIN(4 + (lngI * 9)) = 1
 			' CL_SSSMAIN(6 + (lngI * 9)) = 1
 			CL_SSSMAIN(2 + (lngI * 5)) = 1
-		Next 
-		
-		'運用日取得
-		Call DB_GetFirst(DBN_UNYMTA, 1, BtrNormal)
-		If DBSTAT = 0 Then
+		Next
+
+        '運用日取得
+        '2019/10/07 CHG START
+        'Call DB_GetFirst(DBN_UNYMTA, 1, BtrNormal)
+        Call GetRowsCommon("UNYMTA", "")
+        If DB_UNYMTA.UNYKBA Is Nothing Then
+            DBSTAT = 1
+        Else
+            DBSTAT = 0
+        End If
+        '2019/10/07 CHG E N D
+        If DBSTAT = 0 Then
 			WG_UNYDT = DB_UNYMTA.UNYDT
 		Else
 			WG_UNYDT = ""
@@ -133,12 +141,15 @@ Module FIXMT51_E01
 		Do While (DBSTAT = 0) And (I < (PP_SSSMAIN.MaxDspC))
 			I = I + 1
 			Call DB_GetPre(DBN_FIXMTA, BtrNormal)
-		Loop 
-		If DBSTAT <> 0 And I = 0 Then
-			Call DB_GetFirst(DBN_FIXMTA, 1, BtrNormal)
-		End If
-		SSS_LASTKEY.Value = DB_PARA(DBN_FIXMTA).KeyBuf
-		Call SCR_FromMfil(I)
+		Loop
+        If DBSTAT <> 0 And I = 0 Then
+            Call DB_GetFirst(DBN_FIXMTA, 1, BtrNormal)
+        End If
+        '2019/10/08 CHG START
+        'SSS_LASTKEY.Value = DB_PARA(DBN_FIXMTA).KeyBuf
+        SSS_LASTKEY.Value = DB_PARA(4).KeyBuf
+        '2019/10/08 CHG E N D
+        Call SCR_FromMfil(I)
 		I = DSPMST()
 		'UPGRADE_WARNING: オブジェクト MST_PREV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		MST_PREV = I

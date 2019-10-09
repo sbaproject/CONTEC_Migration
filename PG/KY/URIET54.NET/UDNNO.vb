@@ -201,12 +201,12 @@ Module UDNNO_F51
 	End Function
 	
 	Function UDNNO_Slist(ByRef PP As clsPP, ByVal UDNNO As Object) As Object
-		
-		DB_PARA(DBN_UDNTRA).KeyNo = 10
-		DB_PARA(DBN_UDNTRA).KeyBuf = "1" & "1"
-		'20090115 ADD START RISE)Tanimura 'òAóçï[No.523
-		DB_PARA(DBN_ODNTRA).KeyNo = 2
-		DB_PARA(DBN_ODNTRA).KeyBuf = "1" & "1"
+
+        'DB_PARA(DBN_UDNTRA).KeyNo = 10
+        'DB_PARA(DBN_UDNTRA).KeyBuf = "1" & "1"
+        '20090115 ADD START RISE)Tanimura 'òAóçï[No.523
+        'DB_PARA(DBN_ODNTRA).KeyNo = 2
+        'DB_PARA(DBN_ODNTRA).KeyBuf = "1" & "1"
         '20090115 ADD END   RISE)Tanimura
         WLSUDN4.ShowDialog()
         WLSUDN4.Close()

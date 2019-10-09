@@ -169,9 +169,6 @@
         n8QWIucAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="IM_Hardcopy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
-  </metadata>
   <data name="_IM_Hardcopy_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -181,8 +178,8 @@
         AgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="IM_Slist.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>606, 95</value>
+  <metadata name="IM_Hardcopy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
   </metadata>
   <data name="_IM_Slist_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -193,8 +190,8 @@
         SUVORK5CYII=
 </value>
   </data>
-  <metadata name="IM_EndCm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>883, 56</value>
+  <metadata name="IM_Slist.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>606, 95</value>
   </metadata>
   <data name="_IM_EndCm_0.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -205,6 +202,9 @@
         gmXa657c7bSdBrIXng8B/QA4onJQGfDE/gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="IM_EndCm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>883, 56</value>
+  </metadata>
   <data name="_IM_EndCm_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -232,9 +232,6 @@
         arDW4cIzAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="IM_PREV.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>385, 95</value>
-  </metadata>
   <data name="_IM_PREV_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAMAAADto6y6AAAABGdBTUEAALGPC/xhBQAAAwBQTFRFAAAA
@@ -255,6 +252,9 @@
         mAyQQZTlCDDAEiA5TMDADwBoTBS1YzBuOQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="IM_PREV.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>385, 95</value>
+  </metadata>
   <data name="_IM_PREV_0.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAMAAADto6y6AAAABGdBTUEAALGPC/xhBQAAAwBQTFRFAAAA
@@ -275,9 +275,6 @@
         JkOs5QgwGCQYsQCgBFZxoATMy6iAgR8AVQgU4vZJ9EYAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="IM_NEXTCM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>266, 95</value>
-  </metadata>
   <data name="_IM_NEXTCM_0.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAMAAADto6y6AAAABGdBTUEAALGPC/xhBQAAAwBQTFRFAAAA
@@ -298,6 +295,9 @@
         OMtRAB0lGLEAoARWcaAELJBQAQM/AE8sFOKAY637AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="IM_NEXTCM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>266, 95</value>
+  </metadata>
   <data name="_IM_NEXTCM_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAMAAADto6y6AAAABGdBTUEAALGPC/xhBQAAAwBQTFRFAAAA
@@ -318,9 +318,6 @@
         o0sgwABLgOQwAQM/AGJwFLUcwyE9AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="IM_INSERTDE.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>141, 95</value>
-  </metadata>
   <data name="_IM_INSERTDE_0.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -329,6 +326,9 @@
         xEZsHGRl1HVBezkMFDBwlCNxEAHCwAEAMQNv1BmM2PwAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="IM_INSERTDE.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>141, 95</value>
+  </metadata>
   <data name="_IM_INSERTDE_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -337,9 +337,6 @@
         WMd/bBxkZdR0ASJAGDgAnmVqhdT2A0kAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="IM_DELETEDE.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>645, 56</value>
-  </metadata>
   <data name="_IM_DELETEDE_0.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -348,6 +345,9 @@
         sHE4IKCd6i5oL4eBAgaOciQOIkAYOAApnG1wrDOiwgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="IM_DELETEDE.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>645, 56</value>
+  </metadata>
   <data name="_IM_DELETEDE_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -356,9 +356,6 @@
         OBwQQG0XIAKEgQMA14poISiksgsAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="IM_SelectCm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>484, 95</value>
-  </metadata>
   <data name="_IM_SelectCm_0.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -367,6 +364,9 @@
         I+5bfKKaxchlTVmiKK8Yl1fWzMX+KHGNC0vgctjST5EBkiTvIaAPBPiF+qHB/5EAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="IM_SelectCm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>484, 95</value>
+  </metadata>
   <data name="_IM_SelectCm_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAWBAMAAAAoU0G7AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -375,9 +375,6 @@
         +MDAgZD5X86BkPnRjyzznxYyUI+COeUwz6H5BxEgDOwAHMCANl/9uukAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="IM_Denkyu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>771, 56</value>
-  </metadata>
   <data name="_IM_Denkyu_1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -386,6 +383,9 @@
         wt0xuAUv/TDmrSc6zX6MrFmuJeF2YF4jnmssUpLVkmzrLur++oK8ARFtazw3cQnNAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="IM_Denkyu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>771, 56</value>
+  </metadata>
   <data name="_IM_Denkyu_2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAABGdBTUEAALGPC/xhBQAAADBQTFRFAAAA
@@ -550,33 +550,6 @@
   </metadata>
   <metadata name="FM_REMARK.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>524, 56</value>
-  </metadata>
-  <metadata name="IM_DELETEDE.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>645, 56</value>
-  </metadata>
-  <metadata name="IM_Denkyu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>771, 56</value>
-  </metadata>
-  <metadata name="IM_EndCm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>883, 56</value>
-  </metadata>
-  <metadata name="IM_Hardcopy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
-  </metadata>
-  <metadata name="IM_INSERTDE.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>141, 95</value>
-  </metadata>
-  <metadata name="IM_NEXTCM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>266, 95</value>
-  </metadata>
-  <metadata name="IM_PREV.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>385, 95</value>
-  </metadata>
-  <metadata name="IM_SelectCm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>484, 95</value>
-  </metadata>
-  <metadata name="IM_Slist.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>606, 95</value>
   </metadata>
   <metadata name="MainMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
