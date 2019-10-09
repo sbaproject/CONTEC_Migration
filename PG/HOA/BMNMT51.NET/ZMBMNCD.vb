@@ -43,15 +43,22 @@ Module ZMBMNCD_F51
 			'UPGRADE_WARNING: オブジェクト ZMBMNCD_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			ZMBMNCD_CheckC = -1
 		Else
-			'''' UPD 2011/09/22  FKS) T.Yamamoto    Start    連絡票№FC11092201
-			'        wkZMBMNCD = ZMBMNCD & Space(Len(DB_MEIMTA.MEICDA) - Len(ZMBMNCD))
-			'        Call DB_GetEq(DBN_MEIMTA, 2, "023" & wkZMBMNCD, BtrNormal)
-			'        If DBSTAT = 0 Then
-			'            If DB_MEIMTA.DATKB = "9" Then
-			'UPGRADE_WARNING: オブジェクト ZMBMNCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wkZMBMNCD = ZMBMNCD & Space(Len(DB_MEIMTC.MEICDA) - Len(ZMBMNCD))
-			
-			strSQL = ""
+            '''' UPD 2011/09/22  FKS) T.Yamamoto    Start    連絡票№FC11092201
+            '        wkZMBMNCD = ZMBMNCD & Space(Len(DB_MEIMTA.MEICDA) - Len(ZMBMNCD))
+            '        Call DB_GetEq(DBN_MEIMTA, 2, "023" & wkZMBMNCD, BtrNormal)
+            '        If DBSTAT = 0 Then
+            '            If DB_MEIMTA.DATKB = "9" Then
+            'UPGRADE_WARNING: オブジェクト ZMBMNCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/04 CHG START
+            'wkZMBMNCD = ZMBMNCD & Space(Len(DB_MEIMTC.MEICDA) - Len(ZMBMNCD))
+            If DB_MEIMTA.MEICDA Is Nothing OrElse Len(DB_MEIMTA.MEICDA) - Len(ZMBMNCD) Then
+                wkZMBMNCD = (ZMBMNCD)
+            Else
+                wkZMBMNCD = (ZMBMNCD) & Space(Len(DB_MEIMTA.MEICDA) - Len(ZMBMNCD))
+            End If
+            '2019/10/04 CHG E N D
+
+            strSQL = ""
 			strSQL = strSQL & "SELECT "
 			strSQL = strSQL & " * "
 			strSQL = strSQL & "FROM "
@@ -64,10 +71,11 @@ Module ZMBMNCD_F51
 			strSQL = strSQL & " STTTKDT <= '" & wkSTTTKDT & "' "
 			strSQL = strSQL & "AND "
 			strSQL = strSQL & " ENDTKDT >= '" & wkENDTKDT & "' "
-			
-			Call DB_GetSQL2(DBN_MEIMTC, strSQL)
-			
-			If DBSTAT = 0 Then
+
+            Call DB_GetSQL2(DBN_MEIMTC, strSQL)
+
+
+            If DBSTAT = 0 Then
 				If DB_MEIMTC.DATKB = "9" Then
 					'''' UPD 2011/09/22  FKS) T.Yamamoto    End
 					Call Dsp_Prompt("RNOTFOUND", 1) ' 削除済レコードです。
