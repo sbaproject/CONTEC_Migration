@@ -198,7 +198,10 @@ Module SSSWIN_BAS
     '#End(2003.10.28)
 
     'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
-    Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Integer, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
+    '2019/10/01 CHG START
+    'Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Integer, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
+    Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
+    '2019/10/01 CHG E N D
     'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
     'UPGRADE_ISSUE: パラメータ 'As Any' の宣言はサポートされません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"' をクリックしてください。
     Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Integer, ByVal lpString As Integer, ByVal lpFileName As String) As Integer
@@ -727,15 +730,32 @@ ErrDate:
 		Dim WK_PP As clsPP
 		'UPGRADE_WARNING: オブジェクト WK_PP の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		WK_PP = PP_SSSMAIN
-		'[V4.1]　メッセージ出力時にPPを退避　以上追加
-		' SSS/Win 共通のメッセージを表示します。
-		'
-		''Close後はメッセージを表示しない
-		If RsOpened(DBN_SYSTBH) = False Then Exit Function
-		''
-		DB_SYSTBH.MSGNM = msgName
-		Call DB_GetEq(DBN_SYSTBH, 1, MSGKB & DB_SYSTBH.MSGNM & VB6.Format(MSGSQ, "0"), BtrNormal)
-		If DBSTAT = 0 Then
+        '[V4.1]　メッセージ出力時にPPを退避　以上追加
+        ' SSS/Win 共通のメッセージを表示します。
+        '
+        ''Close後はメッセージを表示しない
+        'If RsOpened(DBN_SYSTBH) = False Then Exit Function
+        ''
+        DB_SYSTBH.MSGNM = msgName
+
+
+        '2019/10/03 DEL START
+        'Call DB_GetEq(DBN_SYSTBH, 1, MSGKB & DB_SYSTBH.MSGNM & VB6.Format(MSGSQ, "0"), BtrNormal)
+        '2019/10/03 DEL E N D
+
+        '2019/10/03 ADD START
+        Dim sqlWhereStr As String = ""
+        sqlWhereStr = " WHERE MSGKB = '" & MSGKB & "'"
+        sqlWhereStr = sqlWhereStr & " AND MSGNM = '" & DB_SYSTBH.MSGNM & "'"
+        Call GetRowsCommon("SYSTBH", sqlWhereStr)
+
+        If DB_SYSTBH.MSGKB Is Nothing Then
+            DBSTAT = 1
+        Else
+            DBSTAT = 0
+        End If
+        '2019/10/03 DEL E N D
+        If DBSTAT = 0 Then
 			'UPGRADE_WARNING: オブジェクト SSSVal(DB_SYSTBH.ICNKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト SSSVal(DB_SYSTBH.BTNON) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト SSSVal(DB_SYSTBH.BTNKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -923,12 +943,14 @@ ErrDate:
 	End Function
 	
 	Sub Init_Prompt()
-		' プロンプト表示領域を初期化します。
-		'
-		CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(0).Image = CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(1).Image
-		CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
-		CType(FR_SSSMAIN.Controls("TX_Message"), Object).ForeColor = System.Drawing.ColorTranslator.FromOle(&H0)
-	End Sub
+        ' プロンプト表示領域を初期化します。
+        '
+        '2019/10/03　仮
+        'CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(0).Image = CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(1).Image
+        '2019/10/03　仮
+        CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
+        CType(FR_SSSMAIN.Controls("TX_Message"), Object).ForeColor = System.Drawing.ColorTranslator.FromOle(&H0)
+    End Sub
 	
 	Function JSTDT(ByVal IN_DT As String) As String
 		Dim FormatDate As String
@@ -1225,9 +1247,12 @@ ErrEdit:
 		' SSSWIN.INI 読込み
 		'---------------------
 		For I = 0 To SSS_INICnt
-			rtnPara.Value = ""
-			LENGTH = GetPrivateProfileString("SSSWIN", SSS_INIDATNM(I), "", rtnPara.Value, Len(rtnPara.Value), "SSSWIN.INI")
-			If LENGTH = 0 Then
+            rtnPara.Value = ""
+            '2019/10/01 CHG START
+            'LENGTH = GetPrivateProfileString("SSSWIN", SSS_INIDATNM(I), "", rtnPara.Value, Len(rtnPara.Value), "SSSWIN.INI")
+            LENGTH = GetPrivateProfileString("SSSWIN", SSS_INIDATNM(I), "", rtnPara.Value, Len(rtnPara.Value), Application.StartupPath & "\SSSWIN.INI")
+            '2019/10/01 CHG E N D
+            If LENGTH = 0 Then
 				MsgBox("SSSWIN.INI を確認してください。" & Chr(13) & "[" & SSS_INIDATNM(I) & "]")
 				Call Error_Exit("SSSUSR.INI を確認してください。[" & SSS_INIDATNM(I) & "]")
 			Else
@@ -1270,13 +1295,15 @@ ErrEdit:
 			rtn = CspPurgeFilterReq(FR_SSSMAIN.Handle.ToInt32)
 			End
 		End If
-		Err.Clear()
-		On Error GoTo ErrorLogFile
-		FileOpen(Fno, SSS_INIDAT(1) & "SYSTBE.DTA", OpenMode.Append, OpenAccess.Write, OpenShare.LockWrite)
-		On Error GoTo 0
-		PrintLine(Fno, DB_SYSTBE.PRGID & DB_SYSTBE.LOGNM & DB_SYSTBE.OPEID & DB_SYSTBE.CLTID & DB_SYSTBE.WRTTM & DB_SYSTBE.WRTDT)
-		FileClose(Fno)
-		Exit Sub
+        Err.Clear()
+        '2019/10/01 DEL START
+        'On Error GoTo ErrorLogFile
+        'FileOpen(Fno, SSS_INIDAT(1) & "SYSTBE.DTA", OpenMode.Append, OpenAccess.Write, OpenShare.LockWrite)
+        'On Error GoTo 0
+        'PrintLine(Fno, DB_SYSTBE.PRGID & DB_SYSTBE.LOGNM & DB_SYSTBE.OPEID & DB_SYSTBE.CLTID & DB_SYSTBE.WRTTM & DB_SYSTBE.WRTDT)
+        'FileClose(Fno)
+        '2019/10/01 DEL E N D
+        Exit Sub
 ErrorLogFile: 
 		errcnt = errcnt + 1
 		If errcnt > SSS_ReTryCnt Then
@@ -1301,29 +1328,56 @@ ErrorLogFile:
 		
 		'
 		Call SSSWIN_LOGWRT("プログラム起動")
-		'
-		For I = 0 To SSS_MAX_DB - 1
-			If Trim(DB_PARA(I).DBID) = "USR1" Or Trim(DB_PARA(I).DBID) >= "USR4" Then
-				Call DB_Open(I, DB_PARA(I).DBID, DB_PARA(I).tblid)
-				If DBSTAT <> 0 Then
-					MsgBox("ファイルＯＰＥＮエラー" & DB_PARA(I).tblid & Str(DBSTAT)) : End
-				End If
-			Else
-				' Linkチェック外す 97/02/12
-				Call JB_Open(I)
-			End If
-		Next I
-		'
-		Call DB_GetFirst(DBN_SYSTBA, 1, BtrNormal)
-		''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-START)
-		Call DB_GetFirst(DBN_UNYMTA, 1, BtrNormal)
-		'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!SYSDT.Caption の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CType(FR_SSSMAIN.Controls("SYSDT"), Object).Caption = CNV_DATE(DB_UNYMTA.UNYDT)
-		''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-E N D)
-		
-		'''' ADD 2009/11/26  FKS) T.Yamamoto    Start    連絡票№702
-		'権限取得
-		If Get_Authority(DB_UNYMTA.UNYDT) = "9" Then
+        '
+        '2019/10/01 CHG START
+        'For I = 0 To SSS_MAX_DB - 1
+        '    If Trim(DB_PARA(I).DBID) = "USR1" Or Trim(DB_PARA(I).DBID) >= "USR4" Then
+        '        Call DB_Open(I, DB_PARA(I).DBID, DB_PARA(I).tblid)
+        '        If DBSTAT <> 0 Then
+        '            MsgBox("ファイルＯＰＥＮエラー" & DB_PARA(I).tblid & Str(DBSTAT)) : End
+        '        End If
+        '    Else
+        '        ' Linkチェック外す 97/02/12
+        '        Call JB_Open(I)
+        '    End If
+        'Next I
+        CON = DB_START()
+        '2019/10/01 CHG E N D
+
+        '2019/10/01 ADD START
+        For I = 0 To SSS_MAX_DB - 1
+            RsOpened(I) = True
+        Next I
+        '2019/10/01 ADD E N D
+
+        '
+        '2019/10/01 CHG START
+        'Call DB_GetFirst(DBN_SYSTBA, 1, BtrNormal)
+        If SYSTBA_SEARCH(DB_SYSTBA) <> 0 Then
+            Exit Sub
+        End If
+        '2019/10/01 CHG E N D
+
+        ''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-START)
+        '2019/10/01 CHG START
+        'Call DB_GetFirst(DBN_UNYMTA, 1, BtrNormal)
+        Call GetRowsCommon("UNYMTA", "")
+        If DB_UNYMTA.UNYKBA Is Nothing Then
+            DBSTAT = 1
+        Else
+            DBSTAT = 0
+        End If
+        '2019/10/01 CHG E N D
+        'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!SYSDT.Caption の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/01 CHG START
+        'CType(FR_SSSMAIN.Controls("SYSDT"), Object).Caption = CNV_DATE(DB_UNYMTA.UNYDT)
+        CType(FR_SSSMAIN.Controls("SYSDT"), Object).text = CNV_DATE(DB_UNYMTA.UNYDT)
+        '2019/10/01 CHG E N D
+        ''2006/10/07 画面日付の設定をマシン日付→運用日マスタの運用日に変更(ADD-E N D)
+
+        '''' ADD 2009/11/26  FKS) T.Yamamoto    Start    連絡票№702
+        '権限取得
+        If Get_Authority(DB_UNYMTA.UNYDT) = "9" Then
 			'起動権限なしの場合、処理終了
 			rtn = DSP_MsgBox(SSS_ERROR, "RUNAUTH", 0)
 			End

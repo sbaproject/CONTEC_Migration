@@ -99,11 +99,11 @@
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.FM_Panel3D14 = New System.Windows.Forms.Label()
-        Me.SYSDT = New System.Windows.Forms.Label()
         Me.CM_Execute = New System.Windows.Forms.PictureBox()
         Me.CM_SLIST = New System.Windows.Forms.PictureBox()
         Me.CM_EndCm = New System.Windows.Forms.PictureBox()
         Me.Image1 = New System.Windows.Forms.PictureBox()
+        Me.SYSDT = New System.Windows.Forms.Label()
         Me.FM_Panel3D1 = New System.Windows.Forms.Label()
         Me.TX_Mode = New System.Windows.Forms.TextBox()
         Me.CMDialogL = New System.Windows.Forms.PictureBox()
@@ -117,8 +117,8 @@
         Me._IM_Denkyu_2 = New System.Windows.Forms.PictureBox()
         Me._FM_Panel3D15_0 = New System.Windows.Forms.Label()
         Me._FM_Panel3D2_2 = New System.Windows.Forms.Label()
-        Me.TX_Message = New System.Windows.Forms.TextBox()
         Me._IM_Denkyu_0 = New System.Windows.Forms.PictureBox()
+        Me.TX_Message = New System.Windows.Forms.TextBox()
         Me.CNT = New System.Windows.Forms.Label()
         Me.TM_StartUp = New System.Windows.Forms.Timer(Me.components)
         Me.TX_CursorRest = New System.Windows.Forms.TextBox()
@@ -185,7 +185,6 @@
         CType(Me._IM_Denkyu_1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me._IM_Denkyu_2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me._FM_Panel3D15_0.SuspendLayout()
-        Me._FM_Panel3D2_2.SuspendLayout()
         CType(Me._IM_Denkyu_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FM_Panel3D15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FM_Panel3D2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -203,11 +202,12 @@
         Me.HD_WRTFSTTM.BackColor = System.Drawing.Color.White
         Me.HD_WRTFSTTM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.HD_WRTFSTTM.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.HD_WRTFSTTM.Font = New System.Drawing.Font("MS Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.HD_WRTFSTTM.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.HD_WRTFSTTM.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_WRTFSTTM.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.HD_WRTFSTTM.Location = New System.Drawing.Point(256, 88)
         Me.HD_WRTFSTTM.MaxLength = 12
+        Me.HD_WRTFSTTM.Multiline = True
         Me.HD_WRTFSTTM.Name = "HD_WRTFSTTM"
         Me.HD_WRTFSTTM.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.HD_WRTFSTTM.Size = New System.Drawing.Size(62, 20)
@@ -220,11 +220,12 @@
         Me.HD_WRTFSTDT.BackColor = System.Drawing.Color.White
         Me.HD_WRTFSTDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.HD_WRTFSTDT.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.HD_WRTFSTDT.Font = New System.Drawing.Font("MS Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.HD_WRTFSTDT.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.HD_WRTFSTDT.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_WRTFSTDT.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.HD_WRTFSTDT.Location = New System.Drawing.Point(179, 88)
         Me.HD_WRTFSTDT.MaxLength = 14
+        Me.HD_WRTFSTDT.Multiline = True
         Me.HD_WRTFSTDT.Name = "HD_WRTFSTDT"
         Me.HD_WRTFSTDT.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.HD_WRTFSTDT.Size = New System.Drawing.Size(79, 20)
@@ -237,14 +238,15 @@
         Me.HD_OPEID.BackColor = System.Drawing.Color.White
         Me.HD_OPEID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.HD_OPEID.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.HD_OPEID.Font = New System.Drawing.Font("MS Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.HD_OPEID.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.HD_OPEID.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_OPEID.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.HD_OPEID.Location = New System.Drawing.Point(320, 48)
+        Me.HD_OPEID.Location = New System.Drawing.Point(323, 48)
         Me.HD_OPEID.MaxLength = 10
+        Me.HD_OPEID.Multiline = True
         Me.HD_OPEID.Name = "HD_OPEID"
         Me.HD_OPEID.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_OPEID.Size = New System.Drawing.Size(57, 22)
+        Me.HD_OPEID.Size = New System.Drawing.Size(62, 22)
         Me.HD_OPEID.TabIndex = 18
         Me.HD_OPEID.TabStop = False
         Me.HD_OPEID.Text = "XXXXXX"
@@ -255,14 +257,15 @@
         Me.HD_OPENM.BackColor = System.Drawing.Color.White
         Me.HD_OPENM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.HD_OPENM.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.HD_OPENM.Font = New System.Drawing.Font("MS Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.HD_OPENM.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.HD_OPENM.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_OPENM.ImeMode = System.Windows.Forms.ImeMode.Hiragana
-        Me.HD_OPENM.Location = New System.Drawing.Point(376, 48)
+        Me.HD_OPENM.Location = New System.Drawing.Point(384, 48)
         Me.HD_OPENM.MaxLength = 24
+        Me.HD_OPENM.Multiline = True
         Me.HD_OPENM.Name = "HD_OPENM"
         Me.HD_OPENM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_OPENM.Size = New System.Drawing.Size(152, 22)
+        Me.HD_OPENM.Size = New System.Drawing.Size(140, 22)
         Me.HD_OPENM.TabIndex = 17
         Me.HD_OPENM.Text = "XXXXXXXXXXXXXXXXXXXX"
         '
@@ -290,14 +293,14 @@
         Me.HD_SOUCD.BackColor = System.Drawing.Color.White
         Me.HD_SOUCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.HD_SOUCD.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.HD_SOUCD.Font = New System.Drawing.Font("MS Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.HD_SOUCD.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.HD_SOUCD.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_SOUCD.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.HD_SOUCD.Location = New System.Drawing.Point(141, 78)
         Me.HD_SOUCD.MaxLength = 7
         Me.HD_SOUCD.Name = "HD_SOUCD"
         Me.HD_SOUCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_SOUCD.Size = New System.Drawing.Size(25, 19)
+        Me.HD_SOUCD.Size = New System.Drawing.Size(25, 18)
         Me.HD_SOUCD.TabIndex = 15
         Me.HD_SOUCD.TabStop = False
         Me.HD_SOUCD.Text = "999"
@@ -308,14 +311,14 @@
         Me.HD_SOUNM.BackColor = System.Drawing.SystemColors.Window
         Me.HD_SOUNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.HD_SOUNM.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.HD_SOUNM.Font = New System.Drawing.Font("MS Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.HD_SOUNM.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.HD_SOUNM.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_SOUNM.ImeMode = System.Windows.Forms.ImeMode.Hiragana
         Me.HD_SOUNM.Location = New System.Drawing.Point(165, 78)
         Me.HD_SOUNM.MaxLength = 24
         Me.HD_SOUNM.Name = "HD_SOUNM"
         Me.HD_SOUNM.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_SOUNM.Size = New System.Drawing.Size(148, 19)
+        Me.HD_SOUNM.Size = New System.Drawing.Size(148, 18)
         Me.HD_SOUNM.TabIndex = 14
         Me.HD_SOUNM.Text = "MMMMMMMMM1MMMMMMMMM2"
         '
@@ -325,14 +328,14 @@
         Me.HD_ODNYTDT.BackColor = System.Drawing.Color.White
         Me.HD_ODNYTDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.HD_ODNYTDT.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.HD_ODNYTDT.Font = New System.Drawing.Font("MS Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.HD_ODNYTDT.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.HD_ODNYTDT.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_ODNYTDT.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.HD_ODNYTDT.Location = New System.Drawing.Point(141, 38)
         Me.HD_ODNYTDT.MaxLength = 14
         Me.HD_ODNYTDT.Name = "HD_ODNYTDT"
         Me.HD_ODNYTDT.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_ODNYTDT.Size = New System.Drawing.Size(79, 19)
+        Me.HD_ODNYTDT.Size = New System.Drawing.Size(79, 18)
         Me.HD_ODNYTDT.TabIndex = 11
         Me.HD_ODNYTDT.Text = "9999/99/99"
         '
@@ -374,7 +377,6 @@
         '
         'FM_Panel3D14
         '
-        Me.FM_Panel3D14.Controls.Add(Me.SYSDT)
         Me.FM_Panel3D14.Controls.Add(Me.CM_Execute)
         Me.FM_Panel3D14.Controls.Add(Me.CM_SLIST)
         Me.FM_Panel3D14.Controls.Add(Me.CM_EndCm)
@@ -383,13 +385,6 @@
         Me.FM_Panel3D14.Name = "FM_Panel3D14"
         Me.FM_Panel3D14.Size = New System.Drawing.Size(544, 37)
         Me.FM_Panel3D14.TabIndex = 8
-        '
-        'SYSDT
-        '
-        Me.SYSDT.Location = New System.Drawing.Point(432, 9)
-        Me.SYSDT.Name = "SYSDT"
-        Me.SYSDT.Size = New System.Drawing.Size(94, 19)
-        Me.SYSDT.TabIndex = 9
         '
         'CM_Execute
         '
@@ -438,6 +433,13 @@
         Me.Image1.TabStop = False
         Me.Image1.Visible = False
         '
+        'SYSDT
+        '
+        Me.SYSDT.Location = New System.Drawing.Point(432, 9)
+        Me.SYSDT.Name = "SYSDT"
+        Me.SYSDT.Size = New System.Drawing.Size(94, 19)
+        Me.SYSDT.TabIndex = 9
+        '
         'FM_Panel3D1
         '
         Me.FM_Panel3D1.Controls.Add(Me.TX_Mode)
@@ -466,7 +468,7 @@
         Me.TX_Mode.MaxLength = 0
         Me.TX_Mode.Name = "TX_Mode"
         Me.TX_Mode.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TX_Mode.Size = New System.Drawing.Size(61, 37)
+        Me.TX_Mode.Size = New System.Drawing.Size(61, 20)
         Me.TX_Mode.TabIndex = 7
         Me.TX_Mode.Text = "”∞ƒﬁ"
         '
@@ -481,6 +483,7 @@
         Me.CMDialogL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.CMDialogL.Size = New System.Drawing.Size(1, 1)
         Me.CMDialogL.TabIndex = 6
+        Me.CMDialogL.TabStop = False
         '
         '_IM_Execute_1
         '
@@ -587,11 +590,23 @@
         '
         '_FM_Panel3D2_2
         '
-        Me._FM_Panel3D2_2.Controls.Add(Me.TX_Message)
         Me._FM_Panel3D2_2.Location = New System.Drawing.Point(39, 8)
         Me._FM_Panel3D2_2.Name = "_FM_Panel3D2_2"
         Me._FM_Panel3D2_2.Size = New System.Drawing.Size(489, 25)
         Me._FM_Panel3D2_2.TabIndex = 3
+        '
+        '_IM_Denkyu_0
+        '
+        Me._IM_Denkyu_0.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Denkyu_0.Enabled = False
+        Me._IM_Denkyu_0.Image = CType(resources.GetObject("_IM_Denkyu_0.Image"), System.Drawing.Image)
+        Me.IM_Denkyu.SetIndex(Me._IM_Denkyu_0, CType(0, Short))
+        Me._IM_Denkyu_0.Location = New System.Drawing.Point(12, 9)
+        Me._IM_Denkyu_0.Name = "_IM_Denkyu_0"
+        Me._IM_Denkyu_0.Size = New System.Drawing.Size(20, 22)
+        Me._IM_Denkyu_0.TabIndex = 4
+        Me._IM_Denkyu_0.TabStop = False
+        Me._IM_Denkyu_0.Visible = False
         '
         'TX_Message
         '
@@ -600,7 +615,7 @@
         Me.TX_Message.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TX_Message.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TX_Message.ForeColor = System.Drawing.Color.Black
-        Me.TX_Message.Location = New System.Drawing.Point(6, 6)
+        Me.TX_Message.Location = New System.Drawing.Point(40, 337)
         Me.TX_Message.MaxLength = 0
         Me.TX_Message.Multiline = True
         Me.TX_Message.Name = "TX_Message"
@@ -608,17 +623,6 @@
         Me.TX_Message.Size = New System.Drawing.Size(397, 16)
         Me.TX_Message.TabIndex = 4
         Me.TX_Message.Text = "ÉGÉâÅ[Ç‚ÉvÉçÉìÉvÉgÇÃÉÅÉbÉZÅ[ÉWÇ™èoóÕÇ≥ÇÍÇÈÇ∆Ç±ÇÎÇ≈Ç∑ÅB"
-        '
-        '_IM_Denkyu_0
-        '
-        Me._IM_Denkyu_0.Cursor = System.Windows.Forms.Cursors.Default
-        Me._IM_Denkyu_0.Image = CType(resources.GetObject("_IM_Denkyu_0.Image"), System.Drawing.Image)
-        Me.IM_Denkyu.SetIndex(Me._IM_Denkyu_0, CType(0, Short))
-        Me._IM_Denkyu_0.Location = New System.Drawing.Point(12, 9)
-        Me._IM_Denkyu_0.Name = "_IM_Denkyu_0"
-        Me._IM_Denkyu_0.Size = New System.Drawing.Size(20, 22)
-        Me._IM_Denkyu_0.TabIndex = 4
-        Me._IM_Denkyu_0.TabStop = False
         '
         'CNT
         '
@@ -647,11 +651,12 @@
         Me.TX_CursorRest.MaxLength = 0
         Me.TX_CursorRest.Name = "TX_CursorRest"
         Me.TX_CursorRest.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TX_CursorRest.Size = New System.Drawing.Size(22, 25)
+        Me.TX_CursorRest.Size = New System.Drawing.Size(22, 13)
         Me.TX_CursorRest.TabIndex = 0
         '
         'SSPanel51
         '
+        Me.SSPanel51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SSPanel51.Location = New System.Drawing.Point(240, 48)
         Me.SSPanel51.Name = "SSPanel51"
         Me.SSPanel51.Size = New System.Drawing.Size(84, 22)
@@ -660,11 +665,13 @@
         '
         'SSPanel52
         '
+        Me.SSPanel52.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SSPanel52.Location = New System.Drawing.Point(88, 88)
         Me.SSPanel52.Name = "SSPanel52"
         Me.SSPanel52.Size = New System.Drawing.Size(92, 20)
         Me.SSPanel52.TabIndex = 21
         Me.SSPanel52.Text = "ëOâÒé¿çsì˙éû"
+        Me.SSPanel52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'LB_DENSU
         '
@@ -691,122 +698,122 @@
         '
         Me.MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Execute, Me.Bar11, Me.MN_EndCm})
         Me.MN_Ctrl.Name = "MN_Ctrl"
-        Me.MN_Ctrl.Size = New System.Drawing.Size(59, 20)
+        Me.MN_Ctrl.Size = New System.Drawing.Size(57, 20)
         Me.MN_Ctrl.Text = "èàóù(&1)"
         '
         'MN_Execute
         '
         Me.MN_Execute.Name = "MN_Execute"
         Me.MN_Execute.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.MN_Execute.Size = New System.Drawing.Size(156, 22)
+        Me.MN_Execute.Size = New System.Drawing.Size(153, 22)
         Me.MN_Execute.Text = "é¿çs(&R)"
         '
         'Bar11
         '
         Me.Bar11.Name = "Bar11"
-        Me.Bar11.Size = New System.Drawing.Size(153, 6)
+        Me.Bar11.Size = New System.Drawing.Size(150, 6)
         '
         'MN_EndCm
         '
         Me.MN_EndCm.Name = "MN_EndCm"
-        Me.MN_EndCm.Size = New System.Drawing.Size(156, 22)
+        Me.MN_EndCm.Size = New System.Drawing.Size(153, 22)
         Me.MN_EndCm.Text = "èIóπ(&X)"
         '
         'MN_EditMn
         '
         Me.MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_APPENDC, Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
         Me.MN_EditMn.Name = "MN_EditMn"
-        Me.MN_EditMn.Size = New System.Drawing.Size(59, 20)
+        Me.MN_EditMn.Size = New System.Drawing.Size(57, 20)
         Me.MN_EditMn.Text = "ï“èW(&2)"
         '
         'MN_APPENDC
         '
         Me.MN_APPENDC.Name = "MN_APPENDC"
         Me.MN_APPENDC.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.MN_APPENDC.Size = New System.Drawing.Size(193, 22)
+        Me.MN_APPENDC.Size = New System.Drawing.Size(187, 22)
         Me.MN_APPENDC.Text = "âÊñ èâä˙âª(&S)"
         '
         'MN_ClearItm
         '
         Me.MN_ClearItm.Name = "MN_ClearItm"
-        Me.MN_ClearItm.Size = New System.Drawing.Size(193, 22)
+        Me.MN_ClearItm.Size = New System.Drawing.Size(187, 22)
         Me.MN_ClearItm.Text = "çÄñ⁄èâä˙âª"
         '
         'MN_UnDoItem
         '
         Me.MN_UnDoItem.Name = "MN_UnDoItem"
-        Me.MN_UnDoItem.Size = New System.Drawing.Size(193, 22)
+        Me.MN_UnDoItem.Size = New System.Drawing.Size(187, 22)
         Me.MN_UnDoItem.Text = "çÄñ⁄ïúå≥"
         '
         'Bar21
         '
         Me.Bar21.Name = "Bar21"
-        Me.Bar21.Size = New System.Drawing.Size(190, 6)
+        Me.Bar21.Size = New System.Drawing.Size(184, 6)
         '
         'MN_Cut
         '
         Me.MN_Cut.Name = "MN_Cut"
         Me.MN_Cut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.MN_Cut.Size = New System.Drawing.Size(193, 22)
+        Me.MN_Cut.Size = New System.Drawing.Size(187, 22)
         Me.MN_Cut.Text = "êÿÇËéÊÇË(&X)"
         '
         'MN_Copy
         '
         Me.MN_Copy.Name = "MN_Copy"
         Me.MN_Copy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.MN_Copy.Size = New System.Drawing.Size(193, 22)
+        Me.MN_Copy.Size = New System.Drawing.Size(187, 22)
         Me.MN_Copy.Text = "ÉRÉsÅ[(&C)"
         '
         'MN_Paste
         '
         Me.MN_Paste.Name = "MN_Paste"
         Me.MN_Paste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.MN_Paste.Size = New System.Drawing.Size(193, 22)
+        Me.MN_Paste.Size = New System.Drawing.Size(187, 22)
         Me.MN_Paste.Text = "ì\ÇËïtÇØ(&V)"
         '
         'MN_Oprt
         '
         Me.MN_Oprt.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Slist})
         Me.MN_Oprt.Name = "MN_Oprt"
-        Me.MN_Oprt.Size = New System.Drawing.Size(59, 20)
+        Me.MN_Oprt.Size = New System.Drawing.Size(57, 20)
         Me.MN_Oprt.Text = "ï‚èï(&3)"
         '
         'MN_Slist
         '
         Me.MN_Slist.Name = "MN_Slist"
         Me.MN_Slist.ShortcutKeys = System.Windows.Forms.Keys.F5
-        Me.MN_Slist.Size = New System.Drawing.Size(170, 22)
+        Me.MN_Slist.Size = New System.Drawing.Size(165, 22)
         Me.MN_Slist.Text = "åÛï‚ÇÃàÍóó(&L)"
         '
         'SM_ShortCut
         '
         Me.SM_ShortCut.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SM_AllCopy, Me.SM_FullPast, Me.SM_Esc})
         Me.SM_ShortCut.Name = "SM_ShortCut"
-        Me.SM_ShortCut.Size = New System.Drawing.Size(66, 20)
+        Me.SM_ShortCut.Size = New System.Drawing.Size(65, 20)
         Me.SM_ShortCut.Text = "ShortCut"
         Me.SM_ShortCut.Visible = False
         '
         'SM_AllCopy
         '
         Me.SM_AllCopy.Name = "SM_AllCopy"
-        Me.SM_AllCopy.Size = New System.Drawing.Size(172, 22)
+        Me.SM_AllCopy.Size = New System.Drawing.Size(163, 22)
         Me.SM_AllCopy.Text = "çÄñ⁄ì‡óeÉRÉsÅ[(&C)"
         '
         'SM_FullPast
         '
         Me.SM_FullPast.Name = "SM_FullPast"
-        Me.SM_FullPast.Size = New System.Drawing.Size(172, 22)
+        Me.SM_FullPast.Size = New System.Drawing.Size(163, 22)
         Me.SM_FullPast.Text = "çÄñ⁄Ç…ì\ÇËïtÇØ(&P)"
         '
         'SM_Esc
         '
         Me.SM_Esc.Name = "SM_Esc"
-        Me.SM_Esc.Size = New System.Drawing.Size(172, 22)
+        Me.SM_Esc.Size = New System.Drawing.Size(163, 22)
         Me.SM_Esc.Text = "éÊè¡Çµ(Esc)"
         '
         'btnF12
         '
-        Me.btnF12.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF12.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF12.Location = New System.Drawing.Point(903, 380)
         Me.btnF12.Name = "btnF12"
         Me.btnF12.Size = New System.Drawing.Size(75, 39)
@@ -817,7 +824,7 @@
         'btnF11
         '
         Me.btnF11.Enabled = False
-        Me.btnF11.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF11.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF11.Location = New System.Drawing.Point(826, 380)
         Me.btnF11.Name = "btnF11"
         Me.btnF11.Size = New System.Drawing.Size(75, 39)
@@ -828,7 +835,7 @@
         'btnF10
         '
         Me.btnF10.Enabled = False
-        Me.btnF10.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF10.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF10.Location = New System.Drawing.Point(748, 380)
         Me.btnF10.Name = "btnF10"
         Me.btnF10.Size = New System.Drawing.Size(75, 39)
@@ -838,7 +845,7 @@
         '
         'btnF9
         '
-        Me.btnF9.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF9.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF9.Location = New System.Drawing.Point(671, 380)
         Me.btnF9.Name = "btnF9"
         Me.btnF9.Size = New System.Drawing.Size(75, 39)
@@ -848,7 +855,7 @@
         '
         'btnF8
         '
-        Me.btnF8.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF8.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF8.Location = New System.Drawing.Point(577, 380)
         Me.btnF8.Name = "btnF8"
         Me.btnF8.Size = New System.Drawing.Size(75, 39)
@@ -858,7 +865,7 @@
         '
         'btnF7
         '
-        Me.btnF7.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF7.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF7.Location = New System.Drawing.Point(499, 380)
         Me.btnF7.Name = "btnF7"
         Me.btnF7.Size = New System.Drawing.Size(75, 39)
@@ -869,7 +876,7 @@
         'btnF6
         '
         Me.btnF6.Enabled = False
-        Me.btnF6.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF6.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF6.Location = New System.Drawing.Point(421, 380)
         Me.btnF6.Name = "btnF6"
         Me.btnF6.Size = New System.Drawing.Size(75, 39)
@@ -879,7 +886,7 @@
         '
         'btnF5
         '
-        Me.btnF5.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF5.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF5.Location = New System.Drawing.Point(343, 380)
         Me.btnF5.Name = "btnF5"
         Me.btnF5.Size = New System.Drawing.Size(75, 39)
@@ -889,7 +896,7 @@
         '
         'btnF4
         '
-        Me.btnF4.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF4.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF4.Location = New System.Drawing.Point(249, 380)
         Me.btnF4.Name = "btnF4"
         Me.btnF4.Size = New System.Drawing.Size(75, 39)
@@ -899,7 +906,7 @@
         '
         'btnF3
         '
-        Me.btnF3.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF3.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF3.Location = New System.Drawing.Point(170, 380)
         Me.btnF3.Name = "btnF3"
         Me.btnF3.Size = New System.Drawing.Size(75, 39)
@@ -909,7 +916,7 @@
         '
         'btnF2
         '
-        Me.btnF2.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF2.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF2.Location = New System.Drawing.Point(91, 380)
         Me.btnF2.Name = "btnF2"
         Me.btnF2.Size = New System.Drawing.Size(75, 39)
@@ -919,7 +926,7 @@
         '
         'btnF1
         '
-        Me.btnF1.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnF1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF1.Location = New System.Drawing.Point(12, 380)
         Me.btnF1.Name = "btnF1"
         Me.btnF1.Size = New System.Drawing.Size(75, 39)
@@ -941,7 +948,7 @@
         Me.ToolStripStatusLabel1.AutoSize = False
         Me.ToolStripStatusLabel1.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(194, 17)
         Me.ToolStripStatusLabel1.Spring = True
@@ -952,7 +959,7 @@
         '
         Me.ToolStripStatusLabel2.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(194, 17)
         Me.ToolStripStatusLabel2.Spring = True
@@ -962,7 +969,7 @@
         '
         Me.ToolStripStatusLabel3.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
         Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(194, 17)
         Me.ToolStripStatusLabel3.Spring = True
@@ -972,7 +979,7 @@
         '
         Me.ToolStripStatusLabel4.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
         Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(194, 17)
         Me.ToolStripStatusLabel4.Spring = True
@@ -982,7 +989,7 @@
         '
         Me.ToolStripStatusLabel5.BorderSides = CType((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ToolStripStatusLabel5.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.ToolStripStatusLabel5.Font = New System.Drawing.Font("MS Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ToolStripStatusLabel5.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
         Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(194, 17)
         Me.ToolStripStatusLabel5.Spring = True
@@ -1007,6 +1014,8 @@
         Me.Controls.Add(Me.btnF3)
         Me.Controls.Add(Me.btnF2)
         Me.Controls.Add(Me.btnF1)
+        Me.Controls.Add(Me.TX_Message)
+        Me.Controls.Add(Me.SYSDT)
         Me.Controls.Add(Me.HD_WRTFSTTM)
         Me.Controls.Add(Me.HD_WRTFSTDT)
         Me.Controls.Add(Me.HD_OPEID)
@@ -1022,7 +1031,7 @@
         Me.Controls.Add(Me.LB_DENSU)
         Me.Controls.Add(Me.MainMenu1)
         Me.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Font = New System.Drawing.Font("MS Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ForeColor = System.Drawing.SystemColors.WindowText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Location = New System.Drawing.Point(83, 215)
@@ -1032,12 +1041,14 @@
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "èoâ◊éwé¶ÉfÅ[É^çÏê¨"
         Me.Frame3D1.ResumeLayout(False)
+        Me.Frame3D1.PerformLayout()
         Me.FM_Panel3D14.ResumeLayout(False)
         CType(Me.CM_Execute, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CM_SLIST, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CM_EndCm, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Image1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FM_Panel3D1.ResumeLayout(False)
+        Me.FM_Panel3D1.PerformLayout()
         CType(Me.CMDialogL, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._IM_Execute_1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._IM_Execute_0, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1048,7 +1059,6 @@
         CType(Me._IM_Denkyu_1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._IM_Denkyu_2, System.ComponentModel.ISupportInitialize).EndInit()
         Me._FM_Panel3D15_0.ResumeLayout(False)
-        Me._FM_Panel3D2_2.ResumeLayout(False)
         CType(Me._IM_Denkyu_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FM_Panel3D15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FM_Panel3D2, System.ComponentModel.ISupportInitialize).EndInit()

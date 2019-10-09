@@ -1,0 +1,53 @@
+Attribute VB_Name = "INPTANCD_F57"
+Option Explicit
+'
+'スロット名      :銀行コード・画面項目スロット
+'ユニット名      :INPTANCD.FM1
+'記述者          :Standard Library
+'作成日付        :1996/05/28
+'使用プログラム  :BNKMT01
+'
+
+Function INPTANCD_Check(INPTANCD, ByVal De_Index)
+Dim Rtn As Integer
+
+    INPTANCD_Check = 0
+  
+    If Trim$(INPTANCD) = "" Then
+       ' INPTANCD_Check = -1
+       Call DP_SSSMAIN_INPTANNM(De_Index, " ")
+       
+    Else
+        Call DB_GetEq(DBN_TANMTA, 1, INPTANCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_TANMTA.DATKB = "9" Then
+                Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+                INPTANCD_Check = 1
+            Else
+                Call DP_SSSMAIN_INPTANCD(De_Index, DB_TANMTA.TANCD)
+                Call DP_SSSMAIN_INPTANNM(De_Index, Trim(DB_TANMTA.TANNM))
+            End If
+        Else
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            INPTANCD_Check = -1
+            Call DP_SSSMAIN_INPTANNM(De_Index, " ")
+        End If
+    End If
+    
+End Function
+
+Function INPTANCD_Slist(PP As clsPP, ByVal INPTANCD)
+    '
+    WLSTAN.Caption = "入力担当者一覧"
+    WLSTAN!LST.Clear
+    Call DB_GetFirst(DBN_TANMTA, 1, BtrNormal)
+    Do While DBSTAT = 0
+        If DB_TANMTA.DATKB <> "9" Then WLSTAN!LST.AddItem DB_TANMTA.TANCD & " " & DB_TANMTA.TANNM
+        Call DB_GetNext(DBN_TANMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = LenWid(DB_TANMTA.TANCD)
+    WLSTAN.Show 1
+    Unload WLSTAN
+    INPTANCD_Slist = PP.SlistCom
+End Function
+

@@ -1,0 +1,53 @@
+Attribute VB_Name = "ENDOUTDT_F51"
+Option Explicit
+'
+' スロット名        : 終了・入力日付・画面項目スロット
+' ユニット名        : ENDWRTDT.F61
+' 記述者            : Muratani
+' 作成日付          : 2006/07/24
+' 使用プログラム名  : IDOPR53
+'
+'
+
+Function ENDOUTDT_Check(ByVal ENDOUTDT, ByVal STTOUTDT)
+Dim Rtn As Integer
+    '
+    ENDOUTDT_Check = 0
+    If Trim(ENDOUTDT) = "" Then
+        Exit Function
+    End If
+    Rtn = CHECK_DATE(ENDOUTDT)
+    If Rtn Then
+        If ENDOUTDT < STTOUTDT Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "ENDCHECK", 0)
+            ENDOUTDT_Check = -1
+        End If
+    Else
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)
+        ENDOUTDT_Check = -1
+    End If
+End Function
+
+Function ENDOUTDT_InitVal(ByVal ENDOUTDT)
+    '
+''''ENDOUTDT_InitVal = Date
+''''ENDOUTDT_InitVal = DB_UNYMTA.UNYDT              '2006.12.06
+    ENDOUTDT_InitVal = ""
+End Function
+
+Function ENDOUTDT_Skip(CT_ENDOUTDT As Control, ByVal ENDOUTDT)
+    '
+    If Trim(ENDOUTDT) <> "" Then
+        CT_ENDOUTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
+        ENDOUTDT_Skip = False
+    End If
+End Function
+
+Function ENDOUTDT_Slist(PP As clsPP, ByVal ENDOUTDT)
+    '
+    Set_date = ENDOUTDT
+    WLS_DATE.Show 1
+    Unload WLS_DATE
+    ENDOUTDT_Slist = Set_date
+End Function
+

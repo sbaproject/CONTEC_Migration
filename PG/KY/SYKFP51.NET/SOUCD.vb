@@ -37,10 +37,12 @@ Module SOUCD_F53
 	End Function
 	
 	Function SOUCD_Slist(ByRef PP As clsPP, ByVal SOUCD As Object) As Object
-		'
-		DB_PARA(DBN_SOUMTA).KeyNo = 1
-		'UPGRADE_WARNING: オブジェクト SOUCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		DB_PARA(DBN_SOUMTA).KeyBuf = SOUCD
+        '
+        '2019/10/04 DEL START
+        'DB_PARA(DBN_SOUMTA).KeyNo = 1
+        'UPGRADE_WARNING: オブジェクト SOUCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'DB_PARA(DBN_SOUMTA).KeyBuf = SOUCD
+        '2019/10/04 DEL E N D
         WLSSOU1.ShowDialog()
         WLSSOU1.Close()
         'UPGRADE_WARNING: オブジェクト PP.SLISTCOM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。

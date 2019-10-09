@@ -9,50 +9,52 @@ Module FIXMT51_IEV
 	Public Const SSS_PrgNm As String = "å≈íËílÉ}ÉXÉ^ìoò^Å^í˘ê≥                    "
 	' === 20081002 === UPDATE S - RISE)Izumi
 	Public Const SSS_FraId As String = "MT1"
-	
-	Sub Init_Fil() 'Generated.
-		'
-		DBN_SYSTBA = 0
-		DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
-		DB_PARA(DBN_SYSTBA).DBID = "USR1"
-		'
-		DBN_SYSTBC = 1
-		DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
-		DB_PARA(DBN_SYSTBC).DBID = "USR1"
-		'
-		DBN_SYSTBH = 2
-		DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
-		DB_PARA(DBN_SYSTBH).DBID = "USR1"
-		'
-		DBN_UNYMTA = 3
-		DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
-		DB_PARA(DBN_UNYMTA).DBID = "USR1"
-		'
-		DBN_FIXMTA = 4
-		DB_PARA(DBN_FIXMTA).tblid = "FIXMTA"
-		DB_PARA(DBN_FIXMTA).DBID = "USR1"
-		SSS_MFIL = DBN_FIXMTA
-		'
-		DBN_TANMTA = 5
-		DB_PARA(DBN_TANMTA).tblid = "TANMTA"
-		DB_PARA(DBN_TANMTA).DBID = "USR1"
-		'
-		DBN_EXCTBZ = 6
-		DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
-		DB_PARA(DBN_EXCTBZ).DBID = "USR1"
-		'
-		DBN_GYMTBZ = 7
-		DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
-		DB_PARA(DBN_GYMTBZ).DBID = "USR1"
-		'
-		DBN_KNGMTB = 8
-		DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
-		DB_PARA(DBN_KNGMTB).DBID = "USR1"
-		
-		SSS_BILFL = 9
-	End Sub
-	
-	Sub SCR_FromMfil(ByVal De As Short) 'Generated.
+
+    Sub Init_Fil() 'Generated.
+        '2019/10/08 DEL START
+        '
+        'DBN_SYSTBA = 0
+        'DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+        'DB_PARA(DBN_SYSTBA).DBID = "USR1"
+        ''
+        'DBN_SYSTBC = 1
+        'DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+        'DB_PARA(DBN_SYSTBC).DBID = "USR1"
+        ''
+        'DBN_SYSTBH = 2
+        'DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+        'DB_PARA(DBN_SYSTBH).DBID = "USR1"
+        ''
+        'DBN_UNYMTA = 3
+        'DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+        'DB_PARA(DBN_UNYMTA).DBID = "USR1"
+        ''
+        'DBN_FIXMTA = 4
+        'DB_PARA(DBN_FIXMTA).tblid = "FIXMTA"
+        'DB_PARA(DBN_FIXMTA).DBID = "USR1"
+        'SSS_MFIL = DBN_FIXMTA
+        ''
+        'DBN_TANMTA = 5
+        'DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+        'DB_PARA(DBN_TANMTA).DBID = "USR1"
+        ''
+        'DBN_EXCTBZ = 6
+        'DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+        'DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+        ''
+        'DBN_GYMTBZ = 7
+        'DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+        'DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+        ''
+        'DBN_KNGMTB = 8
+        'DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+        'DB_PARA(DBN_KNGMTB).DBID = "USR1"
+
+        'SSS_BILFL = 9
+        '2019/10/08 DEL E N D
+    End Sub
+
+    Sub SCR_FromMfil(ByVal De As Short) 'Generated.
 		Call DP_SSSMAIN_CTLCD(De, DB_FIXMTA.CTLCD)
 		Call DP_SSSMAIN_CTLNM(De, DB_FIXMTA.CTLNM)
 		Call DP_SSSMAIN_FIXVAL(De, DB_FIXMTA.FIXVAL)
