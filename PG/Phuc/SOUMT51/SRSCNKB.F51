@@ -1,0 +1,39 @@
+Attribute VB_Name = "SRSCNKB_F51"
+Option Explicit
+'
+' スロット名         : ｼﾘｱﾙｽｷｬﾝ要否選択・画面項目スロット
+' ユニット名         : SRSCNKB.F01
+' 記述者             : Standard Library
+' 作成日付           : 2006/05/29
+' 使用プログラム名   : SOUMT51
+'
+'
+
+Function SRSCNKB_CheckC(SRSCNKB)
+Dim Rtn As Integer
+    '
+    SRSCNKB_CheckC = 0
+    Select Case SRSCNKB
+        Case "1", "9"
+        Case Else
+            SRSCNKB = "1"
+    End Select
+End Function
+'
+'Function SRSCNKB_InitVal(ByVal SOUCD, ByVal De_Index As Integer)
+'    If Trim$(SOUCD) = "" Then
+'     SRSCNKB_InitVal = " "
+'    Else
+'     SRSCNKB_InitVal = "1"
+'    End If
+'End Function
+Function SRSCNKB_DerivedC(ByVal SRSCNKB, ByVal SOUCD, ByVal De_Index As Integer)
+Dim Rtn As Integer
+    '
+  If Trim$(SOUCD) <> "" Then
+    If Trim(SRSCNKB) = "" Then
+
+     SRSCNKB_DerivedC = "1"
+    End If
+  End If
+End Function
