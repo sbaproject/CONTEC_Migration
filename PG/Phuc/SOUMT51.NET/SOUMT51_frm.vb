@@ -4888,5 +4888,120 @@ EventExitSub:
         PP_SSSMAIN.CloseCode = 1
         Call AE_EndCm_SSSMAIN()
     End Sub
+
+    Private Sub CS_SOUBSCD_Click(sender As Object, e As EventArgs) Handles CS_SOUBSCD.Click
+        Dim wk_Slisted As Object
+        Dim wk_SaveTx As Short
+        Dim wk_TxBase As Short
+        Dim wk_PxBase As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.De2 >= 0 And PP_SSSMAIN.Tx < 102 Then
+            wk_PxBase = 36 * PP_SSSMAIN.De
+            wk_TxBase = 20 * (PP_SSSMAIN.De - PP_SSSMAIN.TopDe)
+        Else
+            wk_PxBase = 36 * PP_SSSMAIN.TopDe
+            wk_TxBase = 0
+        End If
+        If AE_CursorCheck_SSSMAIN(CP_SSSMAIN(5 + wk_PxBase).TypeA, 5 + wk_TxBase) Then
+            PP_SSSMAIN.SlistCall = True
+            PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+            Call AE_CursorMove_SSSMAIN(5 + wk_TxBase)
+            If PP_SSSMAIN.Tx <> 5 + wk_TxBase Then PP_SSSMAIN.SSCommand5Ajst = True
+        Else
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+        PP_SSSMAIN.CursorDirection = 0
+    End Sub
+
+    Private Sub CS_SOUKOKB_Click(sender As Object, e As EventArgs) Handles CS_SOUKOKB.Click
+        Dim wk_Slisted As Object
+        Dim wk_SaveTx As Short
+        Dim wk_TxBase As Short
+        Dim wk_PxBase As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.De2 >= 0 And PP_SSSMAIN.Tx < 102 Then
+            wk_PxBase = 36 * PP_SSSMAIN.De
+            wk_TxBase = 20 * (PP_SSSMAIN.De - PP_SSSMAIN.TopDe)
+        Else
+            wk_PxBase = 36 * PP_SSSMAIN.TopDe
+            wk_TxBase = 0
+        End If
+        If AE_CursorCheck_SSSMAIN(CP_SSSMAIN(7 + wk_PxBase).TypeA, 7 + wk_TxBase) Then
+            PP_SSSMAIN.SlistCall = True
+            PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+            Call AE_CursorMove_SSSMAIN(7 + wk_TxBase)
+            If PP_SSSMAIN.Tx <> 7 + wk_TxBase Then PP_SSSMAIN.SSCommand5Ajst = True
+        Else
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+        PP_SSSMAIN.CursorDirection = 0
+    End Sub
+
+    Private Sub CS_SOUCD_Click(sender As Object, e As EventArgs) Handles CS_SOUCD.Click
+        Dim wk_Slisted As Object
+        Dim wk_SaveTx As Short
+        Dim wk_TxBase As Short
+        Dim wk_PxBase As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.De2 >= 0 And PP_SSSMAIN.Tx < 102 Then
+            wk_PxBase = 36 * PP_SSSMAIN.De
+            wk_TxBase = 20 * (PP_SSSMAIN.De - PP_SSSMAIN.TopDe)
+        Else
+            wk_PxBase = 36 * PP_SSSMAIN.TopDe
+            wk_TxBase = 0
+        End If
+        If AE_CursorCheck_SSSMAIN(CP_SSSMAIN(3 + wk_PxBase).TypeA, 3 + wk_TxBase) Then
+            PP_SSSMAIN.SlistCall = True
+            PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+            Call AE_CursorMove_SSSMAIN(3 + wk_TxBase)
+            If PP_SSSMAIN.Tx <> 3 + wk_TxBase Then PP_SSSMAIN.SSCommand5Ajst = True
+        Else
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+        PP_SSSMAIN.CursorDirection = 0
+    End Sub
+
+    Private Sub CS_SOUTRICD_Click(sender As Object, e As EventArgs) Handles CS_SOUTRICD.Click
+        Dim wk_Slisted As Object
+        Dim wk_SaveTx As Short
+        Dim wk_TxBase As Short
+        Dim wk_PxBase As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.De2 >= 0 And PP_SSSMAIN.Tx < 102 Then
+            wk_PxBase = 36 * PP_SSSMAIN.De
+            wk_TxBase = 20 * (PP_SSSMAIN.De - PP_SSSMAIN.TopDe)
+        Else
+            wk_PxBase = 36 * PP_SSSMAIN.TopDe
+            wk_TxBase = 0
+        End If
+        If AE_CursorCheck_SSSMAIN(CP_SSSMAIN(9 + wk_PxBase).TypeA, 9 + wk_TxBase) Then
+            PP_SSSMAIN.SlistCall = True
+            PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+            Call AE_CursorMove_SSSMAIN(9 + wk_TxBase)
+            If PP_SSSMAIN.Tx <> 9 + wk_TxBase Then PP_SSSMAIN.SSCommand5Ajst = True
+        Else
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+        PP_SSSMAIN.CursorDirection = 0
+    End Sub
+
+    Private Sub CM_UPDKB_Click(sender As Object, e As EventArgs) Handles CM_UPDKB.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.NeglectLostFocusCheck = True
+        'UPGRADE_WARNING: オブジェクト UPDKB_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If UPDKB_GetEvent() Then
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
     '2019/10/10 ADD END
 End Class

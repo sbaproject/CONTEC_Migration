@@ -50,10 +50,12 @@ Module SOUTRICD_F51
 	End Function
 	
 	Function SOUTRICD_Slist(ByRef PP As clsPP, ByVal SOUTRICD As Object) As Object
-		'
-		DB_PARA(DBN_TOKMTA).KeyNo = 1
-		'UPGRADE_WARNING: オブジェクト SOUTRICD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		DB_PARA(DBN_TOKMTA).KeyBuf = SOUTRICD
+        '
+        '2019/10/11 DEL START
+        'DB_PARA(DBN_TOKMTA).KeyNo = 1
+        ''UPGRADE_WARNING: オブジェクト SOUTRICD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'DB_PARA(DBN_TOKMTA).KeyBuf = SOUTRICD
+        '2019/10/11 DEL END
         WLSTOK3.ShowDialog()
         WLSTOK3.Close()
         'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。

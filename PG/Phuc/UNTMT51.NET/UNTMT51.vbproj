@@ -166,9 +166,6 @@
     <Compile Include="SSSWIN.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TANMTA.vb">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="UNTCD.vb">
       <SubType>Code</SubType>
     </Compile>
