@@ -13,7 +13,6 @@ Module ENDHINCD_F53
 	'
 	
 	Function ENDHINCD_Check(ByVal ENDHINCD As Object, ByVal STTHINCD As Object) As Object
-		Dim LenWid As Object
 		Dim rtn As Short
 		'
 		'UPGRADE_WARNING: オブジェクト ENDHINCD_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -26,6 +25,7 @@ Module ENDHINCD_F53
 			ENDHINCD_Check = -1
 			Exit Function
 		End If
+
         '2019/09/25 DEL START
         'Call HINMTA_RClear()
         '2019/09/25 DEL END
@@ -33,17 +33,25 @@ Module ENDHINCD_F53
         'UPGRADE_WARNING: オブジェクト LenWid(ENDHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If LenWid(ENDHINCD) = 0 Or Trim(ENDHINCD) = "" Or ENDHINCD = "ZZZZZZZZ" Then
 		Else
-			Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
-			''''''''If DBSTAT = 0 Then
-			''''''''    If DB_HINMTA.DATKB = "9" Then
-			''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
-			''''''''        ENDHINCD_Check = -1
-			''''''''    End If
-			''''''''Else
-			''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
-			''''''''    ENDHINCD_Check = -1
-			''''''''End If
-		End If
+
+            '2019/10/09 CHG START
+            'Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
+            GetRowsCommon(DBN_HINMTA, "Where HINCD = '" & ENDHINCD & "'")
+
+            If DBSTAT = 0 Then
+                Call SCR_FromENDHINMTA(-1)
+            End If
+            '2019/10/09 CHG END
+            ''''''''If DBSTAT = 0 Then
+            ''''''''    If DB_HINMTA.DATKB = "9" Then
+            ''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+            ''''''''        ENDHINCD_Check = -1
+            ''''''''    End If
+            ''''''''Else
+            ''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            ''''''''    ENDHINCD_Check = -1
+            ''''''''End If
+        End If
 		
 	End Function
 	
@@ -55,7 +63,7 @@ Module ENDHINCD_F53
 	
 	
 	Function ENDHINCD_Slist(ByRef PP As clsPP, ByVal STTHINCD As Object) As Object
-        'UPGRADE_WARNING: オブジェクト STTHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。		
+        'UPGRADE_WARNING: オブジェクト STTHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         '2019/09/25 DEL START
         'DB_PARA(DBN_HINMTA).KeyBuf = STTHINCD
         '2019/09/25 DEL END

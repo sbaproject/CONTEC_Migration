@@ -267,8 +267,8 @@ EventExitSub:
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
 		Dim Index As Short = BD_BNKCD.GetIndex(eventSender) 'Generated.
 		BD_BNKCD(Index).ReadOnly = False
-		Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BNKCD(Index))
-	End Sub
+        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BNKCD(Index))
+    End Sub
 	
 	'UPGRADE_WARNING: イベント BD_BNKNK.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
 	Private Sub BD_BNKNK_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BNKNK.TextChanged
@@ -404,8 +404,9 @@ EventExitSub:
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
 		Dim Index As Short = BD_BNKNK.GetIndex(eventSender) 'Generated.
-		BD_BNKNK(Index).ReadOnly = False
-	End Sub
+        BD_BNKNK(Index).ReadOnly = False
+        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BNKNK(Index))
+    End Sub
 	
 	'UPGRADE_WARNING: イベント BD_BNKNM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
 	Private Sub BD_BNKNM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_BNKNM.TextChanged
@@ -541,8 +542,9 @@ EventExitSub:
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
 		Dim Index As Short = BD_BNKNM.GetIndex(eventSender) 'Generated.
-		BD_BNKNM(Index).ReadOnly = False
-	End Sub
+        BD_BNKNM(Index).ReadOnly = False
+        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_BNKNM(Index))
+    End Sub
 	
 	'UPGRADE_WARNING: イベント BD_STNNK.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
 	Private Sub BD_STNNK_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_STNNK.TextChanged
@@ -678,8 +680,9 @@ EventExitSub:
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
 		Dim Index As Short = BD_STNNK.GetIndex(eventSender) 'Generated.
-		BD_STNNK(Index).ReadOnly = False
-	End Sub
+        BD_STNNK(Index).ReadOnly = False
+        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STNNK(Index))
+    End Sub
 	
 	'UPGRADE_WARNING: イベント BD_STNNM.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
 	Private Sub BD_STNNM_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_STNNM.TextChanged
@@ -815,8 +818,9 @@ EventExitSub:
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
 		Dim Y As Single = VB6.PixelsToTwipsY(eventArgs.Y)
 		Dim Index As Short = BD_STNNM.GetIndex(eventSender) 'Generated.
-		BD_STNNM(Index).ReadOnly = False
-	End Sub
+        BD_STNNM(Index).ReadOnly = False
+        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_STNNM(Index))
+    End Sub
 	
 	'UPGRADE_WARNING: イベント BD_UPDKB.TextChanged は、フォームが初期化されたときに発生します。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="88B12AE1-6DE0-48A0-86F1-60C0686C026A"' をクリックしてください。
 	Private Sub BD_UPDKB_TextChanged(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_UPDKB.TextChanged

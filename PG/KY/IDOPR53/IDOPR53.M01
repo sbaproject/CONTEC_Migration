@@ -1,0 +1,84 @@
+Attribute VB_Name = "IDOPR53_M01"
+Option Explicit
+'
+' スロット名        : 製番出庫日記帳・メインファイル更新スロット
+' ユニット名        : IDOPR53.M01
+' 記述者            : Standard Library
+' 作成日付          : 1998/02/24
+' 使用プログラム名  : IDOPR53
+'
+
+Function CHK_LCTL() As Integer
+End Function
+
+Function ENDCHK() As Integer
+End Function
+
+Sub Loop_Mfil()
+    Dim PlStat%
+    
+    G_PlCnd.sCndStr(0) = SSS_CLTID
+    G_PlCnd.sCndStr(1) = FR_SSSMAIN.HD_INPTANCD
+    G_PlCnd.sCndStr(2) = FR_SSSMAIN.HD_INPTANNM
+    G_PlCnd.sCndStr(3) = DeCNV_DATE(FR_SSSMAIN.HD_STTWRTDT)
+    G_PlCnd.sCndStr(4) = DeCNV_DATE(FR_SSSMAIN.HD_ENDWRTDT)
+    If Trim(FR_SSSMAIN.HD_STTWRTTM) <> "" Then
+        G_PlCnd.sCndStr(5) = Format(CDate(FR_SSSMAIN.HD_STTWRTTM), "hhmmss")
+    Else
+        G_PlCnd.sCndStr(5) = "      "
+    End If
+    If Trim(FR_SSSMAIN.HD_ENDWRTTM) <> "" Then
+        G_PlCnd.sCndStr(6) = Format(CDate(FR_SSSMAIN.HD_ENDWRTTM), "hhmmss")
+    Else
+        G_PlCnd.sCndStr(6) = "      "
+    End If
+    G_PlCnd.sCndStr(7) = DeCNV_DATE(FR_SSSMAIN.HD_STTOUTDT)
+    G_PlCnd.sCndStr(8) = DeCNV_DATE(FR_SSSMAIN.HD_ENDOUTDT)
+    
+    G_PlCnd.sCltID = SSS_CLTID
+    G_PlInfo.FCnt = 1
+    G_PlInfo.Fno(0) = DBN_IDOPR53
+    G_PlInfo.RCnt(0) = 1
+    G_PlInfo.ArrayFlg(0) = 0
+    '
+    Call Mfil_FromSCR(-1)
+    '
+    PlStat = DB_PlStart
+    PlStat = DB_PlCndSet
+    PlStat = DB_PlSet(DBN_IDOPR53, 0)
+    '
+''''PlStat = DB_PlExec(Get_EntryToPackage())
+    PlStat = DB_PlExec(SSS_PrgId & "_PACK.M_" & SSS_PrgId)
+    If PlStat <> 0 And PlStat <> 1485 Then
+        MsgBox "PL/SQL Error：" & PlStat
+    Else
+        SSS_LFILCNT = G_PlCnd2.nCndNum(0)
+        If SSS_LFILCNT > 0 Then
+            Call CNT_GAUGE
+        End If
+        '正常に終りました。
+        'CRWで出力可
+    End If
+    PlStat = DB_PlFree
+End Sub
+
+Function NEXTCHK() As Integer
+End Function
+
+Function NPSNCHK() As Integer
+End Function
+
+Function RPSNCHK() As Integer
+End Function
+
+Function SEL_RECORD() As String
+End Function
+
+Sub Set_Value()
+End Sub
+
+Function DeCNV_TIME(strTIME As String) As String
+
+    DeCNV_TIME = Mid(strTIME, 1, 2) & Mid(strTIME, 4, 2) & Mid(strTIME, 7, 2)
+
+End Function

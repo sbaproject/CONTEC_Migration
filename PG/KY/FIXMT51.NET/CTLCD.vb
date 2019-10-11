@@ -19,10 +19,24 @@ Module CTLCD_F51
 		If Trim(CTLCD) = "" Then
 			'CTLCD_Check = -1
 		Else
-			'UPGRADE_WARNING: オブジェクト CTLCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wkCTLCD = CTLCD & Space(Len(DB_FIXMTA.CTLCD) - Len(CTLCD))
-			Call DB_GetEq(DBN_FIXMTA, 1, wkCTLCD, BtrNormal)
-			If DBSTAT = 0 Then
+            'UPGRADE_WARNING: オブジェクト CTLCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/07 CHG START
+            'wkCTLCD = CTLCD & Space(Len(DB_FIXMTA.CTLCD) - Len(CTLCD))
+            If DB_FIXMTA.CTLCD Is Nothing Then
+                wkCTLCD = CTLCD & Space(10 - Len(CTLCD))
+            Else
+                wkCTLCD = CTLCD & Space(Len(DB_FIXMTA.CTLCD) - Len(CTLCD))
+            End If
+            '2019/10/07 CHG E N D
+
+            '2019/10/08 CHG START
+            'Call DB_GetEq(DBN_FIXMTA, 1, wkCTLCD, BtrNormal)
+            Dim pWhere As String = ""
+            pWhere = "WHERE CTLCD = '" & wkCTLCD & "'"
+            Call GetRowsCommon(DBN_FIXMTA, pWhere)
+            '2019/10/08 CHG E N D
+
+            If DBSTAT = 0 Then
 				If DB_FIXMTA.DATKB = "9" Then
 					Call Dsp_Prompt("RNOTFOUND", 1) ' 削除済レコードです。
 				Else

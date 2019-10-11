@@ -115,6 +115,9 @@
     <Compile Include="..\..\共通vb\COMMON_SEARCH.vb">
       <Link>COMMON_SEARCH.vb</Link>
     </Compile>
+    <Compile Include="..\..\共通vb\FORM_CMN.vb">
+      <Link>FORM_CMN.vb</Link>
+    </Compile>
     <Compile Include="..\..\共通vb\ICONSSS.designer.vb">
       <Link>ICONSSS.designer.vb</Link>
       <DependentUpon>ICONSSS.vb</DependentUpon>

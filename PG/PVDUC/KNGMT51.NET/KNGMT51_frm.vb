@@ -203,8 +203,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_DeleteCM.Tag = CStr(Index_Wk)
         'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_DeleteCM
-        btnF3.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF3
+        btnF6.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF6
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -388,8 +388,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_UnDoItem.Tag = CStr(Index_Wk)
         'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_UnDoItem
-        btnF3.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF3
+        dummyCtl.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = dummyCtl
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -462,8 +462,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_DeleteDE.Tag = CStr(Index_Wk)
         'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_DeleteDE
-        btnF8.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF8
+        dummyCtl.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = dummyCtl
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -499,8 +499,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_InsertDE.Tag = CStr(Index_Wk)
         'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_InsertDE
-        btnF7.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF7
+        dummyCtl.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = dummyCtl
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -721,8 +721,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_Prev.Tag = CStr(Index_Wk)
         '      Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Prev
-        btnF7.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF7
+        btnF3.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF3
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -758,8 +758,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_NextCm.Tag = CStr(Index_Wk)
         '      Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_NextCm
-        btnF8.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF8
+        btnF4.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF4
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -832,8 +832,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_Slist.Tag = CStr(Index_Wk)
         '      Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_Slist
-        btnF5.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF5
+        dummyCtl.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = dummyCtl
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -869,8 +869,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'MN_UPDKB.Tag = CStr(Index_Wk)
         '      Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = MN_UPDKB
-        btnF6.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF6
+        dummyCtl.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = dummyCtl
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -943,8 +943,8 @@ Friend Class FR_SSSMAIN
         '2019/09/25 CHG START
         'SM_Esc.Tag = CStr(Index_Wk)
         'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = SM_Esc
-        btnF9.Tag = CStr(Index_Wk)
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF9
+        dummyCtl.Tag = CStr(Index_Wk)
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = dummyCtl
         '2019/09/25 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
@@ -1014,8 +1014,12 @@ Friend Class FR_SSSMAIN
 
         Index_Wk = Index_Wk + 1
         '終了イメージ
-        CM_EndCm.Tag = Index_Wk
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = CM_EndCm
+        '2019/10/03 CHG START
+        'CM_EndCm.Tag = Index_Wk
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = CM_EndCm
+        btnF12.Tag = Index_Wk
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF12
+        '2019/10/03 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1051,8 +1055,12 @@ Friend Class FR_SSSMAIN
 
         Index_Wk = Index_Wk + 1
         '登録イメージ
-        CM_Execute.Tag = Index_Wk
-        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = CM_Execute
+        '2019/10/03 CHG START
+        'CM_Execute.Tag = Index_Wk
+        'Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = CM_Execute
+        btnF1.Tag = Index_Wk
+        Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl = btnF1
+        '2019/10/03 CHG END
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         Main_Inf.Dsp_Sub_Inf(Index_Wk).Detail.In_Area = IN_AREA_DSP_MN
         'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf().Detail.In_Typ の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -3000,8 +3008,10 @@ Friend Class FR_SSSMAIN
             Case CShort(CM_SLIST.Tag), CShort(MN_Slist.Tag)
                 '各検索画面呼出
                 Call F_Ctl_CS(Main_Inf)
-
-            Case CShort(CM_Execute.Tag), CShort(MN_Execute.Tag)
+                '2019/10/03 CHG START
+            'Case CShort(CM_Execute.Tag), CShort(MN_Execute.Tag)
+            Case CShort(btnF1.Tag)
+                '2019/10/03 CHG END
                 '登録
                 Call Ctl_MN_Execute_Click()
 
@@ -3012,12 +3022,16 @@ Friend Class FR_SSSMAIN
             Case CShort(CM_DELETEDE.Tag), CShort(MN_DeleteDE.Tag)
                 '明細行削除
                 Call Ctl_MN_DeleteDE_Click()
-
-            Case CShort(CM_PREV.Tag), CShort(MN_Prev.Tag)
+                '2019/10/03 CHG START
+            'Case CShort(CM_PREV.Tag), CShort(MN_Prev.Tag)
+            Case CShort(btnF3.Tag)
+                '2019/10/03 CHG END
                 '前頁へ
                 Call Ctl_CM_PREV_Click(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
-
-            Case CShort(CM_NEXTCm.Tag), CShort(MN_NextCm.Tag)
+                '2019/10/03 CHG START
+            'Case CShort(CM_NEXTCm.Tag), CShort(MN_NextCm.Tag)
+            Case CShort(btnF4.Tag)
+                '2019/10/03 CHG END
                 '次頁へ
                 Call Ctl_CM_NEXTCM_Click(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
 
@@ -3031,7 +3045,10 @@ Friend Class FR_SSSMAIN
                 '処理１
                 Call Ctl_MN_Ctrl_Click()
 
-            Case CShort(CM_EndCm.Tag), CShort(MN_EndCm.Tag)
+                '2019/10/03 CHG START
+            'Case CShort(CM_EndCm.Tag), CShort(MN_EndCm.Tag)
+            Case CShort(btnF12.Tag)
+                '2019/10/03 CHG END
                 '終了
                 Call Ctl_MN_EndCm_Click()
                 Exit Function
@@ -3040,7 +3057,10 @@ Friend Class FR_SSSMAIN
                 '編集２
                 Call Ctl_MN_EditMn_Click()
 
-            Case CShort(MN_APPENDC.Tag)
+                '2019/10/03 CHG START
+            'Case CShort(MN_APPENDC.Tag)
+            Case CShort(btnF9.Tag)
+                '2019/10/03 CHG END
                 '画面初期化
                 Call Ctl_MN_APPENDC_Click()
 
@@ -3093,7 +3113,10 @@ Friend Class FR_SSSMAIN
                 Call Ctl_SM_FullPast_Click()
                 'ADD START FKS)INABA 2009/10/08 *************
                 '連絡票№FC09101403
-            Case CShort(MN_DeleteCM.Tag)
+                '2019/10/03 CHG START
+            'Case CShort(MN_DeleteCM.Tag)
+            Case CShort(btnF6.Tag)
+                '2019/10/03 CHG END
                 '削除
                 Call Ctl_MN_DeleteCM_Click()
                 'ADD  END  FKS)INABA 2009/10/08 *************
@@ -4079,6 +4102,10 @@ Friend Class FR_SSSMAIN
         'システム共通処理
         Call CF_System_Process(Me)
 
+        '2019/10/03 CHG START
+        SetBar(Me)
+        '2019/10/03 CHG END
+
         '画面編集なしとする
         gv_bolKNGMT51_INIT = False
         gv_bolInit = False
@@ -4113,6 +4140,11 @@ Friend Class FR_SSSMAIN
             '2019/09/25 DEL END
         Else
             Cancel = True
+
+            '2019/10/03 ADD START
+            eventArgs.Cancel = Cancel
+            '2019/10/03 ADD END
+
             'ステータスバー初期化
             Call CF_Clr_Prompt(Main_Inf)
 
@@ -5543,5 +5575,65 @@ Friend Class FR_SSSMAIN
         End With
 
     End Function
+
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Ctl_Item_Click(btnF1)
+    End Sub
+
+    Private Sub btnF3_Click(sender As Object, e As EventArgs) Handles btnF3.Click
+        Ctl_Item_Click(btnF3)
+    End Sub
+
+    Private Sub btnF4_Click(sender As Object, e As EventArgs) Handles btnF4.Click
+        Ctl_Item_Click(btnF4)
+    End Sub
+
+    Private Sub btnF6_Click(sender As Object, e As EventArgs) Handles btnF6.Click
+        Ctl_Item_Click(btnF6)
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        Ctl_Item_Click(btnF9)
+    End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        Ctl_Item_Click(btnF12)
+    End Sub
+
+    Private Sub FR_SSSMAIN_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F3
+                    '前頁
+                    Me.btnF3.PerformClick()
+
+                Case Keys.F4
+                    '次頁
+                    Me.btnF4.PerformClick()
+
+                Case Keys.F6
+                    '解除
+                    Me.btnF6.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
     '2019/09/25 ADD END
 End Class

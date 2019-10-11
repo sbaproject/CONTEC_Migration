@@ -1,0 +1,49 @@
+Attribute VB_Name = "STTWRTDT_F57"
+Option Explicit
+'
+' スロット名        : 開始・入力日付・画面項目スロット
+' ユニット名        : STTWRTDT.F61
+' 記述者            : Muratani
+' 作成日付          : 2006/07/24
+' 使用プログラム名  :
+'
+
+Function STTWRTDT_CheckC(ByVal STTWRTDT)
+Dim Rtn As Integer
+    '
+    STTWRTDT_CheckC = 0
+    Rtn = CHECK_DATE(STTWRTDT)
+    If Rtn Then
+    Else
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)
+        STTWRTDT_CheckC = -1
+    End If
+End Function
+
+
+Function STTWRTDT_InitVal(ByVal STTWRTDT)
+    '
+''''STTWRTDT_InitVal = Date
+   
+'2008/0929 CHG START FKS)NAKATA
+'運用日付からシステム日付に変更
+'   STTWRTDT_InitVal = DB_UNYMTA.UNYDT
+   STTWRTDT_InitVal = Format(Date, "YYYYMMDD")
+'2008/09/29 CHG E.N.D FKS)NAKATA
+
+End Function
+
+Function STTWRTDT_Skip(CT_STTWRTDT As Control)
+    '
+    CT_STTWRTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
+    STTWRTDT_Skip = False
+End Function
+
+Function STTWRTDT_Slist(PP As clsPP, ByVal STTWRTDT)
+    '
+    Set_date = STTWRTDT
+    WLS_DATE.Show 1
+    Unload WLS_DATE
+    STTWRTDT_Slist = Set_date
+End Function
+

@@ -82,10 +82,7 @@ Module SSSMSG_BAS
 	
 	'キーイン可能な文字かどうかの判定。
 	Public Function AE_KeyInOkChar(ByRef PP As clsPP, ByRef Pm_Moji As String, ByVal Pm_KeyInOkClass As Short) As Boolean
-		Static LenWid As Object
-		Static Cn_Mode3 As Object
 		AE_KeyInOkChar = False
-		'UPGRADE_WARNING: オブジェクト PP.Mode の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If PP.Mode = Cn_Mode3 Then Exit Function '---------- 'V6.54I
 		Select Case UCase(Chr(Pm_KeyInOkClass))
 			Case "0" '数字
@@ -228,7 +225,6 @@ Module SSSMSG_BAS
 		'
 		AE_NL = Chr(13) & Chr(10) 'Original
 		'
-		'UPGRADE_WARNING: オブジェクト PP.SlistCall の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		PP.SlistCall = False
 		'
 		'SSS_VALKB(有効データ区分)=True の場合、明細行なしでも登録可
@@ -245,11 +241,9 @@ Module SSSMSG_BAS
 			'------------------------------------------------------------------ 'SSS/Win
 			'------------------------------------------------------------------ 'Original
 			Case "APPEND" ' データを更新します。
-				'UPGRADE_WARNING: オブジェクト PP.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If PP.MainForm = "SSSMAIN" Then
 					Select Case frm
 						Case "ET"
-							'UPGRADE_WARNING: オブジェクト PP_sssmain.LastDe の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 							If PP_sssmain.LastDe = 0 And SSS_VALKB = False Then
 								rtn = DSP_MsgBox(SSS_EEE, "_APPEND", 2)
 								AE_MsgLibrary = True
@@ -267,7 +261,6 @@ Module SSSMSG_BAS
 				End If
 			Case "APPENDC"
 			Case "CANCEL" ' 入力途中のデータは反映されません。
-				'UPGRADE_WARNING: オブジェクト PP.SuppressGotLostFocus の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				PP.SuppressGotLostFocus = 1 'Original (Cancel 処理の中で、以下のように MsgBox を発する場合にのみ必要です) 'V6.47
 				If DSP_MsgBox(SSS_EEE, "_CANCEL", 0) <> 6 Then AE_MsgLibrary = True
 			Case "CLEARDE" ' 空白の明細行を先に削除してください。
@@ -285,7 +278,6 @@ Module SSSMSG_BAS
 			Case "DELETECM" ' データを削除します。
 				If DSP_MsgBox(SSS_EEE, "_DELETECM", 0) <> 6 Then AE_MsgLibrary = True
 			Case "ENDCK" ' 終了します。
-				'UPGRADE_WARNING: オブジェクト PP.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If PP.MainForm = "SSSMAIN" Then
 					Select Case frm
 						'Case "PR"
@@ -300,7 +292,6 @@ Module SSSMSG_BAS
 					AE_MsgLibrary = False
 				End If
 			Case "ENDCM" ' 終了します。
-				'UPGRADE_WARNING: オブジェクト PP.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If PP.MainForm = "SSSMAIN" Then
 					If DSP_MsgBox(SSS_EEE, "_ENDCM", 0) <> 6 Then AE_MsgLibrary = True
 				Else
@@ -349,11 +340,9 @@ Module SSSMSG_BAS
 			Case "SELECTCM" ' 入力途中のデータは反映されません。
 			Case "SELECTE" '1998/03/30  追加
 			Case "UPDATE" ' 更新します。
-				'UPGRADE_WARNING: オブジェクト PP.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If PP.MainForm = "SSSMAIN" Then
 					Select Case frm
 						Case "ET"
-							'UPGRADE_WARNING: オブジェクト PP_sssmain.LastDe の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 							If PP_sssmain.LastDe = 0 And SSS_VALKB = False Then
 								rtn = DSP_MsgBox(SSS_EEE, "_UPDATE", 2)
 								AE_MsgLibrary = True
@@ -365,11 +354,9 @@ Module SSSMSG_BAS
 					End Select
 				End If
 			Case "UPDATE2" ' 更新します。
-				'UPGRADE_WARNING: オブジェクト PP.MainForm の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If PP.MainForm = "SSSMAIN" Then
 					Select Case frm
 						Case "ET"
-							'UPGRADE_WARNING: オブジェクト PP_sssmain.LastDe の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 							If PP_sssmain.LastDe = 0 And SSS_VALKB = False Then
 								rtn = DSP_MsgBox(SSS_EEE, "_UPDATE2", 2)
 								AE_MsgLibrary = True

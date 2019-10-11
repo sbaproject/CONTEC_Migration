@@ -54,19 +54,22 @@ Module SYKFP51_E01
 		Else
 			Call SSSWIN_EXCTBZ_OPEN()
 		End If
-		
-		
-		'出庫予定ファイル作成実行
-		EXEPATH = AE_AppPath & "\SYKFP70.EXE /CLTID:" & SSS_CLTID.Value & " /PGID:" & SSS_PrgId & " /PGNM:" & SSS_PrgNm
-		I = VBEXEC1(FR_SSSMAIN.Handle.ToInt32, 1, EXEPATH)
-		
-		strSQL = ""
-		strSQL = strSQL & "SELECT MAX(WRTFSTDT || WRTFSTTM) FROM FDNTHA"
-		strSQL = strSQL & "  WHERE PGID = 'SYKFP51'"
-		Call DB_GetSQL2(DBN_FDNTHA, strSQL)
-		
-		WG_WRTFSTDT = Left(CStr(DB_ExtNum.ExtNum(0)), 8)
-		WG_WRTFSTTM = Mid(CStr(DB_ExtNum.ExtNum(0)), 9, 6)
-		
-	End Sub
+
+
+        '出庫予定ファイル作成実行
+
+        EXEPATH = AE_AppPath & "\SYKFP70.EXE /CLTID:" & SSS_CLTID.Value & " /PGID:" & SSS_PrgId & " /PGNM:" & SSS_PrgNm
+        '2019/10/03 仮
+        'I = VBEXEC1(FR_SSSMAIN.Handle.ToInt32, 1, EXEPATH)
+
+        '      strSQL = ""
+        'strSQL = strSQL & "SELECT MAX(WRTFSTDT || WRTFSTTM) FROM FDNTHA"
+        'strSQL = strSQL & "  WHERE PGID = 'SYKFP51'"
+        'Call DB_GetSQL2(DBN_FDNTHA, strSQL)
+
+        'WG_WRTFSTDT = Left(CStr(DB_ExtNum.ExtNum(0)), 8)
+        'WG_WRTFSTTM = Mid(CStr(DB_ExtNum.ExtNum(0)), 9, 6)
+        '2019/10/03 仮
+
+    End Sub
 End Module

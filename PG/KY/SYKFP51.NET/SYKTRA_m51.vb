@@ -35,12 +35,16 @@ Module SYKTRA_M51
 		
 		' 条件設定
 		G_PlCnd.nJobMode = 0
-		For I = 0 To MAX_CNDARR - 1
-			G_PlCnd.sCndStr(I) = New String(Chr(Asc("A") + I), 20)
-			G_PlCnd.nCndNum(I) = I + 1
-		Next I
-		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ODNYTDT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		G_PlCnd.sCndStr(0) = RD_SSSMAIN_ODNYTDT(0)
+        For I = 0 To MAX_CNDARR - 1
+            '2019/10/04 ADD START
+            ReDim Preserve G_PlCnd.sCndStr(I)
+            ReDim Preserve G_PlCnd.nCndNum(I)
+            '2019/10/04 ADD E N D
+            G_PlCnd.sCndStr(I) = New String(Chr(Asc("A") + I), 20)
+            G_PlCnd.nCndNum(I) = I + 1
+        Next I
+        'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ODNYTDT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        G_PlCnd.sCndStr(0) = RD_SSSMAIN_ODNYTDT(0)
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_SOUCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		G_PlCnd.sCndStr(1) = RD_SSSMAIN_SOUCD(0)
 		G_PlCnd.sCndStr(2) = DB_UNYMTA.UNYDT
@@ -60,28 +64,29 @@ Module SYKTRA_M51
 		Else
 			Call DB_EndTransaction()
 		End If
-		PlStat = DB_PlFree
-		
-		'出庫予定ファイルの削除
-		''''Call DB_GetGrEq(DBN_SYKTRA, 3, SSS_CLTID & SSS_PrgId, BtrNormal)
-		''''Do While (DBSTAT = 0) And (Trim$(DB_SYKTRA.CLTID) = Trim$(SSS_CLTID)) _
-		'''''                      And (Trim$(DB_SYKTRA.PGID) = Trim$(SSS_PrgId))
-		''''    Call DB_Delete(DBN_SYKTRA)
-		''''    Call DB_GetNext(DBN_SYKTRA, BtrNormal)
-		''''Loop
-		
-		'出庫予定ファイル作成実行
-		EXEPATH = AE_AppPath & "\SYKFP70.EXE /CLTID:" & SSS_CLTID.Value & " /PGID:" & SSS_PrgId & " /PGNM:" & SSS_PrgNm
-		I = VBEXEC1(FR_SSSMAIN.Handle.ToInt32, 1, EXEPATH)
-		
-		
-		'INIファイル取得用関数
-		FILE1_PATH = GP_GetIni(AE_AppPath & "SYKFP51.ini", "FILEPATH", "FILE1")
-		lngFileNo1 = FreeFile
-		FileOpen(lngFileNo1, FILE1_PATH, OpenMode.Output)
-		FileClose(lngFileNo1)
-		
-	End Sub
+		PlStat = DB_PlFree()
+
+        '出庫予定ファイルの削除
+        ''''Call DB_GetGrEq(DBN_SYKTRA, 3, SSS_CLTID & SSS_PrgId, BtrNormal)
+        ''''Do While (DBSTAT = 0) And (Trim$(DB_SYKTRA.CLTID) = Trim$(SSS_CLTID)) _
+        '''''                      And (Trim$(DB_SYKTRA.PGID) = Trim$(SSS_PrgId))
+        ''''    Call DB_Delete(DBN_SYKTRA)
+        ''''    Call DB_GetNext(DBN_SYKTRA, BtrNormal)
+        ''''Loop
+
+        '出庫予定ファイル作成実行
+        EXEPATH = AE_AppPath & "\SYKFP70.EXE /CLTID:" & SSS_CLTID.Value & " /PGID:" & SSS_PrgId & " /PGNM:" & SSS_PrgNm
+        '2019/10/04 DEL START
+        'I = VBEXEC1(FR_SSSMAIN.Handle.ToInt32, 1, EXEPATH)
+
+
+        'INIファイル取得用関数
+        'FILE1_PATH = GP_GetIni(AE_AppPath & "SYKFP51.ini", "FILEPATH", "FILE1")
+        'lngFileNo1 = FreeFile
+        'FileOpen(lngFileNo1, FILE1_PATH, OpenMode.Output)
+        'FileClose(lngFileNo1)
+        '2019/10/04 DEL E N D
+    End Sub
 	
 	' @(f) GP_GetIni
 	'

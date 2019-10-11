@@ -88,15 +88,25 @@ Module BNKPR51_IEV
 
         SSS_LSTMFIL = 0
 	End Sub
-	
-	Sub SCR_FromMfil(ByVal De As Short) 'Generated.
-		Call DP_SSSMAIN_ENDBNKCD(De, DB_BNKPR51.ENDBNKCD)
-		Call DP_SSSMAIN_ENDBNKNM(De, DB_BNKPR51.ENDBNKNM)
-		Call DP_SSSMAIN_STTBNKCD(De, DB_BNKPR51.STTBNKCD)
-		Call DP_SSSMAIN_STTBNKNM(De, DB_BNKPR51.STTBNKNM)
-	End Sub
-	
-	Sub Mfil_FromSCR(ByVal De As Short) 'Generated.
+
+    Sub SCR_FromMfil(ByVal De As Short) 'Generated.      
+        '2019/10/03 CHG START
+        'Call DP_SSSMAIN_ENDBNKCD(De, DB_BNKPR51.ENDBNKCD)
+        'Call DP_SSSMAIN_ENDBNKNM(De, DB_BNKPR51.ENDBNKNM)
+        'Call DP_SSSMAIN_STTBNKCD(De, DB_BNKPR51.STTBNKCD)
+        'Call DP_SSSMAIN_STTBNKNM(De, DB_BNKPR51.STTBNKNM)
+        Call DP_SSSMAIN_STTBNKCD(De, DB_BNKMTA.BNKCD)
+        Call DP_SSSMAIN_STTBNKNM(De, DB_BNKMTA.BNKNM)
+        '2019/10/03 CHG END
+    End Sub
+    '2019/10/03 ADD START
+    Sub SCR_FromMfilENDBNKCD(ByVal De As Short) 'Generated.
+        Call DP_SSSMAIN_ENDBNKCD(De, DB_BNKMTA.BNKCD)
+        Call DP_SSSMAIN_ENDBNKNM(De, DB_BNKMTA.BNKNM)
+    End Sub
+    '2019/10/03 END START
+
+    Sub Mfil_FromSCR(ByVal De As Short) 'Generated.
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ENDBNKCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		DB_BNKPR51.ENDBNKCD = RD_SSSMAIN_ENDBNKCD(De)
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ENDBNKNM() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。

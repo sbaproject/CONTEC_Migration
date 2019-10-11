@@ -1439,12 +1439,11 @@ Module SSSMAIN0003
 			ls_sql = ls_sql & "WHERE"
 			ls_sql = ls_sql & "  TRA.DATKB  =  '" & CF_Ora_String(gc_strDATKB_USE, 1) & "' "
 			ls_sql = ls_sql & "AND"
-			ls_sql = ls_sql & "  TRA.MITNO  =  '" & CF_Ora_String(HIKET51_Interface.DENNO1, 10) & "' "
-            'ls_sql = ls_sql & "AND"
-            'ls_sql = ls_sql & "  TRA.MITNOV =  '" & CF_Ora_String(HIKET51_Interface.DENNO2, 2) & "' "
-            'ls_sql = ls_sql & "AND"
-            'ls_sql = ls_sql & "  TRA.LINNO  =  '" & CF_Ora_String(HIKET51_Interface.LINNO, 3) & "' "
-
+            ls_sql = ls_sql & "  TRA.MITNO  =  '" & CF_Ora_String(HIKET51_Interface.DENNO1, 10) & "' "
+            ls_sql = ls_sql & "AND"
+            ls_sql = ls_sql & "  TRA.MITNOV =  '" & CF_Ora_String(HIKET51_Interface.DENNO2, 2) & "' "
+            ls_sql = ls_sql & "AND"
+            ls_sql = ls_sql & "  TRA.LINNO  =  '" & CF_Ora_String(HIKET51_Interface.LINNO, 3) & "' "
             ls_sql = ls_sql & "FOR UPDATE"
 
             ' DBアクセス
@@ -1473,9 +1472,9 @@ Module SSSMAIN0003
                     '2019/10/01 CHG END
                     intRet = AE_CmnMsgLibrary(SSS_PrgNm, gc_strMsgHIKET51_E_901, pm_All) ' MSG内容:他のプログラムで更新されたため、更新できません。
                     GoTo Err_F_Ctl_Upd_Process
-                End If
+                    End If
 
-            End If
+                End If
 			
 			' 受注トランの場合
 		Else
@@ -6201,14 +6200,18 @@ ERR_F_GET_BD_DATA:
 			Call CF_Set_Item_Direct(Dsp_Value, pm_All.Dsp_Sub_Inf(Trg_Index), pm_All)
 			
 		End With
-		
-		'■ボディ部
-		'スクロールバー値設定
-		'最大値
-		Call CF_Set_VScrl_Max(F_Get_VScrl_Max(pm_intCnt, pm_All.Dsp_Base.Dsp_Body_Cnt), pm_All.Dsp_Sub_Inf(CShort(pm_All.Bd_Vs_Scrl.Tag)), pm_All)
-		
-		'最上行設定（検索直後なので１）
-		pm_All.Dsp_Body_Inf.Cur_Top_Index = 1
+
+        '■ボディ部
+        'スクロールバー値設定
+        '最大値
+        '2019/10/01 CHG START
+        'Call CF_Set_VScrl_Max(F_Get_VScrl_Max(pm_intCnt, pm_All.Dsp_Base.Dsp_Body_Cnt), pm_All.Dsp_Sub_Inf(CShort(pm_All.Bd_Vs_Scrl.Tag)), pm_All)
+        pm_intCnt = IIf(pm_intCnt = 1, pm_intCnt, pm_intCnt - 1)
+        Call CF_Set_VScrl_Max(pm_intCnt, pm_All.Dsp_Sub_Inf(CShort(pm_All.Bd_Vs_Scrl.Tag)), pm_All)
+        '2019/10/01 CHG END
+
+        '最上行設定（検索直後なので１）
+        pm_All.Dsp_Body_Inf.Cur_Top_Index = 1
 		
 		'明細編集メイン
 		Call CF_Body_Dsp(pm_All)

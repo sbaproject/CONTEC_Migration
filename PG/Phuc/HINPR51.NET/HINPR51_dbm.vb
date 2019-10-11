@@ -221,6 +221,7 @@ Module HINPR51_DBM
 	Public DB_HINPR51 As TYPE_DB_HINPR51
 	Public DBN_HINPR51 As Short
     ' Index1( RPTCLTID + HINCD )
+
     '2019/09/25 DEL START
     'Sub HINPR51_RClear()
     '    Dim TmpStat As Object

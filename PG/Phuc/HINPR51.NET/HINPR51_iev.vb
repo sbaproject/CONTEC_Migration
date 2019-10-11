@@ -15,11 +15,9 @@ Module HINPR51_IEV
 	Public WG_ENDHINNM As String
 	Public WG_HINKB As String
 
-    Sub Init_Fil()
+    Sub Init_Fil() 'Generated.
+        '
         '2019/09/25 DEL START
-        'Dim DBN_CLSMTB As Object
-        'Dim DBN_CLSMTA As Object 'Generated.
-        ''
         'DBN_HINPR51 = 0
         'DB_PARA(DBN_HINPR51).tblid = "HINPR51"
         'DB_PARA(DBN_HINPR51).DBID = "USR9"
@@ -53,18 +51,12 @@ Module HINPR51_IEV
         'DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
         'DB_PARA(DBN_SYSTBH).DBID = "USR1"
         ''
-        ''UPGRADE_WARNING: オブジェクト DBN_CLSMTA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'DBN_CLSMTA = 8
-        ''UPGRADE_WARNING: オブジェクト DBN_CLSMTA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'DB_PARA(DBN_CLSMTA).tblid = "CLSMTA"
-        ''UPGRADE_WARNING: オブジェクト DBN_CLSMTA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'DB_PARA(DBN_CLSMTA).DBID = "USR1"
         ''
-        ''UPGRADE_WARNING: オブジェクト DBN_CLSMTB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'DBN_CLSMTB = 9
-        ''UPGRADE_WARNING: オブジェクト DBN_CLSMTB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'DB_PARA(DBN_CLSMTB).tblid = "CLSMTB"
-        ''UPGRADE_WARNING: オブジェクト DBN_CLSMTB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'DB_PARA(DBN_CLSMTB).DBID = "USR1"
         ''
         'DBN_TANMTA = 10
@@ -98,20 +90,27 @@ Module HINPR51_IEV
         'DBN_KNGMTB = 17
         'DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
         'DB_PARA(DBN_KNGMTB).DBID = "USR1"
-
-        'SSS_LSTMFIL = DBN_HINPR51
         '2019/09/25 DEL END
         SSS_LSTMFIL = 0
     End Sub
 
-    Sub SCR_FromMfil(ByVal De As Short) 'Generated.
-		Call DP_SSSMAIN_ENDHINCD(De, DB_HINPR51.ENDHINCD)
-		Call DP_SSSMAIN_ENDHINNM(De, DB_HINPR51.ENDHINNM)
-		Call DP_SSSMAIN_STTHINCD(De, DB_HINPR51.STTHINCD)
-		Call DP_SSSMAIN_STTHINNM(De, DB_HINPR51.STTHINNM)
-	End Sub
-	
-	Sub Mfil_FromSCR(ByVal De As Short) 'Generated.
+    Sub SCR_FromMfil(ByVal De As Short) 'Generated.   
+        Call DP_SSSMAIN_ENDHINCD(De, DB_HINPR51.ENDHINCD)
+        Call DP_SSSMAIN_ENDHINNM(De, DB_HINPR51.ENDHINNM)
+        Call DP_SSSMAIN_STTHINCD(De, DB_HINPR51.STTHINCD)
+        Call DP_SSSMAIN_STTHINNM(De, DB_HINPR51.STTHINNM)
+    End Sub
+
+    Sub SCR_FromSTTHINMTA(ByVal De As Short) 'Generated.       
+        Call DP_SSSMAIN_STTHINCD(De, DB_HINPR51.STTHINCD)
+        Call DP_SSSMAIN_STTHINNM(De, DB_HINPR51.STTHINNM)
+    End Sub
+    Sub SCR_FromENDHINMTA(ByVal De As Short) 'Generated.
+        Call DP_SSSMAIN_ENDHINCD(De, DB_HINPR51.ENDHINCD)
+        Call DP_SSSMAIN_ENDHINNM(De, DB_HINPR51.ENDHINNM)
+    End Sub
+
+    Sub Mfil_FromSCR(ByVal De As Short) 'Generated.
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ENDHINCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		DB_HINPR51.ENDHINCD = RD_SSSMAIN_ENDHINCD(De)
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ENDHINNM() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -261,8 +260,7 @@ Module HINPR51_IEV
 	Sub UpdSmf() 'Generated.
 	End Sub
 	
-	Sub WK_FromScr(ByVal De As Short)
-		Dim LenWid As Object 'Generated.
+	Sub WK_FromScr(ByVal De As Short) 'Generated.
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_OPEID() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		WG_OPEID = RD_SSSMAIN_OPEID(0)
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_OPENM() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -292,13 +290,7 @@ Module HINPR51_IEV
 	End Sub
 
     '2019/09/25 DEL START
-    '   Sub SetBuf(ByVal Fno As Short)
-    '	Dim DB_CLSMTB As Object
-    '	Dim DBN_CLSMTB As Object
-    '	Dim DB_CLSMTA As Object
-    '	Dim DBN_CLSMTA As Object 'Generated.
-    '	'UPGRADE_WARNING: オブジェクト DBN_CLSMTB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-    '	'UPGRADE_WARNING: オブジェクト DBN_CLSMTA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    'Sub SetBuf(ByVal Fno As Short) 'Generated.
     '	Select Case Fno
     '		Case DBN_HINPR51
     '			'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
@@ -357,13 +349,7 @@ Module HINPR51_IEV
     '	End Select
     'End Sub
 
-    '   Sub ResetBuf(ByVal Fno As Short)
-    '       Dim DB_CLSMTB As Object
-    '       Dim DBN_CLSMTB As Object
-    '       Dim DB_CLSMTA As Object
-    '       Dim DBN_CLSMTA As Object 'Generated.
-    '       'UPGRADE_WARNING: オブジェクト DBN_CLSMTB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-    '       'UPGRADE_WARNING: オブジェクト DBN_CLSMTA の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+    '   Sub ResetBuf(ByVal Fno As Short) 'Generated.
     '       Select Case Fno
     '           Case DBN_HINPR51
     '               'UPGRADE_ISSUE: LSet は 1 つの型から別の型に割り当てることはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="899FA812-8F71-4014-BAEE-E5AF348BA5AA"' をクリックしてください。
@@ -421,7 +407,7 @@ Module HINPR51_IEV
     '               DB_KNGMTB = LSet(G_LB)
     '       End Select
     '   End Sub
-    '2019/09/25 DEL E N D
+    '2019/09/25 DEL END
 
     Function RecordFromObject(ByVal Fno As Short) As Short 'Generated.
 		Dim Rtc As Short

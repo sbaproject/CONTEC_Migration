@@ -4492,43 +4492,28 @@ EventExitSub:
     End Sub
 
     Private Sub CS_UDNDT_Click(sender As Object, e As EventArgs) Handles CS_UDNDT.Click
-        PP_SSSMAIN.ButtonClick = True
-        If Not PP_SSSMAIN.Operable Then Exit Sub
-        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-        Call AE_Slist_SSSMAIN()
-        PP_SSSMAIN.NeglectLostFocusCheck = False
-        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+        Call CS_UDNDT_Click()
+
     End Sub
 
     Private Sub CS_HENRSNCD_Click(sender As Object, e As EventArgs) Handles CS_HENRSNCD.Click
-        PP_SSSMAIN.ButtonClick = True
-        If Not PP_SSSMAIN.Operable Then Exit Sub
-        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-        Call AE_Slist_SSSMAIN()
-        PP_SSSMAIN.NeglectLostFocusCheck = False
-        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+        Call CS_HENRSNCD_Click()
+
+
     End Sub
 
     Private Sub CS_HENSTTCD_Click(sender As Object, e As EventArgs) Handles CS_HENSTTCD.Click
-        PP_SSSMAIN.ButtonClick = True
-        If Not PP_SSSMAIN.Operable Then Exit Sub
-        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-        Call AE_Slist_SSSMAIN()
-        PP_SSSMAIN.NeglectLostFocusCheck = False
-        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+        Call CS_HENSTTCD_Click()
+
     End Sub
 
     Private Sub CS_OUTSOUCD_Click(sender As Object, e As EventArgs) Handles CS_OUTSOUCD.Click
-        PP_SSSMAIN.ButtonClick = True
-        If Not PP_SSSMAIN.Operable Then Exit Sub
-        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
-        Call AE_Slist_SSSMAIN()
-        PP_SSSMAIN.NeglectLostFocusCheck = False
-        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+        Call CS_OUTSOUCD_Click()
+
+    End Sub
+
+    Private Sub CS_UDNNO_Click(sender As Object, e As EventArgs) Handles CS_UDNNO.Click
+        Call CS_UDNNO_Click()
     End Sub
     '2019/09/30 ADD E N D
 End Class

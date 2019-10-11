@@ -1,9 +1,13 @@
 Option Strict Off
 Option Explicit On
 Module SSSMAIN0002
-	'プログラム総括情報プロシジャ
-	
-	Sub AE_PSIR_SSSMAIN() 'Generated.
+    'プログラム総括情報プロシジャ
+    '2019/10/02 ADD START
+    Public Structure Cls_Dsp_Body_Bus_Inf
+        Dim dummy
+    End Structure
+    '2019/10/02 ADD E N D
+    Sub AE_PSIR_SSSMAIN() 'Generated.
 		ReDim AE_PSI(6)
 		AE_PSIC = 7
 		AE_PSI(0) = "HD_ODNYTDT 3303 date 10 - A L Y 0 YYYY/MM/DD - 1 -"

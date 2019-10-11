@@ -649,6 +649,7 @@ EventExitSub:
                 'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
                 '2019/09/20　仮
                 'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                SM_ShortCut.Show()
                 '2019/09/20　仮
                 PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
@@ -754,6 +755,7 @@ EventExitSub:
                 'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
                 '2019/09/20　仮
                 'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                SM_ShortCut.Show()
                 '2019/09/20　仮
                 PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
@@ -858,6 +860,7 @@ EventExitSub:
                 'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
                 '2019/09/20　仮
                 'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                SM_ShortCut.Show()
                 '2019/09/20　仮
                 PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
@@ -963,6 +966,7 @@ EventExitSub:
                 'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
                 '2019/09/20　仮
                 'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                SM_ShortCut.Show()
                 '2019/09/20　仮
                 PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
@@ -1098,6 +1102,7 @@ EventExitSub:
                 'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
                 '2019/09/20　仮
                 'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                SM_ShortCut.Show()
                 '2019/09/20　仮
                 PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
@@ -1203,6 +1208,7 @@ EventExitSub:
                 'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
                 '2019/09/20　仮
                 'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+                SM_ShortCut.Show()
                 '2019/09/20　仮
                 PP_SSSMAIN.NeglectPopupFocus = False
 				wk_Tx = PP_SSSMAIN.Tx
@@ -1647,6 +1653,7 @@ EventExitSub:
             'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
             '2019/09/20　仮
             'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+            SM_ShortCut.Show()
             '2019/09/20　仮
             TX_Message.Enabled = True
 		End If
@@ -1687,6 +1694,7 @@ EventExitSub:
             'UPGRADE_ISSUE: Form メソッド FR_SSSMAIN.PopupMenu はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="CC4C7EC0-C903-48FC-ACCC-81861D12DA4A"' をクリックしてください。
             '2019/09/20　仮
             'PopupMenu(SM_ShortCut, vbPopupMenuLeftButton)
+            SM_ShortCut.Show()
             '2019/09/20　仮
             TX_Mode.Enabled = True
         End If

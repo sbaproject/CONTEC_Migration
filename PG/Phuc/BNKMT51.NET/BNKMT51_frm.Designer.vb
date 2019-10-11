@@ -203,33 +203,33 @@
         Me.IM_SelectCm = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(Me.components)
         Me.IM_Slist = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(Me.components)
         Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
-        Me.MN_Ctrl = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_Execute = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_Ctrl = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Execute = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Bar11 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_EndCm = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_EditMn = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_APPENDC = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_ClearItm = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_UnDoItem = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_ClearDE = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_DeleteDE = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_InsertDE = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_UnDoDe = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_EndCm = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_EditMn = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_APPENDC = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_ClearItm = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_UnDoItem = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_ClearDE = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_DeleteDE = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_InsertDE = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_UnDoDe = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Bar21 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_Cut = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_Copy = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_Paste = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_Oprt = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_Prev = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_NextCm = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_SelectCm = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_Cut = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Copy = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Paste = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Oprt = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_Prev = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_NextCm = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_SelectCm = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Bar31 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MN_Slist = New System.Windows.Forms.ContextMenuStrip()
-        Me.MN_UPDKB = New System.Windows.Forms.ContextMenuStrip()
-        Me.SM_ShortCut = New System.Windows.Forms.ContextMenuStrip()
-        Me.SM_AllCopy = New System.Windows.Forms.ContextMenuStrip()
-        Me.SM_FullPast = New System.Windows.Forms.ContextMenuStrip()
-        Me.SM_Esc = New System.Windows.Forms.ContextMenuStrip()
+        Me.MN_Slist = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MN_UPDKB = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_ShortCut = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_AllCopy = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_FullPast = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SM_Esc = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.btnF12 = New System.Windows.Forms.Button()
         Me.btnF11 = New System.Windows.Forms.Button()
         Me.btnF10 = New System.Windows.Forms.Button()
@@ -301,7 +301,6 @@
         CType(Me.IM_PREV, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IM_SelectCm, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IM_Slist, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MainMenu1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -943,6 +942,8 @@
         '
         'CS_BNKCD
         '
+        Me.CS_BNKCD.FlatAppearance.BorderColor = System.Drawing.Color.Gray
+        Me.CS_BNKCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CS_BNKCD.Location = New System.Drawing.Point(56, 84)
         Me.CS_BNKCD.Name = "CS_BNKCD"
         Me.CS_BNKCD.Size = New System.Drawing.Size(79, 22)
@@ -952,6 +953,8 @@
         '
         'CM_UPDKB
         '
+        Me.CM_UPDKB.FlatAppearance.BorderColor = System.Drawing.Color.Gray
+        Me.CM_UPDKB.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CM_UPDKB.Location = New System.Drawing.Point(14, 84)
         Me.CM_UPDKB.Name = "CM_UPDKB"
         Me.CM_UPDKB.Size = New System.Drawing.Size(43, 22)
@@ -1016,22 +1019,22 @@
         '
         '
         'MainMenu1
-        '        
+        '
         Me.MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.MainMenu1.Name = "MainMenu1"
         Me.MainMenu1.Size = New System.Drawing.Size(998, 24)
         Me.MainMenu1.TabIndex = 33
         '
         'MN_Ctrl
-        '        
+        '
         Me.MN_Ctrl.Name = "MN_Ctrl"
-        Me.MN_Ctrl.Size = New System.Drawing.Size(57, 20)
+        Me.MN_Ctrl.Size = New System.Drawing.Size(61, 4)
         Me.MN_Ctrl.Text = "処理(&1)"
         '
         'MN_Execute
         '
         Me.MN_Execute.Name = "MN_Execute"
-        Me.MN_Execute.Size = New System.Drawing.Size(153, 22)
+        Me.MN_Execute.Size = New System.Drawing.Size(61, 4)
         Me.MN_Execute.Text = "登録(&R)"
         '
         'Bar11
@@ -1042,55 +1045,55 @@
         'MN_EndCm
         '
         Me.MN_EndCm.Name = "MN_EndCm"
-        Me.MN_EndCm.Size = New System.Drawing.Size(153, 22)
+        Me.MN_EndCm.Size = New System.Drawing.Size(61, 4)
         Me.MN_EndCm.Text = "終了(&X)"
         '
         'MN_EditMn
-        '        
+        '
         Me.MN_EditMn.Name = "MN_EditMn"
-        Me.MN_EditMn.Size = New System.Drawing.Size(57, 20)
+        Me.MN_EditMn.Size = New System.Drawing.Size(61, 4)
         Me.MN_EditMn.Text = "編集(&2)"
         '
         'MN_APPENDC
         '
         Me.MN_APPENDC.Name = "MN_APPENDC"
-        Me.MN_APPENDC.Size = New System.Drawing.Size(187, 22)
+        Me.MN_APPENDC.Size = New System.Drawing.Size(61, 4)
         Me.MN_APPENDC.Text = "画面初期化(&S)"
         '
         'MN_ClearItm
         '
         Me.MN_ClearItm.Name = "MN_ClearItm"
-        Me.MN_ClearItm.Size = New System.Drawing.Size(187, 22)
+        Me.MN_ClearItm.Size = New System.Drawing.Size(61, 4)
         Me.MN_ClearItm.Text = "項目初期化"
         '
         'MN_UnDoItem
         '
         Me.MN_UnDoItem.Name = "MN_UnDoItem"
-        Me.MN_UnDoItem.Size = New System.Drawing.Size(187, 22)
+        Me.MN_UnDoItem.Size = New System.Drawing.Size(61, 4)
         Me.MN_UnDoItem.Text = "項目復元"
         '
         'MN_ClearDE
         '
         Me.MN_ClearDE.Name = "MN_ClearDE"
-        Me.MN_ClearDE.Size = New System.Drawing.Size(187, 22)
+        Me.MN_ClearDE.Size = New System.Drawing.Size(61, 4)
         Me.MN_ClearDE.Text = "明細行初期化"
         '
         'MN_DeleteDE
         '
         Me.MN_DeleteDE.Name = "MN_DeleteDE"
-        Me.MN_DeleteDE.Size = New System.Drawing.Size(187, 22)
+        Me.MN_DeleteDE.Size = New System.Drawing.Size(61, 4)
         Me.MN_DeleteDE.Text = "明細行削除(&T)"
         '
         'MN_InsertDE
         '
         Me.MN_InsertDE.Name = "MN_InsertDE"
-        Me.MN_InsertDE.Size = New System.Drawing.Size(187, 22)
+        Me.MN_InsertDE.Size = New System.Drawing.Size(61, 4)
         Me.MN_InsertDE.Text = "明細行挿入(&I)"
         '
         'MN_UnDoDe
         '
         Me.MN_UnDoDe.Name = "MN_UnDoDe"
-        Me.MN_UnDoDe.Size = New System.Drawing.Size(187, 22)
+        Me.MN_UnDoDe.Size = New System.Drawing.Size(61, 4)
         Me.MN_UnDoDe.Text = "明細行復元"
         '
         'Bar21
@@ -1101,43 +1104,43 @@
         'MN_Cut
         '
         Me.MN_Cut.Name = "MN_Cut"
-        Me.MN_Cut.Size = New System.Drawing.Size(187, 22)
+        Me.MN_Cut.Size = New System.Drawing.Size(61, 4)
         Me.MN_Cut.Text = "切り取り(&X)"
         '
         'MN_Copy
         '
         Me.MN_Copy.Name = "MN_Copy"
-        Me.MN_Copy.Size = New System.Drawing.Size(187, 22)
+        Me.MN_Copy.Size = New System.Drawing.Size(61, 4)
         Me.MN_Copy.Text = "コピー(&C)"
         '
         'MN_Paste
         '
         Me.MN_Paste.Name = "MN_Paste"
-        Me.MN_Paste.Size = New System.Drawing.Size(187, 22)
+        Me.MN_Paste.Size = New System.Drawing.Size(61, 4)
         Me.MN_Paste.Text = "貼り付け(&V)"
         '
         'MN_Oprt
-        '        
+        '
         Me.MN_Oprt.Name = "MN_Oprt"
-        Me.MN_Oprt.Size = New System.Drawing.Size(57, 20)
+        Me.MN_Oprt.Size = New System.Drawing.Size(61, 4)
         Me.MN_Oprt.Text = "補助(&3)"
         '
         'MN_Prev
         '
         Me.MN_Prev.Name = "MN_Prev"
-        Me.MN_Prev.Size = New System.Drawing.Size(175, 22)
+        Me.MN_Prev.Size = New System.Drawing.Size(61, 4)
         Me.MN_Prev.Text = "前頁"
         '
         'MN_NextCm
         '
         Me.MN_NextCm.Name = "MN_NextCm"
-        Me.MN_NextCm.Size = New System.Drawing.Size(175, 22)
+        Me.MN_NextCm.Size = New System.Drawing.Size(61, 4)
         Me.MN_NextCm.Text = "次頁"
         '
         'MN_SelectCm
         '
         Me.MN_SelectCm.Name = "MN_SelectCm"
-        Me.MN_SelectCm.Size = New System.Drawing.Size(175, 22)
+        Me.MN_SelectCm.Size = New System.Drawing.Size(61, 4)
         Me.MN_SelectCm.Text = "一覧表示"
         '
         'Bar31
@@ -1148,38 +1151,37 @@
         'MN_Slist
         '
         Me.MN_Slist.Name = "MN_Slist"
-        Me.MN_Slist.Size = New System.Drawing.Size(175, 22)
+        Me.MN_Slist.Size = New System.Drawing.Size(61, 4)
         Me.MN_Slist.Text = "ウインドウ表示(&L)"
         '
         'MN_UPDKB
         '
         Me.MN_UPDKB.Name = "MN_UPDKB"
-        Me.MN_UPDKB.Size = New System.Drawing.Size(175, 22)
+        Me.MN_UPDKB.Size = New System.Drawing.Size(61, 4)
         Me.MN_UPDKB.Text = "モード変更"
         '
         'SM_ShortCut
-        '        
+        '
         Me.SM_ShortCut.Name = "SM_ShortCut"
-        Me.SM_ShortCut.Size = New System.Drawing.Size(65, 20)
+        Me.SM_ShortCut.Size = New System.Drawing.Size(61, 4)
         Me.SM_ShortCut.Text = "ShortCut"
-        Me.SM_ShortCut.Visible = False
         '
         'SM_AllCopy
         '
         Me.SM_AllCopy.Name = "SM_AllCopy"
-        Me.SM_AllCopy.Size = New System.Drawing.Size(163, 22)
+        Me.SM_AllCopy.Size = New System.Drawing.Size(61, 4)
         Me.SM_AllCopy.Text = "項目内容コピー(&C)"
         '
         'SM_FullPast
         '
         Me.SM_FullPast.Name = "SM_FullPast"
-        Me.SM_FullPast.Size = New System.Drawing.Size(163, 22)
+        Me.SM_FullPast.Size = New System.Drawing.Size(61, 4)
         Me.SM_FullPast.Text = "項目に貼り付け(&P)"
         '
         'SM_Esc
         '
         Me.SM_Esc.Name = "SM_Esc"
-        Me.SM_Esc.Size = New System.Drawing.Size(163, 22)
+        Me.SM_Esc.Size = New System.Drawing.Size(61, 4)
         Me.SM_Esc.Text = "取消し(Esc)"
         '
         'btnF12
@@ -1281,7 +1283,7 @@
         Me.btnF3.Name = "btnF3"
         Me.btnF3.Size = New System.Drawing.Size(75, 35)
         Me.btnF3.TabIndex = 246
-        Me.btnF3.Text = "(F3)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "削除"
+        Me.btnF3.Text = "(F3)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "前頁"
         Me.btnF3.UseVisualStyleBackColor = True
         '
         'btnF2
@@ -1472,8 +1474,6 @@
         CType(Me.IM_PREV, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IM_SelectCm, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IM_Slist, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MainMenu1.ResumeLayout(False)
-        Me.MainMenu1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

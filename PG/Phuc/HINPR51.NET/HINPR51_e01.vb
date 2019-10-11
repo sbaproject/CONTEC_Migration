@@ -15,9 +15,7 @@ Module HINPR51_E01
 	End Sub
 	
 	Sub InitDsp()
-		Dim AE_BackColor As Object
 		'背景色設定
-		'UPGRADE_WARNING: オブジェクト AE_BackColor() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		AE_BackColor(1) = &H8000000F
 		
 		CL_SSSMAIN(0) = 1
@@ -36,9 +34,9 @@ Module HINPR51_E01
 		If gs_PRTAUTH = "1" Then '印刷権限有り
 			CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
-			CType(FR_SSSMAIN.Controls("MN_LSTART"), Object).Enabled = True
-			CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
-		Else
+            'CType(FR_SSSMAIN.Controls("MN_LSTART"), Object).Enabled = True
+            'CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
+        Else
 			CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = False
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("MN_LSTART"), Object).Enabled = False
@@ -47,9 +45,9 @@ Module HINPR51_E01
 		If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = True
-			CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
-			CType(FR_SSSMAIN.Controls("MN_FSTART"), Object).Enabled = True
-		Else
+            'CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
+            'CType(FR_SSSMAIN.Controls("MN_FSTART"), Object).Enabled = True
+        Else
 			CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
 			CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = False
 			CType(FR_SSSMAIN.Controls("MN_VSTART"), Object).Enabled = True
@@ -64,12 +62,16 @@ Module HINPR51_E01
 		DLGLST1.ShowDialog()
 		Select Case SSS_RTNWIN
 			Case 0 ' 印刷
-				Rtn = LSTART_GetEvent()
-			Case 1 ' プレビュー
+                '2019/10/07 DEL START
+                'rtn = LSTART_GetEvent()
+                '2019/10/07 DEL END
+            Case 1 ' プレビュー
 				Rtn = VSTART_GetEvent()
 			Case 2 ' ファイル出力
-				Rtn = FSTART_GetEvent()
-			Case Else
+                '2019/10/07 DEL START
+                'rtn = FSTART_GetEvent()
+                '2019/10/07 DEL END
+            Case Else
 		End Select
 	End Sub
 End Module
