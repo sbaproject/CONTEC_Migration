@@ -1,0 +1,61 @@
+Attribute VB_Name = "SKHINGRP_F51"
+Option Explicit
+'
+' スロット名        : 商品群・画面項目スロット
+' ユニット名        : SKHINGRP.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/06/14
+' 使用プログラム名  : HINMT51
+'
+Function SKHINGRP_CheckC(ByVal SKHINGRP, ByVal RNKCD, ByVal URISETDT, ByVal De_INDEX)
+Dim rtn As Integer
+Dim i As Integer
+Dim wkSKHINGRP As String
+    '
+    SKHINGRP_CheckC = 0
+    If Trim$(SKHINGRP) = "" Then
+        SKHINGRP_CheckC = -1
+    Else
+        wkSKHINGRP = SKHINGRP + Space(Len(DB_MEIMTA.MEICDA) - Len(SKHINGRP))
+        Call DB_GetEq(DBN_MEIMTA, 2, "043" & wkSKHINGRP, BtrNormal)
+        If DBSTAT = 0 Then
+            Call SCR_FromMEIMTA(0)
+'''''            Call DB_GetEq(DBN_RNKMTA, 1, SKHINGRP & RNKCD & Format$(URISETDT, "YYYYMMDD"), BtrNormal)
+'''''            If DBSTAT = 0 Then
+'''''                Call SCR_FromMfil(De_INDEX)
+'''''                If DB_RNKMTA.DATKB = "9" Then
+'''''                    Call DP_SSSMAIN_UPDKB(De_INDEX, "削除")
+'''''                Else
+'''''                    Call DP_SSSMAIN_UPDKB(De_INDEX, "更新")
+'''''                End If
+'''''            Else
+'''''                Call DP_SSSMAIN_UPDKB(De_INDEX, "追加")
+'''''            End If
+        Else
+            rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            SKHINGRP_CheckC = -1
+        End If
+    End If
+    
+    For i = 0 To PP_SSSMAIN.MaxDspC
+'        Call SCR_FromMfil(I)
+        Call DP_SSSMAIN_RNKCD(i, " ")
+        Call DP_SSSMAIN_SIKRT(i, " ")
+        Call DP_SSSMAIN_URISETDT(i, " ")
+        Call DP_SSSMAIN_UPDKB(i, " ")
+    Next i
+
+End Function
+Function SKHINGRP_Slist(PP As clsPP)
+    WLS_MEI1.Caption = "仕切用商品群一覧検索"
+    WLS_MEI1!LST.Clear
+    Call DB_GetGrEq(DBN_MEIMTA, 3, "043", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "043"
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & DB_MEIMTA.MEINMA
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = 5
+    WLS_MEI1.Show 1
+    SKHINGRP_Slist = PP.SlistCom
+
+End Function

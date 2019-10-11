@@ -1,0 +1,30 @@
+	Option Explicit
+'==========================================================================
+'   URKFP51A.DBM FBデータ取込処理ワーク(ﾍｯﾀﾞ)     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_URKFP51A
+    FBDATKB        As String * 1     'データ区分            0                   
+    FBSBTCD        As String * 2     '種別コード                                
+    FBCODKB        As String * 1     'コード区分                                
+    FBMAKDT        As String * 6     '作成日                                    
+    FBKJSDT        As String * 6     '勘定日（自）                              
+    FBKJEDT        As String * 6     '勘定日（至）                              
+    FBGINCD        As String * 4     '銀行コード                                
+    FBGINNM        As String * 15    '銀行名                                    
+    FBSTNCD        As String * 3     '支店コード                                
+    FBSTNNM        As String * 15    '支店名                                    
+    FBYKNKB        As String * 1     '預金種別              0                   
+    FBKOZNO        As String * 7     '口座番号              0000000             
+    FBKOZNM        As String * 40    '口座名                                    
+    FBDMYELA       As String * 93    'ダミーA                                   
+    FBCRLF         As String * 2     '改行                                      
+End Type
+Global DB_URKFP51A As TYPE_DB_URKFP51A
+Global DBN_URKFP51A As Integer
+' Index1( FBDATKB )
+
+Sub URKFP51A_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_URKFP51A, G_LB)
+    Call ResetBuf(DBN_URKFP51A)
+End Sub

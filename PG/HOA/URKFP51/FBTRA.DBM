@@ -1,0 +1,38 @@
+	Option Explicit
+'==========================================================================
+'   FBTRA.DBM    ＦＢトラン                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_FBTRA
+    DATKB          As String * 1     '伝票削除区分          0                   
+    FBRFNO         As String * 6     '照会番号              0                   
+    FBKJDT         As String * 8     '勘定日                YYYY/MM/DD          
+    FBKSDT         As String * 8     '起算日                YYYY/MM/DD          
+    FBNYUKN        As Currency       '金額                  #,###,###,##0       
+    FBCLTCD        As String * 10    '振込依頼人コード      !@@@@@@@@@@         
+    FBCLTNM        As String * 48    '振込依頼人名                              
+    FBDELKB        As String * 1     '取消区分              0                   
+    FBSSDT         As String * 8     '作成日                YYYY/MM/DD          
+    FBKJJDT        As String * 8     '勘定日（自）          YYYY/MM/DD          
+    FBKJIDT        As String * 8     '勘定日（至）          YYYY/MM/DD          
+    FBBNKCD        As String * 7     '銀行コード            !@@@@@@@            
+    FBBNKNK        As String * 15    '銀行名称カナ                              
+    FBSTNNK        As String * 15    '支店名称カナ                              
+    FBYKNKB        As String * 1     '預金種別              0                   
+    FBKOZNO        As String * 7     '口座番号              0000000             
+    FBKOZNM        As String * 40    '口座名                                    
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+End Type
+Global DB_FBTRA As TYPE_DB_FBTRA
+Global DBN_FBTRA As Integer
+' Index1( FBRFNO )
+
+Sub FBTRA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_FBTRA, G_LB)
+    Call ResetBuf(DBN_FBTRA)
+End Sub

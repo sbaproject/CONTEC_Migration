@@ -1,0 +1,90 @@
+Attribute VB_Name = "SSSMAIN_FP1"
+Option Explicit
+
+Sub DSPCNT(RECSU&, CNT&)
+Dim I As Long
+    '
+    I = 0
+    If CNT <> 0 And RECSU <> 0 Then I = CNT / RECSU * 100
+    FR_SSSMAIN!CNT.FloodPercent = I
+    If I < 50 Then
+        FR_SSSMAIN!CNT.ForeColor = Cn_BLACK
+    Else
+        FR_SSSMAIN!CNT.ForeColor = Cn_WHITE
+    End If
+    DoEvents
+End Sub
+
+Sub SSS_CLOSE()
+    Call DB_End
+End Sub
+
+'ファイルにカレントレコードの追加処理を行う。
+Function SSSMAIN_Append()
+    FR_SSSMAIN.Enabled = False
+    Call BATMAN
+    FR_SSSMAIN.Enabled = True
+    MsgBox "処理が終了しました。", MB_OK, Trim$(SSS_PrgNm)
+    Call DSPCNT(0, 0)
+    FR_SSSMAIN!CNT.Visible = False
+    SSSMAIN_Append = 1
+End Function
+
+'画面表示前の初期設定処理を行う。
+Function SSSMAIN_BeginPrg() 'Generated.
+    If App.PrevInstance Then
+        MsgBox "【" & Trim(SSS_PrgNm) & "】は既に起動中です。重複して起動する事はできません。", vbExclamation Or vbOKOnly, SSS_PrgNm
+        End
+    End If
+    ' "しばらくお待ちください" ウィンドウ表示  97/05/29
+    Load ICN_ICON
+    SSSMAIN_BeginPrg = True
+    '----------------------------------
+    '   SSSWIN プログラム起動チェック
+    '----------------------------------
+    Call SSSWIN_INIT
+    Call SSSWIN_OPEN
+    '
+    Call INITDSP
+    ' "しばらくお待ちください" ウィンドウ消去  97/05/29
+    Unload ICN_ICON
+End Function
+
+'終了時の後処理を行う。
+Function SSSMAIN_Close() 'Generated.
+    ' 排他テーブル更新（CLOSE）
+    Call SSSWIN_EXCTBZ_CLOSE
+    Call SSSWIN_CLOSE
+    SSSMAIN_Close = True
+End Function
+
+Function SSSMAIN_Current()
+    SSSMAIN_Current = 0
+End Function
+
+Function SSSMAIN_Init()
+    SSSMAIN_Init = True
+End Function
+
+Function SSSMAIN_Last()
+    SSSMAIN_Last = 0
+End Function
+
+Function SSSMAIN_Next()
+    SSSMAIN_Next = 0
+End Function
+
+'処理対象のデータの範囲を設定する。
+Function SSSMAIN_Select() 'Generated.
+    'SSSMAIN_Select = SET_GAMEN_KEY()
+End Function
+
+'ファイルの中のカレントレコードの更新を行う。
+Function SSSMAIN_Update() 'Generated.
+    SSSMAIN_Update = 9
+End Function
+
+Sub WLS_SLIST_MOVE(ByVal SLISTCOM As Variant, ByVal LENGTH As Integer)
+    PP_SSSMAIN.SLISTCOM = LeftWid$(SLISTCOM, LENGTH)
+End Sub
+
