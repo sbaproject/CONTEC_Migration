@@ -1,0 +1,159 @@
+Attribute VB_Name = "UNTMT51_IEV"
+Option Explicit
+Global Const SSS_MAX_DB% = 13
+Global DB_PARA(SSS_MAX_DB) As TYPE_DB_PARA
+Global Const SSS_PrgId = "UNTMT51"
+'20081003 CHG START RISE)Tanimura '名称変更
+'Global Const SSS_PrgNm = "単位登録                      "
+Global Const SSS_PrgNm = "単位マスタ登録／訂正          "
+'20081003 CHG END   RISE)Tanimura
+Global Const SSS_FraId = "MT1"
+
+Sub Init_Fil()  'Generated.
+    '
+    DBN_UNTMTA = 0
+    DB_PARA(DBN_UNTMTA).tblid = "UNTMTA"
+    DB_PARA(DBN_UNTMTA).DBID = "USR1"
+    SSS_MFIL = DBN_UNTMTA
+    '
+    DBN_SYSTBA = 1
+    DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+    DB_PARA(DBN_SYSTBA).DBID = "USR1"
+    '
+    DBN_SYSTBB = 2
+    DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
+    DB_PARA(DBN_SYSTBB).DBID = "USR1"
+    '
+    DBN_SYSTBC = 3
+    DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+    DB_PARA(DBN_SYSTBC).DBID = "USR1"
+    '
+    DBN_SYSTBD = 4
+    DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
+    DB_PARA(DBN_SYSTBD).DBID = "USR1"
+    '
+    DBN_SYSTBF = 5
+    DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
+    DB_PARA(DBN_SYSTBF).DBID = "USR1"
+    '
+    DBN_SYSTBG = 6
+    DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
+    DB_PARA(DBN_SYSTBG).DBID = "USR1"
+    '
+    DBN_SYSTBH = 7
+    DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+    DB_PARA(DBN_SYSTBH).DBID = "USR1"
+    '
+    DBN_TANMTA = 8
+    DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+    DB_PARA(DBN_TANMTA).DBID = "USR1"
+    '
+    DBN_UNYMTA = 9
+    DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+    DB_PARA(DBN_UNYMTA).DBID = "USR1"
+    '
+    DBN_EXCTBZ = 10
+    DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+    DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+    '
+    DBN_GYMTBZ = 11
+    DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+    DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+    '
+    DBN_KNGMTB = 12
+    DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+    DB_PARA(DBN_KNGMTB).DBID = "USR1"
+
+    SSS_BILFL = 9
+End Sub
+
+Sub SCR_FromMfil(ByVal De As Integer)  'Generated.
+    Call DP_SSSMAIN_UNTCD(De, DB_UNTMTA.UNTCD)
+    Call DP_SSSMAIN_UNTNM(De, DB_UNTMTA.UNTNM)
+
+'20080929 CHG START RISE)Tanimura '排他処理
+''2007/12/14 add-str T.KAWAMUKAI 元データのタイムスタンプ退避
+''   [引数Deは画面上の行数(0～)]
+'    M_MOTO_A_inf(De).WRTDT = DB_UNTMTA.WRTDT            '更新日付
+'    M_MOTO_A_inf(De).WRTTM = DB_UNTMTA.WRTTM            '更新時刻
+'    M_MOTO_A_inf(De).UWRTDT = ""
+'    M_MOTO_A_inf(De).UWRTTM = ""
+''2007/12/14 add-end T.KAWAMUKAI
+
+    ' [引数Deは画面上の行数(0～)]
+    M_UNTMT_A_inf(De).OPEID = DB_UNTMTA.OPEID           ' 最終作業者コード
+    M_UNTMT_A_inf(De).CLTID = DB_UNTMTA.CLTID           ' クライアントＩＤ
+    M_UNTMT_A_inf(De).WRTDT = DB_UNTMTA.WRTDT           ' タイムスタンプ（時間）
+    M_UNTMT_A_inf(De).WRTTM = DB_UNTMTA.WRTTM           ' タイムスタンプ（日付）
+'20080929 CHG END   RISE)Tanimura
+End Sub
+
+Sub Mfil_FromSCR(ByVal De As Integer)  'Generated.
+    DB_UNTMTA.UNTCD = RD_SSSMAIN_UNTCD(De)
+    DB_UNTMTA.UNTNM = RD_SSSMAIN_UNTNM(De)
+    DB_UNTMTA.OPEID = SSS_OPEID
+    DB_UNTMTA.CLTID = SSS_CLTID
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+        DB_UNTMTA.WRTTM = Format(Now, "hhmmss")
+        DB_UNTMTA.WRTDT = Format(Now, "YYYYMMDD")
+    Else
+        DB_UNTMTA.WRTTM = DB_ORATM
+        DB_UNTMTA.WRTDT = DB_ORADT
+    End If
+End Sub
+
+Sub UpdSmf()  'Generated.
+End Sub
+
+Sub SetBuf(ByVal Fno As Integer)  'Generated.
+    Select Case Fno
+        Case DBN_UNTMTA: LSet G_LB = DB_UNTMTA
+        Case DBN_SYSTBA: LSet G_LB = DB_SYSTBA
+        Case DBN_SYSTBB: LSet G_LB = DB_SYSTBB
+        Case DBN_SYSTBC: LSet G_LB = DB_SYSTBC
+        Case DBN_SYSTBD: LSet G_LB = DB_SYSTBD
+        Case DBN_SYSTBF: LSet G_LB = DB_SYSTBF
+        Case DBN_SYSTBG: LSet G_LB = DB_SYSTBG
+        Case DBN_SYSTBH: LSet G_LB = DB_SYSTBH
+        Case DBN_TANMTA: LSet G_LB = DB_TANMTA
+        Case DBN_UNYMTA: LSet G_LB = DB_UNYMTA
+        Case DBN_EXCTBZ: LSet G_LB = DB_EXCTBZ
+        Case DBN_GYMTBZ: LSet G_LB = DB_GYMTBZ
+        Case DBN_KNGMTB: LSet G_LB = DB_KNGMTB
+    End Select
+End Sub
+
+Sub ResetBuf(ByVal Fno As Integer)  'Generated.
+    Select Case Fno
+        Case DBN_UNTMTA: LSet DB_UNTMTA = G_LB
+        Case DBN_SYSTBA: LSet DB_SYSTBA = G_LB
+        Case DBN_SYSTBB: LSet DB_SYSTBB = G_LB
+        Case DBN_SYSTBC: LSet DB_SYSTBC = G_LB
+        Case DBN_SYSTBD: LSet DB_SYSTBD = G_LB
+        Case DBN_SYSTBF: LSet DB_SYSTBF = G_LB
+        Case DBN_SYSTBG: LSet DB_SYSTBG = G_LB
+        Case DBN_SYSTBH: LSet DB_SYSTBH = G_LB
+        Case DBN_TANMTA: LSet DB_TANMTA = G_LB
+        Case DBN_UNYMTA: LSet DB_UNYMTA = G_LB
+        Case DBN_EXCTBZ: LSet DB_EXCTBZ = G_LB
+        Case DBN_GYMTBZ: LSet DB_GYMTBZ = G_LB
+        Case DBN_KNGMTB: LSet DB_KNGMTB = G_LB
+    End Select
+End Sub
+
+Function RecordFromObject(ByVal Fno As Integer) As Integer  'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else:
+    End Select
+    RecordFromObject = Rtc
+End Function
+
+Function ObjectFromRecord(ByVal Fno As Integer) As Integer  'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else:
+    End Select
+    ObjectFromRecord = Rtc
+End Function
+
