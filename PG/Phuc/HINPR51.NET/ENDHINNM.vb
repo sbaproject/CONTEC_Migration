@@ -14,25 +14,29 @@ Module ENDHINNM_F51
         '2019/09/25 DEL START
         'Call HINMTA_RClear()
         '2019/09/25 DEL END
-        Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
-		
-		'    If Trim(ENDHINCD) = "" Then
-		'       DB_HINMTA.HINNMA = " "
-		'    End If
-		'UPGRADE_WARNING: オブジェクト ENDHINNM_Derived の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ENDHINNM_Derived = DB_HINMTA.HINNMA
+
+        '2019/10/09 CHG START
+        'Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
+        GetRowsCommon(DBN_HINMTA, "Where HINCD = '" & ENDHINCD & "'")
+        '2019/10/09 CHG END
+
+        '    If Trim(ENDHINCD) = "" Then
+        '       DB_HINMTA.HINNMA = " "
+        '    End If
+        'UPGRADE_WARNING: オブジェクト ENDHINNM_Derived の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ENDHINNM_Derived = DB_HINMTA.HINNMA
 		
 	End Function
 	Function ENDHINNM_InitVal(ByVal ENDHINNM As Object, ByVal ENDHINCD As Object, ByVal De_Index As Object) As Object
-		'If Trim(DB_HINMTA.ENDHINCD) = "" Then
-		'UPGRADE_WARNING: オブジェクト ENDHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(ENDHINCD) = "" Then
-			'UPGRADE_WARNING: オブジェクト LenWid() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト FillVal() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			ENDHINNM_InitVal = FillVal(" ", LenWid(DB_HINMTA.HINNMA))
-		Else
-			'UPGRADE_WARNING: オブジェクト ENDHINNM_InitVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			ENDHINNM_InitVal = DB_HINMTA.HINNMA
+        'If Trim(DB_HINMTA.ENDHINCD) = "" Then
+        'UPGRADE_WARNING: オブジェクト ENDHINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(ENDHINCD) = "" Or Trim(ENDHINCD) = "ZZZZZZZZ" Then
+            'UPGRADE_WARNING: オブジェクト LenWid() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト FillVal() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            ENDHINNM_InitVal = FillVal(" ", LenWid(DB_HINMTA.HINNMA))
+        Else
+            'UPGRADE_WARNING: オブジェクト ENDHINNM_InitVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            ENDHINNM_InitVal = DB_HINMTA.HINNMA
 		End If
 	End Function
 End Module

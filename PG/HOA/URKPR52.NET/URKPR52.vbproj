@@ -1,0 +1,247 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <MyType>WindowsForms</MyType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E9ADF83-DDE5-4362-B41A-D74D943A9CE5}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>URKPR52</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>URKPR52.FR_SSSMAIN</StartupObject>
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>3</AssemblyMinorVersion>
+    <AssemblyRevisionNumber>0</AssemblyRevisionNumber>
+    <GenerateRevisionNumber>False</GenerateRevisionNumber>
+    <AssemblyCompanyName>ウッドランド株式会社</AssemblyCompanyName>
+    <StartWithIE>False</StartWithIE>
+    <ApplicationIcon>URKPR52.ico</ApplicationIcon>
+    <RootNamespace>URKPR52</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>URKPR52.xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DefineDebug>True</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>URKPR52.xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DefineDebug>False</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.DAO">
+      <HintPath>..\..\共通dll\Interop.DAO.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\HOA\共通dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PronesDbAccess">
+      <HintPath>..\..\共通dll\PronesDbAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\共通vb\AE_PROC.vb">
+      <Link>AE_PROC.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_RSMR.vb">
+      <Link>AE_RSMR.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.designer.vb">
+      <Link>ICONSSS.designer.vb</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.vb">
+      <Link>ICONSSS.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\OPEID.vb">
+      <Link>OPEID.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\OPENM.vb">
+      <Link>OPENM.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\REPORT.vb">
+      <Link>REPORT.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_DATE.vb">
+      <Link>WLS_DATE.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.vb">
+      <Link>WLS_HCP.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_PRN.vb">
+      <Link>WLS_PRN.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TAN1.vb">
+      <Link>WLS_TAN1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK1.vb">
+      <Link>WLS_TOK1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK2.vb">
+      <Link>WLS_TOK2.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="DLGLST1.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>DLGLST1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DLGLST1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ENDKSIDT.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ENDWRTDT.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ENDWRTTM.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMAIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMSG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSWIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="STTKSIDT.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="STTTANCD.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="STTTOKCD.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="STTWRTDT.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="STTWRTTM.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKPR52_dbm.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKPR52_e01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKPR52_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKPR52_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>URKPR52_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="URKPR52_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="URKPR52_iev.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKPR52_m01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKPR52_psi.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="..\..\共通vb\ICONSSS.resX">
+      <Link>ICONSSS.resX</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLGLST1.resX">
+      <DependentUpon>DLGLST1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="URKPR52_frm.resX">
+      <DependentUpon>URKPR52_frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="URKPR52.ico" />
+    <None Include="app.config" />
+    <None Include="_UpgradeReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\共通dll\Interop.DAO.dll" />
+    <Analyzer Include="..\..\共通dll\Oracle.DataAccess.dll" />
+    <Analyzer Include="..\..\共通dll\PronesDbAccess.dll" />
+    <Analyzer Include="..\..\共通dll\System.Data.DataSetExtensions.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -309,7 +309,7 @@ Next_Proc:
         'Debug.Print "    印刷データの SQL への出力を開始するまでの時間:" & Str$(Timer - PointTime)
         'Time1 = Timer - PointTime
         'PointTime = Timer
-        'Call Loop_Mfil()
+        Call Loop_Mfil()
 
         'Debug.Print "    印刷データを SQL に出力するのに要した時間" & chr(9) & ": " & Str$(Timer - PointTime)
         'Time2 = Timer - PointTime

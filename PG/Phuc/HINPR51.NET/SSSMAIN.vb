@@ -224,80 +224,98 @@ Next_Proc:
 		Dim wkPrintOption As T_PEPrintOptions
 		Dim wkWidth, wkTop, wkLeft, wkHeight As Short
 		Dim wkStr As New VB6.FixedLengthString(128)
-		'Dim StartTime, PointTime, Time1, Time2, Time3      '計測用
-		'Dim msg1$                                          '計測用
-		
-		'出力処理中に再度出力処理を呼ぶとエラーになるためボタンを非表示にする
-		CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = False
-		CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = False
-		CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = False
-		'StartTime = Timer
-		'PointTime = Timer
-		Call WORKING_VIEW(True)
-		' クリスタルレポートのオープン
-		If CRW_INIT() = False Then
-			Call Error_Exit("ERROR CRW_INIT")
-		Else
-			'伝票種別によるRPTファイルの選択(オプションユニットなどでSYSTBIを読んでおく)
-			If Trim(SSS_RPTID) = "" Then
-				wkRptId = SSS_PrgId
-			Else
-				wkRptId = SSS_RPTID
-			End If
-			If CRW_OPEN(SSS_INIDAT(2) & "RPT\" & wkRptId & ".RPT") = False Then
-				Call Error_Exit("ERROR CRW_OPEN")
-			End If
-		End If
-		
-		'出力状態のチェックのための区分をクリア
-		SSS_OUTKB = 0
+        'Dim StartTime, PointTime, Time1, Time2, Time3      '計測用
+        'Dim msg1$                                          '計測用
+
+        '2019/10/09 ADD START       
+        '中止ボタン有効
+        CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Visible = True
+        CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Enabled = True
+        '2019/10/09 ADD END
+
+        '2019/10/07 DEL START
+        '出力処理中に再度出力処理を呼ぶとエラーになるためボタンを非表示にする
+        '      CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = False
+        'CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = False
+        'CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = False
+        ''StartTime = Timer
+        ''PointTime = Timer
+        'Call WORKING_VIEW(True)
+        '      ' クリスタルレポートのオープン
+        '      If CRW_INIT() = False Then
+        '          Call Error_Exit("ERROR CRW_INIT")
+        '      Else
+        '          '伝票種別によるRPTファイルの選択(オプションユニットなどでSYSTBIを読んでおく)
+        '          If Trim(SSS_RPTID) = "" Then
+        '              wkRptId = SSS_PrgId
+        '          Else
+        '              wkRptId = SSS_RPTID
+        '          End If
+        '          If CRW_OPEN(SSS_INIDAT(2) & "RPT\" & wkRptId & ".RPT") = False Then
+        '              Call Error_Exit("ERROR CRW_OPEN")
+        '          End If
+        '      End If
+        '2019/10/07 DEL END
+
+        '出力状態のチェックのための区分をクリア
+        SSS_OUTKB = 0
 		'
 		Call Set_Value()
-		'
-		If CRW_DOCHECK() = False Then
-			MsgBox("他で印刷中の為、実行できません。", MB_ICONEXCLAMATION)
-			'
-			'出力処理中に再度出力処理を呼ぶとエラーになるため非表示にしていたボタンを表示にする
-			'CHG START FKS)INABA 2006/11/15******************************************************************
-			'先に取得した権限により、Preview画面の印刷ボタン、プリンタ設定ボタン、ファイル出力ボタンを制御する
-			If gs_PRTAUTH = "1" Then '印刷権限有り
-				CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = True
-				CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
-			Else
-				CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = False
-				CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
-			End If
-			If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
-				CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
-				CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = True
-			Else
-				CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
-				CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = False
-			End If
-			'        FR_SSSMAIN!CM_LSTART.Visible = True
-			'        FR_SSSMAIN!CM_VSTART.Visible = True
-			'        FR_SSSMAIN!CM_FSTART.Visible = True
-			
-			'CHG  END  FKS)INABA 2006/11/15******************************************************************
-			Call CRW_CLOSE()
-			'
-			Call WORKING_VIEW(False)
-			Exit Sub
-		End If
-		SSS_LSTOP = False
+
+        '2019/10/07 DEL START
+        'If CRW_DOCHECK() = False Then
+        '    MsgBox("他で印刷中の為、実行できません。", MB_ICONEXCLAMATION)
+        '    '
+        '    '出力処理中に再度出力処理を呼ぶとエラーになるため非表示にしていたボタンを表示にする
+        '    'CHG START FKS)INABA 2006/11/15******************************************************************
+        '    '先に取得した権限により、Preview画面の印刷ボタン、プリンタ設定ボタン、ファイル出力ボタンを制御する
+        '    If gs_PRTAUTH = "1" Then '印刷権限有り
+        '        CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = True
+        '        CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
+        '    Else
+        '        CType(FR_SSSMAIN.Controls("CM_LSTART"), Object).Visible = False
+        '        CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
+        '    End If
+        '    If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
+        '        CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
+        '        CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = True
+        '    Else
+        '        CType(FR_SSSMAIN.Controls("CM_VSTART"), Object).Visible = True
+        '        CType(FR_SSSMAIN.Controls("CM_FSTART"), Object).Visible = False
+        '    End If
+        '    '        FR_SSSMAIN!CM_LSTART.Visible = True
+        '    '        FR_SSSMAIN!CM_VSTART.Visible = True
+        '    '        FR_SSSMAIN!CM_FSTART.Visible = True
+
+        '    'CHG  END  FKS)INABA 2006/11/15******************************************************************
+        '    Call CRW_CLOSE()
+        '    '
+        '    Call WORKING_VIEW(False)
+        '    Exit Sub
+        'End If
+        ''2019/10/07 DEL END
+
+        SSS_LSTOP = False
 		SSS_MFILCNT = 0
 		SSS_LFILCNT = 0
-		'
-		'Debug.Print "    印刷データの SQL への出力を開始するまでの時間:" & Str$(Timer - PointTime)
-		'Time1 = Timer - PointTime
-		'PointTime = Timer
-		Call Loop_Mfil()
-		
-		'Debug.Print "    印刷データを SQL に出力するのに要した時間" & chr(9) & ": " & Str$(Timer - PointTime)
-		'Time2 = Timer - PointTime
-		'PointTime = Timer
-		'キャンセル処理
-		If SSS_LSTOP = True Then
+        '
+        'Debug.Print "    印刷データの SQL への出力を開始するまでの時間:" & Str$(Timer - PointTime)
+        'Time1 = Timer - PointTime
+        'PointTime = Timer
+        'Call Loop_Mfil()
+
+        'Debug.Print "    印刷データを SQL に出力するのに要した時間" & chr(9) & ": " & Str$(Timer - PointTime)
+        'Time2 = Timer - PointTime
+        'PointTime = Timer
+
+        '2019/10/09 ADD START
+        '中止ボタン無効化
+        CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Visible = False
+        CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Enabled = False
+        '2019/10/09 ADD END
+
+        'キャンセル処理
+        If SSS_LSTOP = True Then
 			Call WORKING_VIEW(False)
 			'
 			'出力処理中に再度出力処理を呼ぶとエラーになるため非表示にしていたボタンを表示にする
@@ -467,10 +485,12 @@ Next_Proc:
 			'PR2系帳票でダイナミックなSQL文を使う場合
 			Call DB_Execute(SSS_LSTMFIL, "DROP TABLE " & Get_DBHEAD() & "_" & Trim(DB_PARA(SSS_LSTMFIL).DBID) & "." & SSS_PrgId & "_" & SSS_CLTID.Value)
 		End If
-		''
-		Call CRW_CLOSE()
-		
-	End Sub
+        ''
+        '2019/10/07 DEL START
+        'Call CRW_CLOSE()
+        '2019/10/07 DEL END
+
+    End Sub
 	
 	Function SSSMAIN_Append() As Object
 		'ファイルにカレントレコードの追加処理を行う。
@@ -491,9 +511,10 @@ Next_Proc:
         '2019/09/25　仮
         ' "しばらくお待ちください" ウィンドウ表示
         'UPGRADE_ISSUE: Load ステートメント はサポートされていません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="B530EFF2-3132-48F8-B8BC-D88AF543D321"' をクリックしてください。
-        '2019/09/25 DEL START
-        'Load(ICN_ICON)       
-        '2019/09/25 DEL E N D
+        '2019/10/09 CHG START
+        'Load(ICN_ICON) 
+        ICN_ICON.Show()
+        '2019/10/09 CHG E N D
         'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         SSSMAIN_BeginPrg = True
 		SSS_ExportFLG = False '初期値：印刷処理
@@ -507,9 +528,12 @@ Next_Proc:
 		Call Set_defaultPrintInfo()
 		
 		Call InitDsp()
-		' "しばらくお待ちください" ウィンドウ消去
-		ICN_ICON.Close()
-	End Function
+        ' "しばらくお待ちください" ウィンドウ消去
+        ICN_ICON.Close()
+        '2019/10/09 ADD START
+        CType(FR_SSSMAIN.Controls("CM_LCANCEL"), Object).Visible = False
+        '2019/10/09 ADD END
+    End Function
 	
 	Function SSSMAIN_Close() As Object
 		'終了時の後処理を行う。

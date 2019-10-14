@@ -365,8 +365,10 @@ Friend Class FR_SSSMAIN
 
 EndLabel:
         '* セル背景色を設定
-        Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
-        Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
+        '2019/10/07 CHG START
+        Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, True)
+        Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 0)
+        '2019/10/07 CHG END
 
         'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
@@ -2293,7 +2295,7 @@ EndLbl:
             .SuspendLayout()
 
             For i As Integer = 0 To .RowCount - 1
-                .Rows(i).Cells(lngCol).Style.BackColor = Color.FromArgb(LC_lng_va_Lock_Color)
+                .Rows(i).Cells(lngCol).Style.BackColor = System.Drawing.ColorTranslator.FromOle(LC_lng_va_Lock_Color)
             Next
 
             .ResumeLayout()

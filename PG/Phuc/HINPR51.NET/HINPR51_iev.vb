@@ -14,8 +14,8 @@ Module HINPR51_IEV
 	Public WG_ENDHINCD As String
 	Public WG_ENDHINNM As String
 	Public WG_HINKB As String
-	
-	Sub Init_Fil() 'Generated.
+
+    Sub Init_Fil() 'Generated.
         '
         '2019/09/25 DEL START
         'DBN_HINPR51 = 0
@@ -93,15 +93,24 @@ Module HINPR51_IEV
         '2019/09/25 DEL END
         SSS_LSTMFIL = 0
     End Sub
-	
-	Sub SCR_FromMfil(ByVal De As Short) 'Generated.
-		Call DP_SSSMAIN_ENDHINCD(De, DB_HINPR51.ENDHINCD)
-		Call DP_SSSMAIN_ENDHINNM(De, DB_HINPR51.ENDHINNM)
-		Call DP_SSSMAIN_STTHINCD(De, DB_HINPR51.STTHINCD)
-		Call DP_SSSMAIN_STTHINNM(De, DB_HINPR51.STTHINNM)
-	End Sub
-	
-	Sub Mfil_FromSCR(ByVal De As Short) 'Generated.
+
+    Sub SCR_FromMfil(ByVal De As Short) 'Generated.   
+        Call DP_SSSMAIN_ENDHINCD(De, DB_HINPR51.ENDHINCD)
+        Call DP_SSSMAIN_ENDHINNM(De, DB_HINPR51.ENDHINNM)
+        Call DP_SSSMAIN_STTHINCD(De, DB_HINPR51.STTHINCD)
+        Call DP_SSSMAIN_STTHINNM(De, DB_HINPR51.STTHINNM)
+    End Sub
+
+    Sub SCR_FromSTTHINMTA(ByVal De As Short) 'Generated.       
+        Call DP_SSSMAIN_STTHINCD(De, DB_HINPR51.STTHINCD)
+        Call DP_SSSMAIN_STTHINNM(De, DB_HINPR51.STTHINNM)
+    End Sub
+    Sub SCR_FromENDHINMTA(ByVal De As Short) 'Generated.
+        Call DP_SSSMAIN_ENDHINCD(De, DB_HINPR51.ENDHINCD)
+        Call DP_SSSMAIN_ENDHINNM(De, DB_HINPR51.ENDHINNM)
+    End Sub
+
+    Sub Mfil_FromSCR(ByVal De As Short) 'Generated.
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ENDHINCD() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		DB_HINPR51.ENDHINCD = RD_SSSMAIN_ENDHINCD(De)
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ENDHINNM() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。

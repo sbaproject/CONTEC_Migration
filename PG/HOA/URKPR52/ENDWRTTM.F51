@@ -1,0 +1,40 @@
+Attribute VB_Name = "ENDWRTTM_F51"
+Option Explicit
+'
+' スロット名        : 終了・入力日付・画面項目スロット
+' ユニット名        : ENDWRTDT.F61
+' 記述者            : Muratani
+' 作成日付          : 2006/07/24
+' 使用プログラム名  : IDOPR53
+'
+
+Function ENDWRTTM_CheckC(ByVal ENDWRTTM)
+Dim Rtn         As Integer
+Dim strWRTTM    As String
+    '
+    strWRTTM = DeCNV_TIME(CStr(ENDWRTTM))
+    
+    ENDWRTTM_CheckC = 0
+    If strWRTTM < "000000" Or _
+       strWRTTM > "235959" Then
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)
+        ENDWRTTM_CheckC = -1
+    Else
+        If Mid(strWRTTM, 1, 2) < "00" Or _
+           Mid(strWRTTM, 1, 2) > "23" Or _
+           Mid(strWRTTM, 3, 2) < "00" Or _
+           Mid(strWRTTM, 3, 2) > "59" Or _
+           Mid(strWRTTM, 5, 2) < "00" Or _
+           Mid(strWRTTM, 5, 2) > "59" Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)
+            ENDWRTTM_CheckC = -1
+        End If
+    End If
+    
+End Function
+
+Function ENDWRTTM_InitVal(ByVal ENDWRTTM)
+    '
+    ENDWRTTM_InitVal = "23:59:59"
+End Function
+

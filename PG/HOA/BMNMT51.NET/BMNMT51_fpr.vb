@@ -1058,30 +1058,33 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
-					wk_SaveMask = PP_SSSMAIN.MaskMode
-					PP_SSSMAIN.MaskMode = True
-					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
-					Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
-					PP_SSSMAIN.MaskMode = wk_SaveMask
-					If .StatusC = Cn_Status1 Then .StatusC = .StatusF
-					If .StatusC >= Cn_Status6 Then
-						If pm_MoveCursor Then
-							If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
-						End If
-					Else
-						Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
-						Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
-					End If
-				End If
-				Exit Sub
-			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SaveXV = .ExVal
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/03 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/03/03 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
+                    wk_SaveMask = PP_SSSMAIN.MaskMode
+                    PP_SSSMAIN.MaskMode = True
+                    .TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
+                    Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
+                    PP_SSSMAIN.MaskMode = wk_SaveMask
+                    If .StatusC = Cn_Status1 Then .StatusC = .StatusF
+                    If .StatusC >= Cn_Status6 Then
+                        If pm_MoveCursor Then
+                            If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
+                        End If
+                    Else
+                        Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
+                        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
+                    End If
+                End If
+                Exit Sub
+            End If
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SaveXV = .ExVal
 			PP_SSSMAIN.SaveExStatus = .ExStatus
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -1348,10 +1351,16 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/03 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) _
+             And pm_HandIn _
+             And (Trim(DB_NullReplace(CC_NewVal, "")) = DB_NullReplace(.CuVal, "") _
+             Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/10/03 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -1800,30 +1809,33 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
-					wk_SaveMask = PP_SSSMAIN.MaskMode
-					PP_SSSMAIN.MaskMode = True
-					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
-					Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
-					PP_SSSMAIN.MaskMode = wk_SaveMask
-					If .StatusC = Cn_Status1 Then .StatusC = .StatusF
-					If .StatusC >= Cn_Status6 Then
-						If pm_MoveCursor Then
-							If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
-						End If
-					Else
-						Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
-						Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
-					End If
-				End If
-				Exit Sub
-			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SaveXV = .ExVal
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/04 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/10/04 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
+                    wk_SaveMask = PP_SSSMAIN.MaskMode
+                    PP_SSSMAIN.MaskMode = True
+                    .TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
+                    Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
+                    PP_SSSMAIN.MaskMode = wk_SaveMask
+                    If .StatusC = Cn_Status1 Then .StatusC = .StatusF
+                    If .StatusC >= Cn_Status6 Then
+                        If pm_MoveCursor Then
+                            If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
+                        End If
+                    Else
+                        Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
+                        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
+                    End If
+                End If
+                Exit Sub
+            End If
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SaveXV = .ExVal
 			PP_SSSMAIN.SaveExStatus = .ExStatus
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -2130,30 +2142,33 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
-					wk_SaveMask = PP_SSSMAIN.MaskMode
-					PP_SSSMAIN.MaskMode = True
-					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
-					Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
-					PP_SSSMAIN.MaskMode = wk_SaveMask
-					If .StatusC = Cn_Status1 Then .StatusC = .StatusF
-					If .StatusC >= Cn_Status6 Then
-						If pm_MoveCursor Then
-							If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
-						End If
-					Else
-						Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
-						Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
-					End If
-				End If
-				Exit Sub
-			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SaveXV = .ExVal
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/03 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/10/03 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
+                    wk_SaveMask = PP_SSSMAIN.MaskMode
+                    PP_SSSMAIN.MaskMode = True
+                    .TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
+                    Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
+                    PP_SSSMAIN.MaskMode = wk_SaveMask
+                    If .StatusC = Cn_Status1 Then .StatusC = .StatusF
+                    If .StatusC >= Cn_Status6 Then
+                        If pm_MoveCursor Then
+                            If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
+                        End If
+                    Else
+                        Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
+                        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
+                    End If
+                End If
+                Exit Sub
+            End If
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SaveXV = .ExVal
 			PP_SSSMAIN.SaveExStatus = .ExStatus
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -2621,10 +2636,13 @@ Module SSSMAIN0001
 			End If
             'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            '2019/09/27 CHG START
+            '2019/03/27 CHG START
             'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, 0) = DB_NullReplace(.CuVal, 0) Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-                '2019/09/27 CHG E N D
+            If (.CheckRtnCode = 0) _
+             And pm_HandIn _
+             And (Trim(DB_NullReplace(CC_NewVal, "")) = DB_NullReplace(.CuVal, "") _
+             Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/03/27 CHG E N D
                 If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
@@ -3068,30 +3086,33 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
-					wk_SaveMask = PP_SSSMAIN.MaskMode
-					PP_SSSMAIN.MaskMode = True
-					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
-					Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
-					PP_SSSMAIN.MaskMode = wk_SaveMask
-					If .StatusC = Cn_Status1 Then .StatusC = .StatusF
-					If .StatusC >= Cn_Status6 Then
-						If pm_MoveCursor Then
-							If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
-						End If
-					Else
-						Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
-						Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
-					End If
-				End If
-				Exit Sub
-			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SaveXV = .ExVal
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/03 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/10/03 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
+                    wk_SaveMask = PP_SSSMAIN.MaskMode
+                    PP_SSSMAIN.MaskMode = True
+                    .TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
+                    Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
+                    PP_SSSMAIN.MaskMode = wk_SaveMask
+                    If .StatusC = Cn_Status1 Then .StatusC = .StatusF
+                    If .StatusC >= Cn_Status6 Then
+                        If pm_MoveCursor Then
+                            If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
+                        End If
+                    Else
+                        Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
+                        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
+                    End If
+                End If
+                Exit Sub
+            End If
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SaveXV = .ExVal
 			PP_SSSMAIN.SaveExStatus = .ExStatus
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -3230,10 +3251,13 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/03 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, 0) = DB_NullReplace(.CuVal, 0) Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/10/03 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
 					wk_SaveMask = PP_SSSMAIN.MaskMode
 					PP_SSSMAIN.MaskMode = True
 					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
@@ -3392,30 +3416,33 @@ Module SSSMAIN0001
 					Exit Sub
 				End If
 			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
-				If Not PP_SSSMAIN.RecalcMode Then
-					wk_SaveMask = PP_SSSMAIN.MaskMode
-					PP_SSSMAIN.MaskMode = True
-					.TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
-					Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
-					PP_SSSMAIN.MaskMode = wk_SaveMask
-					If .StatusC = Cn_Status1 Then .StatusC = .StatusF
-					If .StatusC >= Cn_Status6 Then
-						If pm_MoveCursor Then
-							If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
-						End If
-					Else
-						Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
-						Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
-					End If
-				End If
-				Exit Sub
-			End If
-			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			PP_SSSMAIN.SaveXV = .ExVal
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN(wk_Px).CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト CC_NewVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/03 CHG START
+            'If (.CheckRtnCode = 0) And pm_HandIn And (CC_NewVal = .CuVal Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+            If (.CheckRtnCode = 0) And pm_HandIn And (DB_NullReplace(CC_NewVal, "") = DB_NullReplace(.CuVal, "") Or (AE_IsNull_SSSMAIN(CC_NewVal) And AE_IsNull_SSSMAIN(.CuVal))) Then
+                '2019/10/03 CHG E N D
+                If Not PP_SSSMAIN.RecalcMode Then
+                    wk_SaveMask = PP_SSSMAIN.MaskMode
+                    PP_SSSMAIN.MaskMode = True
+                    .TpStr = AE_Format(CP_SSSMAIN(wk_Px), .CuVal, 0, True)
+                    Call AE_CtSet(PP_SSSMAIN, wk_Px, .TpStr, .TypeA, False)
+                    PP_SSSMAIN.MaskMode = wk_SaveMask
+                    If .StatusC = Cn_Status1 Then .StatusC = .StatusF
+                    If .StatusC >= Cn_Status6 Then
+                        If pm_MoveCursor Then
+                            If AE_CursorSkip_SSSMAIN() = False And PP_SSSMAIN.CursorDirection = Cn_Direction1 Then Call AE_CursorSub_SSSMAIN(AE_ExecuteX_SSSMAIN())
+                        End If
+                    Else
+                        Call AE_ColorSub(PP_SSSMAIN, CP_SSSMAIN(wk_Px), CL_SSSMAIN(wk_Px))
+                        Call AE_SetSel(PP_SSSMAIN, CP_SSSMAIN(wk_Px), AE_Controls(PP_SSSMAIN.CtB + wk_Tx))
+                    End If
+                End If
+                Exit Sub
+            End If
+            'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト PP_SSSMAIN.SaveXV の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            PP_SSSMAIN.SaveXV = .ExVal
 			PP_SSSMAIN.SaveExStatus = .ExStatus
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().CuVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト CP_SSSMAIN().ExVal の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。

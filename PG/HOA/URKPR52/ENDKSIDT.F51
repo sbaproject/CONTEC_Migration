@@ -1,0 +1,45 @@
+Attribute VB_Name = "ENDKSIDT_F51"
+Option Explicit
+'
+' スロット名        : 終了伝票日付・画面項目スロット
+' ユニット名        : ENDKSIDT.F51
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : URKPR52
+
+Function ENDKSIDT_Check(ByVal ENDKSIDT, ByVal STTKSIDT)
+Dim Rtn As Integer
+    '
+    ENDKSIDT_Check = 0
+    Rtn = CHECK_DATE(ENDKSIDT)
+    If Rtn Then
+        If ENDKSIDT < STTKSIDT Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "ENDCHECK", 0)
+            ENDKSIDT_Check = -1
+        End If
+    Else
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)
+        ENDKSIDT_Check = -1
+    End If
+    
+End Function
+
+Function ENDKSIDT_InitVal(ByVal ENDKSIDT)
+    '
+    ENDKSIDT_InitVal = DB_UNYMTA.UNYDT
+End Function
+
+Function ENDKSIDT_Skip(CT_ENDKSIDT As Control)
+    '
+    CT_ENDKSIDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
+    ENDKSIDT_Skip = False
+End Function
+
+Function ENDKSIDT_Slist(PP As clsPP, ByVal ENDKSIDT)
+    '
+    Set_date = ENDKSIDT
+    WLS_DATE.Show 1
+    Unload WLS_DATE
+    ENDKSIDT_Slist = Set_date
+End Function
+

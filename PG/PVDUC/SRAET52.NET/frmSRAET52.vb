@@ -80,6 +80,7 @@ Friend Class FR_SSSMAIN
     'Private Const LC_lngCol_CHECK As Integer = 1 '* 返品チェック
     'Private Const LC_lngCol_NO As Integer = 2 '* 行№
     'Private Const LC_lngCol_SERIAL As Integer = 3 '* シリアル№  
+
     Private Const LC_lngCol_CHECK As Integer = 0 '* 返品チェック
     Private Const LC_lngCol_NO As Integer = 1 '* 行№
     Private Const LC_lngCol_SERIAL As Integer = 2 '* シリアル№ 
@@ -148,35 +149,33 @@ Friend Class FR_SSSMAIN
 	Public Sub MN_APPENDC_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MN_APPENDC.Click
 		Call FR_SSSMAIN_Load(Me, New System.EventArgs())
 	End Sub
-	'-----------------------------------------------------------------------【ﾌﾟﾙﾀﾞｳﾝﾒﾆｭｰ】-
-	
-	'===========================================================================
-	'【使用用途】 [終了]ボタンクリック時
-	'【関 数 名】 CM_EndCm_Click
-	'【更 新 日】
-	'【備    考】
-	'===========================================================================
-	Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_EndCm.Click
-        '2019/10/01 DEL START
-        ''* セル背景色を解除
-        'With vaData
-        '    'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        '    '2019/09/23 CHG START
-        '    'Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 1, False, LC_lngCol_NO, .MaxRows)
-        '    Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 1, False, LC_lngCol_NO, .RowCount - 1)
-        '    '2019/09/23 CHG END
-        'End With
-        'Me.Close()
-        '2019/10/01 DEL END
+    '-----------------------------------------------------------------------【ﾌﾟﾙﾀﾞｳﾝﾒﾆｭｰ】-
+
+    '===========================================================================
+    '【使用用途】 [終了]ボタンクリック時
+    '【関 数 名】 CM_EndCm_Click
+    '【更 新 日】
+    '【備    考】
+    '===========================================================================
+    Private Sub CM_EndCm_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_EndCm.Click
+        '* セル背景色を解除
+        With vaData
+            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/09/23 CHG START
+            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 1, False, LC_lngCol_NO, .MaxRows)
+            Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 0, False, LC_lngCol_NO, .RowCount - 1)
+            '2019/09/23 CHG END
+        End With
+        Me.Close()
     End Sub
-	
-	'===========================================================================
-	'【使用用途】 [終了]ボタンMouseDown時
-	'【関 数 名】 CM_EndCm_MouseDown
-	'【更 新 日】
-	'【備    考】
-	'===========================================================================
-	Private Sub CM_EndCm_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseDown
+
+    '===========================================================================
+    '【使用用途】 [終了]ボタンMouseDown時
+    '【関 数 名】 CM_EndCm_MouseDown
+    '【更 新 日】
+    '【備    考】
+    '===========================================================================
+    Private Sub CM_EndCm_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseDown
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
@@ -236,134 +235,143 @@ Friend Class FR_SSSMAIN
 	'===========================================================================
 	Private Sub CM_Execute_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles CM_Execute.Click
 
-        '2019/10/01 DEL START
 
-        '        Dim msgMsgBox As MsgBoxResult
-        '		Dim lngRow As Integer
-        '		'UPGRADE_ISSUE: TYPE_DB_SYSTBH オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
-        '		Dim Mst_Inf As TYPE_DB_SYSTBH
-        '		Dim intRet As Short
-        '		Dim strMSGKBN As String
-        '		Dim strMSGNM As String
-        '		Dim lngChkRow As Integer
-        '		Dim blnInsFlg As Boolean
+        Dim msgMsgBox As MsgBoxResult
+        Dim lngRow As Integer
+        'UPGRADE_ISSUE: TYPE_DB_SYSTBH オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
+        Dim Mst_Inf As TYPE_DB_SYSTBH
+        Dim intRet As Short
+        Dim strMSGKBN As String
+        Dim strMSGNM As String
+        Dim lngChkRow As Integer
+        Dim blnInsFlg As Boolean
 
-        '		strMSGKBN = "1"
-        '		lngChkRow = 0
-        '		blnInsFlg = False
+        strMSGKBN = "1"
+        lngChkRow = 0
+        blnInsFlg = False
 
-        '		'* セル背景色を解除
-        '		With vaData
-        '			Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False)
-        '		End With
+        '* セル背景色を解除
+        With vaData
+            '2019/09/23 CHG START
+            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False)
+            Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, False)
+            '2019/09/23 CHG END
+        End With
 
-        '		'スプレッドの入力チェック
-        '		If P_EntryCheck(lngRow) = False Then
-        '			Exit Sub
-        '		Else
-        '			'''        '明細にチェックが入っていないときは処理終了
-        '			'''        If lngRow = 0 Then
-        '			'''            strMSGKBN = "1"
-        '			'''            intRet = DSPMSGCM_SEARCH(strMSGKBN, LC_strPG_ID, NoCheck, Mst_Inf)
-        '			'''            If intRet <> 0 Then
-        '			'''                Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", vbOKOnly + vbExclamation, LC_strTitle)
-        '			'''                Exit Sub
-        '			'''            End If
-        '			'''            Call GP_MsgBox(Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-        '			'''            If L_LastCol > 0 And L_LastRow > 0 Then
-        '			'''                Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
-        '			'''                Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
-        '			'''            Else
-        '			'''                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, vaData.MaxRows, True)
-        '			'''                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, vaData.MaxRows)
-        '			'''            End If
-        '			'''            Exit Sub
-        '			'''        End If
-        '			'選択行数が数量と等しくないときはエラー
-        '			If lngRow <> CInt(Me.lblURISU.Text) Then
-        '				'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
-        '				If intRet <> 0 Then
-        '					Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OKOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-        '					Exit Sub
-        '				End If
-        '				'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        '				Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-        '				Exit Sub
-        '			End If
+        'スプレッドの入力チェック
+        If P_EntryCheck(lngRow) = False Then
+            Exit Sub
+        Else
+            '''        '明細にチェックが入っていないときは処理終了
+            '''        If lngRow = 0 Then
+            '''            strMSGKBN = "1"
+            '''            intRet = DSPMSGCM_SEARCH(strMSGKBN, LC_strPG_ID, NoCheck, Mst_Inf)
+            '''            If intRet <> 0 Then
+            '''                Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", vbOKOnly + vbExclamation, LC_strTitle)
+            '''                Exit Sub
+            '''            End If
+            '''            Call GP_MsgBox(Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+            '''            If L_LastCol > 0 And L_LastRow > 0 Then
+            '''                Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
+            '''                Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
+            '''            Else
+            '''                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, vaData.MaxRows, True)
+            '''                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, vaData.MaxRows)
+            '''            End If
+            '''            Exit Sub
+            '''        End If
+            '選択行数が数量と等しくないときはエラー
+            If lngRow <> CInt(Me.lblURISU.Text) Then
+                'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
+                If intRet <> 0 Then
+                    Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
+                    Exit Sub
+                End If
+                'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                Call GP_MsgBox(COMMON.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+                Exit Sub
+            End If
 
-        '			'シリアル№チェック
-        '			With vaData
-        '                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        '                '2019/09/23 CHG START
-        '                'For lngChkRow = 1 To .MaxRows
-        '                For lngChkRow = 1 To .RowCount - 1
-        '                    '2019/09/23 CHG END
-        '                    If P_EntryCheckSerial(lngChkRow) = False Then
-        '                        strMSGKBN = "1"
-        '                        'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
-        '                        If intRet <> 0 Then
-        '                            Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-        '                            Exit Sub
-        '                        End If
-        '                        'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        '                        msgMsgBox = GP_MsgBox(COMMON.enmMsg.Insert, Mst_Inf.MSGCM, LC_strTitle)
-        '                        If msgMsgBox <> MsgBoxResult.Yes Then
-        '                            If lngChkRow > 0 Then
-        '                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, lngChkRow, True)
-        '                                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, lngChkRow)
-        '                            Else
-        '                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
-        '                                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 1)
-        '                            End If
-        '                            Exit Sub
-        '                        Else
-        '                            blnInsFlg = True
-        '                        End If
-        '                    End If
-        '                Next
-        '            End With
-        '		End If
+            'シリアル№チェック
+            With vaData
+                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                '2019/09/23 CHG START
+                'For lngChkRow = 1 To .MaxRows
+                For lngChkRow = 0 To .RowCount - 1
+                    '2019/09/23 CHG END
+                    If P_EntryCheckSerial(lngChkRow) = False Then
+                        strMSGKBN = "1"
+                        'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
+                        If intRet <> 0 Then
+                            Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
+                            Exit Sub
+                        End If
+                        'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        msgMsgBox = GP_MsgBox(COMMON.enmMsg.Insert, Mst_Inf.MSGCM, LC_strTitle)
+                        If msgMsgBox <> MsgBoxResult.Yes Then
+                            If lngChkRow > 0 Then
+                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, lngChkRow, True)
+                                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, lngChkRow)
+                            Else
+                                '2019/09/23 CHG START
+                                'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
+                                'Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 1)
+                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, True)
+                                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 0)
+                                '2019/09/23 CHG END
+                            End If
+                            Exit Sub
+                        Else
+                            blnInsFlg = True
+                        End If
+                    End If
+                Next
+            End With
+        End If
 
-        '		If blnInsFlg = False Then
-        '			'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
-        '			If intRet <> 0 Then
-        '				Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OKOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-        '				Exit Sub
-        '			End If
-        '			'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        '			msgMsgBox = GP_MsgBox(Common.enmMsg.Insert, Mst_Inf.MSGCM, LC_strTitle)
-        '			If msgMsgBox <> MsgBoxResult.Yes Then
-        '				Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
-        '				Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 1)
-        '				'        If L_LastCol > 0 And L_LastRow > 0 Then
-        '				'            Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
-        '				'            Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
-        '				'        Else
-        '				'            Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, vaData.MaxRows, True)
-        '				'            Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, vaData.MaxRows)
-        '				'        End If
-        '				Exit Sub
-        '			End If
-        '		End If
+        If blnInsFlg = False Then
+            'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
+            If intRet <> 0 Then
+                Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
+                Exit Sub
+            End If
+            'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            msgMsgBox = GP_MsgBox(COMMON.enmMsg.Insert, Mst_Inf.MSGCM, LC_strTitle)
+            If msgMsgBox <> MsgBoxResult.Yes Then
+                '2019/09/23 CHG START
+                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, True)
+                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 0)
+                '2019/09/23 CHG END
+                '        If L_LastCol > 0 And L_LastRow > 0 Then
+                '            Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
+                '            Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
+                '        Else
+                '            Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, vaData.MaxRows, True)
+                '            Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, vaData.MaxRows)
+                '        End If
+                Exit Sub
+            End If
+        End If
 
-        '		'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
-        '		System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+        'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
+        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
 
-        '		'登録処理
-        '		If P_Main() = True Then
-        '			'* データ登録後は画面を閉じる
-        '			Call CM_EndCm_Click(CM_EndCm, New System.EventArgs())
-        '			Exit Sub
-        '		End If
+        '登録処理
+        If P_Main() = True Then
+            '* データ登録後は画面を閉じる
+            Call CM_EndCm_Click(CM_EndCm, New System.EventArgs())
+            Exit Sub
+        End If
 
-        'EndLabel: 
-        '		'* セル背景色を設定
-        '		Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
+EndLabel:
+        '* セル背景色を設定
+        '2019/09/23 CHG START
+        'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
+        Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, True)
+        '2019/09/23 CHG END
 
-        '		'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
-        '		System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
-
-        '2019/10/01 DEL END
+        'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
+        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
 
     End Sub
 	
@@ -513,10 +521,12 @@ Friend Class FR_SSSMAIN
 		
 		'スプレッドの初期化
 		Call P_vaData_Init()
-		
-		'DB接続
-		Call CF_Ora_USR1_Open()
-        Call CF_Ora_USR9_Open()
+
+        'DB接続
+        Call CF_Ora_USR1_Open()
+        '2019/10/04 DEL START
+        'Call CF_Ora_USR9_Open()
+        '2019/10/04 DEL END
 
         '受け取ったパラメータを画面にセット
         lblHIN1.Text = L_strHINCD
@@ -573,8 +583,7 @@ Friend Class FR_SSSMAIN
         'Call CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
         Call DB_CLOSE(CON)
         '2019/09/23 CHG END
-        '2019/09/23 ADD START
-        DB_CLOSE(CON_USR9)
+        '2019/09/23 ADD START        
         Call SSSWIN_LOGWRT("プログラム終了")
         '2019/09/23 ADD END
         eventArgs.Cancel = Cancel
@@ -928,6 +937,8 @@ Friend Class FR_SSSMAIN
 
             .SuspendLayout()
 
+            .Rows.Clear()
+
             If dt Is Nothing OrElse dt.Rows.Count > 0 Then
 
                 If dt.Rows.Count > LC_lngMAX_ROW Then
@@ -948,12 +959,12 @@ Friend Class FR_SSSMAIN
                         GoTo LBL_LOOP_END
                     End If
 
-                    '.RowCount = cnt + 1
+                    .RowCount = cnt + 1
 
                     Call SetCheckBox(vaData, LC_lngCol_CHECK, lngI)
 
                     If Trim(DB_NullReplace(dt.Rows(cnt)("KBN"), "")) = "C" Then
-                        .SetValue(cnt, LC_lngCol_CHECK, False)
+                        .SetValue(cnt, LC_lngCol_CHECK, True)
                     End If
 
                     .SetValue(cnt, LC_lngCol_NO, VB.Right(Space(intLen) & CStr(lngI), intLen))
@@ -1437,8 +1448,12 @@ Errlabel:
 		
 		'DELETE
 		If P_EXECUTE_SQL(enumCREATE_MODE.Del, "", "", "") = False Then
-			GoTo EndLbl
-		End If
+
+            '2019/10/04 CHG START
+            'GoTo EndLbl
+            GoTo ErrLbl
+            '2019/10/04 CHG END
+        End If
 		
 		'INSERT
 		lngI = 0
@@ -1463,23 +1478,32 @@ Errlabel:
                     lngLineNo = lngLineNo + 1
                     'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                     If P_EXECUTE_SQL(enumCREATE_MODE.Ins, CStr(varSERIAL), L_strWRTTM, L_strWRTDT) = False Then
-                        GoTo EndLbl
+                        '2019/10/04 CHG START
+                        'GoTo EndLbl
+                        GoTo ErrLbl
+                        '2019/10/04 CHG END
                     End If
                 End If
             Next lngI
         End With
-		
-		'COMMIT
-		Call CF_Ora_CommitTrans(gv_Oss_USR9)
-		
-		P_Main = True
+
+        'COMMIT
+        '2019/10/04 CHG START
+        'Call CF_Ora_CommitTrans(gv_Oss_USR9)
+        Call DB_Commit()
+        '2019/10/04 CHG END
+
+        P_Main = True
 		
 		Exit Function
 		
 		GoTo EndLbl
-ErrLbl: 
-		'ロールバック
-		Call CF_Ora_RollbackTrans(gv_Oss_USR9)
+ErrLbl:
+        'ロールバック
+        '2019/10/04 CHG START
+        'Call CF_Ora_RollbackTrans(gv_Oss_USR9)
+        Call DB_Rollback()
+        '2019/10/04 CHG END
 EndLbl: 
 		
 	End Function
@@ -1579,9 +1603,9 @@ EndLbl:
             Dim backColor As Color
 
             If bolEdit Then
-                backColor = Color.FromArgb(LC_lng_va_Edit_Color)
+                backColor = System.Drawing.ColorTranslator.FromOle(LC_lng_va_Edit_Color)
             Else
-                backColor = Color.FromArgb(LC_lng_va_UnEdit_Color)
+                backColor = System.Drawing.ColorTranslator.FromOle(LC_lng_va_UnEdit_Color)
             End If
 
             For i As Integer = lngRow To row2
@@ -1935,170 +1959,15 @@ Errlabel:
     End Sub
 
     Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
-
-        '2019/10/01 ADD START
-
-        Dim msgMsgBox As MsgBoxResult
-        Dim lngRow As Integer
-        'UPGRADE_ISSUE: TYPE_DB_SYSTBH オブジェクト はアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"' をクリックしてください。
-        Dim Mst_Inf As TYPE_DB_SYSTBH
-        Dim intRet As Short
-        Dim strMSGKBN As String
-        Dim strMSGNM As String
-        Dim lngChkRow As Integer
-        Dim blnInsFlg As Boolean
-
-        strMSGKBN = "1"
-        lngChkRow = 0
-        blnInsFlg = False
-
-        '* セル背景色を解除
-        With vaData
-            '2019/10/01 CHG START
-            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, False)
-            Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, False)
-            '2019/10/01 CHG END
-        End With
-
-        'スプレッドの入力チェック
-        If P_EntryCheck(lngRow) = False Then
-            Exit Sub
-        Else
-            '''        '明細にチェックが入っていないときは処理終了
-            '''        If lngRow = 0 Then
-            '''            strMSGKBN = "1"
-            '''            intRet = DSPMSGCM_SEARCH(strMSGKBN, LC_strPG_ID, NoCheck, Mst_Inf)
-            '''            If intRet <> 0 Then
-            '''                Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", vbOKOnly + vbExclamation, LC_strTitle)
-            '''                Exit Sub
-            '''            End If
-            '''            Call GP_MsgBox(Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-            '''            If L_LastCol > 0 And L_LastRow > 0 Then
-            '''                Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
-            '''                Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
-            '''            Else
-            '''                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, vaData.MaxRows, True)
-            '''                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, vaData.MaxRows)
-            '''            End If
-            '''            Exit Sub
-            '''        End If
-            '選択行数が数量と等しくないときはエラー
-            If lngRow <> CInt(Me.lblURISU.Text) Then
-                'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
-                If intRet <> 0 Then
-                    Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-                    Exit Sub
-                End If
-                'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-                Call GP_MsgBox(COMMON.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-                Exit Sub
-            End If
-
-            'シリアル№チェック
-            With vaData
-                'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-                '2019/09/23 CHG START
-                'For lngChkRow = 1 To .MaxRows
-                For lngChkRow = 0 To .RowCount - 1
-                    '2019/09/23 CHG END
-                    If P_EntryCheckSerial(lngChkRow) = False Then
-                        strMSGKBN = "1"
-                        'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
-                        If intRet <> 0 Then
-                            Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-                            Exit Sub
-                        End If
-                        'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-                        msgMsgBox = GP_MsgBox(COMMON.enmMsg.Insert, Mst_Inf.MSGCM, LC_strTitle)
-                        If msgMsgBox <> MsgBoxResult.Yes Then
-                            If lngChkRow > 0 Then
-                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, lngChkRow, True)
-                                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, lngChkRow)
-                            Else
-                                '2019/10/01 CHG START
-                                'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
-                                'Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 1)
-                                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, True)
-                                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 0)
-                                '2019/10/01 CHG END
-                            End If
-                            Exit Sub
-                        Else
-                            blnInsFlg = True
-                        End If
-                    End If
-                Next
-            End With
-        End If
-
-        If blnInsFlg = False Then
-            'UPGRADE_WARNING: CM_Execute_Click に変換されていないステートメントがあります。ソース コードを確認してください。
-            If intRet <> 0 Then
-                Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-                Exit Sub
-            End If
-            'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            msgMsgBox = GP_MsgBox(COMMON.enmMsg.Insert, Mst_Inf.MSGCM, LC_strTitle)
-            If msgMsgBox <> MsgBoxResult.Yes Then
-                '2019/10/01 CHG START
-                'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
-                'Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 1)
-                Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, True)
-                Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, 0)
-                '2019/10/01 CHG END
-                '        If L_LastCol > 0 And L_LastRow > 0 Then
-                '            Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
-                '            Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
-                '        Else
-                '            Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, vaData.MaxRows, True)
-                '            Call GP_SpActiveCell(vaData, LC_lngCol_CHECK, vaData.MaxRows)
-                '        End If
-                Exit Sub
-            End If
-        End If
-
-        'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
-
-        '登録処理
-        If P_Main() = True Then
-            '* データ登録後は画面を閉じる
-            '2019/10/01 CHG START
-            'Call CM_EndCm_Click(CM_EndCm, New System.EventArgs())
-            btnF12.PerformClick()
-            '2019/10/01 CHG END
-            Exit Sub
-        End If
-
-EndLabel:
-        '* セル背景色を設定
-        '2019/10/01 CHG START
-        'Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 1, True)
-        Call GP_Va_Col_EditColor(vaData, LC_lngCol_CHECK, 0, True)
-        '2019/10/01 CHG END
-        'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
-
-        '2019/10/01 ADD END
-
+        Call CM_Execute_Click(CM_Execute, New System.EventArgs())
     End Sub
 
     Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
-        '2019/10/01 ADD START
-        '* セル背景色を解除
-        With vaData
-            'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            '2019/09/23 CHG START
-            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 1, False, LC_lngCol_NO, .MaxRows)
-            Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 0, False, LC_lngCol_NO, .RowCount - 1)
-            '2019/09/23 CHG END
-        End With
-        Me.Close()
-        '2019/10/01 ADD END
+        Call CM_EndCm_Click(CM_EndCm, New System.EventArgs())
     End Sub
 
     Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
-        Call FR_SSSMAIN_Load(Me, New System.EventArgs())
+        Call MN_APPENDC_Click(MN_APPENDC, New System.EventArgs())
     End Sub
 
     '2019/09/23 ADD END

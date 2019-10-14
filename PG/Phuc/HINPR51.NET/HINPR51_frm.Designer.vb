@@ -143,18 +143,18 @@
         Me.Label3 = New System.Windows.Forms.Label()
         Me.CM_SLIST = New System.Windows.Forms.PictureBox()
         Me.CM_EndCm = New System.Windows.Forms.PictureBox()
-        Me.CM_LSTART = New System.Windows.Forms.PictureBox()
         Me.CM_LCONFIG = New System.Windows.Forms.PictureBox()
+        Me.Image1 = New System.Windows.Forms.PictureBox()
+        Me.CM_LSTART = New System.Windows.Forms.PictureBox()
         Me.CM_VSTART = New System.Windows.Forms.PictureBox()
         Me.CM_FSTART = New System.Windows.Forms.PictureBox()
-        Me.Image1 = New System.Windows.Forms.PictureBox()
         Me.SYSDT = New System.Windows.Forms.Label()
         Me.TM_StartUp = New System.Windows.Forms.Timer(Me.components)
         Me.TX_CursorRest = New System.Windows.Forms.TextBox()
         Me._FM_Panel3D15_0 = New System.Windows.Forms.Label()
         Me._FM_Panel3D2_2 = New System.Windows.Forms.Label()
-        Me.TX_Message = New System.Windows.Forms.TextBox()
         Me._IM_Denkyu_0 = New System.Windows.Forms.PictureBox()
+        Me.TX_Message = New System.Windows.Forms.TextBox()
         Me.GAUGE = New System.Windows.Forms.Label()
         Me.CM_LCANCEL = New System.Windows.Forms.Button()
         Me._FM_Panel3D4_4 = New System.Windows.Forms.Label()
@@ -227,11 +227,11 @@
         Me.FM_Panel3D14.SuspendLayout()
         CType(Me.CM_SLIST, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CM_EndCm, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CM_LSTART, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CM_LCONFIG, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Image1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CM_LSTART, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CM_VSTART, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CM_FSTART, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Image1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me._FM_Panel3D15_0.SuspendLayout()
         CType(Me._IM_Denkyu_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FM_Panel3D15, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -705,6 +705,7 @@
         Me.CM_SLIST.Size = New System.Drawing.Size(24, 22)
         Me.CM_SLIST.TabIndex = 16
         Me.CM_SLIST.TabStop = False
+        Me.CM_SLIST.Visible = False
         '
         'CM_EndCm
         '
@@ -715,16 +716,7 @@
         Me.CM_EndCm.Size = New System.Drawing.Size(24, 22)
         Me.CM_EndCm.TabIndex = 17
         Me.CM_EndCm.TabStop = False
-        '
-        'CM_LSTART
-        '
-        Me.CM_LSTART.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CM_LSTART.Image = CType(resources.GetObject("CM_LSTART.Image"), System.Drawing.Image)
-        Me.CM_LSTART.Location = New System.Drawing.Point(39, 6)
-        Me.CM_LSTART.Name = "CM_LSTART"
-        Me.CM_LSTART.Size = New System.Drawing.Size(24, 22)
-        Me.CM_LSTART.TabIndex = 18
-        Me.CM_LSTART.TabStop = False
+        Me.CM_EndCm.Visible = False
         '
         'CM_LCONFIG
         '
@@ -735,6 +727,26 @@
         Me.CM_LCONFIG.Size = New System.Drawing.Size(24, 22)
         Me.CM_LCONFIG.TabIndex = 19
         Me.CM_LCONFIG.TabStop = False
+        Me.CM_LCONFIG.Visible = False
+        '
+        'Image1
+        '
+        Me.Image1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Image1.Location = New System.Drawing.Point(0, 0)
+        Me.Image1.Name = "Image1"
+        Me.Image1.Size = New System.Drawing.Size(301, 34)
+        Me.Image1.TabIndex = 22
+        Me.Image1.TabStop = False
+        '
+        'CM_LSTART
+        '
+        Me.CM_LSTART.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CM_LSTART.Image = CType(resources.GetObject("CM_LSTART.Image"), System.Drawing.Image)
+        Me.CM_LSTART.Location = New System.Drawing.Point(39, 6)
+        Me.CM_LSTART.Name = "CM_LSTART"
+        Me.CM_LSTART.Size = New System.Drawing.Size(24, 22)
+        Me.CM_LSTART.TabIndex = 18
+        Me.CM_LSTART.TabStop = False
         '
         'CM_VSTART
         '
@@ -755,15 +767,6 @@
         Me.CM_FSTART.Size = New System.Drawing.Size(24, 22)
         Me.CM_FSTART.TabIndex = 21
         Me.CM_FSTART.TabStop = False
-        '
-        'Image1
-        '
-        Me.Image1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Image1.Location = New System.Drawing.Point(0, 0)
-        Me.Image1.Name = "Image1"
-        Me.Image1.Size = New System.Drawing.Size(301, 34)
-        Me.Image1.TabIndex = 22
-        Me.Image1.TabStop = False
         '
         'SYSDT
         '
@@ -808,23 +811,6 @@
         Me._FM_Panel3D2_2.Size = New System.Drawing.Size(526, 25)
         Me._FM_Panel3D2_2.TabIndex = 11
         '
-        'TX_Message
-        '
-        Me.TX_Message.AcceptsReturn = True
-        Me.TX_Message.BackColor = System.Drawing.SystemColors.Control
-        Me.TX_Message.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TX_Message.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TX_Message.ForeColor = System.Drawing.Color.Black
-        Me.TX_Message.Location = New System.Drawing.Point(6, 8)
-        Me.TX_Message.MaxLength = 0
-        Me.TX_Message.Multiline = True
-        Me.TX_Message.Name = "TX_Message"
-        Me.TX_Message.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TX_Message.Size = New System.Drawing.Size(349, 13)
-        Me.TX_Message.TabIndex = 12
-        Me.TX_Message.Text = "エラーやプロンプトのメッセージが出力されるところです。"
-        Me.TX_Message.Visible = False
-        '
         '_IM_Denkyu_0
         '
         Me._IM_Denkyu_0.Cursor = System.Windows.Forms.Cursors.Default
@@ -837,6 +823,23 @@
         Me._IM_Denkyu_0.TabStop = False
         Me._IM_Denkyu_0.Visible = False
         '
+        'TX_Message
+        '
+        Me.TX_Message.AcceptsReturn = True
+        Me.TX_Message.BackColor = System.Drawing.SystemColors.Control
+        Me.TX_Message.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TX_Message.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TX_Message.ForeColor = System.Drawing.Color.Black
+        Me.TX_Message.Location = New System.Drawing.Point(63, 353)
+        Me.TX_Message.MaxLength = 0
+        Me.TX_Message.Multiline = True
+        Me.TX_Message.Name = "TX_Message"
+        Me.TX_Message.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.TX_Message.Size = New System.Drawing.Size(349, 13)
+        Me.TX_Message.TabIndex = 12
+        Me.TX_Message.Text = "エラーやプロンプトのメッセージが出力されるところです。"
+        Me.TX_Message.Visible = False
+        '
         'GAUGE
         '
         Me.GAUGE.Location = New System.Drawing.Point(94, 290)
@@ -844,6 +847,7 @@
         Me.GAUGE.Size = New System.Drawing.Size(379, 28)
         Me.GAUGE.TabIndex = 13
         Me.GAUGE.Text = "Panel3D2"
+        Me.GAUGE.Visible = False
         '
         'CM_LCANCEL
         '
@@ -1249,11 +1253,11 @@
         Me.FM_Panel3D14.ResumeLayout(False)
         CType(Me.CM_SLIST, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CM_EndCm, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CM_LSTART, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CM_LCONFIG, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Image1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CM_LSTART, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CM_VSTART, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CM_FSTART, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Image1, System.ComponentModel.ISupportInitialize).EndInit()
         Me._FM_Panel3D15_0.ResumeLayout(False)
         CType(Me._IM_Denkyu_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FM_Panel3D15, System.ComponentModel.ISupportInitialize).EndInit()

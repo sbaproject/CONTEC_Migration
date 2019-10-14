@@ -74,14 +74,14 @@ Module SSSMAIN0001
                 'UPGRADE_WARNING: オブジェクト ENDBNKCD_Check() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '2019/10/03 CHG START
-                'Ck_Error = ENDBNKCD_Check(AE_NullCnv2_SSSMAIN(CC_NewVal), AE_NullCnv2_SSSMAIN(CP_SSSMAIN(2).CuVal), PP_SSSMAIN.De2)
+                'Ck_Error = ENDBNKCD_Check(AE_NullCnv2_SSSMAIN(CC_NewVal), AE_NullCnv2_SSSMAIN(CP_SSSMAIN(2).CuVal))
                 Ck_Error = ENDBNKCD_Check(AE_NullCnv2_SSSMAIN(CC_NewVal), AE_NullCnv2_SSSMAIN(CP_SSSMAIN(2).CuVal), PP_SSSMAIN.De2)
                 '2019/10/03 CHG END
             Else
                 'UPGRADE_WARNING: オブジェクト ENDBNKCD_Check() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '2019/10/03 CHG START
-                'Ck_Error = ENDBNKCD_Check(AE_NullCnv2_SSSMAIN(CC_NewVal), AE_NullCnv2_SSSMAIN(CP_SSSMAIN(2).CuVal), PP_SSSMAIN.De2)
+                'Ck_Error = ENDBNKCD_Check(AE_NullCnv2_SSSMAIN(CC_NewVal), AE_NullCnv2_SSSMAIN(CP_SSSMAIN(2).CuVal))
                 Ck_Error = ENDBNKCD_Check(AE_NullCnv2_SSSMAIN(CC_NewVal), AE_NullCnv2_SSSMAIN(CP_SSSMAIN(2).CuVal), PP_SSSMAIN.De2)
                 '2019/10/03 CHG END
             End If
