@@ -2111,7 +2111,7 @@ EndLbl:
     '=======================================================================================
     '2019/10/03 CHG START
     'Public Sub GP_Va_Col_EditColor(ByRef objSpread As Object, ByVal lngCol As Integer, ByVal lngRow As Integer, ByVal bolEdit As Boolean, Optional ByVal lngCol2 As Integer = 0, Optional ByVal lngRow2 As Integer = 0)
-    Public Sub GP_Va_Col_EditColor(ByRef objSpread As GrapeCity.Win.MultiRow.GcMultiRow, ByVal lngCol As Integer, ByVal lngRow As Integer, ByVal bolEdit As Boolean, Optional ByVal lngCol2 As Integer = 0, Optional ByVal lngRow2 As Integer = 0)
+    Public Sub GP_Va_Col_EditColor(ByRef objSpread As GrapeCity.Win.MultiRow.GcMultiRow, ByVal lngCol As Integer, ByVal lngRow As Integer, ByVal bolEdit As Boolean, Optional ByVal lngCol2 As Integer = -1, Optional ByVal lngRow2 As Integer = -1)
         '2019/10/03 CHG END
         'スプレッドの背景色の設定。
         With objSpread
@@ -2155,7 +2155,7 @@ EndLbl:
             Dim row2 As Integer
             Dim col2 As Integer
 
-            If lngRow2 <> 0 Then
+            If lngRow2 <> -1 Then
                 row2 = lngRow2
                 col2 = lngCol2
             Else
@@ -2166,9 +2166,9 @@ EndLbl:
             Dim color As Color
 
             If bolEdit Then
-                color = Color.FromArgb(LC_lng_va_Edit_Color)
+                color = System.Drawing.ColorTranslator.FromOle(LC_lng_va_Edit_Color)
             Else
-                color = Color.FromArgb(LC_lng_va_UnEdit_Color)
+                color = System.Drawing.ColorTranslator.FromOle(LC_lng_va_UnEdit_Color)
             End If
 
             For i As Integer = lngRow To row2
@@ -2364,6 +2364,14 @@ EndLbl:
         Catch ex As Exception
             li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
         End Try
+    End Sub
+
+    Private Sub vaData_CellLeave(sender As Object, e As GrapeCity.Win.MultiRow.CellEventArgs) Handles vaData.CellLeave
+
+    End Sub
+
+    Private Sub vaData_CellEnter(sender As Object, e As GrapeCity.Win.MultiRow.CellEventArgs) Handles vaData.CellEnter
+
     End Sub
 
     '2019/09/26 ADD END
