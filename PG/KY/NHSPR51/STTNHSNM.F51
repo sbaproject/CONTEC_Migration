@@ -1,0 +1,29 @@
+Attribute VB_Name = "STTNHSNM_F51"
+Option Explicit
+'
+' スロット名        : 納入先名称・画面項目スロット
+' ユニット名        : NHSNM.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/17
+' 使用プログラム名  : NYKPR52
+'
+
+Function STTNHSNM_Derived(ByVal STTNHSNM, ByVal STTNHSCD, ByVal De_Index)
+    
+    If Trim(STTNHSCD) = "" Then
+       DB_NHSMTA.NHSRN = " "
+    Else
+        Call DB_GetEq(DBN_NHSMTA, 1, STTNHSCD, BtrNormal)
+    End If
+    STTNHSNM_Derived = DB_NHSMTA.NHSRN
+    
+End Function
+Function STTNHSNM_InitVal(ByVal STTNHSNM, ByVal STTNHSCD, ByVal De_Index)
+    'If Trim(DB_NHSMTA.NHSCD) = "" Then
+    If Trim(STTNHSCD) = "" Then
+        STTNHSNM_InitVal = FillVal(" ", LenWid(DB_NHSMTA.NHSRN))
+    Else
+        STTNHSNM_InitVal = DB_NHSMTA.NHSRN
+    End If
+End Function
+

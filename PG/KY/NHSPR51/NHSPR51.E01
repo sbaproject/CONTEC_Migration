@@ -1,0 +1,70 @@
+Attribute VB_Name = "NHSPR51_E01"
+Option Explicit
+'
+' スロット名        : 画面処理スロット
+' ユニット名        : NHSPR51.E01
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : UODPR11
+'
+
+Sub Chain_Proc()
+
+End Sub
+
+Sub InitDsp()
+    '背景色設定
+    AE_BackColor(1) = &H8000000F
+    
+    CL_SSSMAIN(0) = 1
+    CL_SSSMAIN(1) = 1
+    CL_SSSMAIN(3) = 1
+    CL_SSSMAIN(5) = 1
+    
+    '運用日取得
+    Call DB_GetFirst(DBN_UNYMTA, 1, BtrNormal)
+    
+    '実行権限の取得
+    Call Get_Authority(DB_UNYMTA.UNYDT)
+    
+    '先に取得した権限により、Preview画面の印刷ボタン、プリンタ設定ボタン、ファイル出力ボタンを制御する
+    If gs_PRTAUTH = "1" Then '印刷権限有り
+        FR_SSSMAIN!CM_LSTART.Visible = True
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!MN_LSTART.Enabled = True
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+    Else
+        FR_SSSMAIN!CM_LSTART.Visible = False
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!MN_LSTART.Enabled = False
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+    End If
+    If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!CM_FSTART.Visible = True
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+        FR_SSSMAIN!MN_FSTART.Enabled = True
+    Else
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!CM_FSTART.Visible = False
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+        FR_SSSMAIN!MN_FSTART.Enabled = False
+    End If
+
+End Sub
+
+Sub INQ_LIST()
+Dim rtn As Integer
+    '
+    DLGLST1.Show 1
+    Select Case SSS_RTNWIN
+        Case 0          ' 印刷
+            rtn = LSTART_GetEvent()
+        Case 1          ' プレビュー
+            rtn = VSTART_GetEvent()
+        Case 2          ' ファイル出力
+            rtn = FSTART_GetEvent()
+        Case Else
+    End Select
+End Sub
+

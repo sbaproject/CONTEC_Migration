@@ -1,0 +1,68 @@
+	Option Explicit
+'==========================================================================
+'   NHSMTA.DBM   納入先マスタ                     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_NHSMTA
+    DATKB          As String * 1     '伝票削除区分          0                   
+    NHSMSTKB       As String * 1     'マスタ区分(納入先)    0                   
+    NHSCD          As String * 10    '納入先コード          !@@@@@@@@@@         
+    NHSNMA         As String * 60    '納入先名称１                              
+    NHSNMB         As String * 60    '納入先名称２                              
+    NHSRN          As String * 40    '納入先略称                                
+    NHSNK          As String * 10    '納入先名称カナ                            
+    NHSRNNK        As String * 20    '納入先略称カナ                            
+    NHSZP          As String * 20    '納入先郵便番号        X(08)               
+    NHSADA         As String * 60    '納入先住所１                              
+    NHSADB         As String * 60    '納入先住所２                              
+    NHSADC         As String * 60    '納入先住所３                              
+    NHSTL          As String * 20    '納入先電話番号        X(12)               
+    NHSFX          As String * 20    '納入先ＦＡＸ番号      X(12)               
+    NHSBOSNM       As String * 30    '納入先代表者名                            
+    NHSCTANM       As String * 30    '納入先御担当者名                          
+    NHSMLAD        As String * 50    '納入先メールアドレス                      
+    NHSCLAKB       As String * 1     '分類区分１（納入先）  0                   
+    NHSCLBKB       As String * 1     '分類区分２（納入先）  0                   
+    NHSCLCKB       As String * 1     '分類区分３（納入先）  0                   
+    NHSCLAID       As String * 6     '分類コード１（納入先  !@@@@@@             
+    NHSCLBID       As String * 6     '分類コード２（納入先  !@@@@@@             
+    NHSCLCID       As String * 6     '分類コード３（納入先  !@@@@@@             
+    NHSCLANM       As String * 20    '分類名称１（納入先）                      
+    NHSCLBNM       As String * 20    '分類名称２（納入先）                      
+    NHSCLCNM       As String * 20    '分類名称３（納入先）                      
+    NHSNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ区分（納）   0                   
+    OLDNHSCD       As String * 9     '旧納入先コード        000000000           
+    NGRPCD         As String * 10    'グループ会社コード    0000000000          
+    OLNGRPCD       As String * 9     '旧グループ会社コード  00000               
+    GYOSHU         As String * 5     '業種                  00000               
+    CHIIKI         As String * 5     '地域                  00000               
+    BINCD          As String * 2     '便名コード            00                  
+    FRNKB          As String * 1     '海外取引区分          0                   
+    IKOUKB         As String * 1     '移行データ区分        0                   
+    RELFL          As String * 1     '連携フラグ            0                   
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+End Type
+Global DB_NHSMTA As TYPE_DB_NHSMTA
+Global DBN_NHSMTA As Integer
+' Index1( NHSCD )
+' Index2( NHSNK + NHSCD )
+' Index3( NHSCLAID + NHSCLBID + NHSCLCID + NHSCD )
+' Index4( NHSCLBID + NHSCLCID + NHSCD )
+' Index5( NHSCLCID + NHSCD )
+
+Sub NHSMTA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_NHSMTA, G_LB)
+    Call ResetBuf(DBN_NHSMTA)
+End Sub
