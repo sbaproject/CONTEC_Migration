@@ -3591,13 +3591,13 @@ Friend Class FR_SSSMAIN
         '2019/10/01 CHG START
         'If TypeOf pm_Ctl Is Button And pm_Ctl.Name <> CS_HIK.Name Then
         If TypeOf pm_Ctl Is Button And pm_Ctl.Name <> btnF6.Name Then
-                '2019/10/01 CHG END
-                '検索画面呼出の場合は終了
-                Exit Function
-            End If
+            '2019/10/01 CHG END
+            '検索画面呼出の場合は終了
+            Exit Function
+        End If
 
-            'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            If Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area = IN_AREA_DSP_BD Then
+        'UPGRADE_WARNING: オブジェクト Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Main_Inf.Dsp_Sub_Inf(Trg_Index).Detail.In_Area = IN_AREA_DSP_BD Then
             '明細行コントロールか判定
             If Trg_Index >= Main_Inf.Dsp_Base.Body_Fst_Idx Then
                 '明細検索ボタンの明細行数変数に同じ行数を設定
@@ -4004,10 +4004,6 @@ Friend Class FR_SSSMAIN
                 '        Case CInt(MN_APPENDC.Tag)
                 '            '画面初期化
                 'Call Ctl_MN_APPENDC_Click()
-                '2019/09/26 ADD START
-            Case CShort(btnF9.Tag)
-                Call Ctl_MN_APPENDC_Click()
-                '2019/09/26 ADD END
             Case CShort(MN_ClearItm.Tag)
                 '項目初期化
                 Call Ctl_MN_ClearItm_Click()
@@ -4052,7 +4048,56 @@ Friend Class FR_SSSMAIN
             Case CShort(btnF9.Tag)
                 '2019/09/26 CHG END
                 '選択（明細部クリア）
-                Call Ctl_MN_SELECTCM_Click()
+                '2019/09/26 DEL START
+                'Call Ctl_MN_SELECTCM_Click()
+                '2019/09/26 DEL END
+
+                '2019/09/26 ADD START
+                If _BD_LINNO_1.Text.Trim.Length > 0 Then
+
+                    '画面ボディ部初期化
+                    Call SSSMAIN0001.F_Init_Clr_Dsp_Body(-1, Main_Inf)
+
+                    '画面明細表示
+                    Call CF_Body_Dsp(Main_Inf)
+
+                    Main_Inf.Dsp_Base.Head_Ok_Flg = False
+
+                    For Index_Wk As Integer = 1 To Main_Inf.Dsp_Base.Item_Cnt
+                        If Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl.Name.StartsWith("HD_") _
+                            And Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl.Name <> HD_IN_TANNM.Name _
+                            And Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl.Name <> HD_IN_TANCD.Name _
+                            And Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl.Name <> HD_MITNO.Name _
+                            And Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl.Name <> HD_MITNOV.Name _
+                            And Main_Inf.Dsp_Sub_Inf(Index_Wk).Ctl.Name <> HD_JDNNO.Name Then
+
+                            Call SSSMAIN0001.F_Init_Clr_Dsp(Index_Wk, Main_Inf)
+                        End If
+                    Next
+
+                    Call SSSMAIN0001.F_Init_Clr_Dsp(TL_SBAUODKN.Tag, Main_Inf)
+                    Call SSSMAIN0001.F_Init_Clr_Dsp(TL_SBAUZEKN.Tag, Main_Inf)
+                    Call SSSMAIN0001.F_Init_Clr_Dsp(TL_SBAUZKKN.Tag, Main_Inf)
+
+                Else
+                    '画面内容初期化
+                    Call SSSMAIN0001.F_Init_Clr_Dsp(-1, Main_Inf)
+
+                    '初期表示編集
+                    Call Edi_Dsp_Def()
+
+                    '入力担当者編集
+                    Call CF_Set_Frm_IN_TANCD_HIKET51(Me, Main_Inf)
+                End If
+
+                'ヘッダ部入力制御
+                Call F_Set_Inp_Item_Focus_Ctl(True, Main_Inf)
+                HD_MITNOV.BackColor = COLOR_WHITE
+                HD_JDNNO.BackColor = COLOR_WHITE
+                HD_MITNO.Select()
+                HD_MITNO.BackColor = COLOR_YELLOW
+
+                '2019/09/26 ADD START
 
                 '        Case CInt(MN_PREV.Tag)
                 '            '前ページ
@@ -5134,10 +5179,12 @@ Friend Class FR_SSSMAIN
         Next
 
         'スクロールバーの設定
-        '2019/09/30 DEL START
+        '2019/09/30 CHG START
         'VS_Scrl.Top = VB6.ToPixelsUserY(BD_LINNO_Top, 0, 10944.1, 653)
         'VS_Scrl.Height = VB6.ToPixelsUserHeight(BD_LINNO_Height * Main_Inf.Dsp_Base.Dsp_Body_Cnt, 10944.1, 653)
-        '2019/09/30 DEL END
+        VS_Scrl.Top = VB6.TwipsToPixelsY(BD_LINNO_Top)
+        VS_Scrl.Height = VB6.TwipsToPixelsY(BD_LINNO_Height * Main_Inf.Dsp_Base.Dsp_Body_Cnt)
+        '2019/09/30 CHG END
 
     End Function
 
@@ -5211,7 +5258,14 @@ Friend Class FR_SSSMAIN
         If eventSender.Checked Then
             Dim Index As Short = BD_SELECTB.GetIndex(eventSender)
             Debug.Print("BD_SELECTB_Click")
-            Call Ctl_Item_Click(BD_SELECTB(Index))
+            '2019/09/30 CHG START
+            'Call Ctl_Item_Click(BD_SELECTB(Index))
+            If _BD_LINNO_1.Text.Trim.Length = 0 Then
+                DirectCast(BD_SELECTB(Index), RadioButton).Checked = False
+            Else
+                Call Ctl_Item_Click(BD_SELECTB(Index))
+            End If
+            '2019/09/30 CHG END
         End If
     End Sub
 
@@ -6497,7 +6551,20 @@ Friend Class FR_SSSMAIN
         Dim KeyCode As Short = eventArgs.KeyCode
         Dim Shift As Short = eventArgs.KeyData \ &H10000
         Debug.Print("HD_JDNNO_KeyDown")
+        '2019/10/09 ADD START
+        Dim isKeyDown As Boolean
+        isKeyDown = KeyCode = System.Windows.Forms.Keys.Down And Shift = 0
+        '2019/10/09 ADD START
+
         Call Ctl_Item_KeyDown(HD_JDNNO, KeyCode, Shift)
+
+        '2019/10/09 ADD START
+        If isKeyDown Then
+            If Trim(HD_MITNO.Text).Length = 0 Or Trim(HD_MITNOV.Text).Length = 0 Or _BD_LINNO_1.Text.Trim.Length = 0 Then
+                HD_JDNNO.BackColor = COLOR_WHITE
+            End If
+        End If
+        '2019/10/09 ADD START
     End Sub
 
     Private Sub TL_SBAUZEKN_KeyDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles TL_SBAUZEKN.KeyDown
@@ -6882,6 +6949,11 @@ Friend Class FR_SSSMAIN
         If KeyAscii = 0 Then
             eventArgs.Handled = True
         End If
+        '2019/10/09 ADD START
+        If _BD_LINNO_1.Text.Trim.Length > 0 Then
+            HD_JDNNO.BackColor = COLOR_WHITE
+        End If
+        '2019/10/09 ADD END
     End Sub
 
     Private Sub TL_SBAUZEKN_KeyPress(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyPressEventArgs) Handles TL_SBAUZEKN.KeyPress
@@ -8584,6 +8656,9 @@ Friend Class FR_SSSMAIN
         Dim Shift As Short = eventArgs.KeyData \ &H10000
         Debug.Print("HD_JDNNO_KeyUp")
         Call Ctl_Item_KeyUp(HD_JDNNO)
+        '2019/10/09 ADD START
+        HD_MITNOV.BackColor = COLOR_WHITE
+        '2019/10/09 ADD END
     End Sub
 
     Private Sub HD_JDNTRKB_KeyUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_JDNTRKB.KeyUp
@@ -8626,6 +8701,9 @@ Friend Class FR_SSSMAIN
         Dim Shift As Short = eventArgs.KeyData \ &H10000
         Debug.Print("HD_MITNOV_KeyUp")
         Call Ctl_Item_KeyUp(HD_MITNOV)
+        '2019/10/09 ADD START
+        HD_MITNO.BackColor = COLOR_WHITE
+        '2019/10/09 ADD END
     End Sub
 
     Private Sub HD_NHSCD_KeyUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.KeyEventArgs) Handles HD_NHSCD.KeyUp
