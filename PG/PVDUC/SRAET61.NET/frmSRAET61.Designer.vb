@@ -102,6 +102,18 @@
         Me.MN_APPENDC = New System.Windows.Forms.ToolStripMenuItem()
         Me.vaData = New GrapeCity.Win.MultiRow.GcMultiRow()
         Me.Template11 = New SRAET61.Template1()
+        Me.btnF1 = New System.Windows.Forms.Button()
+        Me.btnF12 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.btnF9 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SSPanel53.SuspendLayout()
         CType(Me.CM_Execute, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CM_EndCm, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -153,31 +165,37 @@
         'CM_Execute
         '
         Me.CM_Execute.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CM_Execute.Enabled = False
         Me.CM_Execute.Image = CType(resources.GetObject("CM_Execute.Image"), System.Drawing.Image)
         Me.CM_Execute.Location = New System.Drawing.Point(32, 8)
         Me.CM_Execute.Name = "CM_Execute"
         Me.CM_Execute.Size = New System.Drawing.Size(24, 22)
         Me.CM_Execute.TabIndex = 0
         Me.CM_Execute.TabStop = False
+        Me.CM_Execute.Visible = False
         '
         'CM_EndCm
         '
         Me.CM_EndCm.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CM_EndCm.Enabled = False
         Me.CM_EndCm.Image = CType(resources.GetObject("CM_EndCm.Image"), System.Drawing.Image)
         Me.CM_EndCm.Location = New System.Drawing.Point(8, 8)
         Me.CM_EndCm.Name = "CM_EndCm"
         Me.CM_EndCm.Size = New System.Drawing.Size(24, 22)
         Me.CM_EndCm.TabIndex = 1
         Me.CM_EndCm.TabStop = False
+        Me.CM_EndCm.Visible = False
         '
         'Image1
         '
         Me.Image1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Image1.Enabled = False
         Me.Image1.Location = New System.Drawing.Point(0, 0)
         Me.Image1.Name = "Image1"
         Me.Image1.Size = New System.Drawing.Size(205, 37)
         Me.Image1.TabIndex = 2
         Me.Image1.TabStop = False
+        Me.Image1.Visible = False
         '
         'Frame1
         '
@@ -188,6 +206,7 @@
         Me.Frame1.Controls.Add(Me._IM_Execute_1)
         Me.Frame1.Controls.Add(Me._IM_EndCm_2)
         Me.Frame1.Controls.Add(Me._IM_EndCm_1)
+        Me.Frame1.Enabled = False
         Me.Frame1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Frame1.Location = New System.Drawing.Point(16, 400)
         Me.Frame1.Name = "Frame1"
@@ -195,10 +214,12 @@
         Me.Frame1.Size = New System.Drawing.Size(273, 49)
         Me.Frame1.TabIndex = 9
         Me.Frame1.TabStop = False
+        Me.Frame1.Visible = False
         '
         '_IM_Denkyu_2
         '
         Me._IM_Denkyu_2.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Denkyu_2.Enabled = False
         Me._IM_Denkyu_2.Image = CType(resources.GetObject("_IM_Denkyu_2.Image"), System.Drawing.Image)
         Me.IM_Denkyu.SetIndex(Me._IM_Denkyu_2, CType(2, Short))
         Me._IM_Denkyu_2.Location = New System.Drawing.Point(160, 16)
@@ -206,10 +227,12 @@
         Me._IM_Denkyu_2.Size = New System.Drawing.Size(20, 22)
         Me._IM_Denkyu_2.TabIndex = 0
         Me._IM_Denkyu_2.TabStop = False
+        Me._IM_Denkyu_2.Visible = False
         '
         '_IM_Denkyu_1
         '
         Me._IM_Denkyu_1.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Denkyu_1.Enabled = False
         Me._IM_Denkyu_1.Image = CType(resources.GetObject("_IM_Denkyu_1.Image"), System.Drawing.Image)
         Me.IM_Denkyu.SetIndex(Me._IM_Denkyu_1, CType(1, Short))
         Me._IM_Denkyu_1.Location = New System.Drawing.Point(128, 16)
@@ -217,10 +240,12 @@
         Me._IM_Denkyu_1.Size = New System.Drawing.Size(20, 22)
         Me._IM_Denkyu_1.TabIndex = 1
         Me._IM_Denkyu_1.TabStop = False
+        Me._IM_Denkyu_1.Visible = False
         '
         '_IM_Execute_2
         '
         Me._IM_Execute_2.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Execute_2.Enabled = False
         Me._IM_Execute_2.Image = CType(resources.GetObject("_IM_Execute_2.Image"), System.Drawing.Image)
         Me.IM_Execute.SetIndex(Me._IM_Execute_2, CType(2, Short))
         Me._IM_Execute_2.Location = New System.Drawing.Point(96, 16)
@@ -228,10 +253,12 @@
         Me._IM_Execute_2.Size = New System.Drawing.Size(24, 22)
         Me._IM_Execute_2.TabIndex = 2
         Me._IM_Execute_2.TabStop = False
+        Me._IM_Execute_2.Visible = False
         '
         '_IM_Execute_1
         '
         Me._IM_Execute_1.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Execute_1.Enabled = False
         Me._IM_Execute_1.Image = CType(resources.GetObject("_IM_Execute_1.Image"), System.Drawing.Image)
         Me.IM_Execute.SetIndex(Me._IM_Execute_1, CType(1, Short))
         Me._IM_Execute_1.Location = New System.Drawing.Point(72, 16)
@@ -239,10 +266,12 @@
         Me._IM_Execute_1.Size = New System.Drawing.Size(24, 22)
         Me._IM_Execute_1.TabIndex = 3
         Me._IM_Execute_1.TabStop = False
+        Me._IM_Execute_1.Visible = False
         '
         '_IM_EndCm_2
         '
         Me._IM_EndCm_2.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_EndCm_2.Enabled = False
         Me._IM_EndCm_2.Image = CType(resources.GetObject("_IM_EndCm_2.Image"), System.Drawing.Image)
         Me.IM_EndCm.SetIndex(Me._IM_EndCm_2, CType(2, Short))
         Me._IM_EndCm_2.Location = New System.Drawing.Point(40, 16)
@@ -250,10 +279,12 @@
         Me._IM_EndCm_2.Size = New System.Drawing.Size(24, 22)
         Me._IM_EndCm_2.TabIndex = 4
         Me._IM_EndCm_2.TabStop = False
+        Me._IM_EndCm_2.Visible = False
         '
         '_IM_EndCm_1
         '
         Me._IM_EndCm_1.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_EndCm_1.Enabled = False
         Me._IM_EndCm_1.Image = CType(resources.GetObject("_IM_EndCm_1.Image"), System.Drawing.Image)
         Me.IM_EndCm.SetIndex(Me._IM_EndCm_1, CType(1, Short))
         Me._IM_EndCm_1.Location = New System.Drawing.Point(16, 16)
@@ -261,22 +292,27 @@
         Me._IM_EndCm_1.Size = New System.Drawing.Size(24, 22)
         Me._IM_EndCm_1.TabIndex = 5
         Me._IM_EndCm_1.TabStop = False
+        Me._IM_EndCm_1.Visible = False
         '
         'SSPanel52
         '
-        Me.SSPanel52.Location = New System.Drawing.Point(48, 99)
+        Me.SSPanel52.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.SSPanel52.Location = New System.Drawing.Point(47, 95)
         Me.SSPanel52.Name = "SSPanel52"
         Me.SSPanel52.Size = New System.Drawing.Size(60, 22)
         Me.SSPanel52.TabIndex = 8
         Me.SSPanel52.Text = "数 量"
+        Me.SSPanel52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'SSPanel51
         '
-        Me.SSPanel51.Location = New System.Drawing.Point(48, 50)
+        Me.SSPanel51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.SSPanel51.Location = New System.Drawing.Point(47, 46)
         Me.SSPanel51.Name = "SSPanel51"
-        Me.SSPanel51.Size = New System.Drawing.Size(60, 43)
+        Me.SSPanel51.Size = New System.Drawing.Size(60, 45)
         Me.SSPanel51.TabIndex = 7
         Me.SSPanel51.Text = "製 品"
+        Me.SSPanel51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         '_FM_Panel3D15_0
         '
@@ -301,6 +337,7 @@
         Me.TX_Message.BackColor = System.Drawing.SystemColors.Control
         Me.TX_Message.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TX_Message.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TX_Message.Enabled = False
         Me.TX_Message.ForeColor = System.Drawing.Color.Black
         Me.TX_Message.Location = New System.Drawing.Point(8, 5)
         Me.TX_Message.MaxLength = 0
@@ -310,10 +347,12 @@
         Me.TX_Message.Size = New System.Drawing.Size(397, 19)
         Me.TX_Message.TabIndex = 12
         Me.TX_Message.Text = "エラーやプロンプトのメッセージが出力されるところです。"
+        Me.TX_Message.Visible = False
         '
         '_IM_Denkyu_0
         '
         Me._IM_Denkyu_0.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Denkyu_0.Enabled = False
         Me._IM_Denkyu_0.Image = CType(resources.GetObject("_IM_Denkyu_0.Image"), System.Drawing.Image)
         Me.IM_Denkyu.SetIndex(Me._IM_Denkyu_0, CType(0, Short))
         Me._IM_Denkyu_0.Location = New System.Drawing.Point(12, 9)
@@ -321,13 +360,14 @@
         Me._IM_Denkyu_0.Size = New System.Drawing.Size(20, 22)
         Me._IM_Denkyu_0.TabIndex = 12
         Me._IM_Denkyu_0.TabStop = False
+        Me._IM_Denkyu_0.Visible = False
         '
         'Image2
         '
         Me.Image2.Cursor = System.Windows.Forms.Cursors.Default
         Me.Image2.Location = New System.Drawing.Point(40, 120)
         Me.Image2.Name = "Image2"
-        Me.Image2.Size = New System.Drawing.Size(297, 225)
+        Me.Image2.Size = New System.Drawing.Size(300, 225)
         Me.Image2.TabIndex = 16
         Me.Image2.TabStop = False
         '
@@ -348,7 +388,7 @@
         Me.lblURISU.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblURISU.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.lblURISU.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.lblURISU.Location = New System.Drawing.Point(117, 104)
+        Me.lblURISU.Location = New System.Drawing.Point(118, 100)
         Me.lblURISU.Name = "lblURISU"
         Me.lblURISU.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblURISU.Size = New System.Drawing.Size(51, 15)
@@ -362,7 +402,7 @@
         Me.lblHIN2.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblHIN2.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.lblHIN2.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.lblHIN2.Location = New System.Drawing.Point(113, 76)
+        Me.lblHIN2.Location = New System.Drawing.Point(114, 74)
         Me.lblHIN2.Name = "lblHIN2"
         Me.lblHIN2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblHIN2.Size = New System.Drawing.Size(212, 16)
@@ -375,7 +415,7 @@
         Me.lblHIN1.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblHIN1.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.lblHIN1.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.lblHIN1.Location = New System.Drawing.Point(112, 55)
+        Me.lblHIN1.Location = New System.Drawing.Point(113, 51)
         Me.lblHIN1.Name = "lblHIN1"
         Me.lblHIN1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblHIN1.Size = New System.Drawing.Size(62, 15)
@@ -388,7 +428,7 @@
         Me.Label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label8.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label8.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.Label8.Location = New System.Drawing.Point(107, 99)
+        Me.Label8.Location = New System.Drawing.Point(108, 95)
         Me.Label8.Name = "Label8"
         Me.Label8.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label8.Size = New System.Drawing.Size(68, 22)
@@ -401,7 +441,7 @@
         Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label6.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label6.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.Label6.Location = New System.Drawing.Point(107, 50)
+        Me.Label6.Location = New System.Drawing.Point(108, 46)
         Me.Label6.Name = "Label6"
         Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label6.Size = New System.Drawing.Size(71, 22)
@@ -414,7 +454,7 @@
         Me.Label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label7.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label7.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.Label7.Location = New System.Drawing.Point(107, 71)
+        Me.Label7.Location = New System.Drawing.Point(108, 69)
         Me.Label7.Name = "Label7"
         Me.Label7.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label7.Size = New System.Drawing.Size(219, 22)
@@ -426,7 +466,7 @@
         Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MN_Ctrl, Me.MN_EditMn})
         Me.MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.MainMenu1.Name = "MainMenu1"
-        Me.MainMenu1.Size = New System.Drawing.Size(375, 24)
+        Me.MainMenu1.Size = New System.Drawing.Size(987, 24)
         Me.MainMenu1.TabIndex = 17
         '
         'MN_Ctrl
@@ -470,18 +510,164 @@
         '
         'vaData
         '
+        Me.vaData.AllowUserToAddRows = False
+        Me.vaData.HorizontalScrollBarMode = GrapeCity.Win.MultiRow.ScrollBarMode.Automatic
         Me.vaData.Location = New System.Drawing.Point(48, 129)
         Me.vaData.Name = "vaData"
-        Me.vaData.Size = New System.Drawing.Size(280, 210)
+        Me.vaData.Size = New System.Drawing.Size(283, 210)
         Me.vaData.TabIndex = 0
         Me.vaData.Template = Me.Template11
+        '
+        'btnF1
+        '
+        Me.btnF1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnF1.Location = New System.Drawing.Point(8, 410)
+        Me.btnF1.Name = "btnF1"
+        Me.btnF1.Size = New System.Drawing.Size(75, 39)
+        Me.btnF1.TabIndex = 108
+        Me.btnF1.Text = "(F1)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "更新"
+        Me.btnF1.UseVisualStyleBackColor = True
+        '
+        'btnF12
+        '
+        Me.btnF12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnF12.CausesValidation = False
+        Me.btnF12.Location = New System.Drawing.Point(903, 410)
+        Me.btnF12.Name = "btnF12"
+        Me.btnF12.Size = New System.Drawing.Size(75, 39)
+        Me.btnF12.TabIndex = 119
+        Me.btnF12.Text = "(F12)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "終了"
+        Me.btnF12.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button11.Enabled = False
+        Me.Button11.Location = New System.Drawing.Point(827, 410)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(75, 39)
+        Me.Button11.TabIndex = 118
+        Me.Button11.Text = "(F11)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'Button10
+        '
+        Me.Button10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button10.CausesValidation = False
+        Me.Button10.Enabled = False
+        Me.Button10.Location = New System.Drawing.Point(751, 410)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(75, 39)
+        Me.Button10.TabIndex = 117
+        Me.Button10.Text = "(F10)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'btnF9
+        '
+        Me.btnF9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnF9.CausesValidation = False
+        Me.btnF9.Location = New System.Drawing.Point(675, 410)
+        Me.btnF9.Name = "btnF9"
+        Me.btnF9.Size = New System.Drawing.Size(75, 39)
+        Me.btnF9.TabIndex = 116
+        Me.btnF9.Text = "(F9)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "クリア"
+        Me.btnF9.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button8.Enabled = False
+        Me.Button8.Location = New System.Drawing.Point(570, 410)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 39)
+        Me.Button8.TabIndex = 115
+        Me.Button8.Text = "(F8)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  "
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button7.Enabled = False
+        Me.Button7.Location = New System.Drawing.Point(494, 410)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(75, 39)
+        Me.Button7.TabIndex = 114
+        Me.Button7.Text = "(F7)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button6.Enabled = False
+        Me.Button6.Location = New System.Drawing.Point(418, 410)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 39)
+        Me.Button6.TabIndex = 113
+        Me.Button6.Text = "(F6)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  "
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button5.Enabled = False
+        Me.Button5.Location = New System.Drawing.Point(342, 410)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 39)
+        Me.Button5.TabIndex = 112
+        Me.Button5.Text = "(F5)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button4.Enabled = False
+        Me.Button4.Location = New System.Drawing.Point(236, 410)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 39)
+        Me.Button4.TabIndex = 111
+        Me.Button4.Text = "(F4)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Enabled = False
+        Me.Button3.Location = New System.Drawing.Point(160, 410)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 39)
+        Me.Button3.TabIndex = 110
+        Me.Button3.Text = "(F3)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "　　"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Enabled = False
+        Me.Button2.Location = New System.Drawing.Point(84, 410)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 39)
+        Me.Button2.TabIndex = 109
+        Me.Button2.Text = "(F2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  "
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'FR_SSSMAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(375, 392)
+        Me.ClientSize = New System.Drawing.Size(987, 458)
+        Me.Controls.Add(Me.btnF1)
+        Me.Controls.Add(Me.btnF12)
+        Me.Controls.Add(Me.Button11)
+        Me.Controls.Add(Me.Button10)
+        Me.Controls.Add(Me.btnF9)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.vaData)
         Me.Controls.Add(Me.txtDummy)
         Me.Controls.Add(Me.SSPanel53)
@@ -501,6 +687,7 @@
         Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Location = New System.Drawing.Point(10, 49)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -538,5 +725,17 @@
 
     Friend WithEvents vaData As GrapeCity.Win.MultiRow.GcMultiRow
     Friend WithEvents Template11 As Template1
+    Friend WithEvents btnF1 As Button
+    Friend WithEvents btnF12 As Button
+    Friend WithEvents Button11 As Button
+    Friend WithEvents Button10 As Button
+    Friend WithEvents btnF9 As Button
+    Friend WithEvents Button8 As Button
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button2 As Button
 #End Region
 End Class
