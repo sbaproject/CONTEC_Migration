@@ -37,11 +37,14 @@ Module STTWRTDT_F57
 	End Function
 	
 	Function STTWRTDT_Skip(ByRef CT_STTWRTDT As System.Windows.Forms.Control) As Object
-		'
-		'UPGRADE_WARNING: オブジェクト CT_STTWRTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CT_STTWRTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
-		'UPGRADE_WARNING: オブジェクト STTWRTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		STTWRTDT_Skip = False
+        '
+        'UPGRADE_WARNING: オブジェクト CT_STTWRTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/11 CHG START
+        'CT_STTWRTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
+        DirectCast(CT_STTWRTDT, TextBox).SelectionStart = 8 'yyyy-mm-dd の dd の場所へスキップ。
+        '2019/10/11 CHG E N D
+        'UPGRADE_WARNING: オブジェクト STTWRTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        STTWRTDT_Skip = False
 	End Function
 	
 	Function STTWRTDT_Slist(ByRef PP As clsPP, ByVal STTWRTDT As Object) As Object

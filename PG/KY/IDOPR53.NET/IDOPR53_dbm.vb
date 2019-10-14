@@ -136,13 +136,15 @@ Module IDOPR53_DBM
 	End Structure
 	Public DB_IDOPR53 As TYPE_DB_IDOPR53
 	Public DBN_IDOPR53 As Short
-	' Index1( RPTCLTID + SEQNO )
-	
-	Sub IDOPR53_RClear()
-		Dim TmpStat As Object
-		'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		TmpStat = Dll_RClear(DBN_IDOPR53, G_LB)
-		Call ResetBuf(DBN_IDOPR53)
-	End Sub
+    ' Index1( RPTCLTID + SEQNO )
+
+    Sub IDOPR53_RClear()
+        '2019/10/09 DEL START
+        'Dim TmpStat As Object
+        'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'TmpStat = Dll_RClear(DBN_IDOPR53, G_LB)
+        'Call ResetBuf(DBN_IDOPR53)
+        '2019/10/09 DEL START
+    End Sub
 End Module

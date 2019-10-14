@@ -44,11 +44,14 @@ Module ENDWRTDT_F57
 	End Function
 	
 	Function ENDWRTDT_Skip(ByRef CT_ENDWRTDT As System.Windows.Forms.Control) As Object
-		'
-		'UPGRADE_WARNING: オブジェクト CT_ENDWRTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CT_ENDWRTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
-		'UPGRADE_WARNING: オブジェクト ENDWRTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		ENDWRTDT_Skip = False
+        '
+        'UPGRADE_WARNING: オブジェクト CT_ENDWRTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/09 CHG START
+        'CT_ENDWRTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
+        DirectCast(CT_ENDWRTDT, TextBox).SelectionStart = 8
+        '2019/10/09 CHG E N D
+        'UPGRADE_WARNING: オブジェクト ENDWRTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        ENDWRTDT_Skip = False
 	End Function
 	
 	Function ENDWRTDT_Slist(ByRef PP As clsPP, ByVal ENDWRTDT As Object) As Object

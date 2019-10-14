@@ -36,8 +36,8 @@
 	Public WithEvents _Label3_1 As System.Windows.Forms.Label
 	Public WithEvents Frame3D1 As System.Windows.Forms.GroupBox
 	Public WithEvents TX_Mode As System.Windows.Forms.TextBox
-	Public WithEvents CMDialogL As CommonDialog
-	Public WithEvents _IM_LSTART_0 As System.Windows.Forms.PictureBox
+    Public WithEvents CMDialogL As System.Windows.Forms.OpenFileDialog
+    Public WithEvents _IM_LSTART_0 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Slist_0 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_EndCm_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_EndCm_0 As System.Windows.Forms.PictureBox
@@ -51,29 +51,29 @@
 	Public WithEvents _IM_LCONFIG_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Denkyu_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Denkyu_2 As System.Windows.Forms.PictureBox
-	Public WithEvents FM_Panel3D1 As SSPanel5
-	Public WithEvents SYSDT As SSPanel5
-	Public WithEvents CM_SLIST As System.Windows.Forms.PictureBox
+    Public WithEvents FM_Panel3D1 As Label
+    Public WithEvents SYSDT As System.Windows.Forms.Label
+    Public WithEvents CM_SLIST As System.Windows.Forms.PictureBox
 	Public WithEvents CM_EndCm As System.Windows.Forms.PictureBox
 	Public WithEvents CM_LSTART As System.Windows.Forms.PictureBox
 	Public WithEvents CM_LCONFIG As System.Windows.Forms.PictureBox
 	Public WithEvents CM_VSTART As System.Windows.Forms.PictureBox
 	Public WithEvents CM_FSTART As System.Windows.Forms.PictureBox
 	Public WithEvents Image1 As System.Windows.Forms.PictureBox
-	Public WithEvents FM_Panel3D14 As SSPanel5
-	Public WithEvents TM_StartUp As System.Windows.Forms.Timer
+    Public WithEvents FM_Panel3D14 As Label
+    Public WithEvents TM_StartUp As System.Windows.Forms.Timer
 	Public WithEvents TX_CursorRest As System.Windows.Forms.TextBox
 	Public WithEvents TX_Message As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D2_2 As SSPanel5
-	Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
-	Public WithEvents _FM_Panel3D15_0 As SSPanel5
-	Public WithEvents GAUGE As SSPanel5
-	Public WithEvents CM_LCANCEL As SSCommand5
-	Public WithEvents SSPanel52 As SSPanel5
-	Public WithEvents _Label5_2 As System.Windows.Forms.Label
-	Public WithEvents FM_Panel3D15 As SSPanel5Array
-	Public WithEvents FM_Panel3D2 As SSPanel5Array
-	Public WithEvents IM_Denkyu As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
+    Public WithEvents _FM_Panel3D2_2 As Label
+    Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
+    Public WithEvents _FM_Panel3D15_0 As Label
+    Public WithEvents GAUGE As Label
+    Public WithEvents CM_LCANCEL As Button
+    Public WithEvents SSPanel52 As Label
+    Public WithEvents _Label5_2 As System.Windows.Forms.Label
+    Public WithEvents FM_Panel3D15 As VB6.PanelArray
+    Public WithEvents FM_Panel3D2 As VB6.PanelArray
+    Public WithEvents IM_Denkyu As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_EndCm As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_FSTART As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_LCONFIG As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
@@ -81,9 +81,15 @@
 	Public WithEvents IM_Slist As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_VSTART As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents Label3 As Microsoft.VisualBasic.Compatibility.VB6.LabelArray
-	Public WithEvents Label5 As Microsoft.VisualBasic.Compatibility.VB6.LabelArray
-	Public WithEvents MN_LSTART As System.Windows.Forms.ToolStripMenuItem
-	Public WithEvents MN_VSTART As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents Label5 As Microsoft.VisualBasic.Compatibility.VB6.LabelArray
+
+    '2019/10/14 CHG START
+    'Public WithEvents MN_LSTART As System.Windows.Forms.ToolStripMenuItem
+    Public WithEvents MN_LSTART As System.Windows.Forms.ContextMenuStrip
+
+    '2019/10/14 CHG E N D
+
+    Public WithEvents MN_VSTART As System.Windows.Forms.ToolStripMenuItem
 	Public WithEvents MN_FSTART As System.Windows.Forms.ToolStripMenuItem
 	Public WithEvents MN_LCONFIG As System.Windows.Forms.ToolStripMenuItem
 	Public WithEvents bar11 As System.Windows.Forms.ToolStripSeparator
@@ -129,10 +135,10 @@
 		Me._Label3_0 = New System.Windows.Forms.Label
 		Me._Label5_0 = New System.Windows.Forms.Label
 		Me._Label3_1 = New System.Windows.Forms.Label
-		Me.FM_Panel3D1 = New SSPanel5
-		Me.TX_Mode = New System.Windows.Forms.TextBox
-		Me.CMDialogL = New CommonDialog
-		Me._IM_LSTART_0 = New System.Windows.Forms.PictureBox
+        Me.FM_Panel3D1 = New Label
+        Me.TX_Mode = New System.Windows.Forms.TextBox
+        Me.CMDialogL = New OpenFileDialog
+        Me._IM_LSTART_0 = New System.Windows.Forms.PictureBox
 		Me._IM_Slist_0 = New System.Windows.Forms.PictureBox
 		Me._IM_EndCm_1 = New System.Windows.Forms.PictureBox
 		Me._IM_EndCm_0 = New System.Windows.Forms.PictureBox
@@ -146,9 +152,9 @@
 		Me._IM_LCONFIG_1 = New System.Windows.Forms.PictureBox
 		Me._IM_Denkyu_1 = New System.Windows.Forms.PictureBox
 		Me._IM_Denkyu_2 = New System.Windows.Forms.PictureBox
-		Me.FM_Panel3D14 = New SSPanel5
-		Me.SYSDT = New SSPanel5
-		Me.CM_SLIST = New System.Windows.Forms.PictureBox
+        Me.FM_Panel3D14 = New Label
+        Me.SYSDT = New System.Windows.Forms.Label()
+        Me.CM_SLIST = New System.Windows.Forms.PictureBox
 		Me.CM_EndCm = New System.Windows.Forms.PictureBox
 		Me.CM_LSTART = New System.Windows.Forms.PictureBox
 		Me.CM_LCONFIG = New System.Windows.Forms.PictureBox
@@ -157,17 +163,17 @@
 		Me.Image1 = New System.Windows.Forms.PictureBox
 		Me.TM_StartUp = New System.Windows.Forms.Timer(components)
 		Me.TX_CursorRest = New System.Windows.Forms.TextBox
-		Me._FM_Panel3D15_0 = New SSPanel5
-		Me._FM_Panel3D2_2 = New SSPanel5
-		Me.TX_Message = New System.Windows.Forms.TextBox
+        Me._FM_Panel3D15_0 = New System.Windows.Forms.Label()
+        Me._FM_Panel3D2_2 = New System.Windows.Forms.Label()
+        Me.TX_Message = New System.Windows.Forms.TextBox
 		Me._IM_Denkyu_0 = New System.Windows.Forms.PictureBox
-		Me.GAUGE = New SSPanel5
-		Me.CM_LCANCEL = New SSCommand5
-		Me.SSPanel52 = New SSPanel5
-		Me._Label5_2 = New System.Windows.Forms.Label
-		Me.FM_Panel3D15 = New SSPanel5Array(components)
-		Me.FM_Panel3D2 = New SSPanel5Array(components)
-		Me.IM_Denkyu = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
+        Me.GAUGE = New Label
+        Me.CM_LCANCEL = New Button
+        Me.SSPanel52 = New Label
+        Me._Label5_2 = New System.Windows.Forms.Label
+        Me.FM_Panel3D15 = New VB6.PanelArray(components)
+        Me.FM_Panel3D2 = New VB6.PanelArray(components)
+        Me.IM_Denkyu = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_EndCm = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_FSTART = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_LCONFIG = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
@@ -177,9 +183,14 @@
 		Me.Label3 = New Microsoft.VisualBasic.Compatibility.VB6.LabelArray(components)
 		Me.Label5 = New Microsoft.VisualBasic.Compatibility.VB6.LabelArray(components)
 		Me.MainMenu1 = New System.Windows.Forms.MenuStrip
-		Me.MN_Ctrl = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_LSTART = New System.Windows.Forms.ToolStripMenuItem
-		Me.MN_VSTART = New System.Windows.Forms.ToolStripMenuItem
+        Me.MN_Ctrl = New System.Windows.Forms.ToolStripMenuItem
+
+        '2019/10/14 CHG START
+        'Me.MN_LSTART = New System.Windows.Forms.ToolStripMenuItem
+        Me.MN_LSTART = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        '2019/10/14 CHG E N D
+
+        Me.MN_VSTART = New System.Windows.Forms.ToolStripMenuItem
 		Me.MN_FSTART = New System.Windows.Forms.ToolStripMenuItem
 		Me.MN_LCONFIG = New System.Windows.Forms.ToolStripMenuItem
 		Me.bar11 = New System.Windows.Forms.ToolStripSeparator
@@ -595,9 +606,9 @@
 		Me.FM_Panel3D1.Size = New System.Drawing.Size(553, 94)
 		Me.FM_Panel3D1.Location = New System.Drawing.Point(0, 471)
 		Me.FM_Panel3D1.TabIndex = 3
-		Me.FM_Panel3D1.ForeColor = 0
-		Me.FM_Panel3D1.OutLine = -1
-		Me.FM_Panel3D1.Name = "FM_Panel3D1"
+        Me.FM_Panel3D1.ForeColor = Color.Empty
+        'Me.FM_Panel3D1.OutLine = -1
+        Me.FM_Panel3D1.Name = "FM_Panel3D1"
 		Me.TX_Mode.AutoSize = False
 		Me.TX_Mode.BackColor = System.Drawing.Color.FromARGB(255, 192, 255)
 		Me.TX_Mode.Size = New System.Drawing.Size(49, 22)
@@ -619,9 +630,11 @@
 		Me.TX_Mode.TabStop = True
 		Me.TX_Mode.Visible = True
 		Me.TX_Mode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.TX_Mode.Name = "TX_Mode"
-		Me.CMDialogL.Name = "CMDialogL"
-		Me._IM_LSTART_0.Size = New System.Drawing.Size(24, 22)
+        Me.TX_Mode.Name = "TX_Mode"
+
+        Me.CMDialogL.Title = "CMDialogL"
+
+        Me._IM_LSTART_0.Size = New System.Drawing.Size(24, 22)
 		Me._IM_LSTART_0.Location = New System.Drawing.Point(123, 3)
 		Me._IM_LSTART_0.Image = CType(resources.GetObject("_IM_LSTART_0.Image"), System.Drawing.Image)
 		Me._IM_LSTART_0.Visible = False
@@ -750,16 +763,16 @@
 		Me.FM_Panel3D14.Size = New System.Drawing.Size(662, 37)
 		Me.FM_Panel3D14.Location = New System.Drawing.Point(-3, 0)
 		Me.FM_Panel3D14.TabIndex = 1
-		Me.FM_Panel3D14.ForeColor = 0
-		Me.FM_Panel3D14.OutLine = -1
-		Me.FM_Panel3D14.Name = "FM_Panel3D14"
+        Me.FM_Panel3D14.ForeColor = Color.Empty
+        'Me.FM_Panel3D14.OutLine = -1
+        Me.FM_Panel3D14.Name = "FM_Panel3D14"
 		Me.SYSDT.Size = New System.Drawing.Size(94, 19)
 		Me.SYSDT.Location = New System.Drawing.Point(438, 9)
 		Me.SYSDT.TabIndex = 2
-		Me.SYSDT.ForeColor = 0
-		Me.SYSDT.BevelOuter = 1
-		Me.SYSDT.Caption = "YYYY/MM/DD"
-		Me.SYSDT.Name = "SYSDT"
+        Me.SYSDT.ForeColor = Color.Empty
+        'Me.SYSDT.BevelOuter = 1
+        Me.SYSDT.Text = "YYYY/MM/DD"
+        Me.SYSDT.Name = "SYSDT"
 		Me.CM_SLIST.Size = New System.Drawing.Size(24, 22)
 		Me.CM_SLIST.Location = New System.Drawing.Point(111, 6)
 		Me.CM_SLIST.Image = CType(resources.GetObject("CM_SLIST.Image"), System.Drawing.Image)
@@ -849,15 +862,15 @@
 		Me._FM_Panel3D15_0.Size = New System.Drawing.Size(643, 43)
 		Me._FM_Panel3D15_0.Location = New System.Drawing.Point(-3, 327)
 		Me._FM_Panel3D15_0.TabIndex = 5
-		Me._FM_Panel3D15_0.ForeColor = 0
-		Me._FM_Panel3D15_0.OutLine = -1
-		Me._FM_Panel3D15_0.Name = "_FM_Panel3D15_0"
+        Me._FM_Panel3D15_0.ForeColor = Color.Empty
+        'Me._FM_Panel3D15_0.OutLine = -1
+        Me._FM_Panel3D15_0.Name = "_FM_Panel3D15_0"
 		Me._FM_Panel3D2_2.Size = New System.Drawing.Size(577, 25)
 		Me._FM_Panel3D2_2.Location = New System.Drawing.Point(39, 9)
 		Me._FM_Panel3D2_2.TabIndex = 6
-		Me._FM_Panel3D2_2.ForeColor = 0
-		Me._FM_Panel3D2_2.BevelOuter = 1
-		Me._FM_Panel3D2_2.Name = "_FM_Panel3D2_2"
+        Me._FM_Panel3D2_2.ForeColor = Color.Empty
+        'Me._FM_Panel3D2_2.BevelOuter = 1
+        Me._FM_Panel3D2_2.Name = "_FM_Panel3D2_2"
 		Me.TX_Message.AutoSize = False
 		Me.TX_Message.BackColor = System.Drawing.SystemColors.Control
 		Me.TX_Message.ForeColor = System.Drawing.Color.Black
@@ -892,28 +905,28 @@
 		Me.GAUGE.Size = New System.Drawing.Size(447, 28)
 		Me.GAUGE.Location = New System.Drawing.Point(91, 256)
 		Me.GAUGE.TabIndex = 8
-		Me.GAUGE.ForeColor = 0
-		Me.GAUGE.BevelOuter = 1
-		Me.GAUGE.Caption = "Panel3D2"
-		Me.GAUGE.FloodType = 1
-		Me.GAUGE.OutLine = -1
-		Me.GAUGE.Name = "GAUGE"
+        Me.GAUGE.ForeColor = Color.Empty
+        'Me.GAUGE.BevelOuter = 1
+        Me.GAUGE.Text = "Panel3D2"
+        'Me.GAUGE.FloodType = 1
+        'Me.GAUGE.OutLine = -1
+        Me.GAUGE.Name = "GAUGE"
 		Me.CM_LCANCEL.Size = New System.Drawing.Size(76, 19)
 		Me.CM_LCANCEL.Location = New System.Drawing.Point(275, 294)
 		Me.CM_LCANCEL.TabIndex = 18
 		Me.CM_LCANCEL.TabStop = 0
-		Me.CM_LCANCEL.ForeColor = 0
-		Me.CM_LCANCEL.Caption = "íÜ é~"
-		Me.CM_LCANCEL.OutLine = 0
-		Me.CM_LCANCEL.Name = "CM_LCANCEL"
+        Me.CM_LCANCEL.ForeColor = Color.Empty
+        Me.CM_LCANCEL.Text = "íÜ é~"
+        'Me.CM_LCANCEL.OutLine = 0
+        Me.CM_LCANCEL.Name = "CM_LCANCEL"
 		Me.SSPanel52.Size = New System.Drawing.Size(82, 22)
 		Me.SSPanel52.Location = New System.Drawing.Point(339, 45)
 		Me.SSPanel52.TabIndex = 21
-		Me.SSPanel52.ForeColor = 0
-		Me.SSPanel52.BevelOuter = 1
-		Me.SSPanel52.Caption = "ì¸óÕíSìñé“"
-		Me.SSPanel52.OutLine = -1
-		Me.SSPanel52.Name = "SSPanel52"
+        Me.SSPanel52.ForeColor = Color.Empty
+        'Me.SSPanel52.BevelOuter = 1
+        Me.SSPanel52.Text = "ì¸óÕíSìñé“"
+        'Me.SSPanel52.OutLine = -1
+        Me.SSPanel52.Name = "SSPanel52"
 		Me._Label5_2.Text = "Å`"
 		Me._Label5_2.ForeColor = System.Drawing.SystemColors.WindowText
 		Me._Label5_2.Size = New System.Drawing.Size(22, 19)
@@ -936,9 +949,9 @@
 		Me.MN_Ctrl.Visible = True
 		Me.MN_LSTART.Name = "MN_LSTART"
 		Me.MN_LSTART.Text = "àÛç¸(&P)"
-		Me.MN_LSTART.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.P, System.Windows.Forms.Keys)
-		Me.MN_LSTART.Checked = False
-		Me.MN_LSTART.Enabled = True
+        'Me.MN_LSTART.ShortcutKeys = CType(System.Windows.Forms.Keys.Control or System.Windows.Forms.Keys.P, System.Windows.Forms.Keys)
+        'Me.MN_LSTART.Checked = False
+        Me.MN_LSTART.Enabled = True
 		Me.MN_LSTART.Visible = True
 		Me.MN_VSTART.Name = "MN_VSTART"
 		Me.MN_VSTART.Text = "âÊñ ï\é¶"
@@ -1038,8 +1051,17 @@
 		Me.SM_Esc.Visible = True
 		Me.Controls.Add(HD_OPENM)
 		Me.Controls.Add(HD_OPEID)
-		Me.Controls.Add(Frame3D1)
-		Me.Controls.Add(FM_Panel3D1)
+        Me.Controls.Add(Frame3D1)
+
+        '2019/10/14 ADD START
+        Me.Controls.Add(Me.SYSDT)
+        Me.Controls.Add(Me.CM_LSTART)
+        Me.Controls.Add(Me.CM_VSTART)
+        Me.Controls.Add(Me.MN_LSTART)
+        '2019/10/14 ADD E N D
+
+
+        Me.Controls.Add(FM_Panel3D1)
 		Me.Controls.Add(FM_Panel3D14)
 		Me.Controls.Add(TX_CursorRest)
 		Me.Controls.Add(_FM_Panel3D15_0)
@@ -1063,8 +1085,8 @@
 		Me.Frame3D1.Controls.Add(_Label5_0)
 		Me.Frame3D1.Controls.Add(_Label3_1)
 		Me.FM_Panel3D1.Controls.Add(TX_Mode)
-		Me.FM_Panel3D1.Controls.Add(CMDialogL)
-		Me.FM_Panel3D1.Controls.Add(_IM_LSTART_0)
+        'Me.FM_Panel3D1.Controls.Add(CMDialogL)
+        Me.FM_Panel3D1.Controls.Add(_IM_LSTART_0)
 		Me.FM_Panel3D1.Controls.Add(_IM_Slist_0)
 		Me.FM_Panel3D1.Controls.Add(_IM_EndCm_1)
 		Me.FM_Panel3D1.Controls.Add(_IM_EndCm_0)
@@ -1078,20 +1100,21 @@
 		Me.FM_Panel3D1.Controls.Add(_IM_LCONFIG_1)
 		Me.FM_Panel3D1.Controls.Add(_IM_Denkyu_1)
 		Me.FM_Panel3D1.Controls.Add(_IM_Denkyu_2)
-		Me.FM_Panel3D14.Controls.Add(SYSDT)
-		Me.FM_Panel3D14.Controls.Add(CM_SLIST)
+        'Me.FM_Panel3D14.Controls.Add(SYSDT)
+        Me.FM_Panel3D14.Controls.Add(CM_SLIST)
 		Me.FM_Panel3D14.Controls.Add(CM_EndCm)
-		Me.FM_Panel3D14.Controls.Add(CM_LSTART)
-		Me.FM_Panel3D14.Controls.Add(CM_LCONFIG)
-		Me.FM_Panel3D14.Controls.Add(CM_VSTART)
-		Me.FM_Panel3D14.Controls.Add(CM_FSTART)
+        'Me.FM_Panel3D14.Controls.Add(CM_LSTART)
+
+        Me.FM_Panel3D14.Controls.Add(CM_LCONFIG)
+        'Me.FM_Panel3D14.Controls.Add(CM_VSTART)
+        Me.FM_Panel3D14.Controls.Add(CM_FSTART)
 		Me.FM_Panel3D14.Controls.Add(Image1)
 		Me._FM_Panel3D15_0.Controls.Add(_FM_Panel3D2_2)
 		Me._FM_Panel3D15_0.Controls.Add(_IM_Denkyu_0)
 		Me._FM_Panel3D2_2.Controls.Add(TX_Message)
-		Me.FM_Panel3D15.SetIndex(_FM_Panel3D15_0, CType(0, Short))
-		Me.FM_Panel3D2.SetIndex(_FM_Panel3D2_2, CType(2, Short))
-		Me.IM_Denkyu.SetIndex(_IM_Denkyu_1, CType(1, Short))
+        'Me.FM_Panel3D15.SetIndex(_FM_Panel3D15_0, CType(0, Short))
+        'Me.FM_Panel3D2.SetIndex(_FM_Panel3D2_2, CType(2, Short))
+        Me.IM_Denkyu.SetIndex(_IM_Denkyu_1, CType(1, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_2, CType(2, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_0, CType(0, Short))
 		Me.IM_EndCm.SetIndex(_IM_EndCm_1, CType(1, Short))
@@ -1125,8 +1148,8 @@
 		CType(Me.FM_Panel3D2, System.ComponentModel.ISupportInitialize).EndInit()
 		CType(Me.FM_Panel3D15, System.ComponentModel.ISupportInitialize).EndInit()
 		MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_Ctrl, Me.MN_EditMn, Me.MN_Oprt, Me.SM_ShortCut})
-		MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_LSTART, Me.MN_VSTART, Me.MN_FSTART, Me.MN_LCONFIG, Me.bar11, Me.MN_EndCm})
-		MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_APPENDC, Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
+        'MN_Ctrl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_LSTART, Me.MN_VSTART, Me.MN_FSTART, Me.MN_LCONFIG, Me.bar11, Me.MN_EndCm})
+        MN_EditMn.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_APPENDC, Me.MN_ClearItm, Me.MN_UnDoItem, Me.Bar21, Me.MN_Cut, Me.MN_Copy, Me.MN_Paste})
 		MN_Oprt.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.MN_Slist})
 		SM_ShortCut.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem(){Me.SM_AllCopy, Me.SM_FullPast, Me.SM_Esc})
 		Me.Controls.Add(MainMenu1)

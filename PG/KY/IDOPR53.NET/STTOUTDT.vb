@@ -39,10 +39,13 @@ Module STTOUTDT_F51
 		'
 		'UPGRADE_WARNING: オブジェクト STTOUTDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If Trim(STTOUTDT) <> "" Then
-			'UPGRADE_WARNING: オブジェクト CT_STTOUTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CT_STTOUTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
-			'UPGRADE_WARNING: オブジェクト STTOUTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			STTOUTDT_Skip = False
+            'UPGRADE_WARNING: オブジェクト CT_STTOUTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/11 CHG START
+            'CT_STTOUTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
+            DirectCast(CT_STTOUTDT, TextBox).SelectionStart = 8 'yyyy-mm-dd の dd の場所へスキップ。
+            '2019/10/11 CHG E N D
+            'UPGRADE_WARNING: オブジェクト STTOUTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            STTOUTDT_Skip = False
 		End If
 	End Function
 	

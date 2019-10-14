@@ -118,9 +118,13 @@ Module SBNTRA_DBM
 	
 	Sub SBNTRA_RClear()
 		Dim TmpStat As Object
-		'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		TmpStat = Dll_RClear(DBN_SBNTRA, G_LB)
-		Call ResetBuf(DBN_SBNTRA)
-	End Sub
+        'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+
+        '2019/10/11 DEL START
+        'TmpStat = Dll_RClear(DBN_SBNTRA, G_LB)
+        'Call ResetBuf(DBN_SBNTRA)
+        '2019/10/11 DEL E N D
+
+    End Sub
 End Module

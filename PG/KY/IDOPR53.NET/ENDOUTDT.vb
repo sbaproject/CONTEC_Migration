@@ -47,10 +47,13 @@ Module ENDOUTDT_F51
 		'
 		'UPGRADE_WARNING: オブジェクト ENDOUTDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If Trim(ENDOUTDT) <> "" Then
-			'UPGRADE_WARNING: オブジェクト CT_ENDOUTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CT_ENDOUTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
-			'UPGRADE_WARNING: オブジェクト ENDOUTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			ENDOUTDT_Skip = False
+            'UPGRADE_WARNING: オブジェクト CT_ENDOUTDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/09 CHG START
+            'CT_ENDOUTDT.SelStart = 8 'yyyy-mm-dd の dd のところ。
+            DirectCast(CT_ENDOUTDT, TextBox).SelectionStart = 8
+            '2019/10/09 CHG E N D
+            'UPGRADE_WARNING: オブジェクト ENDOUTDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            ENDOUTDT_Skip = False
 		End If
 	End Function
 	
