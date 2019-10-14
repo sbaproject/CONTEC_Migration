@@ -29,9 +29,23 @@ Module TUKKB_F51
             'Call MEIMTA_RClear()
             '2019/09/25 DEL E N D
             'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-            wkTUKKB = TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(TUKKB))
-			Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkTUKKB, BtrNormal)
-			If DBSTAT = 0 Then '名称ﾏｽﾀに当該項目が在る時
+
+
+            '2019/10/14 CHG START
+            'wkTUKKB = TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(TUKKB))
+            If DB_MEIMTA.MEICDA Is Nothing Then
+                wkTUKKB = TUKKB
+            Else
+                wkTUKKB = TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(TUKKB))
+            End If
+            '2019/10/14 CHG E N D
+
+            '2019/10/14 CHG START
+            'Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkTUKKB, BtrNormal)
+            GetRowsCommon(DBN_MEIMTA, "where KEYCD = '001' AND MEICDA = '" & wkTUKKB & "'")
+            '2019/10/14 CHG END
+
+            If DBSTAT = 0 Then '名称ﾏｽﾀに当該項目が在る時
 				If DB_MEIMTA.DATKB = "9" Then
 					Call Dsp_Prompt("RNOTFOUND", 1) ' 削除済レコードです。
 					'UPGRADE_WARNING: オブジェクト TUKKB_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。

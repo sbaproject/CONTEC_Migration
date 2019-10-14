@@ -3,19 +3,14 @@ Option Explicit On
 Imports VB = Microsoft.VisualBasic
 Friend Class FR_SSSMAIN
 	Inherits System.Windows.Forms.Form
-	'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
-	'*** End Of Generated Declaration Section ****
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
+    'Copyright 1994-2003 by AppliTech, Inc. All Rights Reserved.
+    '*** End Of Generated Declaration Section ****
+
+    '2019/10/11 ADD START
+    Private FORM_LOAD_FLG As Boolean = False
+    '2019/10/11 ADD E N D
+
+    Private Sub CM_EndCm_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles CM_EndCm.MouseMove
 		Dim Button As Short = eventArgs.Button \ &H100000
 		Dim Shift As Short = System.Windows.Forms.Control.ModifierKeys \ &H10000
 		Dim X As Single = VB6.PixelsToTwipsX(eventArgs.X)
@@ -103,14 +98,17 @@ Friend Class FR_SSSMAIN
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_RATERT(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_RATERT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/10/11 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_RATERT(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_RATERT(Index), FORM_LOAD_FLG) Then
+                '2019/10/11 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_RATERT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_RATERT_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_RATERT.Enter
 		Dim Index As Short = BD_RATERT.GetIndex(eventSender) 'Generated.
@@ -147,8 +145,8 @@ Friend Class FR_SSSMAIN
 				Call AE_ClearItm_SSSMAIN(True)
 				wk_Bool = AE_CursorSkip_SSSMAIN()
 			Else
-				If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_RATERT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, True, True)
-				If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
+                If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_RATERT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, True, True)
+                If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
 			End If
 		End If
 	End Sub
@@ -176,7 +174,7 @@ EventExitSub:
 			PP_SSSMAIN.ScrlFlag = False
 		Else
 			If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-				If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_RATERT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
+                If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_RATERT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
 				'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
 					On Error Resume Next
@@ -231,14 +229,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TEKIDT(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_TEKIDT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/10/11 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TEKIDT(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TEKIDT(Index), FORM_LOAD_FLG) Then
+                '2019/10/11 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_TEKIDT(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_TEKIDT_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_TEKIDT.Enter
 		Dim Index As Short = BD_TEKIDT.GetIndex(eventSender) 'Generated.
@@ -322,8 +323,8 @@ EventExitSub:
 				Call AE_ClearItm_SSSMAIN(True)
 				wk_Bool = AE_CursorSkip_SSSMAIN()
 			Else
-				If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_TEKIDT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, True, True)
-				If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
+                If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_TEKIDT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, True, True)
+                If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
 			End If
 		End If
 	End Sub
@@ -351,7 +352,7 @@ EventExitSub:
 			PP_SSSMAIN.ScrlFlag = False
 		Else
 			If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-				If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_TEKIDT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
+                If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_TEKIDT(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
 				'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
 					On Error Resume Next
@@ -406,14 +407,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TUKKB(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_TUKKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/10/11 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TUKKB(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TUKKB(Index), FORM_LOAD_FLG) Then
+                '2019/10/11 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_TUKKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_TUKKB_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_TUKKB.Enter
 		Dim Index As Short = BD_TUKKB.GetIndex(eventSender) 'Generated.
@@ -481,8 +485,8 @@ EventExitSub:
 				Call AE_ClearItm_SSSMAIN(True)
 				wk_Bool = AE_CursorSkip_SSSMAIN()
 			Else
-				If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_TUKKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, True, True)
-				If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
+                If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_TUKKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, True, True)
+                If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
 			End If
 		End If
 	End Sub
@@ -510,7 +514,7 @@ EventExitSub:
 			PP_SSSMAIN.ScrlFlag = False
 		Else
 			If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-				If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_TUKKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
+                If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_TUKKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
 				'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
 					On Error Resume Next
@@ -565,14 +569,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TUKNM(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_TUKNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/10/11 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TUKNM(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_TUKNM(Index), FORM_LOAD_FLG) Then
+                '2019/10/11 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_TUKNM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_TUKNM_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_TUKNM.Enter
 		Dim Index As Short = BD_TUKNM.GetIndex(eventSender) 'Generated.
@@ -609,8 +616,8 @@ EventExitSub:
 				Call AE_ClearItm_SSSMAIN(True)
 				wk_Bool = AE_CursorSkip_SSSMAIN()
 			Else
-				If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_TUKNM(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, True, True)
-				If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
+                If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_TUKNM(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, True, True)
+                If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
 			End If
 		End If
 	End Sub
@@ -638,7 +645,7 @@ EventExitSub:
 			PP_SSSMAIN.ScrlFlag = False
 		Else
 			If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-				If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_TUKNM(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
+                If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_TUKNM(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
 				'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
 					On Error Resume Next
@@ -692,14 +699,17 @@ EventExitSub:
 			PP_SSSMAIN.MultiLineF = PP_SSSMAIN.MultiLineF - 1
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
-		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index)) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
-				PP_SSSMAIN.CursorDest = Cn_Dest9
-				Call AE_Check_SSSMAIN_UPDKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
-			End If
-		End If
-	End Sub
+        If PP_SSSMAIN.MaskMode = False Then
+            '2019/10/10 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index)) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(PP_SSSMAIN.Px), BD_UPDKB(Index), FORM_LOAD_FLG) Then
+                '2019/10/10 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
+                PP_SSSMAIN.CursorDest = Cn_Dest9
+                Call AE_Check_SSSMAIN_UPDKB(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
+            End If
+        End If
+    End Sub
 	
 	Private Sub BD_UPDKB_DoubleClick(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles BD_UPDKB.DoubleClick
 		Dim Index As Short = BD_UPDKB.GetIndex(eventSender) 'Generated.
@@ -749,8 +759,8 @@ EventExitSub:
 				Call AE_ClearItm_SSSMAIN(True)
 				wk_Bool = AE_CursorSkip_SSSMAIN()
 			Else
-				If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_UPDKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, True, True)
-				If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
+                If PP_SSSMAIN.Mode <> Cn_Mode3 Then Call AE_Check_SSSMAIN_UPDKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, True, True)
+                If PP_SSSMAIN.Mode = Cn_Mode3 Then AE_CursorNext_SSSMAIN(PP_SSSMAIN.Tx)
 			End If
 		End If
 	End Sub
@@ -778,7 +788,7 @@ EventExitSub:
 			PP_SSSMAIN.ScrlFlag = False
 		Else
 			If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 And PP_SSSMAIN.ModalFlag = False Then
-				If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_UPDKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).ToString()), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
+                If Not PP_SSSMAIN.NeglectLostFocusCheck Then Call AE_Check_SSSMAIN_UPDKB(AE_Val3(CP_SSSMAIN(PP_SSSMAIN.Px), AE_Controls(PP_SSSMAIN.CtB + AE_Tx(PP_SSSMAIN, PP_SSSMAIN.Px)).Text), Cn_Status6, False, True) : PP_SSSMAIN.LostFocusCheck = True
 				'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If Not PP_SSSMAIN.NeglectLostFocusCheck And Ck_Error <> 0 Then
 					On Error Resume Next
@@ -1271,247 +1281,267 @@ EventExitSub:
 			Loop 
 		End If
 	End Sub
-	
-	Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
-		Dim NewLargeChange As Short 'Generated.
-		Dim Wk_De As Short
-		Dim wk_ww As Short
-		Dim wk_Tx As Short
-		Dim wk_TxBase As Short
-		Dim wk_HeadN As Short
-		Dim wk_BodyN As Short
-		Dim wk_EBodyN As Short
-		Dim wk_TailN As Short
-		Dim wk_Top As Single
-		Dim wk_Height As Single
-		Dim wk_Px As Short
-		Dim wk_PxBase As Short
-		Dim wk_SmrBuf As String
-		Dim PY_BBtm As Single
-		Dim PY_BTSpace As Single
-		Dim PY_TTop As Single
-		AE_Title = "ﾚｰﾄﾏｽﾀ登録                      "
-		'初画面表示の性能チューニング用 ----------
-		'Dim StartTime
-		'   AE_MsgBox "Start Point", vbInformation, AE_Title$
-		'   StartTime = Timer
-		'-----------------------------------------
-		With PP_SSSMAIN
-			.FormWidth = 9855
-			.FormHeight = 7470
-			.MaxDe = 14
-			.MaxDsp = 14
-			.HeadN = 2
-			.BodyN = 5
-			.BodyV = 7
-			.MaxEDe = -1
-			.MaxEDsp = -1
-			.EBodyN = 0
-			.EBodyV = 0
-			.TailN = 0
-			.BodyPx = 2
-			.EBodyPx = 107
-			.TailPx = 107
-			.PrpC = 107
-			.Operable = False
-			.BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
-			.SuppressVSScroll = 0
-			.UniScrl = False
-			.SetCursorRR = True
-			.SetCursorLF = False
-			.VisibleForItem = False
-			.AllowNullDes = False
-			.No2Scroll = False
-			.SpecSubID = "sss"
-			.UnDoDeOp = 0
-			.ActiveBlockNo = -1
-			.MaxBlockNo = 1
-			If .MainForm = "" Then
-				.ScX = AE_ScX
-				AE_ScX = AE_ScX + 1
-				ReDim Preserve AE_Timer(.ScX)
-				ReDim Preserve AE_CursorRest(.ScX)
-				ReDim Preserve AE_ModeBar(.ScX)
-				ReDim Preserve AE_StatusBar(.ScX)
-				ReDim Preserve AE_StatusCodeBar(.ScX)
-				ReDim Preserve AE_ScrlBar(.ScX)
-				.CtB = AE_CtB
-				AE_CtB = AE_CtB + 77
-				ReDim Preserve AE_Controls(.CtB + 76)
-				.MainFormFile = "RATMT51.FRM"
-				.MainFormObj = "FR_SSSMAIN"
-				.SelValid = False
-				.ArrowLimit = False
-				.NullZero = True
-				.ErrorByBackColor = False
-				AE_SSSWin = True
-				.AL = False
-			End If
-			If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClCheckError), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClRelCheck), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClChecked)) <> "V6.60" Then
+
+    Private Sub FR_SSSMAIN_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
+
+        '2019/10/11 ADD START
+        FORM_LOAD_FLG = True
+        '2019/10/11 10 E N D
+
+        Dim NewLargeChange As Short 'Generated.
+        Dim Wk_De As Short
+        Dim wk_ww As Short
+        Dim wk_Tx As Short
+        Dim wk_TxBase As Short
+        Dim wk_HeadN As Short
+        Dim wk_BodyN As Short
+        Dim wk_EBodyN As Short
+        Dim wk_TailN As Short
+        Dim wk_Top As Single
+        Dim wk_Height As Single
+        Dim wk_Px As Short
+        Dim wk_PxBase As Short
+        Dim wk_SmrBuf As String
+        Dim PY_BBtm As Single
+        Dim PY_BTSpace As Single
+        Dim PY_TTop As Single
+        AE_Title = "ﾚｰﾄﾏｽﾀ登録                      "
+        '初画面表示の性能チューニング用 ----------
+        'Dim StartTime
+        '   AE_MsgBox "Start Point", vbInformation, AE_Title$
+        '   StartTime = Timer
+        '-----------------------------------------
+        With PP_SSSMAIN
+            .FormWidth = 9855
+            .FormHeight = 7470
+            .MaxDe = 14
+            .MaxDsp = 14
+            .HeadN = 2
+            .BodyN = 5
+            .BodyV = 7
+            .MaxEDe = -1
+            .MaxEDsp = -1
+            .EBodyN = 0
+            .EBodyV = 0
+            .TailN = 0
+            .BodyPx = 2
+            .EBodyPx = 107
+            .TailPx = 107
+            .PrpC = 107
+            .Operable = False
+            .BrightOnOff = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClBrightON)
+            .SuppressVSScroll = 0
+            .UniScrl = False
+            .SetCursorRR = True
+            .SetCursorLF = False
+            .VisibleForItem = False
+            .AllowNullDes = False
+            .No2Scroll = False
+            .SpecSubID = "sss"
+            .UnDoDeOp = 0
+            .ActiveBlockNo = -1
+            .MaxBlockNo = 1
+            If .MainForm = "" Then
+                .ScX = AE_ScX
+                AE_ScX = AE_ScX + 1
+                ReDim Preserve AE_Timer(.ScX)
+                ReDim Preserve AE_CursorRest(.ScX)
+                ReDim Preserve AE_ModeBar(.ScX)
+                ReDim Preserve AE_StatusBar(.ScX)
+                ReDim Preserve AE_StatusCodeBar(.ScX)
+                ReDim Preserve AE_ScrlBar(.ScX)
+                .CtB = AE_CtB
+                AE_CtB = AE_CtB + 77
+                ReDim Preserve AE_Controls(.CtB + 76)
+                .MainFormFile = "RATMT51.FRM"
+                .MainFormObj = "FR_SSSMAIN"
+                .SelValid = False
+                .ArrowLimit = False
+                .NullZero = True
+                .ErrorByBackColor = False
+                AE_SSSWin = True
+                .AL = False
+            End If
+            If AE_FormInit(PP_SSSMAIN, Me, AE_Title, Cn_ClIncomplete, System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClCheckError), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClRelCheck), System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_ClChecked)) <> "V6.60" Then
 #If ActiveXcompile = 0 Then
-				AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
+                AE_MsgBox("再生成が必要です。", MsgBoxStyle.Critical, "ｅｅｅ") : End
 #Else
 				'UPGRADE_NOTE: 式 Else が True に評価されなかったか、またはまったく評価されなかったため、#If #EndIf ブロックはアップグレードされませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="27EE2C3C-05AF-4C04-B2AF-657B4FB6B5FC"' をクリックしてください。
 				AE_MsgBox "再生成が必要です。", vbCritical, "ｅｅｅ"
 #End If
-			End If
-			If .MainForm = "" Then
-				.MainForm = "SSSMAIN"
-				Call AE_PSIR_SSSMAIN()
-				wk_ww = 0
-				Wk_De = 1
-				wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
-				Do While wk_ww < AE_PSIC
-					wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
-					wk_ww = wk_ww + 1
-					Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
-						Case "HD_", "HV_"
-							Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
-							wk_HeadN = wk_HeadN + 1
-						Case "BD_", "BV_"
-							Call AE_SetCp(CP_SSSMAIN(wk_BodyN + 2), wk_BodyN + 2, wk_SmrBuf, CQ_SSSMAIN(wk_BodyN + 2))
-							wk_BodyN = wk_BodyN + 1
-					End Select
-				Loop 
-				Do While Wk_De <= 14
-					wk_PxBase = 2
-					Do While wk_PxBase < 9
-						wk_Px = wk_PxBase + 7 * Wk_De
-						Call AE_CopyCp_SSSMAIN(wk_Px, wk_PxBase)
-						wk_PxBase = wk_PxBase + 1
-					Loop 
-					Wk_De = Wk_De + 1
-				Loop 
-			End If
-			HD_OPEID.Text = ""
-			HD_OPENM.Text = ""
-			BD_UPDKB(0).Text = ""
-			BD_TUKKB(0).Text = ""
-			BD_TUKNM(0).Text = ""
-			BD_TEKIDT(0).Text = ""
-			BD_RATERT(0).Text = ""
-			For Wk_De = 1 To 14
-				BD_RATERT.Load(Wk_De)
-				BD_TEKIDT.Load(Wk_De)
-				BD_TUKNM.Load(Wk_De)
-				BD_TUKKB.Load(Wk_De)
-				BD_UPDKB.Load(Wk_De)
-			Next Wk_De
-			HD_OPEID.TabIndex = 0
-			AE_Controls(.CtB + 0) = HD_OPEID
-			HD_OPENM.TabIndex = 1
-			AE_Controls(.CtB + 1) = HD_OPENM
-			For Wk_De = 0 To 14
-				wk_TxBase = 5 * Wk_De
-				BD_UPDKB(Wk_De).TabIndex = 2 + wk_TxBase
-				AE_Controls(.CtB + 2 + wk_TxBase) = BD_UPDKB(Wk_De)
-				BD_TUKKB(Wk_De).TabIndex = 3 + wk_TxBase
-				AE_Controls(.CtB + 3 + wk_TxBase) = BD_TUKKB(Wk_De)
-				BD_TUKNM(Wk_De).TabIndex = 4 + wk_TxBase
-				AE_Controls(.CtB + 4 + wk_TxBase) = BD_TUKNM(Wk_De)
-				BD_TEKIDT(Wk_De).TabIndex = 5 + wk_TxBase
-				AE_Controls(.CtB + 5 + wk_TxBase) = BD_TEKIDT(Wk_De)
-				BD_RATERT(Wk_De).TabIndex = 6 + wk_TxBase
-				AE_Controls(.CtB + 6 + wk_TxBase) = BD_RATERT(Wk_De)
-			Next Wk_De
-			TX_CursorRest.TabIndex = 77
-			AE_Timer(.ScX) = TM_StartUp
-			AE_CursorRest(.ScX) = TX_CursorRest
-			AE_ModeBar(.ScX) = TX_Mode
-			AE_StatusBar(.ScX) = TX_Message
-			AE_StatusCodeBar(.ScX) = TX_Message
-			.Mode = Cn_Mode1 : TX_Mode.Text = "追加"
-			Call AE_ClearInitValStatus_SSSMAIN()
-			.PY_BTop = VB6.PixelsToTwipsY(Me.Height)
-			ReDim AE_BodyTop(5)
-			wk_Tx = 2
-			Do While wk_Tx < 7
-				wk_Top = VB6.PixelsToTwipsY(AE_Controls(.CtB + wk_Tx).Top)
-				If wk_Top < .PY_BTop Then .PY_BTop = wk_Top
-				AE_BodyTop(wk_Tx - 2) = wk_Top
-				wk_Tx = wk_Tx + 1
-			Loop 
-			.PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
-			PY_TTop = VB6.PixelsToTwipsY(Me.Height)
-			AE_ScrlBar(.ScX) = VS_Scrl
-			PY_BBtm = 0
-			wk_Tx = 2 : wk_ww = 0
-			Do While wk_Tx < 7
-				wk_Height = VB6.PixelsToTwipsY(AE_Controls(.CtB + wk_Tx).Height)
-				wk_Top = AE_BodyTop(wk_ww)
-				If wk_Top + wk_Height > PY_BBtm Then PY_BBtm = wk_Top + wk_Height
-				wk_Tx = wk_Tx + 1 : wk_ww = wk_ww + 1
-			Loop 
-			.PY_BHgt = PY_BBtm - .PY_BTop - 15
-			If .PY_BHgt = 0 Then .PY_BHgt = 15
-			PY_BTSpace = 120
-			.MaxDspC = (PY_TTop - PY_BTSpace - .PY_BTop) \ .PY_BHgt - 1
-			If .MaxDspC < 0 Then .MaxDspC = 0
-			If .MaxDspC > 14 Then .MaxDspC = 14
-			.NrBodyTx = 2 + 5 * (.MaxDspC + 1)
-			.ScrlMaxL = .MaxDspC : If .ScrlMaxL = 0 Then .ScrlMaxL = 1
-			wk_Top = .PY_BTop
-			VS_Scrl.Top = VB6.TwipsToPixelsY(wk_Top)
-			wk_Height = .PY_BHgt * (.MaxDspC + 1)
-			VS_Scrl.Height = VB6.TwipsToPixelsY(wk_Height + 15)
-			VS_Scrl.TabStop = False
-			VS_Scrl.Minimum = 0
-			VS_Scrl.Maximum = (0 + VS_Scrl.LargeChange - 1)
-			NewLargeChange = .ScrlMaxL
-			VS_Scrl.Maximum = VS_Scrl.Maximum + NewLargeChange - VS_Scrl.LargeChange
-			VS_Scrl.LargeChange = NewLargeChange
-			If .MaxDspC = 14 Then VS_Scrl.Visible = False
-			.MaxEDspC = 0
-			.NrEBodyTx = 77
-			.EScrlMaxL = 1
-			Call AE_TabStop_SSSMAIN(0, 76, True)
-			TX_CursorRest.TabStop = False
-			TX_Mode.TabStop = False
-			TX_Message.TabStop = False
-			TX_Message.Text = ""
-			Wk_De = 1
-			Do While Wk_De <= .MaxDspC
-				wk_ww = 0
-				Do While wk_ww < 5
-					wk_Tx = 2 + 5 * Wk_De + wk_ww
-					AE_Controls(.CtB + wk_Tx).Top = VB6.TwipsToPixelsY(AE_BodyTop(wk_ww) + .PY_BHgt * Wk_De)
-					wk_ww = wk_ww + 1
-				Loop 
-				Wk_De = Wk_De + 1
-			Loop 
-			wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
-			Call AE_WindowProcSet_SSSMAIN()
-			ReleaseTabCapture(0)
-			SetTabCapture(Me.Handle.ToInt32)
-			'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wk_Var = SSSMAIN_BeginPrg()
-			.FormWidth = VB6.PixelsToTwipsX(Me.Width)
-			.FormHeight = VB6.PixelsToTwipsY(Me.Height)
-			'初画面表示の性能チューニング用 ----------
-			'   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
-			'-----------------------------------------
-			.TimerStartUp = True
-		End With
-		TM_StartUp.Enabled = True
-		
-		'20081002 CHG START RISE)Tanimura '排他処理
-		''2007/12/18 add-str T.KAWAMUKAI 訂正前に更新時間チェックを入れる
-		'    ReDim M_MOTO_A_inf(14)
-		''2007/12/18 add-end T.KAWAMUKAI
-		
-		ReDim M_RATMT_A_inf(14)
-		'20081002 CHG END   RISE)Tanimura
-	End Sub
-	
-	Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+            End If
+            If .MainForm = "" Then
+                .MainForm = "SSSMAIN"
+                Call AE_PSIR_SSSMAIN()
+                wk_ww = 0
+                Wk_De = 1
+                wk_HeadN = 0 : wk_BodyN = 0 : wk_EBodyN = 0 : wk_TailN = 0
+                Do While wk_ww < AE_PSIC
+                    wk_SmrBuf = Trim(AE_PSI(wk_ww)) & Space(1)
+                    wk_ww = wk_ww + 1
+                    Select Case UCase(VB.Left(wk_SmrBuf, Cn_PrfxLen))
+                        Case "HD_", "HV_"
+                            Call AE_SetCp(CP_SSSMAIN(wk_HeadN), wk_HeadN, wk_SmrBuf, CQ_SSSMAIN(wk_HeadN))
+                            wk_HeadN = wk_HeadN + 1
+                        Case "BD_", "BV_"
+                            Call AE_SetCp(CP_SSSMAIN(wk_BodyN + 2), wk_BodyN + 2, wk_SmrBuf, CQ_SSSMAIN(wk_BodyN + 2))
+                            wk_BodyN = wk_BodyN + 1
+                    End Select
+                Loop
+                Do While Wk_De <= 14
+                    wk_PxBase = 2
+                    Do While wk_PxBase < 9
+                        wk_Px = wk_PxBase + 7 * Wk_De
+                        Call AE_CopyCp_SSSMAIN(wk_Px, wk_PxBase)
+                        wk_PxBase = wk_PxBase + 1
+                    Loop
+                    Wk_De = Wk_De + 1
+                Loop
+            End If
+            HD_OPEID.Text = ""
+            HD_OPENM.Text = ""
+            BD_UPDKB(0).Text = ""
+            BD_TUKKB(0).Text = ""
+            BD_TUKNM(0).Text = ""
+            BD_TEKIDT(0).Text = ""
+            BD_RATERT(0).Text = ""
+            For Wk_De = 1 To 14
+                BD_RATERT.Load(Wk_De)
+                BD_TEKIDT.Load(Wk_De)
+                BD_TUKNM.Load(Wk_De)
+                BD_TUKKB.Load(Wk_De)
+                BD_UPDKB.Load(Wk_De)
+            Next Wk_De
+            HD_OPEID.TabIndex = 0
+            AE_Controls(.CtB + 0) = HD_OPEID
+            HD_OPENM.TabIndex = 1
+            AE_Controls(.CtB + 1) = HD_OPENM
+            For Wk_De = 0 To 14
+                wk_TxBase = 5 * Wk_De
+                BD_UPDKB(Wk_De).TabIndex = 2 + wk_TxBase
+                AE_Controls(.CtB + 2 + wk_TxBase) = BD_UPDKB(Wk_De)
+                BD_TUKKB(Wk_De).TabIndex = 3 + wk_TxBase
+                AE_Controls(.CtB + 3 + wk_TxBase) = BD_TUKKB(Wk_De)
+                BD_TUKNM(Wk_De).TabIndex = 4 + wk_TxBase
+                AE_Controls(.CtB + 4 + wk_TxBase) = BD_TUKNM(Wk_De)
+                BD_TEKIDT(Wk_De).TabIndex = 5 + wk_TxBase
+                AE_Controls(.CtB + 5 + wk_TxBase) = BD_TEKIDT(Wk_De)
+                BD_RATERT(Wk_De).TabIndex = 6 + wk_TxBase
+                AE_Controls(.CtB + 6 + wk_TxBase) = BD_RATERT(Wk_De)
+            Next Wk_De
+            TX_CursorRest.TabIndex = 77
+            AE_Timer(.ScX) = TM_StartUp
+            AE_CursorRest(.ScX) = TX_CursorRest
+            AE_ModeBar(.ScX) = TX_Mode
+            AE_StatusBar(.ScX) = TX_Message
+            AE_StatusCodeBar(.ScX) = TX_Message
+            .Mode = Cn_Mode1 : TX_Mode.Text = "追加"
+            Call AE_ClearInitValStatus_SSSMAIN()
+            .PY_BTop = VB6.PixelsToTwipsY(Me.Height)
+            ReDim AE_BodyTop(5)
+            wk_Tx = 2
+            Do While wk_Tx < 7
+                wk_Top = VB6.PixelsToTwipsY(AE_Controls(.CtB + wk_Tx).Top)
+                If wk_Top < .PY_BTop Then .PY_BTop = wk_Top
+                AE_BodyTop(wk_Tx - 2) = wk_Top
+                wk_Tx = wk_Tx + 1
+            Loop
+            .PY_EBTop = VB6.PixelsToTwipsY(Me.Height)
+            PY_TTop = VB6.PixelsToTwipsY(Me.Height)
+            AE_ScrlBar(.ScX) = VS_Scrl
+            PY_BBtm = 0
+            wk_Tx = 2 : wk_ww = 0
+            Do While wk_Tx < 7
+                wk_Height = VB6.PixelsToTwipsY(AE_Controls(.CtB + wk_Tx).Height)
+                wk_Top = AE_BodyTop(wk_ww)
+                If wk_Top + wk_Height > PY_BBtm Then PY_BBtm = wk_Top + wk_Height
+                wk_Tx = wk_Tx + 1 : wk_ww = wk_ww + 1
+            Loop
+            .PY_BHgt = PY_BBtm - .PY_BTop - 15
+            If .PY_BHgt = 0 Then .PY_BHgt = 15
+            PY_BTSpace = 120
+            .MaxDspC = (PY_TTop - PY_BTSpace - .PY_BTop) \ .PY_BHgt - 1
+            If .MaxDspC < 0 Then .MaxDspC = 0
+            If .MaxDspC > 14 Then .MaxDspC = 14
+            .NrBodyTx = 2 + 5 * (.MaxDspC + 1)
+            .ScrlMaxL = .MaxDspC : If .ScrlMaxL = 0 Then .ScrlMaxL = 1
+            wk_Top = .PY_BTop
+            VS_Scrl.Top = VB6.TwipsToPixelsY(wk_Top)
+            wk_Height = .PY_BHgt * (.MaxDspC + 1)
+            VS_Scrl.Height = VB6.TwipsToPixelsY(wk_Height + 15)
+            VS_Scrl.TabStop = False
+            VS_Scrl.Minimum = 0
+            VS_Scrl.Maximum = (0 + VS_Scrl.LargeChange - 1)
+            NewLargeChange = .ScrlMaxL
+            VS_Scrl.Maximum = VS_Scrl.Maximum + NewLargeChange - VS_Scrl.LargeChange
+            VS_Scrl.LargeChange = NewLargeChange
+            If .MaxDspC = 14 Then VS_Scrl.Visible = False
+            .MaxEDspC = 0
+            .NrEBodyTx = 77
+            .EScrlMaxL = 1
+            Call AE_TabStop_SSSMAIN(0, 76, True)
+            TX_CursorRest.TabStop = False
+            TX_Mode.TabStop = False
+            TX_Message.TabStop = False
+            TX_Message.Text = ""
+            Wk_De = 1
+            Do While Wk_De <= .MaxDspC
+                wk_ww = 0
+                Do While wk_ww < 5
+                    wk_Tx = 2 + 5 * Wk_De + wk_ww
+                    AE_Controls(.CtB + wk_Tx).Top = VB6.TwipsToPixelsY(AE_BodyTop(wk_ww) + .PY_BHgt * Wk_De)
+                    wk_ww = wk_ww + 1
+                Loop
+                Wk_De = Wk_De + 1
+            Loop
+
+            '2019/10/11 仮
+            'wk_Int = CspPurgeFilterReq(Me.Handle.ToInt32)
+            '2019/10/11 仮
+
+            Call AE_WindowProcSet_SSSMAIN()
+
+            '2019/10/11 仮
+            'ReleaseTabCapture(0)
+            'SetTabCapture(Me.Handle.ToInt32)
+            '2019/10/11 仮
+
+            'UPGRADE_WARNING: オブジェクト SSSMAIN_BeginPrg() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            wk_Var = SSSMAIN_BeginPrg()
+            .FormWidth = VB6.PixelsToTwipsX(Me.Width)
+            .FormHeight = VB6.PixelsToTwipsY(Me.Height)
+            '初画面表示の性能チューニング用 ----------
+            '   AE_MsgBox Str$(Timer - StartTime), vbInformation, AE_Title$
+            '-----------------------------------------
+            .TimerStartUp = True
+        End With
+        TM_StartUp.Enabled = True
+
+        '20081002 CHG START RISE)Tanimura '排他処理
+        ''2007/12/18 add-str T.KAWAMUKAI 訂正前に更新時間チェックを入れる
+        '    ReDim M_MOTO_A_inf(14)
+        ''2007/12/18 add-end T.KAWAMUKAI
+
+        ReDim M_RATMT_A_inf(14)
+        '20081002 CHG END   RISE)Tanimura
+
+        '2019/10/11 ADD START
+        Call SetBar(Me)
+        '2019/10/11 ADD E N D
+
+    End Sub
+
+    Private Sub FR_SSSMAIN_FormClosing(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 		Dim Cancel As Boolean = eventArgs.Cancel
 		Dim UnloadMode As System.Windows.Forms.CloseReason = eventArgs.CloseReason 'Generated.
 		PP_SSSMAIN.UnloadMode = UnloadMode
 		Select Case UnloadMode
 			Case 0, 3
-				PP_SSSMAIN.CloseCode = 2
-				Cancel = True
+                '2019/10/11 DEL START
+                'PP_SSSMAIN.CloseCode = 2
+                '2019/10/11 DEL END
+                Cancel = True
 				Call AE_EndCm_SSSMAIN()
 			Case 2
 				PP_SSSMAIN.Caption = Me.Text
@@ -1603,8 +1633,11 @@ EventExitSub:
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
 		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
+            '2019/10/11 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(0), HD_OPEID, FORM_LOAD_FLG) Then
+                '2019/10/11 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
 				PP_SSSMAIN.CursorDest = Cn_Dest9
 				Call AE_Check_SSSMAIN_OPEID(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
 			End If
@@ -1705,8 +1738,11 @@ EventExitSub:
 			If PP_SSSMAIN.MultiLineF = 0 Then Exit Sub
 		End If
 		If PP_SSSMAIN.MaskMode = False Then
-			If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
-				PP_SSSMAIN.CursorDirection = Cn_Direction1
+            '2019/10/11 CHG START
+            'If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM) Then
+            If AE_Change(PP_SSSMAIN, CP_SSSMAIN(1), HD_OPENM, FORM_LOAD_FLG) Then
+                '2019/10/11 CHG END
+                PP_SSSMAIN.CursorDirection = Cn_Direction1
 				PP_SSSMAIN.CursorDest = Cn_Dest9
 				Call AE_Check_SSSMAIN_OPENM(PP_SSSMAIN.NewVal, Cn_Status6, True, True)
 			End If
@@ -2428,10 +2464,283 @@ EventExitSub:
 		Call AE_Scrl_SSSMAIN((newScrollValue), (PP_SSSMAIN.SuppressVSScroll And 2) = 0)
 		PP_SSSMAIN.SuppressVSScroll = PP_SSSMAIN.SuppressVSScroll And 5
 	End Sub
-	Private Sub VS_Scrl_Scroll(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.ScrollEventArgs) Handles VS_Scrl.Scroll
-		Select Case eventArgs.type
-			Case System.Windows.Forms.ScrollEventType.EndScroll
-				VS_Scrl_Change(eventArgs.newValue)
-		End Select
-	End Sub
+    Private Sub VS_Scrl_Scroll(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.ScrollEventArgs) Handles VS_Scrl.Scroll
+        Select Case eventArgs.type
+            Case System.Windows.Forms.ScrollEventType.EndScroll
+                VS_Scrl_Change(eventArgs.newValue)
+        End Select
+    End Sub
+
+    '2019/10/11 ADD START
+    Private Sub FR_SSSMAIN_KeyDown(ByVal eventSender As System.Object, ByVal e As KeyEventArgs) Handles Me.KeyDown
+
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F2
+                    '検索
+                    Me.btnF2.PerformClick()
+
+                Case Keys.F3
+                    '前頁
+                    Me.btnF3.PerformClick()
+
+                Case Keys.F4
+                    '次頁
+                    Me.btnF4.PerformClick()
+
+                Case Keys.F5
+                    '参照
+                    Me.btnF5.PerformClick()
+
+                Case Keys.F6
+                    'モード / 変更
+                    Me.btnF6.PerformClick()
+
+                Case Keys.F7
+                    '行追加
+                    Me.btnF7.PerformClick()
+
+                Case Keys.F8
+                    '行削除
+                    Me.btnF8.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
+
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Executing Then Exit Sub
+        PP_SSSMAIN.Executing = True
+        PP_SSSMAIN.ExplicitExec = True
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            'UPGRADE_WARNING: オブジェクト Execute_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            If Execute_GetEvent() Then
+                wk_Cursor = AE_Execute_SSSMAIN()
+            End If
+        End If
+        PP_SSSMAIN.ExplicitExec = False
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+        PP_SSSMAIN.Executing = False
+    End Sub
+
+    Private Sub btnF2_Click(sender As Object, e As EventArgs) Handles btnF2.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.NeglectLostFocusCheck = True
+        PP_SSSMAIN.CloseCode = 1
+        Call AE_EndCm_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub btnF3_Click(sender As Object, e As EventArgs) Handles btnF3.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            If PREV_GETEVENT() Then
+                If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+                    wk_Int = AE_Prev_SSSMAIN(True)
+                Else
+                    Beep()
+                End If
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorInit_SSSMAIN()
+    End Sub
+
+    Private Sub btnF4_Click(sender As Object, e As EventArgs) Handles btnF4.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If CP_SSSMAIN(PP_SSSMAIN.Px).StatusC = Cn_Status1 Then
+            Call AE_SetCheck_SSSMAIN(AE_Val2(CP_SSSMAIN(PP_SSSMAIN.Px)), Cn_Status6, True)
+        End If
+        If AE_CompleteCheck_SSSMAIN(False) <> 0 Then
+            Call AE_CursorSub_SSSMAIN(Cn_CuInCompletePx)
+            PP_SSSMAIN.CursorSet = True
+        Else
+            If NEXTCm_GETEVENT() Then
+                If PP_SSSMAIN.Mode >= Cn_Mode3 Then
+                    wk_Int = AE_NextCm_SSSMAIN(True)
+                Else
+                    Beep()
+                End If
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorInit_SSSMAIN()
+    End Sub
+
+    Private Sub btnF5_Click(sender As Object, e As EventArgs) Handles btnF5.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.KeyDownMode = PP_SSSMAIN.Mode
+        Call AE_Slist_SSSMAIN()
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        'UPGRADE_WARNING: オブジェクト Ck_Error の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If PP_SSSMAIN.SlistPx >= 0 Or Ck_Error <> 0 Then Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub btnF6_Click(sender As Object, e As EventArgs) Handles btnF6.Click
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Mode = Cn_Mode2 Then
+            Beep()
+            wk_Cursor = Cn_CuCurrent
+        Else
+            wk_Cursor = AE_SelectCm_SSSMAIN(PP_SSSMAIN.Mode, False)
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    End Sub
+
+    Private Sub btnF7_Click(sender As Object, e As EventArgs) Handles btnF7.Click
+        Dim wk_Cursor As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Mode = Cn_Mode3 Then Beep() : Call AE_CursorCurrent_SSSMAIN() : Exit Sub
+        If INSERTDE_GETEVENT() Then
+            If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 47 Then
+                If (PP_SSSMAIN.Tx - 2) \ 3 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
+                    wk_Cursor = AE_InsertDe_SSSMAIN()
+                End If
+            Else
+                Beep()
+            End If
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorSub_SSSMAIN(wk_Cursor)
+    End Sub
+
+    Private Sub btnF8_Click(sender As Object, e As EventArgs) Handles btnF8.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.Mode = Cn_Mode3 Then Beep() : Call AE_CursorCurrent_SSSMAIN() : Exit Sub
+        If PP_SSSMAIN.Tx >= 2 And PP_SSSMAIN.Tx < 47 Then
+            If (PP_SSSMAIN.Tx - 2) \ 3 + PP_SSSMAIN.TopDe < PP_SSSMAIN.LastDe Then
+                Call AE_DeleteDe_SSSMAIN()
+            End If
+        Else
+            Beep()
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        Dim wk_Cursor As Short
+        If Not PP_SSSMAIN.Operable Then
+            Exit Sub
+        End If
+        wk_Cursor = AE_AppendC_SSSMAIN(PP_SSSMAIN.Mode)
+        If wk_Cursor = Cn_CuInit Then
+            Call AE_CursorInit_SSSMAIN()
+        End If
+    End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.CloseCode = 1
+        Call AE_EndCm_SSSMAIN()
+    End Sub
+
+    Private Sub CM_UPDKB_Click(sender As Object, e As EventArgs) Handles CM_UPDKB.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.NeglectLostFocusCheck = True
+        'UPGRADE_WARNING: オブジェクト UPDKB_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If UPDKB_GetEvent() Then
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub CS_TUKKB_Click(sender As Object, e As EventArgs) Handles CS_TUKKB.Click
+        Dim wk_Slisted As Object
+        Dim wk_SaveTx As Short
+        Dim wk_TxBase As Short
+        Dim wk_PxBase As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.De2 >= 0 And PP_SSSMAIN.Tx < 77 Then
+            wk_PxBase = 7 * PP_SSSMAIN.De
+            wk_TxBase = 5 * (PP_SSSMAIN.De - PP_SSSMAIN.TopDe)
+        Else
+            wk_PxBase = 7 * PP_SSSMAIN.TopDe
+            wk_TxBase = 0
+        End If
+        If AE_CursorCheck_SSSMAIN(CP_SSSMAIN(3 + wk_PxBase).TypeA, 3 + wk_TxBase) Then
+            PP_SSSMAIN.SlistCall = True
+            PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+            Call AE_CursorMove_SSSMAIN(3 + wk_TxBase)
+            If PP_SSSMAIN.Tx <> 3 + wk_TxBase Then PP_SSSMAIN.SSCommand5Ajst = True
+        Else
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+        PP_SSSMAIN.CursorDirection = 0
+    End Sub
+
+    Private Sub CS_TEKIDT_Click(sender As Object, e As EventArgs) Handles CS_TEKIDT.Click
+        Dim wk_Slisted As Object
+        Dim wk_SaveTx As Short
+        Dim wk_TxBase As Short
+        Dim wk_PxBase As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.De2 >= 0 And PP_SSSMAIN.Tx < 77 Then
+            wk_PxBase = 7 * PP_SSSMAIN.De
+            wk_TxBase = 5 * (PP_SSSMAIN.De - PP_SSSMAIN.TopDe)
+        Else
+            wk_PxBase = 7 * PP_SSSMAIN.TopDe
+            wk_TxBase = 0
+        End If
+        If AE_CursorCheck_SSSMAIN(CP_SSSMAIN(5 + wk_PxBase).TypeA, 5 + wk_TxBase) Then
+            PP_SSSMAIN.SlistCall = True
+            PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+            Call AE_CursorMove_SSSMAIN(5 + wk_TxBase)
+            If PP_SSSMAIN.Tx <> 5 + wk_TxBase Then PP_SSSMAIN.SSCommand5Ajst = True
+        Else
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+        PP_SSSMAIN.CursorDirection = 0
+    End Sub
+
+    '2019/10/11 ADD END
+
 End Class

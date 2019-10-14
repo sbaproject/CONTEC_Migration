@@ -52,10 +52,16 @@ Module TUKMTA_M51
 		Dim strUOPEID As String ' ユーザID（バッチ）
 		Dim strUCLTID As String ' クライアントＩＤ（バッチ）
 		Dim strSQL As String
-		'20081002 ADD END   RISE)Tanimura
-		
-		'更新権限チェック
-		If gs_UPDAUTH = "9" Then
+        '20081002 ADD END   RISE)Tanimura
+
+        '2019/10/14 ADD START
+        Dim pWhere As String = ""
+        Dim dt As DataTable = Nothing
+        Dim updSQL As String = ""
+        '2019/10/14 ADD END
+
+        '更新権限チェック
+        If gs_UPDAUTH = "9" Then
 			Call MsgBox("更新権限がありません。", MsgBoxStyle.OKOnly + MsgBoxStyle.Exclamation, SSS_PrgNm)
 			Exit Sub
 		End If
@@ -72,8 +78,14 @@ Module TUKMTA_M51
 			DB_TUKMTA.TUKKB = RD_SSSMAIN_TUKKB(I)
 			'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_TEKIDT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			DB_TUKMTA.TEKIDT = RD_SSSMAIN_TEKIDT(I)
-			Call DB_GetSQL2(DBN_TUKMTA, "select * from TUKMTA where TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' order by TUKKB,TEKIDT")
-			If DBSTAT = 0 Then
+
+            '2019/10/14 CHG START
+            'Call DB_GetSQL2(DBN_TUKMTA, "select * from TUKMTA where TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' order by TUKKB,TEKIDT")
+            pWhere = "WHERE TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' ORDER BY TUKKB,TEKIDT"
+            GetRowsCommon(DBN_TUKMTA, pWhere)
+            '2019/10/14 CHG END
+
+            If DBSTAT = 0 Then
 				'20081002 CHG START RISE)Tanimura '排他処理
 				'            strWRTDT = DB_TUKMTA.WRTDT            '更新日付
 				'            strWRTTM = DB_TUKMTA.WRTTM            '更新時刻
@@ -135,10 +147,24 @@ Module TUKMTA_M51
 					'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_TEKIDT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					strSQL = strSQL & "  TEKIDT = '" + RD_SSSMAIN_TEKIDT(I) + "' "
 					strSQL = strSQL & "FOR UPDATE"
-					
-					Call DB_GetSQL2(DBN_TUKMTA, strSQL)
-					
-					strOPEID = DB_TUKMTA.OPEID ' 最終作業者コード
+
+
+                    '2019/10/14 CHG START
+                    'Call DB_GetSQL2(DBN_TUKMTA, strSQL)
+                    dt = DB_GetTable(strSQL)
+                    If Not dt Is Nothing Then
+                        DB_TUKMTA.OPEID = DB_NullReplace(dt.Rows(0)("OPEID"), "")
+                        DB_TUKMTA.CLTID = DB_NullReplace(dt.Rows(0)("CLTID"), "")
+                        DB_TUKMTA.UOPEID = DB_NullReplace(dt.Rows(0)("UOPEID"), "")
+                        DB_TUKMTA.UCLTID = DB_NullReplace(dt.Rows(0)("UCLTID"), "")
+                        DB_TUKMTA.WRTDT = DB_NullReplace(dt.Rows(0)("WRTDT"), "")
+                        DB_TUKMTA.WRTTM = DB_NullReplace(dt.Rows(0)("WRTTM"), "")
+                        DB_TUKMTA.UWRTDT = DB_NullReplace(dt.Rows(0)("UWRTDT"), "")
+                        DB_TUKMTA.UWRTTM = DB_NullReplace(dt.Rows(0)("UWRTTM"), "")
+                    End If
+                    '2019/10/14 CHG END
+
+                    strOPEID = DB_TUKMTA.OPEID ' 最終作業者コード
 					strCLTID = DB_TUKMTA.CLTID ' クライアントＩＤ
 					strWRTDT = DB_TUKMTA.WRTDT ' タイムスタンプ（時間）
 					strWRTTM = DB_TUKMTA.WRTTM ' タイムスタンプ（日付）
@@ -217,10 +243,23 @@ Module TUKMTA_M51
 							'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_TEKIDT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 							strSQL = strSQL & "  TEKIDT = '" + RD_SSSMAIN_TEKIDT(I) + "' "
 							strSQL = strSQL & "FOR UPDATE"
-							
-							Call DB_GetSQL2(DBN_TUKMTA, strSQL)
-							
-							strOPEID = DB_TUKMTA.OPEID ' 最終作業者コード
+
+                            '2019/10/14 CHG START
+                            'Call DB_GetSQL2(DBN_TUKMTA, strSQL)
+                            dt = DB_GetTable(strSQL)
+                            If Not dt Is Nothing Then
+                                DB_TUKMTA.OPEID = DB_NullReplace(dt.Rows(0)("OPEID"), "")
+                                DB_TUKMTA.CLTID = DB_NullReplace(dt.Rows(0)("CLTID"), "")
+                                DB_TUKMTA.UOPEID = DB_NullReplace(dt.Rows(0)("UOPEID"), "")
+                                DB_TUKMTA.UCLTID = DB_NullReplace(dt.Rows(0)("UCLTID"), "")
+                                DB_TUKMTA.WRTDT = DB_NullReplace(dt.Rows(0)("WRTDT"), "")
+                                DB_TUKMTA.WRTTM = DB_NullReplace(dt.Rows(0)("WRTTM"), "")
+                                DB_TUKMTA.UWRTDT = DB_NullReplace(dt.Rows(0)("UWRTDT"), "")
+                                DB_TUKMTA.UWRTTM = DB_NullReplace(dt.Rows(0)("UWRTTM"), "")
+                            End If
+                            '2019/10/14 CHG END
+
+                            strOPEID = DB_TUKMTA.OPEID ' 最終作業者コード
 							strCLTID = DB_TUKMTA.CLTID ' クライアントＩＤ
 							strWRTDT = DB_TUKMTA.WRTDT ' タイムスタンプ（時間）
 							strWRTTM = DB_TUKMTA.WRTTM ' タイムスタンプ（日付）
@@ -266,9 +305,13 @@ Module TUKMTA_M51
 			DB_TUKMTA.TUKKB = RD_SSSMAIN_TUKKB(I)
 			'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_TEKIDT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			DB_TUKMTA.TEKIDT = RD_SSSMAIN_TEKIDT(I)
-			'Call DB_GetEq(DBN_TUKMTA, 1, DB_TUKMTA.TUKKB, BtrLock)
-			Call DB_GetSQL2(DBN_TUKMTA, "select * from TUKMTA where TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' order by TUKKB,TEKIDT")
-			If DBSTAT = 0 Then
+            'Call DB_GetEq(DBN_TUKMTA, 1, DB_TUKMTA.TUKKB, BtrLock)            
+            '2019/10/14 CHG START
+            'Call DB_GetSQL2(DBN_TUKMTA, "select * from TUKMTA where TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' order by TUKKB,TEKIDT")
+            pWhere = "WHERE TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' ORDER BY TUKKB,TEKIDT"
+            GetRowsCommon(DBN_TUKMTA, pWhere)
+            '2019/10/14 CHG END
+            If DBSTAT = 0 Then
 				'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_UPDKB() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				updkb = RD_SSSMAIN_UPDKB(I)
 				If updkb = "削除" Then
@@ -283,8 +326,40 @@ Module TUKMTA_M51
 					DB_TUKMTA.UWRTTM = WRTTM
 					DB_TUKMTA.UWRTDT = WRTDT
 					DB_TUKMTA.PGID = SSS_PrgId
-					Call DB_Update(DBN_TUKMTA, 1)
-				Else
+
+
+                    '2019/10/14 CHG START
+                    'Call DB_Update(DBN_TUKMTA, 1)
+                    updSQL = ""
+                    updSQL = updSQL & " UPDATE "
+                    updSQL = updSQL & "        " & DBN_TUKMTA & " "
+                    updSQL = updSQL & " SET "
+
+                    updSQL = updSQL & " DATKB		=	'" & DB_TUKMTA.DATKB & "' "
+                    updSQL = updSQL & ",RATERT		=	'" & DB_TUKMTA.RATERT & "' "                   
+                    updSQL = updSQL & ",RELFL		=	'" & DB_TUKMTA.RELFL & "' "
+                    updSQL = updSQL & ",FOPEID		=	'" & DB_TUKMTA.FOPEID & "' "
+                    updSQL = updSQL & ",FCLTID		=	'" & DB_TUKMTA.FCLTID & "' "
+                    updSQL = updSQL & ",WRTFSTTM	=	'" & DB_TUKMTA.WRTFSTTM & "' "
+                    updSQL = updSQL & ",WRTFSTDT	=	'" & DB_TUKMTA.WRTFSTDT & "' "
+                    updSQL = updSQL & ",OPEID		=	'" & DB_TUKMTA.OPEID & "' "
+                    updSQL = updSQL & ",CLTID		=	'" & DB_TUKMTA.CLTID & "' "
+                    updSQL = updSQL & ",WRTTM		=	'" & DB_TUKMTA.WRTTM & "' "
+                    updSQL = updSQL & ",WRTDT		=	'" & DB_TUKMTA.WRTDT & "' "
+                    updSQL = updSQL & ",UOPEID		=	'" & DB_TUKMTA.UOPEID & "' "
+                    updSQL = updSQL & ",UCLTID		=	'" & DB_TUKMTA.UCLTID & "' "
+                    updSQL = updSQL & ",UWRTTM		=	'" & DB_TUKMTA.UWRTTM & "' "
+                    updSQL = updSQL & ",UWRTDT		=	'" & DB_TUKMTA.UWRTDT & "' "
+                    updSQL = updSQL & ",PGID		=	'" & DB_TUKMTA.PGID & "' "
+
+                    updSQL = updSQL & "  WHERE "
+
+                    updSQL = updSQL & "        TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' "
+
+                    DB_Execute(updSQL)
+                    '2019/10/14 CHG END
+
+                Else
 					'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_DATKB(I) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_RATERT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_RATERT() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -299,8 +374,39 @@ Module TUKMTA_M51
 						DB_TUKMTA.UWRTTM = WRTTM
 						DB_TUKMTA.UWRTDT = WRTDT
 						DB_TUKMTA.PGID = SSS_PrgId
-						Call DB_Update(DBN_TUKMTA, 1)
-					End If
+
+                        '2019/10/14 CHG START
+                        'Call DB_Update(DBN_TUKMTA, 1)
+                        updSQL = ""
+                        updSQL = updSQL & " UPDATE "
+                        updSQL = updSQL & "        " & DBN_TUKMTA & " "
+                        updSQL = updSQL & " SET "
+
+                        updSQL = updSQL & " DATKB		=	'" & DB_TUKMTA.DATKB & "' "
+                        updSQL = updSQL & ",RATERT		=	'" & DB_TUKMTA.RATERT & "' "
+                        updSQL = updSQL & ",RELFL		=	'" & DB_TUKMTA.RELFL & "' "
+                        updSQL = updSQL & ",FOPEID		=	'" & DB_TUKMTA.FOPEID & "' "
+                        updSQL = updSQL & ",FCLTID		=	'" & DB_TUKMTA.FCLTID & "' "
+                        updSQL = updSQL & ",WRTFSTTM	=	'" & DB_TUKMTA.WRTFSTTM & "' "
+                        updSQL = updSQL & ",WRTFSTDT	=	'" & DB_TUKMTA.WRTFSTDT & "' "
+                        updSQL = updSQL & ",OPEID		=	'" & DB_TUKMTA.OPEID & "' "
+                        updSQL = updSQL & ",CLTID		=	'" & DB_TUKMTA.CLTID & "' "
+                        updSQL = updSQL & ",WRTTM		=	'" & DB_TUKMTA.WRTTM & "' "
+                        updSQL = updSQL & ",WRTDT		=	'" & DB_TUKMTA.WRTDT & "' "
+                        updSQL = updSQL & ",UOPEID		=	'" & DB_TUKMTA.UOPEID & "' "
+                        updSQL = updSQL & ",UCLTID		=	'" & DB_TUKMTA.UCLTID & "' "
+                        updSQL = updSQL & ",UWRTTM		=	'" & DB_TUKMTA.UWRTTM & "' "
+                        updSQL = updSQL & ",UWRTDT		=	'" & DB_TUKMTA.UWRTDT & "' "
+                        updSQL = updSQL & ",PGID		=	'" & DB_TUKMTA.PGID & "' "
+
+                        updSQL = updSQL & "  WHERE "
+
+                        updSQL = updSQL & "        TUKKB ='" & DB_TUKMTA.TUKKB & "' and TEKIDT='" & DB_TUKMTA.TEKIDT & "' "
+
+                        DB_Execute(updSQL)
+                        '2019/10/14 CHG END
+
+                    End If
 				End If
 			Else
 				'Call TUKMTA_RClear
@@ -320,8 +426,36 @@ Module TUKMTA_M51
 				DB_TUKMTA.UWRTTM = WRTTM
 				DB_TUKMTA.UWRTDT = WRTDT
 				DB_TUKMTA.PGID = SSS_PrgId
-				Call DB_Insert(DBN_TUKMTA, 1)
-			End If
+
+
+                '2019/10/14 CHG START
+                'Call DB_Insert(DBN_TUKMTA, 1)
+                updSQL = ""
+                updSQL = updSQL & " '" & DB_TUKMTA.DATKB & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.TUKKB & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.TUKNM & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.TEKIDT & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.RATERT & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.RELFL & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.FOPEID & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.FCLTID & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.WRTFSTTM & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.WRTFSTDT & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.OPEID & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.CLTID & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.WRTTM & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.WRTDT & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.UOPEID & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.UCLTID & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.UWRTTM & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.UWRTDT & "' "
+                updSQL = updSQL & ",'" & DB_TUKMTA.PGID & "' "
+
+                updSQL = DB_InsertSQL(DBN_TUKMTA, updSQL)
+                DB_Execute(updSQL)
+                '2019/10/14 CHG END
+
+            End If
 			I = I + 1
 		Loop 
 		Call DB_Unlock(DBN_TUKMTA)

@@ -11,65 +11,67 @@ Module RATMT51_IEV
 	Public Const SSS_FraId As String = "MT1"
 	
 	Sub Init_Fil() 'Generated.
-		'
-		DBN_TUKMTA = 0
-		DB_PARA(DBN_TUKMTA).tblid = "TUKMTA"
-		DB_PARA(DBN_TUKMTA).DBID = "USR1"
-		SSS_MFIL = DBN_TUKMTA
-		'
-		DBN_SYSTBA = 1
-		DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
-		DB_PARA(DBN_SYSTBA).DBID = "USR1"
-		'
-		DBN_SYSTBB = 2
-		DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
-		DB_PARA(DBN_SYSTBB).DBID = "USR1"
-		'
-		DBN_SYSTBC = 3
-		DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
-		DB_PARA(DBN_SYSTBC).DBID = "USR1"
-		'
-		DBN_SYSTBD = 4
-		DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
-		DB_PARA(DBN_SYSTBD).DBID = "USR1"
-		'
-		DBN_SYSTBF = 5
-		DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
-		DB_PARA(DBN_SYSTBF).DBID = "USR1"
-		'
-		DBN_SYSTBG = 6
-		DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
-		DB_PARA(DBN_SYSTBG).DBID = "USR1"
-		'
-		DBN_SYSTBH = 7
-		DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
-		DB_PARA(DBN_SYSTBH).DBID = "USR1"
-		'
-		DBN_TANMTA = 8
-		DB_PARA(DBN_TANMTA).tblid = "TANMTA"
-		DB_PARA(DBN_TANMTA).DBID = "USR1"
-		'
-		DBN_MEIMTA = 9
-		DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
-		DB_PARA(DBN_MEIMTA).DBID = "USR1"
-		'
-		DBN_UNYMTA = 10
-		DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
-		DB_PARA(DBN_UNYMTA).DBID = "USR1"
-		'
-		DBN_EXCTBZ = 11
-		DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
-		DB_PARA(DBN_EXCTBZ).DBID = "USR1"
-		'
-		DBN_GYMTBZ = 12
-		DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
-		DB_PARA(DBN_GYMTBZ).DBID = "USR1"
-		'
-		DBN_KNGMTB = 13
-		DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
-		DB_PARA(DBN_KNGMTB).DBID = "USR1"
-		
-		SSS_BILFL = 9
+        '
+        '2019/10/11 DEL START
+        'DBN_TUKMTA = 0
+        'DB_PARA(DBN_TUKMTA).tblid = "TUKMTA"
+        'DB_PARA(DBN_TUKMTA).DBID = "USR1"
+        'SSS_MFIL = DBN_TUKMTA
+        ''
+        'DBN_SYSTBA = 1
+        'DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+        'DB_PARA(DBN_SYSTBA).DBID = "USR1"
+        ''
+        'DBN_SYSTBB = 2
+        'DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
+        'DB_PARA(DBN_SYSTBB).DBID = "USR1"
+        ''
+        'DBN_SYSTBC = 3
+        'DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+        'DB_PARA(DBN_SYSTBC).DBID = "USR1"
+        ''
+        'DBN_SYSTBD = 4
+        'DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
+        'DB_PARA(DBN_SYSTBD).DBID = "USR1"
+        ''
+        'DBN_SYSTBF = 5
+        'DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
+        'DB_PARA(DBN_SYSTBF).DBID = "USR1"
+        ''
+        'DBN_SYSTBG = 6
+        'DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
+        'DB_PARA(DBN_SYSTBG).DBID = "USR1"
+        ''
+        'DBN_SYSTBH = 7
+        'DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+        'DB_PARA(DBN_SYSTBH).DBID = "USR1"
+        ''
+        'DBN_TANMTA = 8
+        'DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+        'DB_PARA(DBN_TANMTA).DBID = "USR1"
+        ''
+        'DBN_MEIMTA = 9
+        'DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
+        'DB_PARA(DBN_MEIMTA).DBID = "USR1"
+        ''
+        'DBN_UNYMTA = 10
+        'DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+        'DB_PARA(DBN_UNYMTA).DBID = "USR1"
+        ''
+        'DBN_EXCTBZ = 11
+        'DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+        'DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+        ''
+        'DBN_GYMTBZ = 12
+        'DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+        'DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+        ''
+        'DBN_KNGMTB = 13
+        'DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+        '      DB_PARA(DBN_KNGMTB).DBID = "USR1"
+        '2019/10/11 DEL END
+
+        SSS_BILFL = 9
 	End Sub
 	
 	Sub SCR_FromMEIMTA(ByVal De As Short) 'Generated.

@@ -33,13 +33,16 @@ Module TEKIDT_F51
 				'最新データ存在ﾁｪｯｸ
 				'UPGRADE_WARNING: オブジェクト TEKIDT_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 				If TEKIDT_Check = 0 Then
-					'                If CLng(Format(TEKIDT, "YYYYMMDD")) < CLng(DB_UNYMTA.UNYDT) Then
-					'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					Call DB_GetGrEq(DBN_TUKMTA, 2, "1" & TUKKB & VB6.Format(TEKIDT, "YYYYMMDD"), BtrNormal)
-					'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If (DBSTAT = 0) And (DB_TUKMTA.DATKB = "1") And (DB_TUKMTA.TUKKB = TUKKB) And (DB_TUKMTA.TEKIDT > VB6.Format(TEKIDT, "YYYYMMDD")) Then
+                    '                If CLng(Format(TEKIDT, "YYYYMMDD")) < CLng(DB_UNYMTA.UNYDT) Then
+                    'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。                    
+                    '2019/10/14 CHG START
+                    'Call DB_GetGrEq(DBN_TUKMTA, 2, "1" & TUKKB & VB6.Format(TEKIDT, "YYYYMMDD"), BtrNormal)
+                    GetRowsCommon(DBN_TUKMTA, "WHERE DATKB = '1' AND TUKKB = '" & TUKKB & "' AND TEKIDT = '" & VB6.Format(TEKIDT, "YYYYMMDD") & "'")
+                    '2019/10/14 CHG END
+                    'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If (DBSTAT = 0) And (DB_TUKMTA.DATKB = "1") And (DB_TUKMTA.TUKKB = TUKKB) And (DB_TUKMTA.TEKIDT > VB6.Format(TEKIDT, "YYYYMMDD")) Then
 						Rtn = DSP_MsgBox(SSS_CONFRM, "RATMT51", 0) '既に新しい日付で登録済の為エラー
 						'UPGRADE_WARNING: オブジェクト TEKIDT_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 						TEKIDT_Check = -1
@@ -52,10 +55,13 @@ Module TEKIDT_F51
 		'適用日にデータが入ったら、当該データを検索
 		'UPGRADE_WARNING: オブジェクト TEKIDT_Check の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If TEKIDT_Check = 0 Then
-			'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call DB_GetEq(DBN_TUKMTA, 1, TUKKB & VB6.Format(TEKIDT, "YYYYMMDD"), BtrNormal)
-			If DBSTAT = 0 Then
+            'UPGRADE_WARNING: オブジェクト TEKIDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            'UPGRADE_WARNING: オブジェクト TUKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10/14 CHG START
+            'Call DB_GetEq(DBN_TUKMTA, 1, TUKKB & VB6.Format(TEKIDT, "YYYYMMDD"), BtrNormal)
+            GetRowsCommon(DBN_TUKMTA, "WHERE DATKB = '1' AND TUKKB = '" & TUKKB & "' AND TEKIDT = '" & VB6.Format(TEKIDT, "YYYYMMDD") & "'")
+            '2019/10/14 CHG END
+            If DBSTAT = 0 Then
 				Call SCR_FromMfil(De_Index)
 				If DB_TUKMTA.DATKB = "9" Then
 					Call DP_SSSMAIN_UPDKB(De_Index, "削除")
