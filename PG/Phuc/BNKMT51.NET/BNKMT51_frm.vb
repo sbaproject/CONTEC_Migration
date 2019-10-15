@@ -851,7 +851,7 @@ EventExitSub:
         'UPGRADE_WARNING: オブジェクト UPDKB_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'UPGRADE_WARNING: オブジェクト wk_Var の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         '2019/09/18　仮
-        'wk_Var = UPDKB_GetEvent()
+        wk_Var = UPDKB_GetEvent()
         '2019/09/18　仮
         PP_SSSMAIN.De = wk_SaveDe : PP_SSSMAIN.De2 = wk_SaveDe2
 	End Sub
@@ -1278,8 +1278,8 @@ EventExitSub:
 		PP_SSSMAIN.NeglectLostFocusCheck = True
         'UPGRADE_WARNING: オブジェクト UPDKB_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         '2019/09/18　仮
-        'If UPDKB_GetEvent() Then
-        'End If
+        If UPDKB_GetEvent() Then
+        End If
         '2019/09/18　仮
         PP_SSSMAIN.NeglectLostFocusCheck = False
 		Call AE_CursorCurrent_SSSMAIN()
@@ -2285,8 +2285,8 @@ EventExitSub:
 		If Not PP_SSSMAIN.Operable Then Exit Sub
         'UPGRADE_WARNING: オブジェクト UPDKB_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         '2019/09/18　仮
-        'If UPDKB_GetEvent() Then
-        'End If
+        If UPDKB_GetEvent() Then
+        End If
         '2019/09/18　仮
     End Sub
 	
@@ -2818,5 +2818,61 @@ EventExitSub:
         PP_SSSMAIN.CloseCode = 1
         Call AE_EndCm_SSSMAIN()
     End Sub
+
+    Private Sub CM_UPDKB_Click(sender As Object, e As EventArgs) Handles CM_UPDKB.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.NeglectLostFocusCheck = True
+        'UPGRADE_WARNING: オブジェクト UPDKB_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/09/18　仮
+        If UPDKB_GetEvent() Then
+        End If
+        '2019/09/18　仮
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
+
+    Private Sub CS_BNKCD_Click(sender As Object, e As EventArgs) Handles CS_BNKCD.Click
+        Dim wk_Slisted As Object
+        Dim wk_SaveTx As Short
+        Dim wk_TxBase As Short
+        Dim wk_PxBase As Short
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        If PP_SSSMAIN.De2 >= 0 And PP_SSSMAIN.Tx < 92 Then
+            wk_PxBase = 11 * PP_SSSMAIN.De
+            wk_TxBase = 6 * (PP_SSSMAIN.De - PP_SSSMAIN.TopDe)
+        Else
+            wk_PxBase = 11 * PP_SSSMAIN.TopDe
+            wk_TxBase = 0
+        End If
+        If AE_CursorCheck_SSSMAIN(CP_SSSMAIN(3 + wk_PxBase).TypeA, 3 + wk_TxBase) Then
+            PP_SSSMAIN.SlistCall = True
+            PP_SSSMAIN.CursorDirection = Cn_Direction1 '1: Next
+            Call AE_CursorMove_SSSMAIN(3 + wk_TxBase)
+            If PP_SSSMAIN.Tx <> 3 + wk_TxBase Then PP_SSSMAIN.SSCommand5Ajst = True
+        Else
+            Beep()
+            Call AE_CursorCurrent_SSSMAIN()
+        End If
+        PP_SSSMAIN.CursorDirection = 0
+    End Sub
     '2019/09/20 ADD E N D
+
+    '2019/10/15 ADD START
+    Function UPDKB_GetEvent() As Object
+        Dim updkb As String
+        '
+        'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_UPDKB() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        updkb = RD_SSSMAIN_UPDKB(PP_SSSMAIN.De)
+        If updkb = "更新" Then
+            Call DP_SSSMAIN_UPDKB(PP_SSSMAIN.De, "削除")
+        ElseIf updkb = "削除" Then
+            Call DP_SSSMAIN_UPDKB(PP_SSSMAIN.De, "更新")
+        End If
+        '1999/12/13 状態が変更されたことをｅｅｅに通知する
+        PP_SSSMAIN.InitValStatus = 0
+    End Function
+    '2019/10/15 ADD E N D
+
 End Class

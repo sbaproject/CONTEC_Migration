@@ -2327,6 +2327,17 @@ EventExitSub:
         PP_SSSMAIN.CloseCode = 1
         Call AE_EndCm_SSSMAIN()
     End Sub
+
+    Private Sub CM_UPDKB_Click(sender As Object, e As EventArgs) Handles CM_UPDKB.Click
+        PP_SSSMAIN.ButtonClick = True
+        If Not PP_SSSMAIN.Operable Then Exit Sub
+        PP_SSSMAIN.NeglectLostFocusCheck = True
+        'UPGRADE_WARNING: オブジェクト UPDKB_GetEvent() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If UPDKB_GetEvent() Then
+        End If
+        PP_SSSMAIN.NeglectLostFocusCheck = False
+        Call AE_CursorCurrent_SSSMAIN()
+    End Sub
     '2019/10/11 ADD END
 
 
