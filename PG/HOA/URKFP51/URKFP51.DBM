@@ -1,0 +1,18 @@
+	Option Explicit
+'==========================================================================
+'   URKFP51.DBM  FBデータ取込処理ワーク           UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_URKFP51
+    FBDATKB        As String * 1     'データ区分            0                   
+    FBDATEL        As String * 199   'データ部                                  
+    FBCRLF         As String * 2     '改行                                      
+End Type
+Global DB_URKFP51 As TYPE_DB_URKFP51
+Global DBN_URKFP51 As Integer
+' Index1( FBDATKB )
+
+Sub URKFP51_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_URKFP51, G_LB)
+    Call ResetBuf(DBN_URKFP51)
+End Sub

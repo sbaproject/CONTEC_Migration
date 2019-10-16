@@ -62,12 +62,16 @@ Module HINPR51_E01
 		DLGLST1.ShowDialog()
 		Select Case SSS_RTNWIN
 			Case 0 ' 印刷
-				Rtn = LSTART_GetEvent()
-			Case 1 ' プレビュー
+                '2019/10/07 DEL START
+                'rtn = LSTART_GetEvent()
+                '2019/10/07 DEL END
+            Case 1 ' プレビュー
 				Rtn = VSTART_GetEvent()
 			Case 2 ' ファイル出力
-				Rtn = FSTART_GetEvent()
-			Case Else
+                '2019/10/07 DEL START
+                'rtn = FSTART_GetEvent()
+                '2019/10/07 DEL END
+            Case Else
 		End Select
 	End Sub
 End Module

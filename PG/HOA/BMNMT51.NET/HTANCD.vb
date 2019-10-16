@@ -49,13 +49,21 @@ Module HTANCD_F51
 		'UPGRADE_WARNING: オブジェクト LenWid(Trim$(HTANCD)) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If LenWid(Trim(HTANCD)) = 0 Then
 		Else
-			'2008/12/16 RISE)izumi CHG START  連絡票№:643
-			'        wkHTANCD = HTANCD & Space(Len(DB_MEIMTA.MEICDA) - Len(HTANCD))
-			'        Call DB_GetEq(DBN_MEIMTA, 2, "024" & wkHTANCD, BtrNormal)
-			'UPGRADE_WARNING: オブジェクト HTANCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			wkHTANCD = HTANCD & Space(Len(DB_MEIMTC.MEICDA) - Len(HTANCD))
-			
-			strSQL = ""
+            '2008/12/16 RISE)izumi CHG START  連絡票№:643
+            '        wkHTANCD = HTANCD & Space(Len(DB_MEIMTA.MEICDA) - Len(HTANCD))
+            '        Call DB_GetEq(DBN_MEIMTA, 2, "024" & wkHTANCD, BtrNormal)
+            'UPGRADE_WARNING: オブジェクト HTANCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+
+            '2019/10/04 CHG START
+            'wkHTANCD = HTANCD & Space(Len(DB_MEIMTC.MEICDA) - Len(HTANCD))
+            If DB_MEIMTA.MEICDA Is Nothing OrElse Len(DB_MEIMTA.MEICDA) - Len(HTANCD) Then
+                wkHTANCD = (HTANCD)
+            Else
+                wkHTANCD = (HTANCD) & Space(Len(DB_MEIMTA.MEICDA) - Len(HTANCD))
+            End If
+            '2019/10/04 CHG E N D
+
+            strSQL = ""
 			strSQL = strSQL & "SELECT "
 			strSQL = strSQL & " * "
 			strSQL = strSQL & "FROM "

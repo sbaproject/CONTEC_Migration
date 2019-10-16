@@ -1,0 +1,41 @@
+
+cis07@ad.fjazure.com
+CIS_vb6dev07
+
+
+
+
+'2019/xx/xx ADD START
+'2019/xx/xx ADD E N D
+
+'2019/xx/xx CHG START
+'2019/xx/xx CHG E N D
+
+'2019/xx/xx DEL START
+'2019/xx/xx DEL E N D
+
+
+
+
+
+(GRKBP01)
+--
+select *		
+from COOPTRA a		
+order by a.COOPGRP	
+--
+UPDATE COOPTRA
+SET BEFDT = '11111111'
+WHERE COOPGRP = 'DAILY2';
+
+commit;
+
+
+
+
+'2019/10/08 CHG START
+            'Call DB_GetEq(DBN_BMNMTA, 1, DB_BMNMTA.BMNCD & DB_BMNMTA.STTTKDT, BtrLock)
+            Dim sqlWhere As String = ""
+            sqlWhere &= "  WHERE DATKB = '1' AND BMNCD = '" & DB_BMNMTA.BMNCD & "' AND STTTKDT = '" & DB_BMNMTA.STTTKDT & "'"
+            Call GetRowsCommon(DBN_BMNMTA, sqlWhere)
+            '2019/10/08 CHG E N D

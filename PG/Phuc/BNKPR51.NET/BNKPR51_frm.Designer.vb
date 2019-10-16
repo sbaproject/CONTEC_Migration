@@ -272,10 +272,6 @@
         'Frame3D1
         '
         Me.Frame3D1.BackColor = System.Drawing.SystemColors.Control
-        Me.Frame3D1.Controls.Add(Me.HD_ENDBNKNM)
-        Me.Frame3D1.Controls.Add(Me.HD_STTBNKNM)
-        Me.Frame3D1.Controls.Add(Me.HD_ENDBNKCD)
-        Me.Frame3D1.Controls.Add(Me.HD_STTBNKCD)
         Me.Frame3D1.Controls.Add(Me.Label2)
         Me.Frame3D1.Controls.Add(Me.Label1)
         Me.Frame3D1.ForeColor = System.Drawing.Color.Black
@@ -1117,6 +1113,10 @@
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.HD_OPENM)
         Me.Controls.Add(Me.HD_OPEID)
+        Me.Controls.Add(Me.HD_ENDBNKNM)
+        Me.Controls.Add(Me.HD_STTBNKNM)
+        Me.Controls.Add(Me.HD_ENDBNKCD)
+        Me.Controls.Add(Me.HD_STTBNKCD)
         Me.Controls.Add(Me.Frame3D1)
         Me.Controls.Add(Me.FM_Panel3D1)
         Me.Controls.Add(Me.FM_Panel3D14)

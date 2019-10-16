@@ -711,9 +711,10 @@
         Me.HD_NHSCD.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.HD_NHSCD.Location = New System.Drawing.Point(356, 163)
         Me.HD_NHSCD.MaxLength = 9
+        Me.HD_NHSCD.Multiline = True
         Me.HD_NHSCD.Name = "HD_NHSCD"
         Me.HD_NHSCD.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_NHSCD.Size = New System.Drawing.Size(72, 20)
+        Me.HD_NHSCD.Size = New System.Drawing.Size(72, 41)
         Me.HD_NHSCD.TabIndex = 80
         Me.HD_NHSCD.Text = "XXXXXXXX9"
         '
@@ -729,7 +730,7 @@
         Me.HD_KENNMB.MaxLength = 40
         Me.HD_KENNMB.Name = "HD_KENNMB"
         Me.HD_KENNMB.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_KENNMB.Size = New System.Drawing.Size(290, 20)
+        Me.HD_KENNMB.Size = New System.Drawing.Size(293, 20)
         Me.HD_KENNMB.TabIndex = 79
         Me.HD_KENNMB.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3MMMMMMMMM4"
         '
@@ -745,7 +746,7 @@
         Me.HD_KENNMA.MaxLength = 40
         Me.HD_KENNMA.Name = "HD_KENNMA"
         Me.HD_KENNMA.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.HD_KENNMA.Size = New System.Drawing.Size(290, 20)
+        Me.HD_KENNMA.Size = New System.Drawing.Size(293, 20)
         Me.HD_KENNMA.TabIndex = 78
         Me.HD_KENNMA.Text = "MMMMMMMMM1MMMMMMMMM2MMMMMMMMM3MMMMMMMMM4"
         '
@@ -1502,7 +1503,7 @@
         Me._FM_Panel3D1_32.Controls.Add(Me.CM_SLIST)
         Me._FM_Panel3D1_32.Controls.Add(Me.CM_EndCm)
         Me._FM_Panel3D1_32.Controls.Add(Me.Image1)
-        Me._FM_Panel3D1_32.Location = New System.Drawing.Point(-2, 0)
+        Me._FM_Panel3D1_32.Location = New System.Drawing.Point(-3, 2)
         Me._FM_Panel3D1_32.Name = "_FM_Panel3D1_32"
         Me._FM_Panel3D1_32.Size = New System.Drawing.Size(1097, 37)
         Me._FM_Panel3D1_32.TabIndex = 18
@@ -2164,7 +2165,7 @@
         Me._FM_Panel3D1_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me._FM_Panel3D1_7.Location = New System.Drawing.Point(288, 163)
         Me._FM_Panel3D1_7.Name = "_FM_Panel3D1_7"
-        Me._FM_Panel3D1_7.Size = New System.Drawing.Size(67, 45)
+        Me._FM_Panel3D1_7.Size = New System.Drawing.Size(67, 41)
         Me._FM_Panel3D1_7.TabIndex = 84
         Me._FM_Panel3D1_7.Text = " î[ì¸êÊ"
         Me._FM_Panel3D1_7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2213,6 +2214,7 @@
         '_IM_SELECTCM_1
         '
         Me._IM_SELECTCM_1.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_SELECTCM_1.Enabled = False
         Me._IM_SELECTCM_1.Image = CType(resources.GetObject("_IM_SELECTCM_1.Image"), System.Drawing.Image)
         Me.IM_SELECTCM.SetIndex(Me._IM_SELECTCM_1, CType(1, Short))
         Me._IM_SELECTCM_1.Location = New System.Drawing.Point(0, 0)
@@ -2220,10 +2222,12 @@
         Me._IM_SELECTCM_1.Size = New System.Drawing.Size(24, 22)
         Me._IM_SELECTCM_1.TabIndex = 99
         Me._IM_SELECTCM_1.TabStop = False
+        Me._IM_SELECTCM_1.Visible = False
         '
         '_IM_SELECTCM_0
         '
         Me._IM_SELECTCM_0.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_SELECTCM_0.Enabled = False
         Me._IM_SELECTCM_0.Image = CType(resources.GetObject("_IM_SELECTCM_0.Image"), System.Drawing.Image)
         Me.IM_SELECTCM.SetIndex(Me._IM_SELECTCM_0, CType(0, Short))
         Me._IM_SELECTCM_0.Location = New System.Drawing.Point(0, 0)
@@ -2231,10 +2235,12 @@
         Me._IM_SELECTCM_0.Size = New System.Drawing.Size(24, 22)
         Me._IM_SELECTCM_0.TabIndex = 100
         Me._IM_SELECTCM_0.TabStop = False
+        Me._IM_SELECTCM_0.Visible = False
         '
         '_IM_Execute_1
         '
         Me._IM_Execute_1.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Execute_1.Enabled = False
         Me._IM_Execute_1.Image = CType(resources.GetObject("_IM_Execute_1.Image"), System.Drawing.Image)
         Me.IM_Execute.SetIndex(Me._IM_Execute_1, CType(1, Short))
         Me._IM_Execute_1.Location = New System.Drawing.Point(0, 0)
@@ -2242,10 +2248,12 @@
         Me._IM_Execute_1.Size = New System.Drawing.Size(24, 22)
         Me._IM_Execute_1.TabIndex = 101
         Me._IM_Execute_1.TabStop = False
+        Me._IM_Execute_1.Visible = False
         '
         '_IM_Execute_0
         '
         Me._IM_Execute_0.Cursor = System.Windows.Forms.Cursors.Default
+        Me._IM_Execute_0.Enabled = False
         Me._IM_Execute_0.Image = CType(resources.GetObject("_IM_Execute_0.Image"), System.Drawing.Image)
         Me.IM_Execute.SetIndex(Me._IM_Execute_0, CType(0, Short))
         Me._IM_Execute_0.Location = New System.Drawing.Point(0, 0)
@@ -2253,6 +2261,7 @@
         Me._IM_Execute_0.Size = New System.Drawing.Size(24, 22)
         Me._IM_Execute_0.TabIndex = 102
         Me._IM_Execute_0.TabStop = False
+        Me._IM_Execute_0.Visible = False
         '
         '_IM_Opt_1
         '

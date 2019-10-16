@@ -1,0 +1,238 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <MyType>WindowsForms</MyType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3BC61E80-E2BE-4E37-8E15-4A90FA29F0B8}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>URKFP51</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>URKFP51.FR_SSSMAIN</StartupObject>
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>3</AssemblyMinorVersion>
+    <AssemblyRevisionNumber>0</AssemblyRevisionNumber>
+    <GenerateRevisionNumber>False</GenerateRevisionNumber>
+    <AssemblyCompanyName>ウッドランド株式会社</AssemblyCompanyName>
+    <StartWithIE>False</StartWithIE>
+    <ApplicationIcon>URKFP51.ico</ApplicationIcon>
+    <RootNamespace>URKFP51</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>URKFP51.xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DefineDebug>True</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>URKFP51.xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DefineDebug>False</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <Lcid>0</Lcid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AE_PROC.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AE_RSMR.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="CLSMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CLSMTB.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EXCTBZ.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBTRA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GYMTBZ.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICONSSS.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ICONSSS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KNGMTB.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OPEID.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OPENM.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ORAJET.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMAIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMSG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSWIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBB.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBC.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBD.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBF.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SYSTBH.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TANMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TANWTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UNYMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UpgradeSupport.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51A.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51B.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51C.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51D.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51E.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51_dbm.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51_e61.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>URKFP51_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="URKFP51_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="URKFP51_iev.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51_m61.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="URKFP51_psi.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WLS_HCP.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WLS_HCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="ICONSSS.resX">
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="URKFP51_frm.resX">
+      <DependentUpon>URKFP51_frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WLS_HCP.resX">
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="URKFP51.ico" />
+    <None Include="_UpgradeReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

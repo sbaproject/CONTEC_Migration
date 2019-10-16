@@ -1,0 +1,15 @@
+Attribute VB_Name = "SSSMAIN0002"
+Option Explicit
+'プログラム総括情報プロシジャ
+
+Sub AE_PSIR_SSSMAIN() 'Generated.
+   ReDim AE_PSI$(5)
+   AE_PSIC = 6
+   AE_PSI$(0) = "HD_OPEID 0000 code 6 - A L N U - - 1 -"
+   AE_PSI$(1) = "HD_OPENM 0000 name 20 - A L N U - - 1 -"
+   AE_PSI$(2) = "HD_STTNHSCD 2202 code 9 - A L N S - - 1 -"
+   AE_PSI$(3) = "HD_STTNHSNM 0000 code 40 - A L N U - - 1 -"
+   AE_PSI$(4) = "HD_ENDNHSCD 2202 code 9 - A L N S - - 1 -"
+   AE_PSI$(5) = "HD_ENDNHSNM 0000 code 40 - A L N U - - 1 -"
+End Sub
+

@@ -33,17 +33,25 @@ Module ENDHINCD_F53
         'UPGRADE_WARNING: オブジェクト LenWid(ENDHINCD) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         If LenWid(ENDHINCD) = 0 Or Trim(ENDHINCD) = "" Or ENDHINCD = "ZZZZZZZZ" Then
 		Else
-			Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
-			''''''''If DBSTAT = 0 Then
-			''''''''    If DB_HINMTA.DATKB = "9" Then
-			''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
-			''''''''        ENDHINCD_Check = -1
-			''''''''    End If
-			''''''''Else
-			''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
-			''''''''    ENDHINCD_Check = -1
-			''''''''End If
-		End If
+
+            '2019/10/09 CHG START
+            'Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
+            GetRowsCommon(DBN_HINMTA, "Where HINCD = '" & ENDHINCD & "'")
+
+            If DBSTAT = 0 Then
+                Call SCR_FromENDHINMTA(-1)
+            End If
+            '2019/10/09 CHG END
+            ''''''''If DBSTAT = 0 Then
+            ''''''''    If DB_HINMTA.DATKB = "9" Then
+            ''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+            ''''''''        ENDHINCD_Check = -1
+            ''''''''    End If
+            ''''''''Else
+            ''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+            ''''''''    ENDHINCD_Check = -1
+            ''''''''End If
+        End If
 		
 	End Function
 	

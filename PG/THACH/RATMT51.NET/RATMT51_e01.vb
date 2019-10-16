@@ -62,9 +62,22 @@ Module RATMT51_E01
                 '2019/09/24 DEL START
                 'Call MEIMTA_RClear()
                 '2019/09/24 DEL E N D
-                wkTUKKB = DB_TUKMTA.TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_TUKMTA.TUKKB))
-				Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkTUKKB, BtrNormal)
-				If DBSTAT = 0 Then '名称ﾏｽﾀに当該項目が在る時
+
+                '2019/10/14 CHG START
+                'wkTUKKB = DB_TUKMTA.TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_TUKMTA.TUKKB))
+                If DB_MEIMTA.MEICDA Is Nothing Then
+                    wkTUKKB = DB_TUKMTA.TUKKB
+                Else
+                    wkTUKKB = DB_TUKMTA.TUKKB & Space(Len(DB_MEIMTA.MEICDA) - Len(DB_TUKMTA.TUKKB))
+                End If
+                '2019/10/14 CHG END
+
+                '2019/10/14 CHG START
+                'Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkTUKKB, BtrNormal)
+                GetRowsCommon(DBN_MEIMTA, "where KEYCD = '001' AND MEICDA = '" & wkTUKKB & "'")
+                '2019/10/14 CHG END
+
+                If DBSTAT = 0 Then '名称ﾏｽﾀに当該項目が在る時
 					Call SCR_FromMEIMTA(I)
 				End If
 				
@@ -212,12 +225,25 @@ Module RATMT51_E01
 		End If
 		'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_TUKKB() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		DB_TUKMTA.TUKKB = RD_SSSMAIN_TUKKB(0)
-		If Trim(DB_TUKMTA.TUKKB) = "" Then
-			DB_MEIMTA.DSPORD = "   "
-		Else
-			wkDSPORD = Trim(DB_TUKMTA.TUKKB) & Space(Len(DB_MEIMTA.MEICDA) - Len(Trim(DB_TUKMTA.TUKKB)))
-			Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkDSPORD, BtrNormal)
-			If DBSTAT <> 0 Then
+        If Trim(DB_TUKMTA.TUKKB) = "" Then
+            DB_MEIMTA.DSPORD = "   "
+        Else
+
+            '2019/10/14 CHG START
+            'wkDSPORD = Trim(DB_TUKMTA.TUKKB) & Space(Len(DB_MEIMTA.MEICDA) - Len(Trim(DB_TUKMTA.TUKKB)))
+            If DB_MEIMTA.MEICDA Is Nothing Then
+                wkDSPORD = Trim(DB_TUKMTA.TUKKB)
+            Else
+                wkDSPORD = Trim(DB_TUKMTA.TUKKB) & Space(Len(DB_MEIMTA.MEICDA) - Len(Trim(DB_TUKMTA.TUKKB)))
+            End If
+            '2019/10/14 CHG END
+
+            '2019/10/14 CHG START
+            'Call DB_GetEq(DBN_MEIMTA, 2, "001" & wkDSPORD, BtrNormal)
+            GetRowsCommon(DBN_MEIMTA, "where KEYCD = '001' AND MEICDA = '" & wkDSPORD & "'")
+            '2019/10/14 CHG END
+
+            If DBSTAT <> 0 Then
 				DB_MEIMTA.DSPORD = "   "
 			End If
 		End If

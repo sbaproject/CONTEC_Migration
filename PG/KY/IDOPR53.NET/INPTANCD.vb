@@ -46,20 +46,20 @@ Module INPTANCD_F57
 	End Function
 	
 	Function INPTANCD_Slist(ByRef PP As clsPP, ByVal INPTANCD As Object) As Object
-		'
-		WLSTAN.Text = "入力担当者一覧"
-		CType(WLSTAN.Controls("LST"), Object).Items.Clear()
-		Call DB_GetFirst(DBN_TANMTA, 1, BtrNormal)
+        '
+        WLSTAN2.Text = "入力担当者一覧"
+        CType(WLSTAN2.Controls("LST"), Object).Items.Clear()
+        Call DB_GetFirst(DBN_TANMTA, 1, BtrNormal)
 		Do While DBSTAT = 0
-			If DB_TANMTA.DATKB <> "9" Then CType(WLSTAN.Controls("LST"), Object).Items.Add(DB_TANMTA.TANCD & " " & DB_TANMTA.TANNM)
-			Call DB_GetNext(DBN_TANMTA, BtrNormal)
+            If DB_TANMTA.DATKB <> "9" Then CType(WLSTAN2.Controls("LST"), Object).Items.Add(DB_TANMTA.TANCD & " " & DB_TANMTA.TANNM)
+            Call DB_GetNext(DBN_TANMTA, BtrNormal)
 		Loop 
 		'UPGRADE_WARNING: オブジェクト LenWid() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		SSS_WLSLIST_KETA = LenWid(DB_TANMTA.TANCD)
-		WLSTAN.ShowDialog()
-		WLSTAN.Close()
-		'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト INPTANCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		INPTANCD_Slist = PP.SlistCom
+        WLSTAN2.ShowDialog()
+        WLSTAN2.Close()
+        'UPGRADE_WARNING: オブジェクト PP.SlistCom の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト INPTANCD_Slist の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        INPTANCD_Slist = PP.SlistCom
 	End Function
 End Module

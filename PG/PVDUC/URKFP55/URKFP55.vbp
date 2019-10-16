@@ -1,0 +1,66 @@
+Type=Exe
+Reference=*\G{00025E01-0000-0000-C000-000000000046}#4.0#0#..\..\..\..\WINDOWS\system32\DAO350.DLL#Microsoft DAO 3.0 Object Library
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
+
+Reference=*\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#..\..\..\..\..\WINDOWS\system32\scrrun.dll#Microsoft Scripting Runtime
+Form=URKFP55.frm
+Module=SSSMAIN0002; URKFP55.PSI
+Module=AE_CMN; AE_CMN.BAS
+Module=ACE_CMN; ACE_CMN.BAS
+Module=TANMTA_DBM; TANMTA.bas
+Module=HINMTA_DBM; HINMTA.bas
+Module=ORA_CMN; ORA_CMN.BAS
+
+Module=SSSMAIN0001; URKFP55.FPR
+
+Module=URKFP55_IEV; URKFP55.IEV
+Module=BasOraJet; ORAJET.BAS
+Module=UNYMTA_DBM; UNYMTA.bas
+Form=ICONSSS.FRM
+Module=SSSWIN_BAS; SSSWIN.BAS
+Module=AE_RSMR; AE_RSMR.BAS
+Module=AE_PROC; AE_PROC.BAS
+Module=AUTHORITY_DBM; AUTHORI.bas
+Module=AE_CONST; AE_CONST.BAS
+Module=CLDMTA_DBM; CLDMTA.bas
+Module=SYSTBH_DBM; SYSTBH.bas
+Module=SYSTBA_DBM; SYSTBA.bas
+Module=MEIMTA_DBM; MEIMTA.bas
+Module=KNGMTA_DBM; KNGMTA.bas
+Module=TOKMTA_DBM; TOKMTA.bas
+Module=SSSMSG_BAS; SSSMSG.BAS
+Form=WLS_HCP.FRM
+
+IconForm="ICN_ICON"
+Startup="FR_SSSMAIN"
+HelpFile=""
+Title="URKFP55"
+ExeName32="URKFP55.exe"
+Command32=""CLTIDCONTEC  ""
+Name="URKFP55"
+HelpContextID="0"
+CompatibleMode="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0
+VersionCompanyName="株式会社コンテック"
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=0
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=0
+Unattended=0
+Retained=0
+ThreadPerObject=0
+MaxNumberOfThreads=1
+
+[MS Transaction Server]
+AutoRefresh=1

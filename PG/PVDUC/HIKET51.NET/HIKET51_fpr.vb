@@ -788,10 +788,10 @@ Module SSSMAIN0001
 							Else
 								'数値項目以外
 								If CF_Ctr_AnsiLenB(CF_Trim_Item(Wk_DspMoji, pm_Dsp_Sub_Inf)) >= pm_Dsp_Sub_Inf.Detail.Dsp_MaxLengthB Then
-									'編集後の文字がMAXの場合
-									'現在ﾌｫｰｶｽ位置から右へ移動
-									Call F_Set_Right_Next_Focus(pm_Dsp_Sub_Inf, pm_Move_Flg, pm_All, pm_Run_Flg)
-								End If
+                                    '編集後の文字がMAXの場合
+                                    '現在ﾌｫｰｶｽ位置から右へ移動
+                                    Call F_Set_Right_Next_Focus(pm_Dsp_Sub_Inf, pm_Move_Flg, pm_All, pm_Run_Flg)
+                                End If
 							End If
 						Else
 							'現在ﾌｫｰｶｽ位置から右へ移動

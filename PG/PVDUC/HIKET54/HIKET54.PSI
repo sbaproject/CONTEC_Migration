@@ -1,0 +1,128 @@
+Attribute VB_Name = "SSSMAIN0002"
+Option Explicit
+'プログラム総括情報プロシジャ
+'□□□□□□□□ プログラム単位の共通処理 Start □□□□□□□□□□□□□□□□
+''================================================================================
+'☆　画面ボディ部の行単位の業務情報　　　　　☆
+'☆　　Cls_Dsp_Body_Row_Infとの互換性を　　　☆
+'☆　　共通の全てのＰＧで宣言する　　　　　　☆
+'☆　　そのため以下の｢Dummy｣は必須！！ 　　　☆
+Public Type Cls_Dsp_Body_Bus_Inf
+    Dummy           As String           'ダミー
+    IsDataRow       As Boolean          'データ保持行フラグ
+    SYBT            As Integer          '種別(3:支給品,4:製番出庫)
+    SBNNO           As String           '製番
+    HINCD           As String           '製品コード
+    HINNMA          As String           '型式
+    HINNMB          As String           '商品名１
+    ODNYTDT         As String           '出荷予定日
+    OUTYTSU         As Currency         '出荷予定数量
+    ORGSBNNO        As String           '元製番
+    OUTRSNCD        As String           '出庫理由コード
+    OUTRSNNM        As String           '出庫理由名
+    TOKCD           As String           '得意先コード
+    TOKRN           As String           '得意先略称
+    SIRCD           As String           '仕入先コード
+    SIRRN           As String           '仕入先略称
+    WRTFSTDT        As String           '登録日
+    WRTFSTTM        As String           '登録時間
+    SOUCD           As String           '倉庫コード
+    SOUNM           As String           '倉庫名
+    DATNO           As String           '伝票管理№
+    SPRRENNO        As String           '分割連番
+    PUDLNO          As String           '入出庫番号
+' === 20080725 === INSERT S - ACE)Nagasawa 引当内訳ファイルの引当数には出荷指示数も含むよう修正
+    OUTBMCD         As String           '送り先部門コード
+    OUTTANCD        As String           '送り先担当者コード
+    NHSCD           As String           '納入先コード
+' === 20080725 === INSERT E -
+'''製番引当／個別解除画面用
+    SUB_IsDataRow   As Boolean          'データ保持行フラグ
+    SUB_KB          As String           'データ区分(1:倉庫別在庫 2:入荷予定)
+    SUB_SOUCD       As String           '倉庫コード
+    SUB_HINCD       As String           '製品コード
+    SUB_SISNKB      As String           '資産元区分
+    SUB_SOUTRICD    As String           '取引先コード
+    SUB_SOUKOKB     As String           '倉庫区分
+    SUB_SOUNM       As String           '倉庫名
+    SUB_LOTNO       As String           'ロット番号
+    SUB_NYUYTDT     As String           '入庫予定日
+    SUB_RELZAISU    As Currency         '現在庫数
+    SUB_ZUMISU      As Currency         '引当済数
+    SUB_HIKSU       As Currency         '引当可能数
+    SUB_INP_HIKSU   As Currency         '引当数
+    SUB_MOTO_HIKSU  As Currency         '引当数(更新前の値)
+    SUB_HIKSU_BEF   As Currency         '前回入力引当済数
+    SUB_MNSU        As Currency         '手動引当数
+' === 20080720 === INSERT S - ACE)Nagasawa 自動引当実行中は仮引当を行った見積の改版は行えない
+    SUB_FRDSU      As Currency          '出荷指示数
+' === 20080720 === INSERT E -
+' === 20080725 === INSERT S - RISE)Izumi
+    SUB_OPEID       As String           ' 最終作業者コード
+    SUB_CLTID       As String           ' クライアントＩＤ
+    SUB_WRTTM       As String           ' タイムスタンプ（時間）
+    SUB_WRTDT       As String           ' タイムスタンプ（日付）
+    SUB_UOPEID      As String           ' 最終作業者コード
+    SUB_UCLTID      As String           ' クライアントＩＤ
+    SUB_UWRTTM      As String           ' タイムスタンプ（バッチ時間）
+    SUB_UWRTDT      As String           ' タイムスタンプ（バッチ日）
+' === 20080725 === INSERT E -
+End Type
+''================================================================================
+    '製番引当検索,在庫引当／解除
+    Public Const gc_strMsgHIKET54_A_001         As String = "1HIKET54_001"  '終了してよろしいですか？
+    Public Const gc_strMsgHIKET54_E_002         As String = "2HIKET54_002"  '検索条件を入力してください。
+    Public Const gc_strMsgHIKET54_E_003         As String = "2HIKET54_003"  '該当するデータが存在しません。
+    Public Const gc_strMsgHIKET54_E_004         As String = "2HIKET54_004"  '削除済みレコードです。
+    Public Const gc_strMsgHIKET54_E_005         As String = "2HIKET54_005"  '在庫管理対象外です。
+    Public Const gc_strMsgHIKET54_E_006         As String = "2HIKET54_006"  '引当数はマイナス入力できません。
+    Public Const gc_strMsgHIKET54_E_007         As String = "2HIKET54_007"  '引当数が引当可能数を超えています。
+    Public Const gc_strMsgHIKET54_E_008         As String = "2HIKET54_008"  '引当数合計が伝票数量を超えています。
+    Public Const gc_strMsgHIKET54_E_009         As String = "2HIKET54_009"  '対象の明細が存在しません。
+    Public Const gc_strMsgHIKET54_E_010         As String = "2HIKET54_010"  '入力値が許容範囲外です。
+    Public Const gc_strMsgHIKET54_E_011         As String = "2HIKET54_011"  '入力されていない項目があります。入力してください。
+    Public Const gc_strMsgHIKET54_E_012         As String = "2HIKET54_012"  '更新異常
+    Public Const gc_strMsgHIKET54_A_013         As String = "1HIKET54_013"  '未登録のまま終了してもよろしいですか？
+    Public Const gc_strMsgHIKET54_A_014         As String = "1HIKET54_014"  '更新してよろしいですか？
+    Public Const gc_strMsgHIKET54_E_015         As String = "2HIKET54_015"  '引当数が伝票数量を超えています。
+    Public Const gc_strMsgHIKET54_A_017         As String = "1HIKET54_017"  '処理が終了しました。
+    Public Const gc_strMsgHIKET54_E_018         As String = "2HIKET54_018"  'が実行中です。しばらくして実行してください。
+    Public Const gc_strMsgHIKET54_E_019         As String = "2HIKET54_019"  '更新権限がありません。
+    Public Const gc_strMsgHIKET54_E_020         As String = "2HIKET54_020"  '引当の対象となる明細が存在しません。
+' === 20080729 === INSERT S - RISE)Izumi
+    Public Const gc_strMsgHIKET54_E_901         As String = "2HIKET54_901"  '他のプログラムで更新されたため、更新できません。
+    Public Const gc_strMsgHIKET54_E_902         As String = "2HIKET54_902"  '他のプログラムで更新されたため、訂正できません。
+    Public Const gc_strMsgHIKET54_E_903         As String = "2HIKET54_903"  '他のプログラムで更新されたため、削除できません。
+' === 20080729 === INSERT E -
+'□□□□□□□□ プログラム単位の共通処理 End □□□□□□□□□□□□□□□□
+Public Type Cls_HIKET54_Interface
+    Mode            As Integer          '伝票種別（3:支給品情報/4:製番出庫情報）
+    DATNO           As String           '伝票管理№
+    ODNYTDT         As String           '出荷予定日
+    SPRRENNO        As String           '分割連番
+    SBNNO           As String           '製番
+    HINCD           As String           '製品コード
+    HINNMA          As String           '型式
+    HINNMB          As String           '商品名１
+    UODSU           As Currency         '受注数量
+    TOKCD           As String           '得意先コード
+    SOUCD           As String           '倉庫コード
+    PUDLNO          As String           '入出庫番号
+' === 20080725 === INSERT S - ACE)Nagasawa 引当内訳ファイルの引当数には出荷指示数も含むよう修正
+    OUTBMCD         As String           '送り先部門コード
+    OUTTANCD        As String           '送り先担当者コード
+    NHSCD           As String           '納入先コード
+' === 20080725 === INSERT E -
+' === 20080725 === INSERT S - RISE)Izumi
+    OPEID           As String           '最終作業者コード
+    CLTID           As String           'クライアントＩＤ
+    WRTTM           As String           'タイムスタンプ（時間）
+    WRTDT           As String           'タイムスタンプ（日付）
+    UOPEID          As String           '最終作業者コード
+    UCLTID          As String           'クライアントＩＤ
+    UWRTTM          As String           'タイムスタンプ（バッチ時間）
+    UWRTDT          As String           'タイムスタンプ（バッチ日）
+' === 20080725 === INSERT E -
+End Type
+Public HIKET54_Interface As Cls_HIKET54_Interface
+

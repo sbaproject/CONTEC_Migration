@@ -1,0 +1,54 @@
+Attribute VB_Name = "ENDNHSCD_F51"
+Option Explicit
+'
+'スロット名      :納入先コード・画面項目スロット
+'ユニット名      :NHSCD.F55
+'記述者          :Standard Library
+'作成日付        :2006/08/11
+'使用プログラム  :nykpr52
+'
+'
+
+Function ENDNHSCD_Check(ByVal ENDNHSCD, ByVal STTNHSCD)
+Dim rtn As Integer
+Dim wkNHSCD As String
+    '
+    ENDNHSCD_Check = 0
+    If ENDNHSCD < STTNHSCD Then
+        rtn = DSP_MsgBox(SSS_ERROR, "ENDCHECK", 0)
+        ENDNHSCD_Check = -1
+        Exit Function
+    End If
+    
+    Call NHSMTA_RClear
+    If LenWid(ENDNHSCD) = 0 Or Trim$(ENDNHSCD) = "" Or ENDNHSCD = "ﾝﾝﾝﾝﾝﾝﾝﾝﾝ" Then
+    Else
+        wkNHSCD = ENDNHSCD & Space(Len(DB_NHSMTA.NHSCD) - Len(ENDNHSCD))
+        Call DB_GetEq(DBN_NHSMTA, 1, wkNHSCD, BtrNormal)
+''''''''If DBSTAT = 0 Then
+''''''''    If DB_NHSMTA.DATKB = "9" Then
+''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+''''''''        ENDNHSCD_Check = 1
+''''''''    End If
+''''''''Else
+''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+''''''''    ENDNHSCD_Check = -1
+''''''''End If
+    
+    End If
+    'Call SCR_FromNHSMTA(De_Index)
+End Function
+
+Function ENDNHSCD_Slist(PP As clsPP, ByVal ENDNHSCD)
+    '
+    DB_PARA(DBN_NHSMTA).KeyNo = 1
+    DB_PARA(DBN_NHSMTA).KeyBuf = ENDNHSCD
+    WLSNHS.Show 1
+    Unload WLSNHS
+    ENDNHSCD_Slist = PP.SlistCom
+End Function
+Function ENDNHSCD_InitVal(ByVal ENDNHSCD)
+''''ENDNHSCD_InitVal = " "
+''''ENDNHSCD_InitVal = "ZZZZZZZZZ"
+    ENDNHSCD_InitVal = "ﾝﾝﾝﾝﾝﾝﾝﾝﾝ"
+End Function

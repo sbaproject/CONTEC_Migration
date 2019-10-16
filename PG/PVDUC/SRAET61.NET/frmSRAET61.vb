@@ -66,14 +66,19 @@ Friend Class FR_SSSMAIN
 	'スプレッドの行
 	Private Const LC_lngMAX_ROW As Integer = 999999 '最大行数
 	Private Const LC_lngDEFAULT_ROW As Integer = 9999 'デフォルトセット行
-	
-	'スプレッドの項目
-	Private Const LC_lngCol_NO As Integer = 1 '行№
-	Private Const LC_lngCol_SERIAL As Integer = 2 'シリアル№
-	Private Const LC_lngCol_TNANO As Integer = 3 '棚番
-	
-	'* 最大入力桁数
-	Private Const C_lngSERIAL_Len As Integer = 13 'シリアル№
+
+    'スプレッドの項目
+    '2019/10/03 CHG START
+    'Private Const LC_lngCol_NO As Integer = 1 '行№
+    'Private Const LC_lngCol_SERIAL As Integer = 2 'シリアル№
+    'Private Const LC_lngCol_TNANO As Integer = 3 '棚番
+    Private Const LC_lngCol_NO As Integer = 0 '行№
+    Private Const LC_lngCol_SERIAL As Integer = 1 'シリアル№
+    Private Const LC_lngCol_TNANO As Integer = 2 '棚番
+    '2019/10/03 CHG END
+
+    '* 最大入力桁数
+    Private Const C_lngSERIAL_Len As Integer = 13 'シリアル№
 	Private Const C_lngTNANO_Len As Integer = 9 '棚番
 	
 	'出荷済み区分
@@ -155,7 +160,7 @@ Friend Class FR_SSSMAIN
             'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             '2019/09/26 CHG START
             'Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 1, False, LC_lngCol_TNANO, .MaxRows)
-            Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 1, False, LC_lngCol_TNANO, .RowCount - 1)
+            Call GP_Va_Col_EditColor(vaData, LC_lngCol_NO, 0, False, LC_lngCol_TNANO, .RowCount - 1)
             '2019/09/26 CHG END
         End With
 		Me.Close()
@@ -269,20 +274,24 @@ Friend Class FR_SSSMAIN
                 'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '2019/09/26 CHG START
                 'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .MaxRows)
-                Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .RowCount - 1)
+                Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, False, LC_lngCol_TNANO, .RowCount - 1)
                 '2019/09/26 CHG END
             End With
 			If L_LastCol > 0 And L_LastRow > 0 Then
 				Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
 				Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
 			Else
-				If L_lngMAX_EditRow + 1 > LC_lngMAX_ROW Then
-					Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW, True)
-					Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW)
-				Else
-					Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1, True)
-					Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1)
-				End If
+                If L_lngMAX_EditRow + 1 > LC_lngMAX_ROW Then
+                    Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW, True)
+                    Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW)
+                Else
+                    '2019/10/14 CHG START
+                    'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1, True)
+                    'Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1)
+                    Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow, True)
+                    Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow)
+                    '2019/10/14 CHG END
+                End If
 			End If
 			CM_Execute.Image = IM_Execute(1).Image
 			Exit Sub
@@ -321,13 +330,17 @@ Friend Class FR_SSSMAIN
 				Call GP_Va_Col_EditColor(vaData, L_LastCol, L_LastRow, True)
 				Call GP_SpActiveCell(vaData, L_LastCol, L_LastRow)
 			Else
-				If L_lngMAX_EditRow + 1 > LC_lngMAX_ROW Then
-					Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW, True)
-					Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW)
-				Else
-					Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1, True)
-					Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1)
-				End If
+                If L_lngMAX_EditRow + 1 > LC_lngMAX_ROW Then
+                    Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW, True)
+                    Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, LC_lngMAX_ROW)
+                Else
+                    '2019/10/14 CHG START
+                    'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1, True)
+                    'Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow + 1)
+                    Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow, True)
+                    Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, L_lngMAX_EditRow)
+                    '2019/10/14 CHG END
+                End If
 			End If
 			Exit Sub
 		End If
@@ -351,13 +364,15 @@ Friend Class FR_SSSMAIN
 			Exit Sub
 		End If
 		
-EndLabel: 
-		'* セル背景色を設定
-		Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
-		Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
-		
-		'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
-		System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+EndLabel:
+        '* セル背景色を設定
+        '2019/10/14 CHG START
+        Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, True)
+        Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 0)
+        '2019/10/14 CHG END
+
+        'UPGRADE_WARNING: Screen プロパティ Screen.MousePointer には新しい動作が含まれます。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"' をクリックしてください。
+        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
 		
 		L_blnLeaveCell = False
 		
@@ -501,13 +516,15 @@ EndLabel:
 		
 		'フォームのクリア
 		Call P_FromClear()
-		
-		'DB接続
-		Call CF_Ora_USR1_Open() 'USR1
-		Call CF_Ora_USR9_Open() 'USR9
-		
-		'受け取ったパラメータを画面にセット
-		lblHIN1.Text = L_strHINCD
+
+        'DB接続
+        Call CF_Ora_USR1_Open() 'USR1
+        '2019/10/14 DEL START
+        'Call CF_Ora_USR9_Open() 'USR9
+        '2019/10/14 DEL END
+
+        '受け取ったパラメータを画面にセット
+        lblHIN1.Text = L_strHINCD
 		If P_GET_HINNMA(L_strHINCD, strHINNM) = True Then
 			lblHIN2.Text = strHINNM
 		Else
@@ -672,7 +689,7 @@ EndLabel:
             'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
             '2019/09/26 CHG START
             'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .MaxRows)
-            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .RowCount - 1)
+            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, False, LC_lngCol_TNANO, .RowCount - 1)
             '2019/09/26 CHG END
         End With
 		
@@ -1072,8 +1089,8 @@ EndLabel:
             '    Call vaData.SetText(LC_lngCol_NO, lngI, VB.Right(Space(intLen) & CStr(lngI), intLen))
             'Next
 
-            For lngI = 1 To vaData.RowCount - 1
-                vaData.SetValue(lngI, LC_lngCol_NO, VB.Right(Space(intLen) & CStr(lngI), intLen))
+            For lngI = 0 To vaData.RowCount - 1
+                vaData.SetValue(lngI, LC_lngCol_NO, VB.Right(Space(intLen) & CStr(lngI + 1), intLen))
             Next
 
             '2019/09/26 CHG END
@@ -1197,6 +1214,7 @@ EndLabel:
 
             .SuspendLayout()
 
+            .Rows.Clear()
 
             If dt Is Nothing OrElse dt.Rows.Count > 0 Then
 
@@ -1204,19 +1222,19 @@ EndLabel:
 
                     .RowCount = cnt + 1
 
-                    .SetValue(cnt, LC_lngCol_NO, VB.Right(Space(intLen) & CStr(lngI + 1), intLen))
+                    .SetValue(cnt, LC_lngCol_NO, VB.Right(Space(intLen) & CStr(.RowCount), intLen))
+
                     Call SetEdit(vaData, LC_lngCol_SERIAL, cnt)
-
                     .SetValue(cnt, LC_lngCol_SERIAL, Trim(DB_NullReplace(dt.Rows(cnt)("SRANO"), "")))
-                    Call SetEdit(vaData, LC_lngCol_TNANO, cnt)
 
-                    .SetValue(cnt, LC_lngCol_SERIAL, Trim(DB_NullReplace(dt.Rows(cnt)("LOCATION"), "")))
+                    Call SetEdit(vaData, LC_lngCol_TNANO, cnt)
+                    .SetValue(cnt, LC_lngCol_TNANO, Trim(DB_NullReplace(dt.Rows(cnt)("LOCATION"), "")))
 
                     .Rows(cnt).Cells(LC_lngCol_NO).Style.BackColor = Me.BackColor
 
                 Next
 
-                lngRecCount = Usr_Ody_LC.Obj_Ody.RecordCount
+                lngRecCount = lngI
 
                 L_lngMAX_EditRow = lngRecCount
 
@@ -1391,11 +1409,13 @@ Errlabel:
 
             For lngI = 0 To .RowCount - 1
 
-                .SetValue(lngLine, LC_lngCol_NO, VB.Right(Space(intLen) & CStr(lngLine + 1), intLen))
+                lngLine = lngLine + 1
 
-                Call SetEdit(vaData, LC_lngCol_NO, lngLine)
-                Call SetEdit(vaData, LC_lngCol_SERIAL, lngLine)
-                Call SetEdit(vaData, LC_lngCol_TNANO, lngLine)
+                .SetValue(lngI, LC_lngCol_NO, VB.Right(Space(intLen) & CStr(lngLine), intLen))
+
+                Call SetEdit(vaData, LC_lngCol_NO, lngI)
+                Call SetEdit(vaData, LC_lngCol_SERIAL, lngI)
+                Call SetEdit(vaData, LC_lngCol_TNANO, lngI)
 
             Next
 
@@ -1525,9 +1545,12 @@ Errlabel:
 		
 		'SQL文作成
 		strSQL = vbNullString
-		strSQL = strSQL & " SELECT  * "
-		strSQL = strSQL & " FROM    SRAET61"
-		strSQL = strSQL & " WHERE  ( RPTCLTID <> '" & strWKRPTCLTID & "'"
+        strSQL = strSQL & " SELECT  * "
+        '2019/10/14 CHG START
+        'strSQL = strSQL & " FROM    SRAET61"
+        strSQL = strSQL & " FROM    CNT_USR9.SRAET61"
+        '2019/10/14 CHG END
+        strSQL = strSQL & " WHERE  ( RPTCLTID <> '" & strWKRPTCLTID & "'"
 		strSQL = strSQL & "    OR   PGID <> '" & strWKPGID & "')"
 		strSQL = strSQL & "   AND   SRANO = '" & strWKSRANO & "'"
 		
@@ -1597,33 +1620,46 @@ Errlabel:
 		'* セル背景色を解除
 		With vaData
             'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-
+            '2019/10/03 CHG START
             'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .MaxRows)
-            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .RowCount - 1)
-
+            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, False, LC_lngCol_TNANO, .RowCount - 1)
+            '2019/10/03 CHG END
         End With
 		
 		'データ入力最大行を取得
-		L_lngMAX_EditRow = P_Get_EditMaxRow
-		'ADD START FKS)INABA 2007/12/15 ******************
-		If L_lngMAX_EditRow = 0 Then
-			Exit Function
-			'ADD START FKS)INABA 2008/01/23 ******************
-		ElseIf Val(lblURISU.Text) < L_lngMAX_EditRow Then 
-			'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
-			'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-			Exit Function
-		ElseIf Val(lblURISU.Text) > L_lngMAX_EditRow Then 
-			'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
-			'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+		L_lngMAX_EditRow = P_Get_EditMaxRow()
+        'ADD START FKS)INABA 2007/12/15 ******************       
+
+        '2019/10/14 CHG START
+        'If L_lngMAX_EditRow = 0 Then
+        If L_lngMAX_EditRow + 1 = 0 Then
+            '2019/10/14 CHG END
+            Exit Function
+            'ADD START FKS)INABA 2008/01/23 ****************** 
+            '2019/10/14 CHG START
+            'ElseIf Val(lblURISU.Text) < L_lngMAX_EditRow Then
+        ElseIf Val(lblURISU.Text) < L_lngMAX_EditRow + 1 Then
+            '2019/10/14 CHG END
+            'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
+            'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call GP_MsgBox(COMMON.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+            Exit Function
+            '2019/10/14 CHG START
+            'ElseIf Val(lblURISU.Text) > L_lngMAX_EditRow Then
+        ElseIf Val(lblURISU.Text) > L_lngMAX_EditRow + 1 Then
+            '2019/10/14 CHG END
+            'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
+            'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
 			Exit Function
 			'ADD  END  FKS)INABA 2008/01/23 ******************
 		End If
-		'ADD  END  FKS)INABA 2007/12/15 ******************
-		For lngI = 1 To L_lngMAX_EditRow
-			With vaData
+        'ADD  END  FKS)INABA 2007/12/15 ******************
+        '2019/10/03 CHG START
+        'For lngI = 1 To L_lngMAX_EditRow
+        For lngI = 0 To L_lngMAX_EditRow
+            '2019/10/03 CHG END
+            With vaData
                 'スプレッドデータを取得
                 'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '2019/09/26 CHG START
@@ -1641,12 +1677,16 @@ Errlabel:
 
                 'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 If varSERIAL <> vbNullString Then
-					'* シリアル№重複チェック
-					lngJ = 1
-					For lngJ = 1 To L_lngMAX_EditRow
-						'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						varSERIAL_C = ""
-						If lngI <> lngJ Then
+                    '* シリアル№重複チェック
+                    '2019/10/03 CHG START
+                    'lngJ = 1
+                    'For lngJ = 1 To L_lngMAX_EditRow
+                    lngJ = 0
+                    For lngJ = 0 To L_lngMAX_EditRow
+                        '2019/10/03 CHG END
+                        'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        varSERIAL_C = ""
+                        If lngI <> lngJ Then
                             'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                             '2019/09/26 CHG START
                             'Call .GetText(LC_lngCol_SERIAL, lngJ, varSERIAL_C)
@@ -1654,102 +1694,122 @@ Errlabel:
                             '2019/09/26 CHG END
                             'UPGRADE_WARNING: オブジェクト Nz(varSERIAL_C) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                             If Nz(varSERIAL_C) <> "" Then
-								'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-								If varSERIAL = varSERIAL_C Then
-									'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
-									If intRet <> 0 Then
-										Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OKOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-										Exit Function
-									End If
-									'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-									Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-									If lngJ > 0 Then
-										Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngJ, True)
-										Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngJ)
-									Else
-										Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngI, True)
-										Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngI)
-									End If
-									Exit Function
-								End If
-							End If
-						End If
-					Next 
-					
-					'棚番NULLチェック
-					'UPGRADE_WARNING: オブジェクト varTNANO の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If varTNANO = vbNullString Then
-						'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
-						If intRet <> 0 Then
-							Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OKOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-							Exit Function
-						End If
-						'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						Call GP_MsgBox(Common.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-						If lngI > 0 Then
-							Call GP_Va_Col_EditColor(vaData, LC_lngCol_TNANO, lngI, True)
-							Call GP_SpActiveCell(vaData, LC_lngCol_TNANO, lngI)
-						Else
-							Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
-							Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
-						End If
-						Exit Function
-						'DEL START FKS)INABA 2007/12/18 ***************************
-						'                Else
-						'                    If Nz(varSERIAL) = "" Then
-						'                        intRet = DSPMSGCM_SEARCH(strMSGKBN, LC_strPG_ID, SerialNoNull, Mst_Inf)
-						'                        If intRet <> 0 Then
-						'                            Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", vbOKOnly + vbExclamation, LC_strTitle)
-						'                            Exit Function
-						'                        End If
-						'                        Call GP_MsgBox(Exclamation, Mst_Inf.MSGCM, LC_strTitle)
-						'                        If lngI > 0 Then
-						'                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_TNANO, lngI, True)
-						'                            Call GP_SpActiveCell(vaData, LC_lngCol_TNANO, lngI)
-						'                        Else
-						'                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
-						'                            Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
-						'                        End If
-						'                        Exit Function
-						'                    End If
-						'DEL  END  FKS)INABA 2007/12/18 ***************************
-					End If
-					lngEntryLine = lngEntryLine + 1
-				Else
-					'UPGRADE_WARNING: オブジェクト varTNANO の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If varTNANO = "" Then
-						'* セル背景色を解除
-						'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
-						If intRet <> 0 Then
-							Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OKOnly + MsgBoxStyle.Exclamation, LC_strTitle)
-							Exit Function
-						End If
-						With vaData
+                                'UPGRADE_WARNING: オブジェクト varSERIAL_C の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                If varSERIAL = varSERIAL_C Then
+                                    'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
+                                    If intRet <> 0 Then
+                                        Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
+                                        Exit Function
+                                    End If
+                                    'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                                    Call GP_MsgBox(COMMON.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+                                    '2019/10/03 CHG START
+                                    'If lngJ > 0 Then
+                                    If lngJ >= 0 Then
+                                        '2019/10/03 CHG END
+                                        Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngJ, True)
+                                        Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngJ)
+                                    Else
+                                        Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, lngI, True)
+                                        Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, lngI)
+                                    End If
+                                    Exit Function
+                                End If
+                            End If
+                        End If
+                    Next
+
+                    '棚番NULLチェック
+                    'UPGRADE_WARNING: オブジェクト varTNANO の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If varTNANO = vbNullString Then
+                        'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
+                        If intRet <> 0 Then
+                            Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
+                            Exit Function
+                        End If
+                        'UPGRADE_WARNING: オブジェクト Mst_Inf.MSGCM の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        Call GP_MsgBox(COMMON.enmMsg.Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+                        '2019/10/03 CHG START
+                        'If lngI > 0 Then
+                        If lngI >= 0 Then
+                            '2019/10/03 CHG END
+                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_TNANO, lngI, True)
+                            Call GP_SpActiveCell(vaData, LC_lngCol_TNANO, lngI)
+                        Else
+                            '2019/10/03 CHG START
+                            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
+                            'Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
+                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, True)
+                            Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 0)
+                            '2019/10/03 CHG END
+                        End If
+                        Exit Function
+                        'DEL START FKS)INABA 2007/12/18 ***************************
+                        '                Else
+                        '                    If Nz(varSERIAL) = "" Then
+                        '                        intRet = DSPMSGCM_SEARCH(strMSGKBN, LC_strPG_ID, SerialNoNull, Mst_Inf)
+                        '                        If intRet <> 0 Then
+                        '                            Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", vbOKOnly + vbExclamation, LC_strTitle)
+                        '                            Exit Function
+                        '                        End If
+                        '                        Call GP_MsgBox(Exclamation, Mst_Inf.MSGCM, LC_strTitle)
+                        '                        If lngI > 0 Then
+                        '                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_TNANO, lngI, True)
+                        '                            Call GP_SpActiveCell(vaData, LC_lngCol_TNANO, lngI)
+                        '                        Else
+                        '                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
+                        '                            Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
+                        '                        End If
+                        '                        Exit Function
+                        '                    End If
+                        'DEL  END  FKS)INABA 2007/12/18 ***************************
+                    End If
+                    lngEntryLine = lngEntryLine + 1
+                Else
+                    'UPGRADE_WARNING: オブジェクト varTNANO の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If varTNANO = "" Then
+                        '* セル背景色を解除
+                        'UPGRADE_WARNING: P_NULLCheck に変換されていないステートメントがあります。ソース コードを確認してください。
+                        If intRet <> 0 Then
+                            Call MsgBox("エラーが発生しました。システムメッセージテーブルを確認してください。", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, LC_strTitle)
+                            Exit Function
+                        End If
+                        With vaData
                             'UPGRADE_WARNING: オブジェクト vaData.MaxRows の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .RowCount - 1)
+                            '2019/10/03 CHG START
+                            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, False, LC_lngCol_TNANO, .RowCount)
+                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, False, LC_lngCol_TNANO, .RowCount - 1)
+                            '2019/10/03 CHG END
                         End With
-						If lngI > 0 Then
-							Call GP_Va_Col_EditColor(vaData, LC_lngCol_TNANO, lngI, True)
-							Call GP_SpActiveCell(vaData, LC_lngCol_TNANO, lngI)
-						Else
-							Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
-							Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
-						End If
-						Exit Function
-						'DEL  END  FKS)INABA 2007/12/18 ***************************
-						'                Else
-						'DEL  END  FKS)INABA 2007/12/18 ***************************
-					End If
-					'ADD START FKS)INABA 2007/12/18 ***************************
-					lngEntryLine = lngEntryLine + 1
-					'ADD  END  FKS)INABA 2007/12/18 ***************************
-				End If
-				
-			End With
-		Next lngI
-		
-		P_NULLCheck = True
+                        '2019/10/03 CHG START
+                        'If lngI > 0 Then
+                        If lngI >= 0 Then
+                            '2019/10/03 CHG END
+                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_TNANO, lngI, True)
+                            Call GP_SpActiveCell(vaData, LC_lngCol_TNANO, lngI)
+                        Else
+                            '2019/10/03 CHG START
+                            'Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 1, True)
+                            'Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 1)
+                            Call GP_Va_Col_EditColor(vaData, LC_lngCol_SERIAL, 0, True)
+                            Call GP_SpActiveCell(vaData, LC_lngCol_SERIAL, 0)
+                            '2019/10/03 CHG NED
+                        End If
+                        Exit Function
+                        'DEL  END  FKS)INABA 2007/12/18 ***************************
+                        '                Else
+                        'DEL  END  FKS)INABA 2007/12/18 ***************************
+                    End If
+                    'ADD START FKS)INABA 2007/12/18 ***************************
+                    lngEntryLine = lngEntryLine + 1
+                    'ADD  END  FKS)INABA 2007/12/18 ***************************
+                End If
+
+            End With
+        Next lngI
+
+        P_NULLCheck = True
 		
 	End Function
 	
@@ -1766,10 +1826,13 @@ Errlabel:
 		Dim lngLine As Integer
 		Dim varSERIAL As Object
 		Dim varTNANO As Object
-		
-		P_Get_EditMaxRow = 0
-		
-		lngI = 1
+
+        '2019/09/26 CHG START
+        'P_Get_EditMaxRow = 0
+        P_Get_EditMaxRow = -1
+        '2019/09/26 CHG END
+
+        lngI = 1
         With vaData
 
             '2019/09/26 CHG START
@@ -1833,9 +1896,12 @@ Errlabel:
 		strSQL = vbNullString
 		
 		Select Case strMode
-			Case enumCREATE_MODE.Insert
-				strSQL = strSQL & " INSERT INTO SRAET61 (" & vbCrLf
-				strSQL = strSQL & "                      RPTCLTID," & vbCrLf
+            Case enumCREATE_MODE.Insert
+                '2019/10/14 CHG START
+                'strSQL = strSQL & " INSERT INTO SRAET61 (" & vbCrLf
+                strSQL = strSQL & " INSERT INTO CNT_USR9.SRAET61 (" & vbCrLf
+                '2019/10/14 CHG END
+                strSQL = strSQL & "                      RPTCLTID," & vbCrLf
 				strSQL = strSQL & "                      PGID," & vbCrLf '2006.11.09
 				strSQL = strSQL & "                      SBNNO," & vbCrLf
 				strSQL = strSQL & "                      HINCD," & vbCrLf
@@ -1861,10 +1927,13 @@ Errlabel:
 				strSQL = strSQL & "          '" & StChk(strWRTTM) & "'," & vbCrLf
 				strSQL = strSQL & "          '" & StChk(strWRTDT) & "'" & vbCrLf
 				strSQL = strSQL & "         )" & vbCrLf
-				
-			Case enumCREATE_MODE.Delete
-				strSQL = strSQL & " DELETE FROM SRAET61" & vbCrLf
-				strSQL = strSQL & " WHERE  RPTCLTID = '" & StChk(L_strRPTCLTID) & "'" & vbCrLf
+
+            Case enumCREATE_MODE.Delete
+                '2019/10/14 CHG START
+                'strSQL = strSQL & " DELETE FROM SRAET61" & vbCrLf
+                strSQL = strSQL & " DELETE FROM CNT_USR9.SRAET61" & vbCrLf
+                '2019/10/14 CHG END
+                strSQL = strSQL & " WHERE  RPTCLTID = '" & StChk(L_strRPTCLTID) & "'" & vbCrLf
 				strSQL = strSQL & "   AND  PGID     = '" & StChk(L_strPGID) & "'" & vbCrLf '2006.11.09
 				strSQL = strSQL & "   AND  SBNNO    = '" & StChk(L_strSBNNO) & "'" & vbCrLf
 				
@@ -1923,14 +1992,20 @@ Errlabel:
 		'DELETE
 		'UPGRADE_WARNING: オブジェクト varNO の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If P_EXECUTE_SQL(enumCREATE_MODE.Delete, VB6.Format(CInt(varNO), strZero), "", "", "", "") = False Then
-			GoTo EndLbl
-		End If
+            '2019/10/14 CHG START
+            'GoTo EndLbl
+            GoTo ErrLbl
+            '2019/10/14 CHG END
+        End If
 		
 		'INSERT
 		lngI = 0
-		lngLineNo = 0
-		For lngI = 1 To L_lngMAX_EditRow
-			With vaData
+        lngLineNo = 0
+        '2019/10/14 CHG START
+        'For lngI = 1 To L_lngMAX_EditRow
+        For lngI = 0 To L_lngMAX_EditRow
+            '2019/10/14 CHG END
+            With vaData
                 '2019/09/26 CHG START
                 '            'UPGRADE_WARNING: オブジェクト vaData.GetText の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 '            Call .GetText(LC_lngCol_NO, lngI, varNO)
@@ -1948,32 +2023,41 @@ Errlabel:
                 'CHG START FKS)INABA 2007/12/18 *********************************
                 'UPGRADE_WARNING: オブジェクト Nz(varTNANO) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
                 If Nz(varTNANO) <> "" Then
-					'            If Nz(varSERIAL) <> "" And Nz(varTNANO) <> "" Then
-					'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If Nz(varSERIAL) = "" Then varSERIAL = " "
-					'CHG  END  FKS)INABA 2007/12/18 *********************************
-					lngLineNo = lngLineNo + 1
-					'UPGRADE_WARNING: オブジェクト varTNANO の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-					If P_EXECUTE_SQL(enumCREATE_MODE.Insert, VB6.Format(lngLineNo, strZero), CStr(varSERIAL), CStr(varTNANO), L_strWRTTM, L_strWRTDT) = False Then
-						GoTo EndLbl
-					End If
-				End If
-			End With
-		Next lngI
-		
-		'COMMIT
-		Call CF_Ora_CommitTrans(gv_Oss_USR9)
-		
-		P_Main = True
+                    '            If Nz(varSERIAL) <> "" And Nz(varTNANO) <> "" Then
+                    'UPGRADE_WARNING: オブジェクト Nz(varSERIAL) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If Nz(varSERIAL) = "" Then varSERIAL = " "
+                    'CHG  END  FKS)INABA 2007/12/18 *********************************
+                    lngLineNo = lngLineNo + 1
+                    'UPGRADE_WARNING: オブジェクト varTNANO の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    'UPGRADE_WARNING: オブジェクト varSERIAL の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                    If P_EXECUTE_SQL(enumCREATE_MODE.Insert, VB6.Format(lngLineNo, strZero), CStr(varSERIAL), CStr(varTNANO), L_strWRTTM, L_strWRTDT) = False Then
+                        '2019/10/14 CHG START
+                        'GoTo EndLbl
+                        GoTo ErrLbl
+                        '2019/10/14 CHG END
+                    End If
+                End If
+            End With
+        Next lngI
+
+        'COMMIT
+        '2019/10/14 CHG START
+        'Call CF_Ora_CommitTrans(gv_Oss_USR9)
+        Call DB_Commit()
+        '2019/10/14 CHG END
+
+        P_Main = True
 		
 		Exit Function
 		
 		GoTo EndLbl
-ErrLbl: 
-		'ロールバック
-		Call CF_Ora_RollbackTrans(gv_Oss_USR9)
+ErrLbl:
+        'ロールバック
+        '2019/10/14 CHG START
+        'Call CF_Ora_RollbackTrans(gv_Oss_USR9)
+        Call DB_Rollback()
+        '2019/10/14 CHG END
 EndLbl: 
 		
 	End Function
@@ -2025,8 +2109,10 @@ EndLbl:
     '【更 新 日】
     '【備    考】
     '=======================================================================================
-    Public Sub GP_Va_Col_EditColor(ByRef objSpread As GrapeCity.Win.MultiRow.GcMultiRow, ByVal lngCol As Integer, ByVal lngRow As Integer, ByVal bolEdit As Boolean, Optional ByVal lngCol2 As Integer = 0, Optional ByVal lngRow2 As Integer = 0)
-
+    '2019/10/03 CHG START
+    'Public Sub GP_Va_Col_EditColor(ByRef objSpread As Object, ByVal lngCol As Integer, ByVal lngRow As Integer, ByVal bolEdit As Boolean, Optional ByVal lngCol2 As Integer = 0, Optional ByVal lngRow2 As Integer = 0)
+    Public Sub GP_Va_Col_EditColor(ByRef objSpread As GrapeCity.Win.MultiRow.GcMultiRow, ByVal lngCol As Integer, ByVal lngRow As Integer, ByVal bolEdit As Boolean, Optional ByVal lngCol2 As Integer = -1, Optional ByVal lngRow2 As Integer = -1)
+        '2019/10/03 CHG END
         'スプレッドの背景色の設定。
         With objSpread
             '2019/09/26 CHG START
@@ -2069,7 +2155,7 @@ EndLbl:
             Dim row2 As Integer
             Dim col2 As Integer
 
-            If lngRow2 <> 0 Then
+            If lngRow2 <> -1 Then
                 row2 = lngRow2
                 col2 = lngCol2
             Else
@@ -2080,9 +2166,9 @@ EndLbl:
             Dim color As Color
 
             If bolEdit Then
-                color = Color.FromArgb(LC_lng_va_Edit_Color)
+                color = System.Drawing.ColorTranslator.FromOle(LC_lng_va_Edit_Color)
             Else
-                color = Color.FromArgb(LC_lng_va_UnEdit_Color)
+                color = System.Drawing.ColorTranslator.FromOle(LC_lng_va_UnEdit_Color)
             End If
 
             For i As Integer = lngRow To row2
@@ -2240,6 +2326,53 @@ EndLbl:
         StChk = strWK
 
     End Function
+
+    Private Sub btnF1_Click(sender As Object, e As EventArgs) Handles btnF1.Click
+        Call CM_Execute_Click(CM_Execute, New System.EventArgs())
+    End Sub
+
+    Private Sub btnF9_Click(sender As Object, e As EventArgs) Handles btnF9.Click
+        '2019/10/14 ADD START
+        '画面の初期表示
+        Call P_Show_Data()
+        '2019/10/14 ADD END
+    End Sub
+
+    Private Sub btnF12_Click(sender As Object, e As EventArgs) Handles btnF12.Click
+        Call CM_EndCm_Click(CM_EndCm, New System.EventArgs())
+    End Sub
+
+    Private Sub FR_SSSMAIN_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        Dim li_MsgRtn As Integer
+
+        Try
+            Select Case e.KeyCode
+                Case Keys.F1
+                    '更新
+                    Me.btnF1.PerformClick()
+
+                Case Keys.F9
+                    'クリア
+                    Me.btnF9.PerformClick()
+
+                Case Keys.F12
+                    '終了
+                    Me.btnF12.PerformClick()
+
+            End Select
+
+        Catch ex As Exception
+            li_MsgRtn = MsgBox("フォームKeyDownエラー" & Constants.vbCrLf & ex.Message.ToString, MsgBoxStyle.Critical, "エラー")
+        End Try
+    End Sub
+
+    Private Sub vaData_CellLeave(sender As Object, e As GrapeCity.Win.MultiRow.CellEventArgs) Handles vaData.CellLeave
+
+    End Sub
+
+    Private Sub vaData_CellEnter(sender As Object, e As GrapeCity.Win.MultiRow.CellEventArgs) Handles vaData.CellEnter
+
+    End Sub
 
     '2019/09/26 ADD END
 End Class

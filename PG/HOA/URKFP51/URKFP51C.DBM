@@ -1,0 +1,31 @@
+	Option Explicit
+'==========================================================================
+'   URKFP51C.DBM FBデータ取込処理ワーク(ﾃﾞｰﾀB)    UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_URKFP51C
+    FBDATKB        As String * 1     'データ区分            0                   
+    FBRFNO         As String * 6     '照会番号              0                   
+    FBKJNDT        As String * 6     '勘定日                                    
+    FBKSNDT        As String * 6     '起算日                                    
+    FBNYKEL        As String * 10    '金額                                      
+    FBTTKEL        As String * 10    'うち他店券金額                            
+    FBCLTCD        As String * 10    '振込依頼人コード      !@@@@@@@@@@         
+    FBCLTNM        As String * 48    '振込依頼人名                              
+    FBSMGNM        As String * 15    '仕向銀行名                                
+    FBSMSNM        As String * 15    '仕向支店名                                
+    FBDELKB        As String * 1     '取消区分              0                   
+    FBNYKELB       As String * 12    '金額２                                    
+    FBTTKELB       As String * 12    'うち他店券金額２                          
+    FBEDIEL        As String * 20    'ＥＤＩ情報                                
+    FBDMYELC       As String * 28    'ダミーC                                   
+    FBCRLF         As String * 2     '改行                                      
+End Type
+Global DB_URKFP51C As TYPE_DB_URKFP51C
+Global DBN_URKFP51C As Integer
+' Index1( FBDATKB )
+
+Sub URKFP51C_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_URKFP51C, G_LB)
+    Call ResetBuf(DBN_URKFP51C)
+End Sub

@@ -1,0 +1,22 @@
+	Option Explicit
+'==========================================================================
+'   URKFP51D.DBM FBデータ取込処理ワーク(ﾄﾚｰﾗ)     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_URKFP51D
+    FBDATKB        As String * 1     'データ区分            0                   
+    FBFGSEL        As String * 6     '振込合計件数                              
+    FBFGKEL        As String * 12    '振込合計金額                              
+    FBTGSEL        As String * 6     '取消合計件数                              
+    FBTGKEL        As String * 12    '取消合計金額                              
+    FBDMYELD       As String * 163   'ダミーD                                   
+    FBCRLF         As String * 2     '改行                                      
+End Type
+Global DB_URKFP51D As TYPE_DB_URKFP51D
+Global DBN_URKFP51D As Integer
+' Index1( FBDATKB )
+
+Sub URKFP51D_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_URKFP51D, G_LB)
+    Call ResetBuf(DBN_URKFP51D)
+End Sub

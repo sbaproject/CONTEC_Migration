@@ -1,0 +1,56 @@
+	Option Explicit
+'==========================================================================
+'   NHSPR51.DBM  納入先一覧マスタリストワーク     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_NHSPR51
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    NHSCD          As String * 10    '納入先コード          !@@@@@@@@@@         
+    NHSNMA         As String * 60    '納入先名称１                              
+    NHSNMB         As String * 60    '納入先名称２                              
+    NHSRN          As String * 40    '納入先略称                                
+    NHSNK          As String * 10    '納入先名称カナ                            
+    NHSRNNK        As String * 20    '納入先略称カナ                            
+    NHSZP          As String * 20    '納入先郵便番号        X(08)               
+    NHSADA         As String * 60    '納入先住所１                              
+    NHSADB         As String * 60    '納入先住所２                              
+    NHSADC         As String * 60    '納入先住所３                              
+    NHSTL          As String * 20    '納入先電話番号        X(12)               
+    NHSFX          As String * 20    '納入先ＦＡＸ番号      X(12)               
+    NHSBOSNM       As String * 30    '納入先代表者名                            
+    NHSCTANM       As String * 30    '納入先御担当者名                          
+    NHSMLAD        As String * 50    '納入先メールアドレス                      
+    NHSCLAKB       As String * 1     '分類区分１（納入先）  0                   
+    NHSCLBKB       As String * 1     '分類区分２（納入先）  0                   
+    NHSCLCKB       As String * 1     '分類区分３（納入先）  0                   
+    NHSCLAID       As String * 6     '分類コード１（納入先  !@@@@@@             
+    NHSCLBID       As String * 6     '分類コード２（納入先  !@@@@@@             
+    NHSCLCID       As String * 6     '分類コード３（納入先  !@@@@@@             
+    NHSCLANM       As String * 20    '分類名称１（納入先）                      
+    NHSCLBNM       As String * 20    '分類名称２（納入先）                      
+    NHSCLCNM       As String * 20    '分類名称３（納入先）                      
+    NHSNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ区分（納）   0                   
+    OLDNHSCD       As String * 9     '旧納入先コード        000000000           
+    NGRPCD         As String * 10    'グループ会社コード    0000000000          
+    OLNGRPCD       As String * 9     '旧グループ会社コード  00000               
+    GYOSHU         As String * 5     '業種                  00000               
+    GYOSHUNM       As String * 40    '業種名                                    
+    CHIIKI         As String * 5     '地域                  00000               
+    CHIIKINM       As String * 40    '地域名                                    
+    BINCD          As String * 2     '便名コード            00                  
+    BINNM          As String * 40    '便名                                      
+    FRNKB          As String * 1     '海外取引区分          0                   
+    IKOUKB         As String * 1     '移行データ区分        0                   
+    STTNHSCD       As String * 9     '開始・納品先コード    !@@@@@@             
+    STTNHSNM       As String * 40    '納品先名                                  
+    ENDNHSCD       As String * 9     '終了・納品先コード    !@@@@@@             
+    ENDNHSNM       As String * 40    '納品先名                                  
+End Type
+Global DB_NHSPR51 As TYPE_DB_NHSPR51
+Global DBN_NHSPR51 As Integer
+' Index1( RPTCLTID + NHSCD )
+
+Sub NHSPR51_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_NHSPR51, G_LB)
+    Call ResetBuf(DBN_NHSPR51)
+End Sub
