@@ -1,0 +1,115 @@
+	Option Explicit
+'==========================================================================
+'   SIRMTA.DBM   仕入先マスタ                     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SIRMTA
+    DATKB          As String * 1     '伝票削除区分          0                   
+    SIRMSTKB       As String * 1     'マスタ区分(仕入先)    0                   
+    THSCD          As String * 1     '取引先分類            0                   
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    SIRNMA         As String * 60    '仕入先名称１                              
+    SIRNMB         As String * 60    '仕入先名称２                              
+    SIRRN          As String * 40    '仕入先略称名                              
+    SIRNK          As String * 10    '仕入先名称カナ                            
+    SIRNMC         As String * 30    '仕入先名称半角１                          
+    SIRNMD         As String * 30    '仕入先名称半角２                          
+    SIRRNNK        As String * 20    '仕入先略称カナ                            
+    SIRZP          As String * 20    '仕入先郵便番号                            
+    SIRADA         As String * 60    '仕入先住所１                              
+    SIRADB         As String * 60    '仕入先住所２                              
+    SIRADC         As String * 60    '仕入先住所３                              
+    SIRTL          As String * 20    '仕入先電話番号                            
+    SIRFX          As String * 20    '仕入先ＦＡＸ番号                          
+    SIRBOSNM       As String * 30    '仕入先代表者名                            
+    SIRCTANM       As String * 30    '仕入先御担当者名                          
+    SIRMLAD        As String * 50    '仕入先メールアドレス                      
+    TANCD          As String * 6     '担当者コード          000000              
+    TANNM          As String * 40    '担当者名                                  
+    SIRCLAKB       As String * 1     '分類区分１(仕入先)    0                   
+    SIRCLBKB       As String * 1     '分類区分２(仕入先)    0                   
+    SIRCLCKB       As String * 1     '分類区分３(仕入先)    0                   
+    SIRCLAID       As String * 6     '分類コード１(仕入先)  !@@@@@@             
+    SIRCLBID       As String * 6     '分類コード２(仕入先)  !@@@@@@             
+    SIRCLCID       As String * 6     '分類コード３(仕入先)  !@@@@@@             
+    SIRCLANM       As String * 20    '分類名称１(仕入先)                        
+    SIRCLBNM       As String * 20    '分類名称２(仕入先)                        
+    SIRCLCNM       As String * 20    '分類名称３(仕入先)                        
+    DSPKB          As String * 1     '検索表示区分          0                   
+    SIRJUNKB       As String * 1     '順位表出力区分        0                   
+    SIRSHACD       As String * 10    '支払先コード          !@@@@@@@@@@         
+    SIRSMEKB       As String * 1     '締区分                0                   
+    SIRSMEDD       As String * 2     '締初期日付(仕入)      DD                  
+    SIRSMECC       As String * 2     '締サイクル(仕入)      00                  
+    SIRSDWKB       As String * 1     '締め曜日              0                   
+    SIRKESCC       As String * 2     '支払サイクル          00                  
+    SIRKESDD       As String * 2     '支払日付              DD                  
+    SIRKDEKB       As String * 1     '支払曜日              0                   
+    LSTID          As String * 7     '伝票種別              !@@@@@@@            
+    SKNRPSKB       As String * 1     '金額端数処理桁数      0                   
+    SKNZRNKB       As String * 1     '金額端数処理区分      0                   
+    SIRZEIKB       As String * 1     '消費税区分            0                   
+    SIRZCLKB       As String * 1     '消費税算出区分        0                   
+    SIRRPSKB       As String * 1     '消費税端数処理桁数    0                   
+    SIRZRNKB       As String * 1     '消費税端数処理区分    0                   
+    SIRNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ入力区分     0                   
+    SKCHKB         As String * 1     '諸口区分              0                   
+    IKOUKB         As String * 1     '移行データ区分        0                   
+    KAKZANDT       As String * 8     '買掛残高日付          YYYY/MM/DD          
+    KAKZANKN       As Currency       '買掛残高金額          ##,###,###,###      
+    SHAZANDT       As String * 8     '支払残高日付          YYYY/MM/DD          
+    SHAZANKN       As Currency       '支払残高金額          ##,###,###,###      
+    SMAZANDT       As String * 8     '経理締残高日付        YYYY/MM/DD          
+    SMAZANKN       As Currency       '経理締残高金額        ##,###,###,###      
+    SSAZANDT       As String * 8     '請求・支払締残高日付  YYYY/MM/DD          
+    SSAZANKN       As Currency       '請求・支払締残高金額  ##,###,###,###      
+    SIRSMEDT       As String * 8     '支払締日付            YYYY/MM/DD          
+    OLDSIRCD       As String * 5     '旧取引先コード        00000               
+    SGRPCD         As String * 10    'グループ会社コード    0000000000          
+    OLSGRPCD       As String * 5     '旧グループ会社コード  00000               
+    BNKCD          As String * 7     '銀行コード            !@@@@@@@            
+    YKNKB          As String * 1     '預金種別              0                   
+    KOZNO          As String * 7     '口座番号              0000000             
+    HMEIGI         As String * 40    '振込名義                                  
+    SHAKB          As String * 1     '支払区分              0                   
+    SHJAKB         As String * 7     '支払条件１                                
+    SHJBKB         As String * 7     '支払条件２                                
+    SHJCKB         As String * 7     '支払条件３                                
+    TEGSHKN        As Currency       '手形支払金額          ##,###,###,###      
+    TEGRT          As Currency       '手形比率              ##0.00;;#           
+    SHADD          As String * 3     'サイト                                    
+    TEGSHBS        As String * 1     '手形支払場所          0                   
+    HTSUKB         As String * 1     '振込手数料負担区分    0                   
+    FCTCMCD        As String * 10    'ファクタリング会社コ  0000000000          
+    GYOSHU         As String * 5     '業種                  00000               
+    CHIIKI         As String * 5     '地域                  00000               
+    NHNRNKB        As String * 1     '納品情報連携フラグ    0                   
+    SHATKMDT       As String * 8     '支払方法取決日        YYYY/MM/DD          
+    RELFL          As String * 1     '連携フラグ            0                   
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+End Type
+Global DB_SIRMTA As TYPE_DB_SIRMTA
+Global DBN_SIRMTA As Integer
+' Index1( SIRCD )
+' Index2( SIRNK + SIRCD )
+' Index3( SIRCLAID + SIRCLBID + SIRCLCID + SIRCD )
+' Index4( SIRCLBID + SIRCLCID + SIRCD )
+' Index5( SIRCLCID + SIRCD )
+' Index6( SIRSHACD + SIRCD )
+
+Sub SIRMTA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_SIRMTA, G_LB)
+    Call ResetBuf(DBN_SIRMTA)
+End Sub

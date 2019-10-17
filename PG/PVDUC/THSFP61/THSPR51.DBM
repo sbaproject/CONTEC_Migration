@@ -1,0 +1,182 @@
+	Option Explicit
+'==========================================================================
+'   THSPR51.DBM  取引先一覧マスタリストワーク     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_THSPR51
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    SEQNO          As String * 10    '連番                  0000000000          
+    TORCD          As String * 10    '取引先コード                              
+    TOKTHSCD       As String * 1     '取引先分類                                
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    SIRTHSCD       As String * 1     '取引先分類            0                   
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    TOKMSTKB       As String * 1     'マスタ区分(得意先)    0                   
+    TOKNMA         As String * 60    '得意先名称１                              
+    TOKNMB         As String * 60    '得意先名称２                              
+    TOKRN          As String * 40    '得意先略称                                
+    TOKNK          As String * 10    '得意先名称カナ                            
+    TOKNMC         As String * 30    '得意先名称半角１                          
+    TOKNMD         As String * 30    '得意先名称半角２                          
+    TOKRNNK        As String * 20    '得意先略称カナ                            
+    TOKZP          As String * 20    '得意先郵便番号                            
+    TOKADA         As String * 60    '得意先住所１                              
+    TOKADB         As String * 60    '得意先住所２                              
+    TOKADC         As String * 60    '得意先住所３                              
+    TOKTL          As String * 20    '得意先電話番号                            
+    TOKFX          As String * 20    '得意先ＦＡＸ番号                          
+    TOKBOSNM       As String * 30    '得意先代表者名                            
+    TOKTANNM       As String * 30    '得意先御担当者名                          
+    TOKMLAD        As String * 50    '得意先メールアドレス                      
+    TANCD          As String * 6     '担当者コード          000000              
+    TANNM          As String * 40    '担当者名                                  
+    LMTKN          As Currency       '与信限度額            ####,###,##0.0000;;#
+    DSPKB          As String * 1     '検索表示区分          0                   
+    TOKJUNKB       As String * 1     '順位表出力区分        0                   
+    TOKSEICD       As String * 10    '請求先コード          !@@@@@@@@@@         
+    TOKSEIRN       As String * 40    '請求先名称                                
+    MAINHSCD       As String * 10    '代表納入先コード      !@@@@@@@@@@         
+    NHSRN          As String * 40    '納入先略称                                
+    TOKSMEKB       As String * 1     '締区分                0                   
+    TOKSMEDD       As String * 2     '締初期日付(売上)      DD                  
+    TOKSMECC       As String * 2     '締サイクル(売上)      99                  
+    TOKSDWKB       As String * 1     '締め曜日              0                   
+    TOKKESCC       As String * 2     '回収サイクル          00                  
+    TOKKESDD       As String * 2     '回収日付              DD                  
+    TOKKDWKB       As String * 1     '回収曜日              0                   
+    LSTID          As String * 7     '伝票種別              !@@@@@@@            
+    TKNRPSKB       As String * 1     '金額端数処理桁数      0                   
+    TKNZRNKB       As String * 1     '金額端数処理区分      0                   
+    TOKZEIKB       As String * 1     '消費税区分            0                   
+    TOKZCLKB       As String * 1     '消費税算出区分        0                   
+    TOKRPSKB       As String * 1     '消費税端数処理桁数    0                   
+    TOKZRNKB       As String * 1     '消費税端数処理区分    0                   
+    TOKNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ区分（得）   0                   
+    SKCHKB         As String * 1     '諸口区分              0                   
+    IKOUKB         As String * 1     '移行データ区分        0                   
+    TOKLEADD       As String * 2     '運送日数              DD                  
+    OLDTOKCD       As String * 5     '旧取引先コード        00000               
+    TGRPCD         As String * 10    '代表会社コード        0000000000          
+    OLTGRPCD       As String * 5     '旧代表会社コード      00000               
+    KIGYOCD        As String * 6     '統一企業コード識別    000000              
+    KGYEDACD       As String * 6     '統一企業コード枝番    000000              
+    KAKZUKE        As String * 10    '格付                                      
+    BNKCD          As String * 7     '銀行コード            !@@@@@@@            
+    BNKNM          As String * 50    '銀行名称                                  
+    STNNM          As String * 50    '支店名称                                  
+    YKNKB          As String * 1     '預金種別              0                   
+    KOZNO          As String * 7     '口座番号              0000000             
+    HMEIGI         As String * 40    '振込名義                                  
+    SHAKB          As String * 1     '支払区分              0                   
+    TEGSHKN        As Currency       '手形支払金額          ##,###,###,###      
+    TEGRT          As Currency       '手形比率              ##0.00;;#           
+    NYUDD          As Currency       'サイト                                    
+    TEGSHBS        As String * 1     '手形支払場所          0                   
+    HTSUKB         As String * 1     '振込手数料負担区分    0                   
+    FCTCMCD        As String * 10    'ファクタリング会社コ  0000000000          
+    GYOSHU         As String * 5     '業種                  00000               
+    GYOSHUNM       As String * 40    '業種名                                    
+    CHIIKI         As String * 5     '地域                  00000               
+    CHIIKINM       As String * 40    '地域名                                    
+    SEIHKKB        As String * 1     '請求書発行区分        0                   
+    TOKDNKB        As String * 1     '客先指定伝票区分      0                   
+    TUKKB          As String * 3     '通貨区分              !@@@                
+    BINCD          As String * 2     '便名コード            00                  
+    BINNM          As String * 40    '便名                                      
+    FRNKB          As String * 1     '海外取引区分          0                   
+    SIMUKE         As String * 5     '仕向地                00000               
+    SIMUKENM       As String * 40    '仕向地名称                                
+    EDIKB          As String * 1     'EDI区分               0                   
+    EDIKBC         As String * 1     'EDI処理区分(注文情報  0                   
+    EDIKBCU        As String * 1     'EDI処理区分(注文請    0                   
+    EDIKBN         As String * 1     'EDI処理区分(納期回答  0                   
+    EDIKBS         As String * 1     'EDI処理区分(出荷通知  0                   
+    EDIKBSEI       As String * 1     'EDI処理区分(請求情報  0                   
+    EDIKBNYU       As String * 1     'EDI処理区分(入金情報  0                   
+    EDIKBP         As String * 1     'EDI処理区分(支払明細  0                   
+    EDIKBYBA       As String * 1     'EDI処理区分(商品情報  0                   
+    EDIKBYBB       As String * 1     'EDI処理区分(予備２    0                   
+    EDIKBYBC       As String * 1     'EDI処理区分(予備３    0                   
+    SIRMSTKB       As String * 1     'マスタ区分(仕入先)    0                   
+    SIRNMA         As String * 60    '仕入先名称１                              
+    SIRNMB         As String * 60    '仕入先名称２                              
+    SIRRN          As String * 40    '仕入先略称名                              
+    SIRNK          As String * 10    '仕入先名称カナ                            
+    SIRNMC         As String * 30    '仕入先名称半角１                          
+    SIRNMD         As String * 30    '仕入先名称半角２                          
+    SIRRNNK        As String * 20    '仕入先略称カナ                            
+    SIRZP          As String * 20    '仕入先郵便番号                            
+    SIRADA         As String * 60    '仕入先住所１                              
+    SIRADB         As String * 60    '仕入先住所２                              
+    SIRADC         As String * 60    '仕入先住所３                              
+    SIRTL          As String * 20    '仕入先電話番号                            
+    SIRFX          As String * 20    '仕入先ＦＡＸ番号                          
+    SIRBOSNM       As String * 30    '仕入先代表者名                            
+    SIRCTANM       As String * 30    '仕入先御担当者名                          
+    SIRMLAD        As String * 50    '仕入先メールアドレス                      
+    SIRTANCD       As String * 6     '担当者コード          000000              
+    SIRTANNM       As String * 40    '担当者名                                  
+    SIRDSPKB       As String * 1     '検索表示区分          0                   
+    SIRJUNKB       As String * 1     '順位表出力区分        0                   
+    SIRSHACD       As String * 10    '支払先コード          !@@@@@@@@@@         
+    SIRSHARN       As String * 40    '支払先略称名                              
+    SIRSMEKB       As String * 1     '締区分                0                   
+    SIRSMEDD       As String * 2     '締初期日付(仕入)      DD                  
+    SIRSMECC       As String * 2     '締サイクル(仕入)      00                  
+    SIRSDWKB       As String * 1     '締め曜日              0                   
+    SIRKESCC       As String * 2     '支払サイクル          00                  
+    SIRKESDD       As String * 2     '支払日付              DD                  
+    SIRKDEKB       As String * 1     '支払曜日              0                   
+    SIRLSTID       As String * 7     '伝票種別              !@@@@@@             
+    SKNRPSKB       As String * 1     '金額端数処理桁数      0                   
+    SKNZRNKB       As String * 1     '金額端数処理区分      0                   
+    SIRZEIKB       As String * 1     '消費税区分            0                   
+    SIRZCLKB       As String * 1     '消費税算出区分        0                   
+    SIRRPSKB       As String * 1     '消費税端数処理桁数    0                   
+    SIRZRNKB       As String * 1     '消費税端数処理区分    0                   
+    SIRNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ入力区分     0                   
+    SISKCHKB       As String * 1     '諸口区分              0                   
+    SIIKOUKB       As String * 1     '移行データ区分        0                   
+    OLDSIRCD       As String * 5     '旧取引先コード        00000               
+    SGRPCD         As String * 10    'グループ会社コード    0000000000          
+    OLSGRPCD       As String * 5     '旧グループ会社コード  00000               
+    SIRBNKCD       As String * 7     '銀行コード            !@@@@@@@            
+    SIRBNKNM       As String * 50    '銀行名称                                  
+    SIRSTNNM       As String * 50    '支店名称                                  
+    SIRYKNKB       As String * 1     '預金種別              0                   
+    SIRKOZNO       As String * 7     '口座番号              0000000             
+    SHMEIGI        As String * 40    '振込名義                                  
+    SIRSHAKB       As String * 1     '支払区分              0                   
+    SHJAKB         As String * 7     '支払条件１                                
+    SHJBKB         As String * 7     '支払条件２                                
+    SHJCKB         As String * 7     '支払条件３                                
+    STEGSHKN       As Currency       '手形支払金額          ##,###,###,###      
+    SIRTEGRT       As Currency       '手形比率              ##0.00;;#           
+    SHADD          As String * 3     'サイト                                    
+    STEGSHBS       As String * 1     '手形支払場所          0                   
+    SHTSUKB        As String * 1     '振込手数料負担区分    0                   
+    SFCTCMCD       As String * 10    'ファクタリング会社コ  0000000000          
+    SGYOSHU        As String * 5     '業種                  00000               
+    SGYOSHUN       As String * 40    '業種                                      
+    SCHIIKI        As String * 5     '地域                  00000               
+    SCHIIKIN       As String * 40    '地域                                      
+    NHNRNKB        As String * 1     '納品情報連携フラグ    0                   
+    SHATKMDT       As String * 8     '支払方法取決日        YYYY/MM/DD          
+    INPTHSCD       As String * 1     '取引先分類            0                   
+    STTTOKCD       As String * 10    '開始・得意先コード    0000000000          
+    STTTOKNM       As String * 40    '開始・得意先名                            
+    ENDTOKCD       As String * 6     '終了・得意先コード    000000              
+    ENDTOKNM       As String * 40    '終了・得意先名                            
+    RPTRELFL       As String * 1     'レポート連携フラグ                        
+End Type
+Global DB_THSPR51 As TYPE_DB_THSPR51
+Global DBN_THSPR51 As Integer
+' Index1( RPTCLTID + SEQNO )
+' Index2( TORCD )
+' Index3( TOKTHSCD + TOKCD )
+' Index4( SIRTHSCD + SIRCD )
+
+Sub THSPR51_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_THSPR51, G_LB)
+    Call ResetBuf(DBN_THSPR51)
+End Sub

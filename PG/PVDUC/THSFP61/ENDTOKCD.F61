@@ -1,0 +1,46 @@
+Attribute VB_Name = "ENDTOKCD_F61"
+Option Explicit
+'
+'スロット名      :得意先コード・画面項目スロット
+'ユニット名      :ENDTOKCD.F61
+'記述者          :Standard Library
+'作成日付        :2011/02/21
+'使用プログラム  :THSFP61
+'
+'
+
+Function ENDTOKCD_Check(ByVal ENDTOKCD)
+Dim Rtn As Integer
+    '
+    ENDTOKCD_Check = 0
+    Call TOKMTA_RClear
+    If LenWid(ENDTOKCD) = 0 Or Trim$(ENDTOKCD) = "" Then
+    Else
+        Call DB_GetLsEq(DBN_TOKMTA, 1, ENDTOKCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_TOKMTA.DATKB = "9" Then
+                Call TOKMTA_RClear
+            End If
+        Else
+            Call DB_GetLsEq(DBN_SIRMTA, 1, ENDTOKCD, BtrNormal)
+            If DBSTAT = 0 Then
+                If DB_TOKMTA.DATKB = "9" Then
+                    Call TOKMTA_RClear
+                End If
+            Else
+                Call TOKMTA_RClear
+            End If
+        End If
+    End If
+End Function
+Function ENDTOKCD_Slist(PP As clsPP, ByVal ENDTOKCD)
+    
+    WGDENKB = FR_SSSMAIN.HD_THSCD
+    WGDENKB = IIf(WGDENKB = "9" Or WGDENKB = "0", "1", WGDENKB)
+    WLS_THS1.Show 1
+    Unload WLS_THS1
+    ENDTOKCD_Slist = PP.SlistCom
+End Function
+Function ENDTOKCD_InitVal(ByVal ENDTOKCD)
+      ENDTOKCD_InitVal = "ﾝﾝﾝﾝﾝ"
+End Function

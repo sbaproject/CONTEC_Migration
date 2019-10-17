@@ -1,0 +1,53 @@
+Attribute VB_Name = "THSCD_F61"
+Option Explicit
+'
+' スロット名        : 取引先分類・画面項目スロット
+' ユニット名        : THSCD.F61
+' 記述者            : Standard Library
+' 作成日付          : 2011/02/21
+' 使用プログラム名  : THSFP61
+'
+
+Function THSCD_Check(THSCD)
+'
+If Trim$(THSCD) = "" Then
+        THSCD = "0"
+    End If
+    If THSCD = "0" Or _
+       THSCD = "1" Or _
+       THSCD = "2" Or _
+       THSCD = "3" Or _
+       THSCD = "9" Then
+    Else
+       THSCD = "9"
+    End If
+       
+    THSCD_Check = 0
+    
+End Function
+
+Function THSCD_InitVal()
+    '
+    THSCD_InitVal = "9"
+End Function
+
+Public Function FRNKB_Check(ByRef FRNKB As Variant) As Integer
+If Trim$(FRNKB) = "" Then
+        FRNKB = "0"
+    End If
+    If FRNKB = "0" Or _
+       FRNKB = "1" Or _
+       FRNKB = "9" Then
+    Else
+       FRNKB = "9"
+    End If
+       
+    FRNKB_Check = 0
+
+End Function
+
+Function FRNKB_InitVal() As String
+    '
+    FRNKB_InitVal = "9"
+End Function
+
