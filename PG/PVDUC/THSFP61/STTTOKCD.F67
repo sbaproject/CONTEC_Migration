@@ -1,0 +1,57 @@
+Attribute VB_Name = "STTTOKCD_F67"
+Option Explicit
+'
+'スロット名      :得意先コード・画面項目スロット
+'ユニット名      :STTTOKCD.F67
+'記述者          :Standard Library
+'作成日付        :2011/02/21
+'使用プログラム  :THSFP61
+'
+'
+
+Function STTTOKCD_Check(ByVal STTTOKCD)
+Dim Rtn As Integer
+    '
+    STTTOKCD_Check = 0
+    Select Case FR_SSSMAIN.HD_THSCD
+        Case "0", "1", "2", "3"
+            Call TOKMTA_RClear
+            If LenWid(STTTOKCD) = 0 Or Trim$(STTTOKCD) = "" Then
+            Else
+                Call DB_GetEq(DBN_TOKMTA, 1, STTTOKCD, BtrNormal)
+                If DBSTAT = 0 Then
+                    If DB_TOKMTA.DATKB = "9" Then
+                        Call TOKMTA_RClear
+                    End If
+                Else
+                    Call TOKMTA_RClear
+                End If
+            End If
+        Case "4", "5"
+            Call SIRMTA_RClear
+            If LenWid(STTTOKCD) = 0 Or Trim$(STTTOKCD) = "" Then
+            Else
+                Call DB_GetEq(DBN_SIRMTA, 1, STTTOKCD, BtrNormal)
+                If DBSTAT = 0 Then
+                    If DB_SIRMTA.DATKB = "9" Then
+                        Call SIRMTA_RClear
+                    End If
+                Else
+                    Call SIRMTA_RClear
+                End If
+            End If
+    End Select
+    
+End Function
+Function STTTOKCD_Slist(PP As clsPP, ByVal STTTOKCD)
+
+    WGDENKB = FR_SSSMAIN.HD_THSCD
+    WGDENKB = IIf(WGDENKB = "9" Or WGDENKB = "0", "1", WGDENKB)
+    WLS_THS1.Show 1
+    Unload WLS_THS1
+    STTTOKCD_Slist = PP.SlistCom
+End Function
+
+Function STTTOKCD_InitVal(ByVal STTTOKCD)
+      STTTOKCD_InitVal = " "
+End Function
