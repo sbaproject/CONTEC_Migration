@@ -1,0 +1,221 @@
+Attribute VB_Name = "TOKMT52_IEV"
+Option Explicit
+Global Const SSS_MAX_DB% = 18
+Global DB_PARA(SSS_MAX_DB) As TYPE_DB_PARA
+Global Const SSS_PrgId = "TOKMT52"
+' === 20081003 === UPDATE S - RISE)Izumi　表示名称の変更
+'Global Const SSS_PrgNm = "製品別得意先単価登録          "
+Global Const SSS_PrgNm = "得意先単価マスタ登録／訂正          "
+' === 20081003 === UPDATE E - RISE)Izumi
+Global Const SSS_FraId = "MT1"
+
+Sub Init_Fil()  'Generated.
+    '
+    DBN_HINMTA = 0
+    DB_PARA(DBN_HINMTA).tblid = "HINMTA"
+    DB_PARA(DBN_HINMTA).DBID = "USR1"
+    '
+    DBN_SYSTBA = 1
+    DB_PARA(DBN_SYSTBA).tblid = "SYSTBA"
+    DB_PARA(DBN_SYSTBA).DBID = "USR1"
+    '
+    DBN_SYSTBB = 2
+    DB_PARA(DBN_SYSTBB).tblid = "SYSTBB"
+    DB_PARA(DBN_SYSTBB).DBID = "USR1"
+    '
+    DBN_SYSTBC = 3
+    DB_PARA(DBN_SYSTBC).tblid = "SYSTBC"
+    DB_PARA(DBN_SYSTBC).DBID = "USR1"
+    '
+    DBN_SYSTBD = 4
+    DB_PARA(DBN_SYSTBD).tblid = "SYSTBD"
+    DB_PARA(DBN_SYSTBD).DBID = "USR1"
+    '
+    DBN_SYSTBF = 5
+    DB_PARA(DBN_SYSTBF).tblid = "SYSTBF"
+    DB_PARA(DBN_SYSTBF).DBID = "USR1"
+    '
+    DBN_SYSTBG = 6
+    DB_PARA(DBN_SYSTBG).tblid = "SYSTBG"
+    DB_PARA(DBN_SYSTBG).DBID = "USR1"
+    '
+    DBN_SYSTBH = 7
+    DB_PARA(DBN_SYSTBH).tblid = "SYSTBH"
+    DB_PARA(DBN_SYSTBH).DBID = "USR1"
+    '
+    DBN_TOKMTC = 8
+    DB_PARA(DBN_TOKMTC).tblid = "TOKMTC"
+    DB_PARA(DBN_TOKMTC).DBID = "USR1"
+    SSS_MFIL = DBN_TOKMTC
+    '
+    DBN_CLSMTA = 9
+    DB_PARA(DBN_CLSMTA).tblid = "CLSMTA"
+    DB_PARA(DBN_CLSMTA).DBID = "USR1"
+    '
+    DBN_CLSMTB = 10
+    DB_PARA(DBN_CLSMTB).tblid = "CLSMTB"
+    DB_PARA(DBN_CLSMTB).DBID = "USR1"
+    '
+    DBN_TANMTA = 11
+    DB_PARA(DBN_TANMTA).tblid = "TANMTA"
+    DB_PARA(DBN_TANMTA).DBID = "USR1"
+    '
+    DBN_TOKMTA = 12
+    DB_PARA(DBN_TOKMTA).tblid = "TOKMTA"
+    DB_PARA(DBN_TOKMTA).DBID = "USR1"
+    '
+    DBN_UNYMTA = 13
+    DB_PARA(DBN_UNYMTA).tblid = "UNYMTA"
+    DB_PARA(DBN_UNYMTA).DBID = "USR1"
+    '
+    DBN_MEIMTA = 14
+    DB_PARA(DBN_MEIMTA).tblid = "MEIMTA"
+    DB_PARA(DBN_MEIMTA).DBID = "USR1"
+    '
+    DBN_EXCTBZ = 15
+    DB_PARA(DBN_EXCTBZ).tblid = "EXCTBZ"
+    DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+    '
+    DBN_GYMTBZ = 16
+    DB_PARA(DBN_GYMTBZ).tblid = "GYMTBZ"
+    DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+    '
+    DBN_KNGMTB = 17
+    DB_PARA(DBN_KNGMTB).tblid = "KNGMTB"
+    DB_PARA(DBN_KNGMTB).DBID = "USR1"
+
+    SSS_BILFL = 9
+End Sub
+
+Sub SCR_FromTOKMTA(ByVal De As Integer)  'Generated.
+    Call DP_SSSMAIN_TOKCD(De, DB_TOKMTA.TOKCD)
+    Call DP_SSSMAIN_TOKRN(De, DB_TOKMTA.TOKRN)
+End Sub
+
+Sub TOKMTA_FromSCR(ByVal De As Integer)  'Generated.
+    DB_TOKMTA.TOKCD = RD_SSSMAIN_TOKCD(De)
+    DB_TOKMTA.TOKRN = RD_SSSMAIN_TOKRN(De)
+    DB_TOKMTA.OPEID = SSS_OPEID
+    DB_TOKMTA.CLTID = SSS_CLTID
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+        DB_TOKMTA.WRTTM = Format(Now, "hhmmss")
+        DB_TOKMTA.WRTDT = Format(Now, "YYYYMMDD")
+    Else
+        DB_TOKMTA.WRTTM = DB_ORATM
+        DB_TOKMTA.WRTDT = DB_ORADT
+    End If
+End Sub
+
+Sub SCR_FromMfil(ByVal De As Integer)  'Generated.
+    Call DP_SSSMAIN_HINCD(De, DB_TOKMTC.HINCD)
+    Call DP_SSSMAIN_TOKCD(De, DB_TOKMTC.TOKCD)
+    Call DP_SSSMAIN_TUKKB(De, DB_TOKMTC.TUKKB)
+    Call DP_SSSMAIN_ULTTKKB(De, DB_TOKMTC.ULTTKKB)
+    Call DP_SSSMAIN_URITK(De, DB_TOKMTC.URITK)
+    Call DP_SSSMAIN_URITKDT(De, DB_TOKMTC.URITKDT)
+
+'2007/12/14 add-str T.KAWAMUKAI 元データのタイムスタンプ退避
+'   [引数Deは画面上の行数(0～)]
+' === 20080903 === UPDATE S - RISE)Izumi チェック項目追加
+'    M_MOTO_A_inf(De).WRTDT = DB_TOKMTC.WRTDT            '更新日付
+'    M_MOTO_A_inf(De).WRTTM = DB_TOKMTC.WRTTM            '更新時刻
+'    M_MOTO_A_inf(De).UWRTDT = DB_TOKMTC.UWRTDT          'バッチ更新日付
+'    M_MOTO_A_inf(De).UWRTTM = DB_TOKMTC.UWRTTM          'バッチ更新時刻
+
+    M_TOKMT_A_inf(De).OPEID = DB_TOKMTC.OPEID            '最終作業者コード
+    M_TOKMT_A_inf(De).CLTID = DB_TOKMTC.CLTID            'クライアントＩＤ
+    M_TOKMT_A_inf(De).UOPEID = DB_TOKMTC.UOPEID          '最終作業者コード（バッチ）
+    M_TOKMT_A_inf(De).UCLTID = DB_TOKMTC.UCLTID          'クライントＩＤ（バッチ）
+    M_TOKMT_A_inf(De).WRTDT = DB_TOKMTC.WRTDT            '更新日付
+    M_TOKMT_A_inf(De).WRTTM = DB_TOKMTC.WRTTM            '更新時刻
+    M_TOKMT_A_inf(De).UWRTDT = DB_TOKMTC.UWRTDT          'バッチ更新日付
+    M_TOKMT_A_inf(De).UWRTTM = DB_TOKMTC.UWRTTM          'バッチ更新時刻
+' === 20080903 === UPDATE E - RISE)Izumi
+
+'2007/12/14 add-end T.KAWAMUKAI
+
+End Sub
+
+Sub Mfil_FromSCR(ByVal De As Integer)  'Generated.
+    DB_TOKMTC.HINCD = RD_SSSMAIN_HINCD(De)
+    DB_TOKMTC.TOKCD = RD_SSSMAIN_TOKCD(De)
+    DB_TOKMTC.TUKKB = RD_SSSMAIN_TUKKB(De)
+    DB_TOKMTC.ULTTKKB = RD_SSSMAIN_ULTTKKB(De)
+    DB_TOKMTC.URITK = RD_SSSMAIN_URITK(De)
+    DB_TOKMTC.URITKDT = RD_SSSMAIN_URITKDT(De)
+    DB_TOKMTC.OPEID = SSS_OPEID
+    DB_TOKMTC.CLTID = SSS_CLTID
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+        DB_TOKMTC.WRTTM = Format(Now, "hhmmss")
+        DB_TOKMTC.WRTDT = Format(Now, "YYYYMMDD")
+    Else
+        DB_TOKMTC.WRTTM = DB_ORATM
+        DB_TOKMTC.WRTDT = DB_ORADT
+    End If
+End Sub
+
+Sub UpdSmf()  'Generated.
+End Sub
+
+Sub SetBuf(ByVal Fno As Integer)  'Generated.
+    Select Case Fno
+        Case DBN_HINMTA: LSet G_LB = DB_HINMTA
+        Case DBN_SYSTBA: LSet G_LB = DB_SYSTBA
+        Case DBN_SYSTBB: LSet G_LB = DB_SYSTBB
+        Case DBN_SYSTBC: LSet G_LB = DB_SYSTBC
+        Case DBN_SYSTBD: LSet G_LB = DB_SYSTBD
+        Case DBN_SYSTBF: LSet G_LB = DB_SYSTBF
+        Case DBN_SYSTBG: LSet G_LB = DB_SYSTBG
+        Case DBN_SYSTBH: LSet G_LB = DB_SYSTBH
+        Case DBN_TOKMTC: LSet G_LB = DB_TOKMTC
+        Case DBN_CLSMTA: LSet G_LB = DB_CLSMTA
+        Case DBN_CLSMTB: LSet G_LB = DB_CLSMTB
+        Case DBN_TANMTA: LSet G_LB = DB_TANMTA
+        Case DBN_TOKMTA: LSet G_LB = DB_TOKMTA
+        Case DBN_UNYMTA: LSet G_LB = DB_UNYMTA
+        Case DBN_MEIMTA: LSet G_LB = DB_MEIMTA
+        Case DBN_EXCTBZ: LSet G_LB = DB_EXCTBZ
+        Case DBN_GYMTBZ: LSet G_LB = DB_GYMTBZ
+        Case DBN_KNGMTB: LSet G_LB = DB_KNGMTB
+    End Select
+End Sub
+
+Sub ResetBuf(ByVal Fno As Integer)  'Generated.
+    Select Case Fno
+        Case DBN_HINMTA: LSet DB_HINMTA = G_LB
+        Case DBN_SYSTBA: LSet DB_SYSTBA = G_LB
+        Case DBN_SYSTBB: LSet DB_SYSTBB = G_LB
+        Case DBN_SYSTBC: LSet DB_SYSTBC = G_LB
+        Case DBN_SYSTBD: LSet DB_SYSTBD = G_LB
+        Case DBN_SYSTBF: LSet DB_SYSTBF = G_LB
+        Case DBN_SYSTBG: LSet DB_SYSTBG = G_LB
+        Case DBN_SYSTBH: LSet DB_SYSTBH = G_LB
+        Case DBN_TOKMTC: LSet DB_TOKMTC = G_LB
+        Case DBN_CLSMTA: LSet DB_CLSMTA = G_LB
+        Case DBN_CLSMTB: LSet DB_CLSMTB = G_LB
+        Case DBN_TANMTA: LSet DB_TANMTA = G_LB
+        Case DBN_TOKMTA: LSet DB_TOKMTA = G_LB
+        Case DBN_UNYMTA: LSet DB_UNYMTA = G_LB
+        Case DBN_MEIMTA: LSet DB_MEIMTA = G_LB
+        Case DBN_EXCTBZ: LSet DB_EXCTBZ = G_LB
+        Case DBN_GYMTBZ: LSet DB_GYMTBZ = G_LB
+        Case DBN_KNGMTB: LSet DB_KNGMTB = G_LB
+    End Select
+End Sub
+
+Function RecordFromObject(ByVal Fno As Integer) As Integer  'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else:
+    End Select
+    RecordFromObject = Rtc
+End Function
+
+Function ObjectFromRecord(ByVal Fno As Integer) As Integer  'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else:
+    End Select
+    ObjectFromRecord = Rtc
+End Function
+

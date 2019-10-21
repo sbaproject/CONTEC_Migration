@@ -1,0 +1,106 @@
+Attribute VB_Name = "URITKDT_F51"
+Option Explicit
+'
+' スロット名        : 単価設定日付・画面項目スロット
+' ユニット名        : URITKDT.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/06/21
+' 使用プログラム名  : TOKMT54
+'
+
+Function URITKDT_CheckC(ByVal HINCD, ByVal TOKCD, ByVal URITKDT, ByVal De_Index)
+Dim Rtn As Integer
+'Call HINMTA_RClear
+'Call TOKMTA_RClear
+'Call TOKMTC_RClear
+'Call SCR_FromMfil(De_Index)
+    URITKDT_CheckC = 0
+    If IsNull(URITKDT) Then
+      Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)    ' 日付に誤りがあります
+      URITKDT_CheckC = -1
+    Else
+      If Not IsDate(URITKDT) Then
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)  ' 日付に誤りがあります
+        URITKDT_CheckC = -1
+      Else
+   '運用日付とのﾁｪｯｸ
+        If CLng(Format(URITKDT, "YYYYMMDD")) < CLng(DB_UNYMTA.UNYDT) Then
+           Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)   '日付に誤りがあります。修正してください。
+           URITKDT_CheckC = -1
+        End If
+      End If
+    End If
+End Function
+
+Function URITKDT_DerivedC(ByVal HINCD, ByVal URITKDT, ByVal De_Index)
+    '
+    'If Trim$(HINCD) <> "" And Trim$(TOKCD) <> "" And Trim$(URITKDT) = "" Then
+    If Trim$(HINCD) = "" Then
+       Call HINMTA_RClear
+       Call TOKMTA_RClear
+       Call TOKMTC_RClear
+        'URITKDT_DerivedC = Date           ' 本日の日付。
+    Else
+       Select Case Trim$(URITKDT)
+              Case ""
+                'URITKDT_DerivedC = Date           '本日の日付。
+                URITKDT_DerivedC = DB_UNYMTA.UNYDT '運用日付
+              Case Else
+'                If Trim$(URITKDT) <> "" Then
+                  URITKDT_DerivedC = URITKDT
+'                Else
+                  'URITKDT_DerivedC = Date
+'                  URITKDT_DerivedC = DB_UNYMTA.UNYDT '運用日付
+'                End If
+       End Select
+    End If
+End Function
+
+Function URITKDT_InitVal(ByVal HINCD, ByVal URITKDT, ByVal De_Index)
+    '
+    'If Trim$(TOKCD) = "" Then Exit Function
+    'URITKDT_InitVal = URITKDT          '前の日付。
+
+    If Trim$(HINCD) = "" Then
+      URITKDT_InitVal = " "
+      Exit Function
+    Else
+     If Trim$(URITKDT) = "" Then
+      'URITKDT_InitVal = Date
+      URITKDT_InitVal = DB_UNYMTA.UNYDT '運用日付
+     End If
+    End If
+
+End Function
+Sub URITKDT_Move(ByVal URITKDT, ByVal De As Integer)
+    
+    If Trim$(DB_TOKMTC.URITKDT) = "" Then
+       Call DP_SSSMAIN_URITKDT(De, "")
+    Else
+       Call DP_SSSMAIN_URITKDT(De, DB_TOKMTC.URITKDT)
+    End If
+    If Trim$(DB_TOKMTC.URITK) = "" Or SSSVal(DB_TOKMTC.URITK) = 0 Then
+       Call DP_SSSMAIN_URITK(De, "")
+    Else
+       Call DP_SSSMAIN_URITK(De, DB_TOKMTC.URITK)
+    End If
+
+End Sub
+
+Function URITKDT_Skip(CT_URITKDT As Control, ByVal URITKDT)
+    '
+    If Trim$(URITKDT) <> "" Then
+        CT_URITKDT.SelStart = 8    'yyyy-mm-dd の dd にカーソルを移動する。
+    End If
+    URITKDT_Skip = False
+End Function
+
+Function URITKDT_Slist(ByVal URITKDT, PP As clsPP, ByVal De_Index)
+    '
+    Set_date = URITKDT
+    WLS_DATE.Show 1
+    Unload WLS_DATE
+    URITKDT_Slist = Set_date
+    
+End Function
+

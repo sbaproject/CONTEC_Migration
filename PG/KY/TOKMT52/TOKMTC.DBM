@@ -1,0 +1,37 @@
+	Option Explicit
+'==========================================================================
+'   TOKMTC.DBM   販売単価マスタ                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKMTC
+    DATKB          As String * 1     '伝票削除区分          0                   
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    TUKKB          As String * 3     '通貨区分              !@@@                
+    URITKDT        As String * 8     '適用日                YYYY/MM/DD          
+    URITK          As Currency       '単価                  ###,###,##0.0000;;# 
+    ULTTKKB        As String * 1     'ロット単価区分                            
+    RELFL          As String * 1     '連携フラグ            0                   
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+End Type
+Global DB_TOKMTC As TYPE_DB_TOKMTC
+Global DBN_TOKMTC As Integer
+' Index1( HINCD + TOKCD + URITKDT + TUKKB )
+' Index2( HINCD + TOKCD + TUKKB + URITKDT )
+
+Sub TOKMTC_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKMTC, G_LB)
+    Call ResetBuf(DBN_TOKMTC)
+End Sub

@@ -1,0 +1,61 @@
+Attribute VB_Name = "ULTTKKB_F51"
+Option Explicit
+'
+' スロット名        : ﾛｯﾄ単価区分・画面項目スロット
+' ユニット名        : ULTTKKB.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/06/21
+' 使用プログラム名  : TOKMT54
+'
+
+Function ULTTKKB_CheckC(ULTTKKB, ByVal HINCD, ByVal De_Index As Integer)
+If Trim$(HINCD) = "" Then
+   ULTTKKB = ""
+Else
+   ULTTKKB_CheckC = 0
+    Select Case Trim$(ULTTKKB)
+           Case ""
+               ULTTKKB = 9
+           Case 1
+               ULTTKKB = 1
+           Case 9
+               ULTTKKB = 9
+           Case Else
+               ULTTKKB = 9
+   End Select
+    
+End If
+End Function
+Function ULTTKKB_InitVal(ByVal HINCD, ByVal ULTTKKB, ByVal De_Index As Integer)
+    '
+    If Trim$(HINCD) = "" Then
+      ULTTKKB_InitVal = " "
+      Exit Function
+    Else
+     If Trim$(ULTTKKB) = "" Then
+      ULTTKKB_InitVal = 9
+     End If
+    End If
+
+End Function
+Function ULTTKKB_DerivedC(ByVal HINCD, ByVal ULTTKKB, ByVal De_Index)
+    '
+    If Trim$(HINCD) = "" Then
+       Call HINMTA_RClear
+       Call TOKMTA_RClear
+       Call TOKMTC_RClear
+        
+    Else
+       Select Case Trim$(ULTTKKB)
+              Case ""
+                ULTTKKB_DerivedC = 9
+              Case 1
+                ULTTKKB_DerivedC = 1
+              Case 9
+                ULTTKKB_DerivedC = 9
+              Case Else
+                ULTTKKB_DerivedC = 9
+       End Select
+    End If
+End Function
+
