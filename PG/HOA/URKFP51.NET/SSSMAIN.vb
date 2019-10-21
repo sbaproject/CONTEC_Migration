@@ -6,17 +6,19 @@ Module SSSMAIN_FP1
 		Dim I As Integer
 		'
 		I = 0
-		If CNT <> 0 And RECSU <> 0 Then I = CNT / RECSU * 100
-		'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CNT.FloodPercent の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		CType(FR_SSSMAIN.Controls("CNT"), Object).FloodPercent = I
-		If I < 50 Then
-			'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CNT.ForeColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CType(FR_SSSMAIN.Controls("CNT"), Object).ForeColor = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_BLACK)
-		Else
-			'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CNT.ForeColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CType(FR_SSSMAIN.Controls("CNT"), Object).ForeColor = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_WHITE)
-		End If
-		System.Windows.Forms.Application.DoEvents()
+        If CNT <> 0 And RECSU <> 0 Then I = CNT / RECSU * 100
+        '2019/10/16 DEL START
+        ''UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CNT.FloodPercent の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'CType(FR_SSSMAIN.Controls("CNT"), Object).FloodPercent = I
+        'If I < 50 Then
+        '    'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CNT.ForeColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    CType(FR_SSSMAIN.Controls("CNT"), Object).ForeColor = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_BLACK)
+        'Else
+        '    'UPGRADE_WARNING: オブジェクト FR_SSSMAIN!CNT.ForeColor の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '    CType(FR_SSSMAIN.Controls("CNT"), Object).ForeColor = System.Drawing.ColorTranslator.ToOle(SSSMSG_BAS.Cn_WHITE)
+        'End If
+        '2019/10/16 DEL END
+        System.Windows.Forms.Application.DoEvents()
 	End Sub
 	
 	Sub SSS_CLOSE()

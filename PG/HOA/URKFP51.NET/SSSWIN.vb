@@ -771,15 +771,29 @@ ErrDate:
 		Dim WK_PP As clsPP
 		'UPGRADE_WARNING: オブジェクト WK_PP の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		WK_PP = PP_SSSMAIN
-		'[V4.1]　メッセージ出力時にPPを退避　以上追加
-		' SSS/Win 共通のメッセージを表示します。
-		'
-		''Close後はメッセージを表示しない
-		If RsOpened(DBN_SYSTBH) = False Then Exit Function
-		''
-		DB_SYSTBH.MSGNM = msgName
-		Call DB_GetEq(DBN_SYSTBH, 1, MSGKB & DB_SYSTBH.MSGNM & VB6.Format(MSGSQ, "0"), BtrNormal)
-		If DBSTAT = 0 Then
+        '[V4.1]　メッセージ出力時にPPを退避　以上追加
+        ' SSS/Win 共通のメッセージを表示します。
+        '
+        ''Close後はメッセージを表示しない
+        '2019/10/16 仮
+        'If RsOpened(DBN_SYSTBH) = False Then Exit Function
+        '2019/10/16 仮
+        ''
+        DB_SYSTBH.MSGNM = msgName
+        '2019/10/16 CHG START
+        'Call DB_GetEq(DBN_SYSTBH, 1, MSGKB & DB_SYSTBH.MSGNM & VB6.Format(MSGSQ, "0"), BtrNormal)
+        Dim sqlWhereStr As String = ""
+        sqlWhereStr = " WHERE MSGKB = '" & MSGKB & "'"
+        sqlWhereStr = sqlWhereStr & " AND MSGNM = '" & DB_SYSTBH.MSGNM & "'"
+        Call GetRowsCommon("SYSTBH", sqlWhereStr)
+
+        If DB_SYSTBH.MSGKB Is Nothing Then
+            DBSTAT = 1
+        Else
+            DBSTAT = 0
+        End If
+        '2019/10/16 CHG E N D
+        If DBSTAT = 0 Then
 			'UPGRADE_WARNING: オブジェクト SSSVal(DB_SYSTBH.ICNKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト SSSVal(DB_SYSTBH.BTNON) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 			'UPGRADE_WARNING: オブジェクト SSSVal(DB_SYSTBH.BTNKB) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -967,10 +981,12 @@ ErrDate:
 	End Function
 	
 	Sub Init_Prompt()
-		' プロンプト表示領域を初期化します。
-		'
-		CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(0).Image = CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(1).Image
-		CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
+        ' プロンプト表示領域を初期化します。
+        '
+        '2019/10/11　仮
+        'CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(0).Image = CType(FR_SSSMAIN.Controls("IM_Denkyu"), Object)(1).Image
+        '2019/10/11　仮
+        CType(FR_SSSMAIN.Controls("TX_Message"), Object).Text = ""
 		CType(FR_SSSMAIN.Controls("TX_Message"), Object).ForeColor = System.Drawing.ColorTranslator.FromOle(&H0)
 	End Sub
 	
@@ -2397,8 +2413,21 @@ ErrorLogFile:
 		Call DB_BeginTransaction(CStr(BTR_Exclude))
 		DB_EXCTBZ.CLTID = SSS_CLTID.Value
 		DB_EXCTBZ.GYMCD = SSS_PrgId
-		Call DB_GetEq(DBN_EXCTBZ, 1, DB_EXCTBZ.CLTID & DB_EXCTBZ.GYMCD, BtrNormal)
-		If DBSTAT = 0 Then
+
+        '2019/10/16 CHG START
+        'Call DB_GetEq(DBN_EXCTBZ, 1, DB_EXCTBZ.CLTID & DB_EXCTBZ.GYMCD, BtrNormal)
+        Dim sqlWhereStr As String = ""
+        sqlWhereStr = " WHERE CLTID = '" & DB_EXCTBZ.CLTID & "'"
+        sqlWhereStr = sqlWhereStr & " AND GYMCD = '" & DB_EXCTBZ.GYMCD & "'"
+        Call GetRowsCommon(DBN_EXCTBZ, sqlWhereStr)
+
+        If DB_SYSTBH.MSGKB Is Nothing Then
+            DBSTAT = 1
+        Else
+            DBSTAT = 0
+        End If
+        '2019/10/16 CHG E N D
+        If DBSTAT = 0 Then
 			Call DB_Delete(DBN_EXCTBZ)
 		End If
 		Call DB_EndTransaction()

@@ -86,12 +86,12 @@
         Me.HD_OPEID = New System.Windows.Forms.TextBox()
         Me.HD_OPENM = New System.Windows.Forms.TextBox()
         Me.FM_Panel3D14 = New System.Windows.Forms.Label()
-        Me.SYSDT = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CM_Execute = New System.Windows.Forms.PictureBox()
         Me.CM_SLIST = New System.Windows.Forms.PictureBox()
         Me.CM_EndCm = New System.Windows.Forms.PictureBox()
         Me.Image1 = New System.Windows.Forms.PictureBox()
+        Me.SYSDT = New System.Windows.Forms.Label()
         Me.FM_Panel3D1 = New System.Windows.Forms.Label()
         Me.TX_Mode = New System.Windows.Forms.TextBox()
         Me.CMDialogL = New System.Windows.Forms.PictureBox()
@@ -156,7 +156,6 @@
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.FM_Panel3D14.SuspendLayout()
         CType(Me.CM_Execute, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CM_SLIST, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -190,7 +189,7 @@
         Me.HD_ALLDEL.BackColor = System.Drawing.SystemColors.Control
         Me.HD_ALLDEL.Cursor = System.Windows.Forms.Cursors.Default
         Me.HD_ALLDEL.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.HD_ALLDEL.Location = New System.Drawing.Point(88, 136)
+        Me.HD_ALLDEL.Location = New System.Drawing.Point(302, 135)
         Me.HD_ALLDEL.Name = "HD_ALLDEL"
         Me.HD_ALLDEL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.HD_ALLDEL.Size = New System.Drawing.Size(161, 17)
@@ -211,7 +210,7 @@
         Me.HD_OPEID.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.HD_OPEID.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_OPEID.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.HD_OPEID.Location = New System.Drawing.Point(310, 48)
+        Me.HD_OPEID.Location = New System.Drawing.Point(783, 49)
         Me.HD_OPEID.MaxLength = 10
         Me.HD_OPEID.Name = "HD_OPEID"
         Me.HD_OPEID.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -227,7 +226,7 @@
         Me.HD_OPENM.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.HD_OPENM.ForeColor = System.Drawing.SystemColors.WindowText
         Me.HD_OPENM.ImeMode = System.Windows.Forms.ImeMode.Hiragana
-        Me.HD_OPENM.Location = New System.Drawing.Point(356, 48)
+        Me.HD_OPENM.Location = New System.Drawing.Point(829, 49)
         Me.HD_OPENM.MaxLength = 24
         Me.HD_OPENM.Name = "HD_OPENM"
         Me.HD_OPENM.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -242,18 +241,10 @@
         Me.FM_Panel3D14.Controls.Add(Me.CM_SLIST)
         Me.FM_Panel3D14.Controls.Add(Me.CM_EndCm)
         Me.FM_Panel3D14.Controls.Add(Me.Image1)
-        Me.FM_Panel3D14.Location = New System.Drawing.Point(-3, 0)
+        Me.FM_Panel3D14.Location = New System.Drawing.Point(0, 0)
         Me.FM_Panel3D14.Name = "FM_Panel3D14"
-        Me.FM_Panel3D14.Size = New System.Drawing.Size(544, 37)
+        Me.FM_Panel3D14.Size = New System.Drawing.Size(1010, 37)
         Me.FM_Panel3D14.TabIndex = 8
-        '
-        'SYSDT
-        '
-        Me.SYSDT.Location = New System.Drawing.Point(414, 9)
-        Me.SYSDT.Name = "SYSDT"
-        Me.SYSDT.Size = New System.Drawing.Size(94, 19)
-        Me.SYSDT.TabIndex = 9
-        Me.SYSDT.Text = "YYYY/MM/DD"
         '
         'Label1
         '
@@ -270,12 +261,14 @@
         'CM_Execute
         '
         Me.CM_Execute.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CM_Execute.Enabled = False
         Me.CM_Execute.Image = CType(resources.GetObject("CM_Execute.Image"), System.Drawing.Image)
         Me.CM_Execute.Location = New System.Drawing.Point(39, 6)
         Me.CM_Execute.Name = "CM_Execute"
         Me.CM_Execute.Size = New System.Drawing.Size(24, 22)
         Me.CM_Execute.TabIndex = 15
         Me.CM_Execute.TabStop = False
+        Me.CM_Execute.Visible = False
         '
         'CM_SLIST
         '
@@ -296,6 +289,7 @@
         Me.CM_EndCm.Size = New System.Drawing.Size(24, 22)
         Me.CM_EndCm.TabIndex = 17
         Me.CM_EndCm.TabStop = False
+        Me.CM_EndCm.Visible = False
         '
         'Image1
         '
@@ -305,6 +299,14 @@
         Me.Image1.Size = New System.Drawing.Size(301, 34)
         Me.Image1.TabIndex = 18
         Me.Image1.TabStop = False
+        '
+        'SYSDT
+        '
+        Me.SYSDT.Location = New System.Drawing.Point(887, 11)
+        Me.SYSDT.Name = "SYSDT"
+        Me.SYSDT.Size = New System.Drawing.Size(94, 19)
+        Me.SYSDT.TabIndex = 9
+        Me.SYSDT.Text = "YYYY/MM/DD"
         '
         'FM_Panel3D1
         '
@@ -486,6 +488,7 @@
         Me._IM_Denkyu_0.Size = New System.Drawing.Size(20, 22)
         Me._IM_Denkyu_0.TabIndex = 4
         Me._IM_Denkyu_0.TabStop = False
+        Me._IM_Denkyu_0.Visible = False
         '
         'CNT
         '
@@ -517,7 +520,7 @@
         '
         '_FM_Panel3D4_4
         '
-        Me._FM_Panel3D4_4.Location = New System.Drawing.Point(232, 48)
+        Me._FM_Panel3D4_4.Location = New System.Drawing.Point(705, 49)
         Me._FM_Panel3D4_4.Name = "_FM_Panel3D4_4"
         Me._FM_Panel3D4_4.Size = New System.Drawing.Size(79, 22)
         Me._FM_Panel3D4_4.TabIndex = 13
@@ -686,12 +689,13 @@
         '
         'btnF10
         '
+        Me.btnF10.Enabled = False
         Me.btnF10.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF10.Location = New System.Drawing.Point(751, 373)
         Me.btnF10.Name = "btnF10"
         Me.btnF10.Size = New System.Drawing.Size(75, 35)
         Me.btnF10.TabIndex = 266
-        Me.btnF10.Text = "(F10)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "òAë±ìoò^"
+        Me.btnF10.Text = "(F10)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnF10.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnF10.UseVisualStyleBackColor = True
         '
@@ -744,12 +748,13 @@
         '
         'btnF5
         '
+        Me.btnF5.Enabled = False
         Me.btnF5.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.btnF5.Location = New System.Drawing.Point(346, 373)
         Me.btnF5.Name = "btnF5"
         Me.btnF5.Size = New System.Drawing.Size(75, 35)
         Me.btnF5.TabIndex = 261
-        Me.btnF5.Text = "(F5)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "éQè∆"
+        Me.btnF5.Text = "(F5)" & Global.Microsoft.VisualBasic.ChrW(13)
         Me.btnF5.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnF5.UseVisualStyleBackColor = True
         '
@@ -860,17 +865,6 @@
         Me.ToolStripStatusLabel5.Spring = True
         Me.ToolStripStatusLabel5.Text = "Ver.1.00"
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("ÇlÇr ÉSÉVÉbÉN", 9.75!)
-        Me.Label2.Location = New System.Drawing.Point(770, 50)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(77, 13)
-        Me.Label2.TabIndex = 270
-        Me.Label2.Text = "YYYY/MM/DD"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'FR_SSSMAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
@@ -879,7 +873,7 @@
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1008, 461)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.SYSDT)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnF12)
         Me.Controls.Add(Me.btnF11)
@@ -901,7 +895,6 @@
         Me.Controls.Add(Me.FM_Panel3D14)
         Me.Controls.Add(Me.FM_Panel3D1)
         Me.Controls.Add(Me._FM_Panel3D15_0)
-        Me.Controls.Add(Me.SYSDT)
         Me.Controls.Add(Me.CNT)
         Me.Controls.Add(Me.TX_CursorRest)
         Me.Controls.Add(Me._FM_Panel3D4_4)
@@ -969,6 +962,5 @@
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
-    Public WithEvents Label2 As Label
 #End Region
 End Class
