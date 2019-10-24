@@ -1,0 +1,46 @@
+	Option Explicit
+'==========================================================================
+'   SOUMTA.DBM   倉庫マスタ                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SOUMTA
+    DATKB          As String * 1     '伝票削除区分          0                   
+    SOUCD          As String * 3     '倉庫コード            000                 
+    SOUNM          As String * 20    '倉庫名                                    
+    SOUZP          As String * 20    '倉庫郵便番号                              
+    SOUADA         As String * 60    '倉庫住所１                                
+    SOUADB         As String * 60    '倉庫住所２                                
+    SOUADC         As String * 60    '倉庫住所３                                
+    SOUTL          As String * 20    '倉庫電話番号                              
+    SOUFX          As String * 20    '倉庫ＦＡＸ番号                            
+    SOUBSCD        As String * 3     '場所コード            000                 
+    SOUKB          As String * 1     '倉庫種別              0                   
+    SRSCNKB        As String * 1     'ｼﾘｱﾙｽｷｬﾝ要否区分      0                   
+    SISNKB         As String * 1     '資産元区分            0                   
+    SOUTRICD       As String * 10    '取引先コード          !@@@@@@@@@@         
+    SOUKOKB        As String * 2     '倉庫区分              00                  
+    HIKKB          As String * 1     '引当対象区分          0                   
+    SALPALKB       As String * 1     '販売計画対象区分      0                   
+    RELFL          As String * 1     '連携フラグ            0                   
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+End Type
+Global DB_SOUMTA As TYPE_DB_SOUMTA
+Global DBN_SOUMTA As Integer
+' Index1( SOUCD )
+
+Sub SOUMTA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_SOUMTA, G_LB)
+    Call ResetBuf(DBN_SOUMTA)
+End Sub

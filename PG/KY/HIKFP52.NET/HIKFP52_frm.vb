@@ -1913,14 +1913,14 @@ Friend Class FR_SSSMAIN
 			Case TypeOf pm_Ctl Is System.Windows.Forms.TextBox
 				'選択状態の設定（初期選択）
 				Call CF_Set_Sel_Ini(Main_Inf.Dsp_Sub_Inf(Trg_Index), SEL_INI_MODE_1)
-				' === 20060802 === DELETE S - ACE)Nagasawa
-				'            '項目色設定
-				'            Call CF_Set_Item_Color(Main_Inf.Dsp_Sub_Inf(Trg_Index), ITEM_SELECT_STATUS, Main_Inf)
-				' === 20060802 === DELETE E -
-				
-			Case TypeOf pm_Ctl Is SSPanel5
-				'パネルの場合
-				Call CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
+                ' === 20060802 === DELETE S - ACE)Nagasawa
+                '            '項目色設定
+                '            Call CF_Set_Item_Color(Main_Inf.Dsp_Sub_Inf(Trg_Index), ITEM_SELECT_STATUS, Main_Inf)
+                ' === 20060802 === DELETE E -
+
+            Case TypeOf pm_Ctl Is Label
+                'パネルの場合
+                Call CF_Ctl_Item_GotFocus(Main_Inf.Dsp_Sub_Inf(Trg_Index), Main_Inf)
 				
 			Case TypeOf pm_Ctl Is System.Windows.Forms.PictureBox
 				'イメージの場合
@@ -2577,12 +2577,12 @@ Friend Class FR_SSSMAIN
 		
 		'初期表示編集
 		Call Edi_Dsp_Def()
-		
-		'入力担当者編集
-		Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
-		
-		'画面明細表示
-		Call CF_Body_Dsp(Main_Inf)
+
+        '入力担当者編集
+        'Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
+
+        '画面明細表示
+        Call CF_Body_Dsp(Main_Inf)
 		
 		'初期フォーカス位置設定
 		Call F_Init_Cursor_Set(Main_Inf)
@@ -2762,12 +2762,12 @@ Friend Class FR_SSSMAIN
 		
 		'画面表示位置設定
 		Call CF_Set_Frm_Location(Me)
-		
-		'入力担当者編集
-		Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
-		
-		'システム共通処理
-		Call CF_System_Process(Me)
+
+        '入力担当者編集
+        'Call CF_Set_Frm_IN_TANCD(Me, Main_Inf)
+
+        'システム共通処理
+        Call CF_System_Process(Me)
 		
 	End Sub
 	
@@ -2784,18 +2784,21 @@ Friend Class FR_SSSMAIN
 			
 			' === 20060907 === INSERT S - ACE)Sejima
 			Main_Inf.Dsp_Base.IsUnload = True
-			' === 20060907 === INSERT E
-			'共通終了処理？
-			'UPGRADE_NOTE: オブジェクト FR_SSSMAIN をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
-			Me = Nothing
-			
-			' === 20060802 === INSERT S - ACE)Nagasawa
-			'DB接続解除
-			Call CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
-			' === 20060802 === INSERT E -
-			
-			' === 20061102 === INSERT S - ACE)Yano ﾛｸﾞﾌｧｲﾙ書込み（プログラム終了）
-			Call SSSWIN_LOGWRT("プログラム終了")
+            ' === 20060907 === INSERT E
+            '共通終了処理？
+            'UPGRADE_NOTE: オブジェクト FR_SSSMAIN をガベージ コレクトするまでこのオブジェクトを破棄することはできません。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"' をクリックしてください。
+            'Me = Nothing
+
+            ' === 20060802 === INSERT S - ACE)Nagasawa
+            'DB接続解除
+            '2019/10/24 CHG START
+            'Call CF_Ora_DisConnect(gv_Oss_USR1, gv_Odb_USR1)
+            DB_CLOSE(CON)
+            '2019/10/24 CHG E N D
+            ' === 20060802 === INSERT E -
+
+            ' === 20061102 === INSERT S - ACE)Yano ﾛｸﾞﾌｧｲﾙ書込み（プログラム終了）
+            Call SSSWIN_LOGWRT("プログラム終了")
 			' === 20061102 === INSERT E
 			
 		End If

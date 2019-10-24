@@ -1,0 +1,30 @@
+Attribute VB_Name = "PRTSB_F51"
+Option Explicit
+'
+' スロット名        : 出力区分・画面項目スロット
+' ユニット名        : PRTSB.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/22
+' 使用プログラム名  : URIPR52
+'
+
+Function PRTSB_Check(PRTSB)
+'
+    If Trim$(PRTSB) = "" Then
+        PRTSB = "1"
+    End If
+    If PRTSB = "1" Or _
+       PRTSB = "2" Then
+    Else
+        PRTSB = "1"
+    End If
+       
+    PRTSB_Check = 0
+    
+End Function
+
+Function PRTSB_InitVal()
+    '
+    PRTSB_InitVal = "1"
+End Function
+

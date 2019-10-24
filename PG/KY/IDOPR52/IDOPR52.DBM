@@ -1,0 +1,40 @@
+	Option Explicit
+'==========================================================================
+'   IDOPR52.DBM  在庫移動伝票ワーク               UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_IDOPR52
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    MDNNO          As String * 8     '在庫伝票番号          00000000            
+    LINNO          As String * 3     '行番号                000                 
+    DENDT          As String * 8     '伝票日付              YYYY/MM/DD          
+    ODNNO          As String * 8     '出荷伝票番号          00000000            
+    OUTSOUCD       As String * 3     '出荷倉庫              000                 
+    OUTSOUNM       As String * 20    '出庫倉庫名                                
+    IDNNO          As String * 8     '入荷伝票番号          00000000            
+    INPSOUCD       As String * 3     '入庫倉庫コード        000                 
+    INPSOUNM       As String * 20    '入庫倉庫名                                
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    HINNMA         As String * 50    '型式                                      
+    HINNMB         As String * 50    '商品名１                                  
+    SBNNO          As String * 20    '製番                                      
+    LOTNO          As String * 20    'ロット№                                  
+    MOVSU          As Currency       '移動数量              ##,###,##0.00;;#    
+    UNTNM          As String * 4     '単位名                                    
+    LINCMA         As String * 20    '明細備考１                                
+    LINCMB         As String * 20    '明細備考２                                
+    TANCD          As String * 6     '担当者コード          000000              
+    TANNM          As String * 40    '担当者名                                  
+    INPPRTKB       As String * 1     '印刷区分              0                   
+    INPDENDT       As String * 8     '伝票日付              YYYY/MM/DD          
+    INPPRTSB       As String * 1     '出力区分              0                   
+End Type
+Global DB_IDOPR52 As TYPE_DB_IDOPR52
+Global DBN_IDOPR52 As Integer
+' Index1( RPTCLTID + DATNO + MDNNO + LINNO )
+
+Sub IDOPR52_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_IDOPR52, G_LB)
+    Call ResetBuf(DBN_IDOPR52)
+End Sub
