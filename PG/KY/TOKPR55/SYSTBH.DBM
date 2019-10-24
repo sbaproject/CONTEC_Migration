@@ -1,0 +1,28 @@
+Attribute VB_Name = "SYSTBH_DBM"
+        Option Explicit
+'==========================================================================
+'   SYSTBH.DBM   システムメッセージ               UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SYSTBH
+    MSGKB          As String * 1     'メッセージ種別        0
+    MSGNM          As String * 15    'メッセージアイテム
+    MSGSQ          As String * 1     'メッセージ連番        X(01)
+    BTNKB          As Currency       'ボタン種別            000
+    BTNON          As Currency       'ボタン初期値          000
+    ICNKB          As Currency       'アイコン種別          00
+    MSGCM          As String * 50    'メッセージ
+    COLSQ          As String * 1     '色シーケンス          0
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+End Type
+Global DB_SYSTBH As TYPE_DB_SYSTBH
+Global DBN_SYSTBH As Integer
+' Index1( MSGKB + MSGNM + MSGSQ )
+
+Sub SYSTBH_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_SYSTBH, G_LB)
+    Call ResetBuf(DBN_SYSTBH)
+End Sub

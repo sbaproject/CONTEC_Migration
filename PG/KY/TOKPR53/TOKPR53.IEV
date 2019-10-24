@@ -1,0 +1,251 @@
+Option Explicit
+Global Const SSS_MAX_DB% = 19
+Global DB_PARA(SSS_MAX_DB) As TYPE_DB_PARA
+Global Const SSS_PrgId = "TOKPR53"
+'''' UPD 2009/12/25  FKS) T.Yamamoto    Start    連絡票№FC09122501
+'Global Const SSS_PrgNm = "製品別得意先別ﾛｯﾄ単価一覧ﾘｽﾄ  "
+Global Const SSS_PrgNm = "得意先別ﾛｯﾄ単価マスタ一覧リスト"
+'''' UPD 2009/12/25  FKS) T.Yamamoto    End
+Global Const SSS_FraId = "PR2"
+Global WG_OPEID    As String
+Global WG_OPENM    As String
+Global WG_STTHINCD As String
+Global WG_STTHINNM As String
+Global WG_ENDHINCD As String
+Global WG_ENDHINNM As String
+Global WG_STTTOKCD As String
+Global WG_STTTOKNM As String
+Global WG_ENDTOKCD As String
+Global WG_ENDTOKNM As String
+
+Sub Init_Fil () 'Generated.
+    '
+    DBN_TOKPR53 = 0
+    DB_PARA(DBN_TOKPR53).TBLID = "TOKPR53"
+    DB_PARA(DBN_TOKPR53).DBID = "USR9"
+    SSS_MFIL = DBN_TOKPR53
+    '
+    DBN_SYSTBA = 1
+    DB_PARA(DBN_SYSTBA).TBLID = "SYSTBA"
+    DB_PARA(DBN_SYSTBA).DBID = "USR1"
+    '
+    DBN_SYSTBB = 2
+    DB_PARA(DBN_SYSTBB).TBLID = "SYSTBB"
+    DB_PARA(DBN_SYSTBB).DBID = "USR1"
+    '
+    DBN_SYSTBC = 3
+    DB_PARA(DBN_SYSTBC).TBLID = "SYSTBC"
+    DB_PARA(DBN_SYSTBC).DBID = "USR1"
+    '
+    DBN_SYSTBD = 4
+    DB_PARA(DBN_SYSTBD).TBLID = "SYSTBD"
+    DB_PARA(DBN_SYSTBD).DBID = "USR1"
+    '
+    DBN_SYSTBF = 5
+    DB_PARA(DBN_SYSTBF).TBLID = "SYSTBF"
+    DB_PARA(DBN_SYSTBF).DBID = "USR1"
+    '
+    DBN_SYSTBG = 6
+    DB_PARA(DBN_SYSTBG).TBLID = "SYSTBG"
+    DB_PARA(DBN_SYSTBG).DBID = "USR1"
+    '
+    DBN_SYSTBH = 7
+    DB_PARA(DBN_SYSTBH).TBLID = "SYSTBH"
+    DB_PARA(DBN_SYSTBH).DBID = "USR1"
+    '
+    DBN_CLSMTA = 8
+    DB_PARA(DBN_CLSMTA).TBLID = "CLSMTA"
+    DB_PARA(DBN_CLSMTA).DBID = "USR1"
+    '
+    DBN_CLSMTB = 9
+    DB_PARA(DBN_CLSMTB).TBLID = "CLSMTB"
+    DB_PARA(DBN_CLSMTB).DBID = "USR1"
+    '
+    DBN_TANMTA = 10
+    DB_PARA(DBN_TANMTA).TBLID = "TANMTA"
+    DB_PARA(DBN_TANMTA).DBID = "USR1"
+    '
+    DBN_UNYMTA = 11
+    DB_PARA(DBN_UNYMTA).TBLID = "UNYMTA"
+    DB_PARA(DBN_UNYMTA).DBID = "USR1"
+    '
+    DBN_TOKMTD = 12
+    DB_PARA(DBN_TOKMTD).TBLID = "TOKMTD"
+    DB_PARA(DBN_TOKMTD).DBID = "USR1"
+    '
+    DBN_TOKMTA = 13
+    DB_PARA(DBN_TOKMTA).TBLID = "TOKMTA"
+    DB_PARA(DBN_TOKMTA).DBID = "USR1"
+    '
+    DBN_HINMTA = 14
+    DB_PARA(DBN_HINMTA).TBLID = "HINMTA"
+    DB_PARA(DBN_HINMTA).DBID = "USR1"
+    '
+    DBN_MEIMTA = 15
+    DB_PARA(DBN_MEIMTA).TBLID = "MEIMTA"
+    DB_PARA(DBN_MEIMTA).DBID = "USR1"
+    '
+    DBN_EXCTBZ = 16
+    DB_PARA(DBN_EXCTBZ).TBLID = "EXCTBZ"
+    DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+    '
+    DBN_GYMTBZ = 17
+    DB_PARA(DBN_GYMTBZ).TBLID = "GYMTBZ"
+    DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+    '
+    DBN_KNGMTB = 18
+    DB_PARA(DBN_KNGMTB).TBLID = "KNGMTB"
+    DB_PARA(DBN_KNGMTB).DBID = "USR1"
+
+    SSS_LSTMFIL = DBN_TOKPR53
+End Sub
+
+Sub SCR_FromTANMTA (ByVal De As Integer) 'Generated.
+    Call DP_SSSMAIN_OPENM(De, DB_TANMTA.TANNM)
+End Sub
+
+Sub TANMTA_FromSCR (ByVal De As Integer) 'Generated.
+    DB_TANMTA.TANNM = RD_SSSMAIN_OPENM(De)
+    DB_TANMTA.OPEID = SSS_OPEID
+    DB_TANMTA.CLTID = SSS_CLTID
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+        DB_TANMTA.WRTTM = Format(Now, "hhmmss")
+        DB_TANMTA.WRTDT = Format(Now, "YYYYMMDD")
+    Else
+        DB_TANMTA.WRTTM = DB_ORATM
+        DB_TANMTA.WRTDT = DB_ORADT
+    End If
+End Sub
+
+Sub SCR_FromMfil (ByVal De As Integer) 'Generated.
+    Call DP_SSSMAIN_ENDHINCD(De, DB_TOKPR53.ENDHINCD)
+    Call DP_SSSMAIN_ENDHINNM(De, DB_TOKPR53.ENDHINNM)
+    Call DP_SSSMAIN_ENDTOKCD(De, DB_TOKPR53.ENDTOKCD)
+    Call DP_SSSMAIN_ENDTOKNM(De, DB_TOKPR53.ENDTOKNM)
+    Call DP_SSSMAIN_STTHINCD(De, DB_TOKPR53.STTHINCD)
+    Call DP_SSSMAIN_STTHINNM(De, DB_TOKPR53.STTHINNM)
+    Call DP_SSSMAIN_STTTOKCD(De, DB_TOKPR53.STTTOKCD)
+    Call DP_SSSMAIN_STTTOKNM(De, DB_TOKPR53.STTTOKNM)
+End Sub
+
+Sub Mfil_FromSCR (ByVal De As Integer) 'Generated.
+    DB_TOKPR53.ENDHINCD = RD_SSSMAIN_ENDHINCD(De)
+    DB_TOKPR53.ENDHINNM = RD_SSSMAIN_ENDHINNM(De)
+    DB_TOKPR53.ENDTOKCD = RD_SSSMAIN_ENDTOKCD(De)
+    DB_TOKPR53.ENDTOKNM = RD_SSSMAIN_ENDTOKNM(De)
+    DB_TOKPR53.STTHINCD = RD_SSSMAIN_STTHINCD(De)
+    DB_TOKPR53.STTHINNM = RD_SSSMAIN_STTHINNM(De)
+    DB_TOKPR53.STTTOKCD = RD_SSSMAIN_STTTOKCD(De)
+    DB_TOKPR53.STTTOKNM = RD_SSSMAIN_STTTOKNM(De)
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+    Else
+    End If
+End Sub
+
+Sub TOKPR53_FromTOKMTD () 'Generated.
+    Dim i As Integer 
+
+    DB_TOKPR53.HINCD = DB_TOKMTD.HINCD
+    DB_TOKPR53.TOKCD = DB_TOKMTD.TOKCD
+    DB_TOKPR53.TUKKB = DB_TOKMTD.TUKKB
+    DB_TOKPR53.URILTPK = DB_TOKMTD.URILTPK
+    DB_TOKPR53.URILTSUB = DB_TOKMTD.URILTSUB
+    DB_TOKPR53.URILTTKB = DB_TOKMTD.URILTTKB
+    DB_TOKPR53.URITKDT = DB_TOKMTD.URITKDT
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+    Else
+    End If
+End Sub
+
+Sub UpdSmf () 'Generated.
+End Sub
+
+Sub WK_FromScr (ByVal De As Integer) 'Generated.
+    WG_OPEID    = RD_SSSMAIN_OPEID   (0)
+    WG_OPENM    = RD_SSSMAIN_OPENM   (0)
+    WG_STTHINCD = RD_SSSMAIN_STTHINCD(0)
+    WG_STTHINNM = RD_SSSMAIN_STTHINNM(0)
+    WG_ENDHINCD = RD_SSSMAIN_ENDHINCD(0)
+    If LenWid(Trim$(WG_ENDHINCD)) = 0 Then
+        WG_ENDHINCD = HighValue(LenWid(WG_ENDHINCD))
+    End If
+    WG_ENDHINNM = RD_SSSMAIN_ENDHINNM(0)
+    If LenWid(Trim$(WG_ENDHINNM)) = 0 Then
+        WG_ENDHINNM = HighValue(LenWid(WG_ENDHINNM))
+    End If
+    WG_STTTOKCD = RD_SSSMAIN_STTTOKCD(0)
+    WG_STTTOKNM = RD_SSSMAIN_STTTOKNM(0)
+    WG_ENDTOKCD = RD_SSSMAIN_ENDTOKCD(0)
+    If LenWid(Trim$(WG_ENDTOKCD)) = 0 Then
+        WG_ENDTOKCD = HighValue(LenWid(WG_ENDTOKCD))
+    End If
+    WG_ENDTOKNM = RD_SSSMAIN_ENDTOKNM(0)
+    If LenWid(Trim$(WG_ENDTOKNM)) = 0 Then
+        WG_ENDTOKNM = HighValue(LenWid(WG_ENDTOKNM))
+    End If
+End Sub
+
+Sub SetBuf (ByVal Fno As Integer) 'Generated.
+    Select Case Fno
+        Case DBN_TOKPR53: Lset G_LB = DB_TOKPR53
+        Case DBN_SYSTBA: Lset G_LB = DB_SYSTBA
+        Case DBN_SYSTBB: Lset G_LB = DB_SYSTBB
+        Case DBN_SYSTBC: Lset G_LB = DB_SYSTBC
+        Case DBN_SYSTBD: Lset G_LB = DB_SYSTBD
+        Case DBN_SYSTBF: Lset G_LB = DB_SYSTBF
+        Case DBN_SYSTBG: Lset G_LB = DB_SYSTBG
+        Case DBN_SYSTBH: Lset G_LB = DB_SYSTBH
+        Case DBN_CLSMTA: Lset G_LB = DB_CLSMTA
+        Case DBN_CLSMTB: Lset G_LB = DB_CLSMTB
+        Case DBN_TANMTA: Lset G_LB = DB_TANMTA
+        Case DBN_UNYMTA: Lset G_LB = DB_UNYMTA
+        Case DBN_TOKMTD: Lset G_LB = DB_TOKMTD
+        Case DBN_TOKMTA: Lset G_LB = DB_TOKMTA
+        Case DBN_HINMTA: Lset G_LB = DB_HINMTA
+        Case DBN_MEIMTA: Lset G_LB = DB_MEIMTA
+        Case DBN_EXCTBZ: Lset G_LB = DB_EXCTBZ
+        Case DBN_GYMTBZ: Lset G_LB = DB_GYMTBZ
+        Case DBN_KNGMTB: Lset G_LB = DB_KNGMTB
+    End Select
+End Sub
+
+Sub ResetBuf (ByVal Fno As Integer) 'Generated.
+    Select Case Fno
+        Case DBN_TOKPR53: Lset DB_TOKPR53 = G_LB
+        Case DBN_SYSTBA: Lset DB_SYSTBA = G_LB
+        Case DBN_SYSTBB: Lset DB_SYSTBB = G_LB
+        Case DBN_SYSTBC: Lset DB_SYSTBC = G_LB
+        Case DBN_SYSTBD: Lset DB_SYSTBD = G_LB
+        Case DBN_SYSTBF: Lset DB_SYSTBF = G_LB
+        Case DBN_SYSTBG: Lset DB_SYSTBG = G_LB
+        Case DBN_SYSTBH: Lset DB_SYSTBH = G_LB
+        Case DBN_CLSMTA: Lset DB_CLSMTA = G_LB
+        Case DBN_CLSMTB: Lset DB_CLSMTB = G_LB
+        Case DBN_TANMTA: Lset DB_TANMTA = G_LB
+        Case DBN_UNYMTA: Lset DB_UNYMTA = G_LB
+        Case DBN_TOKMTD: Lset DB_TOKMTD = G_LB
+        Case DBN_TOKMTA: Lset DB_TOKMTA = G_LB
+        Case DBN_HINMTA: Lset DB_HINMTA = G_LB
+        Case DBN_MEIMTA: Lset DB_MEIMTA = G_LB
+        Case DBN_EXCTBZ: Lset DB_EXCTBZ = G_LB
+        Case DBN_GYMTBZ: Lset DB_GYMTBZ = G_LB
+        Case DBN_KNGMTB: Lset DB_KNGMTB = G_LB
+    End Select
+End Sub
+
+Function RecordFromObject (ByVal Fno As Integer) As Integer 'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else :
+    End Select
+    RecordFromObject = Rtc
+End Function
+
+Function ObjectFromRecord (ByVal Fno As Integer) As Integer 'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else :
+    End Select
+    ObjectFromRecord = Rtc
+End Function
+

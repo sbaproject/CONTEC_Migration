@@ -1,0 +1,53 @@
+Attribute VB_Name = "ENDHINCD_F53"
+Option Explicit
+'
+' スロット名        : 終了・商品コード・画面項目スロット
+' ユニット名        : ENDHINCD.F01
+' 記述者            : Standard Library
+' 作成日付          : 1998/05/01
+' 使用プログラム名  : UODPR02 / SODPR02 / SODPR04 / SYKPR15
+'                     NYKPR15
+'                     TNAPR01 / TNAPR02 / TNAPR03 / TNAPR04 / TNAPR05 / TNAPR06
+'                     CSVPR01 / CSVPR02
+'
+
+Function ENDHINCD_Check(ByVal ENDHINCD, ByVal STTHINCD)
+    Dim rtn As Integer
+    '
+    ENDHINCD_Check = 0
+    If ENDHINCD < STTHINCD Then
+        rtn = DSP_MsgBox(SSS_ERROR, "ENDCHECK", 0)
+        ENDHINCD_Check = -1
+        Exit Function
+    End If
+    
+    Call HINMTA_RClear
+    If LenWid(ENDHINCD) = 0 Or Trim$(ENDHINCD) = "" Or ENDHINCD = "ZZZZZZZZ" Then
+    Else
+        Call DB_GetEq(DBN_HINMTA, 1, ENDHINCD, BtrNormal)
+''''''''If DBSTAT = 0 Then
+''''''''    If DB_HINMTA.DATKB = "9" Then
+''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+''''''''        ENDHINCD_Check = -1
+''''''''    End If
+''''''''Else
+''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+''''''''    ENDHINCD_Check = -1
+''''''''End If
+    End If
+    
+End Function
+
+Function ENDHINCD_InitVal(ByVal ENDHINCD)
+    '
+    ENDHINCD_InitVal = "ZZZZZZZZ"
+End Function
+
+
+Function ENDHINCD_Slist(PP As clsPP, ByVal STTHINCD)
+    DB_PARA(DBN_HINMTA).KeyBuf = STTHINCD
+    WLSHIN.Show 1
+    Unload WLSHIN
+    ENDHINCD_Slist = PP.SlistCom
+End Function
+

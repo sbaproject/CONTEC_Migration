@@ -1,0 +1,27 @@
+	Option Explicit
+'==========================================================================
+'   TOKPR55.DBM  ﾗﾝｸ別仕切率一覧ﾏｽﾀﾘｽﾄワーク      UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKPR55
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    SKHINGRP       As String * 4     '仕切用商品群                              
+    SKNM           As String * 40    '仕切用商品群名                            
+    RNKCD          As String * 1     'ランク                                    
+    URISETDT       As String * 8     '販売単価設定日付      YYYY/MM/DD          
+    SIKRT          As Currency       '仕切率                ##0.00;;#           
+    STTSKCD        As String * 4     '開始・商品群                              
+    STTSKNM        As String * 40    '商品群名                                  
+    ENDSKCD        As String * 4     '終了・商品群                              
+    ENDSKNM        As String * 40    '商品群名                                  
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_TOKPR55 As TYPE_DB_TOKPR55
+Global DBN_TOKPR55 As Integer
+' Index1( RPTCLTID + SKHINGRP + RNKCD + URISETDT )
+
+Sub TOKPR55_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKPR55, G_LB)
+    Call ResetBuf(DBN_TOKPR55)
+End Sub
