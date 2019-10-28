@@ -1,0 +1,52 @@
+Attribute VB_Name = "CLDMTA_DBM"
+        Option Explicit
+'==========================================================================
+'   CLDMTA.DBM   カレンダマスタ                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_CLDMTA
+    DATKB          As String * 1     '伝票削除区分          0
+    CLDDT          As String * 8     '日付                  YYYY/MM/DD
+    CLDWKKB        As String * 1     '曜日                  0
+    CLDHLKB        As String * 1     '祝日                  0
+    SLSMDD         As Currency       '営業通算日数          9(05)
+    PRDKDDD        As Currency       '生産稼動日数          9(05)
+    DTBKDDD        As Currency       '物流稼動日数          9(05)
+    CLDSMDD        As Currency       '暦日通算日数          9(05)
+    SLDKB          As String * 1     '営業日区分            0
+    BNKKDKB        As String * 1     '銀行稼動区分          0
+    PRDKDKB        As String * 1     '生産稼動区分          0
+    DTBKDKB        As String * 1     '物流稼動区分          0
+    ETCKBA         As String * 1     'その他区分１          0
+    ETCKBB         As String * 1     'その他区分２          0
+    ETCKBC         As String * 1     'その他区分３          0
+    ETCKBD         As String * 1     'その他区分４          0
+    ETCKBE         As String * 1     'その他区分５          0
+    ETCKBF         As String * 1     'その他区分６          0
+    ETCKBG         As String * 1     'その他区分７          0
+    ETCKBH         As String * 1     'その他区分８          0
+    ETCKBI         As String * 1     'その他区分９          0
+    ETCKBJ         As String * 1     'その他区分１０        0
+    RELFL          As String * 1     '連携フラグ            0
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    PGID           As String * 7     'プログラムID          !@@@@@@@@
+End Type
+Global DB_CLDMTA As TYPE_DB_CLDMTA
+Global DBN_CLDMTA As Integer
+' Index1( CLDDT )
+
+Sub CLDMTA_RClear()
+Dim TmpStat
+    TmpStat = Dll_RClear(DBN_CLDMTA, G_LB)
+    Call ResetBuf(DBN_CLDMTA)
+End Sub

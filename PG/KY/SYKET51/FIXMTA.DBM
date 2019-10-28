@@ -1,0 +1,34 @@
+	Option Explicit
+'==========================================================================
+'   FIXMTA.DBM   固定値マスタ                     UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_FIXMTA
+    DATKB          As String * 1     '伝票削除区分          0                   
+    CTLCD          As String * 10    '管理コード            !@@@@@@@@@@         
+    CTLNM          As String * 50    '管理名称                                  
+    FIXVAL         As String * 20    '固定値                                    
+    REMARK         As String * 128   '備考                                      
+    RELFL          As String * 1     '連携フラグ            0                   
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+End Type
+Global DB_FIXMTA As TYPE_DB_FIXMTA
+Global DBN_FIXMTA As Integer
+' Index1( CTLCD )
+
+Sub FIXMTA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_FIXMTA, G_LB)
+    Call ResetBuf(DBN_FIXMTA)
+End Sub

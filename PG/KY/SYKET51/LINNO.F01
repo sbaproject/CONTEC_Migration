@@ -1,0 +1,15 @@
+Attribute VB_Name = "LINNO_F01"
+Option Explicit
+'
+' スロット名        : 行番号・画面項目スロット
+' ユニット名        : LINNO.F01
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : UODET01 / URIET01 / TNAET01
+'
+
+Function LINNO_InitVal (ByVal De_index)
+    '
+    LINNO_InitVal = Format$(De_index + 1, "000")
+End Function
+
