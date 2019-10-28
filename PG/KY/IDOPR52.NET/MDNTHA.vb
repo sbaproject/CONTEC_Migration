@@ -73,9 +73,11 @@ Module MDNTHA_DBM
 	
 	Sub MDNTHA_RClear()
 		Dim TmpStat As Object
-		'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		TmpStat = Dll_RClear(DBN_MDNTHA, G_LB)
-		Call ResetBuf(DBN_MDNTHA)
-	End Sub
+        'UPGRADE_WARNING: オブジェクト G_LB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        'UPGRADE_WARNING: オブジェクト TmpStat の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/25 DEL START
+        'TmpStat = Dll_RClear(DBN_MDNTHA, G_LB)
+        'Call ResetBuf(DBN_MDNTHA)
+        '2019/10/25 DEL START
+    End Sub
 End Module
