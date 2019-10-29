@@ -1,0 +1,51 @@
+	Option Explicit
+'==========================================================================
+'   URKPR62.DBM  入金消込日記帳（外貨版）ワーク   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_URKPR62
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    SEQNO          As String * 10    '連番                  0000000000          
+    DATKB          As String * 1     '伝票削除区分          0                   
+    TOKSEICD       As String * 10    '請求先コード          !@@@@@@@@@@         
+    TOKSEIRN       As String * 40    '請求先名称                                
+    TANCD          As String * 6     '担当者コード          000000              
+    TANNM          As String * 40    '担当者名                                  
+    NYUDT          As String * 8     '入金日                YYYY/MM/DD          
+    INVNO          As String * 8     'インボイス№          00000000            
+    TUKKB          As String * 3     '通貨区分              !@@@                
+    JDNNO          As String * 10    '受注番号              0000000000          
+    JDNLINNO       As String * 3     '受注行番号            000                 
+    UDNDT          As String * 8     '売上伝票日付          YYYY/MM/DD          
+    FURIKN         As Currency       '外貨売上金額          ###,###,##0.0000;;# 
+    FKESIKN        As Currency       '外貨消込金額          ###,###,##0.0000;;# 
+    JDNDT          As String * 8     '受注伝票日付          YYYY/MM/DD          
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    LINNO          As String * 3     '行番号                000                 
+    MAEUKKB        As String * 1     '前受区分              0                   
+    KDNNO          As String * 8     '消込伝票番号          00000000            
+    DLFLG          As String * 1     '削除フラグ            0                   
+    STTTOKCD       As String * 10    '開始・得意先コード    0000000000          
+    STTTOKRN       As String * 40    '得意先略称                                
+    STTTANCD       As String * 6     '開始・担当者コード    0000                
+    STTTANNM       As String * 40    '担当者名                                  
+    STTKSIDT       As String * 8     '開始・消込日                              
+    ENDKSIDT       As String * 8     '終了・消込日                              
+    STTWRTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    ENDWRTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    STTWRTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    ENDWRTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UDNDATNO       As String * 10    '伝票管理NO.           0000000000          
+    UDNLINNO       As String * 3     '行番号                000                 
+    KESISUM        As Currency       '累計消込額                                
+End Type
+Global DB_URKPR62 As TYPE_DB_URKPR62
+Global DBN_URKPR62 As Integer
+' Index1( RPTCLTID + KDNNO + SEQNO )
+
+Sub URKPR62_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_URKPR62, G_LB)
+    Call ResetBuf(DBN_URKPR62)
+End Sub

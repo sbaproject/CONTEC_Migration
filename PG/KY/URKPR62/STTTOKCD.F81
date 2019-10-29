@@ -1,0 +1,55 @@
+Attribute VB_Name = "STTTOKCD_F81"
+Option Explicit
+'
+' スロット名        : 開始得意先コード・画面項目スロット
+' ユニット名        : STTTOKCD.F81
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/31
+' 使用プログラム名  : URKPR52
+'
+
+Function STTTOKCD_InitVal()
+''    '
+''    STTTOKCD_InitVal = FillVal("0", LenWid(DB_TOKMTA.TOKCD))
+End Function
+
+Function STTTOKCD_CheckC(ByVal STTTOKCD)
+Dim Rtn
+    '
+    STTTOKCD_CheckC = 0
+    If Trim$(STTTOKCD) = "" Then
+        Call TOKMTA_RClear
+        Call DP_SSSMAIN_STTTOKRN(-1, DB_TOKMTA.TOKRN)
+        Exit Function
+    End If
+    '
+    Call TOKMTA_RClear
+    Call DB_GetEq(DBN_TOKMTA, 1, STTTOKCD & Space(10 - Len(STTTOKCD)), BtrNormal)
+    If DBSTAT <> 0 Then
+        Call TOKMTA_RClear
+        Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)     ' レコードがありません。
+        STTTOKCD_CheckC = -1
+        Exit Function
+    Else
+        If DB_TOKMTA.DATKB = "9" Then
+            Rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 4)  ' 削除済レコードです。
+            STTTOKCD_CheckC = -1
+            Exit Function
+        End If
+    End If
+    Call DP_SSSMAIN_STTTOKRN(-1, DB_TOKMTA.TOKRN)
+End Function
+
+Function STTTOKCD_Slist(PP As clsPP, ByVal STTTOKCD)
+    '
+'    If IsNull(STTTOKCD) Then
+'        DB_PARA(DBN_TOKMTA).KeyBuf = ""
+'     Else
+'        DB_PARA(DBN_TOKMTA).KeyBuf = STTTOKCD
+'    End If
+    DB_PARA(DBN_TOKMTA).KeyBuf = STTTOKCD
+    WLSTOK4.Show 1
+    Unload WLSTOK4
+    STTTOKCD_Slist = PP.SlistCom
+End Function
+
