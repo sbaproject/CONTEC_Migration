@@ -1,0 +1,92 @@
+Attribute VB_Name = "URKPR62_E01"
+Option Explicit
+'
+' スロット名        : 画面処理スロット
+' ユニット名        : URKPR62.E01
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/31
+' 使用プログラム名  : URKPR62
+'
+
+Sub Chain_Proc()
+
+End Sub
+
+Sub InitDsp()
+
+
+'2009/01/14 CHG START FKS)NAKATA 連絡票№514
+''    '実行権限の取得
+''    Call Get_Authority(DB_UNYMTA.UNYDT)
+
+''実行権限がない場合は、エラーメッセージを表示し起動させない。
+    If Get_Authority(DB_UNYMTA.UNYDT) = 9 Then
+        Call MsgBox("実行権限がありません。", vbOKOnly + vbExclamation, SSS_PrgNm)
+        End
+    End If
+'2009/01/14 CHG E.N.D FKS)NAKATA
+    
+    
+    '先に取得した権限により、Preview画面の印刷ボタン、プリンタ設定ボタン、ファイル出力ボタンを制御する
+    If gs_PRTAUTH = "1" Then '印刷権限有り
+        FR_SSSMAIN!CM_LSTART.Visible = True
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!MN_LSTART.Enabled = True
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+    Else
+        FR_SSSMAIN!CM_LSTART.Visible = False
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!MN_LSTART.Enabled = False
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+    End If
+    If gs_FILEAUTH = "1" Then 'ファイル出力権限有り
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!CM_FSTART.Visible = True
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+        FR_SSSMAIN!MN_FSTART.Enabled = True
+    Else
+        FR_SSSMAIN!CM_VSTART.Visible = True
+        FR_SSSMAIN!CM_FSTART.Visible = False
+        FR_SSSMAIN!MN_VSTART.Enabled = True
+        FR_SSSMAIN!MN_FSTART.Enabled = False
+    End If
+
+
+End Sub
+
+Sub INQ_LIST()
+Dim Rtn As Integer
+    '
+    DLGLST1.Show 1
+    Select Case SSS_RTNWIN
+        Case 0          ' 印刷
+            Rtn = LSTART_GetEvent()
+        Case 1          ' プレビュー
+            Rtn = VSTART_GetEvent()
+        Case 2          ' ファイル出力
+            Rtn = FSTART_GetEvent()
+        Case Else
+    End Select
+End Sub
+Function SSSMAIN_OPEID_BeginPrg(PP As clsPP, CP_OPEID As clsCP)
+    AE_BackColor(5) = &H8000000F  '背景色：グレー
+    CL_SSSMAIN(CP_OPEID.CpPx) = 5
+    SSSMAIN_OPEID_BeginPrg = True
+End Function
+Function SSSMAIN_OPENM_BeginPrg(PP As clsPP, CP_OPENM As clsCP)
+    AE_BackColor(5) = &H8000000F  '背景色：グレー
+    CL_SSSMAIN(CP_OPENM.CpPx) = 5
+    SSSMAIN_OPENM_BeginPrg = True
+End Function
+Function SSSMAIN_STTTOKRN_BeginPrg(PP As clsPP, CP_STTTOKRN As clsCP)
+    AE_BackColor(5) = &H8000000F  '背景色：グレー
+    CL_SSSMAIN(CP_STTTOKRN.CpPx) = 5
+    SSSMAIN_STTTOKRN_BeginPrg = True
+End Function
+Function SSSMAIN_STTTANNM_BeginPrg(PP As clsPP, CP_STTTANNM As clsCP)
+    AE_BackColor(5) = &H8000000F  '背景色：グレー
+    CL_SSSMAIN(CP_STTTANNM.CpPx) = 5
+    SSSMAIN_STTTANNM_BeginPrg = True
+End Function
+
+

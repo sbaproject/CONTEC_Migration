@@ -1,0 +1,35 @@
+	Option Explicit
+'==========================================================================
+'   TOKPR53.DBM  製品別得意先別ﾛｯﾄ単価一覧ﾘｽﾄWK   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKPR53
+    RPTCLTID       As String * 5     'RPT用CLIENTID                             
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    HINNMA         As String * 50    '型式                                      
+    HINNMB         As String * 50    '商品名１                                  
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    TOKRN          As String * 40    '得意先略称                                
+    URITKDT        As String * 8     '適用日                YYYY/MM/DD          
+    URILTSUB       As Currency       '数量終了              #,###,##0.00;;#     
+    URILTPK        As String * 9     '数量終了（ＰＫ）                          
+    TUKKB          As String * 3     '通貨区分              !@@@                
+    DSPORD         As String * 3     '表示順序                                  
+    URILTTKB       As Currency       '単価                  ###,###,##0.0000;;# 
+    STTHINCD       As String * 8     '開始・商品コード      !@@@@@@@@@@@@@      
+    STTHINNM       As String * 50    '型式（開始）                              
+    ENDHINCD       As String * 10    '終了・商品コード      !@@@@@@@@@@@@@      
+    ENDHINNM       As String * 50    '型式                                      
+    STTTOKCD       As String * 10    '開始・得意先コード    0000000000          
+    STTTOKNM       As String * 40    '開始・得意先名                            
+    ENDTOKCD       As String * 6     '終了・得意先コード    000000              
+    ENDTOKNM       As String * 40    '終了・得意先名                            
+End Type
+Global DB_TOKPR53 As TYPE_DB_TOKPR53
+Global DBN_TOKPR53 As Integer
+' Index1( RPTCLTID + HINCD + TOKCD + URITKDT + URILTPK + TUKKB )
+
+Sub TOKPR53_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKPR53, G_LB)
+    Call ResetBuf(DBN_TOKPR53)
+End Sub

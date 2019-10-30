@@ -1,0 +1,65 @@
+Attribute VB_Name = "ENDSKCD_F51"
+Option Explicit
+'
+'スロット名      :仕切用商品群コード・画面項目スロット
+'ユニット名      :SKCD.F55
+'記述者          :Standard Library
+'作成日付        :2006/08/11
+'使用プログラム  :nykpr52
+'
+'
+
+Function ENDSKCD_Check(ByVal ENDSKCD, ByVal STTSKCD)
+Dim rtn As Integer
+    '
+    ENDSKCD_Check = 0
+    If ENDSKCD < STTSKCD Then
+        rtn = DSP_MsgBox(SSS_ERROR, "ENDCHECK", 0)
+        ENDSKCD_Check = -1
+        Exit Function
+    End If
+    
+    Call RNKMTA_RClear
+    If LenWid(ENDSKCD) = 0 Or Trim$(ENDSKCD) = "" Then
+    Else
+        Call DB_GetEq(DBN_RNKMTA, 1, ENDSKCD, BtrNormal)
+''''''''If DBSTAT = 0 Then
+''''''''    If DB_RNKMTA.DATKB = "9" Then
+''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+''''''''        ENDSKCD_Check = 1
+''''''''    End If
+''''''''Else
+''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+''''''''    ENDSKCD_Check = -1
+''''''''End If
+    End If
+    'Call SCR_FromRNKMTA(De_Index)
+End Function
+
+Function ENDSKCD_Slist(PP As clsPP, ByVal ENDSKCD)
+    '
+    DB_PARA(DBN_RNKMTA).KeyNo = 1
+    DB_PARA(DBN_RNKMTA).KeyBuf = ENDSKCD
+''''WLS_MEI1.Show 1
+''''Unload WLS_MEI1
+''''ENDSKCD_Slist = PP.SlistCom
+    
+    WLS_MEI1.Caption = "ランク一覧"
+    WLS_MEI1!LST.Clear
+    Call DB_GetGrEq(DBN_MEIMTA, 3, "043", BtrNormal)
+    Do While DBSTAT = 0 And DB_MEIMTA.KEYCD = "043"
+        If DB_MEIMTA.DATKB <> "9" Then
+        WLS_MEI1!LST.AddItem LeftWid(DB_MEIMTA.MEICDA, 5) & " " & LeftWid(DB_MEIMTA.MEINMA, 40)
+        End If
+        Call DB_GetNext(DBN_MEIMTA, BtrNormal)
+    Loop
+    SSS_WLSLIST_KETA = LenWid(DB_MEIMTA.MEICDA)
+    WLS_MEI1.Show 1
+    Unload WLS_MEI1
+    ENDSKCD_Slist = PP.SlistCom
+    
+End Function
+Function ENDSKCD_InitVal(ByVal ENDSKCD)
+    ENDSKCD_InitVal = "ZZZZ"
+    
+End Function

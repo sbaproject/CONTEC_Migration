@@ -1,0 +1,239 @@
+Option Explicit
+Global Const SSS_MAX_DB% = 18
+Global DB_PARA(SSS_MAX_DB) As TYPE_DB_PARA
+Global Const SSS_PrgId = "URKPR62"
+Global Const SSS_PrgNm = "入金消込日記帳（外貨）        "
+Global Const SSS_FraId = "PR2"
+Global WG_OPEID    As String
+Global WG_OPENM    As String
+Global WG_STTTOKCD As String
+Global WG_STTTOKRN As String
+Global WG_STTTANCD As String
+Global WG_STTTANNM As String
+Global WG_STTWRTDT As String
+Global WG_ENDWRTDT As String
+Global WG_STTWRTTM As String
+Global WG_ENDWRTTM As String
+Global WG_STTKSIDT As String
+Global WG_ENDKSIDT As String
+
+Sub Init_Fil () 'Generated.
+    '
+    DBN_URKPR62 = 0
+    DB_PARA(DBN_URKPR62).TBLID = "URKPR62"
+    DB_PARA(DBN_URKPR62).DBID = "USR9"
+    SSS_MFIL = DBN_URKPR62
+    '
+    DBN_SYSTBA = 1
+    DB_PARA(DBN_SYSTBA).TBLID = "SYSTBA"
+    DB_PARA(DBN_SYSTBA).DBID = "USR1"
+    '
+    DBN_SYSTBB = 2
+    DB_PARA(DBN_SYSTBB).TBLID = "SYSTBB"
+    DB_PARA(DBN_SYSTBB).DBID = "USR1"
+    '
+    DBN_SYSTBC = 3
+    DB_PARA(DBN_SYSTBC).TBLID = "SYSTBC"
+    DB_PARA(DBN_SYSTBC).DBID = "USR1"
+    '
+    DBN_SYSTBD = 4
+    DB_PARA(DBN_SYSTBD).TBLID = "SYSTBD"
+    DB_PARA(DBN_SYSTBD).DBID = "USR1"
+    '
+    DBN_SYSTBF = 5
+    DB_PARA(DBN_SYSTBF).TBLID = "SYSTBF"
+    DB_PARA(DBN_SYSTBF).DBID = "USR1"
+    '
+    DBN_SYSTBG = 6
+    DB_PARA(DBN_SYSTBG).TBLID = "SYSTBG"
+    DB_PARA(DBN_SYSTBG).DBID = "USR1"
+    '
+    DBN_SYSTBH = 7
+    DB_PARA(DBN_SYSTBH).TBLID = "SYSTBH"
+    DB_PARA(DBN_SYSTBH).DBID = "USR1"
+    '
+    DBN_CLSMTA = 8
+    DB_PARA(DBN_CLSMTA).TBLID = "CLSMTA"
+    DB_PARA(DBN_CLSMTA).DBID = "USR1"
+    '
+    DBN_CLSMTB = 9
+    DB_PARA(DBN_CLSMTB).TBLID = "CLSMTB"
+    DB_PARA(DBN_CLSMTB).DBID = "USR1"
+    '
+    DBN_TOKMTA = 10
+    DB_PARA(DBN_TOKMTA).TBLID = "TOKMTA"
+    DB_PARA(DBN_TOKMTA).DBID = "USR1"
+    '
+    DBN_TANMTA = 11
+    DB_PARA(DBN_TANMTA).TBLID = "TANMTA"
+    DB_PARA(DBN_TANMTA).DBID = "USR1"
+    '
+    DBN_BMNMTA = 12
+    DB_PARA(DBN_BMNMTA).TBLID = "BMNMTA"
+    DB_PARA(DBN_BMNMTA).DBID = "USR1"
+    '
+    DBN_UNYMTA = 13
+    DB_PARA(DBN_UNYMTA).TBLID = "UNYMTA"
+    DB_PARA(DBN_UNYMTA).DBID = "USR1"
+    '
+    DBN_EXCTBZ = 14
+    DB_PARA(DBN_EXCTBZ).TBLID = "EXCTBZ"
+    DB_PARA(DBN_EXCTBZ).DBID = "USR1"
+    '
+    DBN_GYMTBZ = 15
+    DB_PARA(DBN_GYMTBZ).TBLID = "GYMTBZ"
+    DB_PARA(DBN_GYMTBZ).DBID = "USR1"
+    '
+    DBN_KNGMTB = 16
+    DB_PARA(DBN_KNGMTB).TBLID = "KNGMTB"
+    DB_PARA(DBN_KNGMTB).DBID = "USR1"
+    '
+    DBN_TANWTA = 17
+    DB_PARA(DBN_TANWTA).TBLID = "TANWTA"
+    DB_PARA(DBN_TANWTA).DBID = "USR1"
+    '
+    DBN_NKSTRA = -1
+
+    SSS_LSTMFIL = DBN_URKPR62
+End Sub
+
+Sub SCR_FromMfil (ByVal De As Integer) 'Generated.
+    Call DP_SSSMAIN_ENDKSIDT(De, DB_URKPR62.ENDKSIDT)
+    Call DP_SSSMAIN_ENDWRTDT(De, DB_URKPR62.ENDWRTDT)
+    Call DP_SSSMAIN_ENDWRTTM(De, DB_URKPR62.ENDWRTTM)
+    Call DP_SSSMAIN_STTKSIDT(De, DB_URKPR62.STTKSIDT)
+    Call DP_SSSMAIN_STTTANCD(De, DB_URKPR62.STTTANCD)
+    Call DP_SSSMAIN_STTTANNM(De, DB_URKPR62.STTTANNM)
+    Call DP_SSSMAIN_STTTOKCD(De, DB_URKPR62.STTTOKCD)
+    Call DP_SSSMAIN_STTTOKRN(De, DB_URKPR62.STTTOKRN)
+    Call DP_SSSMAIN_STTWRTDT(De, DB_URKPR62.STTWRTDT)
+    Call DP_SSSMAIN_STTWRTTM(De, DB_URKPR62.STTWRTTM)
+End Sub
+
+Sub Mfil_FromSCR (ByVal De As Integer) 'Generated.
+    DB_URKPR62.ENDKSIDT = RD_SSSMAIN_ENDKSIDT(De)
+    DB_URKPR62.ENDWRTDT = RD_SSSMAIN_ENDWRTDT(De)
+    DB_URKPR62.ENDWRTTM = RD_SSSMAIN_ENDWRTTM(De)
+    DB_URKPR62.STTKSIDT = RD_SSSMAIN_STTKSIDT(De)
+    DB_URKPR62.STTTANCD = RD_SSSMAIN_STTTANCD(De)
+    DB_URKPR62.STTTANNM = RD_SSSMAIN_STTTANNM(De)
+    DB_URKPR62.STTTOKCD = RD_SSSMAIN_STTTOKCD(De)
+    DB_URKPR62.STTTOKRN = RD_SSSMAIN_STTTOKRN(De)
+    DB_URKPR62.STTWRTDT = RD_SSSMAIN_STTWRTDT(De)
+    DB_URKPR62.STTWRTTM = RD_SSSMAIN_STTWRTTM(De)
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+        DB_URKPR62.WRTTM = Format(Now, "hhmmss")
+        DB_URKPR62.WRTDT = Format(Now, "YYYYMMDD")
+    Else
+        DB_URKPR62.WRTTM = DB_ORATM
+        DB_URKPR62.WRTDT = DB_ORADT
+    End If
+End Sub
+
+Sub URKPR62_FromTANMTA () 'Generated.
+    Dim i As Integer 
+
+    DB_URKPR62.TANNM = DB_TANMTA.TANNM
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+    Else
+    End If
+End Sub
+
+Sub URKPR62_FromTOKMTA () 'Generated.
+    Dim i As Integer 
+
+    DB_URKPR62.TOKSEIRN = DB_TOKMTA.TOKRN
+    If Trim$(DB_ORATM) = "" Or Trim$(DB_ORADT) = "" Then
+    Else
+    End If
+End Sub
+
+Sub UpdSmf () 'Generated.
+End Sub
+
+Sub WK_FromScr (ByVal De As Integer) 'Generated.
+    WG_OPEID    = RD_SSSMAIN_OPEID   (0)
+    WG_OPENM    = RD_SSSMAIN_OPENM   (0)
+    WG_STTTOKCD = RD_SSSMAIN_STTTOKCD(0)
+    WG_STTTOKRN = RD_SSSMAIN_STTTOKRN(0)
+    WG_STTTANCD = RD_SSSMAIN_STTTANCD(0)
+    WG_STTTANNM = RD_SSSMAIN_STTTANNM(0)
+    WG_STTWRTDT = RD_SSSMAIN_STTWRTDT(0)
+    WG_ENDWRTDT = RD_SSSMAIN_ENDWRTDT(0)
+    If LenWid(Trim$(WG_ENDWRTDT)) = 0 Then
+        WG_ENDWRTDT = HighValue(LenWid(WG_ENDWRTDT))
+    End If
+    WG_STTWRTTM = RD_SSSMAIN_STTWRTTM(0)
+    WG_ENDWRTTM = RD_SSSMAIN_ENDWRTTM(0)
+    If LenWid(Trim$(WG_ENDWRTTM)) = 0 Then
+        WG_ENDWRTTM = HighValue(LenWid(WG_ENDWRTTM))
+    End If
+    WG_STTKSIDT = RD_SSSMAIN_STTKSIDT(0)
+    WG_ENDKSIDT = RD_SSSMAIN_ENDKSIDT(0)
+    If LenWid(Trim$(WG_ENDKSIDT)) = 0 Then
+        WG_ENDKSIDT = HighValue(LenWid(WG_ENDKSIDT))
+    End If
+End Sub
+
+Sub SetBuf (ByVal Fno As Integer) 'Generated.
+    Select Case Fno
+        Case DBN_URKPR62: Lset G_LB = DB_URKPR62
+        Case DBN_SYSTBA: Lset G_LB = DB_SYSTBA
+        Case DBN_SYSTBB: Lset G_LB = DB_SYSTBB
+        Case DBN_SYSTBC: Lset G_LB = DB_SYSTBC
+        Case DBN_SYSTBD: Lset G_LB = DB_SYSTBD
+        Case DBN_SYSTBF: Lset G_LB = DB_SYSTBF
+        Case DBN_SYSTBG: Lset G_LB = DB_SYSTBG
+        Case DBN_SYSTBH: Lset G_LB = DB_SYSTBH
+        Case DBN_CLSMTA: Lset G_LB = DB_CLSMTA
+        Case DBN_CLSMTB: Lset G_LB = DB_CLSMTB
+        Case DBN_TOKMTA: Lset G_LB = DB_TOKMTA
+        Case DBN_TANMTA: Lset G_LB = DB_TANMTA
+        Case DBN_BMNMTA: Lset G_LB = DB_BMNMTA
+        Case DBN_UNYMTA: Lset G_LB = DB_UNYMTA
+        Case DBN_EXCTBZ: Lset G_LB = DB_EXCTBZ
+        Case DBN_GYMTBZ: Lset G_LB = DB_GYMTBZ
+        Case DBN_KNGMTB: Lset G_LB = DB_KNGMTB
+        Case DBN_TANWTA: Lset G_LB = DB_TANWTA
+    End Select
+End Sub
+
+Sub ResetBuf (ByVal Fno As Integer) 'Generated.
+    Select Case Fno
+        Case DBN_URKPR62: Lset DB_URKPR62 = G_LB
+        Case DBN_SYSTBA: Lset DB_SYSTBA = G_LB
+        Case DBN_SYSTBB: Lset DB_SYSTBB = G_LB
+        Case DBN_SYSTBC: Lset DB_SYSTBC = G_LB
+        Case DBN_SYSTBD: Lset DB_SYSTBD = G_LB
+        Case DBN_SYSTBF: Lset DB_SYSTBF = G_LB
+        Case DBN_SYSTBG: Lset DB_SYSTBG = G_LB
+        Case DBN_SYSTBH: Lset DB_SYSTBH = G_LB
+        Case DBN_CLSMTA: Lset DB_CLSMTA = G_LB
+        Case DBN_CLSMTB: Lset DB_CLSMTB = G_LB
+        Case DBN_TOKMTA: Lset DB_TOKMTA = G_LB
+        Case DBN_TANMTA: Lset DB_TANMTA = G_LB
+        Case DBN_BMNMTA: Lset DB_BMNMTA = G_LB
+        Case DBN_UNYMTA: Lset DB_UNYMTA = G_LB
+        Case DBN_EXCTBZ: Lset DB_EXCTBZ = G_LB
+        Case DBN_GYMTBZ: Lset DB_GYMTBZ = G_LB
+        Case DBN_KNGMTB: Lset DB_KNGMTB = G_LB
+        Case DBN_TANWTA: Lset DB_TANWTA = G_LB
+    End Select
+End Sub
+
+Function RecordFromObject (ByVal Fno As Integer) As Integer 'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else :
+    End Select
+    RecordFromObject = Rtc
+End Function
+
+Function ObjectFromRecord (ByVal Fno As Integer) As Integer 'Generated.
+Dim Rtc As Integer
+    Select Case Fno
+        Case Else :
+    End Select
+    ObjectFromRecord = Rtc
+End Function
+

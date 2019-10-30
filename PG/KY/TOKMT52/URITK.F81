@@ -1,0 +1,28 @@
+Attribute VB_Name = "URITK_F81"
+Option Explicit
+'
+'スロット名      :単価・画面項目スロット
+'ユニット名      :URITK.F81
+'記述者          :Standard Library
+'作成日付        :1997/07/03
+'使用プログラム  :TOKMT52
+
+Function URITK_CheckC(ByVal URITK)
+Dim Rtn As Integer
+    '
+  URITK_CheckC = 0
+  
+  If gs_SALTAUTH = "9" Then
+       Call MsgBox("販売単価変更権限がありません", vbOKOnly)
+       URITK_CheckC = -1
+       Exit Function
+  End If
+
+    If SSSVal(URITK) = 0 Then
+        Rtn = DSP_MsgBox(SSS_CONFRM, "TOKMT52", 1)
+        URITK_CheckC = -1
+    End If
+    
+
+End Function
+

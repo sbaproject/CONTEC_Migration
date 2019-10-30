@@ -1,0 +1,158 @@
+Attribute VB_Name = "JDNNO_F52"
+Option Explicit
+'
+' スロット名        : 出荷指示対象No・画面項目スロット
+' ユニット名        : JDNNO.F52
+' 記述者            : Standard Library
+' 作成日付          : 2006/07/16
+' 使用プログラム名  : SYKET51
+'
+Dim NotFirst As Integer
+
+'伝票Noが入力された場合に、そのチェックを行う。
+Function JDNNO_Check(ByVal JDNNO, ByVal WRKKB, ByVal FDNDT, PP As clsPP, CP_JDNNO As clsCP)
+Dim rtn
+    JDNNO_Check = 0
+    If Trim$(JDNNO) = "" Then
+        '番号が空白(or 0)に変更された時に, 初期化する場合
+        '単なるエラーでよければこの Ifブロックは不要
+        SSS_LASTKEY = ""
+        rtn = AE_ChOprtLater(PP, 15)    '表示後追加モードに移行
+        Exit Function
+    End If
+    DB_SQLBUFF = "Select count(*) From SYKTRA"
+    DB_SQLBUFF = DB_SQLBUFF & "               Where SYKTRA.CLTID = '" & SSS_CLTID & "'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.PGID  = '" & SSS_PrgId & "'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.DATKB = '1'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.JDNNO = '" & JDNNO & "'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.ODNYTDT <= '" & DeCNV_DATE(CStr(FDNDT)) & "'"
+    
+    Select Case WRKKB
+           Case "2"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '4'"
+           Case "3"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '6'"
+           Case "4"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '7'"
+           Case "5"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '8'"
+           Case "6"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB IN('2','3')"
+           Case Else
+''''''''''''''''DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB IN('1','2','3','5')"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB IN('1','5')"
+    End Select
+    If Trim(RD_SSSMAIN_SOUCD(0)) <> "" Then
+        DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.OUTSOUCD = '" & RD_SSSMAIN_SOUCD(0) & "'"
+    End If
+    If Trim(RD_SSSMAIN_TOKCD(0)) <> "" Then
+        DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.TOKCD = '" & RD_SSSMAIN_TOKCD(0) & "'"
+    End If
+    WG_SOUCD = RD_SSSMAIN_SOUCD(0)
+'''' UPD 2008/08/30  FKS) S.Nakajima    Start
+''''2007/12/10 UPD-START
+''''WG_TOKCD = RD_SSSMAIN_TOKCD(0)
+    WG_TOKCD = RD_SSSMAIN_TOKCD(0) & Space(Len(DB_SYKTRA.TOKCD) - Len(Trim$(RD_SSSMAIN_TOKCD(0))))
+    WG_TOKCD = Trim$(RD_SSSMAIN_TOKCD(0)) & Space(Len(DB_SYKTRA.TOKCD) - Len(Trim$(RD_SSSMAIN_TOKCD(0))))
+''''2007/12/10 UPD-START
+'''' UPD 2008/08/30  FKS) S.Nakajima    End
+    
+    Call DB_GetSQL2(DBN_SYKTRA, DB_SQLBUFF)
+    If DB_ExtNum.ExtNum(0) <> 0 Then
+            Call DB_GetGrEq(DBN_SYKTRA, 2, SSS_CLTID & SSS_PrgId & "1" & JDNNO, BtrNormal)
+            If (DBSTAT <> 0) Or (DB_SYKTRA.CLTID <> SSS_CLTID) Or _
+               (DB_SYKTRA.PGID <> SSS_PrgId) Or (DB_SYKTRA.DATKB = "9") Then
+                rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)   '該当レコード無し
+                JDNNO_Check = -1
+            Else
+                SSS_LASTKEY = DB_SYKTRA.JDNNO
+                If Trim(RD_SSSMAIN_SOUCD(0)) = "" And Trim(RD_SSSMAIN_TOKCD(0)) = "" Then
+                    Call DP_SSSMAIN_SOUCD(-1, DB_SYKTRA.OUTSOUCD)
+                    Call DP_SSSMAIN_TOKCD(-1, DB_SYKTRA.TOKCD)
+                    WG_SOUCD = DB_SYKTRA.OUTSOUCD
+                    WG_TOKCD = DB_SYKTRA.TOKCD
+                End If
+                rtn = AE_ChOprtLater(PP, 15)    '表示後追加モードに移行
+            End If
+    Else
+        rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)   '該当レコード無し
+        JDNNO_Check = -1
+    End If
+End Function
+
+Function JDNNO_DerivedC(ByVal JDNNO, ByVal WRKKB, ByVal FDNDT, PP As clsPP, CP_JDNNO As clsCP)
+Dim rtn As Integer
+    '
+    JDNNO_DerivedC = JDNNO
+    If Trim$(JDNNO) = "" Then
+        '番号が空白(or 0)に変更された時に, 初期化する場合
+        '単なるエラーでよければこの Ifブロックは不要
+        SSS_LASTKEY = ""
+'''''        Rtn = AE_ChOprtLater(PP, 15)    '表示後追加モードに移行
+        Exit Function
+    End If
+    DB_SQLBUFF = "Select count(*) From SYKTRA"
+    DB_SQLBUFF = DB_SQLBUFF & "               Where SYKTRA.CLTID = '" & SSS_CLTID & "'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.PGID  = '" & SSS_PrgId & "'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.DATKB = '1'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.JDNNO = '" & JDNNO & "'"
+    DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.ODNYTDT <= '" & DeCNV_DATE(CStr(FDNDT)) & "'"
+    Select Case WRKKB
+           Case "2"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '4'"
+           Case "3"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '6'"
+           Case "4"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '7'"
+           Case "5"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB = '8'"
+           Case "6"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB IN('2','3')"
+           Case Else
+''''''''''''''''DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB IN('1','2','3','5')"
+                DB_SQLBUFF = DB_SQLBUFF & "                 AND SYKTRA.WRKKB IN('1','5')"
+    End Select
+    Call DB_GetSQL2(DBN_SYKTRA, DB_SQLBUFF)
+    If DB_ExtNum.ExtNum(0) <> 0 Then
+            Call DB_GetGrEq(DBN_SYKTRA, 2, SSS_CLTID & SSS_PrgId & "1" & JDNNO, BtrNormal)
+            If (DBSTAT <> 0) Or (DB_SYKTRA.CLTID <> SSS_CLTID) Or _
+               (DB_SYKTRA.PGID <> SSS_PrgId) Or (DB_SYKTRA.DATKB = "9") Then
+                rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)   '該当レコード無し
+            Else
+                SSS_LASTKEY = DB_SYKTRA.JDNNO
+                rtn = AE_ChOprtLater(PP, 15)    '表示後追加モードに移行
+            End If
+    Else
+        rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)   '該当レコード無し
+        JDNNO_DerivedC = ""
+    End If
+End Function
+
+Function JDNNO_InitVal(ByVal JDNNO)
+    '
+    If NotFirst = False Then
+        NotFirst = True
+        JDNNO_InitVal = ""
+    Else
+        JDNNO_InitVal = JDNNO
+    End If
+    
+End Function
+
+Function JDNNO_Slist(PP As clsPP, ByVal JDNNO, ByVal WRKKB, ByVal FDNDT)
+    DB_PARA(DBN_SYKTRA).KeyNo = 2
+    DB_PARA(DBN_SYKTRA).KeyBuf = SSS_CLTID & SSS_PrgId & "1" & WRKKB & FDNDT
+    WLSFDN.Show 1
+    Unload WLSFDN
+    JDNNO_Slist = PP.SlistCom
+    If IsNull(PP.SlistCom) Then
+        JDNNO_Slist = Null
+    Else
+        JDNNO_Slist = Left(PP.SlistCom, Len(DB_SYKTRA.JDNNO))
+        Call DP_SSSMAIN_SOUCD(-1, Mid(PP.SlistCom, 11, Len(DB_SYKTRA.OUTSOUCD)))
+        Call DP_SSSMAIN_TOKCD(-1, Mid(PP.SlistCom, 14, Len(DB_SYKTRA.TOKCD)))
+    End If
+    
+End Function
+
+

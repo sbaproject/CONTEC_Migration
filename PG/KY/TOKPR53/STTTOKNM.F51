@@ -1,0 +1,37 @@
+Attribute VB_Name = "STTTOKNM_F51"
+Option Explicit
+'
+' スロット名        : 得意先名称・画面項目スロット
+' ユニット名        : TOKNM.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/17
+' 使用プログラム名  : NYKPR52
+'
+
+Function STTTOKNM_Derived(ByVal STTTOKNM, ByVal STTTOKCD, ByVal De_Index)
+    
+    If Trim(STTTOKCD) = "" Then
+        DB_TOKMTA.TOKRN = " "
+    Else
+        Call TOKMTA_RClear
+        Call DB_GetEq(DBN_TOKMTA, 1, STTTOKCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_TOKMTA.DATKB = "9" Then
+                Call TOKMTA_RClear
+            End If
+        Else
+            Call TOKMTA_RClear
+        End If
+    End If
+    STTTOKNM_Derived = DB_TOKMTA.TOKRN
+    
+End Function
+Function STTTOKNM_InitVal(ByVal STTTOKNM, ByVal STTTOKCD, ByVal De_Index)
+    'If Trim(DB_TOKMTA.TOKCD) = "" Then
+    If Trim(STTTOKCD) = "" Then
+        STTTOKNM_InitVal = FillVal(" ", LenWid(DB_TOKMTA.TOKRN))
+    Else
+        STTTOKNM_InitVal = DB_TOKMTA.TOKRN
+    End If
+End Function
+

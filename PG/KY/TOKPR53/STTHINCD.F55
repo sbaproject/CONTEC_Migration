@@ -1,0 +1,48 @@
+Attribute VB_Name = "STTHINCD_F55"
+Option Explicit
+'
+' スロット名        : 開始商品コード・画面項目スロット
+' ユニット名        : STTHINCD.F01
+' 記述者            : Standard Library
+' 作成日付          : 1995/10/01
+' 使用プログラム名  : UODPR02 / SODPR02 / SODPR04 / SYKPR15
+'                     NYKPR15
+'                     TNAPR01 / TNAPR02 / TNAPR03 / TNAPR04 / TNAPR05 / TNAPR06
+'                     CSVPR01 / CSVPR02
+'
+
+Function STTHINCD_Check(ByVal STTHINCD)
+Dim rtn As Integer
+Dim wkHINCD As String
+    '
+    STTHINCD_Check = 0
+    Call HINMTA_RClear
+    If LenWid(STTHINCD) = 0 Or Trim$(STTHINCD) = "" Then
+    Else
+        Call DB_GetEq(DBN_HINMTA, 1, STTHINCD, BtrNormal)
+''''''''If DBSTAT = 0 Then
+''''''''    If DB_HINMTA.DATKB = "9" Then
+''''''''        Call Dsp_Prompt("RNOTFOUND", 1)         ' 削除済レコードです。
+''''''''        STTHINCD_Check = 1
+''''''''    End If
+''''''''Else
+''''''''    rtn = DSP_MsgBox(SSS_ERROR, "RNOTFOUND", 0)
+''''''''    STTHINCD_Check = -1
+''''''''End If
+    
+    End If
+    'Call SCR_FromHINMTA(De_Index)
+End Function
+
+Function STTHINCD_InitVal()
+    '
+    STTHINCD_InitVal = FillVal(" ", LenWid(DB_HINMTA.HINCD))
+End Function
+
+Function STTHINCD_Slist(PP As clsPP, ByVal STTHINCD)
+    DB_PARA(DBN_HINMTA).KeyBuf = STTHINCD
+    WLSHIN.Show 1
+    Unload WLSHIN
+    STTHINCD_Slist = PP.SlistCom
+End Function
+

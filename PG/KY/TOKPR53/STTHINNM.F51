@@ -1,0 +1,30 @@
+Attribute VB_Name = "STTHINNM_F51"
+Option Explicit
+'
+' スロット名        : 倉庫名称・画面項目スロット
+' ユニット名        : STTHINNM.F51
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/17
+' 使用プログラム名  : NYKPR52
+'
+
+Function STTHINNM_Derived(ByVal STTHINNM, ByVal STTHINCD, ByVal De_Index)
+    
+    Call HINMTA_RClear
+    Call DB_GetEq(DBN_HINMTA, 1, STTHINCD, BtrNormal)
+    
+'    If Trim(STTHINCD) = "" Then
+'       DB_HINMTA.HINNMA = " "
+'    End If
+    STTHINNM_Derived = DB_HINMTA.HINNMA
+    
+End Function
+Function STTHINNM_InitVal(ByVal STTHINNM, ByVal STTHINCD, ByVal De_Index)
+    'If Trim(DB_HINMTA.STTHINCD) = "" Then
+    If Trim(STTHINCD) = "" Then
+      STTHINNM_InitVal = FillVal(" ", LenWid(DB_HINMTA.HINNMA))
+    Else
+      STTHINNM_InitVal = DB_HINMTA.HINNMA
+    End If
+End Function
+

@@ -11,11 +11,14 @@ Module HINCD_F53
 	
 	Function HINCD_CheckC(ByRef HINCD As Object, ByVal TOKCD As Object, ByVal URITKDT As Object, ByVal TUKKB As Object, ByVal De_Index As Object) As Object
 		Dim Rtn As Short
-		Dim strSQL As String
-		
-		Call HINMTA_RClear()
-		Call TOKMTA_RClear()
-		Call TOKMTC_RClear()
+        Dim strSQL As String
+
+        '2019/10/18 DEL START
+        'Call HINMTA_RClear()
+        'Call TOKMTA_RClear()
+        '2019/10/18 DEL E N D
+
+        Call TOKMTC_RClear()
 		'Call SCR_FromMfil(De_Index)
 		'UPGRADE_WARNING: オブジェクト HINCD_CheckC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		HINCD_CheckC = 0

@@ -1,0 +1,55 @@
+	Option Explicit
+'==========================================================================
+'   BMNMTA.DBM   部門マスタ                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_BMNMTA
+    DATKB          As String * 1     '伝票削除区分          0                   
+    BMNCD          As String * 6     '部門コード            000000              
+    STTTKDT        As String * 8     '適用開始日                                
+    ENDTKDT        As String * 8     '適用終了日            YYYY/MM/DD          
+    BMNNM          As String * 40    '出荷元名                                  
+    BMNZP          As String * 20    '出荷元郵便番号                            
+    BMNADA         As String * 60    '出荷元住所１                              
+    BMNADB         As String * 60    '出荷元住所２                              
+    BMNADC         As String * 60    '出荷元住所３                              
+    BMNTL          As String * 20    '出荷元電話番号                            
+    BMNFX          As String * 20    '出荷元ＦＡＸ番号                          
+    BMNURL         As String * 50    '出荷元ＵＲＬ                              
+    BMNCDUP        As String * 6     '上位部門コード        000000              
+    BMNLV          As Currency       '階層                  00                  
+    ZMJGYCD        As String * 1     '会計事業所コード      !@                  
+    ZMCD           As String * 1     '会計区分コード        0                   
+    ZMBMNCD        As String * 3     '会計部門コード        000                 
+    EIGYOCD        As String * 1     '営業所コード          0                   
+    TIKKB          As String * 2     '地区区分              00                  
+    HTANCD         As String * 3     '発注担当コード        000                 
+    STANCD         As String * 3     '生産担当コード        000                 
+    BMNPRNM        As String * 40    '印字用名称                                
+    RELFL          As String * 1     '連携フラグ            0                   
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+End Type
+Global DB_BMNMTA As TYPE_DB_BMNMTA
+Global DBN_BMNMTA As Integer
+' Index1( BMNCD + STTTKDT )
+' Index2( DATKB + HTANCD )
+' Index3( BMNCD + ENDTKDT )
+' Index4( BMNCD )
+' Index5( DATKB + BMNCD + STTTKDT )
+
+Sub BMNMTA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_BMNMTA, G_LB)
+    Call ResetBuf(DBN_BMNMTA)
+End Sub

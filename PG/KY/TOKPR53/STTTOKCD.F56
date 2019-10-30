@@ -1,0 +1,42 @@
+Attribute VB_Name = "STTTOKCD_F56"
+Option Explicit
+'
+'スロット名      :得意先コード・画面項目スロット
+'ユニット名      :TOKCD.F56
+'記述者          :Standard Library
+'作成日付        :2006/08/11
+'使用プログラム  :nykpr52
+'
+'
+
+Function STTTOKCD_Check(ByVal STTTOKCD)
+Dim Rtn As Integer
+    '
+    STTTOKCD_Check = 0
+    Call TOKMTA_RClear
+    If LenWid(STTTOKCD) = 0 Or Trim$(STTTOKCD) = "" Then
+    Else
+        Call DB_GetLsEq(DBN_TOKMTA, 1, STTTOKCD, BtrNormal)
+        If DBSTAT = 0 Then
+            If DB_TOKMTA.DATKB = "9" Then
+                Call TOKMTA_RClear
+            End If
+        Else
+            Call TOKMTA_RClear
+        End If
+    End If
+    'Call SCR_FromTOKMTA(De_Index)
+End Function
+
+Function STTTOKCD_Slist(PP As clsPP, ByVal STTTOKCD)
+    '
+    DB_PARA(DBN_TOKMTA).KeyNo = 1
+    DB_PARA(DBN_TOKMTA).KeyBuf = STTTOKCD
+    WLSTOK.Show 1
+    Unload WLSTOK
+    STTTOKCD_Slist = PP.SlistCom
+End Function
+Function STTTOKCD_InitVal(ByVal STTTOKCD)
+      STTTOKCD_InitVal = " "
+    
+End Function

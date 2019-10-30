@@ -1,0 +1,58 @@
+Attribute VB_Name = "DENDT_F54"
+Option Explicit
+'
+' スロット名        : 移動伝票日付・画面項目スロット
+' ユニット名        : DENDT.F54
+' 記述者            : Standard Library
+' 作成日付          : 2006/08/22
+' 使用プログラム名  : IDOPR52
+'
+Dim NotFirst As Integer
+
+Function DENDT_CheckC(DENDT, ByVal De_Index)
+Dim rtn As Integer
+    '
+    DENDT_CheckC = 0
+    If Trim$(DENDT) = "" Then
+        rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)      ' 日付に誤りがあります。
+        DENDT_CheckC = -1
+    Else
+        If Not IsDate(DENDT) Then
+            rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)      ' 日付に誤りがあります。
+            DENDT_CheckC = -1
+        Else
+'        '運用日付とのﾁｪｯｸ
+'             If CLng(Format(DENDT, "YYYYMMDD")) > CLng(DB_UNYMTA.UNYDT) Then
+'                 rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)  '日付に誤りがあります。修正してください。
+'                 DENDT_CheckC = -1
+'             End If
+        End If
+    End If
+End Function
+
+Function DENDT_InitVal(ByVal DENDT)
+    '
+''''If Trim(DENDT) = "" Then                                        '2006.10.19
+''''    DENDT_InitVal = DB_UNYMTA.UNYDT     '運用の日付。           '2006.10.19
+''''Else                                                            '2006.10.19
+''''    DENDT_InitVal = DENDT               '前の日付。             '2006.10.19
+''''End If                                                          '2006.10.19
+    DENDT_InitVal = ""
+End Function
+
+Function DENDT_Skip(CT_DENDT As Control)
+    '
+''''CT_DENDT.SelStart = 8 'yyyy-mm-dd の dd のところ。              '2006.10.19
+''''DENDT_Skip = False                                              '2006.10.19
+End Function
+
+Function DENDT_Slist(ByVal DENDT, PP As clsPP)
+    '
+    Set_date = DENDT
+    WLS_DATE.Show 1
+    Unload WLS_DATE
+    DENDT_Slist = Set_date
+    
+End Function
+
+

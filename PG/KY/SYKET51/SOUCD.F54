@@ -1,0 +1,19 @@
+Attribute VB_Name = "SOUCD_F54"
+Option Explicit
+'
+'スロット名      :倉庫コード・画面項目スロット
+'ユニット名      :SOUCD.F54
+'記述者          :Standard Library
+'作成日付        :2006/07/16
+'使用プログラム  :SYKET51
+'
+
+Function SOUCD_Slist(PP As clsPP, ByVal SOUCD)
+    '
+    DB_PARA(DBN_SOUMTA).KeyNo = 1
+    DB_PARA(DBN_SOUMTA).KeyBuf = SOUCD
+    WLSSOU.Show 1
+    Unload WLSSOU
+    SOUCD_Slist = PP.SlistCom
+End Function
+

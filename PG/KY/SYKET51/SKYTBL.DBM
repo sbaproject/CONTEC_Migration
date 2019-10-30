@@ -1,0 +1,44 @@
+	Option Explicit
+'==========================================================================
+'   SKYTBL.DBM   支給品ファイル                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SKYTBL
+    DATKB          As String * 1     '伝票削除区分          0                   
+    SPRNOKDT       As String * 8     '分割希望納期          YYYY/MM/DD          
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    SBNNO          As String * 20    '製番                                      
+    PLANKB         As String * 1     '計画区分              !@                  
+    SPRRENNO       As String * 1     '分割連番              0                   
+    OUTYOTSU       As Currency       '出庫予定数量          #,###,##0           
+    ATZHIKSU       As Currency       '自動在庫引当数        #,###,##0.00;;#     
+    ATNHIKSU       As Currency       '自動入庫予定引当数    #,###,##0.00;;#     
+    MNZHIKSU       As Currency       '手動在庫引当数        #,###,##0.00;;#     
+    MNNHIKSU       As Currency       '手動入庫予定引当数    #,###,##0.00;;#     
+    FRDSU          As Currency       '出荷指示数量          #,###,##0.00;;#     
+    OUTZMISU       As Currency       '出庫済数量            #,###,##0           
+    SKYDT          As String * 8     '支給日付              YYYY/MM/DD          
+    PUDLNO         As String * 10    '入出庫番号            0000000000          
+    OUTBSCD        As String * 3     '出荷場所              000                 
+    OUTSOUCD       As String * 3     '出荷倉庫              000                 
+    SKYSB          As String * 1     '支給品種別            0                   
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    ALLOUTSU       As Currency       '全体出庫数量          #,###,##0           
+    ALLNOKDT       As String * 8     '全体希望納期          YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+End Type
+Global DB_SKYTBL As TYPE_DB_SKYTBL
+Global DBN_SKYTBL As Integer
+' Index1( DATKB + SPRNOKDT + HINCD + SBNNO + PLANKB + SPRRENNO )
+' Index2( DATKB + PLANKB + OUTSOUCD + HINCD )
+
+Sub SKYTBL_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_SKYTBL, G_LB)
+    Call ResetBuf(DBN_SKYTBL)
+End Sub

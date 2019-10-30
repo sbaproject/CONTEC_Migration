@@ -1,0 +1,37 @@
+	Option Explicit
+'==========================================================================
+'   DTLTRA.DBM   引当内訳ファイル                 UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_DTLTRA
+    TRAKB          As String * 1     'トラン種別                                
+    TRANO          As String * 20    'トラン番号                                
+    MITNOV         As String * 2     '版数                  00                  
+    LINNO          As String * 3     '行番号                000                 
+    PUDLNO         As String * 10    '入出庫番号            0000000000          
+    TRADT          As String * 8     'トラン日付            YYYY/MM/DD          
+    HIKNO          As String * 5     '引当番号                                  
+    ATMNKB         As String * 1     '自動手動引当区分                          
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    INPYTDT        As String * 8     '入庫予定日            YYYY/MM/DD          
+    LOTNO          As String * 20    'ロット№                                  
+    SOUCD          As String * 3     '倉庫コード            000                 
+    SISNKB         As String * 1     '資産元区分            0                   
+    SOUTRICD       As String * 10    '取引先コード          !@@@@@@@@@@         
+    SOUKOKB        As String * 2     '倉庫区分              00                  
+    HIKSU          As Currency       '引当数                #,###,##0.00;;#     
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+End Type
+Global DB_DTLTRA As TYPE_DB_DTLTRA
+Global DBN_DTLTRA As Integer
+' Index1( TRAKB + TRANO + MITNOV + LINNO + TRADT + HIKNO + ATMNKB + HINCD + PUDLNO )
+
+Sub DTLTRA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_DTLTRA, G_LB)
+    Call ResetBuf(DBN_DTLTRA)
+End Sub

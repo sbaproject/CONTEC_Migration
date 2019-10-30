@@ -130,35 +130,39 @@ Module TOKMTC_M51
 					' === 20080903 === UPDATE S - RISE)Izumi チェック項目追加
 					'                    bolRet = MF_Chk_UWRTDTTM_T(strWRTDT, strWRTTM, strUWRTDT, strUWRTTM, I)
 					bolRet = TOKMT52_MF_Chk_UWRTDTTM_T(strOPEID, strCLTID, strUOPEID, strUCLTID, strWRTDT, strWRTTM, strUWRTDT, strUWRTTM, I)
-					' === 20080903 === UPDATE E - RISE)Izumi
-					If bolRet = False Then
-						intRet = MF_DspMsg(gc_strMsgTOKMT52_E_DEL)
-						'2008/07/11 START ADD FNAP)YAMANE 連絡票№：排他-67
-						Call DB_Unlock(DBN_TOKMTC)
-						Call DB_AbortTransaction()
-						HaitaUpdFlg = 1
-						'2008/07/11 E.N.D ADD FNAP)YAMANE 連絡票№：排他-67
-						Exit Sub
-					End If
-					
-				Else
-					'2007/12/18 upd-str T.KAWAMUKAI
-					If updkb = "追加" Then
-						intRet = MF_DspMsg(gc_strMsgTOKMT52_E_UPD)
-						'2008/07/11 START ADD FNAP)YAMANE 連絡票№：排他-67
-						Call DB_Unlock(DBN_TOKMTC)
-						Call DB_AbortTransaction()
-						'2008/07/11 E.N.D ADD FNAP)YAMANE 連絡票№：排他-67
-						'2007/12/21 add-str T.KAWAMUKAI
-						Exit Sub
-						'2007/12/21 add-end T.KAWAMUKAI
-					Else
-						'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_DATKB(I) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_ULTTKK() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ULTTKKB() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_URITK() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_URITK() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-						If Trim(RD_SSSMAIN_URITK(I)) <> Trim(RD_SSSMAIN_V_URITK(I)) Or Trim(RD_SSSMAIN_ULTTKKB(I)) <> Trim(RD_SSSMAIN_V_ULTTKK(I)) Or RD_SSSMAIN_V_DATKB(I) = "9" Then
+                    ' === 20080903 === UPDATE E - RISE)Izumi
+                    If bolRet = False Then
+                        '2019/10/18 DEL START
+                        'intRet = MF_DspMsg(gc_strMsgTOKMT52_E_DEL)
+                        '2019/10/18 DEL E N D
+                        '2008/07/11 START ADD FNAP)YAMANE 連絡票№：排他-67
+                        Call DB_Unlock(DBN_TOKMTC)
+                        Call DB_AbortTransaction()
+                        HaitaUpdFlg = 1
+                        '2008/07/11 E.N.D ADD FNAP)YAMANE 連絡票№：排他-67
+                        Exit Sub
+                    End If
+
+                Else
+                    '2007/12/18 upd-str T.KAWAMUKAI
+                    If updkb = "追加" Then
+                        '2019/10/18 DEL START
+                        'intRet = MF_DspMsg(gc_strMsgTOKMT52_E_UPD)
+                        '2019/10/18 DEL E N D
+                        '2008/07/11 START ADD FNAP)YAMANE 連絡票№：排他-67
+                        Call DB_Unlock(DBN_TOKMTC)
+                        Call DB_AbortTransaction()
+                        '2008/07/11 E.N.D ADD FNAP)YAMANE 連絡票№：排他-67
+                        '2007/12/21 add-str T.KAWAMUKAI
+                        Exit Sub
+                        '2007/12/21 add-end T.KAWAMUKAI
+                    Else
+                        'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_DATKB(I) の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_ULTTKK() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_ULTTKKB() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_V_URITK() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        'UPGRADE_WARNING: オブジェクト RD_SSSMAIN_URITK() の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+                        If Trim(RD_SSSMAIN_URITK(I)) <> Trim(RD_SSSMAIN_V_URITK(I)) Or Trim(RD_SSSMAIN_ULTTKKB(I)) <> Trim(RD_SSSMAIN_V_ULTTKK(I)) Or RD_SSSMAIN_V_DATKB(I) = "9" Then
 							
 							'2008/07/11 START ADD FNAP)YAMANE 連絡票№：排他-67
 							HaitaUpdFlg = 0
@@ -194,17 +198,19 @@ Module TOKMTC_M51
 							' === 20080903 === UPDATE S - RISE)Izumi チェック項目追加
 							'                        bolRet = MF_Chk_UWRTDTTM_T(strWRTDT, strWRTTM, strUWRTDT, strUWRTTM, I)
 							bolRet = TOKMT52_MF_Chk_UWRTDTTM_T(strOPEID, strCLTID, strUOPEID, strUCLTID, strWRTDT, strWRTTM, strUWRTDT, strUWRTTM, I)
-							' === 20080903 === UPDATE E - RISE)Izumi
-							If bolRet = False Then
-								intRet = MF_DspMsg(gc_strMsgTOKMT52_E_UPD)
-								'2008/07/11 START ADD FNAP)YAMANE 連絡票№：排他-67
-								Call DB_Unlock(DBN_TOKMTC)
-								Call DB_AbortTransaction()
-								HaitaUpdFlg = 1
-								'2008/07/11 E.N.D ADD FNAP)YAMANE 連絡票№：排他-67
-								Exit Sub
-							End If
-						End If
+                            ' === 20080903 === UPDATE E - RISE)Izumi
+                            If bolRet = False Then
+                                '2019/10/18 DEL START
+                                'intRet = MF_DspMsg(gc_strMsgTOKMT52_E_UPD)
+                                '2019/10/18 DEL E N D
+                                '2008/07/11 START ADD FNAP)YAMANE 連絡票№：排他-67
+                                Call DB_Unlock(DBN_TOKMTC)
+                                Call DB_AbortTransaction()
+                                HaitaUpdFlg = 1
+                                '2008/07/11 E.N.D ADD FNAP)YAMANE 連絡票№：排他-67
+                                Exit Sub
+                            End If
+                        End If
 					End If
 					'2007/12/18 upd-end T.KAWAMUKAI
 				End If

@@ -52,16 +52,18 @@ Module ULTTKKB_F51
 		
 	End Function
 	Function ULTTKKB_DerivedC(ByVal HINCD As Object, ByVal ULTTKKB As Object, ByVal De_Index As Object) As Object
-		'
-		'UPGRADE_WARNING: オブジェクト HINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(HINCD) = "" Then
-			Call HINMTA_RClear()
-			Call TOKMTA_RClear()
-			Call TOKMTC_RClear()
-			
-		Else
-			'UPGRADE_WARNING: オブジェクト ULTTKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Select Case Trim(ULTTKKB)
+        '
+        'UPGRADE_WARNING: オブジェクト HINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(HINCD) = "" Then
+            '2019/10/18 DEL START
+            'Call HINMTA_RClear()
+            'Call TOKMTA_RClear()
+            '2019/10/18 DEL E N D
+            Call TOKMTC_RClear()
+
+        Else
+            'UPGRADE_WARNING: オブジェクト ULTTKKB の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Select Case Trim(ULTTKKB)
 				Case ""
 					'UPGRADE_WARNING: オブジェクト ULTTKKB_DerivedC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 					ULTTKKB_DerivedC = 9

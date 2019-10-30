@@ -40,17 +40,19 @@ Module URITKDT_F51
 	End Function
 	
 	Function URITKDT_DerivedC(ByVal HINCD As Object, ByVal URITKDT As Object, ByVal De_Index As Object) As Object
-		'
-		'If Trim$(HINCD) <> "" And Trim$(TOKCD) <> "" And Trim$(URITKDT) = "" Then
-		'UPGRADE_WARNING: オブジェクト HINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-		If Trim(HINCD) = "" Then
-			Call HINMTA_RClear()
-			Call TOKMTA_RClear()
-			Call TOKMTC_RClear()
-			'URITKDT_DerivedC = Date           ' 本日の日付。
-		Else
-			'UPGRADE_WARNING: オブジェクト URITKDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			Select Case Trim(URITKDT)
+        '
+        'If Trim$(HINCD) <> "" And Trim$(TOKCD) <> "" And Trim$(URITKDT) = "" Then
+        'UPGRADE_WARNING: オブジェクト HINCD の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        If Trim(HINCD) = "" Then
+            '2019/10/18 DEL START
+            'Call HINMTA_RClear()
+            'Call TOKMTA_RClear()
+            '2019/10/18 DEL E N D
+            Call TOKMTC_RClear()
+            'URITKDT_DerivedC = Date           ' 本日の日付。
+        Else
+            'UPGRADE_WARNING: オブジェクト URITKDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            Select Case Trim(URITKDT)
 				Case ""
 					'URITKDT_DerivedC = Date           '本日の日付。
 					'UPGRADE_WARNING: オブジェクト URITKDT_DerivedC の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
@@ -108,9 +110,12 @@ Module URITKDT_F51
 		'
 		'UPGRADE_WARNING: オブジェクト URITKDT の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		If Trim(URITKDT) <> "" Then
-			'UPGRADE_WARNING: オブジェクト CT_URITKDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-			CT_URITKDT.SelStart = 8 'yyyy-mm-dd の dd にカーソルを移動する。
-		End If
+            'UPGRADE_WARNING: オブジェクト CT_URITKDT.SelStart の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+            '2019/10.18 CHG START
+            'CT_URITKDT.SelStart = 8 'yyyy-mm-dd の dd にカーソルを移動する。
+            DirectCast(CT_URITKDT, TextBox).SelectionStart = 8 'yyyy-mm-dd の dd の場所へスキップ。
+            '2019/10.18 CHG E N D
+        End If
 		'UPGRADE_WARNING: オブジェクト URITKDT_Skip の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
 		URITKDT_Skip = False
 	End Function

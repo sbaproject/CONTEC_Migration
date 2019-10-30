@@ -43,28 +43,28 @@
 	Public WithEvents _IM_SelectCm_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Denkyu_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_Denkyu_2 As System.Windows.Forms.PictureBox
-	Public WithEvents FM_Panel3D1 As SSPanel5
-	Public WithEvents _BD_URITKDT_0 As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D3_0 As SSPanel5
-	Public WithEvents _FM_Panel3D4_2 As SSPanel5
-	Public WithEvents _BD_UPDKB_0 As System.Windows.Forms.TextBox
+    Public WithEvents FM_Panel3D1 As Label
+    Public WithEvents _BD_URITKDT_0 As System.Windows.Forms.TextBox
+    Public WithEvents _FM_Panel3D3_0 As Label
+    Public WithEvents _FM_Panel3D4_2 As Label
+    Public WithEvents _BD_UPDKB_0 As System.Windows.Forms.TextBox
 	Public WithEvents _BD_URITK_0 As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D4_1 As SSPanel5
-	Public WithEvents TM_StartUp As System.Windows.Forms.Timer
+    Public WithEvents _FM_Panel3D4_1 As Label
+    Public WithEvents TM_StartUp As System.Windows.Forms.Timer
 	Public WithEvents TX_CursorRest As System.Windows.Forms.TextBox
 	Public WithEvents _BD_HINCD_0 As System.Windows.Forms.TextBox
 	Public WithEvents _BD_HINNMA_0 As System.Windows.Forms.TextBox
 	Public WithEvents _BD_TOKRN_0 As System.Windows.Forms.TextBox
 	Public WithEvents _BD_TOKCD_0 As System.Windows.Forms.TextBox
-	Public WithEvents CS_HINCD As SSCommand5
-	Public WithEvents CM_UPDKB As SSCommand5
-	Public WithEvents CS_TOKCD As SSCommand5
-	Public WithEvents TX_Message As System.Windows.Forms.TextBox
-	Public WithEvents _FM_Panel3D2_2 As SSPanel5
-	Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
-	Public WithEvents _FM_Panel3D15_0 As SSPanel5
-	Public WithEvents SYSDT As SSPanel5
-	Public WithEvents CM_DELETEDE As System.Windows.Forms.PictureBox
+    Public WithEvents CS_HINCD As Button
+    Public WithEvents CM_UPDKB As Button
+    Public WithEvents CS_TOKCD As Button
+    Public WithEvents TX_Message As System.Windows.Forms.TextBox
+    Public WithEvents _FM_Panel3D2_2 As Label
+    Public WithEvents _IM_Denkyu_0 As System.Windows.Forms.PictureBox
+    Public WithEvents _FM_Panel3D15_0 As Label
+    Public WithEvents SYSDT As Label
+    Public WithEvents CM_DELETEDE As System.Windows.Forms.PictureBox
 	Public WithEvents CM_INSERTDE As System.Windows.Forms.PictureBox
 	Public WithEvents CM_PREV As System.Windows.Forms.PictureBox
 	Public WithEvents CM_Execute As System.Windows.Forms.PictureBox
@@ -74,13 +74,13 @@
 	Public WithEvents CM_EndCm As System.Windows.Forms.PictureBox
 	Public WithEvents CM_SelectCm As System.Windows.Forms.PictureBox
 	Public WithEvents Image1 As System.Windows.Forms.PictureBox
-	Public WithEvents FM_Panel3D14 As SSPanel5
-	Public WithEvents _FM_Panel3D3_2 As SSPanel5
-	Public WithEvents _FM_Panel3D4_3 As SSPanel5
-	Public WithEvents _FM_Panel3D4_4 As SSPanel5
-	Public WithEvents CS_TUKKB As SSCommand5
-	Public WithEvents CS_URITKDT As SSCommand5
-	Public WithEvents Label1 As System.Windows.Forms.Label
+    Public WithEvents FM_Panel3D14 As Label
+    Public WithEvents _FM_Panel3D3_2 As Label
+    Public WithEvents _FM_Panel3D4_3 As Label
+    Public WithEvents _FM_Panel3D4_4 As Label
+    Public WithEvents CS_TUKKB As Button
+    Public WithEvents CS_URITKDT As Button
+    Public WithEvents Label1 As System.Windows.Forms.Label
 	Public WithEvents BD_HINCD As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_HINNMA As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_TOKCD As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
@@ -90,11 +90,11 @@
 	Public WithEvents BD_UPDKB As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_URITK As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
 	Public WithEvents BD_URITKDT As Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray
-	Public WithEvents FM_Panel3D15 As SSPanel5Array
-	Public WithEvents FM_Panel3D2 As SSPanel5Array
-	Public WithEvents FM_Panel3D3 As SSPanel5Array
-	Public WithEvents FM_Panel3D4 As SSPanel5Array
-	Public WithEvents IM_DELETEDE As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
+    Public WithEvents FM_Panel3D15 As VB6.PanelArray
+    Public WithEvents FM_Panel3D2 As VB6.PanelArray
+    Public WithEvents FM_Panel3D3 As VB6.PanelArray
+    Public WithEvents FM_Panel3D4 As VB6.PanelArray
+    Public WithEvents IM_DELETEDE As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_Denkyu As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_EndCm As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_Execute As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
@@ -143,8 +143,8 @@
 		Me.HD_OPENM = New System.Windows.Forms.TextBox
 		Me.HD_OPEID = New System.Windows.Forms.TextBox
 		Me._BD_ULTTKKB_0 = New System.Windows.Forms.TextBox
-		Me.FM_Panel3D1 = New SSPanel5
-		Me.TX_Mode = New System.Windows.Forms.TextBox
+        Me.FM_Panel3D1 = New Label
+        Me.TX_Mode = New System.Windows.Forms.TextBox
 		Me.VS_Scrl = New System.Windows.Forms.VScrollBar
 		Me._IM_Execute_1 = New System.Windows.Forms.PictureBox
 		Me._IM_Execute_0 = New System.Windows.Forms.PictureBox
@@ -167,27 +167,27 @@
 		Me._IM_Denkyu_1 = New System.Windows.Forms.PictureBox
 		Me._IM_Denkyu_2 = New System.Windows.Forms.PictureBox
 		Me._BD_URITKDT_0 = New System.Windows.Forms.TextBox
-		Me._FM_Panel3D4_2 = New SSPanel5
-		Me._FM_Panel3D3_0 = New SSPanel5
-		Me._BD_UPDKB_0 = New System.Windows.Forms.TextBox
+        Me._FM_Panel3D4_2 = New Label
+        Me._FM_Panel3D3_0 = New Label
+        Me._BD_UPDKB_0 = New System.Windows.Forms.TextBox
 		Me._BD_URITK_0 = New System.Windows.Forms.TextBox
-		Me._FM_Panel3D4_1 = New SSPanel5
-		Me.TM_StartUp = New System.Windows.Forms.Timer(components)
+        Me._FM_Panel3D4_1 = New Label
+        Me.TM_StartUp = New System.Windows.Forms.Timer(components)
 		Me.TX_CursorRest = New System.Windows.Forms.TextBox
 		Me._BD_HINCD_0 = New System.Windows.Forms.TextBox
 		Me._BD_HINNMA_0 = New System.Windows.Forms.TextBox
 		Me._BD_TOKRN_0 = New System.Windows.Forms.TextBox
 		Me._BD_TOKCD_0 = New System.Windows.Forms.TextBox
-		Me.CS_HINCD = New SSCommand5
-		Me.CM_UPDKB = New SSCommand5
-		Me.CS_TOKCD = New SSCommand5
-		Me._FM_Panel3D15_0 = New SSPanel5
-		Me._FM_Panel3D2_2 = New SSPanel5
-		Me.TX_Message = New System.Windows.Forms.TextBox
+        Me.CS_HINCD = New Button
+        Me.CM_UPDKB = New Button
+        Me.CS_TOKCD = New Button
+        Me._FM_Panel3D15_0 = New System.Windows.Forms.Label()
+        Me._FM_Panel3D2_2 = New Label
+        Me.TX_Message = New System.Windows.Forms.TextBox
 		Me._IM_Denkyu_0 = New System.Windows.Forms.PictureBox
-		Me.FM_Panel3D14 = New SSPanel5
-		Me.SYSDT = New SSPanel5
-		Me.CM_DELETEDE = New System.Windows.Forms.PictureBox
+        Me.FM_Panel3D14 = New Label
+        Me.SYSDT = New Label
+        Me.CM_DELETEDE = New System.Windows.Forms.PictureBox
 		Me.CM_INSERTDE = New System.Windows.Forms.PictureBox
 		Me.CM_PREV = New System.Windows.Forms.PictureBox
 		Me.CM_Execute = New System.Windows.Forms.PictureBox
@@ -197,12 +197,12 @@
 		Me.CM_EndCm = New System.Windows.Forms.PictureBox
 		Me.CM_SelectCm = New System.Windows.Forms.PictureBox
 		Me.Image1 = New System.Windows.Forms.PictureBox
-		Me._FM_Panel3D4_3 = New SSPanel5
-		Me._FM_Panel3D3_2 = New SSPanel5
-		Me._FM_Panel3D4_4 = New SSPanel5
-		Me.CS_TUKKB = New SSCommand5
-		Me.CS_URITKDT = New SSCommand5
-		Me.Label1 = New System.Windows.Forms.Label
+        Me._FM_Panel3D4_3 = New Label
+        Me._FM_Panel3D3_2 = New Label
+        Me._FM_Panel3D4_4 = New Label
+        Me.CS_TUKKB = New Button
+        Me.CS_URITKDT = New Button
+        Me.Label1 = New System.Windows.Forms.Label
 		Me.BD_HINCD = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_HINNMA = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_TOKCD = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
@@ -212,11 +212,11 @@
 		Me.BD_UPDKB = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_URITK = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
 		Me.BD_URITKDT = New Microsoft.VisualBasic.Compatibility.VB6.TextBoxArray(components)
-		Me.FM_Panel3D15 = New SSPanel5Array(components)
-		Me.FM_Panel3D2 = New SSPanel5Array(components)
-		Me.FM_Panel3D3 = New SSPanel5Array(components)
-		Me.FM_Panel3D4 = New SSPanel5Array(components)
-		Me.IM_DELETEDE = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
+        Me.FM_Panel3D15 = New VB6.PanelArray(components)
+        Me.FM_Panel3D2 = New VB6.PanelArray(components)
+        Me.FM_Panel3D3 = New VB6.PanelArray(components)
+        Me.FM_Panel3D4 = New VB6.PanelArray(components)
+        Me.IM_DELETEDE = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_Denkyu = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_EndCm = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_Execute = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
@@ -401,9 +401,9 @@
 		Me.FM_Panel3D1.Size = New System.Drawing.Size(907, 43)
 		Me.FM_Panel3D1.Location = New System.Drawing.Point(0, 534)
 		Me.FM_Panel3D1.TabIndex = 11
-		Me.FM_Panel3D1.ForeColor = 0
-		Me.FM_Panel3D1.OutLine = -1
-		Me.FM_Panel3D1.Name = "FM_Panel3D1"
+        Me.FM_Panel3D1.ForeColor = Color.Empty
+        'Me.FM_Panel3D1.OutLine = -1
+        Me.FM_Panel3D1.Name = "FM_Panel3D1"
 		Me.TX_Mode.AutoSize = False
 		Me.TX_Mode.BackColor = System.Drawing.Color.FromARGB(255, 192, 255)
 		Me.TX_Mode.Size = New System.Drawing.Size(58, 37)
@@ -647,20 +647,20 @@
 		Me._FM_Panel3D4_2.Size = New System.Drawing.Size(100, 22)
 		Me._FM_Panel3D4_2.Location = New System.Drawing.Point(720, 124)
 		Me._FM_Panel3D4_2.TabIndex = 8
-		Me._FM_Panel3D4_2.ForeColor = 0
-		Me._FM_Panel3D4_2.Alignment = 8
-		Me._FM_Panel3D4_2.BevelOuter = 1
-		Me._FM_Panel3D4_2.Caption = "*単　価"
-		Me._FM_Panel3D4_2.OutLine = -1
-		Me._FM_Panel3D4_2.Name = "_FM_Panel3D4_2"
+        Me._FM_Panel3D4_2.ForeColor = Color.Empty
+        'Me._FM_Panel3D4_2.Alignment = 8
+        'Me._FM_Panel3D4_2.BevelOuter = 1
+        Me._FM_Panel3D4_2.Text = "*単　価"
+        'Me._FM_Panel3D4_2.OutLine = -1
+        Me._FM_Panel3D4_2.Name = "_FM_Panel3D4_2"
 		Me._FM_Panel3D3_0.Size = New System.Drawing.Size(109, 25)
 		Me._FM_Panel3D3_0.Location = New System.Drawing.Point(186, 0)
 		Me._FM_Panel3D3_0.TabIndex = 9
-		Me._FM_Panel3D3_0.ForeColor = 0
-		Me._FM_Panel3D3_0.BevelOuter = 1
-		Me._FM_Panel3D3_0.Caption = "Panel3D2"
-		Me._FM_Panel3D3_0.OutLine = -1
-		Me._FM_Panel3D3_0.Name = "_FM_Panel3D3_0"
+        Me._FM_Panel3D3_0.ForeColor = Color.Empty
+        'Me._FM_Panel3D3_0.BevelOuter = 1
+        Me._FM_Panel3D3_0.Text = "Panel3D2"
+        'Me._FM_Panel3D3_0.OutLine = -1
+        Me._FM_Panel3D3_0.Name = "_FM_Panel3D3_0"
 		Me._BD_UPDKB_0.AutoSize = False
 		Me._BD_UPDKB_0.Size = New System.Drawing.Size(43, 22)
 		Me._BD_UPDKB_0.IMEMode = System.Windows.Forms.ImeMode.Off
@@ -710,12 +710,12 @@
 		Me._FM_Panel3D4_1.Size = New System.Drawing.Size(154, 22)
 		Me._FM_Panel3D4_1.Location = New System.Drawing.Point(115, 124)
 		Me._FM_Panel3D4_1.TabIndex = 5
-		Me._FM_Panel3D4_1.ForeColor = 0
-		Me._FM_Panel3D4_1.Alignment = 8
-		Me._FM_Panel3D4_1.BevelOuter = 1
-		Me._FM_Panel3D4_1.Caption = "型　式"
-		Me._FM_Panel3D4_1.OutLine = -1
-		Me._FM_Panel3D4_1.Name = "_FM_Panel3D4_1"
+        Me._FM_Panel3D4_1.ForeColor = Color.Empty
+        'Me._FM_Panel3D4_1.Alignment = 8
+        'Me._FM_Panel3D4_1.BevelOuter = 1
+        Me._FM_Panel3D4_1.Text = "型　式"
+        'Me._FM_Panel3D4_1.OutLine = -1
+        Me._FM_Panel3D4_1.Name = "_FM_Panel3D4_1"
 		Me.TM_StartUp.Enabled = False
 		Me.TM_StartUp.Interval = 1
 		Me.TX_CursorRest.AutoSize = False
@@ -836,41 +836,41 @@
 		Me.CS_HINCD.Location = New System.Drawing.Point(51, 124)
 		Me.CS_HINCD.TabIndex = 16
 		Me.CS_HINCD.TabStop = 0
-		Me.CS_HINCD.ForeColor = 0
-		Me.CS_HINCD.Caption = "*製品ｺｰﾄﾞ"
-		Me.CS_HINCD.BevelWidth = 1
-		Me.CS_HINCD.RoundedCorners = 0
-		Me.CS_HINCD.Name = "CS_HINCD"
-		Me.CM_UPDKB.Size = New System.Drawing.Size(43, 22)
+        Me.CS_HINCD.ForeColor = Color.Empty
+        Me.CS_HINCD.Text = "*製品ｺｰﾄﾞ"
+        'Me.CS_HINCD.BevelWidth = 1
+        'Me.CS_HINCD.RoundedCorners = 0
+        Me.CS_HINCD.Name = "CS_HINCD"
+        Me.CM_UPDKB.Size = New System.Drawing.Size(43, 22)
 		Me.CM_UPDKB.Location = New System.Drawing.Point(9, 124)
 		Me.CM_UPDKB.TabIndex = 15
 		Me.CM_UPDKB.TabStop = 0
-		Me.CM_UPDKB.ForeColor = 0
-		Me.CM_UPDKB.Caption = "ﾓｰﾄﾞ"
-		Me.CM_UPDKB.BevelWidth = 1
-		Me.CM_UPDKB.RoundedCorners = 0
-		Me.CM_UPDKB.Name = "CM_UPDKB"
+        Me.CM_UPDKB.ForeColor = Color.Empty
+        Me.CM_UPDKB.Text = "ﾓｰﾄﾞ"
+        'Me.CM_UPDKB.BevelWidth = 1
+        'Me.CM_UPDKB.RoundedCorners = 0
+        Me.CM_UPDKB.Name = "CM_UPDKB"
 		Me.CS_TOKCD.Size = New System.Drawing.Size(333, 22)
 		Me.CS_TOKCD.Location = New System.Drawing.Point(268, 124)
 		Me.CS_TOKCD.TabIndex = 14
 		Me.CS_TOKCD.TabStop = 0
-		Me.CS_TOKCD.ForeColor = 0
-		Me.CS_TOKCD.Caption = "*得　意　先"
-		Me.CS_TOKCD.BevelWidth = 1
-		Me.CS_TOKCD.RoundedCorners = 0
-		Me.CS_TOKCD.Name = "CS_TOKCD"
+        Me.CS_TOKCD.ForeColor = Color.Empty
+        Me.CS_TOKCD.Text = "*得　意　先"
+        'Me.CS_TOKCD.BevelWidth = 1
+        'Me.CS_TOKCD.RoundedCorners = 0
+        Me.CS_TOKCD.Name = "CS_TOKCD"
 		Me._FM_Panel3D15_0.Size = New System.Drawing.Size(926, 49)
 		Me._FM_Panel3D15_0.Location = New System.Drawing.Point(-3, 477)
 		Me._FM_Panel3D15_0.TabIndex = 17
-		Me._FM_Panel3D15_0.ForeColor = 0
-		Me._FM_Panel3D15_0.OutLine = -1
-		Me._FM_Panel3D15_0.Name = "_FM_Panel3D15_0"
+        Me._FM_Panel3D15_0.ForeColor = Color.Empty
+        'Me._FM_Panel3D15_0.OutLine = -1
+        Me._FM_Panel3D15_0.Name = "_FM_Panel3D15_0"
 		Me._FM_Panel3D2_2.Size = New System.Drawing.Size(700, 31)
 		Me._FM_Panel3D2_2.Location = New System.Drawing.Point(45, 9)
 		Me._FM_Panel3D2_2.TabIndex = 18
-		Me._FM_Panel3D2_2.ForeColor = 0
-		Me._FM_Panel3D2_2.BevelOuter = 1
-		Me._FM_Panel3D2_2.Name = "_FM_Panel3D2_2"
+        Me._FM_Panel3D2_2.ForeColor = Color.Empty
+        'Me._FM_Panel3D2_2.BevelOuter = 1
+        Me._FM_Panel3D2_2.Name = "_FM_Panel3D2_2"
 		Me.TX_Message.AutoSize = False
 		Me.TX_Message.BackColor = System.Drawing.SystemColors.Control
 		Me.TX_Message.ForeColor = System.Drawing.Color.Black
@@ -905,16 +905,16 @@
 		Me.FM_Panel3D14.Size = New System.Drawing.Size(923, 37)
 		Me.FM_Panel3D14.Location = New System.Drawing.Point(-3, 0)
 		Me.FM_Panel3D14.TabIndex = 20
-		Me.FM_Panel3D14.ForeColor = 0
-		Me.FM_Panel3D14.OutLine = -1
-		Me.FM_Panel3D14.Name = "FM_Panel3D14"
+        Me.FM_Panel3D14.ForeColor = Color.Empty
+        'Me.FM_Panel3D14.OutLine = -1
+        Me.FM_Panel3D14.Name = "FM_Panel3D14"
 		Me.SYSDT.Size = New System.Drawing.Size(112, 22)
 		Me.SYSDT.Location = New System.Drawing.Point(784, 8)
 		Me.SYSDT.TabIndex = 21
-		Me.SYSDT.ForeColor = 0
-		Me.SYSDT.BevelOuter = 1
-		Me.SYSDT.Caption = "YYYY/MM/DD"
-		Me.SYSDT.Name = "SYSDT"
+        Me.SYSDT.ForeColor = Color.Empty
+        'Me.SYSDT.BevelOuter = 1
+        Me.SYSDT.Text = "YYYY/MM/DD"
+        Me.SYSDT.Name = "SYSDT"
 		Me.CM_DELETEDE.Size = New System.Drawing.Size(24, 22)
 		Me.CM_DELETEDE.Location = New System.Drawing.Point(87, 6)
 		Me.CM_DELETEDE.Image = CType(resources.GetObject("CM_DELETEDE.Image"), System.Drawing.Image)
@@ -1007,46 +1007,46 @@
 		Me._FM_Panel3D4_3.Size = New System.Drawing.Size(92, 22)
 		Me._FM_Panel3D4_3.Location = New System.Drawing.Point(819, 124)
 		Me._FM_Panel3D4_3.TabIndex = 23
-		Me._FM_Panel3D4_3.ForeColor = 0
-		Me._FM_Panel3D4_3.Alignment = 8
-		Me._FM_Panel3D4_3.BevelOuter = 1
-		Me._FM_Panel3D4_3.Caption = "ﾛｯﾄ単価区分"
-		Me._FM_Panel3D4_3.OutLine = -1
-		Me._FM_Panel3D4_3.Name = "_FM_Panel3D4_3"
+        Me._FM_Panel3D4_3.ForeColor = Color.Empty
+        'Me._FM_Panel3D4_3.Alignment = 8
+        'Me._FM_Panel3D4_3.BevelOuter = 1
+        Me._FM_Panel3D4_3.Text = "ﾛｯﾄ単価区分"
+        'Me._FM_Panel3D4_3.OutLine = -1
+        Me._FM_Panel3D4_3.Name = "_FM_Panel3D4_3"
 		Me._FM_Panel3D3_2.Size = New System.Drawing.Size(109, 25)
 		Me._FM_Panel3D3_2.Location = New System.Drawing.Point(186, 0)
 		Me._FM_Panel3D3_2.TabIndex = 24
-		Me._FM_Panel3D3_2.ForeColor = 0
-		Me._FM_Panel3D3_2.BevelOuter = 1
-		Me._FM_Panel3D3_2.Caption = "Panel3D2"
-		Me._FM_Panel3D3_2.OutLine = -1
-		Me._FM_Panel3D3_2.Name = "_FM_Panel3D3_2"
+        Me._FM_Panel3D3_2.ForeColor = Color.Empty
+        'Me._FM_Panel3D3_2.BevelOuter = 1
+        Me._FM_Panel3D3_2.Text = "Panel3D2"
+        'Me._FM_Panel3D3_2.OutLine = -1
+        Me._FM_Panel3D3_2.Name = "_FM_Panel3D3_2"
 		Me._FM_Panel3D4_4.Size = New System.Drawing.Size(79, 22)
 		Me._FM_Panel3D4_4.Location = New System.Drawing.Point(632, 48)
 		Me._FM_Panel3D4_4.TabIndex = 28
-		Me._FM_Panel3D4_4.ForeColor = 0
-		Me._FM_Panel3D4_4.BevelOuter = 1
-		Me._FM_Panel3D4_4.Caption = "入力担当者"
-		Me._FM_Panel3D4_4.OutLine = -1
-		Me._FM_Panel3D4_4.Name = "_FM_Panel3D4_4"
+        Me._FM_Panel3D4_4.ForeColor = Color.Empty
+        'Me._FM_Panel3D4_4.BevelOuter = 1
+        Me._FM_Panel3D4_4.Text = "入力担当者"
+        'Me._FM_Panel3D4_4.OutLine = -1
+        Me._FM_Panel3D4_4.Name = "_FM_Panel3D4_4"
 		Me.CS_TUKKB.Size = New System.Drawing.Size(41, 22)
 		Me.CS_TUKKB.Location = New System.Drawing.Point(680, 124)
 		Me.CS_TUKKB.TabIndex = 30
 		Me.CS_TUKKB.TabStop = 0
-		Me.CS_TUKKB.ForeColor = 0
-		Me.CS_TUKKB.Caption = "*通貨"
-		Me.CS_TUKKB.BevelWidth = 1
-		Me.CS_TUKKB.RoundedCorners = 0
-		Me.CS_TUKKB.Name = "CS_TUKKB"
+        Me.CS_TUKKB.ForeColor = Color.Empty
+        Me.CS_TUKKB.Text = "*通貨"
+        'Me.CS_TUKKB.BevelWidth = 1
+        'Me.CS_TUKKB.RoundedCorners = 0
+        Me.CS_TUKKB.Name = "CS_TUKKB"
 		Me.CS_URITKDT.Size = New System.Drawing.Size(81, 22)
 		Me.CS_URITKDT.Location = New System.Drawing.Point(600, 124)
 		Me.CS_URITKDT.TabIndex = 31
 		Me.CS_URITKDT.TabStop = 0
-		Me.CS_URITKDT.ForeColor = 0
-		Me.CS_URITKDT.Caption = "*適用日"
-		Me.CS_URITKDT.BevelWidth = 1
-		Me.CS_URITKDT.RoundedCorners = 0
-		Me.CS_URITKDT.Name = "CS_URITKDT"
+        Me.CS_URITKDT.ForeColor = Color.Empty
+        Me.CS_URITKDT.Text = "*適用日"
+        'Me.CS_URITKDT.BevelWidth = 1
+        'Me.CS_URITKDT.RoundedCorners = 0
+        Me.CS_URITKDT.Name = "CS_URITKDT"
 		Me.Label1.Text = "ﾛｯﾄ単価区分　1:ﾛｯﾄ単価設定有り                9:ﾛｯﾄ単価設定無し"
 		Me.Label1.Size = New System.Drawing.Size(225, 33)
 		Me.Label1.Location = New System.Drawing.Point(672, 80)
@@ -1221,8 +1221,8 @@
 		Me.Controls.Add(CS_HINCD)
 		Me.Controls.Add(CM_UPDKB)
 		Me.Controls.Add(CS_TOKCD)
-		Me.Controls.Add(_FM_Panel3D15_0)
-		Me.Controls.Add(FM_Panel3D14)
+        Me.Controls.Add(Me._FM_Panel3D15_0)
+        Me.Controls.Add(FM_Panel3D14)
 		Me.Controls.Add(_FM_Panel3D4_3)
 		Me.Controls.Add(_FM_Panel3D4_4)
 		Me.Controls.Add(CS_TUKKB)
@@ -1275,15 +1275,15 @@
 		Me.BD_UPDKB.SetIndex(_BD_UPDKB_0, CType(0, Short))
 		Me.BD_URITK.SetIndex(_BD_URITK_0, CType(0, Short))
 		Me.BD_URITKDT.SetIndex(_BD_URITKDT_0, CType(0, Short))
-		Me.FM_Panel3D15.SetIndex(_FM_Panel3D15_0, CType(0, Short))
-		Me.FM_Panel3D2.SetIndex(_FM_Panel3D2_2, CType(2, Short))
-		Me.FM_Panel3D3.SetIndex(_FM_Panel3D3_0, CType(0, Short))
-		Me.FM_Panel3D3.SetIndex(_FM_Panel3D3_2, CType(2, Short))
-		Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_2, CType(2, Short))
-		Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_1, CType(1, Short))
-		Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_3, CType(3, Short))
-		Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_4, CType(4, Short))
-		Me.IM_DELETEDE.SetIndex(_IM_DELETEDE_0, CType(0, Short))
+        'Me.FM_Panel3D15.SetIndex(_FM_Panel3D15_0, CType(0, Short))
+        'Me.FM_Panel3D2.SetIndex(_FM_Panel3D2_2, CType(2, Short))
+        'Me.FM_Panel3D3.SetIndex(_FM_Panel3D3_0, CType(0, Short))
+        'Me.FM_Panel3D3.SetIndex(_FM_Panel3D3_2, CType(2, Short))
+        'Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_2, CType(2, Short))
+        'Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_1, CType(1, Short))
+        'Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_3, CType(3, Short))
+        'Me.FM_Panel3D4.SetIndex(_FM_Panel3D4_4, CType(4, Short))
+        Me.IM_DELETEDE.SetIndex(_IM_DELETEDE_0, CType(0, Short))
 		Me.IM_DELETEDE.SetIndex(_IM_DELETEDE_1, CType(1, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_1, CType(1, Short))
 		Me.IM_Denkyu.SetIndex(_IM_Denkyu_2, CType(2, Short))

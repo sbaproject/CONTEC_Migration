@@ -1,0 +1,69 @@
+Attribute VB_Name = "SYSTBA_DBM"
+        Option Explicit
+'==========================================================================
+'   SYSTBA.DBM   ﾕｰｻﾞｰ情報管理ﾃｰﾌﾞﾙ               UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SYSTBA
+    USRID          As String * 8     'ユーザーID            !@@@@@@@@
+    USRNMA         As String * 30    'ユーザー名1(漢字)
+    USRNMB         As String * 30    'ユーザー名2(漢字)
+    USRRN          As String * 20    'ユーザー略称
+    USRNK          As String * 10    'ユーザー名称(カナ)
+    USRZP          As String * 8     'ユーザー郵便番号
+    USRADA         As String * 30    'ユーザー住所1
+    USRADB         As String * 30    'ユーザー住所2
+    USRADC         As String * 30    'ユーザー住所3
+    USRTL          As String * 12    'ユーザー電話番号
+    USRFX          As String * 12    'ユーザーFAX番号
+    USRBOSNM       As String * 30    'ユーザー代表者名称
+    USRTANNM       As String * 30    'ユーザー担当者名
+    SMAMM          As String * 2     '決算月                MM
+    SMADD          As String * 2     '決算日                DD
+    SMAMONDD       As String * 2     '月次決算日            DD
+    SMEDD          As String * 2     '締め日                DD
+    KESCC          As String * 2     '回収支払月            MM
+    KESDD          As String * 2     '回収支払日            DD
+    DATNO          As String * 10    '伝票管理NO.           0000000000
+    RECNO          As String * 10    'レコード管理NO.       0000000000
+    STTDATNO       As String * 10    '開始伝票管理NO.       0000000000
+    ENDDATNO       As String * 10    '終了伝票管理NO.       0000000000
+    STTRECNO       As String * 10    '開始レコード管理NO.   0000000000
+    ENDRECNO       As String * 10    '終了レコード管理NO.   0000000000
+    GYMSTTDT       As String * 8     '業務開始日付          YYYY/MM/DD
+    TOKSSBKB       As String * 1     '得意先請求締処理区分  0
+    TOKSMAKB       As String * 1     '得意先経理締処理区分  0
+    SIRSSAKB       As String * 1     '仕入先支払締処理区分  0
+    SIRSMAKB       As String * 1     '仕入先経理締処理区分  0
+    SMAUPDDT       As String * 8     '前回経理締実行日      YYYY/MM/DD
+    UKSMEDT        As String * 8     '月次仮締日（売り）    YYYY/MM/DD
+    SKSMEDT        As String * 8     '月次仮締日（仕入）    YYYY/MM/DD
+    MINSPCCP       As String * 8     '最低空き容量(Ｍ)      9(8)
+    MONUPDSC       As String * 2     'トラン保存期間(月)    99
+    YERUPDSC       As String * 2     'サマリ保存期間(月)    99
+    MONUPDDT       As String * 8     '前回月次更新実行日    YYYY/MM/DD
+    YERUPDDT       As String * 8     '前回年次更新実行日    YYYY/MM/DD
+    NEGKB(1)       As String * 1     '和暦採用区分          0
+    NEGDT(4)       As String * 8     '元年(西暦)            YYYY/MM/DD
+    NEGYY(4)       As String * 4     '元号(年)              YYYY
+    NEGNM(4)       As String * 4     '元号
+    VERNO          As String * 3     'VERNO                 !@@@
+    LEVNO          As String * 2     'LEBEL NO              00
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@
+    ZAIHYKKB       As String * 1     '在庫評価方法          0
+    GNKHYKKB       As String * 1     '原価評価方法-粗利用   0
+    HYKSTTDT       As String * 8     '評価計算開始日付      YYYY/MM/DD
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD
+End Type
+Global DB_SYSTBA As TYPE_DB_SYSTBA
+'Global DBN_SYSTBA As Integer
+' Index1( USRID )
+
+'Sub SYSTBA_RClear()
+'Dim TmpStat
+'    TmpStat = Dll_RClear(DBN_SYSTBA, G_LB)
+'    Call ResetBuf(DBN_SYSTBA)
+'End Sub

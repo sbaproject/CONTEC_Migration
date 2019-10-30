@@ -58,11 +58,17 @@ Module URKFP51_M61
         'DELETE
 
         'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.FILEDLG.FileName の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
-        'FR_SSSMAIN.FILEDLG.FileName = ""
+        FR_SSSMAIN.FILEDLG.FileName = ""
         'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.FILEDLG.ShowOpen の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
+        '2019/10/18 CHG START
         'FR_SSSMAIN.FILEDLG.ShowOpen() 'ダイアログを開く
         'UPGRADE_WARNING: オブジェクト FR_SSSMAIN.FILEDLG.FileName の既定プロパティを解決できませんでした。 詳細については、'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"' をクリックしてください。
         'strPath = FR_SSSMAIN.FILEDLG.FileName '選択されたファイル名を変数に格納
+        If FR_SSSMAIN.FILEDLG.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            strPath = System.IO.Path.GetFullPath(FR_SSSMAIN.FILEDLG.FileName)
+        End If
+        '2019/10/18 CHG START
+
 
         'ダイアログ画面でパスが取得できなかったときは処理終了
         If strPath = "" Then
@@ -209,25 +215,35 @@ ERR_SYORI:
 		Dim strSQL As String
 		
 		CNT_FBTRA = 0
-		
-		'''' UPD 2011/11/15  FKS) T.Yamamoto    Start    連絡票№FC11111501
-		''''' UPD 2011/09/02  FKS) T.Yamamoto    Start    連絡票№FC11090201
-		'''''' UPD 2011/07/20  FKS) T.Yamamoto    Start    連絡票№FC11072001
-		'''    strSql = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = " & strFBRFNO
-		''    strSql = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = " & strFBRFNO & " AND FBBNKCD = " & strFBBNKCD
-		'''''' UPD 2011/07/20  FKS) T.Yamamoto    End
-		'    strSql = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = " & strFBRFNO & " AND FBCLTCD = " & strFBCLTCD & " AND FBBNKCD = " & strFBBNKCD
-		''''' UPD 2011/09/02  FKS) T.Yamamoto    End
-		strSQL = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = '" & strFBRFNO & "' AND FBCLTCD = '" & strFBCLTCD & "' AND FBBNKCD = '" & strFBBNKCD & "'"
-		'''' UPD 2011/11/15  FKS) T.Yamamoto    End
-		
-		Call DB_GetSQL2(DBN_FBTRA, strSQL)
-		
-		If DBSTAT = 0 Then
-			CNT_FBTRA = DB_ExtNum.ExtNum(0)
-		End If
-		
-	End Function
+
+        '''' UPD 2011/11/15  FKS) T.Yamamoto    Start    連絡票№FC11111501
+        ''''' UPD 2011/09/02  FKS) T.Yamamoto    Start    連絡票№FC11090201
+        '''''' UPD 2011/07/20  FKS) T.Yamamoto    Start    連絡票№FC11072001
+        '''    strSql = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = " & strFBRFNO
+        ''    strSql = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = " & strFBRFNO & " AND FBBNKCD = " & strFBBNKCD
+        '''''' UPD 2011/07/20  FKS) T.Yamamoto    End
+        '    strSql = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = " & strFBRFNO & " AND FBCLTCD = " & strFBCLTCD & " AND FBBNKCD = " & strFBBNKCD
+        ''''' UPD 2011/09/02  FKS) T.Yamamoto    End
+        '2019/10/18 CHG START
+        'strSQL = "SELECT COUNT(FBRFNO) FROM FBTRA WHERE FBRFNO = '" & strFBRFNO & "' AND FBCLTCD = '" & strFBCLTCD & "' AND FBBNKCD = '" & strFBBNKCD & "'"
+        strSQL = "SELECT COUNT(FBRFNO) As cnt FROM FBTRA WHERE FBRFNO = '" & strFBRFNO & "' AND FBCLTCD = '" & strFBCLTCD & "' AND FBBNKCD = '" & strFBBNKCD & "'"
+        '2019/10/18 CHG END
+        '''' UPD 2011/11/15  FKS) T.Yamamoto    End
+
+        '2019/10/18 CHG START
+        'Call DB_GetSQL2(DBN_FBTRA, strSQL)
+
+        'If DBSTAT = 0 Then
+        '    CNT_FBTRA = DB_ExtNum.ExtNum(0)
+        'End If
+        Dim dt As DataTable = DB_GetTable(strSQL)
+        If dt Is Nothing OrElse dt.Rows.Count <= 0 Then
+            CNT_FBTRA = 0
+        Else
+            CNT_FBTRA = DB_NullReplace(dt.Rows(0)("cnt"), 0)
+        End If
+        '2019/10/18 CHG END
+    End Function
 	'''' ADD 2011/05/19  FKS) T.Yamamoto    End
 	
 	Private Function GET_FBDATA(ByVal strFullPath As String, ByRef lngRecCount As Integer) As Short
@@ -236,12 +252,15 @@ ERR_SYORI:
 		Dim strAry(lngItemMax) As String
 		Dim lngPos As Integer
 		Dim i As Integer
-		Dim lngStart As Integer
-		'''' DEL 2011/05/19  FKS) T.Yamamoto    Start    自動入金登録対応
-		'    Dim strSeqno                        As String
-		'''' DEL 2011/05/19  FKS) T.Yamamoto    End
-		
-		GET_FBDATA = 9
+        Dim lngStart As Integer
+        '2019/10/18 ADD START
+        Dim insertSQL As String = ""
+        '2019/10/18 ADD END
+        '''' DEL 2011/05/19  FKS) T.Yamamoto    Start    自動入金登録対応
+        '    Dim strSeqno                        As String
+        '''' DEL 2011/05/19  FKS) T.Yamamoto    End
+
+        GET_FBDATA = 9
 		
 		lngRecCount = 0
 		
@@ -388,9 +407,41 @@ ERR_SYORI:
 				''''' UPD 2011/07/20  FKS) T.Yamamoto    End
 				'銀行、口座、照会番号をキーとするよう変更
 				If CNT_FBTRA(DB_FBTRA.FBRFNO, DB_FBTRA.FBCLTCD, DB_FBTRA.FBBNKCD) = 0 Then
-					'''' UPD 2011/09/02  FKS) T.Yamamoto    End
-					Call DB_Insert(DBN_FBTRA, 1)
-				End If
+                    '''' UPD 2011/09/02  FKS) T.Yamamoto    End
+                    Call DB_Insert(DBN_FBTRA, 1)
+
+                    '2019/10/18 CHG START
+                    'Call DB_Insert(DBN_FBTRA, 1)
+                    insertSQL = ""
+                    insertSQL = insertSQL & " '" & DB_FBTRA.DATKB & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBRFNO & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBKJDT & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBKSDT & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBNYUKN & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBCLTCD & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBCLTNM & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBDELKB & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBSSDT & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBKJJDT & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBKJIDT & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBBNKCD & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBBNKNK & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBSTNNK & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBYKNKB & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBKOZNO & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.FBKOZNM & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.OPEID & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.CLTID & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.WRTTM & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.WRTDT & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.WRTFSTTM & "' "
+                    insertSQL = insertSQL & ",'" & DB_FBTRA.WRTFSTDT & "' "
+
+                    insertSQL = DB_InsertSQL(DBN_FBTRA, insertSQL)
+                    DB_Execute(insertSQL)
+                    '2019/10/18 CHG END
+
+                End If
 				'''' UPD 2011/05/19  FKS) T.Yamamoto    End
 			End If
 		Loop 

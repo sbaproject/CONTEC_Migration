@@ -1,0 +1,256 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <MyType>WindowsForms</MyType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC2D621E-D378-41C3-96A5-011027C5C854}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>TOKMT54</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>TOKMT54.FR_SSSMAIN</StartupObject>
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>3</AssemblyMinorVersion>
+    <AssemblyRevisionNumber>0</AssemblyRevisionNumber>
+    <GenerateRevisionNumber>False</GenerateRevisionNumber>
+    <AssemblyCompanyName>ウッドランド株式会社</AssemblyCompanyName>
+    <StartWithIE>False</StartWithIE>
+    <ApplicationIcon>TOKMT54.ico</ApplicationIcon>
+    <RootNamespace>TOKMT54</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>TOKMT54.xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DefineDebug>True</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\</OutputPath>
+    <DocumentationFile>TOKMT54.xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DefineDebug>False</DefineDebug>
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>Win32=True</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\..\共通dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PronesDbAccess">
+      <HintPath>..\..\共通dll\PronesDbAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>..\..\共通dll\System.Data.DataSetExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <Lcid>0</Lcid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\共通vb\ACE_CMN.vb">
+      <Link>ACE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CMN.vb">
+      <Link>AE_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_CONST.vb">
+      <Link>AE_CONST.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_PROC.vb">
+      <Link>AE_PROC.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AE_RSMR.vb">
+      <Link>AE_RSMR.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\AUTHORI.vb">
+      <Link>AUTHORI.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\COMMON_SEARCH.vb">
+      <Link>COMMON_SEARCH.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.designer.vb">
+      <Link>ICONSSS.designer.vb</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\ICONSSS.vb">
+      <Link>ICONSSS.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORAJET.vb">
+      <Link>ORAJET.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\ORA_CMN.vb">
+      <Link>ORA_CMN.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\TABLEDATA.vb">
+      <Link>TABLEDATA.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\UpgradeSupport.vb">
+      <Link>UpgradeSupport.vb</Link>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_DATE.designer.vb">
+      <Link>WLS_DATE.designer.vb</Link>
+      <DependentUpon>WLS_DATE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_DATE.vb">
+      <Link>WLS_DATE.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.designer.vb">
+      <Link>WLS_HCP.designer.vb</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_HCP.vb">
+      <Link>WLS_HCP.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_LIST.designer.vb">
+      <Link>WLS_LIST.designer.vb</Link>
+      <DependentUpon>WLS_LIST.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_LIST.vb">
+      <Link>WLS_LIST.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI.designer.vb">
+      <Link>WLS_MEI.designer.vb</Link>
+      <DependentUpon>WLS_MEI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_MEI.vb">
+      <Link>WLS_MEI.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK1.designer.vb">
+      <Link>WLS_TOK1.designer.vb</Link>
+      <DependentUpon>WLS_TOK1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\共通vb\WLS_TOK1.vb">
+      <Link>WLS_TOK1.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="SSSMAIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSMSG.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SSSWIN.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TOKMT54_e01.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TOKMT54_fpr.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TOKMT54_frm.Designer.vb">
+      <SubType>Code</SubType>
+      <DependentUpon>TOKMT54_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TOKMT54_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TOKMT54_iev.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TOKMT54_psi.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TRKMTA.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="..\..\共通vb\ICONSSS.resX">
+      <Link>ICONSSS.resX</Link>
+      <DependentUpon>ICONSSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_DATE.resX">
+      <Link>WLS_DATE.resX</Link>
+      <DependentUpon>WLS_DATE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_HCP.resX">
+      <Link>WLS_HCP.resX</Link>
+      <DependentUpon>WLS_HCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_LIST.resX">
+      <Link>WLS_LIST.resX</Link>
+      <DependentUpon>WLS_LIST.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_MEI.resX">
+      <Link>WLS_MEI.resX</Link>
+      <DependentUpon>WLS_MEI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\共通vb\WLS_TOK1.resx">
+      <Link>WLS_TOK1.resx</Link>
+      <DependentUpon>WLS_TOK1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TOKMT54_frm.resX">
+      <DependentUpon>TOKMT54_frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="TOKMT54.ico" />
+    <None Include="app.config" />
+    <None Include="_UpgradeReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

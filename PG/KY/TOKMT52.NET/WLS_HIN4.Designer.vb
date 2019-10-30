@@ -17,8 +17,8 @@
 	'Windows フォーム デザイナで必要です。
 	Private components As System.ComponentModel.IContainer
 	Public ToolTip1 As System.Windows.Forms.ToolTip
-	Public WithEvents WLSLABEL As SSPanel5
-	Public WithEvents LST As System.Windows.Forms.ListBox
+    'Public WithEvents WLSLABEL As Label
+    Public WithEvents LST As System.Windows.Forms.ListBox
 	Public WithEvents WLSOK As System.Windows.Forms.Button
 	Public WithEvents WLSCANCEL As System.Windows.Forms.Button
 	Public WithEvents COM_HINKB As System.Windows.Forms.Button
@@ -27,12 +27,12 @@
 	Public WithEvents HD_Kana As System.Windows.Forms.TextBox
 	Public WithEvents HD_NMA As System.Windows.Forms.TextBox
 	Public WithEvents HD_TEXT As System.Windows.Forms.TextBox
-	Public WithEvents Panel3D4 As SSPanel5
-	Public WithEvents SSPanel51 As SSPanel5
-	Public WithEvents _PNL_USENM_3 As SSPanel5
-	Public WithEvents WLSHINKBNM As System.Windows.Forms.Label
-	Public WithEvents Panel3D1 As SSPanel5
-	Public WithEvents _IM_MAE_0 As System.Windows.Forms.PictureBox
+    Public WithEvents Panel3D4 As Label
+    Public WithEvents SSPanel51 As Label
+    Public WithEvents _PNL_USENM_3 As Label
+    Public WithEvents WLSHINKBNM As System.Windows.Forms.Label
+    Public WithEvents Panel3D1 As Label
+    Public WithEvents _IM_MAE_0 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_ATO_0 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_ATO_1 As System.Windows.Forms.PictureBox
 	Public WithEvents _IM_MAE_1 As System.Windows.Forms.PictureBox
@@ -40,29 +40,29 @@
 	Public WithEvents WLSATO As System.Windows.Forms.PictureBox
 	Public WithEvents IM_ATO As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
 	Public WithEvents IM_MAE As Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray
-	Public WithEvents PNL_USENM As SSPanel5Array
-	'メモ: 以下のプロシージャは Windows フォーム デザイナで必要です。
-	'Windows フォーム デザイナを使って変更できます。
-	'コード エディタを使用して、変更しないでください。
-	<System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+    Public WithEvents PNL_USENM As VB6.PanelArray
+    'メモ: 以下のプロシージャは Windows フォーム デザイナで必要です。
+    'Windows フォーム デザイナを使って変更できます。
+    'コード エディタを使用して、変更しないでください。
+    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
 		Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(WLSHIN))
 		Me.components = New System.ComponentModel.Container()
 		Me.ToolTip1 = New System.Windows.Forms.ToolTip(components)
-		Me.WLSLABEL = New SSPanel5
-		Me.LST = New System.Windows.Forms.ListBox
+        'Me.WLSLABEL = New Label
+        Me.LST = New System.Windows.Forms.ListBox
 		Me.WLSOK = New System.Windows.Forms.Button
 		Me.WLSCANCEL = New System.Windows.Forms.Button
-		Me.Panel3D1 = New SSPanel5
-		Me.COM_HINKB = New System.Windows.Forms.Button
+        Me.Panel3D1 = New Label
+        Me.COM_HINKB = New System.Windows.Forms.Button
 		Me.WLSHINKB = New System.Windows.Forms.TextBox
 		Me.WLSKANA = New System.Windows.Forms.ComboBox
 		Me.HD_Kana = New System.Windows.Forms.TextBox
 		Me.HD_NMA = New System.Windows.Forms.TextBox
 		Me.HD_TEXT = New System.Windows.Forms.TextBox
-		Me.Panel3D4 = New SSPanel5
-		Me.SSPanel51 = New SSPanel5
-		Me._PNL_USENM_3 = New SSPanel5
-		Me.WLSHINKBNM = New System.Windows.Forms.Label
+        Me.Panel3D4 = New Label
+        Me.SSPanel51 = New Label
+        Me._PNL_USENM_3 = New Label
+        Me.WLSHINKBNM = New System.Windows.Forms.Label
 		Me._IM_MAE_0 = New System.Windows.Forms.PictureBox
 		Me._IM_ATO_0 = New System.Windows.Forms.PictureBox
 		Me._IM_ATO_1 = New System.Windows.Forms.PictureBox
@@ -71,8 +71,8 @@
 		Me.WLSATO = New System.Windows.Forms.PictureBox
 		Me.IM_ATO = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
 		Me.IM_MAE = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(components)
-		Me.PNL_USENM = New SSPanel5Array(components)
-		Me.Panel3D1.SuspendLayout()
+        Me.PNL_USENM = New VB6.PanelArray(components)
+        Me.Panel3D1.SuspendLayout()
 		Me.SuspendLayout()
 		Me.ToolTip1.Active = True
 		CType(Me.IM_ATO, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,18 +98,18 @@
 		Me.HelpButton = False
 		Me.WindowState = System.Windows.Forms.FormWindowState.Normal
 		Me.Name = "WLSHIN"
-		Me.WLSLABEL.Size = New System.Drawing.Size(753, 25)
-		Me.WLSLABEL.Location = New System.Drawing.Point(3, 80)
-		Me.WLSLABEL.TabIndex = 9
-		Me.WLSLABEL.BackColor = 12632256
-		Me.WLSLABEL.ForeColor = 0
-		Me.WLSLABEL.Alignment = 1
-		Me.WLSLABEL.BevelOuter = 1
-		Me.WLSLABEL.Caption = "WLSLABEL"
-		Me.WLSLABEL.OutLine = -1
-		Me.WLSLABEL.RoundedCorners = 0
-		Me.WLSLABEL.Name = "WLSLABEL"
-		Me.LST.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        'Me.WLSLABEL.Size = New System.Drawing.Size(753, 25)
+        'Me.WLSLABEL.Location = New System.Drawing.Point(3, 80)
+        'Me.WLSLABEL.TabIndex = 9
+        'Me.WLSLABEL.BackColor = 12632256
+        'Me.WLSLABEL.ForeColor = Color.Empty
+        'Me.WLSLABEL.Alignment = 1
+        'Me.WLSLABEL.BevelOuter = 1
+        'Me.WLSLABEL.Text = "WLSLABEL"
+        'Me.WLSLABEL.OutLine = -1
+        'Me.WLSLABEL.RoundedCorners = 0
+        'Me.WLSLABEL.Name = "WLSLABEL"
+        Me.LST.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.LST.Size = New System.Drawing.Size(753, 245)
 		Me.LST.Location = New System.Drawing.Point(3, 104)
 		Me.LST.TabIndex = 0
@@ -155,10 +155,10 @@
 		Me.Panel3D1.Size = New System.Drawing.Size(769, 75)
 		Me.Panel3D1.Location = New System.Drawing.Point(0, 0)
 		Me.Panel3D1.TabIndex = 7
-		Me.Panel3D1.BackColor = 12632256
-		Me.Panel3D1.ForeColor = 0
-		Me.Panel3D1.OutLine = -1
-		Me.Panel3D1.Name = "Panel3D1"
+        'Me.Panel3D1.BackColor = 12632256
+        Me.Panel3D1.ForeColor = Color.Empty
+        'Me.Panel3D1.OutLine = -1
+        Me.Panel3D1.Name = "Panel3D1"
 		Me.COM_HINKB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		Me.COM_HINKB.BackColor = System.Drawing.SystemColors.Control
 		Me.COM_HINKB.Text = "商品区分"
@@ -280,33 +280,33 @@
 		Me.Panel3D4.Size = New System.Drawing.Size(108, 25)
 		Me.Panel3D4.Location = New System.Drawing.Point(8, 40)
 		Me.Panel3D4.TabIndex = 8
-		Me.Panel3D4.BackColor = 12632256
-		Me.Panel3D4.ForeColor = 0
-		Me.Panel3D4.BevelOuter = 1
-		Me.Panel3D4.Caption = "開始製品ｺｰﾄﾞ"
-		Me.Panel3D4.OutLine = -1
-		Me.Panel3D4.RoundedCorners = 0
-		Me.Panel3D4.Name = "Panel3D4"
+        'Me.Panel3D4.BackColor = 12632256
+        Me.Panel3D4.ForeColor = Color.Empty
+        'Me.Panel3D4.BevelOuter = 1
+        Me.Panel3D4.Text = "開始製品ｺｰﾄﾞ"
+        'Me.Panel3D4.OutLine = -1
+        'Me.Panel3D4.RoundedCorners = 0
+        Me.Panel3D4.Name = "Panel3D4"
 		Me.SSPanel51.Size = New System.Drawing.Size(52, 25)
 		Me.SSPanel51.Location = New System.Drawing.Point(272, 8)
 		Me.SSPanel51.TabIndex = 10
-		Me.SSPanel51.BackColor = 12632256
-		Me.SSPanel51.ForeColor = 0
-		Me.SSPanel51.BevelOuter = 1
-		Me.SSPanel51.Caption = "型式"
-		Me.SSPanel51.OutLine = -1
-		Me.SSPanel51.RoundedCorners = 0
-		Me.SSPanel51.Name = "SSPanel51"
+        'Me.SSPanel51.BackColor = 12632256
+        Me.SSPanel51.ForeColor = Color.Empty
+        'Me.SSPanel51.BevelOuter = 1
+        Me.SSPanel51.Text = "型式"
+        'Me.SSPanel51.OutLine = -1
+        'Me.SSPanel51.RoundedCorners = 0
+        Me.SSPanel51.Name = "SSPanel51"
 		Me._PNL_USENM_3.Size = New System.Drawing.Size(82, 25)
 		Me._PNL_USENM_3.Location = New System.Drawing.Point(592, 8)
 		Me._PNL_USENM_3.TabIndex = 12
-		Me._PNL_USENM_3.BackColor = 12632256
-		Me._PNL_USENM_3.ForeColor = 0
-		Me._PNL_USENM_3.BevelOuter = 1
-		Me._PNL_USENM_3.Caption = "カナ検索"
-		Me._PNL_USENM_3.OutLine = -1
-		Me._PNL_USENM_3.RoundedCorners = 0
-		Me._PNL_USENM_3.Name = "_PNL_USENM_3"
+        'Me._PNL_USENM_3.BackColor = 12632256
+        Me._PNL_USENM_3.ForeColor = Color.Empty
+        'Me._PNL_USENM_3.BevelOuter = 1
+        Me._PNL_USENM_3.Text = "カナ検索"
+        'Me._PNL_USENM_3.OutLine = -1
+        'Me._PNL_USENM_3.RoundedCorners = 0
+        Me._PNL_USENM_3.Name = "_PNL_USENM_3"
 		Me.WLSHINKBNM.BackColor = System.Drawing.Color.FromARGB(192, 192, 192)
 		Me.WLSHINKBNM.ForeColor = System.Drawing.SystemColors.WindowText
 		Me.WLSHINKBNM.Size = New System.Drawing.Size(137, 25)
@@ -375,8 +375,8 @@
 		Me.WLSATO.Visible = True
 		Me.WLSATO.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.WLSATO.Name = "WLSATO"
-		Me.Controls.Add(WLSLABEL)
-		Me.Controls.Add(LST)
+        'Me.Controls.Add(WLSLABEL)
+        Me.Controls.Add(LST)
 		Me.Controls.Add(WLSOK)
 		Me.Controls.Add(WLSCANCEL)
 		Me.Controls.Add(Panel3D1)
@@ -400,8 +400,8 @@
 		Me.IM_ATO.SetIndex(_IM_ATO_1, CType(1, Short))
 		Me.IM_MAE.SetIndex(_IM_MAE_0, CType(0, Short))
 		Me.IM_MAE.SetIndex(_IM_MAE_1, CType(1, Short))
-		Me.PNL_USENM.SetIndex(_PNL_USENM_3, CType(3, Short))
-		CType(Me.PNL_USENM, System.ComponentModel.ISupportInitialize).EndInit()
+        'Me.PNL_USENM.SetIndex(_PNL_USENM_3, CType(3, Short))
+        CType(Me.PNL_USENM, System.ComponentModel.ISupportInitialize).EndInit()
 		CType(Me.IM_MAE, System.ComponentModel.ISupportInitialize).EndInit()
 		CType(Me.IM_ATO, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.Panel3D1.ResumeLayout(False)

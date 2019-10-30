@@ -1,0 +1,19 @@
+Attribute VB_Name = "HINCD_F54"
+Option Explicit
+'
+'スロット名      :商品コード・画面項目スロット
+'ユニット名      :HINCD.F54
+'記述者          :Standard Library
+'作成日付        :2006/07/16
+'使用プログラム  :SYKET51
+'
+
+Function HINCD_Slist(PP As clsPP, ByVal HINCD)
+    '
+    DB_PARA(DBN_HINMTA).KeyNo = 1
+    DB_PARA(DBN_HINMTA).KeyBuf = HINCD
+    WLSHIN.Show 1
+    Unload WLSHIN
+    HINCD_Slist = PP.SlistCom
+End Function
+
