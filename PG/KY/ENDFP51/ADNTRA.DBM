@@ -1,0 +1,64 @@
+	Option Explicit
+'==========================================================================
+'   ADNTRA.DBM   入荷予定トラン                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_ADNTRA
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    DATKB          As String * 1     '伝票削除区分          0                   
+    DENKB          As String * 1     '伝票区分              0                   
+    ADNNO          As String * 8     '入荷予定伝票番号      00000000            
+    LINNO          As String * 3     '行番号                000                 
+    HDNNO          As String * 10    '発注伝票番号          0000000000          
+    HDNLINNO       As String * 3     '行番号                000                 
+    RECNO          As String * 10    'レコード管理NO.       0000000000          
+    ADNDT          As String * 8     '入庫指示日            YYYY/MM/DD          
+    NOKDT          As String * 8     '納期                  YYYY/MM/DD          
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    TANCD          As String * 6     '担当者コード          000000              
+    SIRSHACD       As String * 10    '支払先コード          !@@@@@@@@@@         
+    SOUCD          As String * 3     '倉庫コード            000                 
+    MAKCD          As String * 6     'メーカーコード        000000              
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    HINNMA         As String * 50    '型式                                      
+    HINNMB         As String * 50    '商品名１                                  
+    UNTCD          As String * 2     '単位コード            00                  
+    UNTNM          As String * 4     '単位名                                    
+    IRISU          As Currency       '入数                  ###,###             
+    CASSU          As Currency       'ケース数              ###,###             
+    ARVSU          As Currency       '入庫指示数量          #,###,##0           
+    ARVTK          As Currency       '入荷予定単価          ##,###,##0.00;;#    
+    ARVKN          As Currency       '入荷予定金額          #,###,###,###       
+    LINCMA         As String * 20    '明細備考１                                
+    LINCMB         As String * 20    '明細備考２                                
+    HINKB          As String * 1     '商品区分              0                   
+    ZAIKB          As String * 1     '在庫管理区分          0                   
+    ZEIRT          As Currency       '消費税率              ##0.00;;#           
+    MRPKB          As String * 1     '展開区分              0                   
+    HINZEIKB       As String * 1     '商品消費税区分        0                   
+    ZEIRNKKB       As String * 1     '消費税ランク          0                   
+    HRTDD          As String * 2     '発注リードタイム      99                  
+    ORTDD          As String * 2     '出荷リードタイム      99                  
+    LSTID          As String * 7     '伝票種別              !@@@@@@@            
+    SIRMSTKB       As String * 1     'マスタ区分(仕入先)    0                   
+    TANMSTKB       As String * 1     'マスタ区分(担当者)    0                   
+    HINMSTKB       As String * 1     'マスタ区分(商品)      0                   
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_ADNTRA As TYPE_DB_ADNTRA
+Global DBN_ADNTRA As Integer
+' Index1( DATNO + LINNO )
+' Index2( DATKB + DENKB + ADNNO + LINNO )
+' Index3( SMADT )
+' Index4( DATKB + SIRCD + NOKDT + ADNDT + ADNNO + LINNO )
+' Index5( DATKB + HINCD + NOKDT + ADNDT + ADNNO + LINNO )
+' Index6( DATKB + RECNO )
+
+Sub ADNTRA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_ADNTRA, G_LB)
+    Call ResetBuf(DBN_ADNTRA)
+End Sub

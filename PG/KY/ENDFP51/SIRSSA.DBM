@@ -1,0 +1,31 @@
+	Option Explicit
+'==========================================================================
+'   SIRSSA.DBM   支払サマリ                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SIRSSA
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    SSADT          As String * 8     '締日付                YYYY/MM/DD          
+    KESDT          As String * 8     '決済日付              YYYY/MM/DD          
+    SSASREKN(09)   As Currency       '仕入集計金額          ###,###,###,###     
+    SSASZEKN       As Currency       '仕入消費税金額        ###,###,###,###     
+    SZAKZIKN(02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    SZAKZOKN(02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SZBKZIKN(02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    SZBKZOKN(02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SSAPAYKN(09)   As Currency       '支払集計金額          ###,###,###,###     
+    SSADENSU       As Currency       '伝票枚数              ###,###             
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_SIRSSA As TYPE_DB_SIRSSA
+Global DBN_SIRSSA As Integer
+' Index1( SIRCD + SSADT )
+' Index2( SIRCD + KESDT )
+' Index3( SSADT + SIRCD )
+
+Sub SIRSSA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_SIRSSA, G_LB)
+    Call ResetBuf(DBN_SIRSSA)
+End Sub

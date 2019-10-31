@@ -1,0 +1,104 @@
+	Option Explicit
+'==========================================================================
+'   ODNTRA.DBM   出荷実績トラン                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_ODNTRA
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    DATKB          As String * 1     '伝票削除区分          0                   
+    DENKB          As String * 1     '伝票区分              0                   
+    ODNNO          As String * 8     '出荷伝票番号          00000000            
+    LINNO          As String * 3     '行番号                000                 
+    FDNNO          As String * 8     '伝票管理NO.           0000000000          
+    FDNLINNO       As String * 3     '納品書行№            000                 
+    OKRJONO        As String * 15    '送り状№                                  
+    RECNO          As String * 10    'レコード管理NO.       0000000000          
+    ODNDT          As String * 8     '出荷伝票日付          YYYY/MM/DD          
+    CANKB          As String * 1     '取消区分              0                   
+    WRKKB          As String * 1     '処理区分              0                   
+    INVNO          As String * 8     'インボイス№          00000000            
+    SBNNO          As String * 20    '製番                                      
+    BINCD          As String * 2     '便名コード            00                  
+    OUTBSCD        As String * 3     '出荷場所              000                 
+    OUTSOUCD       As String * 3     '出荷倉庫              000                 
+    ODNYTDT        As String * 8     '出荷予定日            YYYY/MM/DD          
+    DEFNOKDT       As String * 8     '納期                  YYYY/MM/DD          
+    JDNNO          As String * 10    '受注番号              0000000000          
+    JDNLINNO       As String * 3     '受注行番号            000                 
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    HINNMA         As String * 50    '型式                                      
+    HINNMB         As String * 50    '商品名１                                  
+    JANCD          As String * 13    'ＪＡＮコード                              
+    LOTNO          As String * 20    'ロット№                                  
+    OTPSU          As Currency       '出荷実績数量          #,###,##0.00;;#     
+    FRDSU          As Currency       '出荷指示数量          #,###,##0.00;;#     
+    UNTNM          As String * 4     '単位名                                    
+    FRDTK          As Currency       '単価                  ###,###,##0.0000;;# 
+    FRDKN          As Currency       '金額                  ###,###,##0.0000;;# 
+    UZEKN          As Currency       '消費税金額            ##,###,###,###      
+    TOKJDNNO       As String * 23    '客先注文番号                              
+    TOKJDNED       As String * 3     '客先注文№枝番        000                 
+    LINCMA         As String * 20    '明細備考１                                
+    LINCMB         As String * 20    '明細備考２                                
+    INPBSCD        As String * 3     '入荷場所              000                 
+    INPSOUCD       As String * 3     '入庫倉庫コード        000                 
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    TOKNMA         As String * 60    '得意先名称１                              
+    TOKNMB         As String * 60    '得意先名称２                              
+    TOKZP          As String * 20    '得意先郵便番号                            
+    TOKADA         As String * 60    '得意先住所１                              
+    TOKADB         As String * 60    '得意先住所２                              
+    TOKADC         As String * 60    '得意先住所３                              
+    TOKTL          As String * 20    '得意先電話番号                            
+    TOKFX          As String * 20    '得意先ＦＡＸ番号                          
+    NHSCD          As String * 10    '納入先コード          !@@@@@@@@@@         
+    NHSNMA         As String * 60    '納入先名称１                              
+    NHSNMB         As String * 60    '納入先名称２                              
+    NHSZP          As String * 20    '納入先郵便番号        X(08)               
+    NHSADA         As String * 60    '納入先住所１                              
+    NHSADB         As String * 60    '納入先住所２                              
+    NHSADC         As String * 60    '納入先住所３                              
+    NHSTL          As String * 20    '納入先電話番号        X(12)               
+    NHSFX          As String * 20    '納入先ＦＡＸ番号      X(12)               
+    BMNNM          As String * 40    '出荷元名                                  
+    BMNZP          As String * 20    '出荷元郵便番号                            
+    BMNADA         As String * 60    '出荷元住所１                              
+    BMNADB         As String * 60    '出荷元住所２                              
+    BMNADC         As String * 60    '出荷元住所３                              
+    BMNTL          As String * 20    '出荷元電話番号                            
+    BMNFX          As String * 20    '出荷元ＦＡＸ番号                          
+    BMNURL         As String * 50    '出荷元ＵＲＬ                              
+    BUMNM          As String * 40    '部門名                                    
+    TANNM          As String * 40    '担当者名                                  
+    DENCM          As String * 40    '備考                                      
+    PUDLNO         As String * 10    '入出庫番号            0000000000          
+    MOTDATNO       As String * 10    '元伝票管理番号        0000000000          
+    SNICHIJI       As String * 14    '出荷実績日時                              
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+    DLFLG          As String * 1     '削除フラグ            0                   
+End Type
+Global DB_ODNTRA As TYPE_DB_ODNTRA
+Global DBN_ODNTRA As Integer
+' Index1( DATNO + LINNO )
+' Index2( DATKB + DENKB + ODNNO + LINNO )
+' Index3( DATKB + TOKCD + DEFNOKDT + ODNDT + ODNNO + LINNO )
+' Index4( DATKB + HINCD + DEFNOKDT + ODNDT + ODNNO + LINNO )
+' Index5( DATKB + RECNO )
+' Index6( DATKB + DENKB + ODNDT + SBNNO + HINCD )
+
+Sub ODNTRA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_ODNTRA, G_LB)
+    Call ResetBuf(DBN_ODNTRA)
+End Sub

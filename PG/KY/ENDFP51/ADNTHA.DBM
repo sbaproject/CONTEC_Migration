@@ -1,0 +1,57 @@
+	Option Explicit
+'==========================================================================
+'   ADNTHA.DBM   入荷予定見出しトラン             UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_ADNTHA
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    DATKB          As String * 1     '伝票削除区分          0                   
+    DENKB          As String * 1     '伝票区分              0                   
+    ADNNO          As String * 8     '入荷予定伝票番号      00000000            
+    ADNDT          As String * 8     '入庫指示日            YYYY/MM/DD          
+    HDNNO          As String * 10    '発注伝票番号          0000000000          
+    DEFNOKDT       As String * 8     '納期                  YYYY/MM/DD          
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    SIRRN          As String * 40    '仕入先略称名                              
+    TANCD          As String * 6     '担当者コード          000000              
+    TANNM          As String * 40    '担当者名                                  
+    SIRSHACD       As String * 10    '支払先コード          !@@@@@@@@@@         
+    SOUCD          As String * 3     '倉庫コード            000                 
+    SOUNM          As String * 20    '倉庫名                                    
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    ADNENDKB       As String * 1     '入荷予定完了区分      0                   
+    SBAARVKN       As Currency       '入荷予定金額(伝票計)  ##,###,##0.00;;#    
+    DENCM          As String * 40    '備考                                      
+    SIRSMEKB       As String * 1     '締区分                0                   
+    SIRSMEDD       As String * 2     '締初期日付(仕入)      DD                  
+    SIRSMECC       As String * 2     '締サイクル(仕入)      00                  
+    SIRSDWKB       As String * 1     '締め曜日              0                   
+    SIRKESCC       As String * 2     '支払サイクル          00                  
+    SIRKESDD       As String * 2     '支払日付              DD                  
+    SIRKDWKB       As String * 1     '支払曜日              0                   
+    LSTID          As String * 7     '伝票種別              !@@@@@@@            
+    SIRZEIKB       As String * 1     '消費税区分            0                   
+    SIRZCLKB       As String * 1     '消費税算出区分        0                   
+    SIRRPSKB       As String * 1     '消費税端数処理桁数    0                   
+    SIRZRNKB       As String * 1     '消費税端数処理区分    0                   
+    SIRNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ入力区分     0                   
+    SIRMSTKB       As String * 1     'マスタ区分(仕入先)    0                   
+    TANMSTKB       As String * 1     'マスタ区分(担当者)    0                   
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_ADNTHA As TYPE_DB_ADNTHA
+Global DBN_ADNTHA As Integer
+' Index1( DATNO )
+' Index2( DATKB + DENKB + ADNNO )
+' Index3( SMADT )
+' Index4( DATKB + ADNDT + ADNNO + SIRCD )
+' Index5( DATKB + SIRCD + ADNNO )
+' Index6( DATKB + ADNENDKB + SIRCD + DEFNOKDT + ADNNO )
+
+Sub ADNTHA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_ADNTHA, G_LB)
+    Call ResetBuf(DBN_ADNTHA)
+End Sub

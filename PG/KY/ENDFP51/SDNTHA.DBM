@@ -1,0 +1,94 @@
+	Option Explicit
+'==========================================================================
+'   SDNTHA.DBM   仕入見出トラン                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SDNTHA
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    DATKB          As String * 1     '伝票削除区分          0                   
+    AKAKROKB       As String * 1     '赤黒区分                                  
+    DENKB          As String * 1     '伝票区分              0                   
+    SDNNO          As String * 8     '仕入伝票番号          00000000            
+    IDNNO          As String * 8     '入荷伝票番号          00000000            
+    HDNNO          As String * 10    '発注伝票番号          0000000000          
+    HDNNOV         As Currency       '版数                  #0                  
+    PUDLNO         As String * 10    '入出庫番号            0000000000          
+    USDNO          As String * 8     '直送伝票NO            00000000            
+    SDNDT          As String * 8     '仕入伝票日付          YYYY/MM/DD          
+    DENDT          As String * 8     '伝票日付              YYYY/MM/DD          
+    REGDT          As String * 8     '初回伝票日付          YYYY/MM/DD          
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    SIRNMA         As String * 60    '仕入先名称１                              
+    SIRNMB         As String * 60    '仕入先名称２                              
+    TANCD          As String * 6     '担当者コード          000000              
+    TANNM          As String * 40    '担当者名                                  
+    SIRSHACD       As String * 10    '支払先コード          !@@@@@@@@@@         
+    SOUCD          As String * 3     '倉庫コード            000                 
+    SOUNM          As String * 20    '倉庫名                                    
+    NOUBMCD        As String * 6     '納入部門コード        000000              
+    NOUBMNM        As String * 40    '納入部門名                                
+    NXTKB          As String * 1     '帳端区分              0                   
+    NXTNM          As String * 10    '帳端名称                                  
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SSADT          As String * 8     '締日付                YYYY/MM/DD          
+    KESDT          As String * 8     '決済日付              YYYY/MM/DD          
+    ZKTKB          As String * 1     '取引区分              0                   
+    ZKTNM          As String * 4     '取引区分名                                
+    SPAKB          As String * 1     '仕入同時入荷区分      0                   
+    SBASREKN       As Currency       '仕入金額(伝票計)      ###,###,##0.0000;;# 
+    SBASZEKN       As Currency       '発注金額(消費税額)    #,###,###,###       
+    SBAPAYKN       As Currency       '支払金額(伝票計)      ###,###,##0.0000;;# 
+    SBASZKKN       As Currency       '発注金額(伝票計)      #,###,###,###       
+    DENCM          As String * 40    '備考                                      
+    SIRSMEKB       As String * 1     '締区分                0                   
+    SIRSMEDD       As String * 2     '締初期日付(仕入)      DD                  
+    SIRSMECC       As String * 2     '締サイクル(仕入)      00                  
+    SIRSDWKB       As String * 1     '締め曜日              0                   
+    SIRKESCC       As String * 2     '支払サイクル          00                  
+    SIRKESDD       As String * 2     '支払日付              DD                  
+    SIRKDWKB       As String * 1     '支払曜日              0                   
+    LSTID          As String * 7     '伝票種別              !@@@@@@@            
+    SIRJUNKB       As String * 1     '順位表出力区分        0                   
+    SIRMSTKB       As String * 1     'マスタ区分(仕入先)    0                   
+    SIRZEIKB       As String * 1     '消費税区分            0                   
+    SIRZCLKB       As String * 1     '消費税算出区分        0                   
+    SIRRPSKB       As String * 1     '消費税端数処理桁数    0                   
+    SIRZRNKB       As String * 1     '消費税端数処理区分    0                   
+    SIRNMMKB       As String * 1     '名称ﾏﾆｭｱﾙ入力区分     0                   
+    TANMSTKB       As String * 1     'マスタ区分(担当者)    0                   
+    HDNTRKB        As String * 2     '発注取引区分          00                  
+    CAUKB          As String * 2     '原因区分              00                  
+    HTANCD         As String * 3     '発注担当コード        000                 
+    HYHDNNO        As String * 10    '発注番号（表示用）    !@@@@@@@@@@         
+    MOTDATNO       As String * 10    '元伝票管理番号        0000000000          
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+    DLFLG          As String * 1     '削除フラグ            0                   
+End Type
+Global DB_SDNTHA As TYPE_DB_SDNTHA
+Global DBN_SDNTHA As Integer
+' Index1( DATNO )
+' Index2( DATKB + DENKB + SDNNO )
+' Index3( SMADT )
+' Index4( DATKB + SDNDT + SDNNO + SIRCD )
+' Index5( DATKB + SIRCD + SDNNO )
+' Index6( DATKB + SIRSHACD + SDNDT + DENKB + SDNNO )
+' Index7( DATKB + SIRSHACD + SSADT )
+' Index8( DATNO + HDNNO )
+' Index9( DATKB + DENKB + HYHDNNO )
+
+Sub SDNTHA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_SDNTHA, G_LB)
+    Call ResetBuf(DBN_SDNTHA)
+End Sub

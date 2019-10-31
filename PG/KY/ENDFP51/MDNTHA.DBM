@@ -1,0 +1,49 @@
+	Option Explicit
+'==========================================================================
+'   MDNTHA.DBM   在庫見出トラン                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_MDNTHA
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    DATKB          As String * 1     '伝票削除区分          0                   
+    DENKB          As String * 1     '伝票区分              0                   
+    MDNNO          As String * 8     '在庫伝票番号          00000000            
+    DENDT          As String * 8     '伝票日付              YYYY/MM/DD          
+    SOUCD          As String * 3     '倉庫コード            000                 
+    OUTSOUCD       As String * 3     '出荷倉庫              000                 
+    INPSOUCD       As String * 3     '入庫倉庫コード        000                 
+    SOUNM          As String * 20    '倉庫名                                    
+    OUTSOUNM       As String * 20    '出庫倉庫名                                
+    INPSOUNM       As String * 20    '入庫倉庫名                                
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    ADJCD          As String * 2     '調整理由              00                  
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+    DLFLG          As String * 1     '削除フラグ            0                   
+End Type
+Global DB_MDNTHA As TYPE_DB_MDNTHA
+Global DBN_MDNTHA As Integer
+' Index1( DATNO )
+' Index2( DATKB + DENKB + MDNNO )
+' Index3( SMADT )
+' Index4( DATKB + DENDT + MDNNO )
+' Index5( DATKB + DENKB + DENDT + SOUCD )
+' Index6( DATKB + DENKB + DENDT + MDNNO + SOUCD )
+' Index7( DATKB + DENKB + DENDT + MDNNO + OUTSOUCD )
+' Index8( DATKB + DENKB + DENDT + OUTSOUCD )
+
+Sub MDNTHA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_MDNTHA, G_LB)
+    Call ResetBuf(DBN_MDNTHA)
+End Sub

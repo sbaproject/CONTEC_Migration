@@ -1,0 +1,29 @@
+	Option Explicit
+'==========================================================================
+'   TOKSMA.DBM   売掛サマリ                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKSMA
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SMAURIKN(09)   As Currency       '売上集計金額          ###,###,##0.0000;;# 
+    SMAUZEKN       As Currency       '売上消費税金額        ###,###,##0.0000;;# 
+    SZAKZIKN(02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    SZAKZOKN(02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SZBKZIKN(02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    SZBKZOKN(02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SMAGNKKN(09)   As Currency       '原価集計金額          ###,###,##0.0000;;# 
+    SMANYUKN(09)   As Currency       '入金集計金額          ###,###,##0.0000;;# 
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_TOKSMA As TYPE_DB_TOKSMA
+Global DBN_TOKSMA As Integer
+' Index1( TOKCD + SMADT )
+' Index2( SMADT + TOKCD )
+
+Sub TOKSMA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKSMA, G_LB)
+    Call ResetBuf(DBN_TOKSMA)
+End Sub
