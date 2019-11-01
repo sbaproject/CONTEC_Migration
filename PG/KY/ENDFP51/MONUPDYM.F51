@@ -1,0 +1,53 @@
+Attribute VB_Name = "MONUPDYM_F51"
+Option Explicit
+'
+' スロット名        : 前回月次更新実行日付・画面項目スロット
+' ユニット名        : MONUPDYM.F02
+' 記述者            : Standard Library
+' 作成日付          : 1997/06/26
+' 使用プログラム名  : ENDFP01
+'
+'
+Dim NotFirst As Integer
+
+Function MONUPDYM_Check(MONUPDYM)
+Dim Rtn As Integer
+Dim W_dt As String, W_nxtdt
+    '
+    MONUPDYM_Check = 0
+    ''
+    ''2001/05/11 '日付範囲チェックを追加
+    If Not CHECK_DATE(MONUPDYM) Then
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 0)
+        MONUPDYM_Check = -1
+        Exit Function
+    End If
+    ''
+    Call DB_GetFirst(DBN_SYSTBA, 1, BtrNormal)  'Insert
+    W_dt = Get_TouAcedt(LeftWid$(MONUPDYM, 4), MidWid$(MONUPDYM, 6, 2))
+    If W_dt <= CNV_DATE(DB_SYSTBA.MONUPDDT) Then
+        Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 3)      ' 月次更新済。
+        MONUPDYM_Check = -1
+    End If
+
+    W_nxtdt = CStr(DateSerial(SSSVal(LeftWid(DB_SYSTBA.MONUPDDT, 4)), SSSVal(MidWid(DB_SYSTBA.MONUPDDT, 5, 2)) + 1, 1))
+    W_nxtdt = Get_TouAcedt(LeftWid$(W_nxtdt, 4), MidWid$(W_nxtdt, 6, 2))
+    If DB_SYSTBA.ZAIHYKKB <> "1" And W_dt > CNV_DATE(DB_SYSTBA.HYKSTTDT) Then
+        If W_nxtdt < W_dt Then
+           Rtn = DSP_MsgBox(SSS_ERROR, "DATE", 4)     ' 前月月次更新要求。
+           MONUPDYM_Check = -1
+        End If
+    End If
+
+End Function
+
+Function MONUPDYM_InitVal(ByVal MONUPDYM)
+    '
+    If NotFirst = False Or Not IsDate(MONUPDYM) Then
+        NotFirst = True
+        MONUPDYM_InitVal = DateAdd("m", -1, Date)
+    Else
+        MONUPDYM_InitVal = MONUPDYM
+    End If
+End Function
+

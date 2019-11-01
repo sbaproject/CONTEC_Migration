@@ -1,0 +1,27 @@
+Option Strict Off
+Option Explicit On
+Module ENDFP51_E01
+	'
+	' スロット名        : 画面処理スロット
+	' ユニット名        : ENDFP51.E01
+	' 記述者            : Standard Library
+	' 作成日付          : 1995/10/01
+	' 使用プログラム名  : ENDFP51
+	'
+	
+	Sub INITDSP()
+		'背景色設定
+		AE_BackColor(1) = &H8000000F
+		
+		CL_SSSMAIN(0) = 1
+		CL_SSSMAIN(1) = 1
+		
+		If Left(SSSWIN_EXCTBZ_CHECK, 1) = "9" Then
+			MsgBox("【" & Trim(Mid(SSSWIN_EXCTBZ_CHECK, 2, 30)) & "】が起動中です。" & Trim(SSS_PrgNm) & "を起動する事はできません。", MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly, SSS_PrgNm)
+			End
+		Else
+			Call SSSWIN_EXCTBZ_OPEN()
+		End If
+		
+	End Sub
+End Module

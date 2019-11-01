@@ -1,0 +1,405 @@
+Attribute VB_Name = "SYSTBA_M52"
+Option Explicit
+'
+'スロット名      :メインﾌｧｲﾙ更新(月次更新)・メインファイル更新スロット
+'ユニット名      :SYSTBA.M31
+'記述者          :Standard Library
+'作成日付        :1997/01/28
+'
+Dim WM_CNT&, WM_GCNT As Currency
+
+Global WG_MONSMADT As String '月次売掛（買掛）残高設定日
+Global WG_MONSSADT As String '月次請求（支払）残高設定日
+Global WG_YERSMADT As String '今期売掛（買掛）残高設定日
+Global WG_YERSSADT As String '今期請求（支払）残高設定日
+Global WG_ZYERSMADT As String '前期売掛（買掛）残高設定日
+Global WG_ZYERSSADT As String '前期請求（支払）残高設定日
+Global WG_TRNDELDT As String 'トラン削除基準日
+Global WG_SUMDELDT As String 'サマリ削除基準日
+Global WG_ZENSMADT As String '前月売掛（買掛）残高設定日
+Global WG_YEREXCDT As String '年次更新実行判定日
+Global WG_ZZYERSMADT As String '前前期売掛（買掛）残高設定日
+Global WG_ZZYERSSADT As String '前前期請求（支払）残高設定日
+
+
+Sub BATMAN()
+    '
+    Call BATMFIL
+End Sub
+
+Sub BATMFIL()
+Dim i%, PlStat&
+    '
+    If Left(SSSWIN_EXCTBZ_CHECK, 1) = "9" Then
+        MsgBox "【" & Trim(Mid(SSSWIN_EXCTBZ_CHECK, 2, 30)) & "】が起動中です。" & Trim(SSS_PrgNm) & "を入力する事はできません。", vbExclamation Or vbOKOnly, SSS_PrgNm
+        PlStat = DB_PlFree
+        FR_SSSMAIN.Enabled = True
+    Else
+        Call SSSWIN_EXCTBZ_OPEN
+    End If
+    
+    If CHKDATE() = False Then
+        Exit Sub
+    End If
+    ' 条件設定
+    G_PlCnd.nJobMode = 0
+    For i = 0 To MAX_CNDARR - 1
+        G_PlCnd.sCndStr(i) = String$(20, Chr$(Asc("A") + i))
+        G_PlCnd.nCndNum(i) = i + 1
+    Next i
+    G_PlCnd.sCndStr(0) = WG_MONSMADT
+    G_PlCnd.sCndStr(1) = WG_MONSSADT
+    G_PlCnd.sCndStr(2) = WG_YERSMADT
+    G_PlCnd.sCndStr(3) = WG_YERSSADT
+    G_PlCnd.sCndStr(4) = WG_ZYERSMADT
+    G_PlCnd.sCndStr(5) = WG_ZYERSSADT
+    G_PlCnd.sCndStr(6) = WG_TRNDELDT
+    G_PlCnd.sCndStr(7) = WG_SUMDELDT
+    G_PlCnd.sCndStr(8) = WG_ZENSMADT
+    G_PlCnd.sOpeID = SSS_OPEID
+    G_PlCnd.sCltID = SSS_CLTID
+    '
+    G_PlInfo.FCnt = 0
+    '
+    PlStat = DB_PlStart
+    PlStat = DB_PlCndSet
+    
+    Call DB_BeginTransaction(BTR_Exclude)
+    PlStat = DB_PlExec(SSS_PrgId & "_PACK.M_SYSTBA")
+    If PlStat <> 0 And PlStat <> 1485 Then
+        MsgBox "PL/SQL Error：" & PlStat
+        Call DB_AbortTransaction
+    Else
+        Call DB_EndTransaction
+'''' ADD 2009/05/18  FKS) T.Yamamoto    Start
+        '月次帳票データ作成フラグ作成処理
+        Call funcWrtFlgFile
+'''' ADD 2009/05/18  FKS) T.Yamamoto    End
+'''' ADD 2010/10/22  FKS) T.Yamamoto    Start    連絡票№824
+        '月初売掛終了フラグ削除処理
+        Call funcDelFlgFile
+'''' ADD 2010/10/22  FKS) T.Yamamoto    End
+    End If
+    PlStat = DB_PlFree
+End Sub
+'===========================================================
+Function CHKDATE()
+    Dim SMAYY As Long, SMAMM As Long, SMADD As Long
+    Dim yy As Long, mm As Long, dd As Long
+    Dim W_dt As Long
+    Dim WL_WRKBUF
+    CHKDATE = True
+    Dim W_YerEXCcc As Integer '年次更新実行ﾀｲﾐﾝｸﾞ
+    W_YerEXCcc = 6  '年次更新実行ﾀｲﾐﾝｸﾞ(6ヶ月後、実行)
+
+    WG_MONSMADT = "" '月次売掛（買掛）残高設定日
+    WG_MONSSADT = "" '月次請求（支払）残高設定日
+    WG_YERSMADT = "" '今期売掛（買掛）残高設定日
+    WG_YERSSADT = "" '今期請求（支払）残高設定日
+    WG_ZYERSMADT = "" '前期売掛（買掛）残高設定日
+    WG_ZYERSSADT = "" '前期請求（支払）残高設定日
+    WG_TRNDELDT = "" 'トラン削除基準日
+    WG_SUMDELDT = "" 'サマリ削除基準日
+    WG_ZENSMADT = "" '前月月次売掛（買掛）残高設定日
+    WG_YEREXCDT = "" '年次更新実行判定日
+    WG_ZZYERSMADT = "" '前前期売掛（買掛）残高設定日
+    WG_ZZYERSSADT = "" '前前期請求（支払）残高設定日
+
+
+'
+' 当月締日セット
+    WG_MONUPDYM = RD_SSSMAIN_MONUPDYM(0)
+    SSS_SMADT = Format$(Get_TouAcedt(CInt(LeftWid$(WG_MONUPDYM, 4)), CInt(MidWid$(WG_MONUPDYM, 5, 2))), "YYYYMMDD")
+    SMAYY = CLng(LeftWid$(SSS_SMADT, 4))
+    SMAMM = CLng(MidWid$(SSS_SMADT, 5, 2))
+    SMADD = CLng(MidWid$(SSS_SMADT, 7, 2))
+'
+' 月次売掛（買掛）残高設定日
+    WG_MONSMADT = SSS_SMADT
+    If WG_MONSMADT <= DB_SYSTBA.MONUPDDT Then
+        CHKDATE = False
+        Exit Function
+    End If
+'
+' 月次請求（支払）残高設定日
+    WG_MONUPDYM = RD_SSSMAIN_MONUPDYM(0)
+    SSS_SMADT = Format$(Get_TouAcedt(CInt(LeftWid$(WG_MONUPDYM, 4)), CInt(MidWid$(WG_MONUPDYM, 5, 2))), "YYYYMMDD")
+    SMAYY = CLng(LeftWid$(SSS_SMADT, 4))
+    SMAMM = CLng(MidWid$(SSS_SMADT, 5, 2))
+    SMADD = CLng(MidWid$(SSS_SMADT, 7, 2))
+    If SMADD > "27" Then
+        WG_MONSSADT = Format$(DateSerial(SMAYY, SMAMM, 0), "YYYYMMDD")
+    Else
+        WG_MONSSADT = Format$(DateSerial(SMAYY, SMAMM - 1, SMADD), "YYYYMMDD")
+    End If
+'
+' 今期売掛（買掛）残高設定日
+    SSS_SMADT = Format$(Get_BGNAcedt(CInt(LeftWid$(WG_MONUPDYM, 4)), CInt(MidWid$(WG_MONUPDYM, 5, 2))), "YYYYMMDD")
+    SMAYY = CLng(LeftWid$(SSS_SMADT, 4))
+    SMAMM = CLng(MidWid$(SSS_SMADT, 5, 2))
+    SMADD = CLng(MidWid$(SSS_SMADT, 7, 2))
+    If DB_SYSTBA.SMADD > "27" Then
+        WG_YERSMADT = Format$(DateSerial(SMAYY, SMAMM + 12, SMADD - 1), "YYYYMMDD")
+        WG_ZYERSMADT = Format$(DateSerial(SMAYY, SMAMM, SMADD - 1), "YYYYMMDD")
+        WG_ZZYERSMADT = Format$(DateSerial(SMAYY, SMAMM - 12, SMADD - 1), "YYYYMMDD")
+    Else
+        WG_YERSMADT = Format$(DateSerial(SMAYY, SMAMM + 12, SMADD - 1), "YYYYMMDD")
+        WG_ZYERSMADT = Format$(DateSerial(SMAYY, SMAMM, SMADD - 1), "YYYYMMDD")
+        WG_ZZYERSMADT = Format$(DateSerial(SMAYY, SMAMM - 12, SMADD - 1), "YYYYMMDD")
+    End If
+'
+' 今期請求（支払）残高設定日
+    SSS_SMADT = Format$(Get_BGNAcedt(CInt(LeftWid$(WG_MONUPDYM, 4)), CInt(MidWid$(WG_MONUPDYM, 5, 2))), "YYYYMMDD")
+    SMAYY = CLng(LeftWid$(SSS_SMADT, 4))
+    SMAMM = CLng(MidWid$(SSS_SMADT, 5, 2))
+    SMADD = CLng(MidWid$(SSS_SMADT, 7, 2))
+    If DB_SYSTBA.SMADD > "27" Then
+        WG_YERSSADT = Format$(DateSerial(SMAYY, SMAMM + 11, 0), "YYYYMMDD")
+        WG_ZYERSSADT = Format$(DateSerial(SMAYY, SMAMM - 1, 0), "YYYYMMDD")
+        WG_ZZYERSSADT = Format$(DateSerial(SMAYY, SMAMM - 13, 0), "YYYYMMDD")
+    Else
+        WG_YERSSADT = Format$(DateSerial(SMAYY, SMAMM + 11, SMADD - 1), "YYYYMMDD")
+        WG_ZYERSSADT = Format$(DateSerial(SMAYY, SMAMM - 1, SMADD - 1), "YYYYMMDD")
+        WG_ZZYERSSADT = Format$(DateSerial(SMAYY, SMAMM - 13, SMADD - 1), "YYYYMMDD")
+    End If
+'
+    WG_YEREXCDT = CStr(DateSerial(SSSVal(LeftWid(WG_MONSMADT, 4)), SSSVal(MidWid(WG_MONSMADT, 5, 2)) - W_YerEXCcc, 1))
+    WG_YEREXCDT = Get_TouAcedt(LeftWid$(WG_YEREXCDT, 4), MidWid$(WG_YEREXCDT, 6, 2))
+    
+    WG_YEREXCDT = DeCNV_DATE(WG_YEREXCDT)
+    
+'
+    If WG_ZYERSMADT > WG_YEREXCDT Then
+        If WG_ZZYERSMADT <= DB_SYSTBA.YERUPDDT Then
+            WG_YERSMADT = ""
+        Else
+            WG_YERSMADT = WG_ZZYERSMADT
+            WG_YERSSADT = WG_ZZYERSSADT
+            '年次更新実行
+        End If
+    ElseIf WG_ZYERSMADT < WG_YEREXCDT Then
+        If WG_ZYERSMADT <= DB_SYSTBA.YERUPDDT Then
+            WG_YERSMADT = ""
+        Else
+            WG_YERSMADT = WG_ZYERSMADT
+            WG_YERSSADT = WG_ZYERSSADT
+            '年次更新実行
+        End If
+    Else
+            WG_YERSMADT = WG_ZYERSMADT
+            WG_YERSSADT = WG_ZYERSSADT
+        '年次更新実行
+    End If
+'
+'トラン削除基準日
+    WG_MONUPDYM = RD_SSSMAIN_MONUPDYM(0)
+    SSS_SMADT = Format$(Get_TouAcedt(CInt(LeftWid$(WG_MONUPDYM, 4)), CInt(MidWid$(WG_MONUPDYM, 5, 2))), "YYYYMMDD")
+    SMAYY = CLng(LeftWid$(SSS_SMADT, 4))
+    SMAMM = CLng(MidWid$(SSS_SMADT, 5, 2))
+    SMADD = CLng(MidWid$(SSS_SMADT, 7, 2))
+    If SMADD > "27" Then
+        WG_TRNDELDT = Format$(DateSerial(SMAYY, SMAMM - SSSVal(DB_SYSTBA.MONUPDSC), 0), "YYYYMMDD")
+    Else
+        WG_TRNDELDT = Format$(DateSerial(SMAYY, SMAMM - SSSVal(DB_SYSTBA.MONUPDSC) - 1, SMADD), "YYYYMMDD")
+    End If
+'
+' サマリ削除基準日
+    WG_MONUPDYM = RD_SSSMAIN_MONUPDYM(0)
+    SSS_SMADT = Format$(Get_TouAcedt(CInt(LeftWid$(WG_MONUPDYM, 4)), CInt(MidWid$(WG_MONUPDYM, 5, 2))), "YYYYMMDD")
+    SMAYY = CLng(LeftWid$(SSS_SMADT, 4))
+    SMAMM = CLng(MidWid$(SSS_SMADT, 5, 2))
+    SMADD = CLng(MidWid$(SSS_SMADT, 7, 2))
+    If SMADD > "27" Then
+        WG_SUMDELDT = Format$(DateSerial(SMAYY, SMAMM - SSSVal(DB_SYSTBA.YERUPDSC), 0), "YYYYMMDD")
+    Else
+        WG_SUMDELDT = Format$(DateSerial(SMAYY, SMAMM - SSSVal(DB_SYSTBA.YERUPDSC) - 1, SMADD), "YYYYMMDD")
+    End If
+'前月前月月次売掛（買掛）残高設定日
+    WG_ZENSMADT = CStr(DateSerial(SSSVal(LeftWid(SSS_SMADT, 4)), SSSVal(MidWid(SSS_SMADT, 5, 2)) - 1, 1))
+    WG_ZENSMADT = Get_TouAcedt(LeftWid$(WG_ZENSMADT, 4), MidWid$(WG_ZENSMADT, 6, 2))
+    WG_ZENSMADT = DeCNV_DATE(WG_ZENSMADT)
+
+End Function
+
+'''' ADD 2009/05/18  FKS) T.Yamamoto    Start
+' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+'   名称：  Sub funcWrtFlgFile
+'   概要：  月次帳票データ作成フラグ作成（上書き）処理
+'   引数：  なし
+'   戻値：  True : 正常     False : 異常
+'   備考：
+' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+Sub funcWrtFlgFile()
+
+    Dim intFileNo       As Integer
+    Dim strFilePath     As String
+
+On Error GoTo Err_Run
+
+    intFileNo = FreeFile
+    strFilePath = GP_GetIni(AE_AppPath$ & "ENDFP51.ini", "FILEPATH", "FILE")
+
+'''' UPD 2009/07/01  FKS) T.Yamamoto    Start
+'    Open strFilePath For Output As #intFileNo
+'    Close #intFileNo
+    If strFilePath = "" Then
+        MsgBox "INIファイルの読込に失敗しました。" & vbCrLf & "[" & AE_AppPath$ & "ENDFP51.ini]", vbCritical, "INIファイル読込エラー"
+        Exit Sub
+    Else
+        Open strFilePath For Output As #intFileNo
+        Close #intFileNo
+    End If
+
+    MsgBox "月次帳票データ作成フラグを作成しました。" & vbCrLf & "[" & strFilePath & "]", MB_OK, Trim$(SSS_PrgNm)
+'''' UPD 2009/07/01  FKS) T.Yamamoto    End
+
+    Exit Sub
+
+Err_Run:
+
+'''' ADD 2009/07/01  FKS) T.Yamamoto    Start
+    MsgBox "月次帳票データ作成フラグの作成に失敗しました。" & vbCrLf & "[" & strFilePath & "]", vbCritical, "フラグファイル作成エラー"
+'''' ADD 2009/07/01  FKS) T.Yamamoto    End
+
+End Sub
+
+' @(f) GP_GetIni
+'
+' 機能      :汎用INIファイル書込サブルーチン
+'
+' 返り値    : String
+'
+' 引き数    :strIniName INIファイルの名前（拡張子は不要）
+'            strAppName INIファイル内のアプリケーション名
+'　　　　　　keyname　　INIファイル内のキー名
+'
+Function GP_GetIni(ByVal strIniName As String, _
+                                ByVal strAppName As String, _
+                                ByVal strKeyName As String) As String
+
+Dim strTxt      As String * 255
+Dim lngLen      As Long
+
+    GP_GetIni = ""
+
+    If Dir(strIniName) = "" Then
+        MsgBox "対象のINIファイルが存在しません。" & vbCrLf & "[" & strIniName & "]", vbCritical, "INIファイル読込エラー"
+        Exit Function
+    End If
+
+    '<< データPATHを取得 >>
+    lngLen = GetPrivateProfileString(strAppName, strKeyName, "", strTxt, 255, strIniName)
+
+On Error GoTo Error_Routine
+
+    GP_GetIni = P_GetIniItem(AnsiLeftB(strTxt, lngLen))
+
+    Exit Function
+
+Error_Routine:
+    '*MsgBox "指定したキーのエントリが存在しません。" & vbCrLf & "[" & strIniName & "]" & vbCrLf & "アプリケーション：" & strAppName & vbCrLf & "キー：" & strKeyName, vbCritical, "INIファイル読込エラー"
+End Function
+
+Function P_GetIniItem(ByVal strData As String) As String
+
+Dim strWk       As String
+Dim strDummy    As String
+Dim lngInstr    As Long
+Dim lngInstrRev As Long
+
+    lngInstr = 0
+
+    'イニファイルの";"以降はコメントなので、コメントを省く。
+    lngInstr = InStrB(strData, ";")
+    If lngInstr <> 0 Then
+        strWk = MidB(strData, 1, InStrB(strData, ";") - 1)
+    Else
+        strWk = strData
+    End If
+
+    lngInstr = 0
+    lngInstrRev = 0
+
+    'strWK=""及び、strWK=""""の場合はコメント行。
+    If strWk <> "" And strWk <> """" Then
+        'シングルコーテーションで囲んだ中の文字のみ取得したいので、
+        'シングルコーテーションの文字位置を取得する。
+        lngInstr = InStr(strWk, """")
+        lngInstrRev = InStrRev(strWk, """")
+        'strWkの中にシングルコーテーションが含まれているか判断する。
+        If lngInstr <> lngInstrRev Then
+            'シングルコーテーションが含まれていた場合。
+            'シングルコーテーションで囲んだ中の文字のみ取得する。
+            strDummy = Mid(strWk, lngInstr + 1, lngInstrRev - lngInstr - 1)
+
+            If strDummy <> "" Then
+                '戻り値のセット。
+                P_GetIniItem = Trim$(strDummy)
+            End If
+        Else
+            'シングルコーテーションが含まれていない場合。
+            If Trim$(strWk) <> "" Then
+                '戻り値のセット
+                P_GetIniItem = Trim$(strWk)
+            End If
+        End If
+    Else
+        P_GetIniItem = ""
+    End If
+
+End Function
+
+Function AnsiLeftB(ByVal StrArg As String, ByVal arg1 As Long) As String
+    AnsiLeftB = AnsiStrConv(LeftB(AnsiStrConv(StrArg, vbFromUnicode) _
+            , arg1), vbUnicode)
+End Function
+
+' StrConv を呼び出します。
+Function AnsiStrConv(StrArg, flag)
+#If Win32 Then
+    AnsiStrConv = StrConv(StrArg, flag)
+#Else
+    AnsiStrConv = StrArg
+#End If
+
+End Function
+'''' ADD 2009/05/18  FKS) T.Yamamoto    End
+
+'''' ADD 2010/10/22  FKS) T.Yamamoto    Start    連絡票№824
+' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+'   名称：  Sub funcDelFlgFile
+'   概要：  月初売掛終了フラグ削除処理
+'   引数：  なし
+'   戻値：  True : 正常     False : 異常
+'   備考：
+' ======+=======+=======+=======+=======+=======+=======+=======+=======+=======+
+Sub funcDelFlgFile()
+
+    Dim intFileNo       As Integer
+    Dim strFilePath     As String
+
+On Error GoTo Err_Run
+
+    intFileNo = FreeFile
+    strFilePath = GP_GetIni(AE_AppPath$ & "ENDFP51.ini", "FILEPATH2", "FILE")
+
+    If strFilePath = "" Then
+        MsgBox "INIファイルの読込に失敗しました。" & vbCrLf & "[" & AE_AppPath$ & "ENDFP51.ini]", vbCritical, "INIファイル読込エラー"
+        Exit Sub
+    Else
+        If Dir(strFilePath) <> "" Then
+            Kill (strFilePath)
+        End If
+    End If
+
+    MsgBox "月初売掛終了フラグを削除しました。" & vbCrLf & "[" & strFilePath & "]", MB_OK, Trim$(SSS_PrgNm)
+
+    Exit Sub
+
+Err_Run:
+
+    MsgBox "月初売掛終了フラグの削除に失敗しました。" & vbCrLf & "[" & strFilePath & "]", vbCritical, "フラグファイル削除エラー"
+
+End Sub
+'''' ADD 2010/10/22  FKS) T.Yamamoto    End
+

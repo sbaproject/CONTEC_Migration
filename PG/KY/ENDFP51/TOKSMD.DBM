@@ -1,0 +1,29 @@
+	Option Explicit
+'==========================================================================
+'   TOKSMD.DBM   売掛サマリ外貨                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_TOKSMD
+    TOKCD          As String * 10    '得意先コード          !@@@@@@@@@@         
+    TUKKB          As String * 3     '通貨区分              !@@@                
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SMDURIKN(09)   As Currency       '売上集計金額          ###,###,###,###     
+    SMDUZEKN       As Currency       '売上消費税金額        ###,###,###,###     
+    FAKZIKN (02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    FAKZOKN (02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    FBKZIKN (02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    FBKZOKN (02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SMDGNKKN(09)   As Currency       '原価集計金額          ###,###,##0.0000;;# 
+    SMDNYUKN(09)   As Currency       '入金集計金額          ###,###,###,###     
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_TOKSMD As TYPE_DB_TOKSMD
+Global DBN_TOKSMD As Integer
+' Index1( TOKCD + TUKKB + SMADT )
+
+Sub TOKSMD_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_TOKSMD, G_LB)
+    Call ResetBuf(DBN_TOKSMD)
+End Sub

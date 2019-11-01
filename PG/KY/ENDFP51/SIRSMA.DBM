@@ -1,0 +1,28 @@
+	Option Explicit
+'==========================================================================
+'   SIRSMA.DBM   買掛サマリ                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_SIRSMA
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SMASREKN(09)   As Currency       '仕入集計金額          ###,###,##0.0000;;# 
+    SMASZEKN       As Currency       '仕入消費税金額        #,###,###,###       
+    SZAKZIKN(02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    SZAKZOKN(02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SZBKZIKN(02)   As Currency       'ランク別税込課税金額  ###,###,###,###     
+    SZBKZOKN(02)   As Currency       'ランク別税抜課税金額  ###,###,###,###     
+    SMAPAYKN(09)   As Currency       '支払集計金額          ###,###,###,###     
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+End Type
+Global DB_SIRSMA As TYPE_DB_SIRSMA
+Global DBN_SIRSMA As Integer
+' Index1( SIRCD + SMADT )
+' Index2( SMADT + SIRCD )
+
+Sub SIRSMA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_SIRSMA, G_LB)
+    Call ResetBuf(DBN_SIRSMA)
+End Sub

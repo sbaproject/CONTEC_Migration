@@ -1,0 +1,90 @@
+	Option Explicit
+'==========================================================================
+'   IDNTRA.DBM   入荷トラン                       UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_IDNTRA
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    DATKB          As String * 1     '伝票削除区分          0                   
+    DENKB          As String * 1     '伝票区分              0                   
+    IDNNO          As String * 8     '入荷伝票番号          00000000            
+    LINNO          As String * 3     '行番号                000                 
+    ADNNO          As String * 8     '入荷予定伝票番号      00000000            
+    ADNLINNO       As String * 3     '行番号                ##                  
+    HDNNO          As String * 10    '発注伝票番号          0000000000          
+    HDNNOV         As Currency       '版数                  #0                  
+    HDNLINNO       As String * 3     '行番号                000                 
+    RECNO          As String * 10    'レコード管理NO.       0000000000          
+    IDNDT          As String * 8     '入庫実績日            YYYY/MM/DD          
+    NOKDT          As String * 8     '納期                  YYYY/MM/DD          
+    SMADT          As String * 8     '経理締日付            YYYY/MM/DD          
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    TANCD          As String * 6     '担当者コード          000000              
+    SIRSHACD       As String * 10    '支払先コード          !@@@@@@@@@@         
+    SOUCD          As String * 3     '倉庫コード            000                 
+    NOUBNCD        As String * 6     '納入部門コード        000000              
+    MAKCD          As String * 6     'メーカーコード        000000              
+    HINCD          As String * 10    '製品コード            !@@@@@@@@@@         
+    HINNMA         As String * 50    '型式                                      
+    HINNMB         As String * 50    '商品名１                                  
+    UNTCD          As String * 2     '単位コード            00                  
+    UNTNM          As String * 4     '単位名                                    
+    IRISU          As Currency       '入数                  ###,###             
+    CASSU          As Currency       'ケース数              ###,###             
+    INPSU          As Currency       '入荷数量              #,###,##0.00;;#     
+    INPTK          As Currency       '入荷単価              ###,###,##0.0000;;# 
+    INPKN          As Currency       '入荷金額              ###,###,##0.0000;;# 
+    SZEKN          As Currency       '消費税額              ##,###,###,###      
+    LINCMA         As String * 20    '明細備考１                                
+    LINCMB         As String * 20    '明細備考２                                
+    HINKB          As String * 1     '商品区分              0                   
+    ZAIKB          As String * 1     '在庫管理区分          0                   
+    ZEIRT          As Currency       '消費税率              ##0.00;;#           
+    MRPKB          As String * 1     '展開区分              0                   
+    HINZEIKB       As String * 1     '商品消費税区分        0                   
+    ZEIRNKKB       As String * 1     '消費税ランク          0                   
+    HRTDD          As String * 2     '発注リードタイム      99                  
+    ORTDD          As String * 2     '出荷リードタイム      99                  
+    LSTID          As String * 7     '伝票種別              !@@@@@@@            
+    SIRMSTKB       As String * 1     'マスタ区分(仕入先)    0                   
+    TANMSTKB       As String * 1     'マスタ区分(担当者)    0                   
+    HINMSTKB       As String * 1     'マスタ区分(商品)      0                   
+    JANCD          As String * 13    'ＪＡＮコード                              
+    LOTNO          As String * 20    'ロット№                                  
+    SBNNO          As String * 20    '製番                                      
+    ZIMNO          As String * 3     '口座                                      
+    SDNDT          As String * 8     '仕入伝票日付          YYYY/MM/DD          
+    SRESU          As Currency       '仕入数量              #,###,##0.00;;#     
+    SREKN          As Currency       '仕入金額              ###,###,##0.0000;;# 
+    HYHDNNO        As String * 10    '発注番号（表示用）    !@@@@@@@@@@         
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+    DLFLG          As String * 1     '削除フラグ            0                   
+End Type
+Global DB_IDNTRA As TYPE_DB_IDNTRA
+Global DBN_IDNTRA As Integer
+' Index1( DATNO + LINNO )
+' Index2( DATKB + DENKB + IDNNO + LINNO )
+' Index3( SMADT )
+' Index4( DATKB + SIRCD + NOKDT + IDNDT + IDNNO + LINNO )
+' Index5( DATKB + HINCD + NOKDT + IDNDT + IDNNO + LINNO )
+' Index6( DATKB + RECNO )
+' Index7( DATKB + SMADT + SOUCD + HINCD )
+' Index8( DATKB + SOUCD + HINCD + SMADT )
+' Index9( DATNO + HDNNO + IDNDT + HDNLINNO )
+
+Sub IDNTRA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_IDNTRA, G_LB)
+    Call ResetBuf(DBN_IDNTRA)
+End Sub

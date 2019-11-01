@@ -1,0 +1,42 @@
+	Option Explicit
+'==========================================================================
+'   STGTRA.DBM   支払手形トラン                   UPD.EXE Ver 3, 0, 1, 2  =
+'==========================================================================
+Type TYPE_DB_STGTRA
+    DATNO          As String * 10    '伝票管理NO.           0000000000          
+    PDNNO          As String * 8     '支払伝票番号          00000000            
+    LINNO          As String * 3     '行番号                000                 
+    PDNDT          As String * 8     '支払日付              YYYY/MM/DD          
+    SIRCD          As String * 10    '仕入先コード          !@@@@@@@@@@         
+    BNKCD          As String * 7     '銀行コード            !@@@@@@@            
+    TEGDT          As String * 8     '手形期日              YYYY/MM/DD          
+    TEGNO          As String * 10    '手形番号              !@@@@@@@@@@         
+    TEGKN          As Currency       '手形金額              #,###,###,###       
+    LINCMA         As String * 20    '明細備考１                                
+    LINCMB         As String * 20    '明細備考２                                
+    FOPEID         As String * 8     '初回登録ﾕｰｻﾞｰID       !@@@@@@@@           
+    FCLTID         As String * 5     '初回登録ｸﾗｲｱﾝﾄID      !@@@@@              
+    WRTFSTTM       As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(登録時間)    9(06)               
+    WRTFSTDT       As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(登録日)      YYYY/MM/DD          
+    OPEID          As String * 8     '最終作業者コード      !@@@@@@@@           
+    CLTID          As String * 5     'クライアントＩＤ      !@@@@@              
+    WRTTM          As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    WRTDT          As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    UOPEID         As String * 8     'ユーザID(ﾊﾞｯﾁ)        !@@@@@@@@           
+    UCLTID         As String * 5     'ｸﾗｲｱﾝﾄID(ﾊﾞｯﾁ)        !@@@@@              
+    UWRTTM         As String * 6     'ﾀｲﾑｽﾀﾝﾌﾟ(時間)        9(06)               
+    UWRTDT         As String * 8     'ﾀｲﾑｽﾀﾝﾌﾟ(日付)        YYYY/MM/DD          
+    PGID           As String * 7     'プログラムID          !@@@@@@@@           
+    DLFLG          As String * 1     '削除フラグ            0                   
+End Type
+Global DB_STGTRA As TYPE_DB_STGTRA
+Global DBN_STGTRA As Integer
+' Index1( PDNNO + LINNO )
+' Index2( TEGDT + SIRCD )
+' Index3( SIRCD + TEGDT )
+
+Sub STGTRA_RClear()
+DIM TmpStat
+    TmpStat = Dll_RClear(DBN_STGTRA, G_LB)
+    Call ResetBuf(DBN_STGTRA)
+End Sub
